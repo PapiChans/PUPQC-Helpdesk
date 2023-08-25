@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/css/lostandfoundstyle.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'assets/images/smollogo.png' %}" type="image/icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <title>Lost and Found</title>
+    <!-- Include CSS files, meta tags, and other resources here -->
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg  fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'assets/images/logodark.png' %}" alt="logo"></a>
+      <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <ion-icon name="apps-outline" id="rotate-icon" name="apps-outline" class="rotateable"></ion-icon>
+  
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto  mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'index' %}">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ANNOUNCEMENTS</a>
+          </li>
+          
+          
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" id="searchbar" aria-label="Search">
+          <button class="btn  btn-search btn-search-primary" id="srchbtn" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+   <div class="container">
+    <div class="box">
+      <div class="icon">01</div>
+      <div class="content"><h3>Return Item</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'return_item' %}">Report misplaced items</a>
+      </div>
+    </div>
+    <div class="box">
+      <div class="icon">02</div>
+      <div class="content"><h3>Find your missing Item</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="#">View missing items</a>
+      </div>
+    </div>
+    
+  </div>
+    
+
+    <footer>
+        <!-- Footer content such as copyright information, links, etc. -->
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{% static 'assets/js/lostandfoundscript.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>
