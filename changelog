@@ -1,0 +1,15 @@
+# Helpdesk System Changelog
+
+---
+
+## 0.0.1
+- Project Initialization
+- Pushed by Christian (github.com/papichans)
+
+## 0.1.0
+- Add changelog file
+- Installed psycopg2 for Database Migrations
+- Installed pillow for Image Uploading
+- Create Models for Database (Incompleted)
+- Add Setup and Connection to Postgres Database in Settings.py
+- Pushed by Christian (github.com/papichans)
