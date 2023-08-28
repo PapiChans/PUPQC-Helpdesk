@@ -13,38 +13,26 @@
 
         <link href="https://db.onlinewebfonts.com/c/3066b11123e63381b8e2aa554b18bf32?family=Bauhaus+93+V1" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg  fixed-top">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'assets/images/logodark.png' %}" alt="logo"></a>
-              <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <ion-icon name="apps-outline" id="rotate-icon" name="apps-outline" class="rotateable"></ion-icon>
+    <body style="background:  #b78727;">
+
+    
+      <div class="bread-crumbs" >
+    
+        <ul>
+          <li>
+            
+            <a class="home" href="{% url 'index' %}" style=" text-decoration: underline;">HOME</a>
+          </li>
           
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto  mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">HOME</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">FAQs</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">ABOUT US</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">ANNOUNCEMENTS</a>
-                  </li>
-                  
-                  
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" id="searchbar" aria-label="Search">
-                  <button class="btn  btn-search btn-search-primary" id="srchbtn" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-          </nav>
+          <li>
+            <a href="#" style="font-weight: bold;"></i>SERVICES</a>
+          </li>
+
+          
+          
+        </ul>
+      </div>
+
         <div class="wrapper">
             
             <h1>SERVICES</h1>

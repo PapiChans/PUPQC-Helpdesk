@@ -179,7 +179,9 @@ a.nav-link{
   #cv img {
     width: 230px;
   }
-  /* Contact section background image */
+
+
+  /* Contact section  */
   #contact {
     background-size: cover;
     background-attachment: fixed;
