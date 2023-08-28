@@ -22,3 +22,7 @@
 - Add Comments at some codes
 - Renaming all the models to meet Coding Standards (It must remigrate the models)
 - Pushed by Christian (https://github.com/papichans)
+
+## 0.2.1.1
+- Add Notifications for Discord
+- Pushed by Christian (https://github.com/papichans)
