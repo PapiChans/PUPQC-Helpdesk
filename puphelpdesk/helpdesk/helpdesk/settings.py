@@ -75,12 +75,12 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { # PostgreSQL Database
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'helpdesk',
-        'USER': 'helpdesk',
-        'PASSWORD': '123',
+        'USER': 'postgres',
+        'PASSWORD': 'admin123',
         'HOST': 'localhost',
         'PORT': '5432',
     }

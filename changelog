@@ -17,3 +17,8 @@
 ## 0.2.0
 - Major UI Update
 - Pushed by Lloyd (https://github.com/loydmarionlopez)
+
+## 0.2.1
+- Add Comments at some codes
+- Renaming all the models to meet Coding Standards (It must remigrate the models)
+- Pushed by Christian (https://github.com/papichans)
