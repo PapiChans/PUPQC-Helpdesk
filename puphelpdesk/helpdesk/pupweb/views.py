@@ -24,3 +24,5 @@ def lost_and_found_views(request):
 def return_item(request):
     return render(request, 'reportlost.html')
 
+def scholarship_form(request):
+    return render(request, 'scholarship.html')

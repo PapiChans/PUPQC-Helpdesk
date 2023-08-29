@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registration Form</title>
+	
+    <link href="{% static 'assets/css/scholarshipstyle.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="{% static 'assets/images/smollogo.png' %}" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+</head>
+<body>
+
+     
+  <div class="bread-crumbs" >
+    
+    <ul>
+      <li>
+        
+        <a class="home" href="{% url 'index' %}" style=" text-decoration: underline;">HOME</a>
+      </li>
+
+      <li>
+        
+        <a class="home" href="{% url 'services_view' %}" style=" text-decoration: underline;">SERVICES</a>
+      </li>
+      
+      <li>
+        <a href="#" style="font-weight: bold;"></i>SCHOLARSHIP FORM</a>
+      </li>
+
+      
+      
+    </ul>
+  </div>
+
+
+<div class="wrapper">
+    <div class="title">
+        SCHOLARSHIP APPLICATION FORM
+    </div>
+    
+    <div class="form">
+       <div class="inputfield">
+          <label>First Name</label>
+          <input type="text" class="input">
+       </div> 
+
+        <div class="inputfield">
+          <label>Last Name</label>
+          <input type="text" class="input">
+       </div> 
+
+
+        <div class="inputfield">
+          <label>Gender</label>
+          <div class="custom_select">
+            <select>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+       </div> 
+
+        <div class="inputfield">
+          <label>Email Address</label>
+          <input type="text" class="input">
+       </div> 
+
+      <div class="inputfield">
+          <label>Phone Number</label>
+          <input type="text" class="input">
+       </div> 
+
+      <div class="inputfield">
+          <label>House #</label>
+          <input type="text" class="input">
+       </div> 
+
+       <div class="inputfield">
+        <label>Street</label>
+        <input type="text" class="input">
+     </div> 
+
+     <div class="inputfield">
+        <label>City</label>
+        <input type="text" class="input">
+     </div> 
+
+     <div class="inputfield">
+        <label>Postal Code</label>
+        <input type="text" class="input">
+     </div> 
+
+     <div class="inputfield">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="0" max="120"  class="input">
+     </div> 
+     <div>
+        
+        <div class="inputfield">
+            <label for="birthdate">Date of Birth</label>
+            <input class="input" type="date" id="birthdate" name="birthdate" max="YYYY-MM-DD">
+        </div>
+
+        <div class="inputfield">
+        <label for="photo">Upload a photo of your GWA</label>
+        <input  type="file" id="photo" name="photo" accept="image/*">
+        
+       </div>
+
+       <div class="inputfield">
+        <label for="photo">Upload a a 2X2 photo of yourself</label>
+        <input  type="file" id="photo" name="photo" accept="image/*">
+        
+       </div>
+
+      
+
+      <div class="inputfield terms">
+          <label class="check">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+       </div> 
+
+      <div class="inputfield">
+        <input type="submit" value="Register" class="btn">
+      </div>
+
+      
+    </div>
+</div>
+
+
+	
+</body>
+</html>

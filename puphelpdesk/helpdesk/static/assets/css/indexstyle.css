@@ -77,19 +77,25 @@ a.nav-link{
 }
 
 #srchbtn {
-    background: linear-gradient(to right, #FFD700, #800000);
-    border: none;
-    font-weight: bold;
-    color: #FFFFFF;
+    
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
+
+    background: #FFD700;
+    border: none;
+    font-weight: bold;
+    color: #800000;
+    transition: background 0.5s, box-shadow 0.5s;
+    
+    text-decoration: none;
 }
 
 #srchbtn:hover {
-    background: linear-gradient(to right, #800000, #FFD700);
+  background: #FFD700;
+  box-shadow: 0 0 10px 2px rgba(255, 215, 0, 1);
 }
 
 #searchbar{
@@ -127,19 +133,24 @@ a.nav-link{
     background-attachment: fixed;
     background-position: center;
   }
-  #serviceBtn{
-    background: linear-gradient(to right, #FFD700, #800000);
+  #serviceBtn {
+    background: #FFD700;
     border: none;
     font-weight: bold;
-    color: #FFFFFF;
-    transition: 0.5s;
+    color: #800000;
+    transition: background 0.5s, box-shadow 0.5s;
     padding: 5px;
     text-decoration: none;
-  }
-
-  #serviceBtn:hover {
-    background: linear-gradient(to right, #800000, #FFD700);
+    -webkit-transition: background 0.5s, box-shadow 0.5s;
+    -moz-transition: background 0.5s, box-shadow 0.5s;
+    -ms-transition: background 0.5s, box-shadow 0.5s;
+    -o-transition: background 0.5s, box-shadow 0.5s;
 }
+  
+  #serviceBtn:hover {
+    background: #FFD700;
+    box-shadow: 0 0 10px 2px rgba(255, 215, 0, 1);
+  }
 
   
 
