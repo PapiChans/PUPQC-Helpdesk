@@ -1,43 +1,17 @@
-/*
-Template Name: Peyso - Bootstrap 5 Landing Page Template
-Author: Themesdesign
-File: Main scss file
-*/
-/*******************************
-1.General
-2.Helper
-3.Navbar
-4.Hero section
-5.About
-6.Features
-7.Testimonial
-8.Pricing
-9.Contact
-10.Footer
-11.Responsive
-12.Authentication
-********************************/
+
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
 body {
   font-size: 0.9rem;
   color: #343a40;
   font-family: "Nunito Sans", sans-serif;
+  
 }
 
 html {
   scroll-padding-top: 58px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #343a40;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
-}
+
 
 a {
   text-decoration: none !important;
@@ -45,18 +19,287 @@ a {
   color: #8338EC;
 }
 
-p {
-  line-height: 1.6;
-  font-size: 15px;
+.section2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #edf2f4;
 }
 
-hr {
-  opacity: 0.1 !important;
-}
-
-.row > * {
+.container2{
   position: relative;
+  display: flex;
+  padding: 80px 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
 }
+
+.section2 .card{
+  position: relative;
+  width: 350px;
+  height: 180px;
+  background: #fff;
+  transition: 0.5s;
+}
+
+.section2 .card:hover{
+  height: 450px;
+}
+
+.section2 .card .lines{
+  position: absolute;
+  inset: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.section2 .card .lines::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 120px;
+  background: linear-gradient(transparent, #45f3ff, #45f3ff  ,transparent);
+  animation: animate 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.section2 .card:hover .lines::before{
+animation-play-state: running;
+}
+
+@keyframes animate{
+  0%{
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+100%{
+  transform: translate(-50%, -50%) rotate(360deg);
+}
+}
+
+.section2 .card .lines::after{
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #edf2f4;
+}
+
+.section2 .card .imgBx{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -60px;
+  background: #000;
+  transition: 0.5s;
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section2 .card:hover .imgBx{
+  width: 190px;
+  height: 190px;
+  top: 25px; 
+}
+
+.section2 .card .imgBx::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 150px;
+  background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
+  animation: animate2 6s linear infinite;
+  animation-play-state: paused;
+}
+
+.section2 .card:hover .imgBx::before{
+  animation-play-state: running;
+}
+
+@keyframes animate2{
+  0%{
+    transform: translate(-50%, -50%) rotate(360deg);
+}
+
+100%{
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+}
+
+
+.section2 .card .imgBx::after{
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #edf2f4;
+}
+
+.section2 .card .imgBx ion-icon{
+  position: absolute;
+  width: 100px;
+  z-index: 1;
+  filter: invert;
+  opacity: 0.5;
+  transition: 0.5s;
+  color: #000;
+  font-size: 300px;
+}
+
+.section2 .card:hover .imgBx ion-icon{
+  opacity: 1;
+}
+
+.section2 .card .content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.section2 .card .content .details{
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+  transform: translateY(145px);
+}
+
+.section2 .card:hover .content .details{
+  transform: translateY(0px);
+}
+
+.section2 .card .content .details h2{
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #0e3133;
+  line-height: 1em;
+}
+
+
+
+.section2 .card .content .details p{
+  color: #000;
+  opacity: 0;
+  transition: 0.5s;
+  line-height: 1.6em;
+}
+
+.section2 .card:hover .content .details p{
+  opacity: 1;
+}
+
+
+
+/* FAQS section */
+.container3{
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 30px;
+  flex-wrap: wrap;
+}
+
+.container3 .box{
+  position: relative;
+  width: 300px;
+  height: 400px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  -webkit-box-reflect: below 15px linear-gradient(transparent, transparent, rgba(0, 0, 0, .2));
+}
+
+.container3 .box:hover{
+  color: #000;
+}
+
+.container3 .box:before{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #8d99ae;
+  background: #2b2d42;
+  filter: url(#wavy);
+  -webkit-filter: url(#wavy);
+}
+
+.container3 .box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 50%;
+  height: 100%;
+  border-right: none;
+  border: 4px solid #8d99ae;
+  background: rgba(255, 255, 255, .1);
+  filter: url(#wavy);
+}
+
+.container3 .box:hover:before{
+  background: #8d99ae;
+  transition: 0.5s;
+}
+.container3 .box .content{
+  position: absolute;
+  padding: 20px;
+  text-align: center;
+  transition: 0.5s;
+  z-index: 5;
+  font-weight: 300;
+  
+}
+
+
+/*  About PUP   */
+#about .img::before {
+  content: "";
+  left: 50%;
+  width: 4px;
+  position: absolute;
+  height: calc(100% + 140px);
+  background: var(--gray-color);
+}
+#about img,
+#about .hire-text h2 {
+  width: 140px;
+}
+#about .hire-text h2 {
+  height: 140px;
+}
+.social-icons a {
+  width: 40px;
+  height: 40px;
+}
+footer .social-icons a {
+  width: 30px;
+  height: 30px;
+}
+#cv img {
+  width: 230px;
+}
+
+/* end about */
 
 @media (min-width: 1200px) {
   .container {
@@ -252,12 +495,14 @@ hr {
 
 .sectionhome {
   position: relative;
-  padding: 100px 0px 100px;
-  background: url('pup-campus.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   scroll-behavior: smooth;
+  background-position: center;
+  height: 100vh;
+  background-image: url("pup-campus.jpg");
+  background-repeat: no-repeat;
+  background-position: 60% 0%;
+  background-size: cover;
+  background-attachment: fixed;
   background-position: center;
 }
 
