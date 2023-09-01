@@ -43,5 +43,13 @@
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 
 ## 0.2.4.1
--connected to the Log in page by Loyd The Great
+- connected to the Log in page by Loyd The Great
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+
+## 0.2.5
+- NEW Dashboard UI
+- Update urls
+- Update views
+- Slight update for teh homepage
+- Implementation of CSS and JS Libraries for the Dashboard
+- Pushed by Christian (https://github.com/papichans)

@@ -38,8 +38,11 @@
                 <li class="nav-item">
                     <a href="#faqs" class="nav-link">FAQ</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
             </ul>
-                <a href="{% url 'log_in' %}" class="btn btn-primary btn-sm navbar-btn my-lg-0 my-2">Log In</a>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sm navbar-btn my-lg-0 my-2">Log In</a>
         </div>
     </div>
 </nav>
@@ -72,7 +75,7 @@
     <div class="container2" data-aos="fade-up" data-aos-duration="3000">
         <div class="col-12 d-flex flex-column text-center justify-content-center">
             <h2>Services</h2>
-            <h5 class=" fw-normal py-2 fst-italic">Services offered by myPUPQC helpdesk. <a href="{% url 'log_in' %}">Log In</a> to continue</h5>
+            <h5 class=" fw-normal py-2 fst-italic">Services offered by myPUPQC helpdesk. <a href="{% url 'login' %}">Log In</a> to continue</h5>
           </div>
         <div class="card" >
             <div class="lines"></div>
@@ -268,7 +271,7 @@
 
 
       <!-- Footer -->
-     <footer>
+     <footer class="footer bg-dark text-white-50">
         <div class="container-xxl flex-wrap pt-3 d-flex align-items-center justify-content-center justify-content-md-between" >
           <p>Email: inquire@pup.edu.ph</p>
           <ul class="social-icons d-flex">
