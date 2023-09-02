@@ -18,6 +18,7 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
 
     # General Information and Services
+    path('geninfo', views.geninfo, name='geninfo'),
 
     # Student Support and Counseling
     

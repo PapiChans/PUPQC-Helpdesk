@@ -19,9 +19,13 @@ def services_view(request):
 
     # Student Dashboard
 def dashboard(request):
-    return render(request, 'student/dashboard.html')
+    pagename_value = "Dashboard"
+    return render(request, 'student/dashboard.html',{'pagename': pagename_value})
 
     # General Information and Services
+def geninfo(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'student/GenInfoandServices/geninfo.html',{'pagename': pagename_value})
 
     # Student Support and Counseling
 

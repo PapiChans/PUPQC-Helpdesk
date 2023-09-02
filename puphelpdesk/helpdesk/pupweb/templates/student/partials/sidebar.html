@@ -1,0 +1,74 @@
+{% load static %}
+
+{% block sidebar %}
+
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title">Menu</li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'geninfo' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-exclamation-octagon"></i></div>
+                        <span>General Information</span>
+                    </a>
+                </li>
+
+                
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-alt-message"></i></div>
+                        <span>Student Services</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">Fiancial Aid and Scholarships</a></li>
+                        <li><a href="#">Government and Involvement</a></li>
+                        <li><a href="#">ID and Access Cards</a></li>
+                        <li><a href="#">Counceling and Support</a></li>
+                        <li><a href="#">Careers and Employments</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-briefcase"></i></div>
+                        <span>Other Services</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">Health and Wellness Support</a></li>
+                        <li><a href="#">Transportation and Parking</a></li>
+                        <li><a href="#">Housing and Accommodation</a></li>
+                        <li><a href="#">Lost and Found</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-star-half-alt"></i></div>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->
+
+{% endblock %}

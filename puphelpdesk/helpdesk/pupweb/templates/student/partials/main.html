@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>PUPQC Helpdesk</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% include "student\partials\dashboardcss.html" %}
+        {% block css %}
+        {% endblock %}
+
+        {% include "student\partials\navbar.html" %}
+        {% block navbar %}
+        {% endblock %}
+
+        {% include "student\partials\sidebar.html" %}
+        {% block sidebar %}
+        {% endblock %}
+
+        {% include "student\partials\pagetitle.html" %}
+        {% block pagetitle %}
+        {% endblock %}
+        
+
+        {% include "student\partials\opencontent.html" %}
+        {% block opencontent %}
+        {% endblock %}
+
+        {% block maincontent %}
+        
+        {% endblock %}
+
+        {% include "student\partials\closecontent.html" %}
+        {% block closecontent %}
+        {% endblock %}
+
+        {% include "student\partials\footer.html" %}
+        {% block footer %}
+        {% endblock %}
+
+        {% include "student\partials\dashboardjs.html" %}
+        {% block js %}
+        {% endblock %}
+
+        {% include "student\partials\last.html" %}
+        {% block last %}
+        {% endblock %}

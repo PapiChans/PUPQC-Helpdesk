@@ -50,6 +50,12 @@
 - NEW Dashboard UI
 - Update urls
 - Update views
-- Slight update for teh homepage
+- Slight update for the homepage
 - Implementation of CSS and JS Libraries for the Dashboard
+- Pushed by Christian (https://github.com/papichans)
+
+## 0.2.6
+- Implement HTML Extension for Recycle HTML Templates
+- Add new Pages
+- Customize NavBar, Sidebar and Footers.
 - Pushed by Christian (https://github.com/papichans)
