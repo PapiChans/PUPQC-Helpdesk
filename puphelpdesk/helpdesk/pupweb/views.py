@@ -46,6 +46,10 @@ def scholarship_form(request):
     # Transportation and Parking
 
     # Lost annd Found Services
+def LostAndFound(request):
+        pagename_value = "Lost And Found"
+        return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
+
 def lost_and_found_views(request):
     return render(request, 'lostandfound.html')
 

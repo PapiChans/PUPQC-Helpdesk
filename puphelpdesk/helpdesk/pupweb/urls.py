@@ -38,6 +38,7 @@ urlpatterns = [
     # Transportation and Parking
 
     # Lost annd Found Services
+    path('LostAndFound', views.LostAndFound, name='LostAndFound'),
     path('lostandfound', views.lost_and_found_views, name='lost_and_found_views'),
     path('return_item', views.return_item, name='return_item'),
 
