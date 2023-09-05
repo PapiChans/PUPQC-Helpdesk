@@ -1,0 +1,64 @@
+{% extends "student\partials\main.html" %}
+
+{% block maincontent %}
+<div class="card">
+    <h4 class="header-title">Give us a Feedback or Suggestions!</h4>
+    <p class="card-title-desc">To improved our Helpdesk system, you may give us a feedback or suggestions.</p>
+    <div class="card-body">
+        <div class="text-center mt-4">
+            <h4>You have <span class="text-primary">0</span> Submitted Feedbacks / Suggestions</h4>
+            <p class="text-dark">Submit a Feedback Below.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label>Review Type<span class="text-danger">*</span></label>
+                    <select class="custom-select" required/>
+                        <option value="">Select Review Type</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Suggestion">Suggestions</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Student ID<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" required/>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Student Name<span class="text-danger">*</span></label></label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student Name" required/>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Student Program<span class="text-danger">*</span></label></label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student Program" required/>
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Feedback / Suggestion<span class="text-danger">*</span></label></label>
+                    <textarea required class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3"></div>
+                    <button class="col-md-12 mb-3 btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

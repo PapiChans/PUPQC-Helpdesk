@@ -35,11 +35,11 @@
                         <span>Student Services</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Fiancial Aid and Scholarships</a></li>
-                        <li><a href="#">Government and Involvement</a></li>
-                        <li><a href="#">ID and Access Cards</a></li>
-                        <li><a href="#">Counceling and Support</a></li>
-                        <li><a href="#">Careers and Employments</a></li>
+                        <li><a href="{% url 'financialaid' %}">Fiancial Aid and Scholarships</a></li>
+                        <li><a href="{% url 'government' %}">Government and Involvement</a></li>
+                        <li><a href="{% url 'idandcard' %}">ID and Access Cards</a></li>
+                        <li><a href="{% url 'counselling' %}">Counselling and Support</a></li>
+                        <li><a href="{% url 'careers' %}">Careers and Employments</a></li>
                     </ul>
                 </li>
 
@@ -49,15 +49,15 @@
                         <span>Other Services</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Health and Wellness Support</a></li>
-                        <li><a href="#">Transportation and Parking</a></li>
-                        <li><a href="#">Housing and Accommodation</a></li>
+                        <li><a href="{% url 'healthwellness' %}">Health and Wellness Support</a></li>
+                        <li><a href="{% url 'parking' %}">Transportation and Parking</a></li>
+                        <li><a href="{% url 'housing' %}">Housing and Accommodation</a></li>
                         <li><a href="{% url 'LostAndFound' %}">Lost and Found</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="{% url 'dashboard' %}" class=" waves-effect">
+                    <a href="{% url 'feedback' %}" class=" waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-star-half-alt"></i></div>
                         <span>Feedback</span>
                     </a>
