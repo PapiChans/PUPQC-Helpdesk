@@ -16,6 +16,7 @@ urlpatterns = [
     
     # Student Dashboard
     path('dashboard', views.dashboard, name='dashboard'),
+    path('dashboard2', views.dashboard2, name='dashboard2'),
     path('tickets', views.tickets, name='tickets'),
 
     # General Information and Services
@@ -32,19 +33,25 @@ urlpatterns = [
 
     # Financial Aid and Scholarships
     path('financialaid', views.financialaid, name='financialaid'),
-    path('scholarship_form', views.scholarship_form, name='scholarship_form'),
+    path('financialguidance', views.financialguidance, name='financialguidance'),
+    path('scholarshipForm', views.scholarshipForm, name='scholarshipForm'),
 
     # Housing and Accommodation
     path('housing', views.housing, name='housing'),
 
     # Health and Wellness Support
     path('healthwellness', views.healthwellness, name='healthwellness'),
+    path('healthServices', views.healthServices, name='healthServices'),
 
     # Career Services and Employment
     path('careers', views.careers, name='careers'),
+    path('referrals', views.referrals, name='referrals'),
+    path('internship', views.internship, name='internship'),
 
     # Student IDs and Access Cards
     path('idandcard', views.idandcard, name='idandcard'),
+    path('newIdRequest', views.newIdRequest, name='newIdRequest'),
+    path('IDvalidation', views.IDvalidation, name='IDvalidation'),
 
     # Student Government and Involvement
     path('government', views.government, name='government'),
@@ -55,7 +62,7 @@ urlpatterns = [
     # Lost annd Found Services
     path('lostandfound', views.lostandfound, name='lostandfound'),
     path('lostandfoundview', views.lost_and_found_views, name='lost_and_found_views'),
-    path('return_item', views.return_item, name='return_item'),
+    path('returnItems', views.returnItems, name='returnItems'),
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),

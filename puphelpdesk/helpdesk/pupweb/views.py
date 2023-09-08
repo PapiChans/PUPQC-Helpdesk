@@ -22,6 +22,10 @@ def dashboard(request):
     pagename_value = "Dashboard"
     return render(request, 'student/dashboard.html',{'pagename': pagename_value})
 
+def dashboard2(request):
+    pagename_value = "Dashboard"
+    return render(request, 'student/dashboard2.html',{'pagename': pagename_value})
+
 def tickets(request):
     pagename_value = "Your Tickets"
     return render(request, 'student/tickets.html',{'pagename': pagename_value})
@@ -65,8 +69,15 @@ def financialaid(request):
     pagename_value = "Financial Aid and Scholarships"
     return render(request, 'student/FinancialAid/financialaid.html',{'pagename': pagename_value})
 
-def scholarship_form(request):
-    return render(request, 'scholarship.html')
+def financialguidance(request):
+    pagename_value = "Financial Aid and Scholarships"
+    return render(request, 'student/FinancialAid/financialguidance.html',{'pagename': pagename_value})
+
+def scholarshipForm(request):
+    pagename_value = "Scholarship Application Form"
+    return render(request, 'student/FinancialAid/scholarshipform.html',{'pagename': pagename_value})
+
+
 
     # Housing and Accommodation
 def housing(request):
@@ -78,15 +89,35 @@ def healthwellness(request):
     pagename_value = "Health and Wellness Support"
     return render(request, 'student/HealthWellness/healthwellness.html',{'pagename': pagename_value})
 
+def healthServices(request):
+    pagename_value = "Health and Wellness Support"
+    return render(request, 'student/HealthWellness/healthServices.html',{'pagename': pagename_value})
+
     # Career Services and Employment
 def careers(request):
     pagename_value = "Career Services and Employment"
     return render(request, 'student/StudentCareers/careers.html',{'pagename': pagename_value})
 
+def referrals(request):
+    pagename_value = "Career Counseling Referrals"
+    return render(request, 'student/StudentCareers/referrals.html',{'pagename': pagename_value})
+
+def internship(request):
+    pagename_value = "Internship"
+    return render(request, 'student/StudentCareers/internship.html',{'pagename': pagename_value})
+
     # Student IDs and Access Cards
 def idandcard(request):
     pagename_value = "Student ID and Access Cards"
     return render(request, 'student/IDandCard/idandcard.html',{'pagename': pagename_value})
+
+def newIdRequest(request):
+    pagename_value = "Student ID and Access Cards"
+    return render(request, 'student/IDandCard/IDrequest.html',{'pagename': pagename_value})
+
+def IDvalidation(request):
+    pagename_value = "Student ID and Access Cards"
+    return render(request, 'student/IDandCard/IDvalidation.html',{'pagename': pagename_value})
 
     # Student Government and Involvement
 def government(request):
@@ -103,11 +134,17 @@ def lostandfound(request):
     pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
 
+def returnItems(request):
+    pagename_value = "Return Items"
+    return render(request, 'student/LostAndFoundServices/NewReportLost.html',{'pagename': pagename_value})
+
 def lost_and_found_views(request):
     return render(request, 'lostandfound.html')
 
 def return_item(request):
     return render(request, 'reportlost.html')
+
+
 
     # Student Feedback and Suggestions
 def feedback(request):

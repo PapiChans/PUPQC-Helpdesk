@@ -1,6 +1,61 @@
 {% extends "student\partials\main.html" %}
 
 {% block maincontent %}
-<h1>Housing</h1>
+<style>
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #800000;
+    }
+    p {
+        font-size: 18px;
+    }
+    .housing-info {
+        margin-top: 20px;
+    }
+    .housing-option {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .housing-option h2 {
+        color: #800000;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Housing Referrals</h1>
+    <p>Explore the available housing options, both on-campus and off-campus, to find the ideal place to live during your time at our institution.</p>
+    
+    <div class="housing-info">
+        <div class="housing-option">
+            <h2>On-Campus Housing</h2>
+            <p>Our on-campus housing provides convenient and comfortable living options. Learn about the different residence halls, room types, and amenities available.</p>
+            <p>For more information on on-campus housing, visit: [Insert On-Campus Housing Link]</p>
+        </div>
+        
+        <div class="housing-option">
+            <h2>Off-Campus Housing</h2>
+            <p>If you prefer off-campus living, we can assist you in finding suitable accommodations in the surrounding area. Explore apartments, houses, and rental options.</p>
+            <p>For off-campus housing resources, visit: [Insert Off-Campus Housing Link]</p>
+        </div>
+        
+        <div class="housing-option">
+            <h2>Housing Application Process</h2>
+            <p>Understand the housing application process, deadlines, and requirements for both on-campus and off-campus housing options.</p>
+            <p>For housing application details, visit: [Insert Application Process Link]</p>
+        </div>
+    </div>
+</div>
+</body>
 {% endblock %}
 
