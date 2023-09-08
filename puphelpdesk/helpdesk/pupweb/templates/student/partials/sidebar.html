@@ -21,13 +21,53 @@
                 </li>
 
                 <li>
-                    <a href="{% url 'geninfo' %}" class=" waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-exclamation-octagon"></i></div>
-                        <span>General Information</span>
+                    <a href="{% url 'tickets' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-plus-square"></i></div>
+                        <span>Your Tickets</span>
                     </a>
                 </li>
 
-                
+                <li class="menu-title">General Information</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-exclamation-octagon"></i></div>
+                        <span>Campus Information</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'geninfo/facilities' %}">Facilities</a></li>
+                        <li><a href="{% url 'geninfo/services' %}">Services</a></li>
+                        <li><a href="{% url 'geninfo/resources' %}">Resources</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'geninfo/events' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-schedule"></i></div>
+                        <span>Event Updates</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'geninfo/referrals' %}" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-plus"></i></div>
+                        <span>Service Referrals</span>
+                    </a>
+                </li>
+
+                <li class="menu-title">Services</li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-bookmark"></i></div>
+                        <span>Support / Counseling</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{% url 'student-support/counseling' %}">Student Counseling</a></li>
+                        <li><a href="{% url 'student-support/advising' %}">Academic Advising</a></li>
+                        <li><a href="{% url 'student-support/resources' %}">Success Resources</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -38,8 +78,7 @@
                         <li><a href="{% url 'financialaid' %}">Fiancial Aid and Scholarships</a></li>
                         <li><a href="{% url 'government' %}">Government and Involvement</a></li>
                         <li><a href="{% url 'idandcard' %}">ID and Access Cards</a></li>
-                        <li><a href="{% url 'counselling' %}">Counselling and Support</a></li>
-                        <li><a href="{% url 'careers' %}">Careers and Employments</a></li>
+                        <li><a href="{% url 'careers' %}">Careers and Employment</a></li>
                     </ul>
                 </li>
 
@@ -52,7 +91,7 @@
                         <li><a href="{% url 'healthwellness' %}">Health and Wellness Support</a></li>
                         <li><a href="{% url 'parking' %}">Transportation and Parking</a></li>
                         <li><a href="{% url 'housing' %}">Housing and Accommodation</a></li>
-                        <li><a href="{% url 'LostAndFound' %}">Lost and Found</a></li>
+                        <li><a href="{% url 'lostandfound' %}">Lost and Found</a></li>
                     </ul>
                 </li>
 

@@ -22,15 +22,43 @@ def dashboard(request):
     pagename_value = "Dashboard"
     return render(request, 'student/dashboard.html',{'pagename': pagename_value})
 
+def tickets(request):
+    pagename_value = "Your Tickets"
+    return render(request, 'student/tickets.html',{'pagename': pagename_value})
+
     # General Information and Services
-def geninfo(request):
+def geninfofacilities(request):
     pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/geninfo.html',{'pagename': pagename_value})
+    return render(request, 'student/GenInfoandServices/facilities.html',{'pagename': pagename_value})
+
+def geninfoservices(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'student/GenInfoandServices/services.html',{'pagename': pagename_value})
+
+def geninforesources(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'student/GenInfoandServices/resources.html',{'pagename': pagename_value})
+
+def geninfoevents(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'student/GenInfoandServices/events.html',{'pagename': pagename_value})
+
+def geninforeferrals(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'student/GenInfoandServices/referrals.html',{'pagename': pagename_value})
 
     # Student Support and Counseling
-def counselling(request):
-    pagename_value = "Student Counselling and Support"
-    return render(request, 'student/StudentCounselling/counselling.html',{'pagename': pagename_value})
+def studsupportcounseling(request):
+    pagename_value = "Student Counseling and Support"
+    return render(request, 'student/StudentCounseling/counseling.html',{'pagename': pagename_value})
+
+def studsupportadvising(request):
+    pagename_value = "Student Counseling and Support"
+    return render(request, 'student/StudentCounseling/advising.html',{'pagename': pagename_value})
+
+def studsupportresources(request):
+    pagename_value = "Student Counseling and Support"
+    return render(request, 'student/StudentCounseling/resources.html',{'pagename': pagename_value})
 
     # Financial Aid and Scholarships
 def financialaid(request):
@@ -71,7 +99,7 @@ def parking(request):
     return render(request, 'student/TransportationAndParking/parking.html',{'pagename': pagename_value})
 
     # Lost annd Found Services
-def LostAndFound(request):
+def lostandfound(request):
     pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
 
