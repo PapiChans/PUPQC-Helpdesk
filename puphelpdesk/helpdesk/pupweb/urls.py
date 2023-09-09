@@ -60,6 +60,8 @@ urlpatterns = [
 
     # Transportation and Parking
     path('parking', views.parking, name='parking'),
+    path('parkingSlot', views.parkingSlot, name='parkingSlot'),
+    path('transportInfo', views.transportInfo, name='transportInfo'),
 
     # Lost annd Found Services
     path('lostandfound', views.lostandfound, name='lostandfound'),

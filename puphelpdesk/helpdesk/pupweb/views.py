@@ -137,6 +137,15 @@ def parking(request):
     pagename_value = "Transportation and Parking"
     return render(request, 'student/TransportationAndParking/parking.html',{'pagename': pagename_value})
 
+def parkingSlot(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'student/TransportationAndParking/slotReserve.html',{'pagename': pagename_value})
+
+
+def transportInfo(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'student/TransportationAndParking/transportInfo.html',{'pagename': pagename_value})
+
     # Lost annd Found Services
 def lostandfound(request):
     pagename_value = "Lost And Found"

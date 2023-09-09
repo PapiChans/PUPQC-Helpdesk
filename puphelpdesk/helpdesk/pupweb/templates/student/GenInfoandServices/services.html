@@ -1,50 +1,132 @@
+
 {% extends "student\partials\main.html" %}
+{% load static %}
 
 {% block maincontent %}
+<style>
+
+</style>
+
 <h4 class="header-title">PUPQC Services</h4>
 <p class="card-title-desc">These are the services offered in the campus.</p>
-
-<div class="card">
-    <div class="card-body">
-        <div class="col-xxl-4">
-            <div class="card border card-border-light">
-                <div class="card-header">
-                    <h6 class="card-title mb-0">Services 1</h6>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">This is the service description.</p>
-                    <div class="text-end">
-                    </div>
-                </div>
+<section class="container py-5" id="portfolio">
+    <div class="row mt-4 py-3">
+      <div class="col-12 d-flex flex-column text-center justify-content-center">
+        <h2>Programs offered in PUPQC</h2>
+        <h5 class=" fw-normal py-2 fst-italic">Graduate Studies Programs under the PUP Open University System</h5>
+      </div>
+      <div class="row mt-5 mx-0 justify-content-center align-items-center">
+        
+        
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Master in Information Technology</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
             </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Master in Educational Management</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
         </div>
 
-        <div class="col-xxl-4">
-            <div class="card border card-border-light">
-                <div class="card-header">
-                    <h6 class="card-title mb-0">Services 2</h6>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">This is the service description.</p>
-                    <div class="text-end">
-                    </div>
-                </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Master in Public Administration</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
             </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>      
+  </section>
+
+  <section class="container py-5" id="Programs">
+    <div class="row mt-4 py-3">
+      <div class="col-12 d-flex flex-column text-center justify-content-center">
+        <h2>Programs offered in PUPQC</h2>
+        <h5 class=" fw-normal py-2 fst-italic">Undergraduate Programs</h5>
+      </div>
+      <div class="row mt-5 mx-0 justify-content-center align-items-center">
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 col-12 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor of Science in Information Technology</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor in Business Teacher and Livelihood Education major in Home Economics</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor in Business Teacher and Livelihood Education major in Information Communication Technology</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor of Science in Business Administration major in Marketing Management</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor of Science in Business Administration major in Human Resource Management</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Bachelor of Science in Entrepreneurship</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
+            </div>
+          </div>
         </div>
 
-        <div class="col-xxl-4">
-            <div class="card border card-border-light">
-                <div class="card-header">
-                    <h6 class="card-title mb-0">Services 3</h6>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">This is the service description.</p>
-                    <div class="text-end">
-                    </div>
-                </div>
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            <div class="card-body text-center">
+              <h6 class="card-title">Diploma in Office Management Technology with specialization in Medical Office Management</h6>
+              <p class="card-text text-secondary">lorem ipsum dolor</p>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+      
+    </div>      
+  </section>
+
+
 {% endblock %}
 
