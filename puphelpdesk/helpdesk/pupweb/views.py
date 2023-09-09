@@ -144,8 +144,6 @@ def lost_and_found_views(request):
 def return_item(request):
     return render(request, 'reportlost.html')
 
-
-
     # Student Feedback and Suggestions
 def feedback(request):
     pagename_value = "Student Feedback and Suggestions"

@@ -1,6 +1,34 @@
 {% extends "student\partials\main.html" %}
 
 {% block maincontent %}
-<h1>Counseling</h1>
+<h4 class="header-title">Student Counseling</h4>
+<p class="card-title-desc">For mental health and emotional support.</p>
+<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <thead>
+    <tr role="row">
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Support ID</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Counseling Date</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Status</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">View</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr role="row" class="odd">
+            <td class="sorting_1" tabindex="0">873b3832-4ead-11ee-be56-0242ac120002</td>
+            <td>08/24/2023</td>
+            <td><span class="badge badge-pill badge-success">Solved</span></td>
+            <td><button type="button" class="btn btn-primary waves-effect waves-light">View</button></td>
+
+        </tr>
+        <tr role="row" class="even">
+            <td class="sorting_1" tabindex="0">873b3832-4ead-11ee-be56-0242ac120002</td>
+            <td>09/5/2023</td>
+            <td><span class="badge badge-pill badge-warning">Pending</span></td>
+            <td><button type="button" class="btn btn-primary waves-effect waves-light">View</button></td>
+        </tr>  
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary waves-effect waves-light">Appoint New Counseling</button>
+
 {% endblock %}
 

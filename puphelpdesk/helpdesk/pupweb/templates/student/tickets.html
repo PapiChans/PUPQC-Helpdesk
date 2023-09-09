@@ -1,5 +1,33 @@
 {% extends "student\partials\main.html" %}
+{% load static %}
 
 {% block maincontent %}
-<h1>Your Tickets</h1>
+
+<h4 class="header-title">Your Tickets</h4>
+<p class="card-title-desc">Here are the list of your Submitted Tickets</p>
+<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <thead>
+    <tr role="row">
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Ticket ID</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Ticket Type</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr role="row" class="odd">
+            <td class="sorting_1" tabindex="0">873b3832-4ead-11ee-be56-0242ac120002</td>
+            <td>Student ID</td>
+            <td><span class="badge badge-pill badge-warning">Pending</span></td>
+        </tr>
+        <tr role="row" class="even">
+            <td class="sorting_1" tabindex="0">8f70bba8-4ead-11ee-be56-0242ac120002</td>
+            <td>Scholarships</td>
+            <td><span class="badge badge-pill badge-danger">Rejected</span></td>
+        </tr>  
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary waves-effect waves-light">Create New Ticket</button>
+
+<script src="{% static 'assets/js/dashboard/init/tickets.init.js' %}"></script>
+
 {% endblock %}

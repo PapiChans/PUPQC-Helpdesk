@@ -1,5 +1,83 @@
 {% extends "student\partials\main.html" %}
 
 {% block maincontent %}
-<h1>Hello World</h1>
+
+<h4 class="header-title">Student Dashboard</h4>
+<div class="alert alert-success" role="alert">
+    Here are your Helpdesk data
+</div>
+</div>
+
+</div>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="fw-medium text-dark text-center text-truncate mb-0">Your Helpdesk Tickets</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <div>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4 text-primary">15</h4>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="fw-medium text-dark text-center text-truncate mb-0">Pending Tickets</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <div>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4 text-primary">10</h4>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="fw-medium text-dark text-center text-truncate mb-0">Rejected Tickets</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <div>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4 text-primary">3</h4>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="fw-medium text-dark text-center text-truncate mb-0">Solved Tickets</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <div>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4 text-primary">2</h4>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div>
+</div>
+
 {% endblock %}

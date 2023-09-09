@@ -1,6 +1,52 @@
 {% extends "student\partials\main.html" %}
+{% load static %}
 
 {% block maincontent %}
-<h1>Events</h1>
+<h4 class="header-title">PUPQC Events</h4>
+<p class="card-title-desc">The upcoming events in PUPQC Campus.</p>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
+                <p class="card-text">This is event description</p>
+                <p class="card-text text-center">
+                    <small class="text-dark">October 1, 2023</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
+                <p class="card-text">This is event description</p>
+                <p class="card-text text-center">
+                    <small class="text-dark">October 5, 2023</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
+                <p class="card-text">This is event description</p>
+                <p class="card-text text-center">
+                    <small class="text-dark">October 13, 2023</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
 

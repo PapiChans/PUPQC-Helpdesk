@@ -1,6 +1,89 @@
 {% extends "student\partials\main.html" %}
+{% load static %}
 
 {% block maincontent %}
-<h1>Facilities</h1>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+<h4 class="header-title">PUPQC Facilities</h4>
+<p class="card-title-desc">These are the facilities in the campus.</p>
+
+<div class="row gallery-wrapper" style="position: relative; height: 1523.25px;">
+    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
+        <div class="gallery-box card">
+            <div class="gallery-container">
+                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
+                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
+                    <div class="gallery-overlay">
+                        <h5 class="overlay-caption">Sample Picture</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="box-content">
+                <div class="d-flex align-items-center mt-1">
+                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
+                    <div class="flex-shrink-0">
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
+        <div class="gallery-box card">
+            <div class="gallery-container">
+                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
+                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
+                    <div class="gallery-overlay">
+                        <h5 class="overlay-caption">Sample Picture</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="box-content">
+                <div class="d-flex align-items-center mt-1">
+                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
+                    <div class="flex-shrink-0">
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
+        <div class="gallery-box card">
+            <div class="gallery-container">
+                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
+                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
+                    <div class="gallery-overlay">
+                        <h5 class="overlay-caption">Sample Picture</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="box-content">
+                <div class="d-flex align-items-center mt-1">
+                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
+                    <div class="flex-shrink-0">
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 {% endblock %}
 
