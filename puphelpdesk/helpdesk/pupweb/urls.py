@@ -18,6 +18,8 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('dashboard2', views.dashboard2, name='dashboard2'),
     path('tickets', views.tickets, name='tickets'),
+    path('profile', views.profile, name='profile'),
+    path('editprofile', views.editprofile, name='editprofile'),
 
     # General Information and Services
     path('geninfo/facilities', views.geninfofacilities, name='geninfo/facilities'),

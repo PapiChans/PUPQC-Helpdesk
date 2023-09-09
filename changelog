@@ -102,3 +102,10 @@
 - Create a sample Ui for ALL Pages
 - Import additional CSS and JS for Page functionalities
 - Pushed by Christian (https://github.com/papichans)
+
+## 0.2.10.1
+- Updates URLs and Views
+- Update Navigation Bar, Add Profile hyperlink
+- Add new HTML Files
+- Create a sample Ui for Profile Page
+- Pushed by Christian (https://github.com/papichans)

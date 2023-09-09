@@ -1,0 +1,49 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+
+{% block maincontent %}
+
+<h4 class="header-title">Your Profile</h4>
+<p class="card-title-desc">View your profile.</p>
+<a href="{% url 'editprofile' %}" ><button type="button" class="btn btn-primary waves-effect waves-light">Edit Profile</button></a>
+</div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title mb-3">Student Info</h5>
+        <div class="table-responsive">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th class="ps-0" scope="row">Student ID</th>
+                        <td class="text-muted">2023-00001-CM-0</td>
+                    </tr>
+                    <tr>
+                        <th class="ps-0" scope="row">Student Name</th>
+                        <td class="text-muted">Juan D. Cruz</td>
+                    </tr>
+                    <tr>
+                        <th class="ps-0" scope="row">Program</th>
+                        <td class="text-muted">Bachelor of Science in Information Technology</td>
+                    </tr>
+                    <tr>
+                        <th class="ps-0" scope="row">Age</th>
+                        <td class="text-muted">18</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="ps-0" scope="row">Contact Number</th>
+                        <td class="text-muted">09123456789</td>
+                    </tr>
+                    <tr>
+                        <th class="ps-0" scope="row">Email Address</th>
+                        <td class="text-muted">juandcruz@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- end card body -->
+</div>
+
+{% endblock %}

@@ -30,6 +30,14 @@ def tickets(request):
     pagename_value = "Your Tickets"
     return render(request, 'student/tickets.html',{'pagename': pagename_value})
 
+def profile(request):
+    pagename_value = "Profile"
+    return render(request, 'student/profile.html',{'pagename': pagename_value})
+
+def editprofile(request):
+    pagename_value = "Edit Profile"
+    return render(request, 'student/editprofile.html',{'pagename': pagename_value})
+
     # General Information and Services
 def geninfofacilities(request):
     pagename_value = "General Information and Services"
