@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pupweb'
+    'pupweb',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -80,6 +81,10 @@ DATABASES = { # PostgreSQL Database
 
     }
 }
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+]
 
 
 # Password validation

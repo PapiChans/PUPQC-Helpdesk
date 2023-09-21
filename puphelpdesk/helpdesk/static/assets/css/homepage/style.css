@@ -16,7 +16,7 @@ html {
 a {
   text-decoration: none !important;
   outline: none;
-  color: #8338EC;
+  color: #D90429;
 }
 
 .section2{
@@ -307,7 +307,7 @@ footer .social-icons a {
   }
 }
 .bg-primary {
-  background-color: #8338EC !important;
+  background-color: #D90429 !important;
 }
 
 .bg-soft-primary {
@@ -315,11 +315,11 @@ footer .social-icons a {
 }
 
 .text-primary {
-  color: #8338EC !important;
+  color: #D90429 !important;
 }
 
 .uim-icon-primary .uim-svg {
-  fill: #8338EC !important;
+  fill: #D90429 !important;
 }
 
 .bg-success {
@@ -473,8 +473,8 @@ footer .social-icons a {
   box-shadow: none;
 }
 .form-check .form-check-input:checked {
-  background-color: #8338EC;
-  border-color: #8338EC;
+  background-color: #D90429;
+  border-color: #D90429;
 }
 .form-check .form-check-input:checked:focus {
   box-shadow: none !important;
@@ -576,7 +576,7 @@ footer .social-icons a {
 }
 
 .uim-svg {
-  fill: #8338EC !important;
+  fill: #D90429 !important;
 }
 .uim-svg svg {
   width: 24px;
@@ -610,7 +610,7 @@ footer .social-icons a {
 
 .avatar-title {
   align-items: center;
-  background-color: #8338EC;
+  background-color: #D90429;
   color: #ffffff;
   display: flex;
   font-weight: 500;
@@ -667,22 +667,22 @@ label {
 
 .btn-primary {
   color: #ffffff;
-  background: #8338EC;
-  border-color: #8338EC;
+  background: #D90429;
+  border-color: #D90429;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
-  background: #7725ea;
-  border-color: #7725ea;
+  background: #ef233c;
+  border-color: #ef233c;
   color: #ffffff;
 }
 
 .btn-outline-primary {
-  color: #8338EC;
-  border-color: #8338EC;
+  color: #D90429;
+  border-color: #D90429;
 }
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active {
-  background: #7725ea !important;
-  border-color: #7725ea !important;
+  background: #ef233c!important;
+  border-color: #ef233c !important;
   color: #ffffff;
 }
 
@@ -933,7 +933,7 @@ label {
   color: rgba(52, 58, 64, 0.8);
 }
 .nav-sticky.navbar .navbar-nav .nav-item .nav-link:hover, .nav-sticky.navbar .navbar-nav .nav-item .nav-link:active, .nav-sticky.navbar .navbar-nav .nav-item .nav-link:focus, .nav-sticky.navbar .navbar-nav .nav-item .nav-link.active {
-  color: #8338EC;
+  color: #D90429;
 }
 
 .navbar-light {
@@ -950,7 +950,7 @@ label {
   color: rgba(52, 58, 64, 0.8);
 }
 .navbar-light .navbar-nav .nav-item .nav-link:hover, .navbar-light .navbar-nav .nav-item .nav-link:active, .navbar-light .navbar-nav .nav-item .nav-link:focus, .navbar-light .navbar-nav .nav-item .nav-link.active {
-  color: #8338EC;
+  color: #D90429;
 }
 
 @media (max-width: 991px) {
@@ -973,7 +973,7 @@ label {
     color: rgba(52, 58, 64, 0.9);
   }
   .navbar .navbar-nav .nav-item .nav-link:hover, .navbar .navbar-nav .nav-item .nav-link:active, .navbar .navbar-nav .nav-item .nav-link.active {
-    color: #8338EC;
+    color: #D90429;
   }
   .navbar .navbar-btn {
     margin-left: 0px;
@@ -1143,7 +1143,7 @@ label {
   left: 0px;
   width: 40px;
   height: 2px;
-  background-color: #8338EC;
+  background-color: #D90429;
 }
 
 .hero-5 {
@@ -1284,14 +1284,14 @@ label {
   margin: 0 0 0px 5px;
   border-radius: 50%;
   border: none;
-  background-color: rgba(131, 56, 236, 0.2) !important;
-  color: #8338EC;
+  background-color: rgba(255, 28, 21, 0.2) !important;
+  color: #D90429;
   transition: all 0.3s;
   font-size: 18px;
 }
 .tns-outer .tns-controls button:focus, .tns-outer .tns-controls button:hover, .tns-outer .tns-controls button:active {
   outline: none;
-  background-color: #8338EC !important;
+  background-color: #D90429 !important;
   color: #ffffff;
 }
 .tns-outer .tns-controls button.active button {
@@ -1315,10 +1315,10 @@ label {
 }
 .tns-outer .tns-nav button:focus, .tns-outer .tns-nav button:hover, .tns-outer .tns-nav button:active, .tns-outer .tns-nav button.active {
   outline: none;
-  background-color: #8338EC !important;
+  background-color: #D90429 !important;
 }
 .tns-outer .tns-nav button.tns-nav-active {
-  background-color: #8338EC !important;
+  background-color: #D90429 !important;
 }
 
 .client-images img {
@@ -1419,7 +1419,7 @@ label {
   border-radius: 50%;
 }
 .footer .social-icons-list li a:hover {
-  background-color: #8338EC;
+  background-color: #D90429;
   color: #ffffff;
 }
 

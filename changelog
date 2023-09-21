@@ -115,3 +115,14 @@
 - Parking Slot Reservation added on the Dashboard
 - Transportaion Information added on the Dashboard by Loyd The Supreme king
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+
+## 0.2.11
+- Update Models
+- Revised Model Migration
+- add Rest Framework in the Projecct (pip install djangorestframework)
+- Revised Homepage by changing the color for the coding standards
+- add BCrypt for Data Encryption (pip install bcrypt)
+- Add serializers
+- Update model migrations (may still be updating)
+- Add Readme.md Dependency Tables
+- Pushed by Christian (https://github.com/papichans)
