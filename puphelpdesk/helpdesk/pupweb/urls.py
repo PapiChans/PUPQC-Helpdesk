@@ -7,8 +7,11 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # Authentication
-    path('admin', views.admin, name='admin'),
     path('login', views.login, name='login'),
+
+    #---------------------------------------------
+    # Student
+    #---------------------------------------------
 
     # Services
     path('services_view', views.services_view, name='services_view'),
@@ -69,5 +72,14 @@ urlpatterns = [
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),
+
+    #---------------------------------------------
+    # Admin
+    #---------------------------------------------
+
+    # Dashboard
+    path('admin/dashboard', views.admindashboard, name='admin/dashboard'),
+    path('admin/profile', views.adminprofile, name='admin/profile'),
+    path('admin/editprofile', views.admineditprofile, name='admin/editprofile'),
 
 ]

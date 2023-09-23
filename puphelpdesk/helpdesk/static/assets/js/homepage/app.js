@@ -23,32 +23,6 @@ window.addEventListener('scroll', (ev) => {
     windowScroll();
 })
 
-// client-slider
-
-var slider = tns({
-    container: '.client-slider',
-    items: 1,
-    loop: true,
-    autoplay: true,
-    navPosition: "bottom",
-    controls: true,
-    autoplay: true,
-    autoplayButtonOutput: false,
-    controlsText: ["<i class='mdi mdi-arrow-left'></i>", "<i class='mdi mdi-arrow-right'></i>"],
-    responsive: {
-        640: {
-            gutter: 20,
-            items: 2
-        },
-        700: {
-            gutter: 30,
-            items: 1
-        },
-        900: {
-            items: 2
-        }
-    }
-});
 
 
 

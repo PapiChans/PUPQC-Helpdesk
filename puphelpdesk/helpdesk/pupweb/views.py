@@ -6,10 +6,11 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
+    #---------------------------------------------
+    # Student
+    #---------------------------------------------
+
     # Authentication
-def admin(request):
-    return render(request, 'Administrator.html')
-    
 def login(request):
     return render(request, 'login.html')
 
@@ -84,8 +85,6 @@ def financialguidance(request):
 def scholarshipForm(request):
     pagename_value = "Scholarship Application Form"
     return render(request, 'student/FinancialAid/scholarshipform.html',{'pagename': pagename_value})
-
-
 
     # Housing and Accommodation
 def housing(request):
@@ -165,3 +164,20 @@ def return_item(request):
 def feedback(request):
     pagename_value = "Student Feedback and Suggestions"
     return render(request, 'student/Feedback/feedback.html',{'pagename': pagename_value})
+
+
+    #---------------------------------------------
+    # Admin
+    #---------------------------------------------
+
+def admindashboard(request):
+    pagename_value = "Dashboard"
+    return render(request, 'admin/dashboard.html',{'pagename': pagename_value})
+
+def adminprofile(request):
+    pagename_value = "Profile"
+    return render(request, 'admin/profile.html',{'pagename': pagename_value})
+
+def admineditprofile(request):
+    pagename_value = "Edit Profile"
+    return render(request, 'admin/editprofile.html',{'pagename': pagename_value})

@@ -1,33 +1,59 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 
-{% block maincontent %}
+{% block customcss %}
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+ 
+{% endblock %}
 
+{% block maincontent %}
 <h4 class="header-title">Your Tickets</h4>
 <p class="card-title-desc">Here are the list of your Submitted Tickets</p>
-<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-    <thead>
-    <tr role="row">
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Ticket ID</th>
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Ticket Type</th>
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Status</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr role="row" class="odd">
-            <td class="sorting_1" tabindex="0">873b3832-4ead-11ee-be56-0242ac120002</td>
-            <td>Student ID</td>
-            <td><span class="badge badge-pill badge-warning">Pending</span></td>
-        </tr>
-        <tr role="row" class="even">
-            <td class="sorting_1" tabindex="0">8f70bba8-4ead-11ee-be56-0242ac120002</td>
-            <td>Scholarships</td>
-            <td><span class="badge badge-pill badge-danger">Rejected</span></td>
-        </tr>  
-    </tbody>
-</table>
 <button type="button" class="btn btn-primary waves-effect waves-light">Create New Ticket</button>
+</div>
 
-<script src="{% static 'assets/js/dashboard/init/tickets.init.js' %}"></script>
+<div class="card-body">
+        <table id="example" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                <th>Ticket ID</th>
+                <th>Ticket Type</th>
+                <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>873b3832-4ead-11ee-be56-0242ac120002</td>
+                    <td>Student ID</td>
+                    <td><span class="badge badge-pill badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>8f70bba8-4ead-11ee-be56-0242ac120002</td>
+                    <td>Scholarships</td>
+                    <td><span class="badge badge-pill badge-danger">Rejected</span></td>
+                </tr>  
+            </tbody>
+        </table>
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        responsive: true,
+    } );
+} );
+</script>
 
 {% endblock %}

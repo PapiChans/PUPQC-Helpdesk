@@ -126,3 +126,13 @@
 - Update model migrations (may still be updating)
 - Add Readme.md Dependency Tables
 - Pushed by Christian (https://github.com/papichans)
+
+## 0.2.12
+- Add Jquery and AJAX
+- Fix Datatables
+- Debugging for error Scripts
+- Revise Readme.md: Text Centering Dependencies
+- Remove Outdated and Defective Datatable Modules and CDNs
+- Add Dashboard for Admins
+- Manage URLS and Views specifically for Student and Admin
+- Pushed by Christian (https://github.com/papichans)
