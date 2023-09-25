@@ -136,3 +136,7 @@
 - Add Dashboard for Admins
 - Manage URLS and Views specifically for Student and Admin
 - Pushed by Christian (https://github.com/papichans)
+
+# 0.2.12.1
+- Rename URL's and modify HTML pages that uses hyperlink
+- Pushed by Christian (https://github.com/papichans)

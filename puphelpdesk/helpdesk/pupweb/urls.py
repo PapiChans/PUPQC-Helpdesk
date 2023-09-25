@@ -37,8 +37,8 @@ urlpatterns = [
 
     # Financial Aid and Scholarships
     path('financialaid', views.financialaid, name='financialaid'),
-    path('financialguidance', views.financialguidance, name='financialguidance'),
-    path('scholarshipForm', views.scholarshipForm, name='scholarshipForm'),
+    path('financialaid/guidance', views.financialguidance, name='financialaid/guidance'),
+    path('financialaid/scholarship', views.scholarshipForm, name='financialaid/scholarship'),
 
     # Housing and Accommodation
     path('housing', views.housing, name='housing'),
@@ -49,26 +49,25 @@ urlpatterns = [
 
     # Career Services and Employment
     path('careers', views.careers, name='careers'),
-    path('referrals', views.referrals, name='referrals'),
-    path('internship', views.internship, name='internship'),
+    path('careers/referrals', views.referrals, name='careers/referrals'),
+    path('careers/internship', views.internship, name='careers/internship'),
 
     # Student IDs and Access Cards
-    path('idandcard', views.idandcard, name='idandcard'),
-    path('newIdRequest', views.newIdRequest, name='newIdRequest'),
-    path('IDvalidation', views.IDvalidation, name='IDvalidation'),
+    path('IDandCard', views.idandcard, name='IDandCard'),
+    path('IDandCard/newIDRequest', views.newIdRequest, name='IDandCard/newIDRequest'),
+    path('IDandCard/validation', views.IDvalidation, name='IDandCard/validation'),
 
     # Student Government and Involvement
     path('government', views.government, name='government'),
 
     # Transportation and Parking
     path('parking', views.parking, name='parking'),
-    path('parkingSlot', views.parkingSlot, name='parkingSlot'),
-    path('transportInfo', views.transportInfo, name='transportInfo'),
+    path('parking/slot', views.parkingSlot, name='parking/slot'),
+    path('parking/transportInfo', views.transportInfo, name='parking/transportInfo'),
 
     # Lost annd Found Services
-    path('lostandfound', views.lostandfound, name='lostandfound'),
-    path('lostandfoundview', views.lost_and_found_views, name='lost_and_found_views'),
-    path('returnItems', views.returnItems, name='returnItems'),
+    path('LostandFound', views.lostandfound, name='LostandFound'),
+    path('LostandFound/returnItems', views.returnItems, name='LostandFound/returnItems'),
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),
