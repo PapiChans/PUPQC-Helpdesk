@@ -1,4 +1,12 @@
 {% extends "student\partials\main.html" %}
+{% load static %}
+
+{% block customcss %}
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+ 
+{% endblock %}
 
 {% block maincontent %}
 <div class="card">
@@ -6,59 +14,100 @@
     <p class="card-title-desc">To improved our Helpdesk system, you may give us a feedback or suggestions.</p>
     <div class="card-body">
         <div class="text-center mt-4">
-            <h4>You have <span class="text-primary">0</span> Submitted Feedbacks / Suggestions</h4>
+            <h4>You have Submitted <span class="text-primary">0</span> Feedbacks and <span class="text-primary">0</span> Suggestions</h4>
             <p class="text-dark">Submit a Feedback / Suggestions Below.</p>
+        </div>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-body">
-        <form class="needs-validation" novalidate>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <label>Review Type<span class="text-danger">*</span></label>
-                    <select class="custom-select" required/>
-                        <option value="">Select Review Type</option>
-                        <option value="Feedback">Feedback</option>
-                        <option value="Suggestion">Suggestions</option>
-                    </select>
-                    <div class="invalid-feedback"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Student ID<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" required/>
-                    <div class="valid-feedback">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Student Name<span class="text-danger">*</span></label></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student Name" required/>
-                    <div class="valid-feedback">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Student Program<span class="text-danger">*</span></label></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student Program" required/>
-                    <div class="valid-feedback">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Feedback / Suggestion<span class="text-danger">*</span></label></label>
-                    <textarea required class="form-control" rows="5"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mb-3"></div>
-                    <button class="col-md-12 mb-3 btn btn-primary" type="submit">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
+
+<div class="card-body">
+    <table id="example" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+        <thead>
+            <tr>
+            <th>Feedback ID</th>
+            <th>Feedback Type</th>
+            <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>873b3832-4ead-11ee-be56-0242ac120002</td>
+                <td>Feedback</td>
+                <td><span class="badge badge-pill badge-warning">Pending</span></td>
+            </tr>
+            <tr>
+                <td>8f70bba8-4ead-11ee-be56-0242ac120002</td>
+                <td>Suggestions</td>
+                <td><span class="badge badge-pill badge-success">Read</span></td>
+            </tr>  
+        </tbody>
+    </table>
 </div>
+<div class="card-body">
+    <h4 class="text-center mt-4">Submit your Feedbacks / Suggestions here.</h4>
+    <form class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Review Type<span class="text-danger">*</span></label>
+                <select class="custom-select" required/>
+                    <option value="">Select Review Type</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Suggestion">Suggestions</option>
+                </select>
+                <div class="invalid-feedback"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Student ID<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" required/>
+                <div class="valid-feedback">
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Student Name<span class="text-danger">*</span></label></label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Student Name" required/>
+                <div class="valid-feedback">
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Student Program<span class="text-danger">*</span></label></label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Student Program" required/>
+                <div class="valid-feedback">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Feedback / Suggestion<span class="text-danger">*</span></label></label>
+                <textarea required class="form-control" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3"></div>
+                <button class="col-md-12 mb-3 btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block customjs %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        responsive: true,
+    } );
+} );
+</script>
 
 {% endblock %}
 

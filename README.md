@@ -8,7 +8,7 @@
 | ------------------- | --------------------|
 | **Description**     | This project is for fullfillment of requirements in subject "Capstone Project 1 and 2". |
 | **Date Started**    | August 20, 2023 |
-| **Current Version** | v0.2.12.1| 
+| **Current Version** | v0.2.12.2| 
 | **Members**         | Backend Developers<ul><li>[Altiche, Christian](https://github.com/papichans)</li></ul>Frontend Developers<ul><li>[Lopez, Loyd Marion](https://github.com/loydmarionlopez)</li></ul>QA Testers<ul><li>[Felipe, Leslie](https://github.com/Hishori)</li></ul>Documentation<ul><li>[Sicangco, Charles](https://github.com/httpgwapo)</li></ul> _Students of Polytechnic University of the Philippines Quezon City Branch, BSIT 3-2 (Batch 2020)_|
 
 
@@ -37,7 +37,7 @@
 
 |                     |                     |                     |
 | :-----------------: | :-----------------: | :-----------------: |
-| **Dependency Name** | **How to Install**  | **Used For**        |
+| **Dependency Name** | **How to Install**  | **Used For** |
 | Django | - pip install django | Django Framework|
 | Pillow | - pip install pillow | Image Uploading |
 | Psycopg2 | - pip install psycopg2 | Postgres Database |
