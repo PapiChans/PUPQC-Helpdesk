@@ -4,7 +4,7 @@ from django.shortcuts import render
 
     # Home Page
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'LandingPage/index.html')
 
     #---------------------------------------------
     # Student

@@ -1,0 +1,141 @@
+    
+  .bread-crumbs {
+    background-color: #FFFFF0;
+    z-index: 100;
+    padding: 48px 0;
+    padding: 5px 0;
+  }
+  
+
+  .bread-crumbs ul{
+    list-style: none;
+    display: inline-block;
+    
+  }
+  
+  .bread-crumbs ul li{
+    display: inline-block;
+  }
+  
+  .bread-crumbs ul li a{
+    display: block;
+    float: left;
+    height: 50px;
+    background-color: #f1f1a7;
+    text-align: center;
+    padding: 13px 20px 0 60px;
+    position: relative;
+    margin: 20px 5px 0 0;
+    font-size: none;
+    color: #800000;
+    text-decoration: none;
+  }
+  
+  
+  
+  .bread-crumbs ul li a:after {
+    content: "";
+    border-top: 25px solid transparent; 
+    border-bottom: 25px solid transparent; 
+    border-left: 40px solid gold; 
+    position: absolute;
+    right: -40px;
+    top: 0px;
+    z-index: 1;
+  }
+  
+  .bread-crumbs ul li a:before{
+    content: "";
+    border-top: 25px solid transparent; 
+    border-bottom: 25px solid transparent; ;
+    border-left: 40px solid #FFFFF0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .bread-crumbs ul li:first-child a{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+  }
+  
+  .bread-crumbs ul li:first-child a::before{
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  
+  .bread-crumbs ul li:last-child a{
+    padding-right: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .bread-crumbs ul li:last-child a:after{
+    display: none;
+  }
+  
+  .bread-crumbs ul li a:hover{
+    background: #800000;
+    color: gold;
+  }
+  
+  .bread-crumbs ul li a:hover::after{
+    border-left-color: #800000;
+    color: #fff;
+  }
+  
+  
+  .bread-crumbs a img{
+    float: left;
+    height: 50px;
+    width: 130px;
+    
+  }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #333;
+    }
+    p {
+        font-size: 18px;
+    }
+    form {
+        margin-top: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button[type="submit"] {
+        background-color: #800000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+    input[type="reset"] {
+        background-color: green;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
