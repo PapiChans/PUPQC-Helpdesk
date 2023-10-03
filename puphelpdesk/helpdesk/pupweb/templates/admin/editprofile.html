@@ -12,7 +12,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom01">Admin ID<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Admin ID" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
             </div>
@@ -20,19 +20,19 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Last Name<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Last Name" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First Name<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="First Name" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Middle Name<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Middle Name" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
             </div>
@@ -40,13 +40,13 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Contact Number<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Contact Number" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Email Address<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Email Address" required/>
-                    <div class="valid-feedback">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
             </div>
@@ -59,4 +59,8 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 {% endblock %}

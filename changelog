@@ -148,3 +148,12 @@
 # 0.2.13
 -CSS files sorted by Loyd the Greatest
 -Fixed some URLs
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+
+# 0.2.14
+- UPDATE Dashboard UI
+- Add First Modal in Feedback Page
+- Add Form Validation JQuery Plugin
+- Remove cache file in repository
+- Edit the .gitignore
+- Pushed by Christian (https://github.com/papichans)

@@ -1,55 +1,17 @@
 {% load static %}
-
-<!doctype html>
-<html lang="en">
-
-    <head>
-        <meta charset="utf-8" />
-        <title>PUPQC Helpdesk</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% include "admin\partials\dashboardcss.html" %}
-        {% block css %}
-        {% endblock %}
-
-        {% block customcss %}
-        {% endblock %}
-
-        {% include "admin\partials\navbar.html" %}
-        {% block navbar %}
-        {% endblock %}
-
-        {% include "admin\partials\sidebar.html" %}
-        {% block sidebar %}
-        {% endblock %}
-
-        {% include "admin\partials\pagetitle.html" %}
-        {% block pagetitle %}
-        {% endblock %}
-        
-
-        {% include "admin\partials\opencontent.html" %}
-        {% block opencontent %}
-        {% endblock %}
-
-        {% block maincontent %}
-        
-        {% endblock %}
-
-        {% include "admin\partials\closecontent.html" %}
-        {% block closecontent %}
-        {% endblock %}
-
-        {% include "admin\partials\footer.html" %}
-        {% block footer %}
-        {% endblock %}
-
-        {% include "admin\partials\dashboardjs.html" %}
-        {% block js %}
-        {% endblock %}
-
-        {% block customjs %}
-        {% endblock %}
-
-        {% include "admin\partials\last.html" %}
-        {% block last %}
-        {% endblock %}
+{% include "admin\partials\opening.html" %}
+{% include "admin\partials\pagecss.html" %}
+{% block customcss %} <!--imported css-->
+{% endblock %}
+{% include "admin\partials\header.html" %}
+{% include "admin\partials\navbar.html" %}
+{% include "admin\partials\pagetitle.html" %}
+{% include "admin\partials\opencontent.html" %}
+{% block maincontent %} <!--Page Content-->
+{% endblock %}
+{% include "admin\partials\closecontent.html" %}
+{% include "admin\partials\footer.html" %}
+{% include "admin\partials\pagejs.html" %}
+{% block customjs %} <!--imported scripts-->
+{% endblock %}
+{% include "admin\partials\closing.html" %}
