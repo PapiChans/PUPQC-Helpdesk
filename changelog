@@ -161,3 +161,7 @@
 # 0.2.14.1
 - Deleted Cache
 - Pushed by Christian (https://github.com/papichans)
+
+# 0.2.14.2
+- Fix .gitignore
+- Pushed by Christian (https://github.com/papichans)
