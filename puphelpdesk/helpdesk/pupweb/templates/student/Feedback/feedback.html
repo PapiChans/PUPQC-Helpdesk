@@ -23,6 +23,7 @@
             <tr>
             <th>Feedback ID</th>
             <th>Feedback Type</th>
+            <th>Feedback</th>
             <th>Status</th>
             </tr>
         </thead>
@@ -30,12 +31,14 @@
             <tr>
                 <td>873b3832-4ead-11ee-be56-0242ac120002</td>
                 <td>Feedback</td>
+                <td>Feedback</td>
                 <td><span class="badge badge-pill badge-warning">Pending</span></td>
             </tr>
             <tr>
                 <td>8f70bba8-4ead-11ee-be56-0242ac120002</td>
-                <td>Suggestions</td>
-                <td><span class="badge badge-pill badge-success">Read</span></td>
+                <td>Suggestion</td>
+                <td>Feedback</td>
+                <td><span class="badge badge-pill badge-danger">Rejected</span></td>
             </tr>  
         </tbody>
     </table>
@@ -50,6 +53,11 @@
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 
 <script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            responsive: true,
+        } );
+    } );
 </script>
 
 {% endblock %}

@@ -1,89 +1,66 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'assets/css/pages/glightbox.min.css' %}" />
+{% endblock%}
+
 {% block maincontent %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 
 <h4 class="header-title">PUPQC Facilities</h4>
 <p class="card-title-desc">These are the facilities in the campus.</p>
 
-<div class="row gallery-wrapper" style="position: relative; height: 1523.25px;">
-    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
-        <div class="gallery-box card">
-            <div class="gallery-container">
-                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
-                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
-                    <div class="gallery-overlay">
-                        <h5 class="overlay-caption">Sample Picture</h5>
-                    </div>
-                </a>
-            </div>
-
-            <div class="box-content">
-                <div class="d-flex align-items-center mt-1">
-                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
-                    <div class="flex-shrink-0">
-                        <div class="d-flex gap-3">
-                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
-                            </button>
-                        </div>
+<div class="row container-grid projects-wrapper">
+    <div class="col-xl-3 col-md-4 col-sm-6">
+        <div class="gallery-box mt-4">
+            <a class="gallery-popup glightbox" href="{% static 'assets/images/PUPMain.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc1; descPosition: right;" >
+                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="image" />
+                <div class="gallery-overlay">
+                    <div class="overlay-content">
+                        <h5 class="overlay-title">PUPQC</h5>
+                        <p class="text-uppercase mb-0">Facilities</p>
                     </div>
                 </div>
-            </div>
+                <div class="glightbox-desc custom-desc1">
+                    <p>
+                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
+                        Felis pretium eros ligula natoque ad ante rutrum himenaeos, adipiscing urna mauris porta quam efficitur odio, sagittis morbi tellus nisi molestie mus faucibus.
+                    </p>
+                </div>
+            </a>
         </div>
     </div>
-    <!-- end col -->
-    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
-        <div class="gallery-box card">
-            <div class="gallery-container">
-                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
-                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
-                    <div class="gallery-overlay">
-                        <h5 class="overlay-caption">Sample Picture</h5>
-                    </div>
-                </a>
-            </div>
-
-            <div class="box-content">
-                <div class="d-flex align-items-center mt-1">
-                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
-                    <div class="flex-shrink-0">
-                        <div class="d-flex gap-3">
-                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
-                            </button>
-                        </div>
+    <div class="col-xl-3 col-md-4 col-sm-6">
+        <div class="gallery-box mt-4">
+            <a class="gallery-popup glightbox" href="{% static 'assets/images/PUPMain.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc2; descPosition: right;" >
+                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="image" />
+                <div class="gallery-overlay">
+                    <div class="overlay-content">
+                        <h5 class="overlay-title">PUPQC</h5>
+                        <p class="text-uppercase mb-0">Facilities</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="element-item col-xxl-3 col-xl-4 col-sm-6">
-        <div class="gallery-box card">
-            <div class="gallery-container">
-                <a class="image-popup" href="{% static 'assets/images/PUPMain.jpg' %}" title="">
-                    <img class="gallery-img img-fluid mx-auto" src="{% static 'assets/images/PUPMain.jpg' %}" alt="">
-                    <div class="gallery-overlay">
-                        <h5 class="overlay-caption">Sample Picture</h5>
-                    </div>
-                </a>
-            </div>
-
-            <div class="box-content">
-                <div class="d-flex align-items-center mt-1">
-                    <div class="flex-grow-1 text-dark text-center">PUP Main</div>
-                    <div class="flex-shrink-0">
-                        <div class="d-flex gap-3">
-                            <button type="button" class="btn btn-sm fs-12 btn-link text-body text-decoration-none px-0">
-                            </button>
-                        </div>
-                    </div>
+                <div class="glightbox-desc custom-desc2">
+                    <p>
+                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
 {% endblock %}
 
+{% block customjs %}
+<script src="{% static 'assets/js/pages/glightbox.min.js' %}"></script>
+
+<script>const lightbox = GLightbox({
+    touchNavigation: true,
+    openEffect: 'zoom',
+    closeEffect: 'zoom',
+});</script>
+
+
+{% endblock %}

@@ -165,3 +165,11 @@
 # 0.2.14.2
 - Fix .gitignore
 - Pushed by Christian (https://github.com/papichans)
+
+# 0.2.15
+- Add Form Maxlength JQuery
+- Add GLightbox for Image Gallery
+- Add Toast Library: Notyf
+- Add SweetAlert
+- Minor Changes in the UI
+- Pushed by Christian (https://github.com/papichans)

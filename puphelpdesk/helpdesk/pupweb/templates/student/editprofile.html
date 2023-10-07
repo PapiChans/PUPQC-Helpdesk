@@ -1,8 +1,11 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 
-{% block maincontent %}
+{% block customcss %}
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
+{% endblock %}
 
+{% block maincontent %}
 <h4 class="header-title">Your Profile</h4>
 <p class="card-title-desc">Edit your profile.</p>
 <div class="card">
@@ -11,7 +14,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom01">Student ID<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" required/>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" readonly/>
                     <div class="valid-feedback">
                     </div>
                 </div>
@@ -45,26 +48,26 @@
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Age<span class="text-danger">*</span></label></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Age" required/>
+                    <input type="text" class="form-control" id="student_age" placeholder="Age" minlength="2" maxlength="2" required/>
                     <div class="valid-feedback">
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Contact Number<span class="text-danger">*</span></label></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Contact Number" required/>
+                    <input type="text" class="form-control" id="student_contact" minlength="11" maxlength="11" placeholder="Contact Number" required/>
                     <div class="valid-feedback">
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Email Address<span class="text-danger">*</span></label></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Email Address" required/>
+                    <input type="email" class="form-control" id="validationCustom01" placeholder="Email Address" required/>
                     <div class="valid-feedback">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mb-3"></div>
-                    <button class="col-md-12 mb-3 btn btn-primary" type="submit">Save</button>
+                    <button class="col-md-12 mb-3 btn btn-primary" type="submit" onclick="saveprofile()">Save</button>
                 </div>
             </div>
         </form>
@@ -75,4 +78,32 @@
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+<script>
+$('input#student_age').maxlength({
+    alwaysShow: true,
+    warningClass: "badge badge-danger",
+    limitReachedClass: "badge badge-success",
+});
+$('input#student_contact').maxlength({
+    alwaysShow: true,
+    warningClass: "badge badge-danger",
+    limitReachedClass: "badge badge-success",
+});
+
+Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'question',
+  allowEnterKey: 'false',
+  allowOutsideClick: 'false',
+  allowEscapeKey: 'false',
+  confirmButtonText: 'Cool',
+  showCancelButton: 'true'
+})
+
+
+</script>
+
 {% endblock%}
