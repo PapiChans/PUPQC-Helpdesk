@@ -1,0 +1,66 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/IdandCard/IDValidation.css' %}" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+
+<body>
+
+    <div class="bread-crumbs" >
+
+        <ul>
+          <li>
+            <a class="home" href="{% url 'IDandCard' %}" style=" text-decoration: underline;">Student ID and Access Cards</a>
+          </li>
+          
+          <li>
+            <a href="#" style="font-weight: bold;"></i>Request ID Validation</a>
+          </li>
+    
+        </ul>
+      </div>
+
+<div class="container">
+    <h1>ID Card Issuance - Request Form</h1>
+    <p>Use this form to request your student identification card. Fill out the information below and submit your request.</p>
+    
+    <form action="process_request.php" method="post">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="student_name" name="student_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="middle_name">Middle Name:</label>
+            <input type="text" id="student_name" name="student_name" required>
+        </div>
+        
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="student_name" name="student_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="student_id">Student ID Number:</label>
+            <input type="text" id="student_id" name="student_id" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="COR">Upload Registration Certificate:</label>
+            <input type="file" id="regcert" name="regcert" required>
+        </div>
+        
+        <button type="submit">Submit</button>
+        <input type="reset" value="Reset">
+    </form>
+</div>
+</body>
+
+{% endblock %}

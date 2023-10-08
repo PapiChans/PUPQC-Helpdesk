@@ -1,0 +1,80 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/TransportationAndParking/slotReserve.css' %}" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+
+<body>
+    <div class="bread-crumbs" >
+
+        <ul>
+          <li>
+            <a class="home" href="{% url 'parking' %}" style=" text-decoration: underline;">Transportation and Parking</a>
+          </li>
+          
+          <li>
+            <a href="#" style="font-weight: bold;"></i>Parking Slot Reservation</a>
+          </li>
+    
+        </ul>
+      </div>
+    
+
+
+  <h1>Parking Lot Reservation Form</h1>
+  <div class="container">
+      <form action="reservation_process.php" method="post">
+          
+          <h2>Personal Information:</h2>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+
+          
+          <h2>Reservation Details:</h2>
+          <label for="date">Date of Reservation:</label>
+          <input type="date" id="date" name="date" required>
+
+          <label for="arrival-time">Time of Arrival:</label>
+          <input type="time" id="arrival-time" name="arrival-time" required>
+
+          <label for="departure-time">Time of Departure:</label>
+          <input type="time" id="departure-time" name="departure-time" required>
+
+          
+          <h2>Vehicle Information:</h2>
+          <label for="make">Vehicle Type:</label>
+          <input type="text" id="make" name="make" required>
+
+          <label for="model">Vehicle Model:</label>
+          <input type="text" id="model" name="model" required>
+
+          <label for="license-plate">Vehicle License Plate:</label>
+          <input type="text" id="license-plate" name="license-plate" required>
+
+          <label for="special-requests">Special Requests/Notes:</label>
+          <textarea id="special-requests" name="special-requests" rows="4" cols="50"></textarea>
+
+          
+         
+          <label>
+              <input type="checkbox" id="terms" name="terms" required>
+              I have read and agree to the parking lot reservation terms and conditions.
+          </label>
+
+         
+          <button type="submit">Submit Reservation</button>
+          <button type="reset">Cancel Reservation</button>
+      </form>
+  </div>
+</body>
+
+
+{% endblock %}
+

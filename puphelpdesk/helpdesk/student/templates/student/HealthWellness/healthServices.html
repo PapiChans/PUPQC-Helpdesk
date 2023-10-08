@@ -1,0 +1,50 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/HealthWellness/healthService.css' %}" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+<body>
+
+    <div class="bread-crumbs" >
+
+        <ul>
+          <li>
+            <a class="home" href="{% url 'healthwellness' %}" style=" text-decoration: underline;">Health and Wellness Support</a>
+          </li>
+          
+          <li>
+            <a href="#" style="font-weight: bold;"></i>Health Services Referrals</a>
+          </li>
+    
+        </ul>
+      </div>
+
+
+<div class="container">
+    <h1>Health Services Referrals</h1>
+    <p>Welcome to our Health Services Referrals section. We are here to connect you with campus health services, medical clinics, and wellness programs to support your well-being.</p>
+    
+    <div class="health-services">
+        <div class="service">
+            <h2>Campus Health Clinic</h2>
+            <p>Visit our campus health clinic for a wide range of medical services, including routine check-ups, vaccinations, and counseling.</p>
+            <p>Contact: [Insert Contact Information]</p>
+        </div>
+        
+        <div class="service">
+            <h2>Local Medical Clinics</h2>
+            <p>Explore nearby medical clinics where you can receive specialized medical care, prescriptions, and emergency services.</p>
+            <p>Contact: [Insert Contact Information]</p>
+        </div>
+        
+        <div class="service">
+            <h2>Wellness Programs</h2>
+            <p>Participate in our wellness programs and activities, such as fitness classes, nutrition workshops, and stress management sessions.</p>
+            <p>Contact: [Insert Contact Information]</p>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
+

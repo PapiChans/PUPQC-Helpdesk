@@ -1,0 +1,42 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/IDandCard/IDandCard.css' %}" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+<h4 class="header-title">ID and Access Cards</h4>
+<p class="card-title-desc">For Student who want to access cards and ID process</p>
+   <div class="container">
+    
+    <div class="box">
+      <div class="icon">01</div>
+      <div class="content"><h3>Request New ID</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'IDandCard/newIDRequest' %}">Request New ID</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="icon">02</div>
+      <div class="content"><h3>Request ID Validation</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'IDandCard/validation' %}">Request ID Validation</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="icon">03</div>
+      <div class="content"><h3>Access Card Support</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="#">Request ID Validation</a>
+      </div>
+    </div>
+    
+  </div>
+    
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/FinancialAid/financialaid.css' %}" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+<h4 class="header-title">Financial Aid and Scholarships</h4>
+<p class="card-title-desc">Student Application for Scholarship or Financial Aid Support</p>
+   <div class="container">
+    
+    <div class="box">
+      <div class="icon">01</div>
+      <div class="content"><h3>Financial Aid Guidance</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'financialaid/guidance' %}">View</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="icon">02</div>
+      <div class="content"><h3>Scholarship Opportunities</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'financialaid/scholarship' %}">View</a>
+      </div>
+    </div>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+{% endblock %}
+

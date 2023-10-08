@@ -1,0 +1,103 @@
+                        <div class="topnav">
+                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+                                <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'dashboard' %}">
+                                                Dashboard
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'tickets' %}">
+                                                Tickets
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                General Information <div class="arrow-down"></div>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                                <div class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-exclamation-octagon"></i></div> Campus Information
+                                                        <div class="arrow-down"></div>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                                        <a href="{% url 'geninfo/facilities' %}" class="dropdown-item">Facilities</a>
+                                                        <a href="{% url 'geninfo/services' %}" class="dropdown-item">Service</a>
+                                                        <a href="{% url 'geninfo/resources' %}" class="dropdown-item">Resources</a>
+                                                    </div>
+                                                </div>
+
+                                                <a href="{% url 'geninfo/events' %}" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="uim uim-schedule"></i></div> Events</a>
+
+                                                <a href="{% url 'geninfo/referrals' %}" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-plus"></i></div> Service Referrals</a>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Services <div class="arrow-down"></div>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                                <div class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-bookmark"></i></div> Support / Counseling
+                                                        <div class="arrow-down"></div>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                                        <a href="{% url 'student-support/counseling' %}" class="dropdown-item">Student Counseling</a>
+                                                        <a href="{% url 'student-support/advising' %}" class="dropdown-item">Acedemic Advising</a>
+                                                        <a href="{% url 'student-support/resources' %}" class="dropdown-item">Success Resources</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-alt-message"></i></div> Student Services
+                                                        <div class="arrow-down"></div>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                                        <a href="{% url 'financialaid' %}" class="dropdown-item">Financial Aid and Scholarships</a>
+                                                        <a href="{% url 'government' %}" class="dropdown-item">Government and Involvement</a>
+                                                        <a href="{% url 'IDandCard' %}" class="dropdown-item">ID and Access Cards</a>
+                                                        <a href="{% url 'careers' %}" class="dropdown-item">Careers and Employment</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-briefcase"></i></div> Other Services
+                                                        <div class="arrow-down"></div>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                                        <a href="{% url 'healthwellness' %}" class="dropdown-item">Health and Wellness Support</a>
+                                                        <a href="{% url 'parking' %}" class="dropdown-item">Transportation and Parking</a>
+                                                        <a href="{% url 'housing' %}" class="dropdown-item">Housing and Accommodation</a>
+                                                        <a href="{% url 'LostandFound' %}" class="dropdown-item">Lost and Found</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'feedback' %}">
+                                                Feedback
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+    
+            </header>

@@ -173,3 +173,10 @@
 - Add SweetAlert
 - Minor Changes in the UI
 - Pushed by Christian (https://github.com/papichans)
+
+# 0.3.0
+- Add new Applications for seperation
+- Revised and Remove unecessary URLs and Views
+- Add API for the entire system
+- Reroutes all the student CSS
+- Pushed by Christian (https://github.com/papichans)
