@@ -1,28 +1,27 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
+
 {% block customcss %}
 <link href="{% static 'assets/css/student/IDandCard/IDandCard.css' %}" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
 {% endblock %}
 {% block maincontent %}
+{% include "student\IDandCard\IDModal\ID-modal.html" %}
 <h4 class="header-title">ID and Access Cards</h4>
 <p class="card-title-desc">For Student who want to access cards and ID process</p>
    <div class="container">
     
     <div class="box">
       <div class="icon">01</div>
-      <div class="content"><h3>Request New ID</h3>
+      <div class="content"><h3>Request and Validation</h3>
         <p>lorem ipsum dolor</p>
-        <a href="{% url 'IDandCard/newIDRequest' %}">Request New ID</a>
+        <a type="button" data-toggle="modal" data-target="#IDModal">Request New ID</a>
       </div>
     </div>
 
-    <div class="box">
-      <div class="icon">02</div>
-      <div class="content"><h3>Request ID Validation</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'IDandCard/validation' %}">Request ID Validation</a>
-      </div>
-    </div>
+
 
     <div class="box">
       <div class="icon">03</div>
@@ -38,5 +37,23 @@
     <footer>
         <!-- Footer content -->
     </footer>
+{% endblock %}
+
+{% block customjs %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            responsive: true,
+        } );
+    } );
+</script>
+
 {% endblock %}
 

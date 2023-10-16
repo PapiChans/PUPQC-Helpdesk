@@ -1,0 +1,269 @@
+{% load static %}
+<style>
+    .example-image {
+        width: 100px;
+    }
+</style>
+
+<body>
+<div class="modal fade" id="IDModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Request or Validate ID</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="row mt-3">
+
+                    <div class="col-md-12 ">
+                        <label>Transaction Type<span class="text-danger">*</span></label>
+                        <select class="custom-select" id="transaction_type" required>
+                            <option value="">Select Transaction Type</option>
+                            <option value="Request">Request New ID</option>
+                            <option value="Validation">ID Validation</option>
+                        </select>
+                    </div>
+
+                </div>
+                <form id="IDForm" class="needs-validation" novalidate>
+
+
+                    
+                    <!---Program---->
+                    <div class="row mt-3" id="request_form" style="display: none;">
+                        <div class="col-md-12 ">
+                        <select class="custom-select" id="program_type" required>
+                            <option value="">Select Program</option>
+                            <option value="BSIT">BSIT</option>
+                            <option value="Entrep">BS Entrepreneurship</option>
+                            <option value="Market">Marketing Strategy</option>
+                        </select>
+                    </div>
+                </div>
+
+                    <!---Student Number--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Student Number<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="student_name" placeholder="Student Number" required>
+                        </div>
+                    </div>
+
+                    <!---First Name--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">First Name<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="first_name" placeholder="First Name" required>
+                        </div>
+                    </div>
+
+                    <!---Middle Name--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Middle Name<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="middle_name" placeholder="Middle Name" required>
+                        </div>
+                    </div>
+
+                    <!---Last Name--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Last Name<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="last_name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+
+                       <!----End Name--->
+
+                     <!---Suffix--->
+                     <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Suffix<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="suffix_name" placeholder="Last Name" >
+                        </div>
+                    </div>
+
+                       <!----End Suffix--->
+
+                    <!---Date of Birth--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Date of Birth<span class="text-danger">*</span></label></label>
+                            <input type="date" class="form-control" id="birthDate" placeholder="Date of Birth" required>
+                        </div>
+                    </div>
+
+                       <!----End Date of birth--->
+
+                    <!---Address--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Street Address<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="address" placeholder="Street Address" required>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">City<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="city" placeholder="City" required>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Postal Code<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="postal" placeholder="Postal Code" required>
+                        </div>
+                    </div>
+
+                    <!----End Address--->
+
+                    <!---Upload Photo--->
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom02">Upload a 2x2 Photo with white background and full name<span class="text-danger">*</span>
+                            <label class="modal-title mt-0" id="exampleModalScrollableTitle">Example Picture: </label>
+                            <img src="{% static 'assets\images\2x2.jpg' %}" alt="Example Image" class="example-image">
+                            <input type="file" class="form-control" id="image" placeholder="Upload Photo" accept="image/*" required>
+                        </div>
+                    </div>
+                     <!----End photo--->
+
+
+                     <!---Upload Signature--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom02">Upload your E-Signature PNG<span class="text-danger">*</span><br><br>
+                            <label class="modal-title mt-0" id="exampleModalScrollableTitle">Example Picture: </label>
+                            <img src="{% static 'assets\images\esig.png' %}" alt="Example Image" class="example-image">
+                            <input type="file" class="form-control" id="Sigfile" placeholder="Upload E-Sign" accept="image/*" required>
+                        </div>
+                    </div>
+
+                       <!----End File--->
+
+                    <!---Upload COR--->
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom02">Upload your Certificate of Registration<span class="text-danger">*</span></label></label>
+                            <input type="file" class="form-control" id="CORfile" placeholder="Upload File" required>
+                        </div>
+                    </div>
+
+                       <!----End File--->
+
+                    <!---Person to Contact---->
+
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Person to Contact in case of emergency</h5>
+                    </div>
+
+                   <!---First Name--->
+                   <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">First Name<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="student_name" placeholder="First Name" required>
+                    </div>
+                </div>
+
+                <!---Middle Name--->
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">Middle Name<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="middle_name" placeholder="Middle Name" required>
+                    </div>
+                </div>
+
+                <!---Last Name--->
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">Last Name<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="last_name" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+
+                <!---Address--->
+                
+                <label for="sameAddress">Is the person's contact address the same as yours?</label>
+                <input type="checkbox" id="sameAddress" name="sameAddress" onchange="toggleAddressFields()"><br><br>
+
+                <fieldset id="addressFields">
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">Street Address<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="conAddress" placeholder="Street Address" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">City<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="conCity" placeholder="City" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label for="validationCustom01">Postal Code<span class="text-danger">*</span></label></label>
+                        <input type="text" class="form-control" id="conPostal" placeholder="Postal Code" required>
+                    </div>
+                </div>
+            </fieldset>
+
+                <!----End Person to Contact--->
+
+                    
+            </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </div>
+            </form>
+
+            
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    
+</div>
+
+<script>
+    // Emergency Contact Form
+    function copyYourInfo() {
+        if (document.getElementById('sameAddress').checked) {
+            document.getElementById('conAddress').value = document.getElementById('address').value;
+            document.getElementById('conCity').value = document.getElementById('city').value;
+            document.getElementById('conPostal').value = document.getElementById('postal').value;
+        } else {
+            document.getElementById('conAddress').value = '';
+            document.getElementById('conCity').value = '';
+            document.getElementById('conPostal').value = '';
+        }
+    }
+    
+    // same address checkbox
+    document.getElementById('sameAddress').addEventListener('change', function () {
+        copyYourInfo();
+        toggleAddressFields();
+    });
+    
+    function toggleAddressFields() {
+        const sameAddressCheckbox = document.getElementById('sameAddress');
+        const addressFields = document.getElementById('addressFields');
+        
+        if (sameAddressCheckbox.checked) {
+            addressFields.disabled = true;
+            addressFields.blur();
+        } else {
+            addressFields.disabled = false;
+        }
+    }
+</script>
+</body>
+
