@@ -14,3 +14,9 @@ def adminprofile(request):
 def admineditprofile(request):
     pagename_value = "Edit Profile"
     return render(request, 'admin/editprofile.html',{'pagename': pagename_value})
+
+# Admin Gen Info
+
+def admingeninfo(request):
+    pagename_value = "Gen Info"
+    return render(request, 'admin/adminGenInfo/adminServices.html',{'pagename': pagename_value})

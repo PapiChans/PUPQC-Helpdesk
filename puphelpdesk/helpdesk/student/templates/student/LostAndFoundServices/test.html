@@ -31,12 +31,40 @@
 </style>
 <body>
     <div class="post-container">
+        <input type="text" id="editName">
         <textarea id="post-text" rows="4" cols="50" placeholder="What's on your mind?"></textarea>
         <button id="post-button">Post</button>
     </div>
     <div class="post-list" id="post-list">
         <!-- Display posted content here -->
     </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+                <div class="card mt-4">
+                    <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Master in Information Technology</h6>
+                        <p class="card-text text-secondary">lorem ipsum dolor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+                <div class="card mt-4">
+                    <img src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Master in Educational Management</h6>
+                        <p class="card-text text-secondary">lorem ipsum dolor</p>
+                        <a href="#" id="postBtn">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 

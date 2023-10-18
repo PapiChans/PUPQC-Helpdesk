@@ -1,0 +1,80 @@
+
+{% extends "admin\partials\main.html" %}
+{% load static %}
+
+{% block maincontent %}
+<link href="#" rel="stylesheet">
+
+
+<!-- HTML !-->
+
+<style>
+  .container .row{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 20px;
+    gap: 20px;
+  }
+
+  .card-wrapper {
+    margin-bottom: 20px;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+.card img {
+    max-width: auto;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.card-title, .card-text {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.edit-button, .delete-button {
+    margin: 10px;
+}
+
+
+.edit-button {
+    background-color: #00FF00;
+    color: #fff;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+</style>
+{% include "admin\adminGenInfo\modal\addService-modal.html" %} 
+
+<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddServiceModal">Submit a Feedback</button>
+
+
+<div class="container">
+  <div class="row" id="card-container">
+      <!-- wala lang to -->
+  </div>
+</div>
+
+
+
+    {% endblock %}
+
+   
+
+
+
+
