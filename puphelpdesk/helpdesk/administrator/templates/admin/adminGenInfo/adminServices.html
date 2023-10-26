@@ -1,73 +1,165 @@
-
 {% extends "admin\partials\main.html" %}
 {% load static %}
 
 {% block maincontent %}
 <link href="#" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 <!-- HTML !-->
 
 <style>
-  .container .row{
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    bottom: 20px;
-    gap: 20px;
-  }
 
-  .card-wrapper {
-    margin-bottom: 20px;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .addBtn {
+        background-color: #00FF00;
+        color: #fff;
+        border: 1px solid #;
+    }
     
-}
-
-
-.card img {
-    max-width: auto;
-    height: auto;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    cursor: pointer;
-    
-}
-
-.card-title, .card-text {
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.edit-button, .delete-button {
-    margin: 10px;
-}
-
-
-.edit-button {
+.editBtn {
     background-color: #00FF00;
     color: #fff;
+    border: 1px solid #;
 }
 
-.delete-button {
+.delBtn {
     background-color: #dc3545;
     color: #fff;
+    border: 1px solid #;
 }
 
+
 </style>
+
+<h4 class="header-title">PUPQC Services</h4>
+<p class="card-title-desc">These are the services offered in the campus.</p>
 {% include "admin\adminGenInfo\modal\addService-modal.html" %} 
 
-<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddServiceModal">Submit a Feedback</button>
+<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddServiceModal">Add New Service</button>
 
 
-<div class="container">
-  <div class="row" id="card-container">
-      <!-- wala lang to -->
-  </div>
-</div>
+
+
+
+
+
+<section class="container py-5" id="card-container">
+    <div class="row mt-4 py-3">
+      <div class="col-12 d-flex flex-column text-center justify-content-center">
+        <h2>Programs offered in PUPQC</h2>
+        <h5 class=" fw-normal py-2 fst-italic">Graduate Studies Programs under the PUP Open University System</h5>
+      </div>
+      <div class="row mt-5 mx-0 justify-content-center align-items-center">
+
+        
+
+        
+        
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4" >
+            <label for="image">
+            <img contenteditable="false" src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            </label>
+            <div class="card-body text-center">
+              <h6 class="card-title" contenteditable="false">Master in Information Technology</h6>
+              <p class="card-text text-secondary" contenteditable="false">lorem ipsum dolor</p>
+              <button class="editBtn">Edit</button>
+            <button class="delBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4" >
+            <label for="image">
+            <img contenteditable="false" src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid"  alt="portfolio-img" class="image-display">
+          </label>
+            <div class="card-body text-center">
+              <h6 class="card-title" contenteditable="false">Master in Educational Management</h6>
+              <p class="card-text text-secondary" contenteditable="false">lorem ipsum dolor</p>
+              <button class="editBtn">Edit</button>
+            <button class="delBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 px-md-3 px-0 col-md-4 card-wrapper">
+          <div class="card mt-4">
+            <label for="image">
+            <img contenteditable="false" src="{% static 'assets/images/PUPmain.jpg' %}" class="img-fluid" alt="portfolio-img">
+            </label>
+            <div class="card-body text-center">
+              <h6 class="card-title" contenteditable="false">Master in Public Administration</h6>
+              <p class="card-text text-secondary" contenteditable="false">lorem ipsum dolor</p>
+              <button class="editBtn">Edit</button>
+            <button class="delBtn">Delete</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>      
+  </section>
+
+  <script>
+    $(document).ready(function () {
+       
+        $(document).on("click", ".addBtn", function () {
+            const originalCard = $("#card-container .card-wrapper:first");
+            const newCard = originalCard.clone(true);
+            newCard.find(".card-title, .card-text").text("");
+            newCard.find(".image-display").attr("src", "{% static 'assets/images/upload.png' %}");
+            newCard.find(".addBtn").replaceWith("<button class='editBtn'>Edit</button><button class='delBtn'>Delete</button>");
+            $("#card-container").append(newCard);
+        });
+
+
+
+        //edit
+        $(document).on("click", ".editBtn", function () {
+            const card = $(this).closest(".card-wrapper");
+            card.find(".card-title, .card-text").attr("contenteditable", true);
+            card.find(".image-upload").removeAttr("style");
+            card.find(".image-upload").attr("type", "file"); // Enable the file input
+            card.find(".image-display").parent().css("border", "2px dashed #ccc");
+            $(this).replaceWith("<button class='saveBtn'>Save</button>");
+        });
+
+        // Save 
+        $(document).on("click", ".saveBtn", function () {
+            const card = $(this).closest(".card-wrapper");
+            card.find(".card-title, .card-text").attr("contenteditable", false);
+            card.find(".image-upload").css("display", "none");
+            card.find(".image-upload").removeAttr("type"); // Disable the file input
+            card.find(".image-display").parent().css("border", "none");
+            $(this).replaceWith("<button class='editBtn'>Edit</button>");
+        });
+
+        // Change pic
+        $(document).on("change", ".image-upload", function () {
+            const card = $(this).closest(".card-wrapper");
+            const imageDisplay = card.find(".image-display");
+            const fileInput = $(this)[0];
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imageDisplay.attr("src", e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Delete
+        $(document).on("click", ".delBtn", function () {
+            $(this).closest(".card-wrapper").remove();
+        });
+    });
+</script>
+
 
 
 

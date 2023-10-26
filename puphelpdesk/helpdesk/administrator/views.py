@@ -17,6 +17,12 @@ def admineditprofile(request):
 
 # Admin Gen Info
 
-def admingeninfo(request):
-    pagename_value = "Gen Info"
+def admingeninfoservices(request):
+    pagename_value = "General Information and Services"
     return render(request, 'admin/adminGenInfo/adminServices.html',{'pagename': pagename_value})
+
+def admingeninfoevents(request):
+    pagename_value = "General Information and Services"
+    return render(request, 'admin/adminGenInfo/adminEvents.html',{'pagename': pagename_value})
+
+

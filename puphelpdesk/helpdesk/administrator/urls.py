@@ -10,6 +10,6 @@ urlpatterns = [
     
     #admin gen info
     
-    path('admin/services', views.admingeninfo, name='admin/services'),
-
+    path('admingeninfo/services', views.admingeninfoservices, name='admingeninfo/services'),
+    path('admingeninfo/events', views.admingeninfoevents, name='admingeninfo/events'),
 ]
