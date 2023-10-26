@@ -195,4 +195,19 @@
 
 # 0.3.4
 -Admin Events changes unfinished Loyd The Great
-- Urls of Admin Services and Events changed
+-Urls of Admin Services and Events changed
+
+# 0.4.0
+- Push by Christian (https://github.com/papichans)
+- Add .gitignore ignored folders
+- Update URLs and Views for Admin
+- Fix some modals
+- Update Models
+- Add Serializers
+- Add fixtures for Instant Test Data
+- Add password hashers
+- Revise CSS for Dashboards
+- Delete unnecessary scripts
+- Add PUPQC Helpdesk Logo
+- Add Models
+- Revise HTML Templates for Administrator

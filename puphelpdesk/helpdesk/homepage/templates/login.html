@@ -1,78 +1,90 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login Page</title>
-   
-   
-	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>PUPQC Helpdesk</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="{% static 'assets/css/LogIn/loginstyle.css' %}" rel="stylesheet">
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="shortcut icon" href="{% static 'assets/images/smollogo.png' %}" type="image/icon">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link rel="shortcut icon" href="{% static 'assets/images/PUPLogo.png' %}">
 
-</head>
-<body style="background: #edf2f4;">
-	<h2>LOG IN</h2>
-	<div class="container" id="container">
-		<div class="form-container sign-up-container">
-			<form action="#">
-				<h1>Faculty Log in</h1>
+        <!-- Bootstrap Css -->
+		<link href="{% static 'assets/css/dashboard/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+		<!-- Icons Css -->
+		<link href="{% static 'assets/css/dashboard/icons.min.css' %}" rel="stylesheet" type="text/css" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.7.95/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+		<!-- App Css-->
+		<link href="{% static 'assets/css/dashboard/app.min.css' %}" rel="stylesheet" type="text/css" />
 
-				<input type="text" placeholder="Username" required/>
-				<input type="password" placeholder="Password"  required/>
-				<a href="#">Forgot your password?</a>
-				<button>Log In</button>
-			</form>
-		</div>
-		<div class="form-container sign-in-container">
-			<form action="#">
-				<h1>Student Log in</h1>
+    </head>
 
-				<input type="text" placeholder="Student Number" required/>
-				<input type="password" placeholder="Password" required/>
-				<a href="#">Forgot your password?</a>
-				<button>Log In</button>
-			</form>
-		</div>
+    <body class="bg-primary bg-pattern">
+        <div class="account-pages my-1 pt-sm-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" height="150" alt="logo">
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
 
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-left">
-					<h1>Student</h1>
-					<p>Click here to log in as Student.</p>
-					<button class="ghost" id="studentBtn">Log In as Student</button>
-				</div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-sm-8">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="p-1">
+									<h5 class="mb-1 text-center">Hi, PUPian!</h5>
+                                    <h5 class="mb-3 text-center">Sign in to PUPQC Helpdesk</h5>
+                                    {% csrf_token %}
+                                    <form class="form-horizontal needs-validation" id="loginForm" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-custom mb-4 text-primary">
+                                                    <input type="text" class="form-control" id="username" required>
+                                                    <label for="username" class="text-primary">User Name</label>
+                                                </div>
 
-				<div class="overlay-panel overlay-right">
-					<h1>Faculty</h1>
-					<p>Click here to log in as faculty.</p>
-					<button class="ghost" id="facultyBtn">Log in as Faculty</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script>
-		const signUpButton = document.getElementById('facultyBtn');
-const signInButton = document.getElementById('studentBtn');
-const container = document.getElementById('container');
-
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
-
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
-	</script>
-</body>
+                                                <div class="form-group form-group-custom mb-4 text-primary">
+                                                    <input type="password" class="form-control" id="password" required>
+                                                    <label for="userpassword"class="text-primary">Password</label>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Log In</button>
+                                                </div>
+												<div class="mt-1">
+                                                    <p>Use your PUPSIS Account to Log in.</p>
+                                                </div>
+												<div class="mt-1 text-center">
+                                                    <a href="{% url 'index' %}" class="text-primary"><i class="mdi mdi-home mr-1"></i> Back to Home</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+							<div class="mt-1 text-center">
+								<p id="log">PUPQC Helpdesk 2023</p>
+							</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+        <!-- end Account pages -->
+        <script src="{% static 'assets/js/dashboard/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/dashboard/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/dashboard/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/js/dashboard/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/js/dashboard/waves.min.js' %}"></script>
+       
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+       
+        
+        <script src="{% static 'assets/js/dashboard/app.js' %}"></script>
+		<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+        <script src="{% static 'assets/js/ajax/student/login.ajax.js' %}"></script>
+    </body>
 </html>

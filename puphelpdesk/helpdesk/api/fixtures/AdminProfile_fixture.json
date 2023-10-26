@@ -1,0 +1,16 @@
+[
+    {
+        "model": "api.AdminProfile",
+        "fields": {
+        "admin_Id": "318ae1ca-4193-4571-b9df-c328311f8e12",
+        "admin_Last_Name": "Cruz",
+        "admin_First_Name": "Juan",
+        "admin_Middle_Name": "Dela",
+        "admin_Full_Name": "Cruz Juan Dela",
+        "admin_Email": "juandcruz@gmail.com",
+        "admin_Contact": "09123456789",
+        "admin_Gender": "Male",
+        "date_Created": "2023-10-19T14:25:15.325146Z"
+        }
+    }
+]

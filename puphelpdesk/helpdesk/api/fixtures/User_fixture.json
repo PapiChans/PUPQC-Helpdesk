@@ -1,0 +1,38 @@
+[
+    {
+        "model": "api.User",
+        "fields": {
+            "user_Id": "1fa54fda-3593-4fcf-9689-5d293da334be",
+            "user_Username": "2023-00001-CM-0",
+            "user_Password": "Student@123",
+            "date_Created": "2023-10-19T14:25:15.325146Z"
+        }
+    },
+    {
+        "model": "api.User",
+        "fields": {
+            "user_Id": "82ce7e44-e987-4f72-b4d8-474bddabddf7",
+            "user_Username": "2023-00002-CM-0",
+            "user_Password": "Student@123",
+            "date_Created": "2023-10-19T14:25:20.895185Z"
+        }
+    },
+    {
+        "model": "api.User",
+        "fields": {
+            "user_Id": "9e16b220-075e-40f3-b71c-977631fcfdd1",
+            "user_Username": "2023-00003-CM-0",
+            "user_Password": "Student@123",
+            "date_Created": "2023-10-19T14:25:26.230683Z"
+        }
+    },
+    {
+        "model": "api.User",
+        "fields": {
+            "user_Id": "5c1275ea-6b9b-41c8-aaf3-96e4937313e3",
+            "user_Username": "2023-00004-CM-0",
+            "user_Password": "Student@123",
+            "date_Created": "2023-10-19T14:25:31.865438Z"
+        }
+    }
+]

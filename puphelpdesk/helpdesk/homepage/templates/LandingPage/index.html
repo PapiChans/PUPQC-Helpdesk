@@ -20,8 +20,8 @@
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
         <a class="navbar-brand logo" href="#">
-            <img src="{% static 'assets/images/logodark.png' %}" alt="logo" class="logo-light" height="30"/>
-            <img src="{% static 'assets/images/logodark.png' %}" alt="logo" class="logo-dark" height="30"/>
+            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-light" height="50"/>
+            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-dark" height="50"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,16 +53,10 @@
         <div class="hero-1-bg"></div>
     </div>
 
-    <div class="container">
-        
-            
-                <div class="hero-wrapper text-white-50 text-center">
-                    <h5 class="  fw-medium fst-italic" style="color: #800000;">Polytechnic University of the Philippines - Quezon City Branch</h5>
-                    <h1 class="hero-1-title display-3 fw-bold text-white mb-4"><span style="color: #FFD700;">my</span><span style="color: #800000;">PUPQC</span> Helpdesk</h1>
-
-                </div>
-           
-       
+    <div class="container">    
+        <div class="hero-wrapper text-white-50 text-center">
+            <h1 class="hero-1-title display-3 fw-bold text-white mb-1"><img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" height="300"/></h1>
+        </div>
         <!-- end row -->
     </div>
     <!-- end container -->
@@ -74,7 +68,7 @@
     <div class="container2" data-aos="fade-up" data-aos-duration="3000">
         <div class="col-12 d-flex flex-column text-center justify-content-center">
             <h2>Services</h2>
-            <h5 class=" fw-normal py-2 fst-italic">Services offered by myPUPQC helpdesk. <a href="{% url 'login' %}" class="text-danger">Log In</a> to continue</h5>
+            <h5 class=" fw-normal py-2 fst-italic">Services offered by PUPQC helpdesk. <a href="{% url 'login' %}" class="text-danger">Log In</a> to continue</h5>
           </div>
         <div class="card" >
             <div class="lines"></div>

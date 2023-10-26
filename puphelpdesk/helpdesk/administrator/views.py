@@ -15,14 +15,25 @@ def admineditprofile(request):
     pagename_value = "Edit Profile"
     return render(request, 'admin/editprofile.html',{'pagename': pagename_value})
 
-# Admin Gen Info
+# Admin General Info
+def admingeninfofacilities(request):
+    pagename_value = "General Info and Services"
+    return render(request, 'admin/GenInfoandServices/facilities.html',{'pagename': pagename_value})
 
 def admingeninfoservices(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'admin/adminGenInfo/adminServices.html',{'pagename': pagename_value})
+    pagename_value = "General Info and Services"
+    return render(request, 'admin/GenInfoandServices/services.html',{'pagename': pagename_value})
+
+def admingeninforesources(request):
+    pagename_value = "General Info and Services"
+    return render(request, 'admin/GenInfoandServices/resources.html',{'pagename': pagename_value})
 
 def admingeninfoevents(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'admin/adminGenInfo/adminEvents.html',{'pagename': pagename_value})
+    pagename_value = "General Info and Services"
+    return render(request, 'admin/GenInfoandServices/events.html',{'pagename': pagename_value})
+
+def admingeninforeferrals(request):
+    pagename_value = "General Info and Services"
+    return render(request, 'admin/GenInfoandServices/referrals.html',{'pagename': pagename_value})
 
 

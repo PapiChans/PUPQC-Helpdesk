@@ -8,8 +8,10 @@ urlpatterns = [
     path('profile', views.adminprofile, name='adminprofile'),
     path('editprofile', views.admineditprofile, name='admineditprofile'),
     
-    #admin gen info
-    
-    path('admingeninfo/services', views.admingeninfoservices, name='admingeninfo/services'),
-    path('admingeninfo/events', views.admingeninfoevents, name='admingeninfo/events'),
+    #Admin General Info
+    path('generalinfo/facilities', views.admingeninfofacilities, name='generalinfo/facilities'),
+    path('generalinfo/services', views.admingeninfoservices, name='generalinfo/services'),
+    path('generalinfo/resources', views.admingeninforesources, name='generalinfo/resources'),
+    path('generalinfo/events', views.admingeninfoevents, name='generalinfo/events'),
+    path('generalinfo/referrals', views.admingeninforeferrals, name='generalinfo/referrals'),
 ]
