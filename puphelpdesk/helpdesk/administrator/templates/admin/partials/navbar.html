@@ -1,3 +1,5 @@
+
+
 <div class="topnav">
     <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
@@ -35,6 +37,23 @@
                     </div>
                 </li>
 
+
+            <!-----FEEDBACKS----->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Feedbacks/Suggestions <div class="arrow-down"></div>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="topnav-components">
+
+                        <a href="{% url 'adminfeedbacks/feedbacks' %}" class="dropdown-item">
+                            <div class="d-inline-block icons-sm mr-2"></div> Feedbacks</a>
+
+                        <a href="{% url 'adminfeedbacks/suggestions' %}" class="dropdown-item">
+                            <div class="d-inline-block icons-sm mr-2"></div> Suggestions</a>
+
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

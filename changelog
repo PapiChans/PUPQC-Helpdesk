@@ -211,3 +211,9 @@
 - Add PUPQC Helpdesk Logo
 - Add Models
 - Revise HTML Templates for Administrator
+
+# 0.4.0.1
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- Added Feedback and Suggestions Page for Admin
+- Added File Upload Modal for Admin in Resources section of Gen Info section
+- Fixed some URL and Page Names for Pages 

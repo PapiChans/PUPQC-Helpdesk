@@ -1,0 +1,71 @@
+{% extends "admin\partials\main.html" %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% block customcss %}
+<style>
+    .container3 {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    thead {
+        background-color: #2d2e4a;
+        color: #fff;
+    }
+ 
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    #messages {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+    #messages .container3 {
+        margin: 20px;
+    }
+    
+    </style>
+
+{% endblock %}
+
+{% block maincontent %}
+<section class="container3" id="messages"> <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Suggestions</th>
+        </tr>
+    </thead>
+    <tbody id="contactData">
+        <!-- Table Data -->
+    </tbody>
+</table>
+</section>
+
+
+
+{% endblock %}
+
+{% block customjs %}
+
+
+{% endblock %} 

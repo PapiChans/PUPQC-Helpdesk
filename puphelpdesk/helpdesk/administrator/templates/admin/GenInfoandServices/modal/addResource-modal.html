@@ -1,0 +1,58 @@
+{% load static%}
+
+<div class="modal fade" id="AddResourceModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Files</h5>
+            </div>
+
+            <div class="modal-body">
+                <form id="addResource" class="needs-validation" novalidate>
+                    <div class="row mt-3">
+                        <div class="col-md-12 ">
+                            <label>File Type<span class="text-danger">*</span></label>
+                            <select class="custom-select" id="feedback_type" required>
+                                <option value="">Select File Type</option>
+                                <option value="Feedback">PDF</option>
+                                <option value="Suggestion">Docs</option>
+                                <option value="Suggestion">Excel</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">File Name<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="file_name" placeholder="File Name" >
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">File Description<span class="text-danger">*</span></label></label>
+                            <textarea required class="form-control" id="feedback-text" rows="5"></textarea>
+                        </div>
+                    </div>
+                
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">File Upload<span class="text-danger">*</span></label></label>
+                            <input type="file" id="file_upload">
+                        </div>
+                    </div>
+                   
+            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            
+            </form>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+

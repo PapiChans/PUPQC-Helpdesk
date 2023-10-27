@@ -17,23 +17,34 @@ def admineditprofile(request):
 
 # Admin General Info
 def admingeninfofacilities(request):
-    pagename_value = "General Info and Services"
+    pagename_value = "Facilities"
     return render(request, 'admin/GenInfoandServices/facilities.html',{'pagename': pagename_value})
 
 def admingeninfoservices(request):
-    pagename_value = "General Info and Services"
+    pagename_value = "Services"
     return render(request, 'admin/GenInfoandServices/services.html',{'pagename': pagename_value})
 
 def admingeninforesources(request):
-    pagename_value = "General Info and Services"
+    pagename_value = "Resources"
     return render(request, 'admin/GenInfoandServices/resources.html',{'pagename': pagename_value})
 
 def admingeninfoevents(request):
-    pagename_value = "General Info and Services"
+    pagename_value = "Events"
     return render(request, 'admin/GenInfoandServices/events.html',{'pagename': pagename_value})
 
 def admingeninforeferrals(request):
-    pagename_value = "General Info and Services"
+    pagename_value = "Referrals"
     return render(request, 'admin/GenInfoandServices/referrals.html',{'pagename': pagename_value})
+
+#Feedbacks and Suggestions
+def adminfeedbacks(request):
+    pagename_value = "Feedbacks"
+    return render(request, 'admin/FeedbacksandSuggestions/feedbacks.html',{'pagename': pagename_value})
+
+def adminsuggestions(request):
+    pagename_value = "Suggestions"
+    return render(request, 'admin/FeedbacksandSuggestions/suggestions.html',{'pagename': pagename_value})
+
+
 
 

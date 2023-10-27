@@ -14,4 +14,8 @@ urlpatterns = [
     path('generalinfo/resources', views.admingeninforesources, name='generalinfo/resources'),
     path('generalinfo/events', views.admingeninfoevents, name='generalinfo/events'),
     path('generalinfo/referrals', views.admingeninforeferrals, name='generalinfo/referrals'),
+    
+    #Feedbacks and Suggestions
+    path('adminfeedbacks/feedbacks', views.adminfeedbacks, name='adminfeedbacks/feedbacks'),
+    path('adminfeedbacks/suggestions', views.adminsuggestions, name='adminfeedbacks/suggestions'),
 ]
