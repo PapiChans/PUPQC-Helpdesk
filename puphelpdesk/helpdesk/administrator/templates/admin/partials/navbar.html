@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="topnav-menu-content">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'admindashboard' %}">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
                         Dashboard
                     </a>
                 </li>
@@ -22,18 +22,64 @@
                                 <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                <a href="{% url 'generalinfo/facilities' %}" class="dropdown-item">Facilities</a>
-                                <a href="{% url 'generalinfo/services' %}" class="dropdown-item">Service</a>
-                                <a href="{% url 'generalinfo/resources' %}" class="dropdown-item">Resources</a>
+                                <a href="{% url 'adminGeneralInfo/facilities' %}" class="dropdown-item">Facilities</a>
+                                <a href="{% url 'adminGeneralInfo/services' %}" class="dropdown-item">Service</a>
+                                <a href="{% url 'adminGeneralInfo/resources' %}" class="dropdown-item">Resources</a>
                             </div>
                         </div>
 
-                        <a href="{% url 'generalinfo/events' %}" class="dropdown-item">
+                        <a href="{% url 'adminGeneralInfo/events' %}" class="dropdown-item">
                             <div class="d-inline-block icons-sm mr-2"><i class="uim uim-schedule"></i></div> Events</a>
 
-                        <a href="{% url 'generalinfo/referrals' %}" class="dropdown-item">
+                        <a href="{% url 'adminGeneralInfo/referrals' %}" class="dropdown-item">
                             <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-plus"></i></div> Service Referrals</a>
 
+                    </div>
+                </li>
+
+                <!---Student Services--->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services <div class="arrow-down"></div>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="topnav-components">
+                        <div class="dropdown">
+                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="d-inline-block icons-sm mr-2"><i class="uim uim-bookmark"></i></div> Support / Counseling
+                                <div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                <a href="#" class="dropdown-item">Student Counseling</a>
+                                <a href="#" class="dropdown-item">Academic Advising</a>
+                                <a href="{% url 'adminServices/studentSuccess' %}" class="dropdown-item">Success Resources</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-alt-message"></i></div> Student Services
+                                <div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                <a href="#" class="dropdown-item">Financial Aid and Scholarships</a>
+                                <a href="#" class="dropdown-item">Government and Involvement</a>
+                                <a href="#" class="dropdown-item">ID and Access Cards</a>
+                                <a href="#" class="dropdown-item">Careers and Employment</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="d-inline-block icons-sm mr-2"><i class="uim uim-briefcase"></i></div> Other Services
+                                <div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                <a href="#" class="dropdown-item">Health and Wellness Support</a>
+                                <a href="#}" class="dropdown-item">Transportation and Parking</a>
+                                <a href="#}" class="dropdown-item">Housing and Accommodation</a>
+                                <a href="#" class="dropdown-item">Lost and Found</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
 

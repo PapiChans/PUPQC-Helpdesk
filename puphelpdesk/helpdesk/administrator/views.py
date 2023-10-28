@@ -18,7 +18,7 @@ def admineditprofile(request):
 # Admin General Info
 def admingeninfofacilities(request):
     pagename_value = "Facilities"
-    return render(request, 'admin/GenInfoandServices/facilities.html',{'pagename': pagename_value})
+    return render(request, 'admin/GenInfoandServices/adminFacilities.html',{'pagename': pagename_value})
 
 def admingeninfoservices(request):
     pagename_value = "Services"
@@ -35,6 +35,12 @@ def admingeninfoevents(request):
 def admingeninforeferrals(request):
     pagename_value = "Referrals"
     return render(request, 'admin/GenInfoandServices/referrals.html',{'pagename': pagename_value})
+
+
+#Student Counseling
+def adminSuccessResources(request):
+    pagename_value = "Success Resources"
+    return render(request, 'admin/StudentCounseling/successResources.html',{'pagename': pagename_value})
 
 #Feedbacks and Suggestions
 def adminfeedbacks(request):

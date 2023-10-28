@@ -217,3 +217,10 @@
 - Added Feedback and Suggestions Page for Admin
 - Added File Upload Modal for Admin in Resources section of Gen Info section
 - Fixed some URL and Page Names for Pages 
+
+# 0.4.0.2
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- Success Resources for kids added
+- Campus facilities for admin still in progress
+- admin dashboard header added for admin 
+- Fixed some URLs issues

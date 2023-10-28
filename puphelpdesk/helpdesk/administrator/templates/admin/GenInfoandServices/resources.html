@@ -3,6 +3,12 @@
 
 {% block customcss %}
 
+<style>
+    .section1{
+        margin-top: 50px;
+    }
+</style>
+
 {% endblock %}
 
 {% block maincontent %}
@@ -10,6 +16,37 @@
 
 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddResourceModal">Upload New File</button>
 
+<section class="section1">
+<h4 class="header-title">PUPQC Resources</h4>
+<p class="card-title-desc">These are the resources available in the campus.</p>
+
+<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <thead>
+    <tr role="row">
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Type</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Download</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr role="row" class="odd">
+            <td class="sorting_1" tabindex="0">Completion Form</td>
+            <td>PDF</td>
+            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+        </tr>
+        <tr role="row" class="even">
+            <td class="sorting_1" tabindex="0">Application for Change of Enrollment (ACE) Form: Use PUP Online ACE Form</td>
+            <td>PDF</td>
+            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+        </tr>
+        <tr role="row" class="odd">
+            <td class="sorting_1" tabindex="0">PUP Medical Health Information Form for Student 2022</td>
+            <td>PDF</td>
+            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+        </tr>
+    </tbody>
+</table>
+</section>
 
 {% endblock %}
 
