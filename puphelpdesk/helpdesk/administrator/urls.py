@@ -4,21 +4,21 @@ from . import views
 
 urlpatterns = [    
     # Admin Dashboard
-    path('dashboard', views.admindashboard, name='dashboard'),
-    path('profile', views.adminprofile, name='adminprofile'),
-    path('editprofile', views.admineditprofile, name='admineditprofile'),
+    path('dashboard', views.admindashboard, name='admin/dashboard'),
+    path('profile', views.adminprofile, name='admin/profile'),
+    path('editprofile', views.admineditprofile, name='admin/editprofile'),
     
-    #Admin General Info
-    path('adminGeneralInfo/facilities', views.admingeninfofacilities, name='adminGeneralInfo/facilities'),
-    path('adminGeneralInfo/services', views.admingeninfoservices, name='adminGeneralInfo/services'),
-    path('adminGeneralInfo/resources', views.admingeninforesources, name='adminGeneralInfo/resources'),
-    path('adminGeneralInfo/events', views.admingeninfoevents, name='adminGeneralInfo/events'),
-    path('adminGeneralInfo/referrals', views.admingeninforeferrals, name='adminGeneralInfo/referrals'),
+    # General Information and Services
+    path('geninfo/facilities', views.admingeninfofacilities, name='admin/geninfo/facilities'),
+    path('geninfo/services', views.admingeninfoservices, name='admin/geninfo/services'),
+    path('geninfo/resources', views.admingeninforesources, name='admin/geninfo/resources'),
+    path('geninfo/events', views.admingeninfoevents, name='admin/geninfo/events'),
+    path('geninfo/referrals', views.admingeninforeferrals, name='admin/geninfo/referrals'),
     
-    #Student Services
-    path('adminServices/studentSuccess', views.adminSuccessResources, name='adminServices/studentSuccess'),
+    # Student Support and Counseling
+    path('student-support/resources', views.adminSuccessResources, name='admin/student-support/resources'),
     
     #Feedbacks and Suggestions
-    path('adminfeedbacks/feedbacks', views.adminfeedbacks, name='adminfeedbacks/feedbacks'),
-    path('adminfeedbacks/suggestions', views.adminsuggestions, name='adminfeedbacks/suggestions'),
+    path('feedback', views.adminfeedbacks, name='admin/feedbacks'),
+    path('suggestions', views.adminsuggestions, name='admin/suggestions'),
 ]

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block customcss %}
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
+<link href="{% static 'assets/css/pages/sweetalert2.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block maincontent %}
@@ -79,7 +79,7 @@
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
 <script>
 $('input#student_age').maxlength({
     alwaysShow: true,

@@ -5,7 +5,7 @@
 <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
@@ -56,7 +56,7 @@ $(document).ready(function() {
 } );
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
 <script>
 const notyf = new Notyf();  
 

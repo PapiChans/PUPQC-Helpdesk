@@ -6,8 +6,14 @@
         <div class="collapse navbar-collapse" id="topnav-menu-content">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'dashboard' %}">
+                    <a class="nav-link" href="{% url 'admin/dashboard' %}">
                         Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Students
                     </a>
                 </li>
 
@@ -22,22 +28,21 @@
                                 <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                <a href="{% url 'adminGeneralInfo/facilities' %}" class="dropdown-item">Facilities</a>
-                                <a href="{% url 'adminGeneralInfo/services' %}" class="dropdown-item">Service</a>
-                                <a href="{% url 'adminGeneralInfo/resources' %}" class="dropdown-item">Resources</a>
+                                <a href="{% url 'admin/geninfo/facilities' %}" class="dropdown-item">Facilities</a>
+                                <a href="{% url 'admin/geninfo/services' %}" class="dropdown-item">Service</a>
+                                <a href="{% url 'admin/geninfo/resources' %}" class="dropdown-item">Resources</a>
                             </div>
                         </div>
 
-                        <a href="{% url 'adminGeneralInfo/events' %}" class="dropdown-item">
+                        <a href="{% url 'admin/geninfo/events' %}" class="dropdown-item">
                             <div class="d-inline-block icons-sm mr-2"><i class="uim uim-schedule"></i></div> Events</a>
 
-                        <a href="{% url 'adminGeneralInfo/referrals' %}" class="dropdown-item">
+                        <a href="{% url 'admin/geninfo/referrals' %}" class="dropdown-item">
                             <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-plus"></i></div> Service Referrals</a>
 
                     </div>
                 </li>
 
-                <!---Student Services--->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Services <div class="arrow-down"></div>
@@ -51,7 +56,7 @@
                             <div class="dropdown-menu" aria-labelledby="topnav-email">
                                 <a href="#" class="dropdown-item">Student Counseling</a>
                                 <a href="#" class="dropdown-item">Academic Advising</a>
-                                <a href="{% url 'adminServices/studentSuccess' %}" class="dropdown-item">Success Resources</a>
+                                <a href="{% url 'admin/student-support/resources' %}" class="dropdown-item">Success Resources</a>
                             </div>
                         </div>
 
@@ -75,29 +80,24 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-email">
                                 <a href="#" class="dropdown-item">Health and Wellness Support</a>
-                                <a href="#}" class="dropdown-item">Transportation and Parking</a>
-                                <a href="#}" class="dropdown-item">Housing and Accommodation</a>
+                                <a href="#" class="dropdown-item">Transportation and Parking</a>
+                                <a href="#" class="dropdown-item">Housing and Accommodation</a>
                                 <a href="#" class="dropdown-item">Lost and Found</a>
                             </div>
                         </div>
                     </div>
                 </li>
 
-
-            <!-----FEEDBACKS----->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Feedbacks/Suggestions <div class="arrow-down"></div>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="topnav-components">
-
-                        <a href="{% url 'adminfeedbacks/feedbacks' %}" class="dropdown-item">
-                            <div class="d-inline-block icons-sm mr-2"></div> Feedbacks</a>
-
-                        <a href="{% url 'adminfeedbacks/suggestions' %}" class="dropdown-item">
-                            <div class="d-inline-block icons-sm mr-2"></div> Suggestions</a>
-
+                        <a href="{% url 'admin/feedbacks' %}" class="dropdown-item">
+                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-star-half-alt"></i></div>Feedbacks</a>
+                        <a href="{% url 'admin/suggestions' %}" class="dropdown-item">
+                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-alt-dots"></i></div>Suggestions</a>
                     </div>
                 </li>
             </ul>

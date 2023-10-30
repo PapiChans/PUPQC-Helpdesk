@@ -224,3 +224,10 @@
 - Campus facilities for admin still in progress
 - admin dashboard header added for admin 
 - Fixed some URLs issues
+
+# 0.4.0.3
+- Push by Christian (https://github.com/papichans)
+- Fix Routes for Admin
+- Fix Webpages for Admin
+- Get the online CSS and JS Libraries for offline uses
+- Other Minor HTML Pages
