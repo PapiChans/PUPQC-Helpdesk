@@ -1,110 +1,60 @@
 {% extends "admin\partials\main.html" %}
 {% load static %}
-
+{% block customcss %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+{% endblock %}
 {% block maincontent %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+{% include "admin\GenInfoandServices\modal\events-modal.html" %}
 <h4 class="header-title">PUPQC Events</h4>
-<p class="card-title-desc">The upcoming events in PUPQC Campus.</p>
-
-<section id="card-container">
-<div class="row">
-    <div class="col-xl-4">
-        <div class="card" id="card-1">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center" contenteditable="false" id="title-1">Event Title</h4>
-                <p class="card-text" contenteditable="false" id="description-1">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark" id=date contenteditable="false">October 1, 2023</small>
-                </p>
-                <button class="editBtn" id="editBtn-1">Edit</button>
-                <button class="delBtn" id="delBtn-1">Delete</button>
-            </div>
+<p class="card-title-desc">What's happening now in PUPQC Campus?</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-toggle="modal" data-target="#AddEventModal"><i class="fa-regular fa-calendar-plus"></i> Add Event</button>
+<ul class="nav nav-pills nav-justified" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-toggle="tab" href="#ongoing-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-check"></i> <span class="d-none d-md-inline-block">Ongoing</span> 
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-toggle="tab" href="#upcoming-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-week"></i> <span class="d-none d-md-inline-block">Upcoming</span> 
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-toggle="tab" href="#ended-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-xmark"></i> <span class="d-none d-md-inline-block">Ended</span> 
+        </a>
+    </li>
+</ul>
+</div>
+</div>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="ongoing-justify" role="tabpanel">
+        <h2 class="text-center" id="no_ongoing">There are no ongoing events.</h2>
+        <div class="row" id="ongoing_event_display">
         </div>
     </div>
-
-    <div class="col-xl-4">
-        <div class="card" id="card-2">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center" contenteditable="false" id="title-2">Event Title</h4>
-                <p class="card-text" contenteditable="false" id="description-2">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark" id=date contenteditable="false">October 5, 2023</small>
-                </p>
-                <button class="editBtn" id="editBtn-2">Edit</button>
-                <button class="delBtn" id="delBtn-2">Delete</button>
-            </div>
+    <div class="tab-pane" id="upcoming-justify" role="tabpanel">
+        <h2 class="text-center" id="no_upcoming">There are no upcoming Events.</h2>
+        <div class="row" id="upcoming_event_display">
         </div>
     </div>
-
-    <div class="col-xl-4">
-        <div class="card" id="card-3">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center" contenteditable="false" id="title-3">Event Title</h4>
-                <p class="card-text" contenteditable="false" id="description-3">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark" id=date contenteditable="false">October 13, 2023</small>
-                </p>
-                <button class="editBtn" id="editBtn-3">Edit</button>
-                <button class="delBtn" id="delBtn-3">Delete</button>
-            </div>
+    <div class="tab-pane" id="ended-justify" role="tabpanel">
+        <h2 class="text-center" id="no_ended">There are no ended Events.</h2>
+        <div class="row" id="ended_event_display">
         </div>
     </div>
 </div>
-</section>
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-     
-
-        // Edit
-        $(document).on("click", ".editBtn", function () {
-            const card = $(this).closest(".card");
-            const cardId = card.attr("id").split("-")[1];
-            card.find(`#title-${cardId}, #date-${cardId}, #description-${cardId}`).attr("contenteditable", true);
-            card.find("img").removeAttr("style");
-            card.find("label").css("border", "2px dashed #ccc");
-            $(this).replaceWith(`<button class='saveBtn' id='saveBtn-${cardId}'>Save</button>`);
-        });
-
-        // Save
-        $(document).on("click", ".saveBtn", function () {
-            const card = $(this).closest(".card");
-            const cardId = card.attr("id").split("-")[1];
-            card.find(`#title-${cardId}, #description-${cardId}`).attr("contenteditable", false);
-            card.find("img").css("display", "none");
-            card.find("label").css("border", "none");
-            $(this).replaceWith(`<button class='editBtn' id='editBtn-${cardId}'>Edit</button>`);
-        });
-
-        // Change pic
-        $(document).on("change", "input.image-upload", function () {
-            const card = $(this).closest(".card");
-            const cardId = card.attr("id").split("-")[1];
-            const imageDisplay = card.find("img");
-            const fileInput = $(this)[0];
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    imageDisplay.attr("src", e.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Delete
-        $(document).on("click", ".delBtn", function () {
-            const card = $(this).closest(".card");
-            const cardId = card.attr("id").split("-")[1];
-            $(`#card-${cardId}`).remove();
-        });
-    });
-</script>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
+<script src="{% static 'assets/js/pages/flatpickr.js' %}"></script>
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/GenInfoandServices/events.ajax.js' %}"></script>
 {% endblock %}

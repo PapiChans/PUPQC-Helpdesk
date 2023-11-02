@@ -95,7 +95,11 @@ class Events(models.Model):
     event_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     event_Name = models.CharField(max_length=50, null=False)
     event_Description = models.TextField(null=False)
-    event_Image = models.ImageField(null=True)
+    event_Image = models.FileField(null=True)
+    event_Date_Start = models.DateField(null=False)
+    event_Date_End = models.DateField(null=False)
+    event_Start = models.TimeField(null=False)
+    event_End = models.TimeField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Events'

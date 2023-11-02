@@ -231,3 +231,16 @@
 - Fix Webpages for Admin
 - Get the online CSS and JS Libraries for offline uses
 - Other Minor HTML Pages
+
+# 0.4.1
+- Push by Christian (https://github.com/papichans)
+- Add Events Backend (Unfinished)
+- Import used CSS and JS Libraries to local
+- Update Views and URLs
+- Update Models
+- Update Serializers
+- Add 401 and 404 Images
+- Add 401 and 404 Page
+- Add No Image default
+- Delete Unnecessary JS and python files
+- Minor Page Fixes
