@@ -1,52 +1,51 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
-
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+{% endblock %}
 {% block maincontent %}
+{% include "student\GenInfoandServices\modal\events-modal.html" %}
 <h4 class="header-title">PUPQC Events</h4>
-<p class="card-title-desc">The upcoming events in PUPQC Campus.</p>
+<p class="card-title-desc">What's happening now in PUPQC Campus?</p>
+<ul class="nav nav-pills nav-justified" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-toggle="tab" href="#ongoing-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-check"></i> <span class="d-none d-md-inline-block">Ongoing</span> 
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-toggle="tab" href="#upcoming-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-week"></i> <span class="d-none d-md-inline-block">Upcoming</span> 
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-toggle="tab" href="#ended-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-xmark"></i> <span class="d-none d-md-inline-block">Ended</span> 
+        </a>
+    </li>
+</ul>
 </div>
 </div>
-
-<div class="row">
-    <div class="col-xl-4">
-        <div class="card">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
-                <p class="card-text">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark">October 1, 2023</small>
-                </p>
-            </div>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="ongoing-justify" role="tabpanel">
+        <h2 class="text-center" id="no_ongoing">There are no ongoing events.</h2>
+        <div class="row" id="ongoing_event_display">
         </div>
     </div>
-
-    <div class="col-xl-4">
-        <div class="card">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
-                <p class="card-text">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark">October 5, 2023</small>
-                </p>
-            </div>
+    <div class="tab-pane" id="upcoming-justify" role="tabpanel">
+        <h2 class="text-center" id="no_upcoming">There are no upcoming Events.</h2>
+        <div class="row" id="upcoming_event_display">
         </div>
     </div>
-
-    <div class="col-xl-4">
-        <div class="card">
-            <img class="card-img-top img-fluid" src="{% static 'assets/images/PUPMain.jpg' %}" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title font-size-16 mt-0 text-center">Event Title</h4>
-                <p class="card-text">This is event description</p>
-                <p class="card-text text-center">
-                    <small class="text-dark">October 13, 2023</small>
-                </p>
-            </div>
+    <div class="tab-pane" id="ended-justify" role="tabpanel">
+        <h2 class="text-center" id="no_ended">There are no ended Events.</h2>
+        <div class="row" id="ended_event_display">
         </div>
     </div>
-
 </div>
 {% endblock %}
-
+{% block customjs %}
+<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/GenInfoandServices/events.ajax.js' %}"></script>
+{% endblock %}

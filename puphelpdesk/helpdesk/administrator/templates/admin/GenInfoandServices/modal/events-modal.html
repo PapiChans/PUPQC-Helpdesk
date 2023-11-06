@@ -5,7 +5,6 @@
                 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Event Details</h5>
             </div>
             <div class="modal-body">
-                {% csrf_token %}
                 <form id="AddEventForm" class="needs-validation" novalidate>
                     <div class="row">
                         <div class="col-md-12 mt-2">
@@ -71,6 +70,112 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="editEventModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Event</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditEventForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="edit_event_Id" name="edit_event_Id"/>
+                            <label for="validationCustom01">Event Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_event_Name" placeholder="Event Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Event Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_event_Description" rows="5" placeholder="Event Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Event Date Start<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="edit_event_Date_Start" data-provider="flatpickr" placeholder="Event Date Start" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Event Date End<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="edit_event_Date_End" data-provider="flatpickr" placeholder="Event Date End" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Event Start<span class="text-danger">*</span></label>
+                            <input type="time" class="form-control" id="edit_event_Start" data-provider="flatpickr" placeholder="Event Time Start" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Event End<span class="text-danger">*</span></label>
+                            <input type="time" class="form-control" id="edit_event_End" data-provider="flatpickr" placeholder="Event Time End" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_event_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="eventInfoModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Event Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Event Name: <span class="font-weight-bold" id="event_name_info"></span></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Event Description: <span class="font-weight-bold" id="event_desc_info"></span></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Event Date: <span class="font-weight-bold" id="event_date_info"></span></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Event Time: <span class="font-weight-bold" id="event_time_info"></span></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <img src="" id="event_image_info" class="img-fluid" alt="Event Image">
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="uploadImageEventModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Upload Image for Event</h5>
+            </div>
+            <div class="modal-body">
+                <form id="UploadImageEventForm" class="needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="upload_event_Id" name="upload_event_Id"/>
+                            <p>Event Name: <span class="font-weight-bold" id="upload_event_Name"></span></p>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Upload Image<span class="text-danger">*</span></label>
+                            <p class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</p>
+                            <input type="file" class="filepond" id="event_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="upload_image_event_Submit">Upload</button>
+                </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>

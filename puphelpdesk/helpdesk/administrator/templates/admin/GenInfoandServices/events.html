@@ -1,8 +1,8 @@
 {% extends "admin\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+<link href="{% static 'assets/css/pages/flatpickr.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/css/pages/filepond.css' %}" rel="stylesheet"/>
 <link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
 {% endblock %}
@@ -53,8 +53,7 @@
 <script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
 <script src="{% static 'assets/js/pages/flatpickr.js' %}"></script>
-<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+<script src="{% static 'assets/js/pages/filepond.js' %}"></script>
 <script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/GenInfoandServices/events.ajax.js' %}"></script>
 {% endblock %}
