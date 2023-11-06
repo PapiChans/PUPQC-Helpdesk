@@ -258,4 +258,9 @@
 - Push by Christian (https://github.com/papichans)
 - Add Media folder for local file uploading
 
+# 0.4.2.2
+- Push by Christian (https://github.com/papichans)
+- Add Other essential libraries for loading the page locally
+- Remove unecessary and unused css and js libraries
+- Add media folder to .gitignore
 
