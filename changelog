@@ -253,3 +253,9 @@
 - Add FontAwesome as a local font for Page load optimization (Note: The project wll increase it size)
 - Add Libraries: Filepond and Flatpickr
 - Add Default Images for Events
+
+# 0.4.2.1
+- Push by Christian (https://github.com/papichans)
+- Add Media folder for local file uploading
+
+
