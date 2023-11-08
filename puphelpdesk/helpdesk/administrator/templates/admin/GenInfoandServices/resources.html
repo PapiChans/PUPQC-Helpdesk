@@ -1,56 +1,47 @@
 {% extends "admin\partials\main.html" %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+{% load static %}
 {% block customcss %}
-
-<style>
-    .section1{
-        margin-top: 50px;
-    }
-</style>
-
+<link href="{% static 'assets/css/pages/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\GenInfoandServices\modal\addResource-modal.html" %} 
-
-<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddResourceModal">Upload New File</button>
-
-<section class="section1">
+{% include "admin\GenInfoandServices\modal\resources-modal.html" %} 
 <h4 class="header-title">PUPQC Resources</h4>
-<p class="card-title-desc">These are the resources available in the campus.</p>
+<p class="card-title-desc">Resources available in the campus.</p>
 
-<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2 mt-2" data-toggle="modal" data-target="#AddResourcesModal"><i class="fa-solid fa-file-upload"></i> Add Resources</button>
+
+<table id="resources-datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <thead>
-    <tr role="row">
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Type</th>
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Download</th>
-    </tr>
+        <tr>
+            <th class="dt-head-center">File Name</th>
+            <th class="dt-head-center">File Type</th>
+            <th class="dt-head-center">Action</th>
+        </tr>
     </thead>
     <tbody>
-        <tr role="row" class="odd">
-            <td class="sorting_1" tabindex="0">Completion Form</td>
-            <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
-        </tr>
-        <tr role="row" class="even">
-            <td class="sorting_1" tabindex="0">Application for Change of Enrollment (ACE) Form: Use PUP Online ACE Form</td>
-            <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
-        </tr>
-        <tr role="row" class="odd">
-            <td class="sorting_1" tabindex="0">PUP Medical Health Information Form for Student 2022</td>
-            <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
-        </tr>
+
     </tbody>
 </table>
-</section>
+
 
 {% endblock %}
 
 {% block customjs %}
-
-
+<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/filepond.js' %}"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/GenInfoandServices/resources.ajax.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 {% endblock %} 

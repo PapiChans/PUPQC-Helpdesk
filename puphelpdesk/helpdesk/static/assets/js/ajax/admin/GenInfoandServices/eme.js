@@ -1,27 +1,54 @@
 $(function () {
-	loadResearchRecordsTable()
+	loadResearchCopyrightTable()
 
-	$('#rejectResearchForm').on('submit', function (e) {
-		e.preventDefault() // prevent page refresh
-		rejectResearchRecordAJAX($('#edit_research_id').val())
+	const ResearchFileTypes = ['application/pdf']
+
+	pondForCopyright= FilePond.create(document.querySelector('#copyright_pdf'), {
+		instantUpload: false,
+		allowProcess: false,
+		acceptedFileTypes: ResearchFileTypes,
+		// ! Minsan hindi talaga ChatGPT ang solution: ang Documentation.
+		// ! https://pqina.nl/filepond/docs/api/instance/properties/
+		beforeAddFile: (file) => {
+			// Check if the file type is not accepted
+			if (!ResearchFileTypes.includes(file.fileType)) {
+				// Show an error message
+				// * Sweetalert2 that will say: Only PDF, JPG, and PNG files are allowed
+				Swal.fire({
+					iconHtml: `<lord-icon src="https://cdn.lordicon.com/nduddlov.json" trigger="loop" colors="outline:#f06548,primary:#ffffff,secondary:#f06548" style="width:100px;height:100px"></lord-icon>`,
+					customClass: {
+						icon: 'border-white',
+					},
+					title: 'Something went wrong.',
+					text: `Only PDF files are allowed! The one you are uploading is a: ${file.fileType}`,
+					showCancelButton: !0,
+					showConfirmButton: !1,
+					cancelButtonClass: 'btn btn-danger w-xs mb-1',
+					cancelButtonText: 'Dismiss',
+					buttonsStyling: !1,
+					showCloseButton: !0,
+				})
+				// Reject the file
+				return false
+			}
+			// Continue with the file upload
+			return true
+		},
 	})
-})
 
-const Toast = Swal.mixin({
-	toast: true,
-	position: 'top-end',
-	showConfirmButton: false,
-	timer: 2000,
-	timerProgressBar: true,
-	didOpen: (toast) => {
-		toast.addEventListener('mouseenter', Swal.stopTimer)
-		toast.addEventListener('mouseleave', Swal.resumeTimer)
-	},
+	$('#upload_submit').on('click', function (e) {
+		e.preventDefault() // prevent page refresh
+
+		const research_id = $('#research_id').val()
+
+		uploadCopyrightAJAX(pondForCopyright, research_id)
+	})
+
 })
 
 // Load  research datatables
-loadResearchRecordsTable = () => {
-	const dt = $('#research-pending-datatable')
+loadResearchCopyrightTable = () => {
+	const dt = $('#research-copyright-management-datatable')
 
 	$.ajaxSetup({
 		headers: AJAX_HEADERS,
@@ -35,17 +62,11 @@ loadResearchRecordsTable = () => {
 				"<'row'<'col-sm-12'tr>>" +
 				"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
 			buttons: [
-				{
-					extend: 'print',
-					text: '<i class="ri-printer-fill"></i> Print',
-					exportOptions: {
-						columns: [0, 1, 2, 3, 4],
-					},
-				},
+				
 			],
 			bDestroy: true,
 			ajax: {
-				url: apiURL + 'researchcop/research-pending/allresearch',
+				url: apiURL + 'researchcop/my-submissions/allresearch',
 				type: 'GET',
 				ContentType: 'application/x-www-form-urlencoded',
 			},
@@ -61,46 +82,33 @@ loadResearchRecordsTable = () => {
 					},
 				},
 
-				// Author name
+                // Copyright Document Upload
 				{
 					data: null,
 					width: '5%',
 					class: 'text-center',
 					render: (data) => {
-						const rAuthor = data.research_author
-						return `${rAuthor}`
-					},
-				},
-
-				// Program
-				{
-					data: null,
-					width: '40%',
-					class: 'text-center',
-					render: (data) => {
-						const rProgram = data.research_program
-						return `${rProgram}`
-					},
-				},
-
-				// Type
-				{
-					data: null,
-					width: '5%',
-					class: 'text-center',
-					render: (data) => {
-						let rType = data.research_type
-						if (data.research_type === 'Copyrighted'){
-							rType = `<span class="badge rounded-pill bg-success">Copyrighted</span>`
+						let UpResearchDocu = data.copyright_pdf
+						if (data.copyright_pdf == null && data.research_pdf == null) {
+							UpResearchDocu = `<span class="badge rounded-pill bg-danger">Upload Research First</span>`
+						}
+						else if (data.copyright_pdf == null && data.research_pdf != null) {
+							UpResearchDocu = `<button type="button" class="btn btn-info btn-label waves-effect waves-light" onclick="viewResearchRecord('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#uploadCopyrightModal"><i class="ri-upload-line label-icon align-middle fs-16 me-2"></i>Upload</button>`
 						}
 						else{
-							rType = `<span class="badge rounded-pill bg-danger">Non-Copyrighted</span>`
+							UpResearchDocu = `<button type="button" class="btn btn-success btn-label waves-effect waves-light" onclick="viewCopyrightDocument('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#copyright_document_preview"><i class="ri-file-line label-icon align-middle fs-16 me-2"></i>View</button>
+							<button type="button" class="btn btn-danger btn-label waves-effect waves-light" onclick="deleteCopyrightDocument('${data.research_id}')"><i class="ri-delete-bin-line label-icon align-middle fs-16 me-2"></i>Delete</button>
+											`
 						}
-						return `${rType}`
+						return `
+    				<div class="dropdown d-inline-block">
+					${UpResearchDocu}
+					</div>
+    					`
 					},
 				},
 
-                // Research Category
+				// Research Category
 				{
 					data: null,
 					width: '5%',
@@ -122,45 +130,71 @@ loadResearchRecordsTable = () => {
 					},
 				},
 
-				//Action
-				{
-					data: null,
-					width: '5%',
-					class: 'text-center',
-					render: (data) => {
-						return `
-    <div class="dropdown d-inline-block">
-    <button type="button" class="btn btn-info btn-icon waves-effect waves-light" onclick="viewResearchPending('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#viewResearchPending"><i class="ri-eye-fill fs-5"></i></button>
-	<button type="button" class="btn btn-success btn-icon waves-effect waves-light" onclick="approveResearchRecord('${data.research_id}')"><i class="ri-check-line"></i></button>
-	<button type="button" class="btn btn-danger btn-icon waves-effect waves-light" onclick="rejectResearchRecord('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#rejectResearchModal"><i class="ri-close-line"></i></button>
-  </div>
-    `
-					},
-				},
 
-				// Research Document
+                // Research Status
 				{
 					data: null,
 					width: '5%',
 					class: 'text-center',
 					render: (data) => {
-						let ResearchDocu = data.research_pdf
-						if (data.research_pdf == null) {
-							ResearchDocu = `<span class="badge rounded-pill bg-danger">Not Available</span>`
+						let copyrht = data.research_type
+						if (data.research_type === 'Copyrighted'){
+							copyrht = `<span class="badge rounded-pill bg-success">Copyrighted</span>`
 						}
 						else{
-							ResearchDocu = `<button type="button" class="btn btn-success btn-label waves-effect waves-light" onclick="viewResearchDocument('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#research_document_preview"><i class="ri-file-line label-icon align-middle fs-16 me-2"></i>View</button>`
+							copyrht = `<span class="badge rounded-pill bg-danger">Non-Copyrighted</span>`
 						}
 
 						return `
 						<div class="dropdown d-inline-block">
-						${ResearchDocu}
+						${copyrht}
 						</div>
 						`
 					},
 				},
 
-			
+                // Copyright Status
+				{
+					data: null,
+					width: '5%',
+					class: 'text-center',
+					render: (data) => {
+						let copyrhtsts = data.copyright_status
+						if (data.copyright_status === 'Approved'){
+							copyrhtsts = `<span class="badge rounded-pill bg-success">Copyrighted</span>`
+						}
+                        else if (data.copyright_status === 'Reviewing'){
+							copyrhtsts = `<span class="badge rounded-pill bg-warning">Reviewing</span>`
+						}
+                        else if (data.copyright_status === 'Rejected'){
+							copyrhtsts = `<span class="badge rounded-pill bg-danger">Rejected</span>`
+						}
+						else{
+							copyrhtsts = `<span class="badge rounded-pill bg-dark">No Upload</span>`
+						}
+
+						return `
+						<div class="dropdown d-inline-block">
+						${copyrhtsts}
+						</div>
+						`
+					},
+				},
+
+				// Remarks
+				{
+					data: null,
+					width: '5%',
+					class: 'text-center',
+					render: (data) => {
+						return `
+						<div class="dropdown d-inline-block">
+						<button type="button" class="btn btn-success btn-icon waves-effect waves-light" onclick="viewCopyrightRemarks('${data.research_id}')" data-bs-toggle="modal" data-bs-target="#viewCopyrightRemarks"><i class="ri-question-fill fs-5"></i></button>
+						</div>
+						`
+					},
+				},
+				
 			],
 			order: [[0, 'asc']],
 		})
@@ -168,99 +202,90 @@ loadResearchRecordsTable = () => {
 }
 
 
-
-// View Research Pending Modal
-viewResearchPending = (research_id) => {
+// View Research Record Modal
+viewResearchRecord = (research_id) => {
 	$.ajax({
 		type: 'GET',
 		cache: false,
-		url: apiURL + `researchcop/research-pending/${research_id}`,
+		url: apiURL + `researchcop/my-submissions/${research_id}`,
 		headers: AJAX_HEADERS,
 		dataType: 'json',
 		success: (result) => {
 			const researchRecord = result.data
 
-				$('#view_research_title').html(researchRecord.research_title)
-				$('#view_research_co_author').html(researchRecord.research_co_author)
-                $('#view_research_adviser').html(researchRecord.research_adviser)
-				$('#view_research_date_accomplished').html(researchRecord.research_date_accomplished)
-				$('#view_research_status').html(researchRecord.research_status)
-                $('#view_research_abstract').html(researchRecord.research_abstract)
-				$('#view_research_category').html(researchRecord.research_category)
+				$('#display_research_title').html(researchRecord.research_title)
+				$('#research_id').val(researchRecord.research_id)
 		},
 	})
 }
 
-// Get Admin
-getAdmin = (user_id) => {
-	$.ajax({
-		url: apiURL + `researchcop/research-pending/info/${user_id}`,
-        type: 'GET',
-		headers: AJAX_HEADERS,
-		success: (result) => {
-            if (result) {
-			const data = result.data
-            
-			$('#r_checked_by2').html(data.full_name)
-			$('#r_checked_by').val(data.full_name)
-            }
-		},
-	}).fail(() => console.error('There was an error in retrieving admin data'))
-}
-
-getResearchPending = (research_id) => {
+// View Copyright Remarks Agax
+viewCopyrightRemarks = (research_id) => {
 	$.ajax({
 		type: 'GET',
 		cache: false,
-		url: apiURL + `researchcop/research-pending/${research_id}`,
+		url: apiURL + `researchcop/my-submissions/remarks/${research_id}`,
 		headers: AJAX_HEADERS,
 		dataType: 'json',
 		success: (result) => {
-			if (result) {
 			const researchRecord = result.data
-				$('#edit_research_id').val(researchRecord.research_id)
-				$('#r_title2').html(researchRecord.research_title)
-			}
+				$('#view2_research_title').html(researchRecord.research_title)
+				$('#view_research_checked_by').html(researchRecord.copyright_checked_by)
+				$('#view_copyright_remarks').html(researchRecord.copyright_remarks)
 		},
-	}).fail(() => console.error('There was an error in retrieving research data'))
+	})
 }
 
-rejectResearchRecord = (research_id) => getResearchPending(research_id), getAdmin()
+uploadCopyrightAJAX = (pondForCopyright, research_id) => {
+	if ($('#uploadCopyrightForm')[0]) {
+		const form = new FormData($('#uploadCopyrightForm')[0])
+		console.log(research_id)
 
-rejectResearchRecordAJAX = (research_id) => {
-	// Reject Research
-	if ($('#rejectResearchForm')[0].checkValidity()) {
-		// no validation error
-		const form = new FormData($('#rejectResearchForm')[0])
+		if (
+			form.get('filepond') == '' ||
+			Object.prototype.toString.call(form.get('filepond')) === '[object File]'
+		) {
+			form.delete('filepond')
+		}
 
-		data = {
-			research_remarks: form.get('r_remarks'),
-			research_checked_by: form.get('r_checked_by'),
+		pondFiles = pondForCopyright.getFiles()
+		for (var i = 0; i < pondFiles.length; i++) {
+			// append the blob file
+			if (pondFiles[i].file != null) {
+				form.append('copyright_pdf', pondFiles[i].file)
+			}
+		}
+
+		for (var pair of form.entries()) {
+			console.log(pair[0] + ': ' + pair[1])
 		}
 
 		$.ajax({
-			url: apiURL + `researchcop/research-pending/rejectResearch/${research_id}`,
-			type: 'DELETE',
-			data: data,
-			dataType: 'json',
+			url: apiURL + `researchcop/my-submissions/copyrightupload/${research_id}`,
+			type: 'PUT',
 			headers: AJAX_HEADERS,
+			data: form,
+			processData: false,
+			contentType: false,
 			success: (result) => {
 				if (result) {
-					Toast.fire({
+					Swal.fire({
+						title: 'Success!',
+						text: 'Successfully upload your Research Copyright Document',
 						icon: 'success',
-						title: 'Reject Research Successfully!',
-					}).then(function () {
-						$('#rejectResearchModal').modal('hide')
-						$('form#rejectResearchForm')[0].reset()
-
-						// Reload My Submissions Datatable
-						loadResearchRecordsTable()
+						confirmButtonClass: 'btn btn-success w-xs mb-1',
+						confirmButtonText: 'Okay',
+						buttonsStyling: !1,
+					}).then((result) => {
+						if (result.isConfirmed) {
+							window.location.reload()
+						}
 					})
 				}
 			},
 		}).fail(() => {
 			Swal.fire({
-				html: '<div class="mt-3"><lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon><div class="mt-4 pt-2 fs-15"><h4>Something went Wrong !</h4><p class="text-muted mx-4 mb-0">There was an error while rejecting a research. Please try again.</p></div></div>',
+				html: '<div class="mt-3"><lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon><div class="mt-4 pt-2 fs-15"><h4>Something went Wrong!</h4><p class="text-muted mx-4 mb-0">There was an error while uploading your Copyright document. Please try again.</p></div></div>',
 				showCancelButton: !0,
 				showConfirmButton: !1,
 				cancelButtonClass: 'btn btn-danger w-xs mb-1',
@@ -272,66 +297,60 @@ rejectResearchRecordAJAX = (research_id) => {
 	}
 }
 
-// Approve Research
-approveResearchRecord = (research_id) => {
-
-	var checkname =  $('#r_checked_by').val();
-
-	data = {
-		research_checked_by: checkname
-	}
-	
-	$.ajaxSetup({
-		headers: {
-			Accept: 'application/json',
-			Authorization: 'Bearer ' + TOKEN,
-			ContentType: 'application/x-www-form-urlencoded',
+viewCopyrightDocument = (research_id) => {
+	$.ajax({
+		url: apiURL + `researchcop/my-submissions/${research_id}`,
+		type: 'GET',
+		headers: AJAX_HEADERS,
+		success: (result) => {
+			const data = result.data
+			console.log(data)
+			$('#hid_research_id').val(data.research_id)
+			$('#hid_research_title').html(data.research_title)
+			$('#document_preview').attr('src', data.copyright_pdf)
 		},
 	})
+}
 
+deleteCopyrightDocument = (research_id) => {
+	// next update
 	Swal.fire({
-		html:
-			'<div class="mt-3">' +
-			'<lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>' +
-			'<div class="mt-4 pt-2 fs-15 mx-5">' +
-			'<h4>Are you Sure ?</h4>' +
-			'<p class="text-muted mx-4 mb-0">Do you want to approve this research ?</p>' +
-			'</div>' +
-			'</div>',
+		title: 'Are you sure you want to delete your Copyright Document?',
+		text: "By deleting your Copyright Document, PUP guarantees that your uploads are deleted immediately and your research will marked as 'Non-Copyrighted' Research.",
+		iconHtml: `<lord-icon src="https://cdn.lordicon.com/nduddlov.json" trigger="loop" colors="outline:#f06548,primary:#ffffff,secondary:#f06548" style="width:100px;height:100px"></lord-icon>`,
+		customClass: {
+			icon: 'border-white',
+		},
 		showCancelButton: true,
-		confirmButtonClass: 'btn btn-success w-xs me-2 mb-1',
-		confirmButtonText: 'Approve',
-		cancelButtonClass: 'btn btn-light w-xs mb-1',
-		buttonsStyling: false,
-		showCloseButton: true,
-	}).then(function (result) {
-		if (result.value) {
+		confirmButtonColor: '#f06548',
+		cancelButtonColor: '#6c757d',
+		confirmButtonText: 'Delete',
+	}).then((result) => {
+		if (result.isConfirmed) {
 			$.ajax({
-				url: apiURL + 'researchcop/research-pending/approveResearch/' + research_id,
-				data: data,
-				type: 'PUT',
-				dataType: 'json',
+				url: apiURL + `researchcop/my-submissions/deletecopyrightupload/${research_id}`,
+				type: 'DELETE',
+				headers: AJAX_HEADERS,
 				success: (result) => {
 					if (result) {
-						Toast.fire({
-							icon: 'success',
-							title: 'Approve Research Successfully!',
+						Swal.fire({
+							html: '<div class="mt-3"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon><div class="mt-4 pt-2 fs-15"><h4>Well done !</h4><p class="text-muted mx-4 mb-0">You have successfully deleted your Copyright Document!</p></div></div>',
+							showCancelButton: !0,
+							showConfirmButton: !1,
+							cancelButtonClass: 'btn btn-success w-xs mb-1',
+							cancelButtonText: 'Ok',
+							buttonsStyling: !1,
+							showCloseButton: !0,
 						}).then(function () {
-							// Reload Research Records Datatable
-							loadResearchRecordsTable()
+							setTimeout(() => {
+								location.reload()
+							}, 1000)
 						})
 					}
 				},
 			}).fail(() => {
 				Swal.fire({
-					html:
-						'<div class="mt-3">' +
-						'<lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon>' +
-						'<div class="mt-4 pt-2 fs-15">' +
-						'<h4>Something went Wrong !</h4>' +
-						'<p class="text-muted mx-4 mb-0">There was an error while Approving Research. Please try again.</p>' +
-						'</div>' +
-						'</div>',
+					html: '<div class="mt-3"><lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon><div class="mt-4 pt-2 fs-15"><h4>Something went Wrong !</h4><p class="text-muted mx-4 mb-0">There was an error while deleting your Copyright Document. Please try again.</p></div></div>',
 					showCancelButton: !0,
 					showConfirmButton: !1,
 					cancelButtonClass: 'btn btn-danger w-xs mb-1',
@@ -341,21 +360,5 @@ approveResearchRecord = (research_id) => {
 				})
 			})
 		}
-	})
-}
-
-
-viewResearchDocument = (research_id) => {
-	$.ajax({
-		url: apiURL + `researchcop/research-pending/${research_id}`,
-		type: 'GET',
-		headers: AJAX_HEADERS,
-		success: (result) => {
-			const data = result.data
-			console.log(data)
-			$('#hid_research_id').val(data.research_id)
-			$('#hid_research_title').html(data.research_title)
-			$('#document_preview').attr('src', data.research_pdf)
-		},
 	})
 }

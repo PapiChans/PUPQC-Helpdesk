@@ -6,6 +6,9 @@ urlpatterns = [
     # STUDENT API URLS
     #----------------------
 
+    # Dashboard
+    path('student/dashboard-event', views.studfetchEvent),
+
     # General Info and Services: Event
     path('student/getEvent', views.studGetEvent),
     path('student/getEventInfo/<uuid:event_Id>', views.studGetEventInfo),
@@ -13,6 +16,10 @@ urlpatterns = [
     #----------------------
     # ADMIN API URLS
     #----------------------
+
+    # General Info and Services: Resources
+    path('admin/addCampusResources', views.adminAddCampusResources),
+    path('admin/getCampusResources', views.adminGetCampusResources),
 
     # General Info and Services: Event
     path('admin/addEvent', views.adminAddEvent),

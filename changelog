@@ -264,3 +264,10 @@
 - Remove unecessary and unused css and js libraries
 - Add media folder to .gitignore
 
+# 0.4.3
+- Push by Christian (https://github.com/papichans)
+- Add Backend for Gen Info: Resources: (Unfinished and Error)
+- Update API URL's
+- Update Serializer
+- Update Models
+- Improve HTML Pages

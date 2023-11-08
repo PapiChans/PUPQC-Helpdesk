@@ -9,9 +9,9 @@ $(function() {
         e.preventDefault() // prevent page refresh
     })
     $('#UploadImageEventForm').on('submit', function (e) {
-        e.preventDefault() // prevent page refresh
         const event_Id = $('#upload_event_Id').val()
         uploadImageEvent(EventImage, event_Id)
+        e.preventDefault() // prevent page refresh
     })
 })
 
