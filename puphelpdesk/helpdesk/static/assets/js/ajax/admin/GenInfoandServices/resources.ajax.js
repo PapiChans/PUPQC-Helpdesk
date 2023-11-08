@@ -3,8 +3,7 @@ $(function() {
         addResources(ResourcesFile)
         e.preventDefault() // prevent page refresh
     })
-
-    getResources()
+    getResources();
 })
 
 const notyf = new Notyf();
@@ -13,6 +12,12 @@ ResourcesFile = FilePond.create(document.querySelector('#resources_File'), {
     instantUpload: false,
     allowProcess: false,
 })
+
+// Get the Extention File
+function getFileExtension(filename){
+    const extension = filename.split('.').pop();
+    return extension;
+}
 
 addResources = (ResourcesFile) => {
     if ($('#AddResourcesForm')[0]) {
@@ -54,14 +59,14 @@ addResources = (ResourcesFile) => {
             })
         }
         else {
+            form.append('resources_Name', resources_Name);
+
             notyf.open({
                 message: 'Uploading File. Please Wait...',
                 position: {x:'right',y:'top'},
                 background: 'gray',
                 duration: 3000
             });
-
-            form.append('resources_Name', resources_Name);
             
             $.ajax({
                 type: 'POST',
@@ -80,11 +85,13 @@ addResources = (ResourcesFile) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         })
-                            $('#AddResourcesModal').modal('hide');
-                            $('form#AddResourcesForm')[0].reset();
-                            setTimeout(function () {
-                                location.reload()
-                            }, 2600);
+                        $('form#AddResourcesForm')[0].reset();
+                        $('#AddResourcesModal').modal('hide')
+
+                        setTimeout(function () {
+                            location.reload()
+                        }, 2600);
+
                     }
                 },
             })
@@ -113,25 +120,16 @@ getResources = () => {
 
     if (dt.length) {
         dt.DataTable({
-            dom:
-				"<'row'<'col-xl-12 mb-2'B>>" +
-				"<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-				"<'row'<'col-sm-12'tr>>" +
-				"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            buttons: [
-
-            ],
-            bDestroy: true,
             ajax: {
                 type: 'GET',
                 url: '/api/admin/getCampusResources',
                 ContentType: 'application/x-www-form-urlencoded',
-                dataType: 'json',
+                dataSrc: ''
             },
             columns: [
                 {
                     data: null,
-                    class: 'text-center',
+                    class: 'text-left',
                     render: (data) => {
                         const filename = data.resources_Name
                         return `${filename}`
@@ -139,21 +137,81 @@ getResources = () => {
                 },
                 {
                     data: null,
+                    width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const file = data.resources_File
+                        const file = getFileExtension(data.resources_File).toUpperCase()
                         return `${file}`
                     },
                 },
                 {
                     data: null,
+                    width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button onclick="handleDownload('${data.resource_File}')">Download</button>`
+                        return `<a href="${data.resources_File}" download="${data.resources_Name}"><button type="button" class="btn btn-info waves-effect waves-light"><i class="fa-solid fa-file-download"></i> Download</button></a>
+                                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteResources('${data.resources_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
+                                `
                     },
                 },
             ],
             order: [[0, 'asc']],
         })
     }
+    notyf.success({
+        message: 'Resources Fetched.',
+        position: {x:'right',y:'top'},
+        duration: 2500
+    })
+}
+
+deleteResources = (resources_Id) => {
+
+    Swal.fire({
+        title: 'Delete Resources',
+        html: 'Are you sure do you want to delete the file of this campus resources?',
+        icon: 'warning',
+        allowEnterKey: 'false',
+        allowOutsideClick: 'false',
+        allowEscapeKey: 'false',
+        confirmButtonText: 'Yes, delete it',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        cancelButtonClass: 'btn btn-danger w-xs mb-1',
+        confirmButtonColor: '#D40429',
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/admin/deleteCampusResources/${resources_Id}`,
+                dataType: 'json',
+                cache: false,
+                headers: {'X-CSRFToken': csrftoken},
+                success: (result) => {
+                    if (result) {
+                        notyf.success({
+                            message: 'Delete Resources Successfully',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        });
+                        setTimeout(function () {
+                            location.reload()
+                        }, 2600);
+                    }
+                },
+            })
+            .fail(() => {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Something went wrong while deleting the file. Please try again.',
+                    icon: 'error',
+                    allowEnterKey: 'false',
+                    allowOutsideClick: 'false',
+                    allowEscapeKey: 'false',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#D40429',
+                })
+            })
+        }
+    })
 }

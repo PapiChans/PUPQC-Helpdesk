@@ -277,3 +277,12 @@
 - ID and access card table for Admin added
 - Revised Lost and Found Pages
 - Revised Success Resources Page for Students
+
+# 0.4.5
+- Push by Christian (https://github.com/papichans)
+- Completed Backend for Gen Info: Resources (Both Student and Admin)
+- Add New AJAX Files
+- Update jQuery JS
+- Update Pages and Modal
+- Add CSRF Token as partial JS
+- Add API Views

@@ -31,3 +31,16 @@ def adminGetCampusResources(request):
         serializer = ResourcesSerializer(data, many=True)
         return Response(serializer.data)
     return Response({"message": "Get Resources Error"})
+
+@api_view(['DELETE'])
+def adminDeleteCampusResources(request, resources_Id):
+    if request.method == "DELETE":
+        
+        resources = Resources.objects.get(pk=resources_Id)
+        file = resources.resources_File.path
+        if os.path.exists(file):
+            os.remove(file)
+        resources.delete()
+
+        return Response({"message": "Delete Resources Success"})
+    return Response({"message": "Delete Resources Error"})

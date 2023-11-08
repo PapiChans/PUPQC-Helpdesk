@@ -7,6 +7,7 @@ from .student.dashboard import *
 
 # General Info and Services
 from .student.GenInfoandServices.events import *
+from .student.GenInfoandServices.resources import *
 
 # ---------------
 # Admin Routes

@@ -13,6 +13,9 @@ urlpatterns = [
     path('student/getEvent', views.studGetEvent),
     path('student/getEventInfo/<uuid:event_Id>', views.studGetEventInfo),
 
+    # General Info and Services: Resources
+    path('student/getCampusResources', views.studGetCampusResources),
+
     #----------------------
     # ADMIN API URLS
     #----------------------
@@ -20,6 +23,7 @@ urlpatterns = [
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
     path('admin/getCampusResources', views.adminGetCampusResources),
+    path('admin/deleteCampusResources/<uuid:resources_Id>', views.adminDeleteCampusResources),
 
     # General Info and Services: Event
     path('admin/addEvent', views.adminAddEvent),

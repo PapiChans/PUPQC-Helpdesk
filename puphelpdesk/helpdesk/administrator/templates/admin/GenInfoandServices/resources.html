@@ -14,7 +14,7 @@
 <h4 class="header-title">PUPQC Resources</h4>
 <p class="card-title-desc">Resources available in the campus.</p>
 
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2 mt-2" data-toggle="modal" data-target="#AddResourcesModal"><i class="fa-solid fa-file-upload"></i> Add Resources</button>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-toggle="modal" data-target="#AddResourcesModal"><i class="fa-solid fa-file-upload"></i> Add Resources</button>
 
 <table id="resources-datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <thead>
@@ -33,15 +33,13 @@
 {% endblock %}
 
 {% block customjs %}
-<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/js/pages/filepond.js' %}"></script>
 <script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
-<script src="{% static 'assets/js/ajax/admin/GenInfoandServices/resources.ajax.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script src="{% static 'assets/js/ajax/admin/GenInfoandServices/resources.ajax.js' %}"></script>
 {% endblock %} 
