@@ -1,0 +1,31 @@
+{% load static%}
+<div class="modal fade" id="AddResourcesModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Resources</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddResourcesForm" class="needs-validation" novalidate>                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">File Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="resources_Name" placeholder="File Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Upload File<span class="text-danger">*</span></label>
+                            <input type="file" class="filepond" id="resources_File" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="resources_Submit">Upload</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+

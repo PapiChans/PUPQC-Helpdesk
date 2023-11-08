@@ -85,7 +85,7 @@ class ServiceOffered(models.Model):
 class Resources(models.Model):
     resources_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     resources_Name = models.CharField(max_length=50, null=False)
-    resources_File = models.FileField(null=False)
+    resources_File = models.FileField(upload_to='Campus-Resources/', null=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Resources'
