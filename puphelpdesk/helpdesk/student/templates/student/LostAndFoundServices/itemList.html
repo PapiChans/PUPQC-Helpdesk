@@ -1,0 +1,51 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/css/student/LostAndFoundServices/itemList.css' %}" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+{% endblock %}
+{% block maincontent %}
+
+<div  class="container">
+
+    <div class="card">
+        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
+        <div class="card-content">
+            <h3>Name</h3>
+            <p>lorem ipsum dolor amet</p>
+            <a href="#" class="btn">View</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
+        <div class="card-content">
+            <h3>Name</h3>
+            <p>lorem ipsum dolor amet</p>
+            <a href="#" class="btn">View</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
+        <div class="card-content">
+            <h3>Name</h3>
+            <p>lorem ipsum dolor amet</p>
+            <a href="#" class="btn">View</a>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+
+
+
+
+
+{% endblock %}

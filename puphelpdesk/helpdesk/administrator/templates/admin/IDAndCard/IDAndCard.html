@@ -1,0 +1,161 @@
+{% extends "admin\partials\main.html" %}
+
+{% block customcss %}
+
+{% endblock %}
+
+{% block maincontent %}
+<div class="row">
+    <h5 class="header-title mb-4">Latest Transaction</h5>
+    <div class="d-flex justify-content-center col-12">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+
+                
+                <div class="table-responsive">
+                    <table class="table table-centered table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Transaction ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#"># 0</a>
+                                </th>
+                                <td>Loyd Lopez</td>
+                                <td>26 Jan</td>
+                                <td>
+                                    <div class="badge badge-soft-primary">Available</div>
+                                </td>
+                                <td>100</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#"># 1</a>
+                                </th>
+                                <td>Alvin Newton</td>
+                                <td>21 Jan</td>
+                                <td>
+                                    <div class="badge badge-soft-warning">Pending</div>
+                                </td>
+                                <td>100</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#"># 2</a>
+                                </th>
+                                <td>Bennie Perez</td>
+                                <td>15 Jan</td>
+                                <td>
+                                    <div class="badge badge-soft-primary">Available</div>
+                                </td>
+                                <td>First Time</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#"># 3</a>
+                                </th>
+                                <td>Steven Kwon</td>
+                                <td>11 Jan</td>
+                                <td>
+                                    <div class="badge badge-soft-primary">Available</div>
+                                </td>
+                                <td>100</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#"># 4</a>
+                                </th>
+                                <td>Bryan Roark</td>
+                                <td>08 Jan</td>
+                                <td>
+                                    <div class="badge badge-soft-danger">Cancel</div>
+                                </td>
+                                <td>First Time</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="mdi mdi-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+      
+{% endblock %}
+
+{% block customjs %}
+
+
+{% endblock %} 

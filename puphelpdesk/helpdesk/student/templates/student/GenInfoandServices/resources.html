@@ -9,6 +9,7 @@
     <tr role="row">
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Name</th>
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Type</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">View</th>
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">Download</th>
     </tr>
     </thead>
@@ -16,17 +17,64 @@
         <tr role="row" class="odd">
             <td class="sorting_1" tabindex="0">Completion Form</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
+
         <tr role="row" class="even">
             <td class="sorting_1" tabindex="0">Application for Change of Enrollment (ACE) Form: Use PUP Online ACE Form</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
+
         <tr role="row" class="odd">
             <td class="sorting_1" tabindex="0">PUP Medical Health Information Form for Student 2022</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
     </tbody>
 </table>

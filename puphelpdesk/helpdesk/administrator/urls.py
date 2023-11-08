@@ -21,4 +21,7 @@ urlpatterns = [
     #Feedbacks and Suggestions
     path('feedback', views.adminfeedbacks, name='admin/feedbacks'),
     path('suggestions', views.adminsuggestions, name='admin/suggestions'),
+    
+    #ID and Access Cards
+    path('student-services/IDRequests', views.adminIdCard, name='admin/student-services/IDRequests'),
 ]

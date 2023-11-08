@@ -54,6 +54,7 @@ urlpatterns = [
     # Lost annd Found Services
     path('LostandFound', views.lostandfound, name='LostandFound'),
     path('LostandFound/returnItems', views.returnItems, name='LostandFound/returnItems'),
+    path('LostandFound/itemsList', views.item_list, name='LostandFound/itemsList'),
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),

@@ -32,6 +32,7 @@ def geninforesources(request):
     pagename_value = "General Information and Services"
     return render(request, 'student/GenInfoandServices/resources.html',{'pagename': pagename_value})
 
+
 def geninfoevents(request):
     pagename_value = "General Information and Services"
     return render(request, 'student/GenInfoandServices/events.html',{'pagename': pagename_value})
@@ -139,6 +140,10 @@ def lost_and_found_views(request):
 
 def return_item(request):
     return render(request, 'reportlost.html')
+
+def item_list(request):
+    pagename_value = "Items Page"
+    return render(request, 'student/LostAndFoundServices/itemList.html', {'pagename': pagename_value})
 
     # Student Feedback and Suggestions
 def feedback(request):

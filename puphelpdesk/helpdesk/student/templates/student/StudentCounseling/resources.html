@@ -14,20 +14,68 @@
     </thead>
     <tbody>
         <tr role="row" class="odd">
-            <td class="sorting_1" tabindex="0">Student Guidelines Handbook</td>
+            <td class="sorting_1" tabindex="0">Student Success Guide Handbook</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
+
         <tr role="row" class="even">
             <td class="sorting_1" tabindex="0">Student Course Instructional Material</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
+
         <tr role="row" class="odd">
-            <td class="sorting_1" tabindex="0">Student Success Guide Handbook</td>
+            <td class="sorting_1" tabindex="0">Student Guidelines Handbook</td>
             <td>PDF</td>
-            <td><button type="button" class="btn btn-primary waves-effect waves-light">Download</button></td>
+            <td>
+                {% if file %}
+                <a href="{{file.pdf.url}}" class="btn">View File</a>
+            {% else %}
+            <span class="text-muted">No File</span>
+            {% endif %}
+            </td>
+            <td>
+                {% if file %}
+                <a href="{{file.url}}" download="{{file.name}}" type="button" class="btn btn-primary waves-effect waves-light">Download</a>
+            {% else %}
+
+            <span class="text-muted">No File</span>
+            {% endif %}
+
+            </td>
         </tr>
+    </tbody>
     </tbody>
 </table>
 {% endblock %}
