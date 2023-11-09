@@ -286,3 +286,15 @@
 - Update Pages and Modal
 - Add CSRF Token as partial JS
 - Add API Views
+
+# 0.4.6
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Student Support: Success Resources (Both Student and Admin)
+- Add API Views
+- Revise Dashboard pages
+- Add New AJAX Files
+- Update Pages and Modal
+- Remove Unused JS
+- Update Models
+- Update Serializers
+- Update API URLs

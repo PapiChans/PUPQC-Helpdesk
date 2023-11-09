@@ -40,7 +40,7 @@ def admingeninforeferrals(request):
 #Student Counseling
 def adminSuccessResources(request):
     pagename_value = "Success Resources"
-    return render(request, 'admin/StudentCounseling/successResources.html',{'pagename': pagename_value})
+    return render(request, 'admin/StudentCounseling/resources.html',{'pagename': pagename_value})
 
 #Feedbacks and Suggestions
 def adminfeedbacks(request):

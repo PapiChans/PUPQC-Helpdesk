@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "admin\partials\main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/css/pages/filepond.css' %}" rel="stylesheet"/>
@@ -10,12 +10,13 @@
 {% endblock %}
 
 {% block maincontent %}
-<h4 class="header-title">PUPQC Resources</h4>
-<p class="card-title-desc">Resources available in the campus.</p>
+{% include "admin\StudentCounseling\modal\resources-modal.html" %} 
+<h4 class="header-title">PUPQC Success Resources</h4>
+<p class="card-title-desc">Resources to help students enhance study skills, time management, and academic success strategies.</p>
 
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" onclick="location.reload()"><i class="fa-solid fa-refresh"></i> Reload</button>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-toggle="modal" data-target="#AddSuccessResourcesModal"><i class="fa-solid fa-file-upload"></i> Add Resources</button>
 
-<table id="resources-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+<table id="success-resources-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
         <tr>
             <th class="dt-head-center">File Name</th>
@@ -40,5 +41,5 @@
 <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-<script src="{% static 'assets/js/ajax/student/GenInfoandServices/resources.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/StudentCounseling/resources.ajax.js' %}"></script>
 {% endblock %} 

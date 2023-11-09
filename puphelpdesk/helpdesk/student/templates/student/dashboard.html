@@ -7,14 +7,9 @@
 {% block maincontent %}
 <h4 class="header-title">Welcome, Student Name</h4>
 <p class="card-title-desc">This is PUPQC Helpdesk, how can I assist you?</p>
-</div>
-</div>
-
-<div class="card">
-    <div class="card-body">
-        <h4 class="header-title">Notifications</h4>
-        <h3 class="text-center" id="no-notif">No Notifications</h3>
-        <div id="notif-event"></div>
+<h4 class="header-title">Notifications</h4>
+<h3 class="text-center" id="no-notif"></h3>
+<div id="notif-event"></div>
     </div>
 </div>
 
@@ -22,7 +17,6 @@
 {% endblock %}
 
 {% block customjs %}
-<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
 <script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/dashboard.ajax.js' %}"></script>
 {% endblock %}

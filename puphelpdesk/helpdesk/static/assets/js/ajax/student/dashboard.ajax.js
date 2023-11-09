@@ -31,3 +31,8 @@ notifEvent = () => {
         });
     })
 }
+
+// No Notification Dislay
+if ($('#notif-event').html(null)) {
+    $('#no-notif').html('No Notifications');
+}

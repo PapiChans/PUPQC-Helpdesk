@@ -114,6 +114,15 @@ class ServiceReferrals(models.Model):
     class Meta:
         db_table = 'Service Referrals'
 
+# Student Support and Counseling: Success Resources
+class SuccessResources(models.Model):
+    success_resources_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    success_resources_Name = models.CharField(max_length=50, null=False)
+    success_resources_File = models.FileField(upload_to='Success-Resources/', null=True)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Success Resources'
+
 # Feedback and Suggestion: Feedback
 Feedback_Choices = [('FB','Feedback'),('SG','Suggestions')]
 class Feedback(models.Model):

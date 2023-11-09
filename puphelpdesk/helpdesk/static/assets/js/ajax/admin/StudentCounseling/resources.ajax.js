@@ -1,14 +1,14 @@
 $(function() {
-    $('#AddResourcesForm').on('submit', function (e) {
+    $('#AddSuccessResourcesForm').on('submit', function (e) {
         addResources(ResourcesFile)
         e.preventDefault() // prevent page refresh
     })
-    getResources();
+    getSuccessResources();
 })
 
 const notyf = new Notyf();
 
-ResourcesFile = FilePond.create(document.querySelector('#resources_File'), {
+ResourcesFile = FilePond.create(document.querySelector('#success_resources_File'), {
     instantUpload: false,
     allowProcess: false,
 })
@@ -20,11 +20,11 @@ function getFileExtension(filename){
 }
 
 addResources = (ResourcesFile) => {
-    if ($('#AddResourcesForm')[0]) {
-        const form = new FormData($('#AddResourcesForm')[0])
+    if ($('#AddSuccessResourcesForm')[0]) {
+        const form = new FormData($('#AddSuccessResourcesForm')[0])
         
-        const resources_Name = $('#resources_Name').val();
-        form.append('resources_Name', resources_Name);
+        const resources_Name = $('#success_resources_Name').val();
+        form.append('success_resources_Name', resources_Name);
 
         if (
 			form.get('filepond') == '' ||
@@ -37,7 +37,7 @@ addResources = (ResourcesFile) => {
 		for (var i = 0; i < pondFiles.length; i++) {
 			// append the blob file
 			if (pondFiles[i].file != null) {
-				form.append('resources_File', pondFiles[i].file)
+				form.append('success_resources_File', pondFiles[i].file)
                 
 			}
 		}
@@ -59,7 +59,7 @@ addResources = (ResourcesFile) => {
             })
         }
         else {
-            form.append('resources_Name', resources_Name);
+            form.append('success_resources_Name', resources_Name);
 
             notyf.open({
                 message: 'Uploading File. Please Wait...',
@@ -70,7 +70,7 @@ addResources = (ResourcesFile) => {
             
             $.ajax({
                 type: 'POST',
-                url: '/api/admin/addCampusResources',
+                url: '/api/admin/addSuccessResources',
                 dataType: 'json',
                 data: form,
                 processData: false,
@@ -79,14 +79,14 @@ addResources = (ResourcesFile) => {
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {
                     if (result) {
-                        $('#resources_Submit').prop('disabled', true);
+                        $('#success_resources_Submit').prop('disabled', true);
                         notyf.success({
-                            message: 'Upload Campus Resources Successfully',
+                            message: 'Upload Success Resources Successfully',
                             position: {x:'right',y:'top'},
                             duration: 2500
                         })
-                        $('form#AddResourcesForm')[0].reset();
-                        $('#AddResourcesModal').modal('hide')
+                        $('form#AddSuccessResourcesForm')[0].reset();
+                        $('#AddSuccessResourcesModal').modal('hide')
 
                         setTimeout(function () {
                             location.reload()
@@ -98,7 +98,7 @@ addResources = (ResourcesFile) => {
             .fail(() => {
                 Swal.fire({
                     title: 'Oops!',
-                    text: 'Something went wrong while uploading campus resources. Please try again.',
+                    text: 'Something went wrong while uploading Success Resources. Please try again.',
                     icon: 'error',
                     allowEnterKey: 'false',
                     allowOutsideClick: 'false',
@@ -111,8 +111,8 @@ addResources = (ResourcesFile) => {
     }
 }
 
-getResources = () => {
-    const dt = $('#resources-datatable');
+getSuccessResources = () => {
+    const dt = $('#success-resources-datatable');
 
     $.ajaxSetup({
 		headers: {'X-CSRFToken': csrftoken},
@@ -122,7 +122,7 @@ getResources = () => {
         dt.DataTable({
             ajax: {
                 type: 'GET',
-                url: '/api/admin/getCampusResources',
+                url: '/api/admin/getSuccessResources',
                 ContentType: 'application/x-www-form-urlencoded',
                 dataSrc: ''
             },
@@ -131,7 +131,7 @@ getResources = () => {
                     data: null,
                     class: 'text-left',
                     render: (data) => {
-                        const filename = data.resources_Name
+                        const filename = data.success_resources_Name
                         return `${filename}`
                     },
                 },
@@ -140,7 +140,7 @@ getResources = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const file = getFileExtension(data.resources_File).toUpperCase()
+                        const file = getFileExtension(data.success_resources_File).toUpperCase()
                         return `${file}`
                     },
                 },
@@ -149,8 +149,8 @@ getResources = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" onclick="downloadFile('${data.resources_File}', '${data.resources_Name}')"class="btn btn-info waves-effect waves-light"><i class="fa-solid fa-file-download"></i> Download</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteResources('${data.resources_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
+                        return `<button type="button" onclick="downloadFile('${data.success_resources_File}', '${data.success_resources_Name}')"class="btn btn-info waves-effect waves-light"><i class="fa-solid fa-file-download"></i> Download</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteSuccessResources('${data.success_resources_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
                                 `
                     },
                 },
@@ -159,7 +159,7 @@ getResources = () => {
         })
     }
     notyf.success({
-        message: 'Resources Fetched.',
+        message: 'Success Resources Fetched.',
         position: {x:'right',y:'top'},
         duration: 2500
     })
@@ -193,11 +193,11 @@ function downloadFile(fileUrl, fileName) {
         .catch(error => console.error('Error downloading file:', error));
 }
 
-deleteResources = (resources_Id) => {
+deleteSuccessResources = (resources_Id) => {
 
     Swal.fire({
         title: 'Delete Resources',
-        html: 'Are you sure do you want to delete the file of this campus resources?',
+        html: 'Are you sure do you want to delete the file of this Success resources?',
         icon: 'warning',
         allowEnterKey: 'false',
         allowOutsideClick: 'false',
@@ -211,7 +211,7 @@ deleteResources = (resources_Id) => {
         if (result.value) {
             $.ajax({
                 type: 'DELETE',
-                url: `/api/admin/deleteCampusResources/${resources_Id}`,
+                url: `/api/admin/deleteSuccessResources/${resources_Id}`,
                 dataType: 'json',
                 cache: false,
                 headers: {'X-CSRFToken': csrftoken},

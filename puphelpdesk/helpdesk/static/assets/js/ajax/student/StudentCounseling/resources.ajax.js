@@ -1,5 +1,5 @@
 $(function() {
-    getResources();
+    getSuccessResources();
 })
 
 const notyf = new Notyf();
@@ -10,8 +10,8 @@ function getFileExtension(filename){
     return extension;
 }
 
-getResources = () => {
-    const dt = $('#resources-datatable');
+getSuccessResources = () => {
+    const dt = $('#success-resources-datatable');
 
     $.ajaxSetup({
 		headers: {'X-CSRFToken': csrftoken},
@@ -21,7 +21,7 @@ getResources = () => {
         dt.DataTable({
             ajax: {
                 type: 'GET',
-                url: '/api/student/getCampusResources',
+                url: '/api/student/getSuccessResources',
                 ContentType: 'application/x-www-form-urlencoded',
                 dataSrc: ''
             },
@@ -30,7 +30,7 @@ getResources = () => {
                     data: null,
                     class: 'text-left',
                     render: (data) => {
-                        const filename = data.resources_Name
+                        const filename = data.success_resources_Name
                         return `${filename}`
                     },
                 },
@@ -39,7 +39,7 @@ getResources = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const file = getFileExtension(data.resources_File).toUpperCase()
+                        const file = getFileExtension(data.success_resources_File).toUpperCase()
                         return `${file}`
                     },
                 },
@@ -48,7 +48,8 @@ getResources = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" onclick="downloadFile('${data.resources_File}', '${data.resources_Name}')"class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-file-download"></i> Download</button>`
+                        return `<button type="button" onclick="downloadFile('${data.success_resources_File}', '${data.success_resources_Name}')"class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-file-download"></i> Download</button>
+                                `
                     },
                 },
             ],
@@ -56,7 +57,7 @@ getResources = () => {
         })
     }
     notyf.success({
-        message: 'Resources Fetched.',
+        message: 'Success Resources Fetched.',
         position: {x:'right',y:'top'},
         duration: 2500
     })
