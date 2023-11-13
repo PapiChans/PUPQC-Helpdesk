@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, SuccessResources
+from .models import User, Resources, Events, Facilities, SuccessResources
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +14,11 @@ class ResourcesSerializer(serializers.ModelSerializer):
 class EventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
+        fields = '__all__'
+
+class FacilitiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Facilities
         fields = '__all__'
 
 class SuccessResourcesSerializer(serializers.ModelSerializer):

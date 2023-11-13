@@ -298,3 +298,13 @@
 - Update Models
 - Update Serializers
 - Update API URLs
+
+# 0.4.7
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Student Support: Facilities (Both Student and Admin)
+- Add API Views
+- Revise Dashboard pages
+- Update Pages and Modal
+- Update Models
+- Update Serializers
+- Update API URLs

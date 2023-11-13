@@ -67,7 +67,7 @@ class Facilities(models.Model):
     facility_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     facility_Name = models.CharField(max_length=50, null=False)
     facility_Description = models.TextField(null=False)
-    facility_Image = models.ImageField(null=False)
+    facility_Image = models.FileField(upload_to='Facilities/', null=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Facilities'
@@ -75,7 +75,7 @@ class Facilities(models.Model):
 # General Information and Services: Services
 class ServiceOffered(models.Model):
     service_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    service_Name = models.CharField(max_length=50, null=False)
+    service_Name = models.CharField(max_length=100, null=False)
     service_Description = models.TextField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
@@ -84,7 +84,7 @@ class ServiceOffered(models.Model):
 # General Information and Services: Resources
 class Resources(models.Model):
     resources_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    resources_Name = models.CharField(max_length=50, null=False)
+    resources_Name = models.CharField(max_length=100, null=False)
     resources_File = models.FileField(upload_to='Campus-Resources/', null=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
@@ -93,7 +93,7 @@ class Resources(models.Model):
 # General Information and Services: Events
 class Events(models.Model):
     event_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    event_Name = models.CharField(max_length=50, null=False)
+    event_Name = models.CharField(max_length=100, null=False)
     event_Description = models.TextField(null=False)
     event_Image = models.FileField(upload_to='Events/', null=True)
     event_Date_Start = models.DateField(null=False)
@@ -108,7 +108,7 @@ class Events(models.Model):
 # General Information and Services: Referrals
 class ServiceReferrals(models.Model):
     referral_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    referral_Name = models.CharField(max_length=50, null=False)
+    referral_Name = models.CharField(max_length=100, null=False)
     referral_Description = models.TextField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
@@ -117,7 +117,7 @@ class ServiceReferrals(models.Model):
 # Student Support and Counseling: Success Resources
 class SuccessResources(models.Model):
     success_resources_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    success_resources_Name = models.CharField(max_length=50, null=False)
+    success_resources_Name = models.CharField(max_length=100, null=False)
     success_resources_File = models.FileField(upload_to='Success-Resources/', null=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:

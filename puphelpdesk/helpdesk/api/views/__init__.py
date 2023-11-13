@@ -8,6 +8,7 @@ from .student.dashboard import *
 # General Info and Services
 from .student.GenInfoandServices.events import *
 from .student.GenInfoandServices.resources import *
+from .student.GenInfoandServices.facilities import *
 
 # Student Support and Counseling
 from .student.StudentCounseling.successresources import *
@@ -19,6 +20,7 @@ from .student.StudentCounseling.successresources import *
 # General Info and Services
 from .admin.GenInfoandServices.events import *
 from .admin.GenInfoandServices.resources import *
+from .admin.GenInfoandServices.facilities import *
 
 # Student Support and Counseling
 from .admin.StudentCounseling.successresources import *

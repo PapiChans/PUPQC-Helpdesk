@@ -1,154 +1,20 @@
 {% extends "admin\partials\main.html" %}
 {% load static %}
-
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/css/pages/glightbox.min.css' %}" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-<style>
-
-
-
-    
-.editBtn {
-    background-color: #00FF00;
-    color: #fff;
-    border: 1px solid #;
-}
-
-.delBtn {
-    background-color: #dc3545;
-    color: #fff;
-    border: 1px solid #;
-}
-
-
-</style>
-
+<link href="{% static 'assets/css/pages/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
 {% endblock%}
-
 {% block maincontent %}
-
 {% include "admin\GenInfoandServices\modal\facilities-modal.html" %} 
-
-
 <h4 class="header-title">PUPQC Facilities</h4>
 <p class="card-title-desc">These are the facilities in the campus.</p>
 
-<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddfacilitiesModal">Add New Facility</button>
+<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddFacilitiesModal"><i class="fa-solid fa-plus"></i> Add New Facility</button>
 
-
-<div class="row container-grid projects-wrapper">
-    <div class="col-xl-3 col-md-4 col-sm-6">
-        <div class="gallery-box mt-4">
-            <a class="gallery-popup glightbox" href="{% static 'assets/images/miserior.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc1; descPosition: right;" >
-                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/miserior.jpg' %}" alt="image" />
-                <div class="gallery-overlay">
-                    <div class="overlay-content">
-                        <h5 class="overlay-title" contenteditable="false">Miserior Building</h5>
-                        <p class="text-uppercase mb-0" contenteditable="false">Facilities</p>
-                    </div>
-                </div>
-                <div class="glightbox-desc custom-desc1" contenteditable="false">
-                    <p>
-                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
-                        Felis pretium eros ligula natoque ad ante rutrum himenaeos, adipiscing urna mauris porta quam efficitur odio, sagittis morbi tellus nisi molestie mus faucibus.
-                    </p>
-                </div>
-            </a>
-        </div>
-        <button class="editBtn" id="editBtn"> Edit </button>
-        <button class="delBtn"id="delBtn">Delete</button>
-    </div>
-
-    <div class="col-xl-3 col-md-4 col-sm-6">
-        <div class="gallery-box mt-4">
-            <a class="gallery-popup glightbox" href="{% static 'assets/images/AVR.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc1; descPosition: right;" >
-                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/AVR.jpg' %}" alt="image" />
-                <div class="gallery-overlay">
-                    <div class="overlay-content">
-                        <h5 class="overlay-title"  contenteditable="false">Audio Visual Room</h5>
-                        <p class="text-uppercase mb-0"  contenteditable="false">Facilities</p>
-                    </div>
-                </div>
-                <div class="glightbox-desc custom-desc1"  contenteditable="false">
-                    <p>
-                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
-                        Felis pretium eros ligula natoque ad ante rutrum himenaeos, adipiscing urna mauris porta quam efficitur odio, sagittis morbi tellus nisi molestie mus faucibus.
-                    </p>
-                </div>
-            </a>
-        </div>
-        <button class="editBtn" id="editBtn"> Edit </button>
-        <button class="delBtn" id="delBtn">Delete</button>
-    </div>
-
-    <div class="col-xl-3 col-md-4 col-sm-6">
-        <div class="gallery-box mt-4">
-            <a class="gallery-popup glightbox" href="{% static 'assets/images/ComLab.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc1; descPosition: right;" >
-                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/ComLab.jpg' %}" alt="image" />
-                <div class="gallery-overlay">
-                    <div class="overlay-content">
-                        <h5 class="overlay-title"  contenteditable="false">Computer Laboratory</h5>
-                        <p class="text-uppercase mb-0"  contenteditable="false">Facilities</p>
-                    </div>
-                </div>
-                <div class="glightbox-desc custom-desc1"  contenteditable="false">
-                    <p>
-                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
-                        Felis pretium eros ligula natoque ad ante rutrum himenaeos, adipiscing urna mauris porta quam efficitur odio, sagittis morbi tellus nisi molestie mus faucibus.
-                    </p>
-                </div>
-            </a>
-        </div>
-        <button class="editBtn" id="editBtn"> Edit </button>
-        <button class="delBtn" id="delBtn">Delete</button>
-    </div>
-
-    <div class="col-xl-3 col-md-4 col-sm-6">
-        <div class="gallery-box mt-4">
-            <a class="gallery-popup glightbox" href="{% static 'assets/images/StudLounge.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc2; descPosition: right;" >
-                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/StudLounge.jpg' %}" alt="image" />
-                <div class="gallery-overlay">
-                    <div class="overlay-content">
-                        <h5 class="overlay-title"  contenteditable="false">Student Lounge</h5>
-                        <p class="text-uppercase mb-0"  contenteditable="false">Facilities</p>
-                    </div>
-                </div>
-                <div class="glightbox-desc custom-desc2"  contenteditable="false">
-                    <p>
-                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
-                    </p>
-                </div>
-            </a>
-        </div>
-
-        <button class="editBtn" id="editBtn"> Edit </button>
-        <button class="delBtn" id="delBtn">Delete</button>
-    </div>
-
-    <div class="col-xl-3 col-md-4 col-sm-6">
-        <div class="gallery-box mt-4">
-            <a class="gallery-popup glightbox" href="{% static 'assets/images/building.jpg' %}" data-glightbox="title: Description Right; description: .custom-desc1; descPosition: right;" >
-                <img class="gallery-demo-img img-fluid mx-auto" src="{% static 'assets/images/building.jpg' %}" alt="image" />
-                <div class="gallery-overlay">
-                    <div class="overlay-content">
-                        <h5 class="overlay-title"  contenteditable="false">School Building</h5>
-                        <p class="text-uppercase mb-0"  contenteditable="false">Facilities</p>
-                    </div>
-                </div>
-                <div class="glightbox-desc custom-desc1"contenteditable="false">
-                    <p>
-                        Primis pharetra facilisis lorem quis penatibus ad nulla inceptos, dui per tempor taciti aliquet consequat sodales, curae tristique gravida auctor interdum malesuada sagittis.
-                        Felis pretium eros ligula natoque ad ante rutrum himenaeos, adipiscing urna mauris porta quam efficitur odio, sagittis morbi tellus nisi molestie mus faucibus.
-                    </p>
-                </div>
-            </a>
-        </div>
-        <button class="editBtn" id="editBtn"> Edit </button>
-        <button class="delBtn" id="delBtn">Delete</button>
-    </div>
+<h3 id="no_Display" class="text-center"></h3>
+<div class="row container-grid projects-wrapper" id="facility_Display">
 
 </div>
 
@@ -157,18 +23,9 @@
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/glightbox.min.js' %}"></script>
-
-<script>const lightbox = GLightbox({
-    touchNavigation: true,
-    openEffect: 'zoom',
-    closeEffect: 'zoom',
-});</script>
-
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
-<script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
-<script src="{% static 'assets/js/pages/flatpickr.js' %}"></script>
 <script src="{% static 'assets/js/pages/filepond.js' %}"></script>
 <script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
-
+<script src="{% static 'assets/js/ajax/admin/GenInfoandServices/facilities.ajax.js' %}"></script>
 {% endblock %}
