@@ -8,7 +8,9 @@ def studfetchEvent(request):
     if request.method == "GET":
         data = Events.objects.all()
         if data.exists():
-            return Response({"message": "Have fetched Events"})
+            # Serialize the events data if needed
+            serialized_data = EventsSerializer(data, many=True).data
+            return Response({"message": "Have fetched Events", "events": serialized_data})
         else:
             return Response({"message": "No fetched Events"})
     return Response({"message": "Get Event Error"})

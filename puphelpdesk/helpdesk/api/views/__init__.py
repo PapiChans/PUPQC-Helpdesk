@@ -13,6 +13,9 @@ from .student.GenInfoandServices.facilities import *
 # Student Support and Counseling
 from .student.StudentCounseling.successresources import *
 
+# Feedback and Suggestions
+from .student.Feedback.feedback import *
+
 # ---------------
 # Admin Routes
 # ---------------
@@ -24,3 +27,7 @@ from .admin.GenInfoandServices.facilities import *
 
 # Student Support and Counseling
 from .admin.StudentCounseling.successresources import *
+
+# Feedback and Suggestions
+from .admin.Feedback.feedback import *
+from .admin.Feedback.suggestion import *

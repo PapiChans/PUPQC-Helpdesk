@@ -309,9 +309,19 @@
 - Update Serializers
 - Update API URLs
   
-  
 # 0.4.8
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - Temporary Dashboard Added
 - UI for Students page in the Admin Side added
 - Service Referrals Added
+
+# 0.4.9
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Feedback and Suggestions (Both Student and Admin)
+- Add dataTable Library for offline functionality
+- BUG FIX: Student Dashboard Event Fetching Notfication Don't display if no Event
+- Update Pages and Modal
+- Update Models
+- Update Serializers
+- Update API URLs
+- Update API Views

@@ -2,64 +2,47 @@
 {% load static %}
 
 {% block customcss %}
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
- 
+<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
 {% include "student\Feedback\modal\feedback-modal.html" %}
     <h4 class="header-title">Give us a Feedback or Suggestions!</h4>
-    <p class="card-title-desc">To improved our Helpdesk system, you may give us a feedback or suggestions.</p>
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#FeedbackModal">Submit a Feedback</button>
+    <p class="card-title-desc">To improved our Helpdesk system, you can give us a feedback or suggestions.</p>
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#FeedbackModal"><i class="fa-solid fa-star"></i> Submit a Feedback</button>
     <div class="card-body">
         <div class="text-center mt-4">
             <h4>You have Submitted <span class="text-primary">0</span> Feedbacks and <span class="text-primary">0</span> Suggestions</h4>
         </div>
     </div>
-    <table id="example" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+    <table id="feedback-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
         <thead>
             <tr>
-            <th>Feedback ID</th>
-            <th>Feedback Type</th>
-            <th>Feedback</th>
-            <th>Status</th>
+                <th class="dt-head-center">Feedback Type</th>
+                <th class="dt-head-center">Feedback Date Submitted</th>
+                <th class="dt-head-center">Status</th>
+                <th class="dt-head-center">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>873b3832-4ead-11ee-be56-0242ac120002</td>
-                <td>Feedback</td>
-                <td>Feedback</td>
-                <td><span class="badge badge-pill badge-warning">Pending</span></td>
-            </tr>
-            <tr>
-                <td>8f70bba8-4ead-11ee-be56-0242ac120002</td>
-                <td>Suggestion</td>
-                <td>Feedback</td>
-                <td><span class="badge badge-pill badge-danger">Rejected</span></td>
-            </tr>  
+    
         </tbody>
     </table>
 {% endblock %}
 
 {% block customjs %}
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            responsive: true,
-        } );
-    } );
-</script>
-
+<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/Feedback/feedback.ajax.js' %}"></script>
 {% endblock %}
 
 

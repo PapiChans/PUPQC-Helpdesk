@@ -13,7 +13,7 @@ notifEvent = () => {
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
-            if (result) {
+            if (result && result.events && result.events.length > 0) {
                 let event_format = `<div class="alert alert-success" role="alert">
                                         Check out the new
                                         <a href="geninfo/events" class="alert-link">Posted Events</a>. Save the date.
@@ -33,6 +33,8 @@ notifEvent = () => {
 }
 
 // No Notification Dislay
-if ($('#notif-event').html(null)) {
+// Check if #notif-event has no children
+if ($('#notif-event').children().length === 0) {
+    // No events appended, update UI accordingly
     $('#no-notif').html('No Notifications');
 }

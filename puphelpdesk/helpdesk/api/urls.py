@@ -22,6 +22,12 @@ urlpatterns = [
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
 
+    # Feedback and Suggestions
+    path('student/submitFeedback', views.studSubmitFeedback),
+    path('student/getFeedback', views.studGetFeedback),
+    path('student/getFeedbackInfo/<uuid:feedback_Id>', views.studGetFeedbackInfo),
+    path('student/deleteFeedback/<uuid:feedback_Id>', views.studDeleteFeedback),
+
     #----------------------
     # ADMIN API URLS
     #----------------------
@@ -52,4 +58,18 @@ urlpatterns = [
     path('admin/addSuccessResources', views.adminAddSuccessResources),
     path('admin/getSuccessResources', views.adminGetSuccessResources),
     path('admin/deleteSuccessResources/<uuid:success_resources_Id>', views.adminDeleteSuccessResources),
+
+    # Feedback and Suggestions: Feedback
+    path('admin/getNewFeedback', views.adminGetNewFeedback),
+    path('admin/getReadFeedback', views.adminGetReadFeedback),
+    path('admin/getFeedbackInfo/<uuid:feedback_Id>', views.adminGetFeedbackInfo),
+    path('admin/feedbackMarkAsRead/<uuid:feedback_Id>', views.adminFeedbackMarkAsRead),
+    path('admin/deleteFeedback/<uuid:feedback_Id>', views.adminDeleteFeedback),
+
+    # Feedback and Suggestions: Suggestions
+    path('admin/getNewSuggestion', views.adminGetNewSuggestion),
+    path('admin/getReadSuggestion', views.adminGetReadSuggestion),
+    path('admin/getSuggestionInfo/<uuid:feedback_Id>', views.adminGetSuggestionInfo),
+    path('admin/suggestionMarkAsRead/<uuid:feedback_Id>', views.adminSuggestionMarkAsRead),
+    path('admin/deleteSuggestion/<uuid:feedback_Id>', views.adminDeleteSuggestion),
 ]

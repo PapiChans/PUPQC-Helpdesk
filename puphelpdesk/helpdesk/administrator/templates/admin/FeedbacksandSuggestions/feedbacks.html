@@ -1,73 +1,78 @@
 {% extends "admin\partials\main.html" %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% load static %}
 
 {% block customcss %}
-<style>
-    .container3 {
-        padding: 20px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin: 20px 0;
-    }
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    
-    thead {
-        background-color: #2d2e4a;
-        color: #fff;
-    }
- 
-    ul {
-        padding: 0;
-        list-style: none;
-    }
-
-    #messages {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-    }
-    #messages .container3 {
-        margin: 20px;
-    }
-    
-    </style>
-
+<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
-<section class="container3" id="messages"> <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Student Name</th>
-            <th>Feedbacks</th>
-        </tr>
-    </thead>
-    <tbody id="contactData">
-        <!-- Table Data -->
-    </tbody>
-</table>
-</section>
+{% include "admin\FeedbacksandSuggestions\modal\feedback-modal.html" %}
+<h4 class="header-title">Feedbacks</h4>
+<p class="card-title-desc">These are the Feedbacks from the Students</p>
 
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" onclick="location.reload()"><i class="fa-solid fa-refresh"></i> Reload</button>
 
+<ul class="nav nav-pills nav-justified" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-toggle="tab" href="#new-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-inbox"></i> <span class="d-none d-md-inline-block">New</span> 
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-toggle="tab" href="#read-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-envelope-circle-check"></i> <span class="d-none d-md-inline-block">Read</span> 
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="new-justify" role="tabpanel">
+        <table id="feedback-new-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Student Name</th>
+                    <th class="dt-head-center">Student ID</th>
+                    <th class="dt-head-center">Feedback Date Submitted</th>
+                    <th class="dt-head-center">Status</th>
+                    <th class="dt-head-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane" id="read-justify" role="tabpanel">
+        <table id="feedback-read-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Student Name</th>
+                    <th class="dt-head-center">Student ID</th>
+                    <th class="dt-head-center">Feedback Date Submitted</th>
+                    <th class="dt-head-center">Status</th>
+                    <th class="dt-head-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
 
 {% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Feedback/feedback.ajax.js' %}"></script>
+{% endblock %}
 
 
-{% endblock %} 

@@ -124,13 +124,14 @@ class SuccessResources(models.Model):
         db_table = 'Success Resources'
 
 # Feedback and Suggestion: Feedback
-Feedback_Choices = [('FB','Feedback'),('SG','Suggestions')]
 class Feedback(models.Model):
     feedback_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, editable=False, on_delete=models.RESTRICT)
-    feedback_type = models.CharField(max_length=50, null=False, choices=Feedback_Choices)
+    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
+    feedback_Type = models.CharField(max_length=50, null=False)
+    student_Id = models.CharField(max_length=50, null=False)
     student_Name = models.CharField(max_length=50, null=False)
-    feedback_text = models.TextField(null=False)
+    feedback_Text = models.TextField(null=False)
+    feedback_Status = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
