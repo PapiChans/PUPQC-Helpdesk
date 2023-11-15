@@ -15,6 +15,12 @@ def admineditprofile(request):
     pagename_value = "Edit Profile"
     return render(request, 'admin/editprofile.html',{'pagename': pagename_value})
 
+#Student Account Requests
+
+def adminStudents(request):
+    pagename_value = "Students"
+    return render(request, 'admin/students.html',{'pagename': pagename_value})
+
 # Admin General Info
 def admingeninfofacilities(request):
     pagename_value = "Facilities"
@@ -57,6 +63,10 @@ def adminsuggestions(request):
 def adminIdCard(request):
     pagename_value = "ID and Access Cards"
     return render(request, 'admin/IDAndCard/IDAndCard.html',{'pagename': pagename_value})
+
+#Student Careers
+
+
 
 
 

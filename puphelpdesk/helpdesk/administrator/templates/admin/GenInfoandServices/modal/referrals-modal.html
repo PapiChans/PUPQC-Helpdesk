@@ -1,0 +1,34 @@
+{% load static %}
+
+
+<div class="modal fade" id="AddReferralsModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add New Referral</h5>
+            </div>
+            <div class="modal-body">
+                <form id="ReferralsForm" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="referralCustom01">Referral Name<span class="text-danger">*</span></label></label>
+                            <input type="text" class="form-control" id="referrals_Name" data-provider="flatpickr" required/>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="referralCustom01">Referral Description<span class="text-danger">*</span></label></label>
+                            <textarea class="form-control" id="referrals_Description" rows="5" data-provider="flatpickr"  required/></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="referral_submit">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
