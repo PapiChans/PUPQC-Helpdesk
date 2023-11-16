@@ -50,6 +50,9 @@ def adminGetEventInfo(request, event_Id):
 def adminDeleteEvent(request, event_Id):
     if request.method == "DELETE":
         event = Events.objects.get(pk=event_Id)
+        file = event.event_Image.path
+        if os.path.exists(file):
+            os.remove(file)
         event.delete()
         return Response({"message": "Delete Event Success"})
     return Response({"message": "Delete Event Error"})

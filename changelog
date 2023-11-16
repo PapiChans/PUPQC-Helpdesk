@@ -325,3 +325,8 @@
 - Update Serializers
 - Update API URLs
 - Update API Views
+
+# 0.4.9.1
+- Push by Christian (https://github.com/papichans)
+- Minor Modal Fix
+- BUG FIX: Deleting an event also deletes the current image uploaded as well
