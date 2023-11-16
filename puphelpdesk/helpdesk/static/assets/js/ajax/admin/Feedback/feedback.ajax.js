@@ -115,6 +115,34 @@ getReadFeedback = () => {
                 ContentType: 'application/x-www-form-urlencoded',
                 dataSrc: ''
             },
+            dom:
+				"<'row'<'col-xl-12 mb-2'B>>" +
+				"<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+				"<'row'<'col-sm-12'tr>>" +
+				"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: [
+                {
+                    extend: 'print',
+                    text: '<i class="fa-solid fa-print"></i> Print',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    },
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa-solid fa-file-excel"></i> Excel',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    },
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa-solid fa-file-pdf"></i> PDF',
+                    exportOptions: {
+                        columns: [0, 1, 2],
+                    },
+                }
+            ],
             columns: [
                 {
                     data: null,

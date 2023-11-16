@@ -330,3 +330,8 @@
 - Push by Christian (https://github.com/papichans)
 - Minor Modal Fix
 - BUG FIX: Deleting an event also deletes the current image uploaded as well
+
+# 0.4.9.2
+- Push by Christian (https://github.com/papichans)
+- NEW DataTable Feature: Print, Excel, and PDF Exporting
+- Additional JS Libraries for DataTables
