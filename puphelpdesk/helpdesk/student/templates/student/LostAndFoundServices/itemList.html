@@ -1,44 +1,63 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link href="{% static 'assets/css/student/LostAndFoundServices/itemList.css' %}" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+<link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
 {% endblock %}
 {% block maincontent %}
 
-<div  class="container">
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
 
-    <div class="card">
-        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
-        <div class="card-content">
-            <h3>Name</h3>
-            <p>lorem ipsum dolor amet</p>
-            <a href="#" class="btn">View</a>
+                <!-- Card 1 -->
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'assets/images/Campus.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-size-16 mt-0">Item Name</h4>
+                        <p class="card-text">Description of the Item.</p>
+                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'assets/images/Campus.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-size-16 mt-0">Item Name</h4>
+                        <p class="card-text">Description of the Item.</p>
+                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{% static 'assets/images/Campus.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-size-16 mt-0">Item Name</h4>
+                        <p class="card-text">Description of the item.</p>
+                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-
-    <div class="card">
-        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
-        <div class="card-content">
-            <h3>Name</h3>
-            <p>lorem ipsum dolor amet</p>
-            <a href="#" class="btn">View</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="{% static 'assets/images/building.jpg' %}" alt="itemImg">
-        <div class="card-content">
-            <h3>Name</h3>
-            <p>lorem ipsum dolor amet</p>
-            <a href="#" class="btn">View</a>
-        </div>
-    </div>
-
 </div>
-
 
 {% endblock %}
 
