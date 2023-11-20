@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block maincontent %}
+{% include "admin\studentsModal\view-modal.html" %}
 <div class="row">
     <h5 class="header-title mb-4">Latest Transaction</h5>
     <div class="d-flex justify-content-center col-12">
@@ -35,11 +36,8 @@
                                 <td>2020-00001-CM-0</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Register">
-                                            <i class="mdi mdi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewModal" data-placement="top">
+                                            <i class="mdi mdi-pencil" data-toggle="tooltip" title="Register"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Deny">
                                             <i class="mdi mdi-trash-can"></i>
@@ -47,6 +45,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th scope="row">
                                     <a href="#"># 2</a>
@@ -56,11 +55,8 @@
                                 <td>2020-00002-CM-0</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Register">
-                                            <i class="mdi mdi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewModal2" data-placement="top">
+                                            <i class="mdi mdi-pencil" data-toggle="tooltip" title="Register"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Deny">
                                             <i class="mdi mdi-trash-can"></i>
@@ -68,6 +64,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th scope="row">
                                     <a href="#"># 3</a>
@@ -77,11 +74,8 @@
                                 <td>2020-00003-CM-0</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Register">
-                                            <i class="mdi mdi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewModal3" data-placement="top">
+                                            <i class="mdi mdi-pencil" data-toggle="tooltip" title="Register"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Deny">
                                             <i class="mdi mdi-trash-can"></i>
@@ -89,6 +83,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th scope="row">
                                     <a href="#"># 4</a>
@@ -98,11 +93,8 @@
                                 <td>2020-00004-CM-0</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Register">
-                                            <i class="mdi mdi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewModal4" data-placement="top">
+                                            <i class="mdi mdi-pencil" data-toggle="tooltip" title="Register"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Deny">
                                             <i class="mdi mdi-trash-can"></i>
@@ -110,6 +102,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
                                 <th scope="row">
                                     <a href="#"># 5</a>
@@ -119,11 +112,8 @@
                                 <td>2020-00005-CM-0</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Register">
-                                            <i class="mdi mdi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top">
+                                            <i class="mdi mdi-pencil" data-toggle="tooltip" title="Register"></i>
                                         </button>
                                         <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Deny">
                                             <i class="mdi mdi-trash-can"></i>
@@ -131,6 +121,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
