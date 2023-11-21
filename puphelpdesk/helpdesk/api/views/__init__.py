@@ -20,6 +20,9 @@ from .student.Feedback.feedback import *
 # Admin Routes
 # ---------------
 
+# Dashboard
+from .admin.dashboard import *
+
 # General Info and Services
 from .admin.GenInfoandServices.events import *
 from .admin.GenInfoandServices.resources import *

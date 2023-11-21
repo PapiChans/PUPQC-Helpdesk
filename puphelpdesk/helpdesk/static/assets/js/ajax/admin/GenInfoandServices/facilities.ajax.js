@@ -76,7 +76,7 @@ addFacility = (FacilityImage) => {
         if (pondFiles.length === 0 || !facility_Name || !facility_Description) {
             Swal.fire({
                 title: 'Input Field/s is empty.',
-                text: 'Please enter the file name and upload file.',
+                text: 'Please enter input in blank fields and upload file.',
                 icon: 'error',
                 allowEnterKey: 'false',
                 allowOutsideClick: 'false',

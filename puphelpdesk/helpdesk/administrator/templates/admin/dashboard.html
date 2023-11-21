@@ -1,7 +1,7 @@
 {% extends "admin\partials\main.html" %}
-
+{% load static %}
 {% block customcss %}
-
+<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
@@ -279,10 +279,33 @@
     </div>
     <!-- End Page-content -->
 
+</div>
+</div>
+</div>
 
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title">Analytics</h4>
+        <p class="card-title-desc">Take a look of analytics of PUPQC Helpdesk.</p>
+            <h3 class="text-center mb-4">Feedback and Suggestions</h3>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-4">
+                <div id="FeedbackVsSuggestion" style="width: 400px;height:400px;"></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="FeedbackChart" style="width: 400px;height:400px;"></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="SuggestionChart" style="width: 400px;height:400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block customjs %}
-
+<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/echarts/echarts.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/dashboard.ajax.js' %}"></script>
 
 {% endblock %}

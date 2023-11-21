@@ -32,6 +32,11 @@ urlpatterns = [
     # ADMIN API URLS
     #----------------------
 
+    # Dashboard
+    path('admin/FeedbackVsSuggestions', views.adminFeedbackVsSuggestions),
+    path('admin/feedbackChart', views.adminFeedbackChart),
+    path('admin/suggestionChart', views.adminSuggestionChart),
+
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
     path('admin/getCampusResources', views.adminGetCampusResources),

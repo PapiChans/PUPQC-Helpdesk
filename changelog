@@ -348,3 +348,11 @@
 # v0.4.10.1
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - Minor Fixes
+
+# 0.4.11
+- Push by Christian (https://github.com/papichans)
+- Update API URLs
+- Update API Views
+- Add Echarts Library
+- Add Analytics for Dashboard Feedback and Suggestions
+- Minor REVISION: Incorrect Statement for Add Facilities Validation
