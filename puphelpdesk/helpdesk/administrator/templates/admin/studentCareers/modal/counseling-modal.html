@@ -1,0 +1,95 @@
+{% load static%}
+<div class="modal fade" id="AddCounselorModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Counselor</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddCounselorForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Counselor Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="counselor_Name" placeholder="Counselor Name" required/>
+                        </div>
+                        
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="Counselor_Description" rows="5" placeholder="Counselor Description"></textarea>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Image<span class="text-danger">*</span></label>
+                            <p class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</p>
+                            <p class="text-info font-weight-bold">Recommended to upload 2x2 Formal Picture.</p>
+                            <input type="file" class="filepond" id="Counselor_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="counselor_Submit">Add Counselor</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditCounselorModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Counselor</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditCounselorForm" class="needs-validation" novalidate>                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" class="form-control" id="edit_counselor_Id">
+                            <label for="validationCustom01">Counselor Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_counselor_Name" placeholder="Counselor Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_counselor_Description" rows="5" placeholder="Counselor Description"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_counselor_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="ReplaceCounselorImageModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Replace Image</h5>
+            </div>
+            <div class="modal-body">
+                <form id="ReplaceCounselorImageForm" class="needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="replace_counselor_Id" name="replace_counselor_Id"/>
+                            <p>Facility Name: <span class="font-weight-bold" id="replace_counselor_Name"></span></p>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Upload Image<span class="text-danger">*</span></label>
+                            <p class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</p>
+                            <p class="text-info font-weight-bold">Recommended to upload 2x2 Formal Picture.</p>
+                            <input type="file" class="filepond" id="replace_counselor_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="replace_Submit">Upload</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -66,7 +66,17 @@ def adminIdCard(request):
 
 #Student Careers
 
+def adminEmployment(request):
+    pagename_value = "Career Services and Employment"
+    return render(request, 'admin/studentCareers/employmentPage.html',{'pagename': pagename_value})
 
+def adminReferrals(request):
+    pagename_value = "Job and Internship Referrals"
+    return render(request, 'admin/studentCareers/referrals.html',{'pagename': pagename_value})
+
+def adminCounseling(request):
+    pagename_value = "Counseling Referrals"
+    return render(request, 'admin/studentCareers/counselingGuide.html',{'pagename': pagename_value})
 
 
 
