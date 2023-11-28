@@ -8,20 +8,25 @@ import os
 @api_view(['POST'])
 def adminAddEvent(request):
     if request.method == "POST":
+
+        event_Type = request.POST.get('event_Type')
         event_Name = request.POST.get('event_Name')
         event_Description = request.POST.get('event_Description')
         event_Date_Start = request.POST.get('event_Date_Start')
         event_Date_End = request.POST.get('event_Date_End')
         event_Start = request.POST.get('event_Start')
         event_End = request.POST.get('event_End')
+        event_Venue = request.POST.get('event_Venue')
 
         event = {
+                'event_Type': event_Type,
                 'event_Name': event_Name,
                 'event_Description': event_Description,
                 'event_Date_Start': event_Date_Start,
                 'event_Date_End': event_Date_End,
                 'event_Start': event_Start,
                 'event_End': event_End,
+                'event_Venue': event_Venue,
         }
         serializer = EventsSerializer(data=event)
         if serializer.is_valid():
@@ -64,20 +69,24 @@ def adminDeleteEvent(request, event_Id):
 def adminEditEvent(request, event_Id):
     if request.method == "PUT":
 
+        event_Type = request.POST.get('event_Type')
         event_Name = request.POST.get('event_Name')
         event_Description = request.POST.get('event_Description')
         event_Date_Start = request.POST.get('event_Date_Start')
         event_Date_End = request.POST.get('event_Date_End')
         event_Start = request.POST.get('event_Start')
         event_End = request.POST.get('event_End')
+        event_Venue = request.POST.get('event_Venue')
 
         event = Events.objects.get(pk=event_Id)
+        event.event_Type = event_Type
         event.event_Name = event_Name
         event.event_Description = event_Description
         event.event_Date_Start = event_Date_Start
         event.event_Date_End = event_Date_End
         event.event_Start = event_Start
         event.event_End = event_End
+        event.event_Venue = event_Venue
         event.save()
         return Response({"message": "Edit Event Success"})
     return Response({"message": "Edit Event Error"})

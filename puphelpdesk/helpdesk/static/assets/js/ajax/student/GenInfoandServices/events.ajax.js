@@ -59,21 +59,19 @@ getEvent = () => {
                     const currentDate = new Date();
                     const formattedCurrentdate = formatDateToYYYYMMDD(currentDate);
 
-                    let ongoing_img = '/static/assets/images/default-image/ongoing-event.png'
-                    let upcoming_img = '/static/assets/images/default-image/upcoming-event.png'
-                    let ended_img = '/static/assets/images/default-image/ended-event.png'
+                    let event_img = '/static/assets/images/default-image/event.png'
+                    let workshop_img = '/static/assets/images/default-image/workshop.png'
+                    let extraact_img = '/static/assets/images/default-image/extracurricular-activity.png'
                     let imgShow;
 
-                    if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
-                        imgShow = ongoing_img;
+                    if (eventdata.event_Type == 'Event') {
+                        imgShow = event_img;
                     }
-                    
-                    if (eventdata.event_Date_Start > formattedCurrentdate) {
-                        imgShow = upcoming_img;
+                    if (eventdata.event_Type == 'Workshop') {
+                        imgShow = workshop_img;
                     }
-                    
-                    if (eventdata.event_Date_End < formattedCurrentdate) {
-                        imgShow = ended_img;
+                    if (eventdata.event_Type == 'Extracurricular Activity') {
+                        imgShow = extraact_img;
                     }
 
                     let eventformat = `
@@ -159,6 +157,8 @@ getEventInfo = (event_Id) => {
             else {
                 $('#event_image_info').attr('src', '/static/assets/images/default-image/default-image-404.png')
             }
+            $('#event_type_info').html(eventInfodata.event_Type);
+            $('#event_venue_info').html(eventInfodata.event_Venue);
         },
     })
     .fail(() => {

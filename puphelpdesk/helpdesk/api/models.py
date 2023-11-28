@@ -93,6 +93,7 @@ class Resources(models.Model):
 # General Information and Services: Events
 class Events(models.Model):
     event_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    event_Type = models.CharField(max_length=100, null=False)
     event_Name = models.CharField(max_length=100, null=False)
     event_Description = models.TextField(null=False)
     event_Image = models.FileField(upload_to='Events/', null=True)
@@ -100,6 +101,7 @@ class Events(models.Model):
     event_Date_End = models.DateField(null=False)
     event_Start = models.TimeField(null=False)
     event_End = models.TimeField(null=False)
+    event_Venue = models.CharField(max_length=100, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Events'

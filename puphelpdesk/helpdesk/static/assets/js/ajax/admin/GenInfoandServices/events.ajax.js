@@ -64,12 +64,15 @@ addEvent = () => {
 
     if ($('#AddEventForm')[0].checkValidity()) {
         const form = new FormData($('#AddEventForm')[0]);
+        
+        const event_Type = $('#event_Type').val();
         const event_Name = $('#event_Name').val();
         const event_Description = $('#event_Description').val();
         const event_Date_Start = $('#event_Date_Start').val();
         const event_Date_End = $('#event_Date_End').val();
         const event_Start = $('#event_Start').val();
         const event_End = $('#event_End').val();
+        const event_Venue = $('#event_Venue').val();
 
         if (event_Date_Start > event_Date_End) {
             Swal.fire({
@@ -86,12 +89,14 @@ addEvent = () => {
         else {
 
             const data = {
+                event_Type: event_Type,
                 event_Name: event_Name,
                 event_Description: event_Description,
                 event_Date_Start: event_Date_Start,
                 event_Date_End: event_Date_End,
                 event_Start: event_Start,
                 event_End: event_End,
+                event_Venue: event_Venue,
             };
         
             $.ajax({
@@ -195,21 +200,19 @@ getEvent = () => {
                         imagehand = `<button type="button" class="btn btn-danger waves-effect waves-light mt-2" data-toggle="modal" data-target="#" onclick="deleteImageEvent('${eventdata.event_Id}')"><i class="fa-solid fa-trash"></i> Delete Image</button>`
                     }
 
-                    let ongoing_img = '/static/assets/images/default-image/ongoing-event.png'
-                    let upcoming_img = '/static/assets/images/default-image/upcoming-event.png'
-                    let ended_img = '/static/assets/images/default-image/ended-event.png'
+                    let event_img = '/static/assets/images/default-image/event.png'
+                    let workshop_img = '/static/assets/images/default-image/workshop.png'
+                    let extraact_img = '/static/assets/images/default-image/extracurricular-activity.png'
                     let imgShow;
 
-                    if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
-                        imgShow = ongoing_img;
+                    if (eventdata.event_Type == 'Event') {
+                        imgShow = event_img;
                     }
-                    
-                    if (eventdata.event_Date_Start > formattedCurrentdate) {
-                        imgShow = upcoming_img;
+                    if (eventdata.event_Type == 'Workshop') {
+                        imgShow = workshop_img;
                     }
-                    
-                    if (eventdata.event_Date_End < formattedCurrentdate) {
-                        imgShow = ended_img;
+                    if (eventdata.event_Type == 'Extracurricular Activity') {
+                        imgShow = extraact_img;
                     }
 
                     let eventformat = `
@@ -298,6 +301,8 @@ getEventInfo = (event_Id) => {
             else {
                 $('#event_image_info').attr('src', '/static/assets/images/default-image/default-image-404.png')
             }
+            $('#event_type_info').html(eventInfodata.event_Type);
+            $('#event_venue_info').html(eventInfodata.event_Venue);
         },
     })
     .fail(() => {
@@ -372,12 +377,14 @@ getEventforEdit = (event_Id) => {
         success: (result) => {
             const editEventdata = result;
             $('#edit_event_Id').val(editEventdata.event_Id);
+            $('#edit_event_Type').val(editEventdata.event_Type);
             $('#edit_event_Name').val(editEventdata.event_Name);
             $('#edit_event_Description').val(editEventdata.event_Description);
             $('#edit_event_Date_Start').val(editEventdata.event_Date_Start);
             $('#edit_event_Date_End').val(editEventdata.event_Date_End);
             $('#edit_event_Start').val(editEventdata.event_Start);
             $('#edit_event_End').val(editEventdata.event_End);
+            $('#edit_event_Venue').val(editEventdata.event_Venue);
         },
     })
     .fail(() => {
@@ -393,6 +400,7 @@ editEvent = (event_Id) => {
 
     if ($('#EditEventForm')[0].checkValidity()) {
         const form = new FormData($('#EditEventForm')[0]);
+        const event_Type = $('#edit_event_Type').val();
         const event_Id = $('#edit_event_Id').val();
         const event_Name = $('#edit_event_Name').val();
         const event_Description = $('#edit_event_Description').val();
@@ -400,6 +408,7 @@ editEvent = (event_Id) => {
         const event_Date_End = $('#edit_event_Date_End').val();
         const event_Start = $('#edit_event_Start').val();
         const event_End = $('#edit_event_End').val();
+        const event_Venue = $('#edit_event_Venue').val();
 
         if (event_Date_Start > event_Date_End) {
             Swal.fire({
@@ -415,12 +424,14 @@ editEvent = (event_Id) => {
         }
         else {
             const data = {
+                event_Type: event_Type,
                 event_Name: event_Name,
                 event_Description: event_Description,
                 event_Date_Start: event_Date_Start,
                 event_Date_End: event_Date_End,
                 event_Start: event_Start,
                 event_End: event_End,
+                event_Venue: event_Venue,
             };
         
             $.ajax({

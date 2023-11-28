@@ -370,3 +370,12 @@
 - Push by Christian (https://github.com/papichans)
 - BUG FIX: Event Deleting Error (For Image already exist)
 - Revision: Event Modal Prefromatted
+
+# 0.4.12.2
+- Push by Christian (https://github.com/papichans)
+- Update API URLs
+- Update API Views
+- Add Event Venue and Type for Events (for Workshop and Extracurricular Activities)
+- Update Models for Table: Event
+- Additional PUPQC Helpdesk image Asset
+- Revision: Event
