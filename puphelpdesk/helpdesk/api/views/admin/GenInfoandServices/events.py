@@ -49,12 +49,15 @@ def adminGetEventInfo(request, event_Id):
 @api_view(['DELETE'])
 def adminDeleteEvent(request, event_Id):
     if request.method == "DELETE":
-        event = Events.objects.get(pk=event_Id)
-        file = event.event_Image.path
-        if os.path.exists(file):
-            os.remove(file)
-        event.delete()
-        return Response({"message": "Delete Event Success"})
+        try:
+            event = Events.objects.get(pk=event_Id)
+            file = event.event_Image.path
+            event.delete()
+            if os.path.exists(file):
+                os.remove(file)
+            return Response({"message": "Delete Event Success"})
+        except:
+            event.delete()
     return Response({"message": "Delete Event Error"})
 
 @api_view(['PUT'])

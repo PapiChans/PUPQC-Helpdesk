@@ -365,3 +365,8 @@
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - HDK-032 Done
 - HDK-033 Done
+
+# 0.4.12.1
+- Push by Christian (https://github.com/papichans)
+- BUG FIX: Event Deleting Error (For Image already exist)
+- Revision: Event Modal Prefromatted
