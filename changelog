@@ -369,7 +369,7 @@
 # 0.4.12.1
 - Push by Christian (https://github.com/papichans)
 - BUG FIX: Event Deleting Error (For Image already exist)
-- Revision: Event Modal Prefromatted
+- Revision: Event Modal Preformatted
 
 # 0.4.12.2
 - Push by Christian (https://github.com/papichans)
@@ -379,3 +379,8 @@
 - Update Models for Table: Event
 - Additional PUPQC Helpdesk image Asset
 - Revision: Event
+  
+# 0.4.13
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- HDK-035 Done
+- Financial Aid Guide Done
