@@ -384,3 +384,9 @@
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - HDK-035 Done
 - Financial Aid Guide Done
+  
+  # 0.4.14
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- Lost and Found db Table Model added
+- LostAndFound.py added
+- Lost And Found Serializers added

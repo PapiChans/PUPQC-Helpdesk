@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, Facilities, SuccessResources, Feedback
+from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, Lost
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,11 @@ class SuccessResourcesSerializer(serializers.ModelSerializer):
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
+        fields = '__all__'
+
+
+#Lost and Found Serializers
+class LostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lost
         fields = '__all__'

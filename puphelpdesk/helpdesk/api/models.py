@@ -137,3 +137,13 @@ class Feedback(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
+
+#Lost and Found
+class Lost(models.Model):
+    lostItem_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable="False")
+    item_Name = models.CharField(max_length=50, null="False")
+    report_Date = models.DateField(null="False")
+    item_image = models.ImageField(upload_to='Lost-Items/', null=True)
+    itemDesc_text = models.TextField(null="False")
+    class Meta:
+        db_table = 'Lost Items'
