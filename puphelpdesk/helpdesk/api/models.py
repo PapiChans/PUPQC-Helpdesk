@@ -73,13 +73,13 @@ class Facilities(models.Model):
         db_table = 'Facilities'
 
 # General Information and Services: Services
-class ServiceOffered(models.Model):
+class Service(models.Model):
     service_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     service_Name = models.CharField(max_length=100, null=False)
     service_Description = models.TextField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
-        db_table = 'Service Offered'
+        db_table = 'Service'
 
 # General Information and Services: Resources
 class Resources(models.Model):
@@ -125,6 +125,20 @@ class SuccessResources(models.Model):
     class Meta:
         db_table = 'Success Resources'
 
+#Lost and Found
+class Lost(models.Model):
+    lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    item_Name = models.CharField(max_length=50, null=False)
+    item_Image = models.ImageField(upload_to='Lost-Items/', null=True)
+    item_Description_Text = models.TextField(null=False)
+    item_Last_Seen = models.CharField(max_length=50, null=False)
+    item_Lost_Date = models.DateField(null=False)
+    item_Lost_Time = models.TimeField(null=False)
+    lost_Status = models.CharField(max_length=50, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Lost and Found'
+
 # Feedback and Suggestion: Feedback
 class Feedback(models.Model):
     feedback_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
@@ -137,13 +151,3 @@ class Feedback(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
-
-#Lost and Found
-class Lost(models.Model):
-    lostItem_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable="False")
-    item_Name = models.CharField(max_length=50, null="False")
-    report_Date = models.DateField(null="False")
-    item_image = models.ImageField(upload_to='Lost-Items/', null=True)
-    itemDesc_text = models.TextField(null="False")
-    class Meta:
-        db_table = 'Lost Items'

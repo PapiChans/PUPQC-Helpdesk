@@ -390,3 +390,12 @@
 - Lost and Found db Table Model added
 - LostAndFound.py added
 - Lost And Found Serializers added
+
+# 0.4.15
+- Push by Christian (https://github.com/papichans)
+- Update API URLs
+- Update API Views
+- Navbar revision
+- Update Serializers
+- Update Models
+- Complete Backend for General Info: Service for Both Admin and Student

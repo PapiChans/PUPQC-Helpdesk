@@ -19,6 +19,9 @@ urlpatterns = [
     # General Info and Services: Resources
     path('student/getCampusResources', views.studGetCampusResources),
 
+    # General Info and Services: Services
+    path('student/getService', views.studGetService),
+
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
 
@@ -41,6 +44,13 @@ urlpatterns = [
     path('admin/addCampusResources', views.adminAddCampusResources),
     path('admin/getCampusResources', views.adminGetCampusResources),
     path('admin/deleteCampusResources/<uuid:resources_Id>', views.adminDeleteCampusResources),
+
+    # General Info and Services: Services
+    path('admin/addService', views.adminAddService),
+    path('admin/getService', views.adminGetService),
+    path('admin/getServiceInfo/<uuid:service_Id>', views.adminGetServiceInfo),
+    path('admin/editService/<uuid:service_Id>', views.adminEditService),
+    path('admin/deleteService/<uuid:service_Id>', views.adminDeleteService),
 
     # General Info and Services: Event
     path('admin/addEvent', views.adminAddEvent),

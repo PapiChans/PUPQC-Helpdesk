@@ -1,0 +1,56 @@
+<div class="modal fade" id="AddServiceModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Service</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddServiceForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Service Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="service_Name" placeholder="Service Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Service Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="service_Description" rows="5" placeholder="Service Description"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="service_Submit">Add Service</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditServiceModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Service</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditServiceForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="edit_service_Id">
+                            <label for="validationCustom01">Service Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_service_Name" placeholder="Service Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Service Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_service_Description" rows="5" placeholder="Service Description"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_service_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
