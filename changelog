@@ -399,3 +399,16 @@
 - Update Serializers
 - Update Models
 - Complete Backend for General Info: Service for Both Admin and Student
+
+ # 0.4.16
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- Financial Aid Guide Modal and db Table Model added
+- Scholarship Opportunities Modal and db Table Model added
+- Financial Aid Guide Serializers added
+- Scholarship Opportunities Serializers added
+- Financial Aid Guide Views added
+- Scholarship Opportunities Views added
+
+
+
+

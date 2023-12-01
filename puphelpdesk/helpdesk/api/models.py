@@ -151,3 +151,23 @@ class Feedback(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
+
+#Financial Aid And Scholarships
+
+class FinancialAidGuide(models.Model):
+    financialAidId = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ResourcesName = models.CharField(max_length=50, null=False)
+    FinancialText = models.TextField(null=False)
+    ResourcesFile = models.FileField(upload_to='Financial-Aid-Guide/', null=True)
+    class Meta:
+        db_table = 'Financial Aid Guide'
+
+class ScholarshipOpportunities(models.Model):
+    ScholarshipId = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ScholarshipName = models.CharField(max_length=50, null=False)
+    ScholarshipDescription = models.TextField(null=False)
+    class Meta:
+        db_table = 'Scholarship Opportunities'
+
+
+

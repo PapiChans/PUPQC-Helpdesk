@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, Lost, Service
+from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, Lost, FinancialAidGuide, ScholarshipOpportunities, Service
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,3 +40,15 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = '__all__'
+
+#Financial Aid And Scholarships Serializers
+class FinancialAidGuideSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinancialAidGuide
+        fields = '__all__'
+
+class ScholarshipOpportunitiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ScholarshipOpportunities
+        fields = '__all__'
+

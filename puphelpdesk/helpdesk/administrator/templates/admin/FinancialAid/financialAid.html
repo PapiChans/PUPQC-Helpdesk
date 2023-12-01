@@ -1,16 +1,38 @@
 {% extends "admin\partials\main.html" %}
-{% load static %}
-{% block customcss %}
 
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'assets/css/admin/studentCareers/employmentPage.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\FinancialAid\modal\financialAid-modal.html" %}
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-toggle="modal" data-target="#AddFinancialGuideModal"><i class="fa-solid fa-file-upload"></i> Add Resources</button>
+<h4 class="header-title">Careers Services and Employment</h4>
+<p class="card-title-desc">Contact Professors for Counseling or View Available Internship Opportunities.</p>
+   <div class="container">
+    
+    <div class="box">
+      <div class="icon">01</div>
+      <div class="content"><h3>Financial Aid Guides</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'admin/student-services/FinancialAidGuide' %}"  class="btn btn-primary waves-effect waves-light">View</a>
+      </div>
+    </div>
 
+    <div class="box">
+      <div class="icon">02</div>
+      <div class="content"><h3>Scholarship Opportunities</h3>
+        <p>lorem ipsum dolor</p>
+        <a href="{% url 'admin/student-services/ScholarshipOpportunities' %}"  class="btn btn-primary waves-effect waves-light">View</a>
+      </div>
+    </div>
+    
+  </div>
 
-{% endblock %}
+  {% endblock %}
 
 {% block customjs %}
 
+
 {% endblock %} 
+    
