@@ -20,7 +20,6 @@ def studSubmitFeedback(request):
             'feedback_Status': 'New',
         }
         serializer = FeedbackSerializer(data=feedback)
-        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Submit Feedback Successfully"})

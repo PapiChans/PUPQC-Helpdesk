@@ -159,6 +159,23 @@ getFeedback = () => {
                     },
                 },
             ],
+            drawCallback: function() {
+                // Count the number of 'Feedback' entries after each draw
+                fcount = 0;
+                scount = 0;
+                this.api().rows().every(function() {
+                    const type = this.data().feedback_Type;
+                    if (type == 'Feedback') {
+                        fcount++;
+                    }
+                    else if (type == 'Suggestion') {
+                        scount++;
+                    }
+                });
+    
+                $('#feedback_count').text(fcount);
+                $('#suggestion_count').text(scount);
+            },
             order: [[1, 'desc']],
         })
     }
