@@ -1,7 +1,7 @@
 {% extends "admin\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
@@ -304,7 +304,7 @@
 {% endblock %}
 
 {% block customjs %}
-<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/libs/echarts/echarts.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/dashboard.ajax.js' %}"></script>
 

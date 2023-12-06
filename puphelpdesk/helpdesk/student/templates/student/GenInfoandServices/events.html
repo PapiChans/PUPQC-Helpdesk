@@ -1,7 +1,7 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
 {% include "student\GenInfoandServices\modal\events-modal.html" %}
@@ -45,6 +45,6 @@
 </div>
 {% endblock %}
 {% block customjs %}
-<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/GenInfoandServices/events.ajax.js' %}"></script>
 {% endblock %}

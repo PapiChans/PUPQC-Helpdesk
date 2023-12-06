@@ -413,5 +413,14 @@
 - Push by Christian (https://github.com/papichans)
 - Feedback and Suggestions are Countable
 
+# 0.5.0
+- Push by Christian (https://github.com/papichans)
+- NEW User Interface for Dashboard for both Admin and Student
+- Remove unused old UI CSS and JS
+- Update Views for Admin and Student
+- Update URLs for Admin and Student
+- Rearranged Essential Libraries
+- Reroute Page Libraries
+
 
 

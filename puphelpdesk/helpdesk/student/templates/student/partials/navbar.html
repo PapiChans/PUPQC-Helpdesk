@@ -1,103 +1,153 @@
-                        <div class="topnav">
-                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
-                                <div class="collapse navbar-collapse" id="topnav-menu-content">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'dashboard' %}">
-                                                Dashboard
+        <header class="navbar-expand-md">
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <div class="navbar">
+                    <div class="container-xl">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'dashboard' %}" >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                    Dashboard
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'tickets' %}" >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ticket" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 5l0 2" /><path d="M15 11l0 2" /><path d="M15 17l0 2" /><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2" /></svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                    Tickets
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-hexagon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                                  </span>
+                                  <span class="nav-link-title">
+                                    General Info
+                                  </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                  <div class="dropdown-menu-columns">
+                                    <div class="dropend">
+                                        <a class="dropdown-item dropdown-toggle show" href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="true">
+                                          Campus Information
+                                        </a>
+                                        <div class="dropdown-menu show" data-bs-popper="static">
+                                            <a href="{% url 'geninfo/facilities' %}" class="dropdown-item">
+                                                Facilities
                                             </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'tickets' %}">
-                                                Tickets
+                                            <a href="{% url 'geninfo/services' %}" class="dropdown-item">
+                                                Services
                                             </a>
-                                        </li>
-
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                General Information <div class="arrow-down"></div>
+                                            <a href="{% url 'geninfo/resources' %}" class="dropdown-item">
+                                                Resources
                                             </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
-                                                <div class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-exclamation-octagon"></i></div> Campus Information
-                                                        <div class="arrow-down"></div>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                                        <a href="{% url 'geninfo/facilities' %}" class="dropdown-item">Facilities</a>
-                                                        <a href="{% url 'geninfo/services' %}" class="dropdown-item">Service</a>
-                                                        <a href="{% url 'geninfo/resources' %}" class="dropdown-item">Resources</a>
-                                                    </div>
-                                                </div>
-
-                                                <a href="{% url 'geninfo/events' %}" class="dropdown-item">
-                                                    <div class="d-inline-block icons-sm mr-2"><i class="uim uim-schedule"></i></div> Events</a>
-
-                                                <a href="{% url 'geninfo/referrals' %}" class="dropdown-item">
-                                                    <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-plus"></i></div> Service Referrals</a>
-
-                                            </div>
-                                        </li>
-
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Services <div class="arrow-down"></div>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
-                                                <div class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-bookmark"></i></div> Support / Counseling
-                                                        <div class="arrow-down"></div>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                                        <a href="{% url 'student-support/counseling' %}" class="dropdown-item">Student Counseling</a>
-                                                        <a href="{% url 'student-support/advising' %}" class="dropdown-item">Academic Advising</a>
-                                                        <a href="{% url 'student-support/resources' %}" class="dropdown-item">Success Resources</a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-alt-message"></i></div> Student Services
-                                                        <div class="arrow-down"></div>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                                        <a href="{% url 'financialaid' %}" class="dropdown-item">Financial Aid and Scholarships</a>
-                                                        <a href="{% url 'government' %}" class="dropdown-item">Government and Involvement</a>
-                                                        <a href="{% url 'IDandCard' %}" class="dropdown-item">ID and Access Cards</a>
-                                                        <a href="{% url 'careers' %}" class="dropdown-item">Careers and Employment</a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-briefcase"></i></div> Other Services
-                                                        <div class="arrow-down"></div>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                                        <a href="{% url 'healthwellness' %}" class="dropdown-item">Health and Wellness Support</a>
-                                                        <a href="{% url 'parking' %}" class="dropdown-item">Transportation and Parking</a>
-                                                        <a href="{% url 'housing' %}" class="dropdown-item">Housing and Accommodation</a>
-                                                        <a href="{% url 'LostandFound' %}" class="dropdown-item">Lost and Found</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'feedback' %}">
-                                                Feedback
-                                            </a>
-                                        </li>
-
-                                    </ul>
+                                      </div>
+                                      <a class="dropdown-item" href="{% url 'geninfo/events' %}">
+                                        Event
+                                      </a>
+                                      <a class="dropdown-item" href="{% url 'geninfo/referrals' %}">
+                                        Referrals
+                                      </a>
+                                  </div>
                                 </div>
-                            </nav>
-                        </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-handshake" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /><path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" /><path d="M12.5 15.5l2 2" /><path d="M15 13l2 2" /></svg>
+                                  </span>
+                                  <span class="nav-link-title">
+                                    Student Support
+                                  </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                  <div class="dropdown-menu-columns">
+                                    <div class="dropend">
+                                        <a href="{% url 'student-support/counseling' %}" class="dropdown-item">
+                                            Counseling
+                                        </a>
+                                        <a href="{% url 'student-support/advising' %}" class="dropdown-item">
+                                            Advising
+                                        </a>
+                                        <a href="{% url 'student-support/resources' %}" class="dropdown-item">
+                                            Resources
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-apple-arcade" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M20 12.5v4.75a.734 .734 0 0 1 -.055 .325a.704 .704 0 0 1 -.348 .366l-5.462 2.58a5 5 0 0 1 -4.27 0l-5.462 -2.58a.705 .705 0 0 1 -.401 -.691l0 -4.75" /><path d="M4.431 12.216l5.634 -2.332a5.065 5.065 0 0 1 3.87 0l5.634 2.332a.692 .692 0 0 1 .028 1.269l-5.462 2.543a5.064 5.064 0 0 1 -4.27 0l-5.462 -2.543a.691 .691 0 0 1 .028 -1.27z" /><path d="M12 7l0 6" /></svg>
+                                  </span>
+                                  <span class="nav-link-title">
+                                    Student Services
+                                  </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                      <div class="dropend">
+                                            <a href="{% url 'financialaid' %}" class="dropdown-item">
+                                            Financial Aid and Scholarships
+                                            </a>
+                                            <a href="{% url 'government' %}" class="dropdown-item">
+                                            Government and Involvement
+                                            </a>
+                                            <a href="{% url 'IDandCard' %}" class="dropdown-item">
+                                            ID and Access Cards
+                                            </a>
+                                            <a href="{% url 'careers' %}" class="dropdown-item">
+                                            Careers and Employment
+                                            </a>
+                                      </div>
+                                  </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                  <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-circle-horizontal" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M8 12l0 .01" /><path d="M12 12l0 .01" /><path d="M16 12l0 .01" /></svg>
+                                  </span>
+                                  <span class="nav-link-title">
+                                    Other Services
+                                  </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                      <div class="dropend">
+                                        <a href="{% url 'healthwellness' %}" class="dropdown-item">
+                                        Health and Wellness Support
+                                        </a>
+                                        <a href="{% url 'parking' %}" class="dropdown-item">
+                                        Transportation and Parking
+                                        </a>
+                                        <a href="{% url 'housing' %}" class="dropdown-item">
+                                        Housing and Accommodation
+                                        </a>
+                                        <a href="{% url 'LostandFound' %}" class="dropdown-item">
+                                        Lost and Found
+                                        </a>
+                                      </div>
+                                  </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'feedback' %}" >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><path d="M12 11l0 .01" /><path d="M8 11l0 .01" /><path d="M16 11l0 .01" /></svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                    Feedback and Suggestions
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-    
-            </header>
+            </div>
+        </header> 

@@ -1,9 +1,9 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link href="{% static 'assets/css/pages/filepond.css' %}" rel="stylesheet"/>
-<link href="{% static 'assets/css/pages/sweetalert2.min.css' %}" rel="stylesheet"/>
-<link rel="stylesheet" href="{% static 'assets/css/pages/notyf.min.css' %}">
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
@@ -33,9 +33,9 @@
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-<script src="{% static 'assets/js/pages/sweetalert2.all.min.js' %}"></script>
-<script src="{% static 'assets/js/pages/filepond.js' %}"></script>
-<script src="{% static 'assets/js/pages/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>

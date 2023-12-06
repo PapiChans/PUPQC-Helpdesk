@@ -23,29 +23,29 @@ def adminStudents(request):
 
 # Admin General Info
 def admingeninfofacilities(request):
-    pagename_value = "Facilities"
+    pagename_value = "General Information and Services"
     return render(request, 'admin/GenInfoandServices/facilities.html',{'pagename': pagename_value})
 
 def admingeninfoservices(request):
-    pagename_value = "Services"
+    pagename_value = "General Information and Services"
     return render(request, 'admin/GenInfoandServices/services.html',{'pagename': pagename_value})
 
 def admingeninforesources(request):
-    pagename_value = "Resources"
+    pagename_value = "General Information and Services"
     return render(request, 'admin/GenInfoandServices/resources.html',{'pagename': pagename_value})
 
 def admingeninfoevents(request):
-    pagename_value = "Events"
+    pagename_value = "General Information and Services"
     return render(request, 'admin/GenInfoandServices/events.html',{'pagename': pagename_value})
 
 def admingeninforeferrals(request):
-    pagename_value = "Referrals"
+    pagename_value = "General Information and Services"
     return render(request, 'admin/GenInfoandServices/referrals.html',{'pagename': pagename_value})
 
 
 #Student Counseling
 def adminSuccessResources(request):
-    pagename_value = "Success Resources"
+    pagename_value = "Student Counseling and Support"
     return render(request, 'admin/StudentCounseling/resources.html',{'pagename': pagename_value})
 
 #Feedbacks and Suggestions
@@ -71,11 +71,11 @@ def adminEmployment(request):
     return render(request, 'admin/studentCareers/employmentPage.html',{'pagename': pagename_value})
 
 def adminReferrals(request):
-    pagename_value = "Job and Internship Referrals"
+    pagename_value = "Career Services and Employment"
     return render(request, 'admin/studentCareers/referrals.html',{'pagename': pagename_value})
 
 def adminCounseling(request):
-    pagename_value = "Counseling Referrals"
+    pagename_value = "Career Services and Employment"
     return render(request, 'admin/studentCareers/counselingGuide.html',{'pagename': pagename_value})
 
 
@@ -85,11 +85,11 @@ def adminFinancialAid(request):
     return render(request, 'admin/FinancialAid/financialAid.html',{'pagename': pagename_value})
 
 def adminFinancialGuide(request):
-    pagename_value = "Financial Aid Guide"
+    pagename_value = "Financial Aid and Scholarships"
     return render(request, 'admin/FinancialAid/financialGuide.html',{'pagename': pagename_value})
 
 def adminScholarshipOpportunities(request):
-    pagename_value = "Scholarship Opportunities"
+    pagename_value = "Financial Aid and Scholarships"
     return render(request, 'admin/FinancialAid/opportunities.html',{'pagename': pagename_value})
 
 

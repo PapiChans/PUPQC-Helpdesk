@@ -32,7 +32,6 @@ def geninforesources(request):
     pagename_value = "General Information and Services"
     return render(request, 'student/GenInfoandServices/resources.html',{'pagename': pagename_value})
 
-
 def geninfoevents(request):
     pagename_value = "General Information and Services"
     return render(request, 'student/GenInfoandServices/events.html',{'pagename': pagename_value})
@@ -64,7 +63,7 @@ def financialguidance(request):
     return render(request, 'student/FinancialAid/financialguidance.html',{'pagename': pagename_value})
 
 def scholarshipForm(request):
-    pagename_value = "Scholarship Application Form"
+    pagename_value = "Financial Aid and Scholarships"
     return render(request, 'student/FinancialAid/scholarshipform.html',{'pagename': pagename_value})
 
     # Housing and Accommodation
@@ -87,11 +86,11 @@ def careers(request):
     return render(request, 'student/StudentCareers/careers.html',{'pagename': pagename_value})
 
 def referrals(request):
-    pagename_value = "Career Counseling Referrals"
+    pagename_value = "Career Services and Employment"
     return render(request, 'student/StudentCareers/referrals.html',{'pagename': pagename_value})
 
 def internship(request):
-    pagename_value = "Internship"
+    pagename_value = "Career Services and Employment"
     return render(request, 'student/StudentCareers/internship.html',{'pagename': pagename_value})
 
     # Student IDs and Access Cards
@@ -132,7 +131,7 @@ def lostandfound(request):
     return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
 
 def returnItems(request):
-    pagename_value = "Return Items"
+    pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/NewReportLost.html',{'pagename': pagename_value})
 
 def lost_and_found_views(request):
@@ -142,11 +141,11 @@ def return_item(request):
     return render(request, 'reportlost.html')
 
 def item_list(request):
-    pagename_value = "Items Page"
+    pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/itemList.html', {'pagename': pagename_value})
 
     # Student Feedback and Suggestions
 def feedback(request):
-    pagename_value = "Student Feedback and Suggestions"
+    pagename_value = "Feedback and Suggestions"
     return render(request, 'student/Feedback/feedback.html',{'pagename': pagename_value})
 
