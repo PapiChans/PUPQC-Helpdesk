@@ -194,10 +194,10 @@ getEvent = () => {
 
                     let imagehand = eventdata.event_Image;
                     if (imagehand == null) {
-                        imagehand = `<button type="button" class="btn btn-info waves-effect waves-light mt-2" data-toggle="modal" data-target="#uploadImageEventModal" onclick="foruploadImage('${eventdata.event_Id}')"><i class="fa-solid fa-camera"></i> Upload Image</button>`
+                        imagehand = `<button type="button" class="btn btn-info waves-effect waves-light mt-2" data-bs-toggle="modal" data-bs-target="#uploadImageEventModal" onclick="foruploadImage('${eventdata.event_Id}')"><i class="fa-solid fa-camera"></i> Upload Image</button>`
                     }
                     else {
-                        imagehand = `<button type="button" class="btn btn-danger waves-effect waves-light mt-2" data-toggle="modal" data-target="#" onclick="deleteImageEvent('${eventdata.event_Id}')"><i class="fa-solid fa-trash"></i> Delete Image</button>`
+                        imagehand = `<button type="button" class="btn btn-danger waves-effect waves-light mt-2" data-bs-toggle="modal" data-bs-target="#" onclick="deleteImageEvent('${eventdata.event_Id}')"><i class="fa-solid fa-trash"></i> Delete Image</button>`
                     }
 
                     let event_img = '/static/assets/images/default-image/event.png'
@@ -224,9 +224,9 @@ getEvent = () => {
                                     <p class="card-text" contenteditable="false">Event Date: ${formattedStartdate} - ${formattedEnddate}</p>
                                     <p class="card-text" contenteditable="false">Event Time: ${formattedStarttime} - ${formattedEndtime}</p>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#editEventModal" onclick="foreditevent('${eventdata.event_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
+                                        <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#editEventModal" onclick="foreditevent('${eventdata.event_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
                                         <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteEvent('${eventdata.event_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
-                                        <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#eventInfoModal" onclick="getEventInfo('${eventdata.event_Id}')"><i class="fa-solid fa-circle-info"></i> Information</button>
+                                        <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#eventInfoModal" onclick="getEventInfo('${eventdata.event_Id}')"><i class="fa-solid fa-circle-info"></i> Information</button>
                                         ${imagehand}
                                     </div>
                                 </div>

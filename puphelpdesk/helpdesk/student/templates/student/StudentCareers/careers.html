@@ -5,29 +5,33 @@
 {% endblock %}
 {% block maincontent %}
 
-<h4 class="header-title">Career Services and Employement</h4>
+<h2 class="header-title">Career Services and Employement</h2>
 <p class="card-title-desc">This will guide students to choose their careers.</p>
-   <div class="container">
-    
-    <div class="box">
-      <div class="icon">01</div>
-      <div class="content"><h3>Career Counseling Referrals</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'careers/referrals' %}">Referrals</a>
-      </div>
+<div class="row justify-content-center">
+  <div class="col-xl-6">
+    <div class="card">
+        <div class="card-status-top bg-red"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-red">Career Counseling Referrals</h3>
+          <p class="text-secondary">Guide to Career Counseling and Job Search Resources.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'careers/referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
     </div>
-
-    <div class="box">
-      <div class="icon">02</div>
-      <div class="content"><h3>Internship Posting</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'careers/internship' %}">Job Postings and Internship</a>
-      </div>
+  </div>
+  <div class="col-xl-6">
+    <div class="card">
+        <div class="card-status-top bg-red"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-red">Job Posting and Internship Opportunities</h3>
+          <p class="text-secondary">This page posts available Job and Internships.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'careers/internship' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
     </div>
-
-    <footer>
-        <!-- Footer content -->
-    </footer>
-
+  </div>
+</div>
 {% endblock %}
 

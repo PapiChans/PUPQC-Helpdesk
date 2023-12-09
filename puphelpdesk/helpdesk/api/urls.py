@@ -25,6 +25,11 @@ urlpatterns = [
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
 
+    #Careers and Employment: Job Posting
+    path('student/getJobPosting', views.studGetJobPosting),
+    path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
+
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -73,6 +78,14 @@ urlpatterns = [
     path('admin/addSuccessResources', views.adminAddSuccessResources),
     path('admin/getSuccessResources', views.adminGetSuccessResources),
     path('admin/deleteSuccessResources/<uuid:success_resources_Id>', views.adminDeleteSuccessResources),
+
+    #Careers and Employment: Job Posting
+    path('admin/addJobPosting', views.adminAddJobPosting),
+    path('admin/getJobPosting', views.adminGetJobPosting),
+    path('admin/getJobPostingInfo/<uuid:job_Posting_Id>', views.adminGetJobInfo),
+    path('admin/editJobPosting/<uuid:job_Posting_Id>', views.adminEditJobPosting),
+    path('admin/replaceCompanyLogo/<uuid:job_Posting_Id>', views.adminReplaceCompanyLogo),
+    path('admin/deleteJobPosting/<uuid:job_Posting_Id>', views.adminDeleteJobPosting),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

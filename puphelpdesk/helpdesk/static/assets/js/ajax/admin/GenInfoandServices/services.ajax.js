@@ -86,11 +86,11 @@ getService = () => {
                     let serviceformat = `
                     <div class="col-xl-4">
                         <div class="card">
-                            <h5 class="card-header bg-transparent border-bottom mt-0 text-primary">${servicedata.service_Name}</h5>
+                            <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${servicedata.service_Name}</h3>
                             <div class="card-body">
                                 <p class="card-text font-size-15">${servicedata.service_Description}</p>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#EditServiceModal" onclick="foreditservice('${servicedata.service_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
+                                    <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditServiceModal" onclick="foreditservice('${servicedata.service_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
                                     <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteService('${servicedata.service_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </div>

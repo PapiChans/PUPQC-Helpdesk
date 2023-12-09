@@ -426,3 +426,12 @@
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - Minor CSS Fixes
 
+# 0.5.2
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Job Posting (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- BUG FIX: Overall UI Problem Both Admin and Student
+- Update Serializers
+- Update Models
+- ADJUSTMENTS: AJAX for ALL Functions that affects UI Change

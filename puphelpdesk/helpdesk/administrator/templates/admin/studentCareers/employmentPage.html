@@ -3,32 +3,38 @@
 {% load static %}
 
 {% block customcss %}
-<link href="{% static 'assets/css/admin/studentCareers/employmentPage.css' %}" rel="stylesheet">
+
 {% endblock %}
 
 {% block maincontent %}
-<h4 class="header-title">Careers Services and Employment</h4>
-<p class="card-title-desc">Contact Professors for Counseling or View Available Internship Opportunities.</p>
-   <div class="container">
-    
-    <div class="box">
-      <div class="icon">01</div>
-      <div class="content"><h3>Career Counseling Referrals</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'admin/student-careers/Counseling' %}"  >View</a>
-      </div>
+<h2 class="header-title">Career Services and Employment</h2>
+<p class="card-title-desc">This will guide students to choose their careers.</p> 
+<div class="row justify-content-center">
+  <div class="col-xl-6">
+    <div class="card">
+        <div class="card-status-top bg-red"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-red">Career Counseling Referrals</h3>
+          <p class="text-secondary">Guide to Career Counseling and Job Search Resources.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'admin/student-careers/Counseling' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
     </div>
-
-    <div class="box">
-      <div class="icon">02</div>
-      <div class="content"><h3>Job Posting and Internship Opportunities</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'admin/student-careers/Referrals' %}"  >View</a>
-      </div>
-    </div>
-    
   </div>
-
+  <div class="col-xl-6">
+    <div class="card">
+        <div class="card-status-top bg-red"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-red">Job Posting and Internship Opportunities</h3>
+          <p class="text-secondary">This page posts available Job and Internships.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'admin/student-careers/Referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+</div>
   {% endblock %}
 
 {% block customjs %}

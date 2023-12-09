@@ -125,6 +125,26 @@ class SuccessResources(models.Model):
     class Meta:
         db_table = 'Success Resources'
 
+# Career Services and Employment: Job Posting
+class JobPosting(models.Model):
+    job_Posting_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    job_Posting_Type = models.CharField(max_length=100, null=False)
+    job_Logo = models.FileField(upload_to='Company-Logo/', null=True)
+    job_Posting_Position = models.CharField(max_length=100, null=False)
+    job_Posting_Status = models.CharField(max_length=100, null=False)
+    job_Posting_Company = models.CharField(max_length=100, null=False)
+    job_Available_Position = models.IntegerField(null=False)
+    job_Description = models.TextField(null=False)
+    job_Duties = models.TextField(null=False)
+    job_Qualifications = models.TextField(null=False)
+    job_Requirements = models.TextField(null=False)
+    job_Skills = models.TextField(null=False)
+    job_Location = models.CharField(max_length=100, null=False)
+    job_Contact = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Jobs and Internships'
+
 #Lost and Found
 class Lost(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

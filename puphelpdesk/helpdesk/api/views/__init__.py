@@ -14,6 +14,9 @@ from .student.GenInfoandServices.service import *
 # Student Support and Counseling
 from .student.StudentCounseling.successresources import *
 
+# Careers and Employment
+from .student.StudentCareers.jobposting import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -32,6 +35,9 @@ from .admin.GenInfoandServices.service import *
 
 # Student Support and Counseling
 from .admin.StudentCounseling.successresources import *
+
+# Careers and Employment
+from .admin.StudentCareers.jobposting import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *

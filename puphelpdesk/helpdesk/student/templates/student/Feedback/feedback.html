@@ -11,16 +11,16 @@
 
 {% block maincontent %}
 {% include "student\Feedback\modal\feedback-modal.html" %}
-    <h4 class="header-title">Give us a Feedback or Suggestions!</h4>
+    <h2 class="header-title">Give us a Feedback or Suggestions!</h2>
     <p class="card-title-desc">To improved our Helpdesk system, you can give us a feedback or suggestions.</p>
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#FeedbackModal"><i class="fa-solid fa-star"></i> Submit a Feedback</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#FeedbackModal"><i class="fa-solid fa-star"></i> Submit a Feedback</button>
     <div class="text-center mt-4 mb-4">
-        <h4>You have Submitted <span class="text-primary" id="feedback_count">0</span> Feedback/s and <span class="text-primary" id="suggestion_count">0</span> Suggestion/s</h4>
+        <h2>You have Submitted <span class="text-primary" id="feedback_count">0</span> Feedback/s and <span class="text-primary" id="suggestion_count">0</span> Suggestion/s</h2>
     </div>
     <div class="alert alert-info">
-        <h6><span class="text-info font-weight-bold">Note: </span>Submit a <span class="text-info font-weight-bold">Feedback</span> for improving the quality of non-technical support services and Submit a <span class="text-info font-weight-bold">Suggestion</span> for enhancing of non-technical support offerings.</h6>
+        <h3>Submit a Feedback for improving the quality of non-technical support services and Submit a Suggestion for enhancing of non-technical support offerings.</h3>
     </div>
-    <table id="feedback-datatable" class="display row-border table-bordered hover responsive nowrap" style="width: 100%;">
+    <table id="feedback-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
         <thead>
             <tr>
                 <th class="dt-head-center">Feedback Type</th>
@@ -37,7 +37,7 @@
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-<script src="{% static 'assets/libs/sweetlaert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>

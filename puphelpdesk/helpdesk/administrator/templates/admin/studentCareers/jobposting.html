@@ -1,0 +1,82 @@
+{% extends "admin\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+
+<h2 class="header-title">Add Job Posting</h2>
+<p class="card-title-desc"><span class="text-danger">*</span>Enter the fields required.</p>
+<a href="{% url 'admin/student-careers/Referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+<form id="AddJobPostingForm" class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <label>Posting Type<span class="text-danger">*</span></label>
+            <select class="form-select" id="posting_Type" required>
+                <option value="">Select Posting Type</option>
+                <option value="Job">Job</option>
+                <option value="Internship">Internship</option>
+            </select>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Job Position<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="posting_Position" placeholder="Job Position" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Company Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="posting_Company" placeholder="Company Name" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Available Position<span class="text-danger">*</span><span class="text-info"> (Note: Specify how many positions available on the Job position.)</span></label>
+            <input type="tel" maxlength="2" class="form-control" id="posting_Available_Position" placeholder="Available Position" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Description<span class="text-danger">*</span><span class="text-info"> (Note: Specify short Description about the Job Position)</span></label>
+            <textarea required class="form-control" id="posting_Description" rows="5" placeholder="Description"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Duties<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="posting_Duties" rows="5" placeholder="Duties"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Qualifications<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="posting_Qualifications" rows="5" placeholder="Job Qualifications"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Requirements<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="posting_Requirements" rows="5" placeholder="Job Requirements"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Skills<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="posting_Skills" rows="5" placeholder="Skills"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Company Location<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="posting_Location" placeholder="Company Location" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Contact<span class="text-danger">*</span><span class="text-info"> (Note: You may provide the Contact Person / Number or Email.)</span></label>
+            <textarea required class="form-control" id="posting_Contact" rows="5" placeholder="Company Contact"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Company Logo<span class="text-danger">*</span><span class="text-info"> (Note: Uploading Image should at .PNG and .JPG format only.)</span></label>
+            <input type="file" class="filepond" id="posting_Logo" data-max-files="1" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <button type="submit" class="btn btn-primary col-xl-12" id="posting_Submit">Add Posting</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/studentCareers/jobposting.ajax.js' %}"></script>
+{% endblock %} 

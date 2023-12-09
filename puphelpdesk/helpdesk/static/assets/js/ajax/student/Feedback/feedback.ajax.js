@@ -134,16 +134,16 @@ getFeedback = () => {
                     render: (data) => {
                         let stat = data.feedback_Status
                         if (data.feedback_Status === 'New'){
-                            stat = '<span class="badge-pill badge-info">New</span>'
+                            stat = '<span class="badge bg-blue text-blue-fg">New</span>'
                         }
                         else if (data.feedback_Status === 'Read') {
-                            stat = `<span class="badge-pill badge-warning">Read</span>`
+                            stat = `<span class="badge bg-yellow text-yellow-fg">Read</span>`
                         }
                         else if (data.feedback_Status === 'Deleted') {
-                            stat = `<span class="badge-pill badge-danger">Deleted</span>`
+                            stat = `<span class="badge bg-red text-red-fg">Deleted</span>`
                         }
                         else {
-                            stat = `<span class="badge-pill badge-dark">Unknown</span>`
+                            stat = `<span class="badge bg-azure text-azure-fg">Unknown</span>`
                         }
                         return `${stat}`
                     },
@@ -153,7 +153,7 @@ getFeedback = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#FeedbackInfoModal" onclick="getFeedbackInfo('${data.feedback_Id}')"><i class="fa-solid fa-exclamation-circle"></i> Info</button>
+                        return `<button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#FeedbackInfoModal" onclick="getFeedbackInfo('${data.feedback_Id}')"><i class="fa-solid fa-exclamation-circle"></i> Info</button>
                                 <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteFeedback('${data.feedback_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
                                 `
                     },
@@ -198,16 +198,16 @@ getFeedbackInfo = (feedback_Id) => {
             let feedback_Date = formatPostgresTimestamp(feedbackInfodata.date_Created)
             let stat = feedbackInfodata.feedback_Status
             if (feedbackInfodata.feedback_Status === 'New'){
-                stat = '<span class="badge-pill badge-info">New</span>'
+                stat = '<span class="badge bg-blue text-blue-fg">New</span>'
             }
             else if (feedbackInfodata.feedback_Status === 'Read') {
-                stat = `<span class="badge-pill badge-warning">Read</span>`
+                stat = `<span class="badge bg-yellow text-yellow-fg">Read</span>`
             }
             else if (feedbackInfodata.feedback_Status === 'Deleted') {
-                stat = `<span class="badge-pill badge-danger">Deleted</span>`
+                stat = `<span class="badge bg-red text-red-fg">Deleted</span>`
             }
             else {
-                stat = `<span class="badge-pill badge-dark">Unknown</span>`
+                stat = `<span class="badge bg-azure text-azure-fg">Unknown</span>`
             }
             $('#info_student_Id').html(feedbackInfodata.student_Id);
             $('#info_student_Name').html(feedbackInfodata.student_Name);

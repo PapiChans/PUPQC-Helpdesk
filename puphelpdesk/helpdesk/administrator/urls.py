@@ -30,11 +30,11 @@ urlpatterns = [
     #ID and Access Cards
     path('student-services/IDRequests', views.adminIdCard, name='admin/student-services/IDRequests'),
     
-    
-    #Careers and Referrals
-    path('student-careers/Employment', views.adminEmployment, name='admin/student-careers/Employment'),
-    path('student-careers/Referrals', views.adminReferrals, name='admin/student-careers/Referrals'),
-    path('student-careers/Counseling', views.adminCounseling, name='admin/student-careers/Counseling'),
+    #Careers and Employment
+    path('careers', views.adminEmployment, name='admin/student-careers/Employment'),
+    path('careers/referrals', views.adminReferrals, name='admin/student-careers/Referrals'),
+    path('careers/counseling', views.adminCounseling, name='admin/student-careers/Counseling'),
+    path('careers/referrals/addposting', views.adminAddJobPosting, name='admin/student-careers/Referrals/AddPosting'),
     
     #Financial Aid Guide
     path('student-services/FinancialAid', views.adminFinancialAid, name='admin/student-services/FinancialAid'),

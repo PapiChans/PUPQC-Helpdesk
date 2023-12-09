@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-12 mt-2">
                             <label>Event Type<span class="text-danger">*</span></label>
-                            <select class="custom-select" id="event_Type" required>
+                            <select class="form-select" id="event_Type" required>
                                 <option value="">Select Event Type</option>
                                 <option value="Event">Event</option>
                                 <option value="Workshop">Workshop</option>
@@ -47,7 +47,7 @@
                     </div>
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="event_Submit">Add Event</button>
                 </div>
             </form>
@@ -64,22 +64,22 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12 mt-2">
-                        <p>Event Type: <span class="font-weight-bold" id="event_type_info"></span></p>
+                        <p>Event Type: <strong id="event_type_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <p>Event Name: <span class="font-weight-bold" id="event_name_info"></span></p>
+                        <p>Event Name: <strong id="event_name_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <p>Event Description: <pre class="font-size-15 font-weight-semibold" style="font-family: Nunito,sans-serif;" id="event_desc_info"></pre></p>
+                        <p>Event Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="event_desc_info"></pre></p>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <p>Event Date: <span class="font-weight-bold" id="event_date_info"></span></p>
+                        <p>Event Date: <strong id="event_date_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <p>Event Time: <span class="font-weight-bold" id="event_time_info"></span></p>
+                        <p>Event Time: <strong id="event_time_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <p>Event Venue: <span class="font-weight-bold" id="event_venue_info"></span></p>
+                        <p>Event Venue: <strong id="event_venue_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
                         <img src="" id="event_image_info" class="img-fluid" alt="Event Image">
@@ -87,7 +87,7 @@
                 </div>
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -105,7 +105,7 @@
                         <div class="col-md-12 mt-2">
                             <input type="hidden" id="edit_event_Id" name="edit_event_Id"/>
                             <label>Event Type<span class="text-danger">*</span></label>
-                            <select class="custom-select" id="edit_event_Type" required>
+                            <select class="form-select" id="edit_event_Type" required>
                                 <option value="">Select Event Type</option>
                                 <option value="Event">Event</option>
                                 <option value="Workshop">Workshop</option>
@@ -143,7 +143,7 @@
                     </div>
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="edit_event_Submit">Save Changes</button>
                 </div>
             </form>
@@ -172,7 +172,7 @@
                     </div>
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="upload_image_event_Submit">Upload</button>
                 </div>
             </form>
