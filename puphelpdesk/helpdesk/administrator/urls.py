@@ -31,10 +31,10 @@ urlpatterns = [
     path('student-services/IDRequests', views.adminIdCard, name='admin/student-services/IDRequests'),
     
     #Careers and Employment
-    path('careers', views.adminEmployment, name='admin/student-careers/Employment'),
-    path('careers/referrals', views.adminReferrals, name='admin/student-careers/Referrals'),
-    path('careers/counseling', views.adminCounseling, name='admin/student-careers/Counseling'),
-    path('careers/referrals/addposting', views.adminAddJobPosting, name='admin/student-careers/Referrals/AddPosting'),
+    path('careers', views.adminCareers, name='admin/student-careers/Employment'),
+    path('careers/internship', views.adminInternship, name='admin/student-careers/Referrals'),
+    path('careers/referrals', views.adminReferrals, name='admin/student-careers/Counseling'),
+    path('careers/internship/addposting', views.adminAddJobPosting, name='admin/student-careers/Referrals/AddPosting'),
     
     #Financial Aid Guide
     path('student-services/FinancialAid', views.adminFinancialAid, name='admin/student-services/FinancialAid'),

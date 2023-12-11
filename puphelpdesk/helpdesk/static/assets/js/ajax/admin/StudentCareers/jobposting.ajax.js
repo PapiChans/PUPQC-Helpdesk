@@ -168,7 +168,7 @@ addJobpost = (CompanyLogo) => {
                             $('form#AddJobPostingForm')[0].reset();
 
                             setTimeout(function () {
-                                window.location.href = `/admin/careers/referrals`
+                                window.location.href = `/admin/careers/internship`
                             }, 2600);
 
                         }
