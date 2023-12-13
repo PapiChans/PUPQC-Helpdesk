@@ -58,14 +58,6 @@ def financialaid(request):
     pagename_value = "Financial Aid and Scholarships"
     return render(request, 'student/FinancialAid/financialaid.html',{'pagename': pagename_value})
 
-def financialguidance(request):
-    pagename_value = "Financial Aid and Scholarships"
-    return render(request, 'student/FinancialAid/financialguidance.html',{'pagename': pagename_value})
-
-def scholarshipForm(request):
-    pagename_value = "Financial Aid and Scholarships"
-    return render(request, 'student/FinancialAid/scholarshipform.html',{'pagename': pagename_value})
-
     # Housing and Accommodation
 def housing(request):
     pagename_value = "Housing and Accommodation"

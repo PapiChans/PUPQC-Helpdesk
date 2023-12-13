@@ -125,6 +125,22 @@ class SuccessResources(models.Model):
     class Meta:
         db_table = 'Success Resources'
 
+#Financial Aid And Scholarships
+class FinancialAndScholarshipGuide(models.Model):
+    guide_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    guide_Type = models.CharField(max_length=100, null=False)
+    guide_Program = models.CharField(max_length=100, null=False)
+    guide_Description = models.TextField(null=False)
+    guide_Apply = models.TextField(null=False)
+    guide_Submit = models.TextField(null=False)
+    guide_Contact = models.TextField(null=False)
+    guide_Deadline_Start = models.DateField(null=False)
+    guide_Deadline_End = models.DateField(null=False)
+    guide_Remarks = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Financial Aid and Scholarship Guide'
+
 # Career Services and Employment: Job Posting
 class JobPosting(models.Model):
     job_Posting_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
@@ -171,23 +187,3 @@ class Feedback(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
-
-#Financial Aid And Scholarships
-
-class FinancialAidGuide(models.Model):
-    financialAidId = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    ResourcesName = models.CharField(max_length=50, null=False)
-    FinancialText = models.TextField(null=False)
-    ResourcesFile = models.FileField(upload_to='Financial-Aid-Guide/', null=True)
-    class Meta:
-        db_table = 'Financial Aid Guide'
-
-class ScholarshipOpportunities(models.Model):
-    ScholarshipId = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    ScholarshipName = models.CharField(max_length=50, null=False)
-    ScholarshipDescription = models.TextField(null=False)
-    class Meta:
-        db_table = 'Scholarship Opportunities'
-
-
-

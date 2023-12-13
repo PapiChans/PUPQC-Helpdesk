@@ -88,13 +88,9 @@ def adminFinancialAid(request):
     pagename_value = "Financial Aid and Scholarships"
     return render(request, 'admin/FinancialAid/financialAid.html',{'pagename': pagename_value})
 
-def adminFinancialGuide(request):
+def adminFinancialGuidePosting(request):
     pagename_value = "Financial Aid and Scholarships"
-    return render(request, 'admin/FinancialAid/financialGuide.html',{'pagename': pagename_value})
-
-def adminScholarshipOpportunities(request):
-    pagename_value = "Financial Aid and Scholarships"
-    return render(request, 'admin/FinancialAid/opportunities.html',{'pagename': pagename_value})
+    return render(request, 'admin/FinancialAid/addpost.html',{'pagename': pagename_value})
 
 
 

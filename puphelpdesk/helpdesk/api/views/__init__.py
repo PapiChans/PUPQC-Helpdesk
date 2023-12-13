@@ -14,6 +14,9 @@ from .student.GenInfoandServices.service import *
 # Student Support and Counseling
 from .student.StudentCounseling.successresources import *
 
+# Financial Aid and Scholarships
+from .student.FinancialAid.financialaid import *
+
 # Careers and Employment
 from .student.StudentCareers.jobposting import *
 
@@ -35,6 +38,9 @@ from .admin.GenInfoandServices.service import *
 
 # Student Support and Counseling
 from .admin.StudentCounseling.successresources import *
+
+# Financial Aid and Scholarships
+from .admin.FinancialAid.financialaid import *
 
 # Careers and Employment
 from .admin.StudentCareers.jobposting import *

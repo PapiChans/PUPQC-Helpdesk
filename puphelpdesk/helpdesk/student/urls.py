@@ -22,9 +22,7 @@ urlpatterns = [
     path('student-support/resources', views.studsupportresources, name='student-support/resources'),
 
     # Financial Aid and Scholarships
-    path('financialaid', views.financialaid, name='financialaid'),
-    path('financialaid/guidance', views.financialguidance, name='financialaid/guidance'),
-    path('financialaid/scholarship', views.scholarshipForm, name='financialaid/scholarship'),
+    path('financial-aid-and-scholarships', views.financialaid, name='financialaid'),
 
     # Housing and Accommodation
     path('housing', views.housing, name='housing'),

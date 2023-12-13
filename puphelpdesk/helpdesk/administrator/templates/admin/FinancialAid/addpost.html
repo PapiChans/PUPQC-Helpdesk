@@ -1,0 +1,68 @@
+{% extends "admin\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+<h2 class="header-title">Add Financial or Scholarship Post</h2>
+<p class="card-title-desc"><span class="text-danger">*</span>Enter the fields required.</p>
+<a href="{% url 'admin/student-services/FinancialAid' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+<form id="AddFinancialGuideForm" class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <label>Guide Type<span class="text-danger">*</span></label>
+            <select class="form-select" id="guide_Type" required>
+                <option value="">Select Guide Type</option>
+                <option value="Financial Aid">Financial Aid</option>
+                <option value="Scholarship">Scholarship</option>
+            </select>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Program Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="guide_Program" placeholder="Program Name" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="guide_Description" rows="5" placeholder="Description"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">How to Apply<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="guide_Apply" rows="5" placeholder="Provide instructions on how to apply."></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Where to Submit<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="guide_To_Submit" rows="5" placeholder="Provide a specific place or E-mail Address."></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Contact Person<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="guide_Contact" rows="5" placeholder="Provide a Person Information to Contact."></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Deadline Start<span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="guide_Deadline_Start" data-provider="flatpickr" placeholder="Event Date Start" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Deadline End<span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="guide_Deadline_End" data-provider="flatpickr" placeholder="Event Date End" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Remarks<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="guide_Remarks" rows="5" placeholder="Remarks"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <button type="submit" class="btn btn-primary col-xl-12" id="guide_Submit">Add Post</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/FinancialAid/addpost.ajax.js' %}"></script>
+{% endblock %} 

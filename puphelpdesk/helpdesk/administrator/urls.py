@@ -37,8 +37,6 @@ urlpatterns = [
     path('careers/internship/addposting', views.adminAddJobPosting, name='admin/student-careers/Referrals/AddPosting'),
     
     #Financial Aid Guide
-    path('student-services/FinancialAid', views.adminFinancialAid, name='admin/student-services/FinancialAid'),
-    path('student-services/FinancialAidGuide', views.adminFinancialGuide, name='admin/student-services/FinancialAidGuide'),
-    path('student-services/ScholarshipOpportunities', views.adminScholarshipOpportunities, name='admin/student-services/ScholarshipOpportunities'),
-    
+    path('financial-aid-and-scholarships', views.adminFinancialAid, name='admin/student-services/FinancialAid'),
+    path('financial-aid-and-scholarships/AddPost', views.adminFinancialGuidePosting, name='admin/student-services/FinancialAid/AddPost'),
 ]

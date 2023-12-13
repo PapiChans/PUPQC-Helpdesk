@@ -1,42 +1,100 @@
-<div class="modal fade" id="AddFinancialGuideModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="GuideInfoModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Financial Aid Guide</h5>
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Program Information</h5>
             </div>
             <div class="modal-body">
-                <form id="submitFinancialForm" class="needs-validation" novalidate>
-
-<div>
-
-<div class="row mt-3">
-
-    <div class="col-md-12">
-        <label for="validationCustom01">File Name<span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="ResourcesName" placeholder="File Name" required/>
-    </div>
-
-    <div class="col-md-12">
-        <label for="validationCustom01">Financial Guide<span class="text-danger">*</span></label></label>
-        <textarea required class="form-control" id="FinancialText" rows="5" placeholder="Enter your Guide here."></textarea>
-    </div>
-
-    <div class="col-md-12 mt-2">
-        <label for="validationCustom01">Upload File<span class="text-danger">*</span></label>
-        <input type="file" class="filepond" id="ResourcesFile" data-max-files="1" required/>
-    </div>
-
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Guide Type: <strong id="guide_type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Program: <strong id="guide_program_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="guide_description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>How to apply: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="guide_apply_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Where to Submit: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="guide_submit_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact Person: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="guide_contact_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Deadline of Application: <strong id="guide_deadline_start_info"></strong> - <strong id="guide_deadline_end_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Remarks: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="guide_remarks_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary" id="ResourcesSubmit">Upload</button>
-</div>
-
-
-</form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div>
-    </div>
+<div class="modal fade" id="GuideEditModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Guide Post</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditGuideForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" class="form-control" id="edit_guide_Id">
+                        <div class="col-md-12 mt-2">
+                            <label>Guide Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_guide_Type" required>
+                                <option value="Financial Aid">Financial Aid</option>
+                                <option value="Scholarship">Scholarship</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Program Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_guide_Program" placeholder="Program Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_guide_Description" rows="5" placeholder="Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">How to Apply<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_guide_Apply" rows="5" placeholder="Provide instructions on how to apply."></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Where to Submit<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_guide_To_Submit" rows="5" placeholder="Provide a specific place or E-mail Address."></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Contact Person<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_guide_Contact" rows="5" placeholder="Provide a Person Information to Contact."></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Deadline Start<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="edit_guide_Deadline_Start" data-provider="flatpickr" placeholder="Event Date Start" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Deadline End<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="edit_guide_Deadline_End" data-provider="flatpickr" placeholder="Event Date End" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Remarks<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_guide_Remarks" rows="5" placeholder="Remarks"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_guide_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>

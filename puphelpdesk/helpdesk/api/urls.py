@@ -25,6 +25,11 @@ urlpatterns = [
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
 
+    #Financial Aid and Scholarship
+    path('student/getFinancialAid', views.studGetFinancialAid),
+    path('student/getScholarship', views.studGetScholarships),
+    path('student/getGuideInfo/<uuid:guide_Id>', views.studGetGuideInfo),
+
     #Careers and Employment: Job Posting
     path('student/getJobPosting', views.studGetJobPosting),
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
@@ -78,6 +83,14 @@ urlpatterns = [
     path('admin/addSuccessResources', views.adminAddSuccessResources),
     path('admin/getSuccessResources', views.adminGetSuccessResources),
     path('admin/deleteSuccessResources/<uuid:success_resources_Id>', views.adminDeleteSuccessResources),
+
+    #Financial Aid and Scholarship
+    path('admin/addFinancialGuide', views.adminAddGuidePost),
+    path('admin/getFinancialAid', views.adminGetFinancialAid),
+    path('admin/getScholarship', views.adminGetScholarships),
+    path('admin/getGuideInfo/<uuid:guide_Id>', views.adminGetGuideInfo),
+    path('admin/editGuide/<uuid:guide_Id>', views.adminEditGuidePost),
+    path('admin/deleteGuide/<uuid:guide_Id>', views.adminDeleteGuidePost),
 
     #Careers and Employment: Job Posting
     path('admin/addJobPosting', views.adminAddJobPosting),

@@ -1,32 +1,73 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
 {% block customcss %}
-<link href="{% static 'assets/css/student/FinancialAid/financialaid.css' %}" rel="stylesheet">
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-<h4 class="header-title">Financial Aid and Scholarships</h4>
-<p class="card-title-desc">Student Application for Scholarship or Financial Aid Support</p>
-   <div class="container">
-    
-    <div class="box">
-      <div class="icon">01</div>
-      <div class="content"><h3>Financial Aid Guidance</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'financialaid/guidance' %}">View</a>
-      </div>
+{% include "student\FinancialAid\modal\financialAid-modal.html" %}
+<h2 class="header-title">Financial Aid and Scholarships</h2>
+<p class="card-title-desc">These are the available Financial Aid and Scholarships</p>
+
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#financialaid-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-inbox"></i>Financial Aid
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#scholarships-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-envelope-circle-check"></i>Scholarship
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="financialaid-justify" role="tabpanel">
+        <table id="financialaid-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Financial Aid Programs</th>
+                    <th class="dt-head-center">Posted Date</th>
+                    <th class="dt-head-center">Deadline Date</th>
+                    <th class="dt-head-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
+    <div class="tab-pane" id="scholarships-justify" role="tabpanel">
+        <table id="scholarships-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                  <th class="dt-head-center">Scholarship Programs</th>
+                  <th class="dt-head-center">Posted Date</th>
+                  <th class="dt-head-center">Deadline Date</th>
+                  <th class="dt-head-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <div class="box">
-      <div class="icon">02</div>
-      <div class="content"><h3>Scholarship Opportunities</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="{% url 'financialaid/scholarship' %}">View</a>
-      </div>
+            </tbody>
+        </table>
     </div>
-
-    <footer>
-        <!-- Footer content -->
-    </footer>
-
+</div>
 {% endblock %}
-
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jszip.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/vfs_font.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/FinancialAid/financialAid.ajax.js' %}"></script>
+{% endblock %} 
+    
