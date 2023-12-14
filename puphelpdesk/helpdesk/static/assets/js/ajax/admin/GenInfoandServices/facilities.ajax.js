@@ -172,13 +172,8 @@ getFacility = () => {
                     let facilityformat = ` 
                     <div class="col-xl-3 col-md-4 col-sm-6">
                         <div class="gallery-box mt-4">
-                            <a class="gallery-popup glightbox font-weight-bold" href="${displayimage}" data-glightbox="title: ${facilitydata.facility_Name}; description: ${facilitydata.facility_Description}; descPosition: right;" >
+                            <a class="gallery-popup glightbox font-weight-bold" href="${displayimage}" data-glightbox="title: <h3>${facilitydata.facility_Name}</h3>; description: <h5>${facilitydata.facility_Description}</h5>; descPosition: right;" >
                                 <img class="gallery-demo-img img-fluid mx-auto" src="${displayimage}" alt="image" />
-                                <div class="gallery-overlay">
-                                    <div class="overlay-content">
-                                        <h5 class="overlay-title">${facilitydata.facility_Name}</h5>
-                                    </div>
-                                </div>
                             </a>
                         </div>
                         <div class="text-center mt-2">

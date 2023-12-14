@@ -3,6 +3,9 @@ $(function() {
     feedbackChart1();
     feedbackChart2();
     feedbackChart3();
+    /*Other Charts*/
+    financialAidChart();
+    careerChart();
 })
 
 const notyf = new Notyf();
@@ -187,6 +190,130 @@ feedbackChart3 = () => {
     .fail(() => {
         notyf.error({
             message: 'Feedback Chart 3 Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+financialAidChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/financialaidChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('FinancialAidChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'Financial Aid and Scholarship',
+                subtext: 'Count Chart',
+                left: 'center'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Financial Aid Chart Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+careerChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/careerChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('CareerChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'Career Chart',
+                subtext: 'Job v.s Internship',
+                left: 'center'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Career Chart Fetching Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });

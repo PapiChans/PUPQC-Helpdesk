@@ -49,6 +49,8 @@ urlpatterns = [
     path('admin/FeedbackVsSuggestions', views.adminFeedbackVsSuggestions),
     path('admin/feedbackChart', views.adminFeedbackChart),
     path('admin/suggestionChart', views.adminSuggestionChart),
+    path('admin/financialaidChart', views.adminFinancialAidChart),
+    path('admin/careerChart', views.adminCareerChart),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),

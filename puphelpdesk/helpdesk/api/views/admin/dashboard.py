@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.models import Feedback
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -65,3 +65,41 @@ def adminSuggestionChart(request):
         ]
         return Response(response_data)
     return Response({"message": "Get Feedback Error"})
+
+@api_view(['GET'])
+def adminFinancialAidChart(request):
+    if request.method == "GET":
+        data = (
+            FinancialAndScholarshipGuide.objects
+            .values('guide_Type')
+            .annotate(count=Count('guide_Type'))
+        )
+
+        financialaid_count = sum(item['count'] for item in data if item['guide_Type'] == 'Financial Aid')
+        scholarship_count = sum(item['count'] for item in data if item['guide_Type'] == 'Scholarship')
+
+        response_data = [
+            {'value': financialaid_count, 'name': 'Financial Aid'},
+            {'value': scholarship_count, 'name': 'Scholarship'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Financial Aid Chart Error"})
+
+@api_view(['GET'])
+def adminCareerChart(request):
+    if request.method == "GET":
+        data = (
+            JobPosting.objects
+            .values('job_Posting_Type')
+            .annotate(count=Count('job_Posting_Type'))
+        )
+
+        job_count = sum(item['count'] for item in data if item['job_Posting_Type'] == 'Job')
+        internship_count = sum(item['count'] for item in data if item['job_Posting_Type'] == 'Internship')
+
+        response_data = [
+            {'value': job_count, 'name': 'Job'},
+            {'value': internship_count, 'name': 'Internship'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Career Chart Error"})
