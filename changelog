@@ -462,3 +462,7 @@
 - Pushed by Loyd the Great (https://github.com/loydmarionlopez)
 - New Job and Internship posting Design for Students
 - HDK-017 Done
+
+# 0.5.4.1
+- Push by Christian (https://github.com/papichans)
+- FIX: ALL Modals, now they unable to close unless they click "Close" button
