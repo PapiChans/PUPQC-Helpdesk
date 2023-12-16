@@ -24,9 +24,10 @@ feedbackChart1 = () => {
             
             option = {
             title: {
-                text: 'Feedback Count',
+                text: 'Overall Counts',
                 subtext: 'Feedback v.s Suggestion',
-                left: 'center'
+                left: 'center',
+                bottom: '5%'
             },
             toolbox: {
                 feature: {
@@ -38,6 +39,7 @@ feedbackChart1 = () => {
             tooltip: {
                 trigger: 'item',
                 formatter: '<b>{b}</b>: {c} ({d}%)',
+                
             },
             legend: {
                 orient: 'vertical',
@@ -88,7 +90,8 @@ feedbackChart2 = () => {
             title: {
                 text: 'Feedback Count',
                 subtext: 'Feedback Status Chart',
-                left: 'center'
+                left: 'center',
+                bottom: '5%'
             },
             toolbox: {
                 feature: {
@@ -150,7 +153,8 @@ feedbackChart3 = () => {
             title: {
                 text: 'Suggestion Count',
                 subtext: 'Suggestion Status Chart',
-                left: 'center'
+                left: 'center',
+                bottom: '5%'
             },
             toolbox: {
                 feature: {
@@ -212,7 +216,8 @@ financialAidChart = () => {
             title: {
                 text: 'Financial Aid and Scholarship',
                 subtext: 'Count Chart',
-                left: 'center'
+                left: 'center',
+                bottom: '5%'
             },
             toolbox: {
                 feature: {
@@ -274,7 +279,8 @@ careerChart = () => {
             title: {
                 text: 'Career Chart',
                 subtext: 'Job v.s Internship',
-                left: 'center'
+                left: 'center',
+                bottom: '5%'
             },
             toolbox: {
                 feature: {

@@ -119,6 +119,14 @@
   color: #FFD700;
 }
 
+.container .box:hover a{
+  color: #800000;
+}
+
+.container .box a:hover{
+  color: #FFD700;
+}
+
 
 
 .container .box .content h3{
