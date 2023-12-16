@@ -59,17 +59,17 @@ getJobPosts = () => {
                     }
 
                     let jobformat = `
-                    <div class="col-xl-4 mb-3">
-                        <div class="card">
-                            <div class="card-status-top bg-${cardcolor}"></div>
-                            <div class="card-body">
-                                <h3 class="card-title text-center text-${cardcolor} ">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
-                                <p class="text-secondary">${jobdata.job_Description}</p>
-                            </div>
-                            <div class="card-footer">
-                                <h4 class="text-secondary text-center">Posted: ${formattedDate}</h4>
-                            </div>
+                    <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                            <p class="text-secondary">${jobdata.job_Description}</p>
                         </div>
+                        <div class="card-footer">
+                            <h4 class="text-secondary">Posted: ${formattedDate}</h4>
+                        </div>
+                    </div>
                         <div class="mt-2 text-center">
                             <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
                             <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoEditModal" onclick="foreditjobpost('${jobdata.job_Posting_Id}')">Edit</button>

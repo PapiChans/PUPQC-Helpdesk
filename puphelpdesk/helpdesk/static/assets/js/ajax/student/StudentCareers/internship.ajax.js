@@ -61,7 +61,7 @@ getJobPosts = () => {
                     </div>
                 </div>
             `;
-            console.log('Image URL:', jobdata.job_Image_URL);
+            
 
                     if (jobdata.job_Posting_Status == 'Active' && jobdata.job_Posting_Type == 'Job'){
                         $('#no_job').html(null)
