@@ -10,6 +10,7 @@ from .student.GenInfoandServices.events import *
 from .student.GenInfoandServices.resources import *
 from .student.GenInfoandServices.facilities import *
 from .student.GenInfoandServices.service import *
+from .student.GenInfoandServices.referrals import *
 
 # Student Support and Counseling
 from .student.StudentCounseling.successresources import *
@@ -35,6 +36,7 @@ from .admin.GenInfoandServices.events import *
 from .admin.GenInfoandServices.resources import *
 from .admin.GenInfoandServices.facilities import *
 from .admin.GenInfoandServices.service import *
+from .admin.GenInfoandServices.referrals import *
 
 # Student Support and Counseling
 from .admin.StudentCounseling.successresources import *

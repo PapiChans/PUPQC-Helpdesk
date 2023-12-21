@@ -466,3 +466,12 @@
 # 0.5.4.1
 - Push by Christian (https://github.com/papichans)
 - FIX: ALL Modals, now they unable to close unless they click "Close" button
+
+# 0.5.5
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for General Info and Service: Service Referrals (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Update Serializers
+- Update Models
+- Module Complete: General Info and Services

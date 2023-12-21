@@ -22,6 +22,10 @@ urlpatterns = [
     # General Info and Services: Services
     path('student/getService', views.studGetService),
 
+        # General Info and Services: Service Referrals
+    path('student/getServiceReferral', views.studGetServiceReferral),
+    path('student/getReferralInfo/<uuid:referral_Id>', views.studGetServiceReferralInfo),
+
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
 
@@ -80,6 +84,13 @@ urlpatterns = [
     path('admin/deleteFacility/<uuid:facility_Id>', views.adminDeleteFacility),
     path('admin/editFacility/<uuid:facility_Id>', views.adminEditFacility),
     path('admin/replaceFacilityImage/<uuid:facility_Id>', views.adminReplaceFacilityImage),
+
+    # General Info and Services: Service Referrals
+    path('admin/addServiceReferral', views.adminAddServiceReferral),
+    path('admin/getServiceReferral', views.adminGetServiceReferral),
+    path('admin/getReferralInfo/<uuid:referral_Id>', views.adminGetServiceReferralInfo),
+    path('admin/editServiceReferral/<uuid:referral_Id>', views.adminEditServiceReferral),
+    path('admin/deleteServiceReferral/<uuid:referral_Id>', views.adminDeleteServiceReferral),
 
     # Student Support and Counseling: Success Resources
     path('admin/addSuccessResources', views.adminAddSuccessResources),

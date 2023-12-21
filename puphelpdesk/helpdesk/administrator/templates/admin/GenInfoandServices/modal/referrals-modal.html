@@ -1,32 +1,104 @@
-{% load static %}
-
-
 <div class="modal fade" id="AddReferralsModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add New Referral</h5>
             </div>
             <div class="modal-body">
-                <form id="ReferralsForm" class="needs-validation" novalidate>
-                    {% csrf_token %}
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <label for="referralCustom01">Referral Name<span class="text-danger">*</span></label></label>
-                            <input type="text" class="form-control" id="referrals_Name" data-provider="flatpickr" required/>
-                        </div>
+                <form id="AddReferralForm" class="needs-validation" novalidate>
+                    <div class="col-md-12 mt-2">
+                        <label>Referral Type<span class="text-danger">*</span></label>
+                        <select class="form-select" id="referral_Type" required>
+                            <option value="">Select Service Referral Type</option>
+                            <option value="On Campus">On Campus</option>
+                            <option value="Community">Community</option>
+                        </select>
                     </div>
-
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <label for="referralCustom01">Referral Description<span class="text-danger">*</span></label></label>
-                            <textarea class="form-control" id="referrals_Description" rows="5" data-provider="flatpickr"  required/></textarea>
-                        </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Service Referral Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="referral_Name" placeholder="Service Referral Name" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Service Referral Description<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="referral_Description" rows="5" placeholder="Referral Description"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">More Info<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="referral_More_Info" rows="5" placeholder="You can provide Contact Person / Email / or Website regarding to the Service."></textarea>
                     </div>
             </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="referral_submit">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="referralInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Service Referral Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Service Referral Type: <strong id="referral_type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Service Referral Name: <strong id="referral_name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="referral_description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Additional Information: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="referral_more_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="editReferralModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Service Referral</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditReferralForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="edit_referral_Id">
+                            <label>Referral Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_referral_Type" required>
+                                <option value="On Campus">On Campus</option>
+                                <option value="Community">Community</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Service Referral Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_referral_Name" placeholder="Service Referral Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Service Referral Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_referral_Description" rows="5" placeholder="Referral Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">More Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_referral_More_Info" rows="5" placeholder="You can provide Contact Person / Email / or Website regarding to the Service."></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_referral_Submit">Save Changes</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

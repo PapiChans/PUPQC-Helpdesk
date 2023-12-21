@@ -110,8 +110,10 @@ class Events(models.Model):
 # General Information and Services: Referrals
 class ServiceReferrals(models.Model):
     referral_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    referral_Type = models.CharField(max_length=100, null=False)
     referral_Name = models.CharField(max_length=100, null=False)
     referral_Description = models.TextField(null=False)
+    referral_More_Info = models.TextField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Service Referrals'
