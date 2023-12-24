@@ -21,6 +21,9 @@ from .student.FinancialAid.financialaid import *
 # Careers and Employment
 from .student.StudentCareers.jobposting import *
 
+# ID and Access Cards
+from .student.IDandCard.IDandCard import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -46,6 +49,9 @@ from .admin.FinancialAid.financialaid import *
 
 # Careers and Employment
 from .admin.StudentCareers.jobposting import *
+
+# ID and Access Cards
+from .admin.IDandCard.IDandCard import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *

@@ -8,10 +8,8 @@ urlpatterns = [
     path('profile', views.adminprofile, name='admin/profile'),
     path('editprofile', views.admineditprofile, name='admin/editprofile'),
     
-    
     #Student Account Requests
     path('students', views.adminStudents, name='students'),
-    
     
     # General Information and Services
     path('geninfo/facilities', views.admingeninfofacilities, name='admin/geninfo/facilities'),
@@ -28,7 +26,10 @@ urlpatterns = [
     path('suggestions', views.adminsuggestions, name='admin/suggestions'),
     
     #ID and Access Cards
-    path('student-services/IDRequests', views.adminIdCard, name='admin/student-services/IDRequests'),
+    path('IDandCard', views.adminIdCard, name='admin/student-services/IDRequests'),
+    path('IDandCard/obtaining_ID', views.adminIdObtaining, name='admin/IDandCard/obtaining_ID'),
+    path('IDandCard/replacing_ID', views.adminIdReplacing, name='admin/IDandCard/replacing_ID'),
+    path('IDandCard/access_cards', views.adminAccessCard, name='admin/IDandCard/access_cards'),
     
     #Careers and Employment
     path('careers', views.adminCareers, name='admin/student-careers/Employment'),

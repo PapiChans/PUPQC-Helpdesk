@@ -163,6 +163,17 @@ class JobPosting(models.Model):
     class Meta:
         db_table = 'Jobs and Internships'
 
+#ID and Access Cards
+class IDandCard(models.Model):
+    guide_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    guide_Type = models.CharField(max_length=100, null=False)
+    guide_Step_Number = models.IntegerField(null=False)
+    guide_Title = models.CharField(max_length=100, null=False)
+    guide_Text = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'ID and Access Card'
+
 #Lost and Found
 class Lost(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

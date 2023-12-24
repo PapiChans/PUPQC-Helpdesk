@@ -38,6 +38,10 @@ urlpatterns = [
     path('student/getJobPosting', views.studGetJobPosting),
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
 
+    # ID and Access Cards
+    path('student/getObtainingStep', views.studGetObtainingStep),
+    path('student/getReplacingStep', views.studGetReplacingStep),
+    path('student/getAccessCardStep', views.studGetAccessCardStep),
 
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
@@ -55,6 +59,7 @@ urlpatterns = [
     path('admin/suggestionChart', views.adminSuggestionChart),
     path('admin/financialaidChart', views.adminFinancialAidChart),
     path('admin/careerChart', views.adminCareerChart),
+    path('admin/servicereferralChart', views.adminServiceReferralChart),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
@@ -105,13 +110,24 @@ urlpatterns = [
     path('admin/editGuide/<uuid:guide_Id>', views.adminEditGuidePost),
     path('admin/deleteGuide/<uuid:guide_Id>', views.adminDeleteGuidePost),
 
-    #Careers and Employment: Job Posting
+    # Careers and Employment: Job Posting
     path('admin/addJobPosting', views.adminAddJobPosting),
     path('admin/getJobPosting', views.adminGetJobPosting),
     path('admin/getJobPostingInfo/<uuid:job_Posting_Id>', views.adminGetJobInfo),
     path('admin/editJobPosting/<uuid:job_Posting_Id>', views.adminEditJobPosting),
     path('admin/replaceCompanyLogo/<uuid:job_Posting_Id>', views.adminReplaceCompanyLogo),
     path('admin/deleteJobPosting/<uuid:job_Posting_Id>', views.adminDeleteJobPosting),
+
+    # ID and Access Cards
+    path('admin/addObtainingStep', views.adminAddObtainingStep),
+    path('admin/addReplacingStep', views.adminAddReplacingStep),
+    path('admin/addAccessCardStep', views.adminAddAccessCardStep),
+    path('admin/getObtainingStep', views.adminGetObtainingStep),
+    path('admin/getReplacingStep', views.adminGetReplacingStep),
+    path('admin/getAccessCardStep', views.adminGetAccessCardStep),
+    path('admin/getStepInfo/<uuid:guide_Id>', views.adminGetStepInfo),
+    path('admin/editGuideStep/<uuid:guide_Id>', views.adminEditGuide),
+    path('admin/deleteGuideStep/<uuid:guide_Id>', views.adminDeleteGuide),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

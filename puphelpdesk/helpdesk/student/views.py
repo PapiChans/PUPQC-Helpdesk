@@ -90,13 +90,17 @@ def idandcard(request):
     pagename_value = "Student ID and Access Cards"
     return render(request, 'student/IDandCard/idandcard.html',{'pagename': pagename_value})
 
-def newIdRequest(request):
-    pagename_value = "Student ID and Access Cards"
-    return render(request, 'student/IDandCard/IDrequest.html',{'pagename': pagename_value})
+def IdObtaining(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'student/IDAndCard/obtaining.html',{'pagename': pagename_value})
 
-def IDvalidation(request):
-    pagename_value = "Student ID and Access Cards"
-    return render(request, 'student/IDandCard/IDvalidation.html',{'pagename': pagename_value})
+def IdReplacing(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'student/IDAndCard/replacing.html',{'pagename': pagename_value})
+
+def AccessCard(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'student/IDAndCard/accesscard.html',{'pagename': pagename_value})
 
     # Student Government and Involvement
 def government(request):

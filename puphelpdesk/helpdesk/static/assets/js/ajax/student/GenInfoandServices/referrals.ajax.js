@@ -34,7 +34,7 @@ getServiceRefferals = () => {
                             <div class="card-body">
                                 <p class="card-text font-size-15">${servicedata.referral_Description}</p>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#referralInfoModal" onclick="getReferralInfo('${servicedata.referral_Id}')">Infomation</button>
+                                    <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#referralInfoModal" onclick="getReferralInfo('${servicedata.referral_Id}')">Information</button>
                                 </div>
                             </div>
                         </div>

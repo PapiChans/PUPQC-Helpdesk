@@ -6,6 +6,7 @@ $(function() {
     /*Other Charts*/
     financialAidChart();
     careerChart();
+    servicereferralChart();
 })
 
 const notyf = new Notyf();
@@ -320,6 +321,69 @@ careerChart = () => {
     .fail(() => {
         notyf.error({
             message: 'Career Chart Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+servicereferralChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/servicereferralChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('ServiceReferralChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'Service Referral Chart',
+                subtext: 'On-Campus v.s Community',
+                left: 'center',
+                bottom: '5%'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Service Referral Chart Fetching Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });

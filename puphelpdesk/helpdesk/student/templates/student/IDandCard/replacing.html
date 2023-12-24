@@ -1,0 +1,19 @@
+{% extends "student\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %} 
+<h2 class="header-title">Replacing ID Cards</h2>
+<p class="card-title-desc">If you want to replace your ID Card, follow the steps below.</p>
+<h2 id="no-step" class="text-center">No Step Guide Available</h2>
+<div id="replacing_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/IDandCard/replacing.ajax.js' %}"></script>
+{% endblock %}

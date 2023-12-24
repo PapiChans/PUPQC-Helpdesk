@@ -64,6 +64,18 @@ def adminIdCard(request):
     pagename_value = "ID and Access Cards"
     return render(request, 'admin/IDAndCard/IDAndCard.html',{'pagename': pagename_value})
 
+def adminIdObtaining(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'admin/IDAndCard/obtaining.html',{'pagename': pagename_value})
+
+def adminIdReplacing(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'admin/IDAndCard/replacing.html',{'pagename': pagename_value})
+
+def adminAccessCard(request):
+    pagename_value = "ID and Access Cards"
+    return render(request, 'admin/IDAndCard/accesscard.html',{'pagename': pagename_value})
+
 #Student Careers and Referrals
 
 def adminCareers(request):

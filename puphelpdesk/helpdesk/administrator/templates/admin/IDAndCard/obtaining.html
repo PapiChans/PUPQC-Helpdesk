@@ -1,0 +1,23 @@
+{% extends "admin\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "admin\IDandCard\modal\IDandCard-modal.html" %} 
+<h2 class="header-title">Obtaning ID Cards</h2>
+<p class="card-title-desc">Provide a guide assistance for Students in Obtaining ID Cards</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddStepModal">Add Step</button>
+<h2 id="no-step" class="text-center">No Step Guide Available</h2>
+<div id="obtaining_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/IDandCard/obtaining.ajax.js' %}"></script>
+{% endblock %}

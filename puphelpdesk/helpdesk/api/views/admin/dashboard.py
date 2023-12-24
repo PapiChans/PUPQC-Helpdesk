@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -103,3 +103,22 @@ def adminCareerChart(request):
         ]
         return Response(response_data)
     return Response({"message": "Get Career Chart Error"})
+
+@api_view(['GET'])
+def adminServiceReferralChart(request):
+    if request.method == "GET":
+        data = (
+            ServiceReferrals.objects
+            .values('referral_Type')
+            .annotate(count=Count('referral_Type'))
+        )
+
+        on_campus_count = sum(item['count'] for item in data if item['referral_Type'] == 'On Campus')
+        community_count = sum(item['count'] for item in data if item['referral_Type'] == 'Community')
+
+        response_data = [
+            {'value': on_campus_count, 'name': 'On Campus'},
+            {'value': community_count, 'name': 'Community'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Service Referral Chart Error"})

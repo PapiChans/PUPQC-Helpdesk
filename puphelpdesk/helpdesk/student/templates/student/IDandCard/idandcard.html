@@ -1,59 +1,53 @@
-{% extends "student\partials\main.html" %}
-{% load static %}
-
+{% extends "admin\partials\main.html" %}
+{% load static%}
 {% block customcss %}
-<link href="{% static 'assets/css/student/IDandCard/IDandCard.css' %}" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
 {% endblock %}
+
 {% block maincontent %}
-{% include "student\IDandCard\IDModal\ID-modal.html" %}
-<h4 class="header-title">ID and Access Cards</h4>
-<p class="card-title-desc">For Student who want to access cards and ID process</p>
-   <div class="container">
-    
-    <div class="box">
-      <div class="icon">01</div>
-      <div class="content"><h3>Request and Validation</h3>
-        <p>lorem ipsum dolor</p>
-        <a type="button" data-toggle="modal" data-target="#IDModal">Request New ID</a>
-      </div>
+<h2 class="header-title">Student ID and Access Cards</h2>
+<p class="card-title-desc">This will guide Students for Student ID and Access Cards.</p> 
+<div class="row justify-content-center">
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Obtaining ID Card</h3>
+          <p class="text-secondary text-center">Guide for Students in obtaining ID Card.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'IDandCard/obtaining_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
     </div>
-
-
-
-    <div class="box">
-      <div class="icon">03</div>
-      <div class="content"><h3>Access Card Support</h3>
-        <p>lorem ipsum dolor</p>
-        <a href="#">Request ID Validation</a>
-      </div>
-    </div>
-    
   </div>
-    
-
-    <footer>
-        <!-- Footer content -->
-    </footer>
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Replacing ID Card</h3>
+          <p class="text-secondary text-center">Guide for Students in replacing ID Card.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'IDandCard/replacing_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Access Card Support</h3>
+          <p class="text-secondary text-center">Provides support for access cards used for campus facilities and services.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'IDandCard/access_cards' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+</div>    
 {% endblock %}
 
 {% block customjs %}
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            responsive: true,
-        } );
-    } );
-</script>
 
-{% endblock %}
-
+{% endblock %} 

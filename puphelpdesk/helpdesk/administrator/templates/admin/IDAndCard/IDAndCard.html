@@ -1,158 +1,50 @@
 {% extends "admin\partials\main.html" %}
-
+{% load static%}
 {% block customcss %}
 
 {% endblock %}
 
 {% block maincontent %}
-<div class="row">
-    <h5 class="header-title mb-4">Latest Transaction</h5>
-    <div class="d-flex justify-content-center col-12">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                
-
-                
-                <div class="table-responsive">
-                    <table class="table table-centered table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th scope="col">Transaction ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#"># 0</a>
-                                </th>
-                                <td>Loyd Lopez</td>
-                                <td>26 Jan</td>
-                                <td>
-                                    <div class="badge badge-soft-primary">Available</div>
-                                </td>
-                                <td>100</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#"># 1</a>
-                                </th>
-                                <td>Christian Altiche</td>
-                                <td>21 Jan</td>
-                                <td>
-                                    <div class="badge badge-soft-warning">Pending</div>
-                                </td>
-                                <td>100</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#"># 2</a>
-                                </th>
-                                <td>Leslie Felipe</td>
-                                <td>15 Jan</td>
-                                <td>
-                                    <div class="badge badge-soft-primary">Available</div>
-                                </td>
-                                <td>First Time</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#"># 3</a>
-                                </th>
-                                <td>Charles Sicangco</td>
-                                <td>11 Jan</td>
-                                <td>
-                                    <div class="badge badge-soft-primary">Available</div>
-                                </td>
-                                <td>100</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <a href="#"># 4</a>
-                                </th>
-                                <td>John Doe</td>
-                                <td>08 Jan</td>
-                                <td>
-                                    <div class="badge badge-soft-danger">Cancel</div>
-                                </td>
-                                <td>First Time</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="mdi mdi-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-      
+<h2 class="header-title">Student ID and Access Cards</h2>
+<p class="card-title-desc">This will guide Students for Student ID and Access Cards.</p> 
+<div class="row justify-content-center">
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Obtaining ID Card</h3>
+          <p class="text-secondary text-center">Guide for Students in obtaining ID Card.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'admin/IDandCard/obtaining_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Replacing ID Card</h3>
+          <p class="text-secondary text-center">Guide for Students in replacing ID Card.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'admin/IDandCard/replacing_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+  <div class="col-xl-4 mb-3">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-body">
+          <h3 class="card-title text-center text-primary">Access Card Support</h3>
+          <p class="text-secondary text-center">Provides support for access cards used for campus facilities and services.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'admin/IDandCard/access_cards' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+        </div>
+    </div>
+  </div>
+</div>    
 {% endblock %}
 
 {% block customjs %}

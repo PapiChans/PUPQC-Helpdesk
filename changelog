@@ -475,3 +475,15 @@
 - Update Serializers
 - Update Models
 - Module Complete: General Info and Services
+
+# 0.5.6
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for ID and Card (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- Delete Unused HTML Pages
+- Revise Student and Admin Page URL's and Views
+- Module Complete: ID and Card

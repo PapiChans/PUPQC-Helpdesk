@@ -38,8 +38,9 @@ urlpatterns = [
 
     # Student IDs and Access Cards
     path('IDandCard', views.idandcard, name='IDandCard'),
-    path('IDandCard/newIDRequest', views.newIdRequest, name='IDandCard/newIDRequest'),
-    path('IDandCard/validation', views.IDvalidation, name='IDandCard/validation'),
+    path('IDandCard/obtaining_ID', views.IdObtaining, name='IDandCard/obtaining_ID'),
+    path('IDandCard/replacing_ID', views.IdReplacing, name='IDandCard/replacing_ID'),
+    path('IDandCard/access_cards', views.AccessCard, name='IDandCard/access_cards'),
 
     # Student Government and Involvement
     path('government', views.government, name='government'),
