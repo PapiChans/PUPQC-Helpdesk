@@ -51,10 +51,13 @@ urlpatterns = [
     path('parking/transportInfo', views.transportInfo, name='parking/transportInfo'),
 
     # Lost annd Found Services
-    path('LostandFound', views.lostandfound, name='LostandFound'),
-    path('LostandFound/returnItems', views.returnItems, name='LostandFound/returnItems'),
-    path('LostandFound/itemsList', views.item_list, name='LostandFound/itemsList'),
+    path('LostAndFound', views.lostAndFound, name='LostAndFound'),
+    path('LostAndFound/returnItems', views.returnItems, name='LostAndFound/returnItems'),
+    path('LostAndFound/itemsList', views.item_list, name='LostAndFound/itemsList'),
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),
+
+    # Frequently Asked Questions
+    path('faqs', views.faqs, name='faqs'),
 ]

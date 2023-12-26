@@ -62,24 +62,9 @@ a {
   left: 50%;
   width: 600px;
   height: 120px;
-  background: linear-gradient(transparent, #45f3ff, #45f3ff  ,transparent);
-  animation: animate 4s linear infinite;
-  animation-play-state: paused;
 }
 
-.section2 .card:hover .lines::before{
-animation-play-state: running;
-}
 
-@keyframes animate{
-  0%{
-    transform: translate(-50%, -50%) rotate(0deg);
-}
-
-100%{
-  transform: translate(-50%, -50%) rotate(360deg);
-}
-}
 
 .section2 .card .lines::after{
   content: '';
@@ -117,23 +102,6 @@ animation-play-state: running;
   transform: translate(-50%, -50%);
   width: 500px;
   height: 150px;
-  background: linear-gradient(transparent, #ff3c7b, #ff3c7b, #ff3c7b, transparent);
-  animation: animate2 6s linear infinite;
-  animation-play-state: paused;
-}
-
-.section2 .card:hover .imgBx::before{
-  animation-play-state: running;
-}
-
-@keyframes animate2{
-  0%{
-    transform: translate(-50%, -50%) rotate(360deg);
-}
-
-100%{
-  transform: translate(-50%, -50%) rotate(0deg);
-}
 }
 
 

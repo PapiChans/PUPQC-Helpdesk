@@ -40,4 +40,7 @@ urlpatterns = [
     #Financial Aid Guide
     path('financial-aid-and-scholarships', views.adminFinancialAid, name='admin/student-services/FinancialAid'),
     path('financial-aid-and-scholarships/AddPost', views.adminFinancialGuidePosting, name='admin/student-services/FinancialAid/AddPost'),
+    
+    #Frequently Asked Questions
+    path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
 ]

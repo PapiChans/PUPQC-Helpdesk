@@ -104,6 +104,11 @@ def adminFinancialGuidePosting(request):
     pagename_value = "Financial Aid and Scholarships"
     return render(request, 'admin/FinancialAid/addpost.html',{'pagename': pagename_value})
 
+#Frequently Asked Questions
+def adminFaqs(request):
+    pagename_value = "Frequently Asked Questions"
+    return render(request, 'admin/Faqs/faqs.html',{'pagename_value': pagename_value})
+
 
 
 

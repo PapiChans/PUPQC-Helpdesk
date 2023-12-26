@@ -487,3 +487,10 @@
 - Delete Unused HTML Pages
 - Revise Student and Admin Page URL's and Views
 - Module Complete: ID and Card
+
+# 0.5.7
+- Pushed by Loyd the Great (https://github.com/loydmarionlopez)
+- faqs UI added
+- partials on ID request forms on Student side fixed
+- Lost and Found URL fixed
+- Minor Landing Page UI Fix

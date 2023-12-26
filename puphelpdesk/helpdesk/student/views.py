@@ -122,7 +122,7 @@ def transportInfo(request):
     return render(request, 'student/TransportationAndParking/transportInfo.html',{'pagename': pagename_value})
 
     # Lost annd Found Services
-def lostandfound(request):
+def lostAndFound(request):
     pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
 
@@ -130,11 +130,6 @@ def returnItems(request):
     pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/NewReportLost.html',{'pagename': pagename_value})
 
-def lost_and_found_views(request):
-    return render(request, 'lostandfound.html')
-
-def return_item(request):
-    return render(request, 'reportlost.html')
 
 def item_list(request):
     pagename_value = "Lost And Found"
@@ -144,4 +139,9 @@ def item_list(request):
 def feedback(request):
     pagename_value = "Feedback and Suggestions"
     return render(request, 'student/Feedback/feedback.html',{'pagename': pagename_value})
+
+    #Frequently Asked Questions
+def faqs(request):
+    pagename_value = "Frequently Asked Questions"
+    return render(request, 'student/Faqs/faqs.html',{'pagename': pagename_value})
 

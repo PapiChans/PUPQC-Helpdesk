@@ -1,0 +1,31 @@
+<div class="modal fade" id="AddFaqsModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Step Guide</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddFaqsForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">FAQS Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="faqs_Title" placeholder="Guide Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Questions<span class="text-danger">*</span></label>
+                            <input required class="form-control" id="questions_Text" rows="5" placeholder="Provide a guide Step">
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Answers<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="answers_Text" rows="5" placeholder="Provide a guide Step"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="faqs_Submit">Add Guide</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
