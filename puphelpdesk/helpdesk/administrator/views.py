@@ -15,12 +15,6 @@ def admineditprofile(request):
     pagename_value = "Edit Profile"
     return render(request, 'admin/editprofile.html',{'pagename': pagename_value})
 
-#Student Account Requests
-
-def adminStudents(request):
-    pagename_value = "Students"
-    return render(request, 'admin/students.html',{'pagename': pagename_value})
-
 # Admin General Info
 def admingeninfofacilities(request):
     pagename_value = "General Information and Services"
@@ -94,7 +88,6 @@ def adminAddJobPosting(request):
     pagename_value = "Career Services and Employment"
     return render(request, 'admin/studentCareers/jobposting.html',{'pagename': pagename_value})
 
-
 #Financial Aid Guide
 def adminFinancialAid(request):
     pagename_value = "Financial Aid and Scholarships"
@@ -104,10 +97,15 @@ def adminFinancialGuidePosting(request):
     pagename_value = "Financial Aid and Scholarships"
     return render(request, 'admin/FinancialAid/addpost.html',{'pagename': pagename_value})
 
+#Student Government and Involvement
+def adminGovernment(request):
+    pagename_value = "Student Government and Involvement"
+    return render(request, 'admin/StudentGovernment/studgovernment.html',{'pagename': pagename_value})
+
 #Frequently Asked Questions
 def adminFaqs(request):
     pagename_value = "Frequently Asked Questions"
-    return render(request, 'admin/Faqs/faqs.html',{'pagename_value': pagename_value})
+    return render(request, 'admin/Faqs/faqs.html',{'pagename': pagename_value})
 
 
 

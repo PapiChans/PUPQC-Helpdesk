@@ -1,0 +1,137 @@
+<div class="modal fade" id="AddGovernmentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Student Government Organization</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddGovernmentForm" class="needs-validation" novalidate>
+                    <div class="col-md-12 mt-2">
+                        <label>Government Type<span class="text-danger">*</span></label>
+                        <select class="form-select" id="government_Type" required>
+                            <option value="">Select Government Type</option>
+                            <option value="Election">Election</option>
+                            <option value="Membership">Membership</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Government Title<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="government_Title" placeholder="Participation Title." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Organization Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="government_Name" placeholder="Name of the Club / Organization." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Role / Position<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="government_Role" placeholder="Specify the needed Role in an Organization / Club." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="government_Description" rows="5" placeholder="Provide a Role Description."></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Qualification<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="government_Qualification" rows="5" placeholder="Provide a Qualifications to join."></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">How to participate<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="government_Participation" rows="5" placeholder="Provide a Participation Instructions."></textarea>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="government_submit">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditGovernmentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Student Government Organization</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditGovernmentForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_government_Id">
+                    <div class="col-md-12 mt-2">
+                        <label>Government Type<span class="text-danger">*</span></label>
+                        <select class="form-select" id="edit_government_Type" required>
+                            <option value="Election">Election</option>
+                            <option value="Membership">Membership</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Government Title<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_government_Title" placeholder="Participation Title." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Organization Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_government_Name" placeholder="Name of the Club / Organization." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Role / Position<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_government_Role" placeholder="Specify the needed Role in an Organization / Club." required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_government_Description" rows="5" placeholder="Provide a Role Description."></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Qualification<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_government_Qualification" rows="5" placeholder="Provide a Qualifications to join."></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">How to participate<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_government_Participation" rows="5" placeholder="Provide a Participation Instructions."></textarea>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_government_submit">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="governmentInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Student Government Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Government Type: <strong id="government_Type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Government Activity Title: <strong id="government_Title_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Organization / Club Name: <strong id="government_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Role / Position: <strong id="government_Role_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="government_Description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Qualification: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="government_Qualification_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Participation: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="government_Participation_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -163,6 +163,20 @@ class JobPosting(models.Model):
     class Meta:
         db_table = 'Jobs and Internships'
 
+#Student Government and Involvement
+class StudentGovernment(models.Model):
+    government_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    government_Type = models.CharField(max_length=100, null=False)
+    government_Title = models.CharField(max_length=100, null=False)
+    government_Name = models.CharField(max_length=100, null=False)
+    government_Role = models.CharField(max_length=100, null=False)
+    government_Description = models.TextField(null=False)
+    government_Qualification = models.TextField(max_length=100, null=False)
+    government_Participation = models.TextField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Student Government and Involvement'
+
 #ID and Access Cards
 class IDandCard(models.Model):
     guide_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
@@ -200,3 +214,13 @@ class Feedback(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Feedback and Suggestions'
+
+#Frequently Asked Questions
+class FAQ(models.Model):
+    FAO_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    FAQ_Category = models.CharField(max_length=100, null=False)
+    FAQ_Question = models.CharField(max_length=200, null=False)
+    FAQ_Answer = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Frequently Asked Questions'

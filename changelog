@@ -494,3 +494,17 @@
 - partials on ID request forms on Student side fixed
 - Lost and Found URL fixed
 - Minor Landing Page UI Fix
+
+# 0.5.8
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Student Government and Involvement (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- Delete Unused HTML Pages
+- Revise Student and Admin Page URL's and Views
+- Add 2 Admin Module Analytics
+- Revision: Position of Tabs in NavBar
+- Module Complete: Student Government and Involvement

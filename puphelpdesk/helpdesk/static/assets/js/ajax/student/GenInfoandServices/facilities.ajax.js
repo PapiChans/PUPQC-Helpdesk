@@ -41,6 +41,7 @@ getFacility = () => {
                                 <img class="gallery-demo-img img-fluid mx-auto" src="${displayimage}" alt="image" />
                             </a>
                         </div>
+                        <h3 class="text-center mt-2">${facilitydata.facility_Name}</h3>
                     </div>
                         `;
 

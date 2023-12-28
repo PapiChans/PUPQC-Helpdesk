@@ -1,86 +1,57 @@
 {% load static %}
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>PUPQC Helpdesk</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <title>PUPQC Helpdesk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="shortcut icon" href="{% static 'assets/images/PUPLogo.png' %}">
+    <link rel="shortcut icon" href="{% static 'assets/images/PUPLogo.png' %}">
 
-        <!-- Bootstrap Css -->
-		<link href="{% static 'assets/css/dashboard/tabler.min.css' %}" rel="stylesheet" type="text/css" />
-		<!-- Icons Css -->
-		<link href="{% static 'assets/css/dashboard/tabler-payments.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static 'assets/libs/materialdesign/css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
-		<!-- App Css-->
-		<link href="{% static 'assets/css/dashboard/tabler-flags.min.css' %}" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <body class="bg-primary bg-pattern">
-        <div class="account-pages my-1 pt-sm-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" height="150" alt="logo">
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-                <div class="row justify-content-center">
-                    <div class="col-xl-5 col-sm-8">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <div class="p-1">
-									<h5 class="mb-1 text-center">Hi, PUPian!</h5>
-                                    <h5 class="mb-3 text-center">Sign in to PUPQC Helpdesk</h5>
-                                    {% csrf_token %}
-                                    <form class="form-horizontal needs-validation" id="loginForm" novalidate>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group form-group-custom mb-4 text-primary">
-                                                    <input type="text" class="form-control" id="username" required>
-                                                    <label for="username" class="text-primary">User Name</label>
-                                                </div>
-
-                                                <div class="form-group form-group-custom mb-4 text-primary">
-                                                    <input type="password" class="form-control" id="password" required>
-                                                    <label for="userpassword"class="text-primary">Password</label>
-                                                </div>
-                                                <div class="mt-4">
-                                                    <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Log In</button>
-                                                </div>
-												<div class="mt-1">
-                                                    <p>Use your PUPSIS Account to Log in.</p>
-                                                </div>
-												<div class="mt-1 text-center">
-                                                    <a href="{% url 'index' %}" class="text-primary"><i class="mdi mdi-home mr-1"></i> Back to Home</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-							<div class="mt-1 text-center">
-								<p id="log">PUPQC Helpdesk 2023</p>
-							</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-            </div>
+    <!-- Bootstrap Css -->
+    <link href="{% static 'assets/css/dashboard/tabler.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static 'assets/css/dashboard/tabler-payments.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/libs/materialdesign/css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{% static 'assets/css/dashboard/tabler-flags.min.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body class=" d-flex flex-column">
+    <div class="page page-center">
+      <div class="container container-tight">
+        <div class="text-center">
+            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" height="150" alt="logo">
         </div>
-        <!-- end Account pages -->
+        <div class="card card-md">
+          <div class="card-body">
+            <h3 class="h3 text-center mb-4">Hi, PUPian! Sign in to PUPQC Helpdesk.</h3>
+            <form id="loginForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Username" required/>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <div class="input-group input-group-flat">
+                  <input type="password" class="form-control"  placeholder="Password" required/>
+                </div>
+              </div>
+              <div class="mb-2">
+                  <span class="form-check-label text-center">Use your PUP Student Account to Sign in</span>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary w-100">Sign in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
         <script src="{% static 'assets/js/dashboard/jquery.min.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/metisMenu.min.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/simplebar.min.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/waves.min.js' %}"></script>
-        <script src="{% static 'assets/libs/unicons-monochrome-2.0.1/bundle.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/app.js' %}"></script>
+        <script src="{% static 'assets/js/dashboard/tabler.min.js' %}"></script>
+        <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
 		<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
         <script src="{% static 'assets/js/ajax/student/login.ajax.js' %}"></script>
     </body>

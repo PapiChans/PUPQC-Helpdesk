@@ -43,6 +43,10 @@ urlpatterns = [
     path('student/getReplacingStep', views.studGetReplacingStep),
     path('student/getAccessCardStep', views.studGetAccessCardStep),
 
+    # Student Government and Involvement
+    path('student/getGovernment', views.studGetGovernment),
+    path('student/getGovernmentInfo/<uuid:government_Id>', views.studGetGovernmentInfo),
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -60,6 +64,8 @@ urlpatterns = [
     path('admin/financialaidChart', views.adminFinancialAidChart),
     path('admin/careerChart', views.adminCareerChart),
     path('admin/servicereferralChart', views.adminServiceReferralChart),
+    path('admin/idandcardChart', views.adminIDandCardChart),
+    path('admin/studentgovernmentChart', views.adminStudentGovernmentChart),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
@@ -128,6 +134,13 @@ urlpatterns = [
     path('admin/getStepInfo/<uuid:guide_Id>', views.adminGetStepInfo),
     path('admin/editGuideStep/<uuid:guide_Id>', views.adminEditGuide),
     path('admin/deleteGuideStep/<uuid:guide_Id>', views.adminDeleteGuide),
+
+    # Student Government and Involvement
+    path('admin/addGovernment', views.adminAddGovernment),
+    path('admin/getGovernment', views.adminGetGovernment),
+    path('admin/getGovernmentInfo/<uuid:government_Id>', views.adminGetGovernmentInfo),
+    path('admin/editGovernment/<uuid:government_Id>', views.adminEditGovernment),
+    path('admin/deleteGovernment/<uuid:government_Id>', views.adminDeleteGovernment),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

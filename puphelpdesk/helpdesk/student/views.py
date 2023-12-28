@@ -7,10 +7,6 @@ def dashboard(request):
     pagename_value = "Dashboard"
     return render(request, 'student/dashboard.html',{'pagename': pagename_value})
 
-def tickets(request):
-    pagename_value = "Your Tickets"
-    return render(request, 'student/tickets.html',{'pagename': pagename_value})
-
 def profile(request):
     pagename_value = "Profile"
     return render(request, 'student/profile.html',{'pagename': pagename_value})

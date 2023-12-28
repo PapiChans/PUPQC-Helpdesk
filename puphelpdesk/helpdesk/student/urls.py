@@ -5,7 +5,6 @@ from . import views
 urlpatterns = [
     # Student Dashboard
     path('dashboard', views.dashboard, name='dashboard'),
-    path('tickets', views.tickets, name='tickets'),
     path('profile', views.profile, name='profile'),
     path('editprofile', views.editprofile, name='editprofile'),
 
@@ -43,7 +42,7 @@ urlpatterns = [
     path('IDandCard/access_cards', views.AccessCard, name='IDandCard/access_cards'),
 
     # Student Government and Involvement
-    path('government', views.government, name='government'),
+    path('StudentGovernment', views.government, name='government'),
 
     # Transportation and Parking
     path('parking', views.parking, name='parking'),
@@ -59,5 +58,5 @@ urlpatterns = [
     path('feedback', views.feedback, name='feedback'),
 
     # Frequently Asked Questions
-    path('faqs', views.faqs, name='faqs'),
+    path('frequently-asked-questions', views.faqs, name='frequently-asked-questions'),
 ]

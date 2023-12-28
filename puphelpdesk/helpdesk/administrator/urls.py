@@ -8,9 +8,6 @@ urlpatterns = [
     path('profile', views.adminprofile, name='admin/profile'),
     path('editprofile', views.admineditprofile, name='admin/editprofile'),
     
-    #Student Account Requests
-    path('students', views.adminStudents, name='students'),
-    
     # General Information and Services
     path('geninfo/facilities', views.admingeninfofacilities, name='admin/geninfo/facilities'),
     path('geninfo/services', views.admingeninfoservices, name='admin/geninfo/services'),
@@ -40,6 +37,9 @@ urlpatterns = [
     #Financial Aid Guide
     path('financial-aid-and-scholarships', views.adminFinancialAid, name='admin/student-services/FinancialAid'),
     path('financial-aid-and-scholarships/AddPost', views.adminFinancialGuidePosting, name='admin/student-services/FinancialAid/AddPost'),
+
+    # Student Government and Involvement
+    path('StudentGovernment', views.adminGovernment, name='admin/studentgovernment'),
     
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),

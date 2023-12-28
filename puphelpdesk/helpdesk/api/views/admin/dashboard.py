@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals, IDandCard, StudentGovernment
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -122,3 +122,43 @@ def adminServiceReferralChart(request):
         ]
         return Response(response_data)
     return Response({"message": "Get Service Referral Chart Error"})
+
+@api_view(['GET'])
+def adminIDandCardChart(request):
+    if request.method == "GET":
+        data = (
+            IDandCard.objects
+            .values('guide_Type')
+            .annotate(count=Count('guide_Type'))
+        )
+
+        obtaining_count = sum(item['count'] for item in data if item['guide_Type'] == 'Obtaining ID')
+        replacing_count = sum(item['count'] for item in data if item['guide_Type'] == 'Replacing ID')
+        accesscard_count = sum(item['count'] for item in data if item['guide_Type'] == 'Access Card')
+
+        response_data = [
+            {'value': obtaining_count, 'name': 'Obtaining ID'},
+            {'value': replacing_count, 'name': 'Replacing ID'},
+            {'value': accesscard_count, 'name': 'Access Card'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Service Referral Chart Error"})
+
+@api_view(['GET'])
+def adminStudentGovernmentChart(request):
+    if request.method == "GET":
+        data = (
+            StudentGovernment.objects
+            .values('government_Type')
+            .annotate(count=Count('government_Type'))
+        )
+
+        election_count = sum(item['count'] for item in data if item['government_Type'] == 'Election')
+        membership_count = sum(item['count'] for item in data if item['government_Type'] == 'Membership')
+
+        response_data = [
+            {'value': election_count, 'name': 'Election'},
+            {'value': membership_count, 'name': 'Membership'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Student Government Chart Error"})

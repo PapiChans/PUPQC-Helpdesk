@@ -7,6 +7,8 @@ $(function() {
     financialAidChart();
     careerChart();
     servicereferralChart();
+    idandcardChart();
+    studentgovernmentChart();
 })
 
 const notyf = new Notyf();
@@ -384,6 +386,132 @@ servicereferralChart = () => {
     .fail(() => {
         notyf.error({
             message: 'Service Referral Chart Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+idandcardChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/idandcardChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('IDCardChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'ID and Card Chart',
+                subtext: 'Guide Type',
+                left: 'center',
+                bottom: '5%'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'ID and Card Chart Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+studentgovernmentChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/studentgovernmentChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('StudentGovernmentChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'Student Government Chart',
+                subtext: 'Election V.S Membership',
+                left: 'center',
+                bottom: '5%'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Student Government Chart Fetching Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });

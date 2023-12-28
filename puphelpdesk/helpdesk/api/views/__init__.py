@@ -24,6 +24,9 @@ from .student.StudentCareers.jobposting import *
 # ID and Access Cards
 from .student.IDandCard.IDandCard import *
 
+# Student Government and Involvement
+from .student.StudentGovernment.studgovernment import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -52,6 +55,9 @@ from .admin.StudentCareers.jobposting import *
 
 # ID and Access Cards
 from .admin.IDandCard.IDandCard import *
+
+# Student Government and Involvement
+from .admin.StudentGovernment.studgovernment import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *
