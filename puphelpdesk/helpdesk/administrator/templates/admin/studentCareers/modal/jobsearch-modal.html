@@ -1,0 +1,72 @@
+<div class="modal fade" id="AddJobSearchModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Job Search Resources</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddJobSearchForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Search Resources Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="job_Search_Title" placeholder="Job Search Resources Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Search Type<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="job_Search_Type" placeholder="Example: Job Board, Career Fair, etc." required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="job_Search_Description" rows="5" placeholder="Resources Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Resources Link<span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="job_Search_Link" placeholder="Provide Job Search Resources URL" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="job_Search_Submit">Add Job Resources</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditJobSearchModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Job Search Resources</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditJobSearchForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_job_Search_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Search Resources Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_job_Search_Title" placeholder="Job Search Resources Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Search Type<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_job_Search_Type" placeholder="Example: Job Board, Career Fair, etc." required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_job_Search_Description" rows="5" placeholder="Resources Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Job Resources Link<span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="edit_job_Search_Link" placeholder="Provide Job Search Resources Link" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_job_Search_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

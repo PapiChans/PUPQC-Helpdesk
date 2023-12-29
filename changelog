@@ -519,5 +519,18 @@
 - Update Models
 - Revision: Typo in HTML Pages
 - Delete Unused HTML Pages
-- FIX: Career and Emplyment URL's and Views (Both Admin and Student)
+- FIX: Career and Employment URL's and Views (Both Admin and Student)
 - Revise Student and Admin Page URL's and Views
+
+# 0.5.10
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Career and Employment: Job Search Resources (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- FIX: Career and Employment URL's and Views (Both Admin and Student)
+- Revise Student and Admin Page URL's and Views
+- Module Complete: Careers and Employment

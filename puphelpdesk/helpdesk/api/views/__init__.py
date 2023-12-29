@@ -20,7 +20,7 @@ from .student.FinancialAid.financialaid import *
 
 # Careers and Employment
 from .student.StudentCareers.counseling import *
-from .student.StudentCareers.jobposting import *
+from .student.StudentCareers.jobsearch import *
 from .student.StudentCareers.jobposting import *
 
 # ID and Access Cards
@@ -54,7 +54,7 @@ from .admin.FinancialAid.financialaid import *
 
 # Careers and Employment
 from .admin.StudentCareers.counseling import *
-from .admin.StudentCareers.jobposting import *
+from .admin.StudentCareers.jobsearch import *
 from .admin.StudentCareers.jobposting import *
 
 # ID and Access Cards

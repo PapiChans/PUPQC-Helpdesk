@@ -38,6 +38,9 @@ urlpatterns = [
     path('student/getCounseling', views.studGetCounseling),
     path('student/getCounselingInfo/<uuid:counseling_Id>', views.studGetCounselingInfo),
 
+    # Careers and Employment: Job Search Resources
+    path('student/getJobSearch', views.studGetJobSearch),
+
     #Careers and Employment: Job Posting
     path('student/getJobPosting', views.studGetJobPosting),
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
@@ -126,6 +129,13 @@ urlpatterns = [
     path('admin/getCounselingInfo/<uuid:counseling_Id>', views.adminGetCounselingInfo),
     path('admin/editCounseling/<uuid:counseling_Id>', views.adminEditCounseling),
     path('admin/deleteCounseling/<uuid:counseling_Id>', views.adminDeleteCounseling),
+
+    # Careers and Employment: Job Search Resources
+    path('admin/addJobSearch', views.adminAddJobSearch),
+    path('admin/getJobSearch', views.adminGetJobSearch),
+    path('admin/getJobSearchInfo/<uuid:job_Search_Id>', views.adminGetJobSearchInfo),
+    path('admin/editJobSearch/<uuid:job_Search_Id>', views.adminEditJobSearch),
+    path('admin/deleteJobSearch/<uuid:job_Search_Id>', views.adminDeleteJobSearch),
 
     # Careers and Employment: Job Posting
     path('admin/addJobPosting', views.adminAddJobPosting),

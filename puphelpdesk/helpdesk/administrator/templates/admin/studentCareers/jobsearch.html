@@ -1,52 +1,24 @@
 {% extends "admin\partials\main.html" %}
-
+{% load static %}
 {% block customcss %}
-
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
-
 {% block maincontent %}
-
-<body>
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AddCounselorModal"><i class="fa-solid fa-plus"></i> Add Referral</button>
-
-    <div class="container mt-5">
-        <h2 class="mb-4">Job Search</h2>
-    
-        <!-- Career Counseling Referrals -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Career Counseling Referrals</h5>
-                <p class="card-text">
-                    Guides students to career counseling and job search resources. Our experienced counselors are here
-                    to assist you in shaping your future. Take the first step towards a fulfilling career by seeking
-                    personalized advice.
-                </p>
-    
-                <!-- Display career counseling referrals from PostGreSQL -->
-                {% for referral in career_counseling_referrals %}
-                    <div class="media mt-3">
-                        <div class="media-body">
-                            <h6 class="mt-0">{{ referral.title }}</h6>
-                            <p>{{ referral.description }}</p>
-                            <!-- Continue Here -->
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    
-    </div>
-    
-    
-</body>
-
-
-
-
-
+{% include "admin\studentCareers\modal\jobsearch-modal.html" %} 
+<h2 class="header-title">Job Search Resources</h2>
+<p class="card-title-desc">This are the available Job Search Resources for your Career</p>
+<div class="col">
+    <a href="{% url 'admin/student-careers/Employment' %}"><button type="button" class="btn btn-primary waves-effect waves-light">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#AddJobSearchModal"><i class="fa-solid fa-plus"></i> Add Job Search Resources</button>
+</div>
+<h3 id="no_JobSearch" class="text-center">No Job Search Resources Data.</h3>
+<div class="row" id="jobsearch_display">
+</div>
 {% endblock %}
-
 {% block customjs %}
-
-
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/StudentCareers/jobsearch.ajax.js' %}"></script>
 {% endblock %} 
