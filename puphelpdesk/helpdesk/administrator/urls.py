@@ -31,7 +31,8 @@ urlpatterns = [
     #Careers and Employment
     path('careers', views.adminCareers, name='admin/student-careers/Employment'),
     path('careers/internship', views.adminInternship, name='admin/student-careers/Referrals'),
-    path('careers/referrals', views.adminReferrals, name='admin/student-careers/Counseling'),
+    path('careers/counseling', views.adminCounseling, name='admin/student-careers/Counseling'),
+    path('careers/jobsearch', views.adminJobSearch, name='admin/student-careers/JobSearch'),
     path('careers/internship/addposting', views.adminAddJobPosting, name='admin/student-careers/Referrals/AddPosting'),
     
     #Financial Aid Guide

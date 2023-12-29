@@ -32,7 +32,8 @@ urlpatterns = [
 
     # Career Services and Employment
     path('careers', views.careers, name='careers'),
-    path('careers/referrals', views.referrals, name='careers/referrals'),
+    path('careers/counseling', views.counseling, name='careers/counseling'),
+    path('careers/jobsearch', views.jobsearch, name='careers/jobsearch'),
     path('careers/internship', views.internship, name='careers/internship'),
 
     # Student IDs and Access Cards

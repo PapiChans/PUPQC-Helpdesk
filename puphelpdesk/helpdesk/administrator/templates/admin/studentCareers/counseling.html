@@ -1,0 +1,24 @@
+{% extends "admin\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "admin\studentCareers\modal\counseling-modal.html" %} 
+<h2 class="header-title">Career Counseling</h2>
+<p class="card-title-desc">Available Career counseling personnels to guide student to their Careers.</p>
+<div class="col">
+    <a href="{% url 'admin/student-careers/Employment' %}"><button type="button" class="btn btn-primary waves-effect waves-light">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#AddCounselingModal"><i class="fa-solid fa-plus"></i> Add Counseling Personell</button>
+</div>
+<h3 id="no_Counseling" class="text-center">No Career Counseling Data.</h3>
+<div class="row" id="counseling_display">
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/StudentCareers/counseling.ajax.js' %}"></script>
+{% endblock %} 

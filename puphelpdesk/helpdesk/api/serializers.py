@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, Lost, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment
+from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, Lost, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -64,4 +64,14 @@ class IDandCardSerializer(serializers.ModelSerializer):
 class StudentGovernmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentGovernment
+        fields = '__all__'
+
+class CareerCounselingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CareerCounseling
+        fields = '__all__'
+
+class JobSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobSearch
         fields = '__all__'

@@ -73,13 +73,17 @@ def careers(request):
     pagename_value = "Career Services and Employment"
     return render(request, 'student/StudentCareers/careers.html',{'pagename': pagename_value})
 
-def referrals(request):
-    pagename_value = "Career Services and Employment"
-    return render(request, 'student/StudentCareers/referrals.html',{'pagename': pagename_value})
-
 def internship(request):
     pagename_value = "Career Services and Employment"
     return render(request, 'student/StudentCareers/internship.html',{'pagename': pagename_value})
+
+def counseling(request):
+    pagename_value = "Career Services and Employment"
+    return render(request, 'student/StudentCareers/counseling.html',{'pagename': pagename_value})
+
+def jobsearch(request):
+    pagename_value = "Career Services and Employment"
+    return render(request, 'student/StudentCareers/jobsearch.html',{'pagename': pagename_value})
 
     # Student IDs and Access Cards
 def idandcard(request):
@@ -112,7 +116,6 @@ def parkingSlot(request):
     pagename_value = "Transportation and Parking"
     return render(request, 'student/TransportationAndParking/slotReserve.html',{'pagename': pagename_value})
 
-
 def transportInfo(request):
     pagename_value = "Transportation and Parking"
     return render(request, 'student/TransportationAndParking/transportInfo.html',{'pagename': pagename_value})
@@ -125,7 +128,6 @@ def lostAndFound(request):
 def returnItems(request):
     pagename_value = "Lost And Found"
     return render(request, 'student/LostAndFoundServices/NewReportLost.html',{'pagename': pagename_value})
-
 
 def item_list(request):
     pagename_value = "Lost And Found"

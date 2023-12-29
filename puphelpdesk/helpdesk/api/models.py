@@ -143,6 +143,28 @@ class FinancialAndScholarshipGuide(models.Model):
     class Meta:
         db_table = 'Financial Aid and Scholarship Guide'
 
+# Career Services and Employment: Career Counseling
+class CareerCounseling(models.Model):
+    counseling_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    counseling_Name = models.CharField(max_length=100, null=False)
+    counseling_Contact = models.CharField(max_length=100, null=False)
+    counseling_Location = models.TextField(null=False)
+    counseling_Service = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Career Counseling'
+        
+# Career Services and Employment: Job Search Resources
+class JobSearch(models.Model):
+    job_Search_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    job_Search_Title = models.CharField(max_length=100, null=False)
+    job_Search_Type = models.CharField(max_length=100, null=False)
+    job_Search_Description = models.TextField(null=False)
+    job_Search_Link = models.URLField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Job Search Resources'
+
 # Career Services and Employment: Job Posting
 class JobPosting(models.Model):
     job_Posting_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

@@ -80,9 +80,13 @@ def adminInternship(request):
     pagename_value = "Career Services and Employment"
     return render(request, 'admin/studentCareers/internship.html',{'pagename': pagename_value})
 
-def adminReferrals(request):
+def adminCounseling(request):
     pagename_value = "Career Services and Employment"
-    return render(request, 'admin/studentCareers/referrals.html',{'pagename': pagename_value})
+    return render(request, 'admin/studentCareers/counseling.html',{'pagename': pagename_value})
+
+def adminJobSearch(request):
+    pagename_value = "Career Services and Employment"
+    return render(request, 'admin/studentCareers/jobsearch.html',{'pagename': pagename_value})
 
 def adminAddJobPosting(request):
     pagename_value = "Career Services and Employment"

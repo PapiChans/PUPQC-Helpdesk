@@ -508,3 +508,16 @@
 - Add 2 Admin Module Analytics
 - Revision: Position of Tabs in NavBar
 - Module Complete: Student Government and Involvement
+
+# 0.5.9
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Career and Employment: Career Counseling (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- Delete Unused HTML Pages
+- FIX: Career and Emplyment URL's and Views (Both Admin and Student)
+- Revise Student and Admin Page URL's and Views
