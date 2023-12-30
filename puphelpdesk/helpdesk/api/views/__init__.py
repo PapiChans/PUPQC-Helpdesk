@@ -13,6 +13,8 @@ from .student.GenInfoandServices.service import *
 from .student.GenInfoandServices.referrals import *
 
 # Student Support and Counseling
+from .student.StudentCounseling.counseling import *
+from .student.StudentCounseling.advising import *
 from .student.StudentCounseling.successresources import *
 
 # Financial Aid and Scholarships
@@ -47,6 +49,8 @@ from .admin.GenInfoandServices.service import *
 from .admin.GenInfoandServices.referrals import *
 
 # Student Support and Counseling
+from .admin.StudentCounseling.counseling import *
+from .admin.StudentCounseling.advising import *
 from .admin.StudentCounseling.successresources import *
 
 # Financial Aid and Scholarships

@@ -1,0 +1,101 @@
+<div class="modal fade" id="AddCounselorModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Support Counselor Personnel</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddCounselorForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="counselor_Name" placeholder="Support Counselor Full Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="counselor_Contact" placeholder="Provide E-mail or Contact Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Specialization<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="counselor_Specialization" placeholder="Specify the service can be offered of the counselor" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Reach out<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="counselor_Reach_Out" rows="5" placeholder="Provide reach out instructions to connect students to the counselor."></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="counselor_Submit">Add Counselor Personnel</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditCounselorModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Support Counselor Personnel</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditCounselorForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_counselor_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_counselor_Name" placeholder="Support Counselor Full Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Counselor Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_counselor_Contact" placeholder="Provide E-mail or Contact Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Specialization<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_counselor_Specialization" placeholder="Specify the service can be offered of the counselor" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Reach out<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_counselor_Reach_Out" rows="5" placeholder="Provide reach out instructions to connect students to the counselor."></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="counselor_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="counselorInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Support Counselor Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Counselor Name: <strong id="counselor_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact: <strong id="counselor_Contact_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Specialization: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="counselor_Specialization_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>How to Reach Out: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="counselor_Reach_Out_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

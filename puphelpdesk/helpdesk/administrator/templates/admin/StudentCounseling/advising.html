@@ -1,13 +1,14 @@
-{% extends "student\partials\main.html" %}
+{% extends "admin\partials\main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "student\StudentCounseling\modal\advising-modal.html" %} 
+{% include "admin\StudentCounseling\modal\advising-modal.html" %} 
 <h2 class="header-title">Academic Advising</h2>
 <p class="card-title-desc">Connect with academic advisors for course selection and degree planning.</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddAdviserModal"><i class="fa-solid fa-file-upload"></i> Add Adviser</button>
 <h3 id="no_Adviser" class="text-center">No Adviser Data.</h3>
 <div class="row" id="adviser_display">
 </div>
@@ -17,5 +18,5 @@
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
-<script src="{% static 'assets/js/ajax/student/StudentCounseling/advising.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/StudentCounseling/advising.ajax.js' %}"></script>
 {% endblock %} 

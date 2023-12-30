@@ -118,6 +118,29 @@ class ServiceReferrals(models.Model):
     class Meta:
         db_table = 'Service Referrals'
 
+# Student Support and Counseling: Counseling Services
+class SupportCounseling(models.Model):
+    counselor_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    counselor_Name = models.CharField(max_length=100, null=False)
+    counselor_Contact = models.TextField(null=False)
+    counselor_Specialization = models.CharField(max_length=255, null=False)
+    counselor_Reach_Out = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Support Counseling'
+
+
+# Student Support and Counseling: Academic Advising Referrals
+class AcademicAdvising(models.Model):
+    adviser_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    adviser_Name = models.CharField(max_length=100, null=False)
+    adviser_Contact = models.TextField(null=False)
+    adviser_Specialization = models.CharField(max_length=255, null=False)
+    adviser_Reach_Out = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Academic Advising'
+
 # Student Support and Counseling: Success Resources
 class SuccessResources(models.Model):
     success_resources_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

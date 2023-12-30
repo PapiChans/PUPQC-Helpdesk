@@ -22,9 +22,17 @@ urlpatterns = [
     # General Info and Services: Services
     path('student/getService', views.studGetService),
 
-        # General Info and Services: Service Referrals
+    # General Info and Services: Service Referrals
     path('student/getServiceReferral', views.studGetServiceReferral),
     path('student/getReferralInfo/<uuid:referral_Id>', views.studGetServiceReferralInfo),
+
+    # Student Support and Counseling: Support Counseling
+    path('student/getSupportCounselor', views.studGetSupportCounselor),
+    path('student/getSupportCounselorInfo/<uuid:counselor_Id>', views.studGetSupportCounselorInfo),
+
+    # Student Support and Counseling: Academic Advising
+    path('student/getAcademicAdviser', views.studGetAcademicAdviser),
+    path('student/getAcademicAdviserInfo/<uuid:adviser_Id>', views.studGetAcademicAdviserInfo),
 
     # Student Support and Counseling: Success Resources
     path('student/getSuccessResources', views.studGetSuccessResources),
@@ -109,6 +117,20 @@ urlpatterns = [
     path('admin/getReferralInfo/<uuid:referral_Id>', views.adminGetServiceReferralInfo),
     path('admin/editServiceReferral/<uuid:referral_Id>', views.adminEditServiceReferral),
     path('admin/deleteServiceReferral/<uuid:referral_Id>', views.adminDeleteServiceReferral),
+
+    # Student Support and Counseling: Support Counseling
+    path('admin/addSupportCounselor', views.adminAddSupportCounselor),
+    path('admin/getSupportCounselor', views.adminGetSupportCounselor),
+    path('admin/getSupportCounselorInfo/<uuid:counselor_Id>', views.adminGetSupportCounselorInfo),
+    path('admin/editSupportCounselor/<uuid:counselor_Id>', views.adminEditSupportCounselor),
+    path('admin/deleteSupportCounselor/<uuid:counselor_Id>', views.adminDeleteSupportCounselor),
+
+    # Student Support and Counseling: Academic Advising
+    path('admin/addAcademicAdviser', views.adminAddAcademicAdviser),
+    path('admin/getAcademicAdviser', views.adminGetAcademicAdviser),
+    path('admin/getAcademicAdviserInfo/<uuid:adviser_Id>', views.adminGetAcademicAdviserInfo),
+    path('admin/editAcademicAdviser/<uuid:adviser_Id>', views.adminEditAcademicAdviser),
+    path('admin/deleteAcademicAdviser/<uuid:adviser_Id>', views.adminDeleteAcademicAdviser),
 
     # Student Support and Counseling: Success Resources
     path('admin/addSuccessResources', views.adminAddSuccessResources),

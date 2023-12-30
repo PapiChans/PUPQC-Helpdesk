@@ -16,6 +16,8 @@ urlpatterns = [
     path('geninfo/referrals', views.admingeninforeferrals, name='admin/geninfo/referrals'),
     
     # Student Support and Counseling
+    path('student-support/counseling', views.adminSupportCounseling, name='admin/student-support/counseling'),
+    path('student-support/advising', views.adminAcademicAdvising, name='admin/student-support/advising'),
     path('student-support/resources', views.adminSuccessResources, name='admin/student-support/resources'),
     
     #Feedbacks and Suggestions

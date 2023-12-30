@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "admin\partials\main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -6,9 +6,10 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "student\StudentCounseling\modal\counseling-modal.html" %} 
+{% include "admin\StudentCounseling\modal\counseling-modal.html" %} 
 <h2 class="header-title">Counseling Service</h2>
 <p class="card-title-desc">Connects students with professional counselors for mental health and emotional support.</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddCounselorModal"><i class="fa-solid fa-file-upload"></i> Add Counselor</button>
 <h3 id="no_Counselor" class="text-center">No Counselor Data.</h3>
 <div class="row" id="counselor_display">
 </div>
@@ -18,5 +19,5 @@
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
-<script src="{% static 'assets/js/ajax/student/StudentCounseling/counseling.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/StudentCounseling/counseling.ajax.js' %}"></script>
 {% endblock %} 

@@ -1,0 +1,101 @@
+<div class="modal fade" id="AddAdviserModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Academic Adviser</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddAdviserForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Adviser Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="adviser_Name" placeholder="Academic Adviser Full Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Adviser Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="adviser_Contact" placeholder="Provide E-mail or Contact Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Specialization<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="adviser_Specialization" placeholder="Specify the service can be offered of the adviser" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Reach out<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="adviser_Reach_Out" rows="5" placeholder="Provide reach out instructions to connect students to the counselor."></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="adviser_Submit">Add Academic Adviser</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditAdviserModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Academic Adviser</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditAdviserForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_adviser_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Adviser Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_adviser_Name" placeholder="Academic Adviser Full Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Adviser Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_adviser_Contact" placeholder="Provide E-mail or Contact Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Specialization<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_adviser_Specialization" placeholder="Specify the service can be offered of the adviser" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Reach out<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_adviser_Reach_Out" rows="5" placeholder="Provide reach out instructions to connect students to the counselor."></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="adviser_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="adviserInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Academic Adviser Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Academic Adviser Name: <strong id="adviser_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact: <strong id="adviser_Contact_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Specialization: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="adviser_Specialization_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>How to Reach Out: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="adviser_Reach_Out_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

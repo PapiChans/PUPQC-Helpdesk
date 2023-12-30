@@ -38,6 +38,14 @@ def admingeninforeferrals(request):
 
 
 #Student Counseling
+def adminSupportCounseling(request):
+    pagename_value = "Student Counseling and Support"
+    return render(request, 'admin/StudentCounseling/counseling.html',{'pagename': pagename_value})
+
+def adminAcademicAdvising(request):
+    pagename_value = "Student Counseling and Support"
+    return render(request, 'admin/StudentCounseling/advising.html',{'pagename': pagename_value})
+
 def adminSuccessResources(request):
     pagename_value = "Student Counseling and Support"
     return render(request, 'admin/StudentCounseling/resources.html',{'pagename': pagename_value})
