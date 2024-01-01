@@ -233,6 +233,29 @@ class IDandCard(models.Model):
     class Meta:
         db_table = 'ID and Access Card'
 
+#Health and Wellness: Health Service Referrals
+class HealthFacility(models.Model):
+    health_Facility_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    health_Facility_Type = models.CharField(max_length=100, null=False)
+    health_Facility_Name = models.CharField(max_length=100, null=False)
+    health_Facility_Description = models.TextField(null=False)
+    health_Facility_Location = models.CharField(max_length=100, null=False)
+    health_Facility_Contact = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Health Facility'
+
+#Health and Wellness: Health Insurance
+class HealthInsurance(models.Model):
+    health_Insurance_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    health_Insurance_Name = models.CharField(max_length=100, null=False)
+    health_Insurance_Coverage = models.TextField(null=False)
+    health_Insurance_Enrollment = models.TextField(null=False)
+    health_Insurance_Contact = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Health Insurance'
+
 #Lost and Found
 class Lost(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

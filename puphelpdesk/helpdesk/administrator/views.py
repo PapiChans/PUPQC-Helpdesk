@@ -114,6 +114,19 @@ def adminGovernment(request):
     pagename_value = "Student Government and Involvement"
     return render(request, 'admin/StudentGovernment/studgovernment.html',{'pagename': pagename_value})
 
+#Health and Wellness Support
+def adminhealthwellness(request):
+    pagename_value = "Health and Wellness Support"
+    return render(request, 'admin/HealthWellness/healthwellness.html',{'pagename': pagename_value})
+
+def adminhealthwellnessprograms(request):
+    pagename_value = "Health and Wellness Support"
+    return render(request, 'admin/HealthWellness/programs.html',{'pagename': pagename_value})
+
+def adminhealthwellnessinsurance(request):
+    pagename_value = "Health and Wellness Support"
+    return render(request, 'admin/HealthWellness/insurance.html',{'pagename': pagename_value})
+
 #Frequently Asked Questions
 def adminFaqs(request):
     pagename_value = "Frequently Asked Questions"

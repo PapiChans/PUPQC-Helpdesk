@@ -1,0 +1,117 @@
+<div class="modal fade" id="AddHealthFacilityModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Health Facility</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddHealthFacilityForm" class="needs-validation" novalidate>
+                    <div class="col-md-12 mt-2">
+                        <label>Health Facility Type<span class="text-danger">*</span></label>
+                        <select class="form-select" id="health_Facility_Type" required>
+                            <option value="">Select Health Facility Type</option>
+                            <option value="Health Service">Health Service</option>
+                            <option value="Medical Clinic">Medical Clinic</option>
+                            <option value="Wellness Program">Wellness Program</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Health Facility Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="health_Facility_Name" placeholder="Health Facility Name" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="health_Facility_Description" rows="5" placeholder="Provide Description and Coverage"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Location<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="health_Facility_Location" placeholder="Physical Location of the Health Service" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="health_Facility_Contact" placeholder="Provide Contact Number or E-mail" required/>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="health_Facility_Submit">Add Health Facility</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditHealthFacilityModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Health Facility</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditHealthFacilityForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_health_Facility_Id">
+                    <div class="col-md-12 mt-2">
+                        <label>Health Facility Type<span class="text-danger">*</span></label>
+                        <select class="form-select" id="edit_health_Facility_Type" required>
+                            <option value="Health Service">Health Service</option>
+                            <option value="Medical Clinic">Medical Clinic</option>
+                            <option value="Wellness Program">Wellness Program</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Health Facility Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_health_Facility_Name" placeholder="Health Facility Name" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_health_Facility_Description" rows="5" placeholder="Provide Description and Coverage"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Location<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_health_Facility_Location" placeholder="Physical Location of the Health Service" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_health_Facility_Contact" placeholder="Provide Contact Number or E-mail" required/>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_health_Facility_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="healthfacilityInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Health Facility Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Health Facility Type: <strong id="health_Facility_Type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Health Facility Name: <strong id="health_Facility_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="health_Facility_Description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Location: <strong id="health_Facility_Location_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact: <strong id="health_Facility_Contact_info"></strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

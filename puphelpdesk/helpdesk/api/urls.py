@@ -62,6 +62,14 @@ urlpatterns = [
     path('student/getGovernment', views.studGetGovernment),
     path('student/getGovernmentInfo/<uuid:government_Id>', views.studGetGovernmentInfo),
 
+    # Health and Wellness Programs: Health Service Referrals
+    path('student/getHealthFacility', views.studGetHealthFacility),
+    path('student/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.studGetHealthFacilityInfo),
+
+    # Health and Wellness Programs: Health Insurance
+    path('student/getHealthInsurance', views.studGetHealthInsurance),
+    path('student/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.studGetHealthInsuranceInfo),
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -81,6 +89,7 @@ urlpatterns = [
     path('admin/servicereferralChart', views.adminServiceReferralChart),
     path('admin/idandcardChart', views.adminIDandCardChart),
     path('admin/studentgovernmentChart', views.adminStudentGovernmentChart),
+    path('admin/healthfacilityChart', views.adminHealthFacilityChart),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
@@ -184,6 +193,20 @@ urlpatterns = [
     path('admin/getGovernmentInfo/<uuid:government_Id>', views.adminGetGovernmentInfo),
     path('admin/editGovernment/<uuid:government_Id>', views.adminEditGovernment),
     path('admin/deleteGovernment/<uuid:government_Id>', views.adminDeleteGovernment),
+
+    # Health and Wellness Programs: Health Service Referrals
+    path('admin/addHealthFacility', views.adminAddHealthFacility),
+    path('admin/getHealthFacility', views.adminGetHealthFacility),
+    path('admin/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.adminGetHealthFacilityInfo),
+    path('admin/editHealthFacility/<uuid:health_Facility_Id>', views.adminEditHealthFacility),
+    path('admin/deleteHealthFacility/<uuid:health_Facility_Id>', views.adminDeleteHealthFacility),
+
+    # Health and Wellness Programs: Health Insurance
+    path('admin/addHealthInsurance', views.adminAddHealthInsurance),
+    path('admin/getHealthInsurance', views.adminGetHealthInsurance),
+    path('admin/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.adminGetHealthInsuranceInfo),
+    path('admin/editHealthInsurance/<uuid:health_Insurance_Id>', views.adminEditHealthInsurance),
+    path('admin/deleteHealthInsurance/<uuid:health_Insurance_Id>', views.adminDeleteHealthInsurance),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

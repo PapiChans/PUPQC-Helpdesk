@@ -43,7 +43,12 @@ urlpatterns = [
 
     # Student Government and Involvement
     path('StudentGovernment', views.adminGovernment, name='admin/studentgovernment'),
-    
+
+    # Health and Wellness Support
+    path('healthwellness', views.adminhealthwellness, name="admin/healthwellness"),
+    path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
+    path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
+
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
 ]

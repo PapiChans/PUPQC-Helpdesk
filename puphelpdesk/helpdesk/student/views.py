@@ -64,9 +64,13 @@ def healthwellness(request):
     pagename_value = "Health and Wellness Support"
     return render(request, 'student/HealthWellness/healthwellness.html',{'pagename': pagename_value})
 
-def healthServices(request):
+def healthwellnessprograms(request):
     pagename_value = "Health and Wellness Support"
-    return render(request, 'student/HealthWellness/healthServices.html',{'pagename': pagename_value})
+    return render(request, 'student/HealthWellness/programs.html',{'pagename': pagename_value})
+
+def healthwellnessinsurance(request):
+    pagename_value = "Health and Wellness Support"
+    return render(request, 'student/HealthWellness/insurance.html',{'pagename': pagename_value})
 
     # Career Services and Employment
 def careers(request):

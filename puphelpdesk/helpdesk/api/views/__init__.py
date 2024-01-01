@@ -31,6 +31,10 @@ from .student.IDandCard.IDandCard import *
 # Student Government and Involvement
 from .student.StudentGovernment.studgovernment import *
 
+# Health and Wellness
+from .student.HealthWellness.insurance import *
+from .student.HealthWellness.programs import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -66,6 +70,10 @@ from .admin.IDandCard.IDandCard import *
 
 # Student Government and Involvement
 from .admin.StudentGovernment.studgovernment import *
+
+# Health and Wellness
+from .admin.HealthWellness.insurance import *
+from .admin.HealthWellness.programs import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *

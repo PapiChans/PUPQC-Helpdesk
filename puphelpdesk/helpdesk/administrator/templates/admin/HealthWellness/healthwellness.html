@@ -1,7 +1,9 @@
-{% extends "student\partials\main.html" %}
-{% load static %}
+{% extends "admin\partials\main.html" %}
+{% load static%}
 {% block customcss %}
+
 {% endblock %}
+
 {% block maincontent %}
 <h2 class="header-title">Health and Wellness Support</h2>
 <p class="card-title-desc">Supports Students by providing health services and insurance.</p> 
@@ -14,7 +16,7 @@
           <p class="text-secondary text-center">Connects students with campus health services, medical clinics, and wellness programs.</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{% url 'healthwellness/programs' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+          <a href="{% url 'admin/healthwellness/programs' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
   </div>
@@ -26,11 +28,14 @@
           <p class="text-secondary text-center">Provides information on health insurance options and coverage.</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{% url 'healthwellness/insurance' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+          <a href="{% url 'admin/healthwellness/insurance' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
   </div>
-</div> 
+</div>    
 {% endblock %}
 
+{% block customjs %}
 
+
+{% endblock %} 

@@ -548,3 +548,18 @@
 - Add and FIX: Student Support and Counseling URL's and Views (Both Admin and Student)
 - Revise Student and Admin Page URL's and Views
 - Module Complete: Student Support and Counseling
+
+# 0.5.12
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Health and Wellness: Health Service Referrals (Both Admin and Student)
+- Complete Backend for Health and Wellness: Health Insurance (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- Add and FIX: Health and Wellness URL's and Views (Both Admin and Student)
+- Revise Health and Wellness Page URL's and Views
+- Add Health and Wellness Analytic in Admin Dashboard
+- Module Complete: Student Health and Wellness

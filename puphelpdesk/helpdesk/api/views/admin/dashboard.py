@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals, IDandCard, StudentGovernment
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals, IDandCard, StudentGovernment, HealthFacility
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -162,3 +162,24 @@ def adminStudentGovernmentChart(request):
         ]
         return Response(response_data)
     return Response({"message": "Get Student Government Chart Error"})
+
+@api_view(['GET'])
+def adminHealthFacilityChart(request):
+    if request.method == "GET":
+        data = (
+            HealthFacility.objects
+            .values('health_Facility_Type')
+            .annotate(count=Count('health_Facility_Type'))
+        )
+
+        health_service_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Health Service')
+        medical_clinic_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Medical Clinic')
+        wellness_program_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Wellness Program')
+
+        response_data = [
+            {'value': health_service_count, 'name': 'Health Service'},
+            {'value': medical_clinic_count, 'name': 'Medical Clinic'},
+            {'value': wellness_program_count, 'name': 'Wellness Program'},
+        ]
+        return Response(response_data)
+    return Response({"message": "Get Health Facility Chart Error"})

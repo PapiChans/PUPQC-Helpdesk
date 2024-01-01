@@ -28,7 +28,8 @@ urlpatterns = [
 
     # Health and Wellness Support
     path('healthwellness', views.healthwellness, name='healthwellness'),
-    path('healthServices', views.healthServices, name='healthServices'),
+    path('healthwellness/programs', views.healthwellnessprograms, name='healthwellness/programs'),
+    path('healthwellness/insurance', views.healthwellnessinsurance, name='healthwellness/insurance'),
 
     # Career Services and Employment
     path('careers', views.careers, name='careers'),

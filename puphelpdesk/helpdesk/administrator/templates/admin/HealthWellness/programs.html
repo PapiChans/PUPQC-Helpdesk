@@ -1,0 +1,56 @@
+{% extends "admin\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+{% include "admin\HealthWellness\modal\programs-modal.html" %} 
+<h2 class="header-title">Health Services Referrals</h2>
+<p class="card-title-desc">Connects students with campus health services, medical clinics, and wellness programs.</p>
+
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHealthFacilityModal">Add Health Facility</button>
+
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#healthservice-justify" role="tab" aria-selected="false">
+            Health Services
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#medicalclinic-justify" role="tab" aria-selected="false">
+            Medical Clinic
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#wellnessprograms-justify" role="tab" aria-selected="false">
+            Wellness Programs
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="healthservice-justify" role="tabpanel">
+        <h2 class="text-center" id="no_healthservice">There are no Health Services data.</h2>
+        <div class="row" id="healthservice_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="medicalclinic-justify" role="tabpanel">
+        <h2 class="text-center" id="no_medicalclinic">There are no Medical Clinic data.</h2>
+        <div class="row" id="medicalclinic_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="wellnessprograms-justify" role="tabpanel">
+        <h2 class="text-center" id="no_wellnessprograms">There are no Wellness Programs data.</h2>
+        <div class="row" id="wellnessprograms_display">
+        </div>
+    </div>
+</div>    
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/HealthWellness/programs.ajax.js' %}"></script>
+{% endblock %} 

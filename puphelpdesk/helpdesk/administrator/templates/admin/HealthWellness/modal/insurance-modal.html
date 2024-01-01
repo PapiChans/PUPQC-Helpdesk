@@ -1,0 +1,97 @@
+<div class="modal fade" id="AddHealthInsuranceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Health Facility</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddHealthInsuranceForm" class="needs-validation" novalidate>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Health Insurance Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="health_Insurance_Name" placeholder="Health Insurance Name" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Coverage<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="health_Insurance_Coverage" rows="5" placeholder="Provide Description and Coverage"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Enrollment<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="health_Insurance_Enrollment" rows="5" placeholder="Provide how to enroll this Health Insurance"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="health_Insurance_Contact" placeholder="Provide Contact Number or E-mail" required/>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="health_Insurance_Submit">Add Health Insurance</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditHealthInsuranceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Health Facility</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditHealthInsuranceForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_health_Insurance_Id">
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Health Insurance Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_health_Insurance_Name" placeholder="Health Insurance Name" required/>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Coverage<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_health_Insurance_Coverage" rows="5" placeholder="Provide Description and Coverage"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Enrollment<span class="text-danger">*</span></label>
+                        <textarea required class="form-control" id="edit_health_Insurance_Enrollment" rows="5" placeholder="Provide how to enroll this Health Insurance"></textarea>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="edit_health_Insurance_Contact" placeholder="Provide Contact Number or E-mail" required/>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_health_Insurance_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="healthinsuranceInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Health Insurance Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Health Insurance Name: <strong id="health_Insurance_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Coverage: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="health_Insurance_Coverage_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>How to Enroll: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="health_Insurance_Enrollment_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact: <strong id="health_Insurance_Contact_info"></strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
