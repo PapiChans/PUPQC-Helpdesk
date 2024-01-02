@@ -1,0 +1,23 @@
+{% extends "admin\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+{% include "admin\HousingAndAccomodation\modal\assistance-modal.html" %} 
+<h2 class="header-title">Off-Campus Living Assistance</h2>
+<p class="card-title-desc">Provides guidance on finding suitable off-campus housing and related services.</p> 
+<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#AddLivingAssistanceModal"><i class="fa-solid fa-plus"></i> Add Living Assistance</button>
+<h3 id="no_LivingAssistance" class="text-center">No Living Assistance Data.</h3>
+<div class="row" id="livingassistance_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/HousingAndAccomodation/assistance.ajax.js' %}"></script>
+{% endblock %} 

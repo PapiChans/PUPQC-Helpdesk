@@ -59,6 +59,14 @@ def housing(request):
     pagename_value = "Housing and Accommodation"
     return render(request, 'student/HousingAndAccomodation/housing.html',{'pagename': pagename_value})
 
+def housingreferrals(request):
+    pagename_value = "Housing and Accomodation"
+    return render(request, 'student/HousingAndAccomodation/referrals.html',{'pagename': pagename_value})
+
+def housingassistance(request):
+    pagename_value = "Housing and Accomodation"
+    return render(request, 'student/HousingAndAccomodation/assistance.html',{'pagename': pagename_value})
+
     # Health and Wellness Support
 def healthwellness(request):
     pagename_value = "Health and Wellness Support"

@@ -49,6 +49,11 @@ urlpatterns = [
     path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
     path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
 
+    # Housing and Accomodation
+    path('housing', views.adminhousing, name="admin/housing"),
+    path('housing/assistance', views.adminhousingassistance, name="admin/housing/assistance"),
+    path('housing/referrals', views.adminhousingreferrals, name="admin/housing/referrals"),
+
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
 ]

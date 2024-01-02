@@ -127,6 +127,19 @@ def adminhealthwellnessinsurance(request):
     pagename_value = "Health and Wellness Support"
     return render(request, 'admin/HealthWellness/insurance.html',{'pagename': pagename_value})
 
+# Housing and Accomodation
+def adminhousingassistance(request):
+    pagename_value = "Housing and Accomodation"
+    return render(request, 'admin/HousingAndAccomodation/assistance.html',{'pagename': pagename_value})
+
+def adminhousing(request):
+    pagename_value = "Housing and Accomodation"
+    return render(request, 'admin/HousingAndAccomodation/housing.html',{'pagename': pagename_value})
+
+def adminhousingreferrals(request):
+    pagename_value = "Housing and Accomodation"
+    return render(request, 'admin/HousingAndAccomodation/referrals.html',{'pagename': pagename_value})
+
 #Frequently Asked Questions
 def adminFaqs(request):
     pagename_value = "Frequently Asked Questions"

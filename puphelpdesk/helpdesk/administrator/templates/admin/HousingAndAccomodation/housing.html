@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "admin\partials\main.html" %}
 {% load static%}
 {% block customcss %}
 
@@ -16,7 +16,7 @@
           <p class="text-secondary text-center">Offers information about available on-campus and off-campus housing options.</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{% url 'housing/referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+          <a href="{% url 'admin/housing/referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
           <p class="text-secondary text-center">Provides guidance on finding suitable off-campus housing and related services.</p>
         </div>
         <div class="card-footer text-center">
-          <a href="{% url 'housing/assistance' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+          <a href="{% url 'admin/housing/assistance' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
   </div>

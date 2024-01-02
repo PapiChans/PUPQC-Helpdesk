@@ -8,6 +8,7 @@ urlpatterns = [
 
     # Dashboard
     path('student/dashboard-event', views.studfetchEvent),
+    path('student/dashboard-jobpost', views.studfetchJobPosting),
 
     # General Info and Services: Event
     path('student/getEvent', views.studGetEvent),
@@ -69,6 +70,9 @@ urlpatterns = [
     # Health and Wellness Programs: Health Insurance
     path('student/getHealthInsurance', views.studGetHealthInsurance),
     path('student/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.studGetHealthInsuranceInfo),
+
+    # Housing and Accomodation: Off-Campus Living Assistance
+    path('student/getLivingAssistance', views.studGetLivingAssistance),
 
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
@@ -207,6 +211,13 @@ urlpatterns = [
     path('admin/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.adminGetHealthInsuranceInfo),
     path('admin/editHealthInsurance/<uuid:health_Insurance_Id>', views.adminEditHealthInsurance),
     path('admin/deleteHealthInsurance/<uuid:health_Insurance_Id>', views.adminDeleteHealthInsurance),
+
+    # Housing and Accomodation: Off-Campus Living Assistance
+    path('admin/addLivingAssistance', views.adminAddLivingAssistance),
+    path('admin/getLivingAssistance', views.adminGetLivingAssistance),
+    path('admin/getLivingAssistanceInfo/<uuid:assistance_Id>', views.adminGetLivingAssistanceInfo),
+    path('admin/editLivingAssistance/<uuid:assistance_Id>', views.adminEditLivingAssistance),
+    path('admin/deleteLivingAssistance/<uuid:assistance_Id>', views.adminDeleteLivingAssistance),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

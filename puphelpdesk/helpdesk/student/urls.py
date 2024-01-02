@@ -25,6 +25,8 @@ urlpatterns = [
 
     # Housing and Accommodation
     path('housing', views.housing, name='housing'),
+    path('housing/assistance', views.housingassistance, name="housing/assistance"),
+    path('housing/referrals', views.housingreferrals, name="housing/referrals"),
 
     # Health and Wellness Support
     path('healthwellness', views.healthwellness, name='healthwellness'),

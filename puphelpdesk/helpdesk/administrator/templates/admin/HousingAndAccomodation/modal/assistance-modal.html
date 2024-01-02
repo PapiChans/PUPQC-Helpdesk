@@ -1,0 +1,72 @@
+<div class="modal fade" id="AddLivingAssistanceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Living Assistance</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddLivingAssistanceForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Living Assistance Type<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="assistance_Type" placeholder="Example: Rental Listings, Tenant Rights, Transportation Info, etc." required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="assistance_Name" placeholder="Living Assistance Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="assistance_Description" rows="5" placeholder="Living Assistance Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Living Assistance Link<span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="assistance_Link" placeholder="Provide Living Assistance URL" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="assistance_Submit">Add Living Assistance</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditLivingAssistanceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Living Assistance</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditLivingAssistanceForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_assistance_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Living Assistance Type<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_assistance_Type" placeholder="Example: Rental Listings, Tenant Rights, Transportation Info, etc." required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_assistance_Name" placeholder="Living Assistance Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_assistance_Description" rows="5" placeholder="Living Assistance Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Living Assistance Link<span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="edit_assistance_Link" placeholder="Provide Living Assistance URL" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_assistance_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

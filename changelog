@@ -563,3 +563,16 @@
 - Revise Health and Wellness Page URL's and Views
 - Add Health and Wellness Analytic in Admin Dashboard
 - Module Complete: Student Health and Wellness
+
+# 0.5.13
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Housing and Accomodation: Off-campus Living Assistance (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Typo in HTML Pages
+- Add and FIX: Housing and Accomodation URL's and Views (Both Admin and Student)
+- Add Notification for Job Post in Student Dashboard
+- Deleted Unused CSS's

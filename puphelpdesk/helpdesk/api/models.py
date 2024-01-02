@@ -256,6 +256,30 @@ class HealthInsurance(models.Model):
     class Meta:
         db_table = 'Health Insurance'
 
+# Housing and Accomodation: Housing Referrals
+class HousingOptions(models.Model):
+    housing_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    housing_Type = models.CharField(max_length=100, null=False)
+    housing_Name = models.CharField(max_length=100, null=False)
+    housing_Image = models.FileField(upload_to='Housing/', null=True)
+    housing_Description = models.TextField(null=False)
+    housing_Location = models.CharField(max_length=100, null=False)
+    housing_Contact = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Housing Options'
+
+# Housing and Accomodation: Off-Campus Living Assistance
+class LivingAssistance(models.Model):
+    assistance_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    assistance_Type = models.CharField(max_length=100, null=False)
+    assistance_Name = models.CharField(max_length=100, null=False)
+    assistance_Description = models.TextField(null=False)
+    assistance_Link = models.URLField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Living Assistance'
+
 #Lost and Found
 class Lost(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

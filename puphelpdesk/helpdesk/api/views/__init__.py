@@ -35,6 +35,10 @@ from .student.StudentGovernment.studgovernment import *
 from .student.HealthWellness.insurance import *
 from .student.HealthWellness.programs import *
 
+# Housing and Accomodation
+from .student.HousingAndAccomodation.assistance import *
+from .student.HousingAndAccomodation.referrals import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -74,6 +78,10 @@ from .admin.StudentGovernment.studgovernment import *
 # Health and Wellness
 from .admin.HealthWellness.insurance import *
 from .admin.HealthWellness.programs import *
+
+# Housing and Accomodation
+from .admin.HousingAndAccomodation.assistance import *
+from .admin.HousingAndAccomodation.referrals import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *
