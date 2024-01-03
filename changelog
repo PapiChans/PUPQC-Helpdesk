@@ -576,3 +576,7 @@
 - Add and FIX: Housing and Accomodation URL's and Views (Both Admin and Student)
 - Add Notification for Job Post in Student Dashboard
 - Deleted Unused CSS's
+
+# 0.5.13.1
+- Push by Christian (https://github.com/papichans)
+- Revised 401 and 404 Pages based on the current Template
