@@ -580,3 +580,14 @@
 # 0.5.13.1
 - Push by Christian (https://github.com/papichans)
 - Revised 401 and 404 Pages based on the current Template
+
+# 0.5.14
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Housing and Accomodation: Health Options Referrals (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Card in Job Post
+- Module Complete: Housing and Accomodation

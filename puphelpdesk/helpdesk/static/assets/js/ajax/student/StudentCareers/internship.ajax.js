@@ -45,7 +45,7 @@ getJobPosts = () => {
                     }
 
                     let jobformat = `
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-4">
                     <div class="card">
                         <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
                         <div class="card-body">

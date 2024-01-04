@@ -1,0 +1,156 @@
+<div class="modal fade" id="AddHousingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Housing Referral</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddHousingForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label>Housing Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="housing_Type" required>
+                                <option value="">Select Housing Type</option>
+                                <option value="On Campus">On-Campus</option>
+                                <option value="Off Campus">Off-Campus</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Housing Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="housing_Name" placeholder="Housing Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="housing_Description" rows="5" placeholder="Provide the House Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Location<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="housing_Location" placeholder="Provide Housing Address" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="housing_Contact" placeholder="You may provide E-mail or Contact Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Housing Image<span class="text-danger">*</span></label>
+                            <p class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</p>
+                            <input type="file" class="filepond" id="housing_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="housing_Submit">Add Housing Referral</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditHousingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Housing Referral</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditHousingForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_housing_Id">
+                        <div class="col-md-12 mt-2">
+                            <label>Housing Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_housing_Type" required>
+                                <option value="On Campus">On-Campus</option>
+                                <option value="Off Campus">Off-Campus</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Housing Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_housing_Name" placeholder="Housing Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_housing_Description" rows="5" placeholder="Provide the House Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Location<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_housing_Location" placeholder="Provide Housing Address" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_housing_Contact" placeholder="You may provide E-mail or Contact Number" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_housing_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="ReplaceHousingImageModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Replace Housing Image</h5>
+            </div>
+            <div class="modal-body">
+                <form id="ReplaceHousingImageForm" class="needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="replace_housing_Id">
+                            <p>Housing Name: <strong id="replace_housing_Name"></strong></p>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Upload Image<span class="text-danger">*</span></label>
+                            <p class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</p>
+                            <input type="file" class="filepond" id="replace_housing_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="replace_housing_Submit">Replace</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="HousingInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Housing Referral Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <img src="" id="housing_Image_info" class="img-fluid" alt="Housing Image">
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Housing Type: <strong id="housing_Type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Housing Name: <strong id="housing_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="housing_Description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Location / Address: <strong id="housing_Location_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Contact: <strong id="housing_Contact_info"></strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

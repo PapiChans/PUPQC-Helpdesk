@@ -1,17 +1,46 @@
 {% extends "admin\partials\main.html" %}
 {% load static%}
 {% block customcss %}
-
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
 {% include "admin\HousingAndAccomodation\modal\referrals-modal.html" %} 
 <h2 class="header-title">Housing Referrals</h2>
-<p class="card-title-desc">Offers information about available on-campus and off-campus housing options.</p> 
-
+<p class="card-title-desc">Offers information about available on-campus and off-campus housing options.</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHousingModal">Add Housing Referral</button>
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#on-campus-tab" role="tab" aria-selected="false">
+            On-Campus
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#off-campus-tab" role="tab" aria-selected="false">
+            Off-Campus
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="on-campus-tab" role="tabpanel">
+        <h2 class="text-center" id="no_on-campus">There are no On-Campus Housing available.</h2>
+        <div class="row" id="on_campus_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="off-campus-tab" role="tabpanel">
+        <h2 class="text-center" id="no_off-campus">There are no Off-Campus Housing available.</h2>
+        <div class="row" id="off_campus_display">
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block customjs %}
-
-
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/HousingAndAccomodation/referrals.ajax.js' %}"></script>
 {% endblock %} 

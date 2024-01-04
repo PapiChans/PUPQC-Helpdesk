@@ -71,6 +71,10 @@ urlpatterns = [
     path('student/getHealthInsurance', views.studGetHealthInsurance),
     path('student/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.studGetHealthInsuranceInfo),
 
+    # Housing and Accomodation: Housing Options Referrals
+    path('student/getHousingReferrals', views.studGetHousingReferrals),
+    path('student/getHousingReferralsInfo/<uuid:housing_Id>', views.studGetHousingReferralsInfo),
+
     # Housing and Accomodation: Off-Campus Living Assistance
     path('student/getLivingAssistance', views.studGetLivingAssistance),
 
@@ -211,6 +215,14 @@ urlpatterns = [
     path('admin/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.adminGetHealthInsuranceInfo),
     path('admin/editHealthInsurance/<uuid:health_Insurance_Id>', views.adminEditHealthInsurance),
     path('admin/deleteHealthInsurance/<uuid:health_Insurance_Id>', views.adminDeleteHealthInsurance),
+
+    # Housing and Accomodation: Housing Options Referrals
+    path('admin/addHousingReferrals', views.adminAddHousingReferrals),
+    path('admin/getHousingReferrals', views.adminGetHousingReferrals),
+    path('admin/getHousingReferralsInfo/<uuid:housing_Id>', views.adminGetHousingReferralsInfo),
+    path('admin/editHousingReferrals/<uuid:housing_Id>', views.adminEditHousingReferrals),
+    path('admin/replaceHousingReferralsImage/<uuid:housing_Id>', views.adminReplaceHousingReferralsImage),
+    path('admin/deleteHousingReferrals/<uuid:housing_Id>', views.adminDeleteHousingReferrals),
 
     # Housing and Accomodation: Off-Campus Living Assistance
     path('admin/addLivingAssistance', views.adminAddLivingAssistance),
