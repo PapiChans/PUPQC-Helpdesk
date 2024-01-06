@@ -281,7 +281,7 @@ class LivingAssistance(models.Model):
         db_table = 'Living Assistance'
 
 #Lost and Found
-class Lost(models.Model):
+class LostandFound(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     item_Name = models.CharField(max_length=50, null=False)
     item_Image = models.ImageField(upload_to='Lost-Items/', null=True)
@@ -309,7 +309,7 @@ class Feedback(models.Model):
 
 #Frequently Asked Questions
 class FAQ(models.Model):
-    FAO_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    FAQ_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     FAQ_Category = models.CharField(max_length=100, null=False)
     FAQ_Question = models.CharField(max_length=200, null=False)
     FAQ_Answer = models.TextField(null=False)

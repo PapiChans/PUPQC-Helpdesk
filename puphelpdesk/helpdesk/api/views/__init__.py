@@ -42,6 +42,9 @@ from .student.HousingAndAccomodation.referrals import *
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
+# FAQ
+from .student.FAQ.faq import *
+
 # ---------------
 # Admin Routes
 # ---------------
@@ -86,3 +89,6 @@ from .admin.HousingAndAccomodation.referrals import *
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *
 from .admin.Feedback.suggestion import *
+
+# FAQ
+from .admin.FAQ.faq import *

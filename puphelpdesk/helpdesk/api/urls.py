@@ -84,6 +84,9 @@ urlpatterns = [
     path('student/getFeedbackInfo/<uuid:feedback_Id>', views.studGetFeedbackInfo),
     path('student/deleteFeedback/<uuid:feedback_Id>', views.studDeleteFeedback),
 
+    # FAQ
+    path('student/getFAQ', views.studGetFAQ),
+
     #----------------------
     # ADMIN API URLS
     #----------------------
@@ -244,4 +247,11 @@ urlpatterns = [
     path('admin/getSuggestionInfo/<uuid:feedback_Id>', views.adminGetSuggestionInfo),
     path('admin/suggestionMarkAsRead/<uuid:feedback_Id>', views.adminSuggestionMarkAsRead),
     path('admin/deleteSuggestion/<uuid:feedback_Id>', views.adminDeleteSuggestion),
+
+    # FAQ
+    path('admin/addFAQ', views.adminAddFAQ),
+    path('admin/getFAQ', views.adminGetFAQ),
+    path('admin/getFAQInfo/<uuid:FAQ_Id>', views.adminGetFAQInfo),
+    path('admin/editFAQ/<uuid:FAQ_Id>', views.adminEditFAQ),
+    path('admin/deleteFAQ/<uuid:FAQ_Id>', views.adminDeleteFAQ),
 ]

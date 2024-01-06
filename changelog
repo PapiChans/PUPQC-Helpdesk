@@ -591,3 +591,12 @@
 - Update Models
 - Revision: Card in Job Post
 - Module Complete: Housing and Accomodation
+
+# 0.5.15
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for FAQ (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
