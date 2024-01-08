@@ -140,6 +140,23 @@ def adminhousingreferrals(request):
     pagename_value = "Housing and Accomodation"
     return render(request, 'admin/HousingAndAccomodation/referrals.html',{'pagename': pagename_value})
 
+# Transportation and Parking
+def admintransportation(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'admin/TransportationAndParking/transportation.html',{'pagename': pagename_value})
+
+def admintransportationroutes(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'admin/TransportationAndParking/routes.html',{'pagename': pagename_value})
+
+def admintransportationpermit(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'admin/TransportationAndParking/permit.html',{'pagename': pagename_value})
+
+def admintransportationregulation(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'admin/TransportationAndParking/regulations.html',{'pagename': pagename_value})
+
 #Frequently Asked Questions
 def adminFaqs(request):
     pagename_value = "Frequently Asked Questions"

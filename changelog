@@ -600,3 +600,15 @@
 - Add AJAX Flies
 - Update Serializers
 - Update Models
+
+# 0.5.16
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Transportation and Parking: Permits and Regulation (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Transportation and Parking URL's, Views and Templates in Student Side
+- Add Transportation and Parking Views, URLS, and Templates in Admin side
+- Update Both Side Navbars

@@ -1,0 +1,22 @@
+{% extends "admin\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "admin\TransportationAndParking\modal\regulations-modal.html" %} 
+<h2 class="header-title">Parking Regulations</h2>
+<p class="card-title-desc">Learn more about campus parking regulations</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddRegulationModal">Add Regulation</button>
+<h2 id="no_regulation" class="text-center">No Parking Regulation Available</h2>
+<div id="regulation_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/TransportationAndParking/regulations.ajax.js' %}"></script>
+{% endblock %}

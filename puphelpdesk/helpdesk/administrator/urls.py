@@ -54,6 +54,12 @@ urlpatterns = [
     path('housing/assistance', views.adminhousingassistance, name="admin/housing/assistance"),
     path('housing/referrals', views.adminhousingreferrals, name="admin/housing/referrals"),
 
+    # Transportation and Parking
+    path('transportation', views.admintransportation, name="admin/transportation"),
+    path('transportation/routes', views.admintransportationroutes, name="admin/transportation/routes"),
+    path('transportation/permit', views.admintransportationpermit, name="admin/transportation/permit"),
+    path('transportation/regulation', views.admintransportationregulation, name="admin/transportation/regulation"),
+
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
 ]

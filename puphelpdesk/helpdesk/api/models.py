@@ -280,6 +280,37 @@ class LivingAssistance(models.Model):
     class Meta:
         db_table = 'Living Assistance'
 
+# Transportation and Parking: Public Transportation Information
+class TransportInfo(models.Model):
+    transport_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    transport_Type = models.CharField(max_length=100, null=False)
+    transport_Fare = models.TextField(null=False)
+    transport_Route = models.TextField(null=False)
+    transport_Info = models.TextField(null=False)
+    transport_Schedule = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Public Transportation'
+
+# Transportation and Parking: Campus Parking Permits
+class ParkingPermit(models.Model):
+    permit_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    permit_Title = models.CharField(max_length=255, null=False)
+    permit_Info = models.TextField(null=False)
+    permit_Guide = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Parking Permit'
+        
+# Transportation and Parking: Parking Regulation
+class ParkingRegulation(models.Model):
+    regulation_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    regulation_Title = models.CharField(max_length=255, null=False)
+    regulation_Info = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Parking Regulation'
+
 #Lost and Found
 class LostandFound(models.Model):
     lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)

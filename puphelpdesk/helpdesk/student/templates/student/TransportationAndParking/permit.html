@@ -1,0 +1,21 @@
+{% extends "student\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "student\TransportationAndParking\modal\permit-modal.html" %} 
+<h2 class="header-title">Parking Permit</h2>
+<p class="card-title-desc">Guide for getting Campus parking permits</p>
+<h2 id="no_permit" class="text-center">No Parking Permit Available</h2>
+<div id="permit_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/TransportationAndParking/permit.ajax.js' %}"></script>
+{% endblock %}

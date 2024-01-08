@@ -49,9 +49,10 @@ urlpatterns = [
     path('StudentGovernment', views.government, name='government'),
 
     # Transportation and Parking
-    path('parking', views.parking, name='parking'),
-    path('parking/slot', views.parkingSlot, name='parking/slot'),
-    path('parking/transportInfo', views.transportInfo, name='parking/transportInfo'),
+    path('transportation', views.transportation, name="transportation"),
+    path('transportation/routes', views.transportationroutes, name="transportation/routes"),
+    path('transportation/permit', views.transportationpermit, name="transportation/permit"),
+    path('transportation/regulation', views.transportationregulation, name="transportation/regulation"),
 
     # Lost annd Found Services
     path('LostAndFound', views.lostAndFound, name='LostAndFound'),

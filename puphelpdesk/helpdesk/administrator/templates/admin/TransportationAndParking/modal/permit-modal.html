@@ -1,0 +1,90 @@
+<div class="modal fade" id="AddPermitModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Parking Permit</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddPermitForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Permit Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="permit_Title" placeholder="Permit Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="permit_Info" rows="5" placeholder="Provide information on the parking permit"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Guide<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="permit_Guide" rows="5" placeholder="Provide guide how to get the parking permit"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="permit_Submit">Add Parking Permit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditPermitModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Parking Permit</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditPermitForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_permit_Id">
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Permit Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_permit_Title" placeholder="Permit Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_permit_Info" rows="5" placeholder="Provide information on the parking permit"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Guide<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_permit_Guide" rows="5" placeholder="Provide guide how to get the parking permit"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_permit_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="permitInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Parking Permit Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Permit: <strong id="permit_Title_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Information: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="permit_Info_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>How to get this permit: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="permit_Guide_info"></pre></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

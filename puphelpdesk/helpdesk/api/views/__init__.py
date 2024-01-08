@@ -39,6 +39,11 @@ from .student.HealthWellness.programs import *
 from .student.HousingAndAccomodation.assistance import *
 from .student.HousingAndAccomodation.referrals import *
 
+# Transportation and Parking
+from .student.TransportationAndParking.transport import *
+from .student.TransportationAndParking.permit import *
+from .student.TransportationAndParking.regulation import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -85,6 +90,11 @@ from .admin.HealthWellness.programs import *
 # Housing and Accomodation
 from .admin.HousingAndAccomodation.assistance import *
 from .admin.HousingAndAccomodation.referrals import *
+
+# Transportation and Parking
+from .admin.TransportationAndParking.transport import *
+from .admin.TransportationAndParking.permit import *
+from .admin.TransportationAndParking.regulation import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *

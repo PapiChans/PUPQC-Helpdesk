@@ -120,17 +120,21 @@ def government(request):
     return render(request, 'student/StudentGovernment/studgovernment.html',{'pagename': pagename_value})
 
     # Transportation and Parking
-def parking(request):
+def transportation(request):
     pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/parking.html',{'pagename': pagename_value})
+    return render(request, 'student/TransportationAndParking/transportation.html',{'pagename': pagename_value})
 
-def parkingSlot(request):
+def transportationroutes(request):
     pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/slotReserve.html',{'pagename': pagename_value})
+    return render(request, 'student/TransportationAndParking/routes.html',{'pagename': pagename_value})
 
-def transportInfo(request):
+def transportationpermit(request):
     pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/transportInfo.html',{'pagename': pagename_value})
+    return render(request, 'student/TransportationAndParking/permit.html',{'pagename': pagename_value})
+
+def transportationregulation(request):
+    pagename_value = "Transportation and Parking"
+    return render(request, 'student/TransportationAndParking/regulations.html',{'pagename': pagename_value})
 
     # Lost annd Found Services
 def lostAndFound(request):

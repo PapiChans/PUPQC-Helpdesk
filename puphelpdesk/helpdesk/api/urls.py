@@ -78,6 +78,13 @@ urlpatterns = [
     # Housing and Accomodation: Off-Campus Living Assistance
     path('student/getLivingAssistance', views.studGetLivingAssistance),
 
+    # Transportation and Parking: Campus Parking Permits
+    path('student/getPermit', views.studGetPermit),
+    path('student/getPermitInfo/<uuid:permit_Id>', views.studGetPermitInfo),
+
+    # Transportation and Parking: Campus Parking Regulation
+    path('student/getRegulation', views.studGetRegulation),
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -233,6 +240,20 @@ urlpatterns = [
     path('admin/getLivingAssistanceInfo/<uuid:assistance_Id>', views.adminGetLivingAssistanceInfo),
     path('admin/editLivingAssistance/<uuid:assistance_Id>', views.adminEditLivingAssistance),
     path('admin/deleteLivingAssistance/<uuid:assistance_Id>', views.adminDeleteLivingAssistance),
+
+    # Transportation and Parking: Campus Parking Permits
+    path('admin/addPermit', views.adminAddPermit),
+    path('admin/getPermit', views.adminGetPermit),
+    path('admin/getPermitInfo/<uuid:permit_Id>', views.adminGetPermitInfo),
+    path('admin/editPermit/<uuid:permit_Id>', views.adminEditPermit),
+    path('admin/deletePermit/<uuid:permit_Id>', views.adminDeletePermit),
+
+    # Transportation and Parking: Campus Parking Regulation
+    path('admin/addRegulation', views.adminAddRegulation),
+    path('admin/getRegulation', views.adminGetRegulation),
+    path('admin/getRegulationInfo/<uuid:regulation_Id>', views.adminGetRegulationInfo),
+    path('admin/editRegulation/<uuid:regulation_Id>', views.adminEditRegulation),
+    path('admin/deleteRegulation/<uuid:regulation_Id>', views.adminDeleteRegulation),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),
