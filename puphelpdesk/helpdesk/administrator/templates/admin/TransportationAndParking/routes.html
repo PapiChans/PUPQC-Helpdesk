@@ -1,0 +1,90 @@
+{% extends "admin\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<style>
+    .google-map {
+        padding-bottom: 50%;
+        position: relative;
+   }
+   
+   .google-map iframe {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+   }
+</style>
+{% endblock %}
+{% block maincontent %}
+{% include "admin\TransportationAndParking\modal\routes-modal.html" %} 
+<h2 class="header-title">Public Transportation Information</h2>
+<p class="card-title-desc">Provides details about public transportation options and schedules.</p>
+<div class="col">
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddRouteModal">Add Route</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#mapViewModal">View Map</button>
+</div>
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#driving-tab" role="tab" aria-selected="false">
+            Driving
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#two-wheeler-tab" role="tab" aria-selected="false">
+            Two-wheeler
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#transit-tab" role="tab" aria-selected="false">
+            Transit
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#walking-tab" role="tab" aria-selected="false">
+            Walking
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#cycling-tab" role="tab" aria-selected="false">
+            Cycling
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="driving-tab" role="tabpanel">
+        <h2 class="text-center" id="no_driving">No Route Data</h2>
+        <div id="driving_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="two-wheeler-tab" role="tabpanel">
+        <h2 class="text-center" id="no_two_wheeler">No Route Data</h2>
+        <div id="two_wheeler_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="transit-tab" role="tabpanel">
+        <h2 class="text-center" id="no_transit">No Route Data</h2>
+        <div id="transit_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="walking-tab" role="tabpanel">
+        <h2 class="text-center" id="no_walking">No Route Data</h2>
+        <div id="walking_display">
+        </div>
+    </div>
+    <div class="tab-pane" id="cycling-tab" role="tabpanel">
+        <h2 class="text-center" id="no_cycling">No Route Data</h2>
+        <div id="cycling_display">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/TransportationAndParking/routes.ajax.js' %}"></script>
+{% endblock %}

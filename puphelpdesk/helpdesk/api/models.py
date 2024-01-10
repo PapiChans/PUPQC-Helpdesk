@@ -284,9 +284,11 @@ class LivingAssistance(models.Model):
 class TransportInfo(models.Model):
     transport_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     transport_Type = models.CharField(max_length=100, null=False)
-    transport_Fare = models.TextField(null=False)
     transport_Route = models.TextField(null=False)
+    transport_Distance = models.CharField(max_length=100, null=False)
+    transport_Fare = models.TextField(max_length=100, null=False)
     transport_Info = models.TextField(null=False)
+    transport_Time = models.CharField(max_length=100, null=False)
     transport_Schedule = models.CharField(max_length=100, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:

@@ -85,6 +85,10 @@ urlpatterns = [
     # Transportation and Parking: Campus Parking Regulation
     path('student/getRegulation', views.studGetRegulation),
 
+    # Transportation and Parking: Transporation Options
+    path('student/getTransport', views.studGetTransport),
+    path('student/getTransportInfo/<uuid:transport_Id>', views.studGetTransportInfo),
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -254,6 +258,13 @@ urlpatterns = [
     path('admin/getRegulationInfo/<uuid:regulation_Id>', views.adminGetRegulationInfo),
     path('admin/editRegulation/<uuid:regulation_Id>', views.adminEditRegulation),
     path('admin/deleteRegulation/<uuid:regulation_Id>', views.adminDeleteRegulation),
+
+    # Transportation and Parking: Transporation Options
+    path('admin/addTransport', views.adminAddTransport),
+    path('admin/getTransport', views.adminGetTransport),
+    path('admin/getTransportInfo/<uuid:transport_Id>', views.adminGetTransportInfo),
+    path('admin/editTransport/<uuid:transport_Id>', views.adminEditTransport),
+    path('admin/deleteTransport/<uuid:transport_Id>', views.adminDeleteTransport),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

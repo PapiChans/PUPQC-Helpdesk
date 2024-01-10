@@ -612,3 +612,14 @@
 - Revision: Transportation and Parking URL's, Views and Templates in Student Side
 - Add Transportation and Parking Views, URLS, and Templates in Admin side
 - Update Both Side Navbars
+
+# 0.5.16
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Transportation and Parking: Transportation Options (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Add HTML Pages and Modals for Transportation and Parking: Transportation Options (Both Admin and Student)
+- Module Complete: Transportation and Parking

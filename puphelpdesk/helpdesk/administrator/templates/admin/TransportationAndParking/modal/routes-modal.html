@@ -1,0 +1,165 @@
+<div class="modal fade" id="AddRouteModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Transportation Info</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddRouteForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label>Transport Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="transport_Type" required>
+                                <option value="">Select Transport Type</option>
+                                <option value="Driving">Driving</option>
+                                <option value="Two Wheeler">Two Wheeler</option>
+                                <option value="Transit">Transit</option>
+                                <option value="Walking">Walking</option>
+                                <option value="Cycling">Cycling</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Route<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="transport_Route" placeholder="Example: From [Location] to [Location]" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Distance<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="transport_Distance" placeholder="Provide the distance between locations" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Fare<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="transport_Fare" placeholder="How much the fare?" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="transport_Info" rows="5" placeholder="Provide information about the transport route"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Travel Time<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="transport_Time" placeholder="How much time to take to reach the destination?" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Schedule<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="transport_Schedule" placeholder="Provide Transportation Option Schedule" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="transport_Submit">Add Route</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditRouteModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Transportation Info</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditRouteForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_transport_Id">
+                        <div class="col-md-12 mt-2">
+                            <label>Transport Type<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_transport_Type" required>
+                                <option value="Driving">Driving</option>
+                                <option value="Two Wheeler">Two Wheeler</option>
+                                <option value="Transit">Transit</option>
+                                <option value="Walking">Walking</option>
+                                <option value="Cycling">Cycling</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Route<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_transport_Route" placeholder="Example: From [Location] to [Location]" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Distance<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_transport_Distance" placeholder="Provide the distance between locations" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Fare<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_transport_Fare" placeholder="How much the fare?" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_transport_Info" rows="5" placeholder="Provide information about the transport route"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Travel Time<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_transport_Time" placeholder="How much time to take to reach the destination?" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Schedule<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_transport_Schedule" placeholder="Provide Transportation Option Schedule" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_transport_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="transportInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Transportation Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <p>Type: <strong id="transport_Type_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Route: <strong id="transport_Route_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Distance: <strong id="transport_Distance_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Fare <strong id="transport_Fare_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Information: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="transport_Info_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Travel Time: <strong id="transport_Time_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Schedule: <strong id="transport_Schedule_info"></strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="mapViewModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Map View</h5>
+            </div>
+            <div class="modal-body">
+                <div class="google-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.226149176586!2d121.07950437411712!3d14.699799185798446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ba7528549fb1%3A0x62d21f0cc60f364d!2sPolytechnic%20University%20of%20the%20Philippines%20Quezon%20City!5e0!3m2!1sen!2sph!4v1704761150641!5m2!1sen!2sph" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
