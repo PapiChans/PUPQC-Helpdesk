@@ -138,16 +138,16 @@ def transportationregulation(request):
 
     # Lost annd Found Services
 def lostAndFound(request):
-    pagename_value = "Lost And Found"
-    return render(request, 'student/LostAndFoundServices/LostAndFound.html',{'pagename': pagename_value})
+    pagename_value = "Lost and Found"
+    return render(request, 'student/LostAndFound/LostAndFound.html',{'pagename': pagename_value})
 
-def returnItems(request):
-    pagename_value = "Lost And Found"
-    return render(request, 'student/LostAndFoundServices/NewReportLost.html',{'pagename': pagename_value})
+def ItemLost(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'student/LostAndFound/ItemLost.html',{'pagename': pagename_value})
 
-def item_list(request):
-    pagename_value = "Lost And Found"
-    return render(request, 'student/LostAndFoundServices/itemList.html', {'pagename': pagename_value})
+def ItemRetrieval(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'student/LostAndFound/retrieval.html',{'pagename': pagename_value})
 
     # Student Feedback and Suggestions
 def feedback(request):

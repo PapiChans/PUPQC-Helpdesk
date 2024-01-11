@@ -613,7 +613,7 @@
 - Add Transportation and Parking Views, URLS, and Templates in Admin side
 - Update Both Side Navbars
 
-# 0.5.16
+# 0.5.17
 - Push by Christian (https://github.com/papichans)
 - Complete Backend for Transportation and Parking: Transportation Options (Both Admin and Student)
 - Update API URLs
@@ -623,3 +623,15 @@
 - Update Models
 - Add HTML Pages and Modals for Transportation and Parking: Transportation Options (Both Admin and Student)
 - Module Complete: Transportation and Parking
+
+# 0.5.18
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Lost and Found: Retrieval Instructions (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Revision: Lost and Found URL's, Views and Templates in Student Side
+- Add Lost and Found Views, URLS, and Templates in Admin side
+- Update Both Side Navbars

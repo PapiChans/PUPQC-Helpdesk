@@ -89,6 +89,9 @@ urlpatterns = [
     path('student/getTransport', views.studGetTransport),
     path('student/getTransportInfo/<uuid:transport_Id>', views.studGetTransportInfo),
 
+    # Lost and Found: Retrieval Instruction
+    path('student/getInstruction', views.studGetInstruction),
+
     # Feedback and Suggestions
     path('student/submitFeedback', views.studSubmitFeedback),
     path('student/getFeedback', views.studGetFeedback),
@@ -279,6 +282,13 @@ urlpatterns = [
     path('admin/getSuggestionInfo/<uuid:feedback_Id>', views.adminGetSuggestionInfo),
     path('admin/suggestionMarkAsRead/<uuid:feedback_Id>', views.adminSuggestionMarkAsRead),
     path('admin/deleteSuggestion/<uuid:feedback_Id>', views.adminDeleteSuggestion),
+
+    # Lost and Found: Retrieval Instruction
+    path('admin/addInstruction', views.adminAddInstruction),
+    path('admin/getInstruction', views.adminGetInstruction),
+    path('admin/getInstructionInfo/<uuid:instruction_Id>', views.adminGetInstructionInfo),
+    path('admin/editInstruction/<uuid:instruction_Id>', views.adminEditInstruction),
+    path('admin/deleteInstruction/<uuid:instruction_Id>', views.adminDeleteInstruction),
 
     # FAQ
     path('admin/addFAQ', views.adminAddFAQ),

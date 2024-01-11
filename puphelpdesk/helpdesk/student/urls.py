@@ -56,8 +56,8 @@ urlpatterns = [
 
     # Lost annd Found Services
     path('LostAndFound', views.lostAndFound, name='LostAndFound'),
-    path('LostAndFound/returnItems', views.returnItems, name='LostAndFound/returnItems'),
-    path('LostAndFound/itemsList', views.item_list, name='LostAndFound/itemsList'),
+    path('LostAndFound/items', views.ItemLost, name="LostAndFound/items"),
+    path('LostAndFound/retrieval', views.ItemRetrieval, name="LostAndFound/retrieval"),
 
     # Student Feedback and Suggestions
     path('feedback', views.feedback, name='feedback'),

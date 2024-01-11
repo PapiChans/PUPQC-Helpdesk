@@ -44,6 +44,10 @@ from .student.TransportationAndParking.transport import *
 from .student.TransportationAndParking.permit import *
 from .student.TransportationAndParking.regulation import *
 
+# Lost and Found
+from .student.LostAndFound.ItemLost import *
+from .student.LostAndFound.retrieval import *
+
 # Feedback and Suggestions
 from .student.Feedback.feedback import *
 
@@ -95,6 +99,10 @@ from .admin.HousingAndAccomodation.referrals import *
 from .admin.TransportationAndParking.transport import *
 from .admin.TransportationAndParking.permit import *
 from .admin.TransportationAndParking.regulation import *
+
+# Lost and Found
+from .admin.LostAndFound.ItemLost import *
+from .admin.LostAndFound.retrieval import *
 
 # Feedback and Suggestions
 from .admin.Feedback.feedback import *

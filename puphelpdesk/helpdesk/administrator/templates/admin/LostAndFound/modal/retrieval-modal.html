@@ -1,0 +1,64 @@
+<div class="modal fade" id="AddInstructionModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Retrieval Instruction</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddInstructionForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Step Number<span class="text-danger">*</span></label>
+                            <input type="tel" maxlength="2" class="form-control" id="instruction_Step_Number" placeholder="Item Retrieval Step Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Step Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="instruction_Title" placeholder="Item Retrieval Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="instruction_Info" rows="5" placeholder="Provide Item Retrieval Info"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="instruction_Submit">Add Retrieval Step</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditInstructionModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Retrieval Instruction</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditInstructionForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_instruction_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Step Number<span class="text-danger">*</span></label>
+                            <input type="tel" maxlength="2" class="form-control" id="edit_instruction_Step_Number" placeholder="Item Retrieval Step Number" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Step Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_instruction_Title" placeholder="Item Retrieval Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Info<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_instruction_Info" rows="5" placeholder="Provide Item Retrieval Info"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_instruction_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

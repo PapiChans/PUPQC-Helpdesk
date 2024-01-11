@@ -157,6 +157,20 @@ def admintransportationregulation(request):
     pagename_value = "Transportation and Parking"
     return render(request, 'admin/TransportationAndParking/regulations.html',{'pagename': pagename_value})
 
+# Lost and Found
+def adminlostandfound(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'admin/LostAndFound/LostAndFound.html',{'pagename': pagename_value})
+
+def adminItemLost(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'admin/LostAndFound/ItemLost.html',{'pagename': pagename_value})
+
+def adminItemRetrieval(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'admin/LostAndFound/retrieval.html',{'pagename': pagename_value})
+
+
 #Frequently Asked Questions
 def adminFaqs(request):
     pagename_value = "Frequently Asked Questions"

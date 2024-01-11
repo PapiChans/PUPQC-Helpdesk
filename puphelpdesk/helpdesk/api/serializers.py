@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation
+from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,11 +29,6 @@ class SuccessResourcesSerializer(serializers.ModelSerializer):
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
-        fields = '__all__'
-
-class LostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = LostandFound
         fields = '__all__'
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -125,4 +120,14 @@ class ParkingPermitSerializer(serializers.ModelSerializer):
 class ParkingRegulationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingRegulation
+        fields = '__all__'
+
+class LostandFoundSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LostandFound
+        fields = '__all__'
+
+class RetrievalInstructionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RetrievalInstruction
         fields = '__all__'

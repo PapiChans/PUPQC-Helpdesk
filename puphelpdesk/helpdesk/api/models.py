@@ -313,19 +313,31 @@ class ParkingRegulation(models.Model):
     class Meta:
         db_table = 'Parking Regulation'
 
-#Lost and Found
+#Lost and Found: Lost Items
 class LostandFound(models.Model):
-    lost_Item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    item_Name = models.CharField(max_length=50, null=False)
+    item_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
+    item_Owner = models.CharField(max_length=255, null=False)
+    item_Name = models.CharField(max_length=255, null=False)
     item_Image = models.ImageField(upload_to='Lost-Items/', null=True)
-    item_Description_Text = models.TextField(null=False)
-    item_Last_Seen = models.CharField(max_length=50, null=False)
+    item_Description = models.TextField(null=False)
+    item_Last_Seen = models.CharField(max_length=255, null=False)
     item_Lost_Date = models.DateField(null=False)
     item_Lost_Time = models.TimeField(null=False)
-    lost_Status = models.CharField(max_length=50, null=False)
+    item_Status = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
-        db_table = 'Lost and Found'
+        db_table = 'Lost Items'
+
+#Lost and Found: Lost Item Retrieval Instructions
+class RetrievalInstruction(models.Model):
+    instruction_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    instruction_Step_Number = models.IntegerField(null=False)
+    instruction_Title = models.CharField(max_length=255, null=False)
+    instruction_Info = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Item Retrieval Steps'
 
 # Feedback and Suggestion: Feedback
 class Feedback(models.Model):

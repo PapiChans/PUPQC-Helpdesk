@@ -1,0 +1,21 @@
+{% extends "student\partials\main.html" %}
+{% load static%}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+<h2 class="header-title">Retrieval Instructions</h2>
+<p class="card-title-desc">Provides retrieval instruction for Lost and Found</p>
+<h2 id="no-instruction" class="text-center">No Retrieval Instruction Data</h2>
+<div id="instruction_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/LostAndFound/retrieval.ajax.js' %}"></script>
+{% endblock %}

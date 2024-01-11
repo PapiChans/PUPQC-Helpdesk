@@ -60,6 +60,11 @@ urlpatterns = [
     path('transportation/permit', views.admintransportationpermit, name="admin/transportation/permit"),
     path('transportation/regulation', views.admintransportationregulation, name="admin/transportation/regulation"),
 
+    # Lost and Found
+    path('LostAndFound', views.adminlostandfound, name="admin/LostAndFound"),
+    path('LostAndFound/items', views.adminItemLost, name="admin/LostAndFound/items"),
+    path('LostAndFound/retrieval', views.adminItemRetrieval, name="admin/LostAndFound/retrieval"),
+
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
 ]
