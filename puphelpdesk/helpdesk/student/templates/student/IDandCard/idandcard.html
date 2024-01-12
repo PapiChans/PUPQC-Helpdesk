@@ -2,52 +2,189 @@
 {% load static%}
 {% block customcss %}
 
+
+<style>
+  
+  a {
+    text-decoration: none !important;
+    outline: none;
+    color: #D90429;
+  }
+  
+  
+  .container2{
+    position: relative;
+    display: flex;
+    padding: 80px 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px 40px;
+  }
+  
+  .section2 .card{
+    position: relative;
+    width: 300px;
+    height: 230px;
+    background: #fff;
+    transition: 0.5s;
+  }
+  
+  
+  
+  .section2 .card .lines{
+    position: absolute;
+    inset: 0;
+    background: #000;
+  }
+  
+  .section2 .card .lines::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  
+  
+  
+  .section2 .card .lines::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #edf2f4;
+  }
+  
+  .section2 .card .imgBx{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    transform: translateX(-50%);
+    left: 50%;
+    top: -90px;
+    background: #000;
+    transition: 0.5s;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .section2 .card .imgBx::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 150px;
+  }
+  
+  
+  .section2 .card .imgBx::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #edf2f4;
+  }
+  
+  .section2 .card .imgBx ion-icon{
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+    filter: invert;
+    opacity: 0.5;
+    transition: 0.5s;
+    color: #000;
+    font-size: 300px;
+  }
+  
+  .section2 .card:hover .imgBx ion-icon{
+    opacity: 1;
+  }
+  
+  .section2 .card .content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  
+  .section2 .card .content .details{
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    transform: translateY(25px);
+  }
+  
+  
+  .section2 .card .content .details h2{
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #0c71e0;
+    line-height: 1em;
+  }
+  
+  
+  .section2 .card .content .details p{
+    color: #000;
+    transition: 0.5s;
+    line-height: 1.6em;
+  }
+  
+  </style>
+
 {% endblock %}
 
 {% block maincontent %}
 <h2 class="header-title">Student ID and Access Cards</h2>
 <p class="card-title-desc">This will guide Students for Student ID and Access Cards.</p> 
-<div class="row justify-content-center">
-  <div class="col-xl-4 mb-3">
+<section class="section2" id="services">
+  <div class="container2">
+
     <div class="card">
-        <div class="card-status-top bg-primary"></div>
-        <div class="card-body">
-          <h3 class="card-title text-center text-primary">Obtaining ID Card</h3>
-          <p class="text-secondary text-center">Guide for Students in obtaining ID Card.</p>
-        </div>
-        <div class="card-footer text-center">
-          <a href="{% url 'IDandCard/obtaining_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+      <div class="lines"></div>
+      <div class="imgBx"><ion-icon name="id-card-outline"></ion-icon></div>
+      <div class="content">
+          <div class="details">
+              <h2>Obtaining ID Card</h2>
+              <p>Guide for Students in obtaining ID Card.</p>
+              <a href="{% url 'IDandCard/obtaining_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+          </div>
+      </div>
+  </div>
+
+  <div class="card">
+    <div class="lines"></div>
+    <div class="imgBx"><ion-icon name="id-card-outline"></ion-icon></div>
+    <div class="content">
+        <div class="details">
+            <h2>Replacing ID Card</h2>
+            <p>Guide for Students in replacing ID Card.</p>
+            <a href="{% url 'IDandCard/replacing_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
-  </div>
-  <div class="col-xl-4 mb-3">
-    <div class="card">
-        <div class="card-status-top bg-primary"></div>
-        <div class="card-body">
-          <h3 class="card-title text-center text-primary">Replacing ID Card</h3>
-          <p class="text-secondary text-center">Guide for Students in replacing ID Card.</p>
-        </div>
-        <div class="card-footer text-center">
-          <a href="{% url 'IDandCard/replacing_ID' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col-xl-4 mb-3">
-    <div class="card">
-        <div class="card-status-top bg-primary"></div>
-        <div class="card-body">
-          <h3 class="card-title text-center text-primary">Access Card Support</h3>
-          <p class="text-secondary text-center">Provides support for access cards used for campus facilities and services.</p>
-        </div>
-        <div class="card-footer text-center">
-          <a href="{% url 'IDandCard/access_cards' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
+</div>
+
+  <div class="card">
+    <div class="lines"></div>
+    <div class="imgBx"><ion-icon name="id-card-outline"></ion-icon></div>
+    <div class="content">
+        <div class="details">
+            <h2>Access Card Support</h2>
+            <p>Provides support for access cards used for campus facilities and services.</p>
+            <a href="{% url 'IDandCard/access_cards' %}"><button type="button" class="btn btn-primary waves-effect waves-light"><i class="fa-solid fa-refresh"></i>Go to Page</button></a>
         </div>
     </div>
-  </div>
-</div>    
+</div>
+
+</div>
+</section>   
 {% endblock %}
 
 {% block customjs %}
-
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 {% endblock %} 
