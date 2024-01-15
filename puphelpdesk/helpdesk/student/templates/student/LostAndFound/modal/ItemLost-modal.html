@@ -1,0 +1,107 @@
+<div class="modal fade" id="LostItemInfoModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Lost Item Information</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <img src="" id="item_Image_info" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Status: <strong id="item_Status_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Item Name: <strong id="item_Name_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Owner's Name: <strong id="item_Owner_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Description: <pre class="bg-transparent text-dark" style="padding: 0; font-size: 13px; font-family: Nunito,sans-serif; font-weight: bold;" id="item_Description_info"></pre></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Last Seen: <strong id="item_Last_Seen_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <p>Date of Loss: <strong id="item_Lost_Date_info"></strong> at <strong id="item_Lost_Time_info"></strong></p>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="LostItemEditModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Item Lost post</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditItemForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" class="form-control" id="edit_item_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Item Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_item_Name" placeholder="Provide Item Name" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_item_Description" rows="5" placeholder="Specify the Description of the item"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Last Seen<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_item_Last_Seen" placeholder="Where the item last seen?" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Date of Lost<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="edit_item_Lost_Date" data-provider="flatpickr" placeholder="When the item Lost? (Date)" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Time of Lost<span class="text-danger">*</span></label>
+                            <input type="time" class="form-control" id="edit_item_Lost_Time" data-provider="flatpickr" placeholder="When the item Lost? (Time)" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_item_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="ReplaceItemImageModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Replace Item Image</h5>
+            </div>
+            <div class="modal-body">
+                <form id="ReplaceItemImageForm" class="needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <input type="hidden" id="replace_item_Id">
+                            <p>Item Name: <strong class="font-weight-bold" id="replace_item_Name"></strong></p>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Upload Image<span class="text-danger">*</span></label>
+                            <h4 class="text-danger font-weight-bold">Note: Uploading Image should at .PNG and .JPG format only.</h4>
+                            <input type="file" class="filepond" id="replace_item_Image" data-max-files="1" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="replace_Submit">Replace</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

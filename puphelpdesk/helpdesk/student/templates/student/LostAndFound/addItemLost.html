@@ -1,0 +1,59 @@
+{% extends "student\partials\main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+<h2 class="header-title">Add Item Lost</h2>
+<p class="card-title-desc"><span class="text-danger">*</span>Enter the fields required.</p>
+<a href="{% url 'LostAndFound/items' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+<form id="AddItemForm" class="needs-validation" novalidate>
+    <div class="row">
+        <input type="hidden" id="user_Id" value="1fa54fda-3593-4fcf-9689-5d293da334be">
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Owner Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="item_Owner" placeholder="Student Name" value="Juan Dela Cruz" disabled/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Item Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="item_Name" placeholder="Provide Item Name" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+            <textarea required class="form-control" id="item_Description" rows="5" placeholder="Specify the Description of the item"></textarea>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Last Seen<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="item_Last_Seen" placeholder="Where the item last seen?" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Date of Lost<span class="text-danger">*</span></label>
+            <input type="date" class="form-control" id="item_Lost_Date" data-provider="flatpickr" placeholder="When the item Lost? (Date)" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Time of Lost<span class="text-danger">*</span></label>
+            <input type="time" class="form-control" id="item_Lost_Time" data-provider="flatpickr" placeholder="When the item Lost? (Time)" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <label for="validationCustom01">Item Image<span class="text-danger">*</span><span class="text-info"> (Note: Uploading Image should at .PNG and .JPG format only.)</span></label>
+            <input type="file" class="filepond" id="item_Image" data-max-files="1" required/>
+        </div>
+        <div class="col-md-12 mt-2">
+            <button type="submit" class="btn btn-primary col-xl-12" id="item_Submit">Add Item Lost</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/LostAndFound/AddItemLost.ajax.js' %}"></script>
+{% endblock %} 

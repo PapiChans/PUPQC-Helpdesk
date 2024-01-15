@@ -145,6 +145,10 @@ def ItemLost(request):
     pagename_value = "Lost and Found"
     return render(request, 'student/LostAndFound/ItemLost.html',{'pagename': pagename_value})
 
+def AddItemLost(request):
+    pagename_value = "Lost and Found"
+    return render(request, 'student/LostAndFound/addItemLost.html',{'pagename': pagename_value})
+
 def ItemRetrieval(request):
     pagename_value = "Lost and Found"
     return render(request, 'student/LostAndFound/retrieval.html',{'pagename': pagename_value})

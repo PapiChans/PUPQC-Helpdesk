@@ -653,3 +653,15 @@
 - Update cards on Transportation and parking on Admin and Student side
 - Update cards on Housing and Accomodation on Admin and Student Side
 - Update cards on Lost and found on Admin and Student Side
+
+# **0.5.21**
+- Push by Christian (https://github.com/papichans)
+- Complete Backend for Lost and Found (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Add HTML Pages and Modals for Lost and Found (Both Admin and Student)
+- Module Complete: Lost And Found
+- "I proudly announced that all modules are Completed, However we're get ready for the revisions" - PapiChans

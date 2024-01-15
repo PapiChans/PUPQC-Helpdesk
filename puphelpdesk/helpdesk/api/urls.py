@@ -89,6 +89,14 @@ urlpatterns = [
     path('student/getTransport', views.studGetTransport),
     path('student/getTransportInfo/<uuid:transport_Id>', views.studGetTransportInfo),
 
+    # Lost and Found: Lost Item Posting
+    path('student/addLostItem', views.studAddLostItem),
+    path('student/getLostItem', views.studGetLostItem),
+    path('student/getLostItemInfo/<uuid:item_Id>', views.studGetLostItemInfo),
+    path('student/deleteLostItem/<uuid:item_Id>', views.studDeleteLostItem),
+    path('student/editLostItem/<uuid:item_Id>', views.studEditLostItem),
+    path('student/replaceLostItemImage/<uuid:item_Id>', views.studReplaceLostItemImage),
+
     # Lost and Found: Retrieval Instruction
     path('student/getInstruction', views.studGetInstruction),
 
@@ -282,6 +290,12 @@ urlpatterns = [
     path('admin/getSuggestionInfo/<uuid:feedback_Id>', views.adminGetSuggestionInfo),
     path('admin/suggestionMarkAsRead/<uuid:feedback_Id>', views.adminSuggestionMarkAsRead),
     path('admin/deleteSuggestion/<uuid:feedback_Id>', views.adminDeleteSuggestion),
+
+    # Lost and Found: Lost Item Posting
+    path('admin/getLostItem', views.adminGetLostItem),
+    path('admin/getLostItemInfo/<uuid:item_Id>', views.adminGetLostItemInfo),
+    path('admin/ItemMarkAsClaim/<uuid:item_Id>', views.adminItemMarkAsClaim),
+    path('admin/ItemMarkAsFound/<uuid:item_Id>', views.adminItemMarkAsFound),
 
     # Lost and Found: Retrieval Instruction
     path('admin/addInstruction', views.adminAddInstruction),
