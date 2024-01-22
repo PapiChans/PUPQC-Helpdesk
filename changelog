@@ -665,3 +665,10 @@
 - Add HTML Pages and Modals for Lost and Found (Both Admin and Student)
 - Module Complete: Lost And Found
 - "I proudly announced that all modules are Completed, However we're get ready for the revisions" - PapiChans
+
+# 0.5.21.1
+- Push by Christian (https://github.com/papichans)
+- Implement Login AJAX, Urls and Views (Incomplete and Error)
+- Add "Back" buttons for multiple HTML pages (Both Admin and Student)
+- Remove Unused AJAX, JS and HTML
+- BUG FIX: Event Time is now accurate then the current event time end passed, it will automatically moved in the "ended" events.

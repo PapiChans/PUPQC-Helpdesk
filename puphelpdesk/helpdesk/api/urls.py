@@ -3,6 +3,12 @@ from . import views
 
 urlpatterns = [
     #----------------------
+    # AUTHENTICATION
+    #----------------------
+    path('test/createuser', views.createUser),
+    path('auth/login', views.authlogin),
+    
+    #----------------------
     # STUDENT API URLS
     #----------------------
 

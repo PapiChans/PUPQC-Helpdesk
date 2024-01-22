@@ -33,7 +33,7 @@ def createUser(request):
    if request.method == "POST":
       username = request.POST.get('username')
       password = request.POST.get('password')
-      hash = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+      hash = bcrypt.hashpw(password.encode('utf-8'), salt)
       user = {
             'user_Username': username,
             'user_Password': hash,
@@ -41,4 +41,5 @@ def createUser(request):
       serializer = UserSerializer(data=user)
       if serializer.is_valid():
          serializer.save()
+         return Response(serializer.user, status=status.HTTP_200_OK)
    return Response(serializer.user, status=status.HTTP_404_NOT_FOUND)

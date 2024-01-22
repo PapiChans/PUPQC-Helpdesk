@@ -8,7 +8,10 @@
 {% include "admin\TransportationAndParking\modal\regulations-modal.html" %} 
 <h2 class="header-title">Parking Regulations</h2>
 <p class="card-title-desc">Learn more about campus parking regulations</p>
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddRegulationModal">Add Regulation</button>
+<div class="col">
+    <a href="{% url 'admin/transportation' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddRegulationModal">Add Regulation</button>
+</div>
 <h2 id="no_regulation" class="text-center">No Parking Regulation Available</h2>
 <div id="regulation_display">
 </div>

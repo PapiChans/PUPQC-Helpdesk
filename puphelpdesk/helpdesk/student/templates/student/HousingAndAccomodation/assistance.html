@@ -8,7 +8,8 @@
 {% block maincontent %}
 {% include "student\HousingAndAccomodation\modal\assistance-modal.html" %} 
 <h2 class="header-title">Off-Campus Living Assistance</h2>
-<p class="card-title-desc">Provides guidance on finding suitable off-campus housing and related services.</p> 
+<p class="card-title-desc">Provides guidance on finding suitable off-campus housing and related services.</p>
+<a href="{% url 'housing' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
 <h3 id="no_LivingAssistance" class="text-center">No Living Assistance Data.</h3>
 <div class="row" id="livingassistance_display">
 </div>

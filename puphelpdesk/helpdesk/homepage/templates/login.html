@@ -12,9 +12,9 @@
     <link href="{% static 'assets/css/dashboard/tabler.min.css' %}" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{% static 'assets/css/dashboard/tabler-payments.min.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'assets/libs/materialdesign/css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{% static 'assets/css/dashboard/tabler-flags.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
   </head>
   <body class=" d-flex flex-column">
     <div class="page page-center">
@@ -40,7 +40,7 @@
                   <span class="form-check-label text-center">Use your PUP Student Account to Sign in</span>
               </div>
               <div class="form-footer">
-                <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                <button type="submit" class="btn btn-primary w-100" id="login_submit">Sign in</button>
               </div>
             </form>
           </div>
@@ -52,7 +52,8 @@
         <script src="{% static 'assets/js/dashboard/jquery.min.js' %}"></script>
         <script src="{% static 'assets/js/dashboard/tabler.min.js' %}"></script>
         <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
-		<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-        <script src="{% static 'assets/js/ajax/student/login.ajax.js' %}"></script>
+        <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+        <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+        <script src="{% static 'assets/js/ajax/auth/login.ajax.js' %}"></script>
     </body>
 </html>

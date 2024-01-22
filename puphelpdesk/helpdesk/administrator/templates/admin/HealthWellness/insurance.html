@@ -9,7 +9,10 @@
 {% include "admin\HealthWellness\modal\insurance-modal.html" %} 
 <h2 class="header-title">Health Insurance</h2>
 <p class="card-title-desc">Information on health insurance options and coverage.</p>
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHealthInsuranceModal">Add Health Insurance</button>
+<div class="col">
+    <a href="{% url 'admin/healthwellness' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHealthInsuranceModal">Add Health Insurance</button>
+</div>
 <h3 id="no_HealthInsurance" class="text-center">There are no Health Insurance Data.</h3>
 <div class="row" id="healthinsurance_display">
 </div>

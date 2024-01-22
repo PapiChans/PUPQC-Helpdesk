@@ -10,7 +10,10 @@
 {% include "student\LostAndFound\modal\ItemLost-modal.html" %} 
 <h2 class="header-title">You Missing Items</h2>
 <p class="card-title-desc">Manage your Lost items.</p>
-<a href="{% url 'LostAndFound/items/AddItem' %}"><button type="button" class="btn btn-info waves-effect waves-light mb-2">Add Item Lost</button></a>
+<div class="col">
+    <a href="{% url 'LostAndFound' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <a href="{% url 'LostAndFound/items/AddItem' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Add Item Lost</button></a>
+</div>
 <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link active" data-bs-toggle="tab" href="#missing-tab" role="tab" aria-selected="false">

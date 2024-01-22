@@ -10,7 +10,10 @@
 {% include "admin\HousingAndAccomodation\modal\referrals-modal.html" %} 
 <h2 class="header-title">Housing Referrals</h2>
 <p class="card-title-desc">Offers information about available on-campus and off-campus housing options.</p>
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHousingModal">Add Housing Referral</button>
+<div class="col">
+    <a href="{% url 'admin/housing' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddHousingModal">Add Housing Referral</button>
+</div>
 <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link active" data-bs-toggle="tab" href="#on-campus-tab" role="tab" aria-selected="false">

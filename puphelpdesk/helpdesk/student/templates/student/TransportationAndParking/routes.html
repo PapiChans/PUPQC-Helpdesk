@@ -22,7 +22,10 @@
 {% include "student\TransportationAndParking\modal\routes-modal.html" %} 
 <h2 class="header-title">Public Transportation Information</h2>
 <p class="card-title-desc">Provides details about public transportation options and schedules.</p>
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#mapViewModal">View Map</button>
+<div class="col">
+    <a href="{% url 'transportation' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#mapViewModal">View Map</button>
+</div>
 <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link active" data-bs-toggle="tab" href="#driving-tab" role="tab" aria-selected="false">

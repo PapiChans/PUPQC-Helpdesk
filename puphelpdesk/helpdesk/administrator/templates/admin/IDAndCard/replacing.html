@@ -8,7 +8,10 @@
 {% include "admin\IDandCard\modal\IDandCard-modal.html" %} 
 <h2 class="header-title">Replacing ID Cards</h2>
 <p class="card-title-desc">Provide a guide assistance for Students in Replacing ID Cards</p>
-<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddStepModal">Add Step</button>
+<div class="col">
+    <a href="{% url 'admin/student-services/IDRequests' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddStepModal">Add Step</button>
+</div>
 <h2 id="no-step" class="text-center">No Step Guide Available</h2>
 <div id="replacing_display">
 </div>

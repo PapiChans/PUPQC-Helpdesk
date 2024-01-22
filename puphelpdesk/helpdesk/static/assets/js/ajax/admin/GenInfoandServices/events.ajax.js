@@ -235,8 +235,16 @@ getEvent = () => {
                         `;
 
                         if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
-                            $('#no_ongoing').html(null);
-                            ongoing_display.append(eventformat)
+                            const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' });
+                            if (eventdata.event_Start <= currentTime && eventdata.event_End >= currentTime){
+                                $('#no_ongoing').html(null);
+                                ongoing_display.append(eventformat)
+                            }
+                            else
+                            {
+                                $('#no_ended').html(null);
+                                ended_display.append(eventformat);
+                            } 
                         }
                         
                         if (eventdata.event_Date_Start > formattedCurrentdate) {
