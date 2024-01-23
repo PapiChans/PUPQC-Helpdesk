@@ -1,49 +1,27 @@
 {% extends "student\partials\main.html" %}
 {% load static %}
-
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
 {% block maincontent %}
 
-<h4 class="header-title">Your Profile</h4>
+<h2 class="header-title">Your Profile</h2>
 <p class="card-title-desc">View your profile.</p>
-<a href="{% url 'editprofile' %}" ><button type="button" class="btn btn-primary waves-effect waves-light">Edit Profile</button></a>
-</div>
-</div>
-
 <div class="card">
     <div class="card-body">
         <h5 class="card-title mb-3">Student Info</h5>
-        <div class="table-responsive">
-            <table class="table table-borderless mb-0">
-                <tbody>
-                    <tr>
-                        <th class="ps-0" scope="row">Student ID</th>
-                        <td class="text-muted">2023-00001-CM-0</td>
-                    </tr>
-                    <tr>
-                        <th class="ps-0" scope="row">Student Name</th>
-                        <td class="text-muted">Juan D. Cruz</td>
-                    </tr>
-                    <tr>
-                        <th class="ps-0" scope="row">Program</th>
-                        <td class="text-muted">Bachelor of Science in Information Technology</td>
-                    </tr>
-                    <tr>
-                        <th class="ps-0" scope="row">Age</th>
-                        <td class="text-muted">18</td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="ps-0" scope="row">Contact Number</th>
-                        <td class="text-muted">09123456789</td>
-                    </tr>
-                    <tr>
-                        <th class="ps-0" scope="row">Email Address</th>
-                        <td class="text-muted">juandcruz@gmail.com</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="row">
+            <h5 class="card-title">Student Name: <span class="text-muted" id="student_Name"></span></h5>
+            <h5 class="card-title">Program: <span class="text-muted" id="student_Program"></span></h5>
+            <h5 class="card-title">Contact: <span class="text-muted" id="student_Contact"></span></h5>
+            <h5 class="card-title">Email: <span class="text-muted" id="student_Email"></span></h5>
+            <h5 class="card-title">Gender: <span class="text-muted" id="student_Gender"></span></h5>
+        </div>   
     </div><!-- end card body -->
 </div>
 
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/profile.ajax.js' %}"></script>
 {% endblock %}

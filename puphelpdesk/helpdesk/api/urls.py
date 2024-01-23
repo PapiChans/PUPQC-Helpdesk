@@ -2,11 +2,14 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
+
     #----------------------
     # AUTHENTICATION
     #----------------------
-    path('test/createuser', views.createUser),
     path('auth/login', views.authlogin),
+    path('auth/logout', views.user_logout),
+    path('auth/getuserprofile', views.getUserProfile),
+    path('auth/getadminprofile', views.getAdminProfile),
     
     #----------------------
     # STUDENT API URLS

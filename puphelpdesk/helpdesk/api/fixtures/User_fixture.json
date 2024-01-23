@@ -2,37 +2,81 @@
     {
         "model": "api.User",
         "fields": {
-            "user_Id": "1fa54fda-3593-4fcf-9689-5d293da334be",
-            "user_Username": "2023-00001-CM-0",
-            "user_Password": "Student@123",
-            "date_Created": "2023-10-19T14:25:15.325146Z"
+            "password": "bcrypt_sha256$$2b$12$RvPxCJeBWWCZPM8IqlD7gOsbJKu0lYZ0c4hg6TIav99QzkUu5EWGW",
+            "last_login": null,
+            "is_superuser": false,
+            "user_Id": "16d0ea5c-3cd9-47ac-a815-40c38f2e54ef",
+            "username": "admin1@pup.edu.ph",
+            "is_admin": true,
+            "is_staff": false,
+            "is_active": true,
+            "date_Created": "2024-01-22T14:52:15.853846Z",
+            "groups": [],
+            "user_permissions": []
         }
     },
     {
         "model": "api.User",
         "fields": {
-            "user_Id": "82ce7e44-e987-4f72-b4d8-474bddabddf7",
-            "user_Username": "2023-00002-CM-0",
-            "user_Password": "Student@123",
-            "date_Created": "2023-10-19T14:25:20.895185Z"
+            "password": "bcrypt_sha256$$2b$12$1QaqRmuVxolwTfqIzK12i.uCtzNsNvDIk4i1QIf3YlmScGxMNhca.",
+            "last_login": null,
+            "is_superuser": false,
+            "user_Id": "79f7c7c6-a0b1-46fe-9ea8-fae9bcdbb184",
+            "username": "2024-00001-CM-0",
+            "is_admin": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_Created": "2024-01-22T14:51:24.033368Z",
+            "groups": [],
+            "user_permissions": []
         }
     },
     {
         "model": "api.User",
         "fields": {
-            "user_Id": "9e16b220-075e-40f3-b71c-977631fcfdd1",
-            "user_Username": "2023-00003-CM-0",
-            "user_Password": "Student@123",
-            "date_Created": "2023-10-19T14:25:26.230683Z"
+            "password": "bcrypt_sha256$$2b$12$em1chGDBKAgia4txBtG79u3/fG.biz.wbIue/GbmPpMEVU8uz6Y1G",
+            "last_login": null,
+            "is_superuser": false,
+            "user_Id": "9c8b78d1-fcda-4c9e-bb66-4aafdb145fb0",
+            "username": "2024-00002-CM-0",
+            "is_admin": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_Created": "2024-01-23T03:07:57.832890Z",
+            "groups": [],
+            "user_permissions": []
         }
     },
     {
         "model": "api.User",
         "fields": {
-            "user_Id": "5c1275ea-6b9b-41c8-aaf3-96e4937313e3",
-            "user_Username": "2023-00004-CM-0",
-            "user_Password": "Student@123",
-            "date_Created": "2023-10-19T14:25:31.865438Z"
+            "password": "bcrypt_sha256$$2b$12$nAKnsL/BGA0Z5c5DiWwaBOfq39R/gsZHgqK9iSZ55U0K9KHCQ0gna",
+            "last_login": null,
+            "is_superuser": false,
+            "user_Id": "293da006-61f8-457d-b44b-525011691f2c",
+            "username": "2024-00003-CM-0",
+            "is_admin": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_Created": "2024-01-23T03:08:14.536524Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "api.User",
+        "fields": {
+            "password": "bcrypt_sha256$$2b$12$PCNxJvw5ot4le8tDE5EnVuE1XaTgwnxW7ofe/6MT1xjBnpYsf1vty",
+            "last_login": null,
+            "is_superuser": false,
+            "user_Id": "702b31c6-9f7e-4cbf-b99f-cab666ae9b16",
+            "username": "2024-00004-CM-0",
+            "is_admin": false,
+            "is_staff": false,
+            "is_active": true,
+            "date_Created": "2024-01-23T03:07:26.606362Z",
+            "groups": [],
+            "user_permissions": []
         }
     }
 ]

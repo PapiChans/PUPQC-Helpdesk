@@ -6,7 +6,6 @@ urlpatterns = [
     # Student Dashboard
     path('dashboard', views.dashboard, name='dashboard'),
     path('profile', views.profile, name='profile'),
-    path('editprofile', views.editprofile, name='editprofile'),
 
     # General Information and Services
     path('geninfo/facilities', views.geninfofacilities, name='geninfo/facilities'),

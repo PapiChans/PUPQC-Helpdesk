@@ -1,24 +1,39 @@
 from django.db import models
+from django.conf import settings
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 import uuid
 
 # Create your models here.
 # This section code all the model for the database
+class CustomUserManager(BaseUserManager):
+    def create_user(self, username, password=None, **extra_fields):
+        if not username:
+            raise ValueError('The Username field must be set')
+        user = self.model(username=username, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-class User(models.Model):
+    def create_superuser(self, username, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(username, password, **extra_fields)
+
+class User(AbstractBaseUser, PermissionsMixin):
     user_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    user_Username = models.CharField(max_length=50, null=False)
-    user_Password = models.CharField(max_length=128, null=False)
+    username = models.CharField(max_length=100, null=False, unique=True)
+    is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'username'
     class Meta:
         db_table = 'User'
-
-class Admin(models.Model):
-    admin_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    admin_Username = models.CharField(max_length=50, null=False)
-    admin_Password = models.CharField(max_length=128, null=False)
-    date_Created = models.DateTimeField(null=False, auto_now_add=True)
-    class Meta:
-        db_table = 'Admin'
 
 Student_Programs = [
     ('BSIT', 'Bachelor of Science in Information Technology'),
@@ -37,11 +52,10 @@ class UserProfile(models.Model):
     user_Last_Name = models.CharField(max_length=50, null=False)
     user_First_Name = models.CharField(max_length=50, null=False)
     user_Middle_Name = models.CharField(max_length=50, null=True)
-    user_Full_Name = models.CharField(max_length=100, null=True)
+    user_Profile = models.FileField(upload_to='User-Profile/', null=True)
     user_Program = models.CharField(max_length=100, null=False, choices=Student_Programs)
-    user_Email = models.EmailField(max_length=50, null=False)
+    user_Email = models.EmailField(max_length=50, null=False, unique=True)
     user_Contact = models.CharField(max_length=11, null=False)
-    user_Age = models.IntegerField(null=False)
     user_Gender = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
@@ -49,11 +63,11 @@ class UserProfile(models.Model):
 
 class AdminProfile(models.Model):
     profile_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    admin_Id = models.ForeignKey(Admin, null=False, editable=False, on_delete=models.RESTRICT, db_column='admin_Id')
+    user_Id = models.ForeignKey(User, null=False, editable=False, on_delete=models.RESTRICT, db_column='user_Id')
     admin_Last_Name = models.CharField(max_length=50, null=False)
     admin_First_Name = models.CharField(max_length=50, null=False)
     admin_Middle_Name = models.CharField(max_length=50, null=True)
-    admin_Full_Name = models.CharField(max_length=100, null=True)
+    admin_Profile = models.FileField(upload_to='Admin-Profile/', null=True)
     admin_Email = models.EmailField(max_length=50, null=False)
     admin_Contact = models.CharField(max_length=11, null=False)
     admin_Gender = models.CharField(max_length=50, null=False)

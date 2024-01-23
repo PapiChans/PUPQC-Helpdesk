@@ -672,3 +672,20 @@
 - Add "Back" buttons for multiple HTML pages (Both Admin and Student)
 - Remove Unused AJAX, JS and HTML
 - BUG FIX: Event Time is now accurate then the current event time end passed, it will automatically moved in the "ended" events.
+
+# 0.6.0
+- Push by Christian (https://github.com/papichans)
+- Update: Login System
+- Remove Unused JS, Json, python file and resources
+- Unlink unused HTML Pages
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Add Auth api
+- Add Authorization for All kinds of interaction (CRUD Method and Visit Page) for Both Admin and Student
+- Update Fixtures
+- BUG FIX: Lost and Found Date Error
+- Update Headers (Both Admin and Student)
+- Minor HTML Modal Revisions

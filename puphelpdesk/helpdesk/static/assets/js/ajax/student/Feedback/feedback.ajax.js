@@ -4,6 +4,7 @@ $(function() {
         submitFeedback()
     })
     getFeedback()
+    getuserdata()
 })
 
 const notyf = new Notyf();
@@ -24,10 +25,33 @@ function formatPostgresTimestamp(postgresTimestamp) {
     return formattedDate;
 }
 
+getuserdata = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/auth/getuserprofile`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const profiledata = result;
+            $('#user_Id').val(profiledata.user_Id);
+            $('#student_Name').val(profiledata.user_Last_Name+", "+ profiledata.user_First_Name);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Profile Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
 submitFeedback = () => {
 
     if ($('#submitFeedbackForm')[0].checkValidity()) {
         const form = new FormData($('#submitFeedbackForm')[0]);
+        const user_Id = $('#user_Id').val();
         const student_Id = $('#student_Id').val();
         const student_Name = $('#student_Name').val();
         const feedback_Type = $('#feedback_Type').val();
@@ -35,6 +59,7 @@ submitFeedback = () => {
 
 
         const data = {
+            user_Id: user_Id,
             student_Id: student_Id,
             student_Name: student_Name,
             feedback_Type: feedback_Type,

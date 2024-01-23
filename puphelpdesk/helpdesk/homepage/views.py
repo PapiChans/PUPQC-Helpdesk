@@ -1,20 +1,26 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
     # Home Page
 def index(request):
-    return render(request, 'LandingPage/index.html')
+    if request.user.is_anonymous:
+        return render(request, 'LandingPage/index.html')
+    else:
+        if request.user.is_admin:
+            return redirect('admin/dashboard')
+        else:
+            return redirect('student/dashboard')
 
     # Authentication
 def login(request):
-    return render(request, 'login.html')
-
-    # HTTP Response Page
-def error401page(request):
-    return render(request, 'HTTPResponse/401.html')
-
-def error404page(request):
-    return render(request, 'HTTPResponse/404.html')   
+    if request.user.is_anonymous:
+        return render(request, 'login.html')
+    else:
+        if request.user.is_admin:
+            return redirect('admin/dashboard')
+        else:
+            return redirect('student/dashboard')
+ 
    

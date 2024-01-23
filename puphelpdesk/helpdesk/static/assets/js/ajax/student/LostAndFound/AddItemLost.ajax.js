@@ -3,13 +3,14 @@ $(function() {
         addLostItem(ItemImage)
         e.preventDefault() // prevent page refresh
     })
+    getuserprofile()
 })
 
 const notyf = new Notyf();
 
 $('input[type="date"]').flatpickr({
     mode: 'single',
-    minDate: "today",
+    maxDate: "today",
     allowInput: true,
     dateFormat: "Y-m-d"
 });
@@ -53,6 +54,28 @@ ItemImage = FilePond.create(document.querySelector('#item_Image'), {
 // Function to check Null Fields
 function hasNullOrEmptyValue(variables) {
     return variables.some(value => value === null || value.trim() === '');
+}
+
+getuserprofile = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/auth/getuserprofile`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const profiledata = result;
+            $('#user_Id').val(profiledata.user_Id);
+            $('#item_Owner').val(profiledata.user_Last_Name+", "+ profiledata.user_First_Name);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Profile Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
 }
 
 addLostItem = (ItemImage) => {

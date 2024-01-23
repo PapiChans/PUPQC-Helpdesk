@@ -1,165 +1,351 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
     # Student Dashboard
 def dashboard(request):
-    pagename_value = "Dashboard"
-    return render(request, 'student/dashboard.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Dashboard"
+        return render(request, 'student/dashboard.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def profile(request):
-    pagename_value = "Profile"
-    return render(request, 'student/profile.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Profile"
+        return render(request, 'student/profile.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def editprofile(request):
-    pagename_value = "Edit Profile"
-    return render(request, 'student/editprofile.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Edit Profile"
+        return render(request, 'student/editprofile.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # General Information and Services
 def geninfofacilities(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/facilities.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "General Information and Services"
+        return render(request, 'student/GenInfoandServices/facilities.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def geninfoservices(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/services.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "General Information and Services"
+        return render(request, 'student/GenInfoandServices/services.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def geninforesources(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/resources.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "General Information and Services"
+        return render(request, 'student/GenInfoandServices/resources.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def geninfoevents(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/events.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "General Information and Services"
+        return render(request, 'student/GenInfoandServices/events.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def geninforeferrals(request):
-    pagename_value = "General Information and Services"
-    return render(request, 'student/GenInfoandServices/referrals.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "General Information and Services"
+        return render(request, 'student/GenInfoandServices/referrals.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Student Support and Counseling
 def studsupportcounseling(request):
-    pagename_value = "Student Counseling and Support"
-    return render(request, 'student/StudentCounseling/counseling.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Student Counseling and Support"
+        return render(request, 'student/StudentCounseling/counseling.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def studsupportadvising(request):
-    pagename_value = "Student Counseling and Support"
-    return render(request, 'student/StudentCounseling/advising.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Student Counseling and Support"
+        return render(request, 'student/StudentCounseling/advising.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def studsupportresources(request):
-    pagename_value = "Student Counseling and Support"
-    return render(request, 'student/StudentCounseling/resources.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Student Counseling and Support"
+        return render(request, 'student/StudentCounseling/resources.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Financial Aid and Scholarships
 def financialaid(request):
-    pagename_value = "Financial Aid and Scholarships"
-    return render(request, 'student/FinancialAid/financialaid.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Financial Aid and Scholarships"
+        return render(request, 'student/FinancialAid/financialaid.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Housing and Accommodation
 def housing(request):
-    pagename_value = "Housing and Accommodation"
-    return render(request, 'student/HousingAndAccomodation/housing.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Housing and Accommodation"
+        return render(request, 'student/HousingAndAccomodation/housing.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
 
 def housingreferrals(request):
-    pagename_value = "Housing and Accomodation"
-    return render(request, 'student/HousingAndAccomodation/referrals.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Housing and Accomodation"
+        return render(request, 'student/HousingAndAccomodation/referrals.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def housingassistance(request):
-    pagename_value = "Housing and Accomodation"
-    return render(request, 'student/HousingAndAccomodation/assistance.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Housing and Accomodation"
+        return render(request, 'student/HousingAndAccomodation/assistance.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Health and Wellness Support
 def healthwellness(request):
-    pagename_value = "Health and Wellness Support"
-    return render(request, 'student/HealthWellness/healthwellness.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Health and Wellness Support"
+        return render(request, 'student/HealthWellness/healthwellness.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def healthwellnessprograms(request):
-    pagename_value = "Health and Wellness Support"
-    return render(request, 'student/HealthWellness/programs.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Health and Wellness Support"
+        return render(request, 'student/HealthWellness/programs.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def healthwellnessinsurance(request):
-    pagename_value = "Health and Wellness Support"
-    return render(request, 'student/HealthWellness/insurance.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Health and Wellness Support"
+        return render(request, 'student/HealthWellness/insurance.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Career Services and Employment
 def careers(request):
-    pagename_value = "Career Services and Employment"
-    return render(request, 'student/StudentCareers/careers.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Career Services and Employment"
+        return render(request, 'student/StudentCareers/careers.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def internship(request):
-    pagename_value = "Career Services and Employment"
-    return render(request, 'student/StudentCareers/internship.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Career Services and Employment"
+        return render(request, 'student/StudentCareers/internship.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def counseling(request):
-    pagename_value = "Career Services and Employment"
-    return render(request, 'student/StudentCareers/counseling.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Career Services and Employment"
+        return render(request, 'student/StudentCareers/counseling.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def jobsearch(request):
-    pagename_value = "Career Services and Employment"
-    return render(request, 'student/StudentCareers/jobsearch.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Career Services and Employment"
+        return render(request, 'student/StudentCareers/jobsearch.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Student IDs and Access Cards
 def idandcard(request):
-    pagename_value = "Student ID and Access Cards"
-    return render(request, 'student/IDandCard/idandcard.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Student ID and Access Cards"
+        return render(request, 'student/IDandCard/idandcard.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def IdObtaining(request):
-    pagename_value = "ID and Access Cards"
-    return render(request, 'student/IDAndCard/obtaining.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "ID and Access Cards"
+        return render(request, 'student/IDAndCard/obtaining.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def IdReplacing(request):
-    pagename_value = "ID and Access Cards"
-    return render(request, 'student/IDAndCard/replacing.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "ID and Access Cards"
+        return render(request, 'student/IDAndCard/replacing.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def AccessCard(request):
-    pagename_value = "ID and Access Cards"
-    return render(request, 'student/IDAndCard/accesscard.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "ID and Access Cards"
+        return render(request, 'student/IDAndCard/accesscard.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Student Government and Involvement
 def government(request):
-    pagename_value = "Student Government and Involvement"
-    return render(request, 'student/StudentGovernment/studgovernment.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Student Government and Involvement"
+        return render(request, 'student/StudentGovernment/studgovernment.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Transportation and Parking
 def transportation(request):
-    pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/transportation.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Transportation and Parking"
+        return render(request, 'student/TransportationAndParking/transportation.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def transportationroutes(request):
-    pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/routes.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Transportation and Parking"
+        return render(request, 'student/TransportationAndParking/routes.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def transportationpermit(request):
-    pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/permit.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Transportation and Parking"
+        return render(request, 'student/TransportationAndParking/permit.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def transportationregulation(request):
-    pagename_value = "Transportation and Parking"
-    return render(request, 'student/TransportationAndParking/regulations.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Transportation and Parking"
+        return render(request, 'student/TransportationAndParking/regulations.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Lost annd Found Services
 def lostAndFound(request):
-    pagename_value = "Lost and Found"
-    return render(request, 'student/LostAndFound/LostAndFound.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Lost and Found"
+        return render(request, 'student/LostAndFound/LostAndFound.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def ItemLost(request):
-    pagename_value = "Lost and Found"
-    return render(request, 'student/LostAndFound/ItemLost.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Lost and Found"
+        return render(request, 'student/LostAndFound/ItemLost.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def AddItemLost(request):
-    pagename_value = "Lost and Found"
-    return render(request, 'student/LostAndFound/addItemLost.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Lost and Found"
+        return render(request, 'student/LostAndFound/addItemLost.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 def ItemRetrieval(request):
-    pagename_value = "Lost and Found"
-    return render(request, 'student/LostAndFound/retrieval.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Lost and Found"
+        return render(request, 'student/LostAndFound/retrieval.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Student Feedback and Suggestions
 def feedback(request):
-    pagename_value = "Feedback and Suggestions"
-    return render(request, 'student/Feedback/feedback.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Feedback and Suggestions"
+        return render(request, 'student/Feedback/feedback.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     #Frequently Asked Questions
 def faqs(request):
-    pagename_value = "Frequently Asked Questions"
-    return render(request, 'student/Faqs/faqs.html',{'pagename': pagename_value})
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Frequently Asked Questions"
+        return render(request, 'student/Faqs/faqs.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 

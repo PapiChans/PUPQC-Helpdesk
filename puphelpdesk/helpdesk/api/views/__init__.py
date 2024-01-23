@@ -1,8 +1,9 @@
 # ---------------
 # Authentication
 # ---------------
-from .testB import *
 from .auth.login import *
+from .auth.logout import *
+from .auth.getprofile import *
 
 # ---------------
 # Student Routes

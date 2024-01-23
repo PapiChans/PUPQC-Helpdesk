@@ -7,16 +7,22 @@ import os
 
 @api_view(['GET'])
 def studGetHousingReferrals(request):
-    if request.method == "GET":
-        data = HousingOptions.objects.all()
-        serializer = HousingOptionsSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Housing Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = HousingOptions.objects.all()
+            serializer = HousingOptionsSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Housing Error"})
 
 @api_view(['GET'])
 def studGetHousingReferralsInfo(request, housing_Id):
-    if request.method == "GET":
-        housing = HousingOptions.objects.get(pk=housing_Id)
-        serializer = HousingOptionsSerializer(housing)
-        return Response(serializer.data)
-    return Response({"message": "Get Housing Info Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            housing = HousingOptions.objects.get(pk=housing_Id)
+            serializer = HousingOptionsSerializer(housing)
+            return Response(serializer.data)
+        return Response({"message": "Get Housing Info Error"})

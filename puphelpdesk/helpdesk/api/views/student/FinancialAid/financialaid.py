@@ -5,24 +5,33 @@ from api.models import FinancialAndScholarshipGuide
 
 @api_view(['GET'])
 def studGetFinancialAid(request):
-    if request.method == "GET":
-        data = FinancialAndScholarshipGuide.objects.all().filter(guide_Type = 'Financial Aid')
-        serializer = FinancialAndScholarshipGuideSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Financial Aid Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = FinancialAndScholarshipGuide.objects.all().filter(guide_Type = 'Financial Aid')
+            serializer = FinancialAndScholarshipGuideSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Financial Aid Error"})
 
 @api_view(['GET'])
 def studGetScholarships(request):
-    if request.method == "GET":
-        data = FinancialAndScholarshipGuide.objects.all().filter(guide_Type = 'Scholarship')
-        serializer = FinancialAndScholarshipGuideSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Scholarships Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = FinancialAndScholarshipGuide.objects.all().filter(guide_Type = 'Scholarship')
+            serializer = FinancialAndScholarshipGuideSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Scholarships Error"})
 
 @api_view(['GET'])
 def studGetGuideInfo(request, guide_Id):
-    if request.method == "GET":
-        guide = FinancialAndScholarshipGuide.objects.get(pk=guide_Id)
-        serializer = FinancialAndScholarshipGuideSerializer(guide)
-        return Response(serializer.data)
-    return Response({"message": "Get Guide Info Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            guide = FinancialAndScholarshipGuide.objects.get(pk=guide_Id)
+            serializer = FinancialAndScholarshipGuideSerializer(guide)
+            return Response(serializer.data)
+        return Response({"message": "Get Guide Info Error"})

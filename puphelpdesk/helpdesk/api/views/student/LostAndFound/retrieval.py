@@ -5,8 +5,11 @@ from api.models import RetrievalInstruction
 
 @api_view(['GET'])
 def studGetInstruction(request):
-    if request.method == "GET":
-        data = RetrievalInstruction.objects.all().order_by('instruction_Step_Number')
-        serializer = RetrievalInstructionSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Retrieval Instruction Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = RetrievalInstruction.objects.all().order_by('instruction_Step_Number')
+            serializer = RetrievalInstructionSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Retrieval Instruction Error"})

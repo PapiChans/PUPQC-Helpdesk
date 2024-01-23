@@ -3,20 +3,22 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from api.serializers import UserSerializer
 from api.models import User
-from rest_framework.authtoken.models import Token
-from django.shortcuts import get_object_or_404
-import bcrypt
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 @api_view(['POST'])
 def authlogin(request):
     if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        checkuser = User.objects.filter(username = username).exists()
+        if checkuser:
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+            else:
+                return Response({"response": "Incorrect Password"})
+        else:
+            return Response({"response": "User does not exist"})
 
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        login = {
-            'username': username,
-            'password': password,
-        }
-        user = get_object_or_404(User, login)
-    return Response({})
+    return Response({"response": "Success", "admin": request.user.is_admin})

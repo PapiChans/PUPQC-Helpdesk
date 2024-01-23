@@ -6,19 +6,13 @@
 {% endblock %}
 
 {% block maincontent %}
-<h4 class="header-title">Your Profile</h4>
+<h2 class="header-title">Your Profile</h2>
 <p class="card-title-desc">Edit your profile.</p>
 <div class="card">
     <div class="card-body">
         <form class="needs-validation" novalidate>
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationCustom01">Student ID<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Student ID" readonly/>
-                    <div class="valid-feedback">
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Student Program<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Student Program" required/>
                     <div class="valid-feedback">
@@ -47,7 +41,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Age<span class="text-danger">*</span></label></label>
+                    <label for="validationCustom01">Gender<span class="text-danger">*</span></label></label>
                     <input type="text" class="form-control" id="student_age" placeholder="Age" minlength="2" maxlength="2" required/>
                     <div class="valid-feedback">
                     </div>
@@ -67,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mb-3"></div>
-                    <button class="col-md-12 mb-3 btn btn-primary" type="submit" onclick="saveprofile()">Save</button>
+                    <button class="col-md-12 mb-3 btn btn-primary" type="submit"">Save</button>
                 </div>
             </div>
         </form>

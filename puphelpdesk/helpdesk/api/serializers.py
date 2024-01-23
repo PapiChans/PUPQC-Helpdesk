@@ -1,9 +1,19 @@
 from rest_framework import serializers
-from .models import User, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction
+from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
+        fields = '__all__'
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+
+class AdminProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AdminProfile
         fields = '__all__'
 
 class ResourcesSerializer(serializers.ModelSerializer):

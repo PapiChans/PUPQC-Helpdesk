@@ -7,8 +7,11 @@ import os
 
 @api_view(['GET'])
 def studGetFacility(request):
-    if request.method == "GET":
-        data = Facilities.objects.all().order_by('date_Created')
-        serializer = FacilitiesSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Facilities Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = Facilities.objects.all().order_by('date_Created')
+            serializer = FacilitiesSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Facilities Error"})

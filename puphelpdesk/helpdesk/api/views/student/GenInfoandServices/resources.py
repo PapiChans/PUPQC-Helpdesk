@@ -7,8 +7,11 @@ import os
 
 @api_view(['GET'])
 def studGetCampusResources(request):
-    if request.method == "GET":
-        data = Resources.objects.all()
-        serializer = ResourcesSerializer(data, many=True)
-        return Response(serializer.data)
-    return Response({"message": "Get Resources Error"})
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = Resources.objects.all()
+            serializer = ResourcesSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Resources Error"})
