@@ -774,3 +774,8 @@
 - Remove Dependency section in readme.md
 - Adjust MEDIA_ROOT URL in Settings.py
 - Add "media_root" folder
+
+# 0.6.0.12
+- Push by Christian (https://github.com/papichans)
+- Adjust MEDIA_ROOT URL in Settings.py
+- Remove "media_root" folder
