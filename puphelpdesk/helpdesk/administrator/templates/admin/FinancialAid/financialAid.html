@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -9,7 +9,7 @@
 <link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
 {% endblock %}
 {% block maincontent %}
-{% include "admin\FinancialAid\modal\financialAid-modal.html" %}
+{% include "admin/FinancialAid/modal/financialAid-modal.html" %}
 <h2 class="header-title">Financial Aid and Scholarships</h2>
 <p class="card-title-desc">These are the available Financial Aid and Scholarships</p>
 <a href="{% url 'admin/student-services/FinancialAid/AddPost' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Add Post</button></a>

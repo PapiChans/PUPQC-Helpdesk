@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\StudentCounseling\modal\resources-modal.html" %} 
+{% include "admin/StudentCounseling/modal/resources-modal.html" %} 
 <h2 class="header-title">PUPQC Success Resources</h2>
 <p class="card-title-desc">Resources to help students enhance study skills, time management, and academic success strategies.</p>
 

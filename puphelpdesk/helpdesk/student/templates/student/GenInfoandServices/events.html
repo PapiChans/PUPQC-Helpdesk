@@ -1,10 +1,10 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "student\GenInfoandServices\modal\events-modal.html" %}
+{% include "student/GenInfoandServices/modal/events-modal.html" %}
 <h2 class="header-title">PUPQC Events</h2>
 <p class="card-title-desc">What's happening now in PUPQC Campus?</p>
 <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">

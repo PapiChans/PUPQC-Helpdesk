@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\HealthWellness\modal\insurance-modal.html" %} 
+{% include "student/HealthWellness/modal/insurance-modal.html" %} 
 <h2 class="header-title">Health Insurance</h2>
 <p class="card-title-desc">Information on health insurance options and coverage.</p>
 <a href="{% url 'healthwellness' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>

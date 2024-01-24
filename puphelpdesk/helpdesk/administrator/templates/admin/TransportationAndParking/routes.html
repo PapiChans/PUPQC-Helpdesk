@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -19,7 +19,7 @@
 </style>
 {% endblock %}
 {% block maincontent %}
-{% include "admin\TransportationAndParking\modal\routes-modal.html" %} 
+{% include "admin/TransportationAndParking/modal/routes-modal.html" %} 
 <h2 class="header-title">Public Transportation Information</h2>
 <p class="card-title-desc">Provides details about public transportation options and schedules.</p>
 <div class="col">

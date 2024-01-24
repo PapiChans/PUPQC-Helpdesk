@@ -1,11 +1,11 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "admin\StudentGovernment\modal\studgovernment-modal.html" %} 
+{% include "admin/StudentGovernment/modal/studgovernment-modal.html" %} 
 <h2>Student Government</h2>
 <p class="card-title-desc">Join available Clubs and Organization within PUPQC Campus</p>
 

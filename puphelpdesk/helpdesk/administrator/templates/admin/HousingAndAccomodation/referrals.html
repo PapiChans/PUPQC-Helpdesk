@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\HousingAndAccomodation\modal\referrals-modal.html" %} 
+{% include "admin/HousingAndAccomodation/modal/referrals-modal.html" %} 
 <h2 class="header-title">Housing Referrals</h2>
 <p class="card-title-desc">Offers information about available on-campus and off-campus housing options.</p>
 <div class="col">

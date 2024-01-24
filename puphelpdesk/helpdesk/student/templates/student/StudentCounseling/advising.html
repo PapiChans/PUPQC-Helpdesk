@@ -1,11 +1,11 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "student\StudentCounseling\modal\advising-modal.html" %} 
+{% include "student/StudentCounseling/modal/advising-modal.html" %} 
 <h2 class="header-title">Academic Advising</h2>
 <p class="card-title-desc">Connect with academic advisors for course selection and degree planning.</p>
 <h3 id="no_Adviser" class="text-center">No Adviser Data.</h3>

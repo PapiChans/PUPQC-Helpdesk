@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/glightbox/glightbox.min.css' %}" />
@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock%}
 {% block maincontent %}
-{% include "admin\GenInfoandServices\modal\facilities-modal.html" %} 
+{% include "admin/GenInfoandServices/modal/facilities-modal.html" %} 
 <h2 class="header-title">PUPQC Facilities</h2>
 <p class="card-title-desc">These are the facilities in the campus.</p>
 

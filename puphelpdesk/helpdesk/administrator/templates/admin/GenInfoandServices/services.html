@@ -1,11 +1,11 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "admin\GenInfoandServices\modal\services-modal.html" %} 
+{% include "admin/GenInfoandServices/modal/services-modal.html" %} 
 <h2 class="header-title">Services in PUPQC</h2>
 <p class="card-title-desc">These are the Services in the PUPQC Campus.</p>
 <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#AddServiceModal"><i class="fa-solid fa-plus"></i> Add Service</button>

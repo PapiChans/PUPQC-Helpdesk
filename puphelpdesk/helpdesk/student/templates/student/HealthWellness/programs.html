@@ -1,11 +1,11 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "student\HealthWellness\modal\programs-modal.html" %} 
+{% include "student/HealthWellness/modal/programs-modal.html" %} 
 <h2 class="header-title">Health Services Referrals</h2>
 <p class="card-title-desc">Connects students with campus health services, medical clinics, and wellness programs.</p>
 <a href="{% url 'healthwellness' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2 ">Back</button></a>

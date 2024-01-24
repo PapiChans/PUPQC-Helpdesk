@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -9,7 +9,7 @@
 
 <h2>PUPQC Referrals</h2>
 <p class="card-title-desc">These are the Service referrals offered in the campus.</p>
-{% include "admin\GenInfoandServices\modal\referrals-modal.html" %} 
+{% include "admin/GenInfoandServices/modal/referrals-modal.html" %} 
 
 <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddReferralsModal">Add New Referral</button>
 

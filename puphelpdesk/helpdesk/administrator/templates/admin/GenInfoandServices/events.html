@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "admin\GenInfoandServices\modal\events-modal.html" %}
+{% include "admin/GenInfoandServices/modal/events-modal.html" %}
 <h2 class="header-title">PUPQC Events</h2>
 <p class="card-title-desc">What's happening now in PUPQC Campus?</p>
 <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddEventModal"><i class="fa-regular fa-calendar-plus"></i> Add Event</button>

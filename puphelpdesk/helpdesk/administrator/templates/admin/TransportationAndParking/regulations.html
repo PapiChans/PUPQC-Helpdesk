@@ -1,11 +1,11 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "admin\TransportationAndParking\modal\regulations-modal.html" %} 
+{% include "admin/TransportationAndParking/modal/regulations-modal.html" %} 
 <h2 class="header-title">Parking Regulations</h2>
 <p class="card-title-desc">Learn more about campus parking regulations</p>
 <div class="col">

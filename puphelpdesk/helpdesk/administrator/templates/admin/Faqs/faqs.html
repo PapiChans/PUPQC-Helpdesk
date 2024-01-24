@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static %}
 
 {% block customcss %}
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\Faqs\modal\faqs-modal.html" %} 
+{% include "admin/Faqs/modal/faqs-modal.html" %} 
 <h2 class="header-title">Frequently Asked Questions</h2>
 <p class="card-title-desc">These are the most common questions asked by the user.</p>
 <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddFAQModal">Add FAQ</button>

@@ -1,11 +1,11 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
-{% include "student\StudentCareers\modal\internship-modal.html" %} 
+{% include "student/StudentCareers/modal/internship-modal.html" %} 
 <h2 class="header-title">Job Posting and Internship Opportunities</h2>
 <p class="card-title-desc">Find any Jobs or Internships that you interested.</p>
 <div class="col">

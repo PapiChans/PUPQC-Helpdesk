@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\HousingAndAccomodation\modal\assistance-modal.html" %} 
+{% include "admin/HousingAndAccomodation/modal/assistance-modal.html" %} 
 <h2 class="header-title">Off-Campus Living Assistance</h2>
 <p class="card-title-desc">Provides guidance on finding suitable off-campus housing and related services.</p>
 <div class="col">

@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "student\FinancialAid\modal\financialAid-modal.html" %}
+{% include "student/FinancialAid/modal/financialAid-modal.html" %}
 <h2 class="header-title">Financial Aid and Scholarships</h2>
 <p class="card-title-desc">These are the available Financial Aid and Scholarships</p>
 

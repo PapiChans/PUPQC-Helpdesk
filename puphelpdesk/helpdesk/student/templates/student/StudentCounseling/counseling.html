@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "student\StudentCounseling\modal\counseling-modal.html" %} 
+{% include "student/StudentCounseling/modal/counseling-modal.html" %} 
 <h2 class="header-title">Counseling Service</h2>
 <p class="card-title-desc">Connects students with professional counselors for mental health and emotional support.</p>
 <h3 id="no_Counselor" class="text-center">No Counselor Data.</h3>

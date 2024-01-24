@@ -1,4 +1,4 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "admin\studentCareers\modal\internship-modal.html" %} 
+{% include "admin/studentCareers/modal/internship-modal.html" %} 
 <h2 class="header-title">Job Posting and Internship Opportunities</h2>
 <p class="card-title-desc">Find any Jobs or Internships that you interested.</p>
 <div class="col">

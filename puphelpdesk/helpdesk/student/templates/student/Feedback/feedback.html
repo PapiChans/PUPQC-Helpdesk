@@ -1,4 +1,4 @@
-{% extends "student\partials\main.html" %}
+{% extends "student/partials/main.html" %}
 {% load static %}
 
 {% block customcss %}
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "student\Feedback\modal\feedback-modal.html" %}
+{% include "student/Feedback/modal/feedback-modal.html" %}
     <h2 class="header-title">Give us a Feedback or Suggestions!</h2>
     <p class="card-title-desc">To improved our Helpdesk system, you can give us a feedback or suggestions.</p>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#FeedbackModal"><i class="fa-solid fa-star"></i> Submit a Feedback</button>

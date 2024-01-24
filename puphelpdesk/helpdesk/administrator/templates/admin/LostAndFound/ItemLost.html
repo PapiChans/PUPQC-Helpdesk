@@ -1,11 +1,11 @@
-{% extends "admin\partials\main.html" %}
+{% extends "admin/partials/main.html" %}
 {% load static%}
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-{% include "admin\LostAndFound\modal\ItemLost-modal.html" %} 
+{% include "admin/LostAndFound/modal/ItemLost-modal.html" %} 
 <h2 class="header-title">Missing Items</h2>
 <p class="card-title-desc">Manage Lost items.</p>
 <a href="{% url 'admin/LostAndFound' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
