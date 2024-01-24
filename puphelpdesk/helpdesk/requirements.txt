@@ -5,3 +5,4 @@ bcrypt
 pillow
 djangorestframework
 dj-database-url
+whitenoise

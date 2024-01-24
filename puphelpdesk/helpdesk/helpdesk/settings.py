@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9ergqbr6h18fh#%rufi8w=f2pzaw(&!rl36b#b6t*l=l2v*5#b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# For Development set this DEBUG to True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"] # For Deployment
+ALLOWED_HOSTS = ['*'] # For Deployment
 
 # ALLOWED_HOSTS = [] # For Development
 
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -157,7 +159,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root/')
 
 STATICFILES_DIRS = [

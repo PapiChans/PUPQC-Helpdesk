@@ -721,3 +721,11 @@
 # 0.6.0.6.2
 - Push by Christian (https://github.com/papichans)
 - Move Requirements.txt for Deployment
+
+# 0.6.0.7
+- Push by Christian (https://github.com/papichans)
+- Settings.py set to production phase (Testing)
+- Copy ALL the Static files for static root
+- Update Requirements.txt
+- Add handle 404 page
+- Add Titles for 404 and 401 page

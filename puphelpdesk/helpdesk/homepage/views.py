@@ -23,4 +23,7 @@ def login(request):
         else:
             return redirect('student/dashboard')
  
+    # Error 404
+def error_404(request, exception):
+    return render(request, 'HTTPResponse/404.html')
    
