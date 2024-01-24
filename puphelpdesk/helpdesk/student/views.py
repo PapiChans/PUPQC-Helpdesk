@@ -223,7 +223,7 @@ def IdObtaining(request):
         return redirect('login')
     if not request.user.is_admin:
         pagename_value = "ID and Access Cards"
-        return render(request, 'student/IDAndCard/obtaining.html',{'pagename': pagename_value})
+        return render(request, 'student/IDandCard/obtaining.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
 
@@ -232,7 +232,7 @@ def IdReplacing(request):
         return redirect('login')
     if not request.user.is_admin:
         pagename_value = "ID and Access Cards"
-        return render(request, 'student/IDAndCard/replacing.html',{'pagename': pagename_value})
+        return render(request, 'student/IDandCard/replacing.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
 
@@ -241,7 +241,7 @@ def AccessCard(request):
         return redirect('login')
     if not request.user.is_admin:
         pagename_value = "ID and Access Cards"
-        return render(request, 'student/IDAndCard/accesscard.html',{'pagename': pagename_value})
+        return render(request, 'student/IDandCard/accesscard.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
 

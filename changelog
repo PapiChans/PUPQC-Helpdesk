@@ -762,3 +762,9 @@
 - Push by Christian (https://github.com/papichans)
 - Temporarily DEBUG set to TRUE
 - FIX Error JS linking
+
+# 0.6.0.10
+- Push by Christian (https://github.com/papichans)
+- DEBUG set to FALSE
+- Adjust MEDIA_ROOT URL in Settings.py
+- Fix Error Template in Pages (Both Admin and Student)
