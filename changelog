@@ -768,3 +768,9 @@
 - DEBUG set to FALSE
 - Adjust MEDIA_ROOT URL in Settings.py
 - Fix Error Template in Pages (Both Admin and Student)
+
+# 0.6.0.11
+- Push by Christian (https://github.com/papichans)
+- Remove Dependency section in readme.md
+- Adjust MEDIA_ROOT URL in Settings.py
+- Add "media_root" folder
