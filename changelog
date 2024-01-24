@@ -743,6 +743,10 @@
 - Change student dashboard extend slash (for template testing)
 - Config TEMPLATES in settings.py
 
-# 0.6.0.7.3
+# 0.6.0.7.4
 - Push by Christian (https://github.com/papichans)
 - Change ALL pages slash (for template testing)
+
+# 0.6.0.7.5
+- Push by Christian (https://github.com/papichans)
+- DEBUG set to FALSE
