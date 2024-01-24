@@ -733,3 +733,7 @@
 # 0.6.0.7.1
 - Push by Christian (https://github.com/papichans)
 - Add the domain as Allowed Hosts
+
+# 0.6.0.7.2
+- Push by Christian (https://github.com/papichans)
+- Temporarily DEBUG set to TRUE 
