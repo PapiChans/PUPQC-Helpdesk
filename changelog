@@ -757,3 +757,8 @@
 - Minor Changes on About us section
 - Landing Page Hero Section changed
 - Minor CSS fixes
+
+# 0.6.0.9
+- Push by Christian (https://github.com/papichans)
+- Temporarily DEBUG set to TRUE
+- FIX Error JS linking
