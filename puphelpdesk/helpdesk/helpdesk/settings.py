@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-9ergqbr6h18fh#%rufi8w=f2pzaw(&!rl36b#b6t*l=l2v*5#b
 # For Development set this DEBUG to True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*'] # For Deployment
+ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com/'] # For Deployment
 
 # ALLOWED_HOSTS = [] # For Development
 

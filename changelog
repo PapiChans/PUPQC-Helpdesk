@@ -729,3 +729,7 @@
 - Update Requirements.txt
 - Add handle 404 page
 - Add Titles for 404 and 401 page
+
+# 0.6.0.7.1
+- Push by Christian (https://github.com/papichans)
+- Add the domain as Allowed Hosts
