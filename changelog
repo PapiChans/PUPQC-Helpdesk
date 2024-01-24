@@ -736,4 +736,9 @@
 
 # 0.6.0.7.2
 - Push by Christian (https://github.com/papichans)
-- Temporarily DEBUG set to TRUE 
+- Temporarily DEBUG set to TRUE
+
+# 0.6.0.7.3
+- Push by Christian (https://github.com/papichans)
+- Change student dashboard extend slash (for template testing)
+- Config TEMPLATES in settings.py
