@@ -8,7 +8,7 @@ getaccreditation = () => {
     let service_display = $('#service_display')
 
     notyf.open({
-        message: 'Fetching Service',
+        message: 'Fetching FIS Data',
         position: {x:'right',y:'top'},
         background: 'gray',
         duration: 3000
@@ -56,7 +56,7 @@ getaccreditation = () => {
                         service_display.append(serviceformat)
                 });
                 notyf.success({
-                    message: 'Service Fetched.',
+                    message: 'Faculties Fetched.',
                     position: {x:'right',y:'top'},
                     duration: 2500
                 });
