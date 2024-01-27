@@ -1,0 +1,22 @@
+{% extends "student/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+<h2 class="header-title">Faculty Information</h2>
+<p class="card-title-desc">Faculty Information from FIS</p>
+</div>
+</div>
+<h3 id="no_Display" class="text-center"></h3>
+<div class="row" id="service_display">
+  
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/fis/fis.ajax.js' %}"></script>
+{% endblock %}

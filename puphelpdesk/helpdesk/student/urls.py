@@ -64,4 +64,7 @@ urlpatterns = [
 
     # Frequently Asked Questions
     path('frequently-asked-questions', views.faqs, name='frequently-asked-questions'),
+
+    # Accreditation
+    path('FIS', views.fis, name='FIS'),
 ]

@@ -780,7 +780,11 @@
 - Adjust MEDIA_ROOT URL in Settings.py
 - Remove "media_root" folder
 
-# 0.6.0.12
+# 0.6.0.13
 - Push by Christian (https://github.com/papichans)
 - Minor Revision: Login statement on display.
 - FIX: Logout route (Both Admin and Student)
+
+# 0.6.0.14
+- Push by Christian (https://github.com/papichans)
+- Add Integration For FIS
