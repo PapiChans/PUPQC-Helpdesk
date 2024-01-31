@@ -2,11 +2,117 @@
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-oGq3D5w1gi1vuUzHgk8MD5kX2BRKuP9Ll+cpLUEH2+wTfAYuJyQF00XlFjZqqL1" crossorigin="anonymous">
 {% endblock %}
 
 {% block maincontent %}
 <h2 class="header-title">Analytics</h2>
 <p class="card-title-desc">Take a look of analytics of PUPQC Helpdesk.</p>
+
+<!----Ticketing-->
+<h2 class="text-center mb-3">Tickets</h2>
+<div class="container">
+  <div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">
+                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                    <input type="checkbox" class="form-check-input" id="checkAll" required="">
+                                    <label class="form-check-label" for="checkAll"></label>
+                                </div>
+                            </th>
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                    <input type="checkbox" class="form-check-input" id="customCheckBox2"
+                                        required="">
+                                    <label class="form-check-label" for="customCheckBox2"></label>
+                                </div>
+                            </td>
+                            <td><strong>542</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center"><span class="w-space-no">Jackson</span></div>
+                            </td>
+                            <td>hello@example.com </td>
+                            <td>01 January 2024</td>
+                            <td>
+                                <div class="d-flex align-items-center">Successful</div>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1">Solved</a>
+                                    <a href="#" class="btn btn-danger shadow btn-xs sharp">Cancel</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                    <input type="checkbox" class="form-check-input" id="customCheckBox3"
+                                        required="">
+                                    <label class="form-check-label" for="customCheckBox3"></label>
+                                </div>
+                            </td>
+                            <td><strong>543</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center"> <span class="w-space-no">Sunny</span></div>
+                            </td>
+                            <td>example@example.com </td>
+                            <td>01 January 2024</td>
+                            <td>
+                                <div class="d-flex align-items-center">Canceled</div>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1">Solved</a>
+                                    <a href="#" class="btn btn-danger shadow btn-xs sharp">Cancel</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check custom-checkbox checkbox-primary check-lg me-3">
+                                    <input type="checkbox" class="form-check-input" id="customCheckBox4"
+                                        required="">
+                                    <label class="form-check-label" for="customCheckBox4"></label>
+                                </div>
+                            </td>
+                            <td><strong>544</strong></td>
+                            <td>
+                                <div class="d-flex align-items-center"> <span class="w-space-no">Bobby</span></div>
+                            </td>
+                            <td>hello@example.com </td>
+                            <td>01 January 2024</td>
+                            <td>
+                                <div class="d-flex align-items-center">Pending</div>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1">Solved</a>
+                                    <a href="#" class="btn btn-danger shadow btn-xs sharp">Cancel</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
     <h2 class="text-center mb-3">Feedback and Suggestions</h2>
 <div class="container">
     <div class="row justify-content-md-center">
@@ -47,12 +153,69 @@
             <div id="HealthFacilityChart" style="width: 350px;height:350px;"></div>
         </div>
     </div>
-</div>
+  </div>
+<!-- Features visit-->
+    <div class="col-md-6 col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Most Visited Feature</h3>
+          </div>
+          <table class="table card-table table-vcenter">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th colspan="2">Visitors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Financial Aid and Scholarship</td>
+                <td>3,550</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-primary" style="width: 71.0%"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Career and Employment</td>
+                <td>1,798</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-primary" style="width: 35.96%"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Health and Wellness Support</td>
+                <td>1,245</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-primary" style="width: 24.9%"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>ID and Access Card Support</td>
+                <td>986</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div class="progress-bar bg-primary" style="width: 19.72%"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
 {% endblock %}
 
 {% block customjs %}
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/libs/echarts/echarts.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/dashboard.ajax.js' %}"></script>
-
+<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 {% endblock %}
