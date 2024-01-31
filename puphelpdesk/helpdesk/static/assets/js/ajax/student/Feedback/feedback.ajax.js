@@ -48,7 +48,7 @@ getuserdata = () => {
 }
 
 submitFeedback = () => {
-
+    $('#feedback_Submit').prop('disabled', true);
     if ($('#submitFeedbackForm')[0].checkValidity()) {
         const form = new FormData($('#submitFeedbackForm')[0]);
         const user_Id = $('#user_Id').val();
@@ -98,9 +98,7 @@ submitFeedback = () => {
                                 $('form#submitFeedbackForm')[0].reset();
                                 $('#FeedbackModal').modal('hide');
 
-                                setTimeout(function () {
-                                    location.reload()
-                                }, 2600);
+                                location.reload()
                         }
                     },
                 })
@@ -118,6 +116,7 @@ submitFeedback = () => {
                 confirmButtonColor: '#D40429',
             })
         })
+        $('#feedback_Submit').prop('disabled', false);
     }
 }
 
@@ -204,11 +203,6 @@ getFeedback = () => {
             order: [[1, 'desc']],
         })
     }
-    notyf.success({
-        message: 'Feedbacks Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getFeedbackInfo = (feedback_Id) => {
@@ -280,9 +274,7 @@ deleteFeedback = (feedback_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

@@ -1,0 +1,46 @@
+{% extends "student/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+<h2 class="header-title">Post Details</h2>
+<a href="{% url 'financialaid' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+<div class="table-responsive">
+    <table class="table table-vcenter card-table">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Description</th>
+          <th>How to Apply</th>
+          <th>Where to Submit</th>
+          <th>Contact</th>
+          <th>Deadline</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="financial_program"></td>
+          <td id="financial_description"></td>
+          <td id="financial_apply"></td>
+          <td id="financial_submit"></td>
+          <td id="financial_contact"></td>
+          <td id="financial_deadline"></td>
+          <td id="financial_remarks"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/FinancialAid/details.ajax.js' %}"></script>
+{% endblock %} 

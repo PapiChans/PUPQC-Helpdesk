@@ -7,7 +7,6 @@ $(function() {
 
 $('input[type="date"]').flatpickr({
     mode: 'single',
-    minDate: "today",
     allowInput: true,
     dateFormat: "Y-m-d"
 });
@@ -16,6 +15,7 @@ const notyf = new Notyf();
 
 addGuidePost = () => {
     if ($('#AddFinancialGuideForm')[0].checkValidity()) {
+        $('#guide_Submit').prop('disabled', true);
         const form = new FormData($('AddFinancialGuideForm')[0]);
         
         const guide_Type = $('#guide_Type').val();
@@ -39,6 +39,7 @@ addGuidePost = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#guide_Submit').prop('disabled', false);
         }
         else {
 
@@ -62,16 +63,14 @@ addGuidePost = () => {
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {
                     if (result) {
-                        $('#service_Submit').prop('disabled', true);
+                        $('#guide_Submit').prop('disabled', true);
                         notyf.success({
                             message: 'Add Guide Post Successfully',
                             position: {x:'right',y:'top'},
                             duration: 2500
                         })
                             $('form#AddFinancialGuideForm')[0].reset();
-                            setTimeout(function () {
-                                window.location.href = `/admin/financial-aid-and-scholarships`
-                            }, 2600);
+                            window.location.href = `/admin/financial-aid-and-scholarships`
                     }
                 },
             })
@@ -86,6 +85,7 @@ addGuidePost = () => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#guide_Submit').prop('disabled', false);
             })
         }
     }

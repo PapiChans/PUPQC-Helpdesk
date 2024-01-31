@@ -5,6 +5,14 @@ $(function () {
     });
 })
 
+const notyf = new Notyf();
+
+$('input#password').maxlength({
+    alwaysShow: true,
+    warningClass: "badge bg-success",
+    limitReachedClass: "badge bg-danger",
+});
+
 login = () => {
     if ($('#loginForm')[0].checkValidity()) {
         const form = new FormData($('#loginForm')[0]);
@@ -29,28 +37,18 @@ login = () => {
                     const logindata = result;
                     if (logindata.response == "User does not exist"){
                         $('#login_submit').prop('disabled', false);
-                        Swal.fire({
-                            title: 'Oops!',
-                            text: 'The User does not exist',
-                            icon: 'error',
-                            allowEnterKey: 'false',
-                            allowOutsideClick: 'false',
-                            allowEscapeKey: 'false',
-                            confirmButtonText: 'Okay',
-                            confirmButtonColor: '#D40429',
+                        notyf.error({
+                            message: 'User does not exist.',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
                         })
                     }
                     else if (logindata.response == "Incorrect Password") {
                         $('#login_submit').prop('disabled', false);
-                        Swal.fire({
-                            title: 'Oops!',
-                            text: 'The password is incorrect',
-                            icon: 'error',
-                            allowEnterKey: 'false',
-                            allowOutsideClick: 'false',
-                            allowEscapeKey: 'false',
-                            confirmButtonText: 'Okay',
-                            confirmButtonColor: '#D40429',
+                        notyf.error({
+                            message: 'Incorrect Password',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
                         })
                     }
                     else {

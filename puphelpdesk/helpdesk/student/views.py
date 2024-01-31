@@ -113,6 +113,15 @@ def financialaid(request):
         return render(request, 'student/FinancialAid/financialaid.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+def studFinancialAidDetails(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Financial Aid and Scholarships"
+        return render(request, 'student/FinancialAid/details.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
     # Housing and Accommodation
 def housing(request):

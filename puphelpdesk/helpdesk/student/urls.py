@@ -21,6 +21,7 @@ urlpatterns = [
 
     # Financial Aid and Scholarships
     path('financial-aid-and-scholarships', views.financialaid, name='financialaid'),
+    path('financial-aid-and-scholarships/details', views.studFinancialAidDetails, name='financialaid/details'),
 
     # Housing and Accommodation
     path('housing', views.housing, name='housing'),

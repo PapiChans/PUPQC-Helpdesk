@@ -93,11 +93,6 @@ getNewSuggestions = () => {
             order: [[2, 'desc']],
         })
     }
-    notyf.success({
-        message: 'New Suggestions Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getReadSuggestions = () => {
@@ -174,11 +169,6 @@ getReadSuggestions = () => {
             order: [[2, 'desc']],
         })
     }
-    notyf.success({
-        message: 'Read Suggestion Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getSuggestionInfo = (feedback_Id) => {
@@ -279,9 +269,7 @@ deleteSuggestion = (feedback_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

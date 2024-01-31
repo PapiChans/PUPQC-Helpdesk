@@ -14,6 +14,7 @@
     <link href="{% static 'assets/css/dashboard/tabler-payments.min.css' %}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{% static 'assets/css/dashboard/tabler-flags.min.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
     <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
   </head>
   <body class=" d-flex flex-column">
@@ -33,7 +34,7 @@
               <div class="mb-2">
                 <label class="form-label">Password</label>
                 <div class="input-group input-group-flat">
-                  <input type="password" id="password" class="form-control"  placeholder="Password" required/>
+                  <input type="password" id="password" class="form-control" minlength="8" maxlength="20" placeholder="Password" required/>
                 </div>
               </div>
               <div class="mb-2">
@@ -53,6 +54,8 @@
         <script src="{% static 'assets/js/dashboard/tabler.min.js' %}"></script>
         <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
         <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+        <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+        <script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
         <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
         <script src="{% static 'assets/js/ajax/auth/login.ajax.js' %}"></script>
     </body>

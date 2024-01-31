@@ -38,6 +38,15 @@ function formatPostgresTimestamp(postgresTimestamp) {
     return formattedDate;
 }
 
+function getGuideInfoAndNavigate(guideId) {
+
+    // Create the URL with the guide_Id parameter
+    const detailsURL = `/admin/financial-aid-and-scholarships/details?guide_id=${guideId}`;
+    
+    // Navigate to the specified URL
+    window.location.href = detailsURL;
+}
+
 getFinancialGuide = () => {
     const dt = $('#financialaid-datatable');
 
@@ -86,7 +95,7 @@ getFinancialGuide = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideInfoModal" onclick="getGuideInfo('${data.guide_Id}')">Read More</button>
+                        return `<button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Id}')">Details</button></a>
                                 <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideEditModal" onclick="foreditguide('${data.guide_Id}')">Edit</button>
                                 <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteGuide('${data.guide_Id}')">Delete</button>
                                 `
@@ -96,11 +105,6 @@ getFinancialGuide = () => {
             order: [[1, 'desc']],
         })
     }
-    notyf.success({
-        message: 'Financial Aid Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getScholarship = () => {
@@ -151,7 +155,8 @@ getScholarship = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideInfoModal" onclick="getGuideInfo('${data.guide_Id}')">Read More</button>
+                        return `
+                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Id}')">Details</button></a>
                                 <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideEditModal" onclick="foreditguide('${data.guide_Id}')">Edit</button>
                                 <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteGuide('${data.guide_Id}')">Delete</button>
                                 `
@@ -161,41 +166,6 @@ getScholarship = () => {
             order: [[1, 'desc']],
         })
     }
-    notyf.success({
-        message: 'Scholarship Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
-}
-
-getGuideInfo = (guide_Id) => {
-    $.ajax({
-        type: 'GET',
-        url: `/api/admin/getGuideInfo/${guide_Id}`,
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            const guidedata = result;
-            $('#guide_type_info').html(guidedata.guide_Type);
-            $('#guide_program_info').html(guidedata.guide_Program);
-            $('#guide_description_info').html(guidedata.guide_Description);
-            $('#guide_apply_info').html(guidedata.guide_Apply);
-            $('#guide_submit_info').html(guidedata.guide_Submit);
-            $('#guide_contact_info').html(guidedata.guide_Contact);
-            $('#guide_deadline_start_info').html(formatDate(guidedata.guide_Deadline_Start));
-            $('#guide_deadline_end_info').html(formatDate(guidedata.guide_Deadline_End));
-            $('#guide_remarks_info').html(guidedata.guide_Remarks);
-            
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Guide Info Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
 }
 
 foreditguide = (guide_Id) => getGuideforEdit(guide_Id)
@@ -287,9 +257,8 @@ editGuide = (guide_Id) => {
                         })
                             $('form#EditGuideForm')[0].reset();
                             $('#GuideEditModal').modal('hide');
-                            setTimeout(function () {
-                                location.reload()
-                            }, 2600);
+
+                            location.reload()
                     }
                 },
             })
@@ -338,9 +307,7 @@ deleteGuide = (guide_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

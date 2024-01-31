@@ -93,11 +93,6 @@ getNewFeedback = () => {
             order: [[2, 'desc']],
         })
     }
-    notyf.success({
-        message: 'New Feedbacks Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getReadFeedback = () => {
@@ -174,11 +169,6 @@ getReadFeedback = () => {
             order: [[2, 'desc']],
         })
     }
-    notyf.success({
-        message: 'Read Feedbacks Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 getFeedbackInfo = (feedback_Id) => {
@@ -279,9 +269,7 @@ deleteFeedback = (feedback_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

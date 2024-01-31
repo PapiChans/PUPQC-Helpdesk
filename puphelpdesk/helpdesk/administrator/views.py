@@ -226,6 +226,15 @@ def adminFinancialGuidePosting(request):
         return render(request, 'admin/FinancialAid/addpost.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+def adminFinancialAidDetails(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Financial Aid and Scholarships"
+        return render(request, 'admin/FinancialAid/details.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 #Student Government and Involvement
 def adminGovernment(request):

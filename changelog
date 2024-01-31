@@ -796,3 +796,14 @@
 # 0.6.0.15
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Dialogue Management Chatbot Added on the student side
+
+# 0.6.1
+- Push by Christian (https://github.com/papichans)
+- Add Details section in Financial Aid (Both Admin and Student)
+- Add AJAX Flies
+- Reduce Notyf Toast functions on Feedback and Financial Aid (Both Admin and Student)
+- Add Max length validator for password
+- Login Error is now a Toast instead of Sweetalert
+- Removed "BreadCrumbs" like PUPQC / {Role} (Both Admin and Student)
+- Update URLs and Views (Both Admin and Student)
+- Revision: FIS Is now a datatable for searching function

@@ -1,81 +1,97 @@
 $(function() {
-    getaccreditation();
+    getFIS();
 })
 
 const notyf = new Notyf();
 
-getaccreditation = () => {
-    let service_display = $('#service_display')
+getFIS = () => {
+    const dt = $('#fis-datatable');
 
-    notyf.open({
-        message: 'Fetching FIS Data',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
-    $.ajax({
-        type: 'GET',
-        url: 'https://pupqcfis-com.onrender.com/api/all/FISFaculty',
-        dataType: 'json',
-        cache: false,
+    $.ajaxSetup({
         headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            notyf.dismissAll();
-    
-            const servicedata = result;
-            if (servicedata.Faculties) {
-                Object.keys(servicedata.Faculties).forEach((facultyId) => {
-                    const faculty = servicedata.Faculties[facultyId];
-
-                    let type = faculty.FacultyType
-                    if (faculty.FacultyType === 'Part Time'){
-                        type = '<span class="badge bg-success text-success-fg">Part Time</span>'
-                    }
-                    else if (faculty.FacultyType === 'Full Time') {
-                        type = `<span class="badge bg-info text-success-fg">Full Time</span>`
-                    }
-                    else {
-                        type = `<span class="badge bg-secondary text-secondary-fg">Unknown</span>`
-                    }
-    
-                    let serviceformat = `
-                        <div class="col-xl-4">
-                            <div class="card mb-2">
-                                <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${faculty.LastName}, ${faculty.FirstName} [${faculty.Rank}]</h3>
-                                <div class="card-body">
-                                    <p>Degree: <strong>${faculty.Degree}</strong></p>
-                                    <p>Faculty Type: <strong>${type}</strong></p>
-                                </div>
-                                <div class="card-footer">
-                                    <p class="card-text font-size-15">Schedule: ${faculty.PreferredSchedule}</p>
-                                </div>
-                            </div>
-                        </div>`;
-                    
-                        service_display.append(serviceformat)
-                });
-                notyf.success({
-                    message: 'Faculties Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-            } else {
-                notyf.success({
-                    message: 'No Service Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-                $('#no_Display').html("No Service Data");
-            }
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Service Fetched Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
     });
-    
-}
+
+    if (dt.length) {
+        dt.DataTable({
+            ajax: {
+                url: 'https://pupqcfis-com.onrender.com/api/all/FISFaculty',
+                type: 'GET',
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                cache: false,
+                headers: {'X-CSRFToken': csrftoken},
+                dataSrc: (result) => {
+                    const formattedData = [];
+                    if (result && result.Faculties) {
+                        Object.keys(result.Faculties).forEach((facultyId) => {
+                            const faculty = result.Faculties[facultyId];
+                            formattedData.push({
+                                LastName: faculty.LastName,
+                                FirstName: faculty.FirstName,
+                                Degree: faculty.Degree,
+                                FacultyType: faculty.FacultyType,
+                                Rank: faculty.Rank,
+                                PreferredSchedule: faculty.PreferredSchedule,
+                            });
+                        });
+                    }
+                    return formattedData;
+                },
+            },
+            columns: [
+                {
+                    data: null,
+                    class: 'text-left',
+                    width: '10%',
+                    render: (data) => {
+                        return `${data.LastName}, ${data.FirstName}`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.Degree}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        let type = data.FacultyType
+                            if (data.FacultyType === 'Part Time'){
+                                type = '<span class="badge bg-success text-success-fg">Part Time</span>'
+                            }
+                            else if (data.FacultyType === 'Full Time') {
+                                type = `<span class="badge bg-info text-success-fg">Full Time</span>`
+                            }
+                            else {
+                                type = `<span class="badge bg-secondary text-secondary-fg">Unknown</span>`
+                            }
+                        return `${type}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.Rank}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.PreferredSchedule}`
+                    },
+                },
+            ],
+            order: [[0, 'asc']],
+        });
+    }
+};
+
