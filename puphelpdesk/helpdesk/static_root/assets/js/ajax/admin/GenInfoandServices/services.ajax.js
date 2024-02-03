@@ -15,6 +15,8 @@ const notyf = new Notyf();
 addService = () => {
     if ($('#AddServiceForm')[0].checkValidity()) {
         const form = new FormData($('#AddServiceForm')[0]);
+
+        $('#service_Submit').prop('disabled', true);
         
         const service_Name = $('#service_Name').val();
         const service_Description = $('#service_Description').val();
@@ -40,9 +42,7 @@ addService = () => {
                     })
                         $('form#AddServiceForm')[0].reset();
                         $('#AddServiceModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -57,19 +57,13 @@ addService = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#service_Submit').prop('disabled', false);
         })
     }
 }
 
 getService = () => {
     let service_display = $('#service_display')
-
-    notyf.open({
-        message: 'Fetching Service',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -85,7 +79,7 @@ getService = () => {
 
                     let serviceformat = `
                     <div class="col-xl-4">
-                        <div class="card">
+                        <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${servicedata.service_Name}</h3>
                             <div class="card-body">
                                 <p class="card-text font-size-15">${servicedata.service_Description}</p>
@@ -100,11 +94,6 @@ getService = () => {
 
                     service_display.append(serviceformat)
 
-                });
-                notyf.success({
-                    message: 'Service Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -155,6 +144,8 @@ editService = (service_Id) => {
     if ($('#EditServiceForm')[0].checkValidity()) {
         const form = new FormData($('#EditServiceForm')[0]);
 
+        $('#edit_service_Submit').prop('disabled', true);
+
         const service_Id = $('#edit_service_Id').val();
         const service_Name = $('#edit_service_Name').val();
         const service_Description = $('#edit_service_Description').val();
@@ -180,9 +171,7 @@ editService = (service_Id) => {
                     })
                         $('form#EditServiceForm')[0].reset();
                         $('#EditServiceModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -197,6 +186,7 @@ editService = (service_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_service_Submit').prop('disabled', false);
         })
     }
 }
@@ -230,9 +220,7 @@ deleteService = (service_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

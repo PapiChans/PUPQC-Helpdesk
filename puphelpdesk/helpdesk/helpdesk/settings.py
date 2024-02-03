@@ -29,7 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
 
-# ALLOWED_HOSTS = [] # For Development
+#ALLOWED_HOSTS = [] # For Development
 
 # Application definition
 
@@ -92,7 +92,7 @@ DATABASES = {
         )
 }
 
-# DATABASES = { # PostgreSQL Database
+#DATABASES = { # PostgreSQL Database
 #   'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
 #        'NAME': 'Helpdesk',

@@ -1,0 +1,71 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+<h2 class="header-title">Request Tickets</h2>
+<p class="card-title-desc">Tickets for waiting to response</p>
+<div id="create_button"></div>
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#open-justify" role="tab" aria-selected="false">
+            Open
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#closed-justify" role="tab" aria-selected="false">
+            Closed
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="open-justify" role="tabpanel">
+        <table id="open-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Ticket Number</th>
+                    <th class="dt-head-center">Title</th>
+                    <th class="dt-head-center">Full Name</th>
+                    <th class="dt-head-center">Date Submitted</th>
+                    <th class="dt-head-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane" id="closed-justify" role="tabpanel">
+        <table id="closed-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Ticket Number</th>
+                    <th class="dt-head-center">Title</th>
+                    <th class="dt-head-center">Full Name</th>
+                    <th class="dt-head-center">Date Submitted</th>
+                    <th class="dt-head-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Ticket/ticket.ajax.js' %}"></script>
+{% endblock %} 

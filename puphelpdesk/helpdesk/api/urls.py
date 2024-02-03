@@ -118,6 +118,13 @@ urlpatterns = [
     # FAQ
     path('student/getFAQ', views.studGetFAQ),
 
+    # Ticket
+    path('student/addTicket', views.studAddTicket),
+    path('student/getTicketbyUser', views.studGetTicketbyUser),
+    path('student/getTicketInfo/<ticket_Number>', views.studGetTicketInfo),
+    path('student/addTicketComment', views.studAddTicketComment),
+    path('student/getTicketComment/<uuid:ticket_Id>', views.studGetTicketComment),
+
     #----------------------
     # ADMIN API URLS
     #----------------------
@@ -303,6 +310,7 @@ urlpatterns = [
     # Lost and Found: Lost Item Posting
     path('admin/getLostItem', views.adminGetLostItem),
     path('admin/getLostItemInfo/<uuid:item_Id>', views.adminGetLostItemInfo),
+    path('admin/ItemMarkAsMissing/<uuid:item_Id>', views.adminItemMarkAsMissing),
     path('admin/ItemMarkAsClaim/<uuid:item_Id>', views.adminItemMarkAsClaim),
     path('admin/ItemMarkAsFound/<uuid:item_Id>', views.adminItemMarkAsFound),
 
@@ -319,4 +327,12 @@ urlpatterns = [
     path('admin/getFAQInfo/<uuid:FAQ_Id>', views.adminGetFAQInfo),
     path('admin/editFAQ/<uuid:FAQ_Id>', views.adminEditFAQ),
     path('admin/deleteFAQ/<uuid:FAQ_Id>', views.adminDeleteFAQ),
+
+    # Ticket
+    path('admin/getOpenTicket', views.adminGetOpenTicket),
+    path('admin/getClosedTicket', views.adminGetClosedTicket),
+    path('admin/getTicketInfo/<ticket_Number>', views.adminGetTicketInfo),
+    path('admin/getTicketComment/<uuid:ticket_Id>', views.adminGetTicketComment),
+    path('admin/addTicketComment', views.adminAddTicketComment),
+    path('admin/ticketClosed/<uuid:ticket_Id>', views.adminCloseTicket),
 ]

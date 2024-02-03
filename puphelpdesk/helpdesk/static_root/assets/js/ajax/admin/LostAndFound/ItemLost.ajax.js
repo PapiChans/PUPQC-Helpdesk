@@ -24,13 +24,6 @@ getLostItem = () => {
     let missing_display = $('#missing_display')
     let claim_display = $('#claim_display')
 
-    notyf.open({
-        message: 'Fetching Lost Items',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/admin/getLostItem',
@@ -44,11 +37,18 @@ getLostItem = () => {
                 itemdata.forEach((itemdata) => {
 
                     let status = null;
+                    let button = null;
+                    let buttontext = null;
+
                     if (itemdata.item_Status == 'Missing') {
-                        status = '<span class="badge bg-red text-red-fg">Missing</span>'
+                        status = '<span class="badge bg-red text-red-fg">Missing</span>',
+                        button = 'ItemMarkAsClaim',
+                        buttontext = 'Claim Verification'
                     }
                     if (itemdata.item_Status == 'Claim Verification') {
-                        status = '<span class="badge bg-info text-red-fg">Claim Verification</span>'
+                        status = '<span class="badge bg-info text-red-fg">Claim Verification</span>',
+                        button = 'ItemMarkAsMissing',
+                        buttontext = 'Missing'
                     }
 
                     const formattedDate = formatDate(itemdata.item_Lost_Date)
@@ -75,8 +75,8 @@ getLostItem = () => {
                                     Mark As
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" onclick="ItemMarkAsClaim('${itemdata.item_Id}')">
-                                    Claim Verification
+                                    <a class="dropdown-item" onclick="${button}('${itemdata.item_Id}')">
+                                    ${buttontext}
                                     </a>
                                     <a class="dropdown-item" onclick="ItemMarkAsFound('${itemdata.item_Id}')">
                                     Found
@@ -97,11 +97,6 @@ getLostItem = () => {
                     }
 
 
-                });
-                notyf.success({
-                    message: 'Item Lost Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -144,7 +139,7 @@ getLostItemInfo = (item_Id) => {
             $('#item_Status_info').html(status);
             $('#item_Name_info').html(itemdata.item_Name);
             $('#item_Owner_info').html(itemdata.item_Owner);
-            $('#item_Description_info').html(itemdata.item_Description);
+            $('#item_Description_info').html(itemdata.item_Description.replace(/\n/g, '</p><p>'));
             $('#item_Last_Seen_info').html(itemdata.item_Last_Seen);
             $('#item_Lost_Date_info').html(formattedDate);
             $('#item_Lost_Time_info').html(formattedTime);
@@ -156,6 +151,55 @@ getLostItemInfo = (item_Id) => {
             position: {x:'right',y:'top'},
             duration: 2500
         });
+    })
+}
+
+ItemMarkAsMissing = (item_Id) => {
+
+    Swal.fire({
+        title: 'Mark as "Missing"',
+        html: 'Are you sure do you want to mark this as "Missing"?',
+        icon: 'warning',
+        allowEnterKey: 'false',
+        allowOutsideClick: 'false',
+        allowEscapeKey: 'false',
+        confirmButtonText: 'Yes, mark it',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        cancelButtonClass: 'btn btn-danger w-xs mb-1',
+        confirmButtonColor: '#D40429',
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                type: 'PUT',
+                url: `/api/admin/ItemMarkAsMissing/${item_Id}`,
+                dataType: 'json',
+                cache: false,
+                headers: {'X-CSRFToken': csrftoken},
+                success: (result) => {
+                    if (result) {
+                        notyf.success({
+                            message: 'Item Marked Successfully',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        });
+                            location.reload()
+                    }
+                },
+            })
+            .fail(() => {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Something went wrong while marking Lost Item post. Please try again.',
+                    icon: 'error',
+                    allowEnterKey: 'false',
+                    allowOutsideClick: 'false',
+                    allowEscapeKey: 'false',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#D40429',
+                })
+            })
+        }
     })
 }
 
@@ -188,9 +232,7 @@ ItemMarkAsClaim = (item_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })
@@ -239,9 +281,7 @@ ItemMarkAsFound = (item_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

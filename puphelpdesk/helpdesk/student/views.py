@@ -368,3 +368,21 @@ def fis(request):
     else:
         return render(request, 'HTTPResponse/401.html')
 
+#Ticket
+def ticket(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Ticket Support"
+        return render(request, 'student/Ticket/ticket.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def viewticket(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Ticket Details"
+        return render(request, 'student/Ticket/viewticket.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

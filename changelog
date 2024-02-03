@@ -813,3 +813,16 @@
 - Ticketing UI added on the admin dashboard
 - Most used feature added
 - Chatbot modified
+
+# 0.6.2 
+- Push by Christian (https://github.com/papichans)
+- NEW Feature: Ticketing System (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- AJAX Transactions Speed Up
+- Fix Login URL
+- FIX: preformatted text to adjusting paragraphs
+- MAJOR Modal Changes

@@ -7,13 +7,6 @@ const notyf = new Notyf();
 getFacility = () => {
     let display = $('#facility_Display')
 
-    notyf.open({
-        message: 'Fetching Facilities',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/student/getFacility',
@@ -52,11 +45,6 @@ getFacility = () => {
                     touchNavigation: true,
                     openEffect: 'zoom',
                     closeEffect: 'zoom',
-                });
-                notyf.success({
-                    message: 'All Facilities Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {

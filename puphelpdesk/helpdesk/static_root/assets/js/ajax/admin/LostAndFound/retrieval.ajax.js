@@ -33,6 +33,8 @@ function isValidNumber(value) {
 addInstruction = () => {
     if ($('#AddInstructionForm')[0].checkValidity()) {
         const form = new FormData($('#AddInstructionForm')[0]);
+
+        $('#instruction_Submit').prop('disabled', true);
         
         const instruction_Step_Number = $('#instruction_Step_Number').val();
         const instruction_Title = $('#instruction_Title').val();
@@ -49,6 +51,7 @@ addInstruction = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#instruction_Submit').prop('disabled', false);
         }
 
         else {
@@ -75,9 +78,7 @@ addInstruction = () => {
                         })
                             $('form#AddInstructionForm')[0].reset();
                             $('#AddInstructionModal').modal('hide');
-                            setTimeout(function () {
                                 location.reload()
-                            }, 2600);
                     }
                 },
             })
@@ -92,6 +93,7 @@ addInstruction = () => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#instruction_Submit').prop('disabled', false);
             })
         }
     }
@@ -99,13 +101,6 @@ addInstruction = () => {
 
 getInstruction = () => {
     let instruction_display = $('#instruction_display')
-
-    notyf.open({
-        message: 'Fetching Instruction',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -135,11 +130,6 @@ getInstruction = () => {
 
                     instruction_display.append(instructionformat)
 
-                });
-                notyf.success({
-                    message: 'Instruction Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
                 $('#no-instruction').html(null);
             }
@@ -190,6 +180,8 @@ getInstructionforEdit = (instruction_Id) => {
 editInstruction = () => {
     if ($('#EditInstructionForm')[0].checkValidity()) {
         const form = new FormData($('#EditInstructionForm')[0]);
+
+        $('#edit_instruction_Submit').prop('disabled', true);
         
         const instruction_Id = $('#edit_instruction_Id').val();
         const instruction_Step_Number = $('#edit_instruction_Step_Number').val();
@@ -207,6 +199,7 @@ editInstruction = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_instruction_Submit').prop('disabled', false);
         }
 
         else {
@@ -233,9 +226,7 @@ editInstruction = () => {
                         })
                             $('form#EditInstructionForm')[0].reset();
                             $('#EditInstructionModal').modal('hide');
-                            setTimeout(function () {
                                 location.reload()
-                            }, 2600);
                     }
                 },
             })
@@ -250,6 +241,7 @@ editInstruction = () => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#edit_instruction_Submit').prop('disabled', false);
             })
         }
     }
@@ -284,9 +276,7 @@ deleteInstruction = (instruction_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

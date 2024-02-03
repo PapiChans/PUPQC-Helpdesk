@@ -7,13 +7,6 @@ const notyf = new Notyf();
 getFAQ = () => {
     let faq_display = $('#faq')
 
-    notyf.open({
-        message: 'Fetching FAQs',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/student/getFAQ',
@@ -42,11 +35,6 @@ getFAQ = () => {
 
                         $('#no_faq').html(null)
                         faq_display.append(FAQformat)
-                });
-                notyf.success({
-                    message: 'FAQ Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {

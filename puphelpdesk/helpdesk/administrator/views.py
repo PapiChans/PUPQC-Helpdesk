@@ -378,6 +378,21 @@ def adminFaqs(request):
     else:
         return render(request, 'HTTPResponse/401.html')
 
-
-
-
+# Ticket
+def adminticket(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Ticket Support"
+        return render(request, 'admin/Ticket/ticket.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def adminviewticket(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Ticket Details"
+        return render(request, 'admin/Ticket/viewticket.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

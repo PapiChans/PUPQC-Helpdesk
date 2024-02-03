@@ -33,13 +33,6 @@ getEvent = () => {
     let upcoming_display = $('#upcoming_event_display')
     let ended_display = $('#ended_event_display')
 
-    notyf.open({
-        message: 'Fetching Events',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/student/getEvent',
@@ -106,11 +99,6 @@ getEvent = () => {
                         }
                         
                 });
-                notyf.success({
-                    message: 'All Events Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
             }
             else {
                 notyf.success({
@@ -148,7 +136,7 @@ getEventInfo = (event_Id) => {
             const fortime = `${InfoformattedStarttime} - ${InfoformattedEndtime}`;
             
             $('#event_name_info').html(eventInfodata.event_Name);
-            $('#event_desc_info').html(eventInfodata.event_Description);
+            $('#event_desc_info').html(eventInfodata.event_Description.replace(/\n/g, '</p><p>'));
             $('#event_date_info').html(fordate);
             $('#event_time_info').html(fortime);
             if (eventInfodata.event_Image != null){

@@ -375,3 +375,26 @@ class FAQ(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Frequently Asked Questions'
+
+class Ticket(models.Model):
+    ticket_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ticket_Number = models.CharField(max_length=100, null=False, unique=True)
+    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
+    full_Name = models.CharField(max_length=100, null=False)
+    ticket_Status = models.CharField(max_length=100, null=False)
+    ticket_Title = models.CharField(max_length=100, null=False)
+    ticket_Description = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Ticket'
+
+class TicketComment(models.Model):
+    comment_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
+    full_Name = models.CharField(max_length=100, null=False)
+    ticket_Id = models.ForeignKey(Ticket, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='ticket_Id')
+    comment_Text = models.TextField(null=False)
+    comment_Attachment = models.FileField(upload_to='Ticket-Attachment/', null=True)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Ticket Comment'

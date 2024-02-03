@@ -48,7 +48,6 @@ getGuideInfo = (guide_Id) => {
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
             const guidedata = result;
-            console.log(guidedata)
 
             $('#financial_program').html(guidedata.guide_Program);
             $('#financial_description').html(guidedata.guide_Description.replace(/\n/g, '</p><p>'));

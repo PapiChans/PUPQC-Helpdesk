@@ -15,7 +15,7 @@ const notyf = new Notyf();
 
 $('input[type="date"]').flatpickr({
     mode: 'single',
-    minDate: "today",
+    maxDate: "today",
     allowInput: true,
     dateFormat: "Y-m-d"
 });
@@ -82,13 +82,6 @@ getLostItem = () => {
     let claim_display = $('#claim_display')
     let found_display = $('#found_display')
 
-    notyf.open({
-        message: 'Fetching Lost Items',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/student/getLostItem',
@@ -153,11 +146,6 @@ getLostItem = () => {
 
 
                 });
-                notyf.success({
-                    message: 'Item Lost Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
             }
             else {
                 notyf.success({
@@ -202,7 +190,7 @@ getLostItemInfo = (item_Id) => {
             $('#item_Status_info').html(status);
             $('#item_Name_info').html(itemdata.item_Name);
             $('#item_Owner_info').html(itemdata.item_Owner);
-            $('#item_Description_info').html(itemdata.item_Description);
+            $('#item_Description_info').html(itemdata.item_Description.replace(/\n/g, '</p><p>'));
             $('#item_Last_Seen_info').html(itemdata.item_Last_Seen);
             $('#item_Lost_Date_info').html(formattedDate);
             $('#item_Lost_Time_info').html(formattedTime);
@@ -248,6 +236,8 @@ getItemforEdit= (item_Id) => {
 editLostItem = (item_Id) => {
     if ($('#EditItemForm')[0]) {
         const form = new FormData($('#EditItemForm')[0])
+
+        $('#edit_item_Submit').prop('disabled', true);
         
         const item_Id = $('#edit_item_Id').val();
         const item_Name = $('#edit_item_Name').val();
@@ -288,11 +278,7 @@ editLostItem = (item_Id) => {
                     })
                     $('form#EditItemForm')[0].reset();
                     $('#LostItemEditModal').modal('hide');
-
-                    setTimeout(function () {
                         location.reload()
-                    }, 2600);
-
                 }
             },
         })
@@ -307,6 +293,7 @@ editLostItem = (item_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_item_Submit').prop('disabled', false);
         })
     }
 }
@@ -338,6 +325,7 @@ getLostItemforReplaceLogo = (item_Id) => {
 replaceItemImage = (ReplaceItemImage, item_Id) => {
     if ($('#ReplaceItemImageForm')[0]) {
         const form = new FormData($('#ReplaceItemImageForm')[0])
+        $('#replace_Submit').prop('disabled', true)
 
         if (
 			form.get('filepond') == '' ||
@@ -369,6 +357,7 @@ replaceItemImage = (ReplaceItemImage, item_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#replace_Submit').prop('disabled', false)
         }
         else {
             notyf.open({
@@ -388,6 +377,7 @@ replaceItemImage = (ReplaceItemImage, item_Id) => {
                 cache: false,
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {
+                    $('#replace_Submit').prop('disabled', true);
                     notyf.success({
                         message: 'Replace Item Image Successfully',
                         position: {x:'right',y:'top'},
@@ -395,9 +385,7 @@ replaceItemImage = (ReplaceItemImage, item_Id) => {
                     })
                         $('form#ReplaceItemImageForm')[0].reset();
                         $('#ReplaceItemImageModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 },
             })
             .fail(() => {
@@ -411,6 +399,7 @@ replaceItemImage = (ReplaceItemImage, item_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#replace_Submit').prop('disabled', false)
             })
         }
     }
@@ -445,9 +434,7 @@ deleteLostItem = (item_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

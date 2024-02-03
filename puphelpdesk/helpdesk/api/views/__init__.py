@@ -61,6 +61,9 @@ from .student.Feedback.feedback import *
 # FAQ
 from .student.FAQ.faq import *
 
+# Ticket
+from .student.Ticket.ticket import *
+
 # ---------------
 # Admin Routes
 # ---------------
@@ -117,3 +120,6 @@ from .admin.Feedback.suggestion import *
 
 # FAQ
 from .admin.FAQ.faq import *
+
+# Ticket
+from .admin.Ticket.ticket import *

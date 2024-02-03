@@ -1,7 +1,8 @@
 $(function() {
     $('#AddResourcesForm').on('submit', function (e) {
+        e.preventDefault() 
         addResources(ResourcesFile)
-        e.preventDefault() // prevent page refresh
+        // prevent page refresh
     })
     getResources();
 })
@@ -57,6 +58,7 @@ addResources = (ResourcesFile) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#resources_Submit').prop('disabled', false);
         }
         else {
             form.append('resources_Name', resources_Name);
@@ -87,10 +89,7 @@ addResources = (ResourcesFile) => {
                         })
                         $('form#AddResourcesForm')[0].reset();
                         $('#AddResourcesModal').modal('hide')
-
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
 
                     }
                 },
@@ -106,6 +105,7 @@ addResources = (ResourcesFile) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#resources_Submit').prop('disabled', false);
             })
         }
     }
@@ -222,9 +222,7 @@ deleteResources = (resources_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

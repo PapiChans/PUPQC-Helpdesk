@@ -49,6 +49,8 @@ FacilityImage = FilePond.create(document.querySelector('#facility_Image'), {
 addFacility = (FacilityImage) => {
     if ($('#AddFacilityForm')[0]) {
         const form = new FormData($('#AddFacilityForm')[0])
+
+        $('#facility_Submit').prop('disabled', true);
         
         const facility_Name = $('#facility_Name').val();
         const facility_Description = $('#facility_Description').val();
@@ -84,6 +86,7 @@ addFacility = (FacilityImage) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#facility_Submit').prop('disabled', false);
         }
         else {
             form.append('facility_Name', facility_Name);
@@ -116,10 +119,7 @@ addFacility = (FacilityImage) => {
                         $('form#AddFacilityForm')[0].reset();
                         $('#AddFacilitiesModal').modal('hide')
 
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
-
                     }
                 },
             })
@@ -134,6 +134,7 @@ addFacility = (FacilityImage) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#facility_Submit').prop('disabled', false);
             })
         }
     }
@@ -141,13 +142,6 @@ addFacility = (FacilityImage) => {
 
 getFacility = () => {
     let display = $('#facility_Display')
-
-    notyf.open({
-        message: 'Fetching Facilities',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -192,11 +186,6 @@ getFacility = () => {
                     touchNavigation: true,
                     openEffect: 'zoom',
                     closeEffect: 'zoom',
-                });
-                notyf.success({
-                    message: 'All Facilities Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -247,9 +236,7 @@ deleteFacility = (facility_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })
@@ -298,6 +285,8 @@ editFacility = (facility_Id) => {
 
     if ($('#EditFacilityForm')[0].checkValidity()) {
         const form = new FormData($('#EditFacilityForm')[0]);
+        $('#edit_facility_Submit').prop('disabled', true);
+
         const facility_Id = $('#edit_facility_Id').val();
         const facility_Name = $('#edit_facility_Name').val();
         const facility_Description = $('#edit_facility_Description').val();
@@ -323,9 +312,7 @@ editFacility = (facility_Id) => {
                     })
                         $('form#EditFacilityForm')[0].reset();
                         $('#EditFacilitiesModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -340,6 +327,7 @@ editFacility = (facility_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_facility_Submit').prop('disabled', false);
         })
     }
 }
@@ -399,6 +387,8 @@ replaceFacilityImage = (ReplaceFacilityImage, facility_Id) => {
     if ($('#ReplaceFacilityImageForm')[0]) {
         const form = new FormData($('#ReplaceFacilityImageForm')[0])
 
+        $('#replace_Submit').prop('disabled', true);
+
         if (
 			form.get('filepond') == '' ||
 			Object.prototype.toString.call(form.get('filepond')) === '[object File]'
@@ -429,6 +419,7 @@ replaceFacilityImage = (ReplaceFacilityImage, facility_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#replace_Submit').prop('disabled', false);
         }
         else {
             notyf.open({
@@ -448,6 +439,7 @@ replaceFacilityImage = (ReplaceFacilityImage, facility_Id) => {
                 cache: false,
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {
+                    $('#replace_Submit').prop('disabled', true);
                     notyf.success({
                         message: 'Replace Facility Image Successfully',
                         position: {x:'right',y:'top'},
@@ -455,9 +447,7 @@ replaceFacilityImage = (ReplaceFacilityImage, facility_Id) => {
                     })
                         $('form#ReplaceFacilityImageForm')[0].reset();
                         $('#ReplaceFacilityImageModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 },
             })
             .fail(() => {
@@ -471,6 +461,7 @@ replaceFacilityImage = (ReplaceFacilityImage, facility_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#replace_Submit').prop('disabled', false);
             })
         }
     }

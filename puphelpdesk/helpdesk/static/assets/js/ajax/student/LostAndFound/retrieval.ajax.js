@@ -7,13 +7,6 @@ const notyf = new Notyf();
 getInstruction = () => {
     let instruction_display = $('#instruction_display')
 
-    notyf.open({
-        message: 'Fetching Instruction',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
-
     $.ajax({
         type: 'GET',
         url: '/api/student/getInstruction',
@@ -38,11 +31,6 @@ getInstruction = () => {
 
                     instruction_display.append(instructionformat)
 
-                });
-                notyf.success({
-                    message: 'Instruction Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
                 $('#no-instruction').html(null);
             }

@@ -15,6 +15,7 @@ const notyf = new Notyf();
 addReferral = () => {
     if ($('#AddReferralForm')[0].checkValidity()) {
         const form = new FormData($('#AddServiceForm')[0]);
+        $('#referral_Submit').prop('disabled', true);
         
         const referral_Type = $('#referral_Type').val();
         const referral_Name = $('#referral_Name').val();
@@ -44,9 +45,7 @@ addReferral = () => {
                     })
                         $('form#AddReferralForm')[0].reset();
                         $('#AddReferralsModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -61,6 +60,7 @@ addReferral = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#referral_Submit').prop('disabled', false);
         })
     }
 }
@@ -68,13 +68,6 @@ addReferral = () => {
 getServiceRefferals = () => {
     let oncampus_display = $('#oncampus_display')
     let community_display = $('#community_display')
-
-    notyf.open({
-        message: 'Fetching Service Referrals',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -93,7 +86,7 @@ getServiceRefferals = () => {
                         <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${servicedata.referral_Name}</h3>
                             <div class="card-body">
-                                <p class="card-text font-size-15">${servicedata.referral_Description}</p>
+                                <p class="card-text font-size-15">${servicedata.referral_Description.replace(/\n/g, '</p><p>')}</p>
                                 <div class="text-center">
                                     <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#referralInfoModal" onclick="getReferralInfo('${servicedata.referral_Id}')">Information</button>
                                     <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#editReferralModal" onclick="foreditreferral('${servicedata.referral_Id}')">Edit</button>
@@ -112,11 +105,6 @@ getServiceRefferals = () => {
                         $('#no_community').html(null)
                         community_display.append(serviceformat)
                     }
-                });
-                notyf.success({
-                    message: 'All Service Referrals Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -158,8 +146,8 @@ getReferralInfo = (referral_Id) => {
             }
             $('#referral_type_info').html(type);
             $('#referral_name_info').html(servicedata.referral_Name);
-            $('#referral_description_info').html(servicedata.referral_Description);
-            $('#referral_more_info').html(servicedata.referral_More_Info);
+            $('#referral_description_info').html(servicedata.referral_Description.replace(/\n/g, '</p><p>'));
+            $('#referral_more_info').html(servicedata.referral_More_Info.replace(/\n/g, '</p><p>'));
         },
     })
     .fail(() => {
@@ -201,6 +189,8 @@ getServiceRefferalforEdit = (referral_Id) => {
 editReferral = () => {
     if ($('#EditReferralForm')[0].checkValidity()) {
         const form = new FormData($('#EditReferralForm')[0]);
+
+        $('#edit_referral_Submit').prop('disabled', true);
         
         const referral_Id = $('#edit_referral_Id').val();
         const referral_Type = $('#edit_referral_Type').val();
@@ -231,9 +221,7 @@ editReferral = () => {
                     })
                         $('form#EditReferralForm')[0].reset();
                         $('#editReferralModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -248,6 +236,7 @@ editReferral = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_referral_Submit').prop('disabled', false);
         })
     }
 }
@@ -281,9 +270,7 @@ deleteServiceReferral = (referral_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

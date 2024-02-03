@@ -204,6 +204,8 @@ editGuide = (guide_Id) => {
 
     if ($('#EditGuideForm')[0].checkValidity()) {
         const form = new FormData($('#EditGuideForm')[0]);
+
+        $('#edit_guide_Submit').prop('disabled', true);
         
         const guide_Id = $('#edit_guide_Id').val();
         const guide_Type = $('#edit_guide_Type').val();
@@ -227,6 +229,7 @@ editGuide = (guide_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_guide_Submit').prop('disabled', false);
         }
         else {
             const data = {
@@ -273,6 +276,7 @@ editGuide = (guide_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#edit_guide_Submit').prop('disabled', false);
             })
         }
     }

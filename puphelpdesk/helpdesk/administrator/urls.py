@@ -67,4 +67,8 @@ urlpatterns = [
 
     #Frequently Asked Questions
     path('frequently-asked-questions', views.adminFaqs, name='admin/frequently-asked-questions'),
+
+    #Ticket
+    path('ticket', views.adminticket, name='admin/ticket'),
+    path('ticket/view', views.adminviewticket, name='admin/ticket/view'),
 ]

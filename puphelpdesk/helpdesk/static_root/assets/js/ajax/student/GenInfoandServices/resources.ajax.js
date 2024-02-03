@@ -55,11 +55,6 @@ getResources = () => {
             order: [[0, 'asc']],
         })
     }
-    notyf.success({
-        message: 'Resources Fetched.',
-        position: {x:'right',y:'top'},
-        duration: 2500
-    })
 }
 
 // This Sets the file name of the File

@@ -64,6 +64,8 @@ addEvent = () => {
 
     if ($('#AddEventForm')[0].checkValidity()) {
         const form = new FormData($('#AddEventForm')[0]);
+
+        $('#event_Submit').prop('disabled', true);
         
         const event_Type = $('#event_Type').val();
         const event_Name = $('#event_Name').val();
@@ -85,6 +87,7 @@ addEvent = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#event_Submit').prop('disabled', false);
         }
         else {
 
@@ -115,9 +118,7 @@ addEvent = () => {
                         })
                             $('form#AddEventForm')[0].reset();
                             $('#AddEventModal').modal('hide');
-                            setTimeout(function () {
                                 location.reload()
-                            }, 2600);
                     }
                 },
             })
@@ -132,6 +133,7 @@ addEvent = () => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#event_Submit').prop('disabled', false);
             })
         }
     }
@@ -165,13 +167,6 @@ getEvent = () => {
     let ongoing_display = $('#ongoing_event_display')
     let upcoming_display = $('#upcoming_event_display')
     let ended_display = $('#ended_event_display')
-
-    notyf.open({
-        message: 'Fetching Events',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -235,8 +230,11 @@ getEvent = () => {
                         `;
 
                         if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
-                            const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' });
-                            if (eventdata.event_Start <= currentTime && eventdata.event_End >= currentTime){
+                            const eventStartDateTime = new Date(`${eventdata.event_Date_Start} ${eventdata.event_Start}`);
+                            const eventEndDateTime = new Date(`${eventdata.event_Date_End} ${eventdata.event_End}`);
+                            const currentDateTime = new Date();
+
+                            if (eventStartDateTime <= currentDateTime && eventEndDateTime >= currentDateTime){
                                 $('#no_ongoing').html(null);
                                 ongoing_display.append(eventformat)
                             }
@@ -257,11 +255,6 @@ getEvent = () => {
                             ended_display.append(eventformat);
                         }
                         
-                });
-                notyf.success({
-                    message: 'All Events Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -300,7 +293,7 @@ getEventInfo = (event_Id) => {
             const fortime = `${InfoformattedStarttime} - ${InfoformattedEndtime}`;
 
             $('#event_name_info').html(eventInfodata.event_Name);
-            $('#event_desc_info').html(eventInfodata.event_Description);
+            $('#event_desc_info').html(eventInfodata.event_Description.replace(/\n/g, '</p><p>'));
             $('#event_date_info').html(fordate);
             $('#event_time_info').html(fortime);
             if (eventInfodata.event_Image != null){
@@ -351,9 +344,7 @@ deleteEvent = (event_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })
@@ -408,6 +399,7 @@ editEvent = (event_Id) => {
 
     if ($('#EditEventForm')[0].checkValidity()) {
         const form = new FormData($('#EditEventForm')[0]);
+        $('#edit_event_Submit').prop('disabled', true);
         const event_Type = $('#edit_event_Type').val();
         const event_Id = $('#edit_event_Id').val();
         const event_Name = $('#edit_event_Name').val();
@@ -418,7 +410,7 @@ editEvent = (event_Id) => {
         const event_End = $('#edit_event_End').val();
         const event_Venue = $('#edit_event_Venue').val();
 
-        if (event_Date_Start > event_Date_End) {
+        if (event_Date_Start >= event_Date_End) {
             Swal.fire({
                 title: 'Something Went Wrong',
                 text: 'You cannot set the date where the event date end is set before the event start date.',
@@ -429,6 +421,7 @@ editEvent = (event_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_event_Submit').prop('disabled', false);
         }
         else {
             const data = {
@@ -458,9 +451,7 @@ editEvent = (event_Id) => {
                         })
                             $('form#EditEventForm')[0].reset();
                             $('#editEventModal').modal('hide');
-                            setTimeout(function () {
                                 location.reload()
-                            }, 2600);
                     }
                 },
             })
@@ -475,6 +466,7 @@ editEvent = (event_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#edit_event_Submit').prop('disabled', false);
             })
         }
     }
@@ -507,6 +499,7 @@ getEventforUpload = (event_Id) => {
 uploadImageEvent = (EventImage, event_Id) => {
     if ($('#UploadImageEventForm')[0]) {
         const form = new FormData($('#UploadImageEventForm')[0])
+        $('#upload_image_event_Submit').prop('disabled', true);
 
         if (
 			form.get('filepond') == '' ||
@@ -538,6 +531,7 @@ uploadImageEvent = (EventImage, event_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#upload_image_event_Submit').prop('disabled', false);
         }
         else {
             notyf.open({
@@ -557,6 +551,7 @@ uploadImageEvent = (EventImage, event_Id) => {
                 cache: false,
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {
+                    $('#upload_image_event_Submit').prop('disabled', true);
                     notyf.success({
                         message: 'Upload Image Event Successfully',
                         position: {x:'right',y:'top'},
@@ -564,9 +559,7 @@ uploadImageEvent = (EventImage, event_Id) => {
                     })
                         $('form#UploadImageEventForm')[0].reset();
                         $('#uploadImageEventModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 },
             })
             .fail(() => {
@@ -580,6 +573,7 @@ uploadImageEvent = (EventImage, event_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#upload_image_event_Submit').prop('disabled', false);
             })
         }
     }
@@ -614,9 +608,7 @@ deleteImageEvent = (event_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

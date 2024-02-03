@@ -28,6 +28,18 @@ def adminGetLostItemInfo(request, item_Id):
         return Response({"message": "Get Lost Item Error"})
 
 @api_view(['PUT'])
+def adminItemMarkAsMissing(request, item_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "PUT":
+            itemlost = LostandFound.objects.get(pk=item_Id)
+            itemlost.item_Status = 'Missing'
+            itemlost.save()
+            return Response({"message": "Edit Lost Item Success"})
+        return Response({"message": "Edit Lost Item Error"})
+
+@api_view(['PUT'])
 def adminItemMarkAsClaim(request, item_Id):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})

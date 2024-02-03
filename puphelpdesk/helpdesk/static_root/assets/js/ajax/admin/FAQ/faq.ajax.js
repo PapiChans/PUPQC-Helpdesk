@@ -15,6 +15,8 @@ const notyf = new Notyf();
 addFAQ = () => {
     if ($('#AddFAQForm')[0].checkValidity()) {
         const form = new FormData($('#AddFAQForm')[0]);
+
+        $('#FAQ_Submit').prop('disabled', true);
         
         const FAQ_Category = $('#FAQ_Category').val();
         const FAQ_Question = $('#FAQ_Question').val();
@@ -42,9 +44,7 @@ addFAQ = () => {
                     })
                         $('form#AddFAQForm')[0].reset();
                         $('#AddFAQModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -59,19 +59,13 @@ addFAQ = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#FAQ_Submit').prop('disabled', false);
         })
     }
 }
 
 getFAQ = () => {
     let faq_display = $('#faq')
-
-    notyf.open({
-        message: 'Fetching FAQs',
-        position: {x:'right',y:'top'},
-        background: 'gray',
-        duration: 3000
-    });
 
     $.ajax({
         type: 'GET',
@@ -103,11 +97,6 @@ getFAQ = () => {
 
                         $('#no_faq').html(null)
                         faq_display.append(FAQformat)
-                });
-                notyf.success({
-                    message: 'FAQ Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
                 });
             }
             else {
@@ -157,6 +146,8 @@ getFAQforEdit = (FAQ_Id) => {
 editFAQ = (FAQ_Id) => {
     if ($('#EditFAQForm')[0].checkValidity()) {
         const form = new FormData($('#EditFAQForm')[0]);
+
+        $('#edit_FAQ_Submit').prop('disabled', true);
         
         const FAQ_Id = $('#edit_FAQ_Id').val();
         const FAQ_Category = $('#edit_FAQ_Category').val();
@@ -185,9 +176,7 @@ editFAQ = (FAQ_Id) => {
                     })
                         $('form#EditFAQForm')[0].reset();
                         $('#EditFAQModal').modal('hide');
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                 }
             },
         })
@@ -202,6 +191,7 @@ editFAQ = (FAQ_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_FAQ_Submit').prop('disabled', false);
         })
     }
 }
@@ -235,9 +225,7 @@ deleteFAQ = (FAQ_Id) => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         });
-                        setTimeout(function () {
                             location.reload()
-                        }, 2600);
                     }
                 },
             })

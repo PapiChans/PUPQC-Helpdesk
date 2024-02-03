@@ -81,6 +81,8 @@ getuserprofile = () => {
 addLostItem = (ItemImage) => {
     if ($('#AddItemForm')[0]) {
         const form = new FormData($('#AddItemForm')[0])
+
+        $('#item_Submit').prop('disabled', true);
         
         const user_Id = $('#user_Id').val();
         const item_Owner = $('#item_Owner').val();
@@ -131,6 +133,7 @@ addLostItem = (ItemImage) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#item_Submit').prop('disabled', false);
         }
         else {
             form.append('user_Id', user_Id);
@@ -166,11 +169,7 @@ addLostItem = (ItemImage) => {
                             duration: 2500
                         })
                         $('form#AddItemForm')[0].reset();
-
-                        setTimeout(function () {
                             window.location.href = `/student/LostAndFound/items`
-                        }, 2600);
-
                     }
                 },
             })
@@ -185,6 +184,7 @@ addLostItem = (ItemImage) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#item_Submit').prop('disabled', false);
             })
         }
     }
