@@ -25,47 +25,56 @@ feedbackChart1 = () => {
             var chartDom = document.getElementById('FeedbackVsSuggestion');
             var myChart = echarts.init(chartDom);
             var option;
-            
+
             option = {
-            title: {
-                text: 'Overall Counts',
-                subtext: 'Feedback v.s Suggestion',
-                left: 'center',
-                bottom: '5%'
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
+                title: {
+                    text: 'Overall Counts',
+                    subtext: 'Feedback v.s Suggestion',
+                    left: 'center',
+                    bottom: '1%'
                 },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-                
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                toolbox: {
+                    feature: {
+                        saveAsImage: {
+                            title: 'Save as Image',
+                        }
+                    },
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '<b>{b}</b>: {c} ',
+                    axisPointer: {
+                        type: 'shadow'
                     }
-                }
-                }
-            ]
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    scroll: true,
+                },
+                xAxis: {
+                    type: 'category',
+                    data: result.map(item => item.name)
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        type: 'bar',
+                        stack: 'total',
+                        data: result,
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            }
+                        }
+                    }
+                ]
             };
-            
+
             option && myChart.setOption(option);
         },
     })
