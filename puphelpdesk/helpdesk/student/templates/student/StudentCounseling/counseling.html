@@ -6,18 +6,15 @@
 {% endblock %}
 
 {% block maincontent %}
-{% include "student/StudentCounseling/modal/counseling-modal.html" %} 
-<h2 class="header-title">Counseling Service</h2>
-<p class="card-title-desc">Connects students with professional counselors for mental health and emotional support.</p>
-<h3 id="no_Counselor" class="text-center">No Counselor Data.</h3>
-<div class="row" id="counselor_display">
-</div>
+<h2 class="header-title">Counseling and Consultation Service</h2>
+<p class="card-title-desc">Connects students with professional counselors for counceling and consultations.</p>
+<h3 id="no_Charter" class="text-center"></h3>
+<div class="row" id="charter_display">
 {% endblock %}
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-<script src="{% static 'assets/js/ajax/student/chatbot/chatbot.js' %}"></script>
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
-<script src="{% static 'assets/js/ajax/student/StudentCounseling/counseling.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/StudentCounseling/charters.ajax.js' %}"></script>
 {% endblock %} 

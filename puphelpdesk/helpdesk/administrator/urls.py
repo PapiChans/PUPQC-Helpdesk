@@ -46,8 +46,8 @@ urlpatterns = [
 
     # Health and Wellness Support
     path('healthwellness', views.adminhealthwellness, name="admin/healthwellness"),
-    path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
-    path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
+    # Inactive path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
+    # Inactive path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
 
     # Housing and Accomodation
     path('housing', views.adminhousing, name="admin/housing"),
@@ -71,4 +71,8 @@ urlpatterns = [
     #Ticket
     path('ticket', views.adminticket, name='admin/ticket'),
     path('ticket/view', views.adminviewticket, name='admin/ticket/view'),
+
+    # Charters
+    path('charters', views.admincharters, name='admin/charters'),
+    path('charters/details', views.adminchartersdetails, name='admin/charters/details'),
 ]

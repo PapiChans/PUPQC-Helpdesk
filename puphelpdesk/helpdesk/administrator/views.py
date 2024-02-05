@@ -77,7 +77,7 @@ def admingeninforeferrals(request):
     else:
         return render(request, 'HTTPResponse/401.html')
 
-#Student Counseling
+#Student Counseling  
 def adminSupportCounseling(request):
     if request.user.is_anonymous:
         return redirect('login')
@@ -394,5 +394,24 @@ def adminviewticket(request):
     if request.user.is_admin:
         pagename_value = "Ticket Details"
         return render(request, 'admin/Ticket/viewticket.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+# Charters
+def admincharters(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Charters"
+        return render(request, 'admin/Charters/charters.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def adminchartersdetails(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Charters"
+        return render(request, 'admin/Charters/details.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')

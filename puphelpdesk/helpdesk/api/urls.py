@@ -125,6 +125,16 @@ urlpatterns = [
     path('student/addTicketComment', views.studAddTicketComment),
     path('student/getTicketComment/<uuid:ticket_Id>', views.studGetTicketComment),
 
+    # Charters
+    path('student/getCharter', views.studGetCharter),
+    path('student/getCharter/<charter_Category>', views.studGetCharterCategory),
+    path('student/getCharterInfo/<uuid:charter_Id>', views.studGetCharterInfo),
+    path('student/getCharterNumberInfo/<charter_Number>', views.studGetCharterNumberInfo),
+
+    # Charter Step
+    path('student/getCharterStep/<charter_Id>', views.studGetCharterStep),
+    path('student/getCharterStepInfo/<uuid:step_Id>', views.studGetCharterStepInfo),
+
     #----------------------
     # ADMIN API URLS
     #----------------------
@@ -335,4 +345,20 @@ urlpatterns = [
     path('admin/getTicketComment/<uuid:ticket_Id>', views.adminGetTicketComment),
     path('admin/addTicketComment', views.adminAddTicketComment),
     path('admin/ticketClosed/<uuid:ticket_Id>', views.adminCloseTicket),
+
+    # Charters
+    path('admin/addCharter', views.adminAddCharter),
+    path('admin/getCharter', views.adminGetCharter),
+    path('admin/getCharter/<charter_Category>', views.adminGetCharterCategory),
+    path('admin/getCharterInfo/<uuid:charter_Id>', views.adminGetCharterInfo),
+    path('admin/getCharterNumberInfo/<charter_Number>', views.adminGetCharterNumberInfo),
+    path('admin/editCharter/<uuid:charter_Id>', views.adminEditCharter),
+    path('admin/deleteCharter/<uuid:charter_Id>', views.adminDeleteCharter),
+
+    # Charter Step
+    path('admin/addCharterStep', views.adminAddCharterStep),
+    path('admin/getCharterStep/<charter_Id>', views.adminGetCharterStep),
+    path('admin/getCharterStepInfo/<uuid:step_Id>', views.adminGetCharterStepInfo),
+    path('admin/editCharterStep/<uuid:step_Id>', views.adminEditCharterStep),
+    path('admin/deleteCharterStep/<uuid:step_Id>', views.adminDeleteCharterStep),
 ]

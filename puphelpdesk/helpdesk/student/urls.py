@@ -72,4 +72,8 @@ urlpatterns = [
     # Ticket
     path('ticket', views.ticket, name='ticket'),
     path('ticket/view', views.viewticket, name='ticket/view'),
+
+    # Charters
+    path('charters', views.studcharters, name='charters'),
+    path('charters/details', views.studchartersdetails, name='charters/details'),
 ]

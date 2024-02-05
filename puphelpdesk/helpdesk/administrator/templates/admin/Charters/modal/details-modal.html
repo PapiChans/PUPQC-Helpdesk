@@ -1,0 +1,81 @@
+<div class="modal fade" id="AddStepModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Charter Step</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddStepForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="charter_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Client Steps<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="step_Client" rows="5" placeholder="Client Steps"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Agency Actions<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="step_Agency" rows="5" placeholder="Agency Actions"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Fees to be paid<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="step_Fees" placeholder="Type 'None' if the fee is free, else put an specific amount. Ex: 'PHP 150.00'" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Processing Time<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="step_Time" placeholder="Provide specific processing time" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Person to be responsible<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="step_Person" rows="5" placeholder="Provide the responsible for this step"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="step_Submit">Add Charter Step</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditStepModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Charter Step</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditStepForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <input type="hidden" id="edit_step_Id">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Client Steps<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_step_Client" rows="5" placeholder="Client Steps"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Agency Actions<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_step_Agency" rows="5" placeholder="Agency Actions"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Fees to be paid<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_step_Fees" placeholder="Type 'None' if the fee is free, else put an specific amount. Ex: 'PHP 150.00'" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Processing Time<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_step_Time" placeholder="Provide specific processing time" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Person to be responsible<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_step_Person" rows="5" placeholder="Provide the responsible for this step"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_step_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

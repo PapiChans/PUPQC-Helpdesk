@@ -1,0 +1,48 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+{% include "admin/Charters/modal/charters-modal.html" %}
+<h2 class="header-title">Campus Charters</h2>
+<p class="card-title-desc">Your guide for the processes</p>
+<div class="col">
+    <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddCharterModal">Add Charters</button>
+    <button type="button" class="btn btn-info dropdown-toggle mb-2" data-bs-toggle="dropdown">
+        Sort Category
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" onclick="getCharter()">
+            All
+        </a>
+        <a class="dropdown-item" onclick="getCharterCategory('Student Support')">
+            Student Support
+        </a>
+        <a class="dropdown-item" onclick="getCharterCategory('Medical Services')">
+            Medical Services
+        </a>
+        <a class="dropdown-item" onclick="getCharterCategory('Student ID Issuance')">
+            Student ID Issuance
+        </a>
+        <a class="dropdown-item" onclick="getCharterCategory('Financial Aid and Scholarship')">
+            Financial Aid and Scholarship
+        </a>
+        <a class="dropdown-item" onclick="getCharterCategory('Others')">
+            Others
+        </a>
+    </div>
+</div>
+<h3 id="no_Charter" class="text-center"></h3>
+<div class="row" id="charter_display">
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Charters/charters.ajax.js' %}"></script>
+{% endblock %} 

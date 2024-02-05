@@ -1,0 +1,68 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+{% include "admin/Charters/modal/details-modal.html" %}
+<h2 class="header-title">Charter Details</h2>
+<p class="card-title-desc">Full Information Provided</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddStepModal">Add Step</button>
+<div id="charter_display">
+    <h2 id="charter_Title_info"></h2>
+    <p id="charter_Description_info"></p>
+</div>
+<div class="table-responsive">
+    <table class="table table-vcenter table-bordered table-md card-table">
+        <tbody>
+            <tr>
+                <td class="text-white bg-secondary text-center">Office or Division:</td>
+                <td><strong id="charter_Office_info"></strong></td>
+            </tr>
+            <tr>
+                <td class="text-white bg-secondary text-center">Classification:</td>
+                <td><strong id="charter_Classification_info"></strong></td>
+            </tr>
+            <tr>
+                <td class="text-white bg-secondary text-center">Type of Transaction:</td>
+                <td><strong id="charter_Transaction_info"></strong></td>
+            </tr>
+            <tr>
+                <td class="text-white bg-secondary text-center">Who may avail:</td>
+                <td><strong id="charter_Avail_info"></strong></td>
+            </tr>
+            <tr>
+                <td class="text-white bg-secondary text-center">Checklist of Requirements</td>
+                <td class="text-white bg-secondary text-center">Where to Secure</td>
+            </tr>
+            <tr>
+                <td><strong id="charter_Requirements_info"></strong></td>
+                <td><strong id="charter_Secure_info"></strong></td>
+            </tr>
+            </tbody>
+    </table>
+    <table class="table table-vcenter card-table table-hover table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th>Client Steps</th>
+            <th>Agency Actions</th>
+            <th>Fees to be Paid</th>
+            <th>Processing Time</th>
+            <th>Person Responsible</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="step_Display">
+        </tbody>
+      </table>
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Charters/details.ajax.js' %}"></script>
+{% endblock %} 

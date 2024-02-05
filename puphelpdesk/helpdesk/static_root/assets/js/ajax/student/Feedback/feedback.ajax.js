@@ -233,7 +233,7 @@ getFeedbackInfo = (feedback_Id) => {
             $('#info_feedback_Type').html(feedbackInfodata.feedback_Type);
             $('#info_feedback_Date').html(feedback_Date);
             $('#info_feedback_Status').html(stat);
-            $('#info_feedback_Text').html(feedbackInfodata.feedback_Text);
+            $('#info_feedback_Text').html(feedbackInfodata.feedback_Text.replace(/\n/g, '</p><p>'));
         },
     })
     .fail(() => {

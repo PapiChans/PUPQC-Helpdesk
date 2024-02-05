@@ -64,6 +64,9 @@ from .student.FAQ.faq import *
 # Ticket
 from .student.Ticket.ticket import *
 
+# Charter
+from .student.Charter.charter import *
+
 # ---------------
 # Admin Routes
 # ---------------
@@ -123,3 +126,6 @@ from .admin.FAQ.faq import *
 
 # Ticket
 from .admin.Ticket.ticket import *
+
+# Charter
+from .admin.Charter.charter import *

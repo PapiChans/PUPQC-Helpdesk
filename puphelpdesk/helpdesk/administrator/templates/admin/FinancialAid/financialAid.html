@@ -10,6 +10,7 @@
 {% endblock %}
 {% block maincontent %}
 {% include "admin/FinancialAid/modal/financialAid-modal.html" %}
+{% include "admin/Charters/modal/charters-modal.html" %}
 <h2 class="header-title">Financial Aid and Scholarships</h2>
 <p class="card-title-desc">These are the available Financial Aid and Scholarships</p>
 <a href="{% url 'admin/student-services/FinancialAid/AddPost' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Add Post</button></a>
@@ -58,6 +59,9 @@
         </table>
     </div>
 </div>
+<h2 class="header-title">Charters</h2>
+<h3 id="no_Charter" class="text-center"></h3>
+<div class="row" id="charter_display">
 {% endblock %}
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
@@ -73,5 +77,6 @@
 <script src="{% static 'assets/libs/dataTables/js/vfs_font.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/buttons.html5.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/FinancialAid/financialaid.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/FinancialAid/charters.ajax.js' %}"></script>
 {% endblock %} 
     

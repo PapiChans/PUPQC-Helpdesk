@@ -830,3 +830,17 @@
 # 0.6.2.1
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Feedback vs. Suggestion Analytics chart Changed
+
+# 0.6.3 
+- Push by Christian (https://github.com/papichans)
+- NEW Feature: Charters (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Serializers
+- Update Models
+- Fix Login URL
+- FIX: preformatted text to adjusting paragraphs
+- MAJOR Modal Changes
+- Adjust Navbar (Both Student and Admin)
+- Adjust HTML Pages for Charters (Both Admin and Student)

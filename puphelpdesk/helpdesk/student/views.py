@@ -386,3 +386,22 @@ def viewticket(request):
         return render(request, 'student/Ticket/viewticket.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+# Charters
+def studcharters(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Charters"
+        return render(request, 'student/Charters/charters.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def studchartersdetails(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Charters"
+        return render(request, 'student/Charters/details.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

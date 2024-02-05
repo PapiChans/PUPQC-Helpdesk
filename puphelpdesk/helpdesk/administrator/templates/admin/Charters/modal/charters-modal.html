@@ -1,0 +1,126 @@
+<div class="modal fade" id="AddCharterModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Charter</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddCharterForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="charter_Number">
+                    <div class="col-md-12 mt-2">
+                        <label>Category<span class="text-danger">*</span></label>
+                        <select class="form-select" id="charter_Category" required>
+                            <option value="">Select Charter Category</option>
+                            <option value="Student Support">Student Support</option>
+                            <option value="Medical Services">Medical Services</option>
+                            <option value="Student ID Issuance">Student ID Issuance</option>
+                            <option value="Financial Aid and Scholarship">Financial Aid and Scholarship</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="charter_Title" placeholder="Charter Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="charter_Description" rows="5" placeholder="Charter Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Office<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="charter_Office" placeholder="Office or Division" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Classification<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="charter_Classification" placeholder="Charter Classification" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Transaction<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="charter_Transaction" placeholder="Charter Transaction" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Avail<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="charter_Avail" placeholder="Who may Avail" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Requirements<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="charter_Requirements" rows="5" placeholder="Charter Requirements"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Secure<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="charter_Secure" rows="5" placeholder="Charter Secure"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="charter_Submit">Add Charter</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditCharterModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Charter</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditCharterForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_charter_Id">
+                    <div class="col-md-12 mt-2">
+                        <label>Category<span class="text-danger">*</span></label>
+                        <select class="form-select" id="edit_charter_Category" required>
+                            <option value="Student Support">Student Support</option>
+                            <option value="Medical Services">Medical Services</option>
+                            <option value="Student ID Issuance">Student ID Issuance</option>
+                            <option value="Financial Aid and Scholarship">Financial Aid and Scholarship</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_charter_Title" placeholder="Charter Title" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Description<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_charter_Description" rows="5" placeholder="Charter Description"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Office<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_charter_Office" placeholder="Office or Division" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Classification<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_charter_Classification" placeholder="Charter Classification" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Transaction<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_charter_Transaction" placeholder="Charter Transaction" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Avail<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="edit_charter_Avail" placeholder="Who may Avail" required/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Requirements<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_charter_Requirements" rows="5" placeholder="Charter Requirements"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Secure<span class="text-danger">*</span></label>
+                            <textarea required class="form-control" id="edit_charter_Secure" rows="5" placeholder="Charter Secure"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_charter_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

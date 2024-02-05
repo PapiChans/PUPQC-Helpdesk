@@ -398,3 +398,33 @@ class TicketComment(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Ticket Comment'
+
+# Charter
+class Charter(models.Model):
+    charter_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    charter_Number = models.CharField(max_length=100, null=False)
+    charter_Office = models.CharField(max_length=100, null=False)
+    charter_Category = models.CharField(max_length=100, null=False)
+    charter_Title = models.CharField(max_length=200, null=False)
+    charter_Description = models.TextField(null=False)
+    charter_Classification = models.CharField(max_length=100, null=False)
+    charter_Transaction = models.CharField(max_length=100, null=False)
+    charter_Avail = models.CharField(max_length=100, null=False)
+    charter_Requirements = models.TextField(null=False)
+    charter_Secure = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Charter'
+
+# Charter Step
+class CharterSteps(models.Model):
+    step_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    charter_Id = models.ForeignKey(Charter, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='charter_Id')
+    step_Client = models.TextField(null=False)
+    step_Agency = models.TextField(null=False)
+    step_Fees = models.CharField(max_length=100, null=False)
+    step_Time = models.CharField(max_length=100, null=False)
+    step_Person = models.CharField(max_length=100, null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Charter Steps'
