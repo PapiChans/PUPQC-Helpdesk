@@ -855,6 +855,7 @@ label {
 }
 
 @media (max-width: 991px) {
+  
   .navbar {
     margin-top: 0px;
     padding: 10px 0px !important;

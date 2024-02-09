@@ -831,6 +831,7 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Feedback vs. Suggestion Analytics chart Changed
 
+<<<<<<< Updated upstream
 # 0.6.3 
 - Push by Christian (https://github.com/papichans)
 - NEW Feature: Charters (Both Admin and Student)
@@ -844,3 +845,8 @@
 - MAJOR Modal Changes
 - Adjust Navbar (Both Student and Admin)
 - Adjust HTML Pages for Charters (Both Admin and Student)
+=======
+# 0.6.3.1
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Hero Logo Fixed
+>>>>>>> Stashed changes
