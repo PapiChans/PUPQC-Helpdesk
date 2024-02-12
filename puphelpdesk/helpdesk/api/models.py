@@ -53,10 +53,11 @@ class UserProfile(models.Model):
     user_First_Name = models.CharField(max_length=50, null=False)
     user_Middle_Name = models.CharField(max_length=50, null=True)
     user_Profile = models.FileField(upload_to='User-Profile/', null=True)
-    user_Program = models.CharField(max_length=100, null=False, choices=Student_Programs)
-    user_Email = models.EmailField(max_length=50, null=False, unique=True)
+    user_Program = models.CharField(max_length=100, null=False)
+    user_Email = models.EmailField(max_length=50, null=False)
     user_Contact = models.CharField(max_length=11, null=False)
     user_Gender = models.CharField(max_length=50, null=False)
+    user_Type = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'User Profile'

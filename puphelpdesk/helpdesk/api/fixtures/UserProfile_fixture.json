@@ -12,6 +12,7 @@
         "user_Email": "sampleemail1@gmail.com",
         "user_Contact": "09123456789",
         "user_Gender": "Male",
+        "user_Type": "Student",
         "date_Created": "2023-10-19T14:25:15.325146Z"
         }
     },
@@ -28,6 +29,7 @@
         "user_Email": "sampleemail2@gmail.com",
         "user_Contact": "09123456789",
         "user_Gender": "Male",
+        "user_Type": "Student",
         "date_Created": "2023-10-19T14:25:15.325146Z"
         }
     },
@@ -44,6 +46,7 @@
         "user_Email": "sampleemail4@gmail.com",
         "user_Contact": "09123456789",
         "user_Gender": "Male",
+        "user_Type": "Student",
         "date_Created": "2023-10-19T14:25:15.325146Z"
         }
     },
@@ -60,6 +63,7 @@
         "user_Email": "sampleemail3@gmail.com",
         "user_Contact": "09123456789",
         "user_Gender": "Male",
+        "user_Type": "Student",
         "date_Created": "2023-10-19T14:25:15.325146Z"
         }
     }

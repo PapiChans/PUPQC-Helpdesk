@@ -1,4 +1,4 @@
-# myPUPQC-Helpdesk
+# PUPQC Student Helpdesk
 
 **This Help desk system will be integrated in myPUPQC. Helpdesk can provide guidance and support across a wide range of areas to enhance the overall student experience.**
 
@@ -8,11 +8,8 @@
 | ------------------- | --------------------|
 | **Description**     | This project is for fullfillment of requirements in subject "Capstone Project 1 and 2". |
 | **Date Started**    | August 20, 2023 |
-<<<<<<< Updated upstream
-| **Current Version** | v0.6.3.1| 
-=======
->>>>>>> Stashed changes
-| **Members**         | Backend Developers<ul><li>[Altiche, Christian](https://github.com/papichans)</li></ul>Frontend Developers<ul><li>[Lopez, Loyd Marion](https://github.com/loydmarionlopez)</li></ul>QA Testers<ul><li>[Felipe, Leslie](https://github.com/Hishori)</li></ul>Documentation<ul><li>[Sicangco, Charles](https://github.com/httpgwapo)</li></ul> _Students of Polytechnic University of the Philippines Quezon City Branch, BSIT 4-2 (Batch 2020-2024)_|
+| **Current Version** | v0.6.4| 
+| **Members**         | Backend Developers<ul><li>[Altiche, Christian](https://github.com/papichans)</li></ul>Frontend Developers<ul><li>[Lopez, Loyd Marion](https://github.com/loydmarionlopez)</li></ul>QA Testers<ul><li>[Felipe, Leslie](https://github.com/Hishori)</li></ul>Documentation<ul><li>[Sicangco, Charles Joseph](https://github.com/httpgwapo)</li></ul> _Students from Polytechnic University of the Philippines Quezon City Branch, BSIT 4-2 (Batch 2023-2024)_|
 
 
 

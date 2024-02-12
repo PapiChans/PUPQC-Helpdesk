@@ -30,6 +30,8 @@ function getCharterInfoAndNavigate(charterId) {
 
 getCharter = () => {
     let charter_display = $('#charter_display')
+    charter_display.html(null)
+    $('#no_Charter').html("Loading...");
 
     $.ajax({
         type: 'GET',
@@ -58,6 +60,7 @@ getCharter = () => {
                         `;
 
                     charter_display.append(charterformat)
+                    $('#no_Charter').html(null);
 
                 });
             }

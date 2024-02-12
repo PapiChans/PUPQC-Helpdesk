@@ -26,4 +26,15 @@ def login(request):
     # Error 404
 def error_404(request, exception):
     return render(request, 'HTTPResponse/404.html')
+
+
+# Register
+def signup(request):
+    if request.user.is_anonymous:
+        return render(request, 'signup.html')
+    else:
+        if request.user.is_admin:
+            return redirect('admin/dashboard')
+        else:
+            return redirect('student/dashboard')
    

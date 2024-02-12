@@ -228,7 +228,6 @@ getFeedbackInfo = (feedback_Id) => {
             else {
                 stat = `<span class="badge bg-azure text-azure-fg">Unknown</span>`
             }
-            $('#info_student_Id').html(feedbackInfodata.student_Id);
             $('#info_student_Name').html(feedbackInfodata.student_Name);
             $('#info_feedback_Type').html(feedbackInfodata.feedback_Type);
             $('#info_feedback_Date').html(feedback_Date);
