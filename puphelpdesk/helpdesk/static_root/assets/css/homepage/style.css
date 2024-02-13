@@ -864,6 +864,7 @@ label {
   }
   .navbar .logo .logo-dark {
     display: block;
+    margin-right: 10px;
   }
   .navbar .logo .logo-light {
     display: none;
