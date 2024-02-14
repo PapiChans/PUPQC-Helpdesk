@@ -869,3 +869,13 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Dashboard analytics updated
 - Doughnut type chart changed to bar race chart
+
+# 0.6.6
+- Push by Christian (https://github.com/papichans)
+- NEW Feature: Edit Profile (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Add FIS Page in Admin Side
+- Delete Unused HTML Pages (Both Admin and Student)
+- Add Signup Contact Validations

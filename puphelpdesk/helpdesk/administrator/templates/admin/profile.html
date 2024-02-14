@@ -2,24 +2,58 @@
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block maincontent %}
 <h2 class="header-title">Your Profile</h2>
-<p class="card-title-desc">View your profile.</p>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title mb-3">Admin Info</h5>
-        <div class="row">
-            <h5 class="card-title">Admin Name: <span class="text-muted" id="admin_Name"></span></h5>
-            <h5 class="card-title">Contact: <span class="text-muted" id="admin_Contact"></span></h5>
-            <h5 class="card-title">Email: <span class="text-muted" id="admin_Email"></span></h5>
-            <h5 class="card-title">Gender: <span class="text-muted" id="admin_Gender"></span></h5>
-        </div>   
-    </div><!-- end card body -->
-</div>
-
+<p class="card-title-desc">Edit your profile.</p>
+<form id="EditProfileForm" class="needs-validation" novalidate>
+    <input type="hidden" id="profile_Id">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Last Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="admin_Last_Name" placeholder="Last Name" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">First Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="admin_First_Name" placeholder="First Name" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="admin_Middle_Name" placeholder="Middle Name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Gender<span class="text-danger">*</span></label>
+            <div class="input-group input-group-flat">
+                <select class="form-select" id="admin_Gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Contact Number<span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="admin_Contact" minlength="11" maxlength="11" placeholder="Contact Number" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Email Address</label>
+            <label for="validationCustom01" id="admin_Email"></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3"></div>
+            <button class="col-md-12 mb-3 btn btn-primary" id="admin_Submit" type="submit">Save</button>
+        </div>
+    </div>
+</form>
 {% endblock %}
 {% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/profile.ajax.js' %}"></script>
 {% endblock %}

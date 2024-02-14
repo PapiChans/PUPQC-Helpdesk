@@ -16,6 +16,9 @@ urlpatterns = [
     # STUDENT API URLS
     #----------------------
 
+    # Profile
+    path('student/editprofile/<uuid:profile_Id>', views.studEditProfile),
+
     # Dashboard
     path('student/dashboard-event', views.studfetchEvent),
     path('student/dashboard-jobpost', views.studfetchJobPosting),
@@ -139,6 +142,9 @@ urlpatterns = [
     #----------------------
     # ADMIN API URLS
     #----------------------
+
+    # Profile
+    path('admin/editprofile/<uuid:profile_Id>', views.adminEditProfile),
 
     # Dashboard
     path('admin/FeedbackVsSuggestions', views.adminFeedbackVsSuggestions),

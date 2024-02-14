@@ -2,26 +2,75 @@
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block maincontent %}
-
 <h2 class="header-title">Your Profile</h2>
-<p class="card-title-desc">View your profile.</p>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title mb-3">Student Info</h5>
-        <div class="row">
-            <h5 class="card-title">Student Name: <span class="text-muted" id="student_Name"></span></h5>
-            <h5 class="card-title">Program: <span class="text-muted" id="student_Program"></span></h5>
-            <h5 class="card-title">Contact: <span class="text-muted" id="student_Contact"></span></h5>
-            <h5 class="card-title">Email: <span class="text-muted" id="student_Email"></span></h5>
-            <h5 class="card-title">Gender: <span class="text-muted" id="student_Gender"></span></h5>
-        </div>   
-    </div><!-- end card body -->
-</div>
-
+<p class="card-title-desc">Edit your profile.</p>
+<form id="EditProfileForm" class="needs-validation" novalidate>
+    <input type="hidden" id="profile_Id">
+    <div class="row">
+        <div class="col-md-6 mb-3" id="fill-up_Program">
+            <label for="validationCustom01" class="form-label">Program<span class="text-danger">*</span></label>
+            <div class="input-group input-group-flat">
+                <select class="form-select" id="user_Program" required/>
+                    <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+                    <option value="Bachelor of Business Technology and Livelihood Education major in Home Economics">Bachelor of Business Technology and Livelihood Education major in Home Economics</option>
+                    <option value="Bachelor of Business Technology and Livelihood Education major in Information Communication and Technology">Bachelor of Business Technology and Livelihood Education major in Information Communication and Technology</option>
+                    <option value="Bachelor of Science in Business Administration major in Human Resource Management">Bachelor of Science in Business Administration major in Human Resource Management</option>
+                    <option value="Bachelor of Science in Business Administration major in Marketing Management">Bachelor of Science in Business Administration major in Marketing Management</option>
+                    <option value="Bachelor of Science in Entrepreneurship">Bachelor of Science in Entrepreneurship</option>
+                    <option value="Bachelor of Public Administration major in Public Financial Management">Bachelor of Public Administration major in Public Financial Management</option>
+                    <option value="Diploma in Office Management Technology Medical Office Management">Diploma in Office Management Technology Medical Office Management</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Last Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="user_Last_Name" placeholder="Last Name" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">First Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="user_First_Name" placeholder="First Name" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="user_Middle_Name" placeholder="Middle Name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Gender<span class="text-danger">*</span></label>
+            <div class="input-group input-group-flat">
+                <select class="form-select" id="user_Gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Contact Number<span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="user_Contact" minlength="11" maxlength="11" placeholder="Contact Number" required/>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom01" class="form-label">Email Address</label>
+            <label for="validationCustom01" id="user_Email"></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3"></div>
+            <button class="col-md-12 mb-3 btn btn-primary" id="user_Submit" type="submit">Save</button>
+        </div>
+    </div>
+</form>
 {% endblock %}
 {% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/profile.ajax.js' %}"></script>
 {% endblock %}

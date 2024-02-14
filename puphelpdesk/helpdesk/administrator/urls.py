@@ -75,4 +75,7 @@ urlpatterns = [
     # Charters
     path('charters', views.admincharters, name='admin/charters'),
     path('charters/details', views.adminchartersdetails, name='admin/charters/details'),
+
+    # Faculty Information System
+    path('FIS', views.adminFIS, name='admin/FIS'),
 ]

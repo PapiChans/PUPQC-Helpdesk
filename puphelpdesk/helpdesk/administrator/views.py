@@ -415,3 +415,13 @@ def adminchartersdetails(request):
         return render(request, 'admin/Charters/details.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+# Charters
+def adminFIS(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Faculty Information"
+        return render(request, 'admin/fis/fis.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

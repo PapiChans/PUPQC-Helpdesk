@@ -3,6 +3,19 @@ $(function () {
         signup()
         event.preventDefault();
     });
+    const defaultContactValue = '09';
+    
+    // Set a default value for user_Contact when the page loads
+    $('#user_Contact').val(defaultContactValue);
+    
+    // Add an input event listener to user_Contact
+    $('#user_Contact').on('input', function() {
+        // Check if the length is less than the length of the default value
+        if ($(this).val().length < defaultContactValue.length) {
+            // Set the value back to the default
+            $(this).val(defaultContactValue);
+        }
+    });
 })
 
 const notyf = new Notyf();
@@ -24,6 +37,12 @@ $('input#user_Contact').maxlength({
     warningClass: "badge bg-danger",
     limitReachedClass: "badge bg-success",
 });
+
+// Function to check if a value is a valid number
+function isValidNumber(value) {
+    // Use a regular expression to check if the value is a number
+    return /^[0-9]+$/.test(value);
+}
 
 signup = () => {
     if ($('#signupForm')[0].checkValidity()) {
@@ -55,6 +74,14 @@ signup = () => {
             $('#signup_submit').prop('disabled', false);
             notyf.error({
                 message: 'Password does not match.',
+                position: {x:'right',y:'top'},
+                duration: 2500
+            })
+        }
+        else if (!isValidNumber(user_Contact)){
+            $('#signup_submit').prop('disabled', false);
+            notyf.error({
+                message: 'Contact field must enter numbers only.',
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
@@ -93,6 +120,7 @@ signup = () => {
                                 position: {x:'right',y:'top'},
                                 duration: 2500
                             })
+
                             window.location.href = "/login";
                         }
                     }

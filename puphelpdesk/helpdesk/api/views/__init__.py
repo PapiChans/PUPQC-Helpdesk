@@ -10,6 +10,9 @@ from .auth.getprofile import *
 # Student Routes
 # ---------------
 
+# Profile
+from .student.profile import *
+
 # Dashboard
 from .student.dashboard import *
 
@@ -71,6 +74,9 @@ from .student.Charter.charter import *
 # ---------------
 # Admin Routes
 # ---------------
+
+# Profile
+from .admin.profile import *
 
 # Dashboard
 from .admin.dashboard import *
