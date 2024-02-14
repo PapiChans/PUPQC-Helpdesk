@@ -402,191 +402,125 @@ servicereferralChart = () => {
     })
 }
 
-idandcardChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/idandcardChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('IDCardChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'ID and Card Chart',
-                subtext: 'Guide Type',
-                left: 'center',
-                bottom: '5%'
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'ID and Card Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
+$(function() {
+    // Function to fetch data for all three charts
+    var fetchDataForAllCharts = () => {
+        var idandcardData, studentgovernmentData, healthfacilityData;
 
-studentgovernmentChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/studentgovernmentChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('StudentGovernmentChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'Student Government Chart',
-                subtext: 'Election V.S Membership',
-                left: 'center',
-                bottom: '5%'
+        // AJAX request for ID and Card Chart data
+        $.ajax({
+            type: 'GET',
+            url: '/api/admin/idandcardChart',
+            dataType: 'json',
+            cache: false,
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                idandcardData = result;
+                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
             },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Student Government Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
+            error: () => {
+                notyf.error({
+                    message: 'ID and Card Chart Fetching Error',
+                    position: {x:'right',y:'top'},
+                    duration: 2500
+                });
+            }
         });
-    })
-}
 
-healthfacilityChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/healthfacilityChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('HealthFacilityChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'Health Facility',
-                subtext: 'Health Facility Data',
-                left: 'center',
-                bottom: '5%'
+        // AJAX request for Student Government Chart data
+        $.ajax({
+            type: 'GET',
+            url: '/api/admin/studentgovernmentChart',
+            dataType: 'json',
+            cache: false,
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                studentgovernmentData = result;
+                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
             },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Health Facility Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
+            error: () => {
+                notyf.error({
+                    message: 'Student Government Chart Fetching Error',
+                    position: {x:'right',y:'top'},
+                    duration: 2500
+                });
+            }
         });
-    })
-}
+
+        // AJAX request for Health Facility Chart data
+        $.ajax({
+            type: 'GET',
+            url: '/api/admin/healthfacilityChart',
+            dataType: 'json',
+            cache: false,
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                healthfacilityData = result;
+                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
+            },
+            error: () => {
+                notyf.error({
+                    message: 'Health Facility Chart Fetching Error',
+                    position: {x:'right',y:'top'},
+                    duration: 2500
+                });
+            }
+        });
+    };
+
+
+    var renderMergedChart = (idandcardData, studentgovernmentData, healthfacilityData) => {
+        if (idandcardData && studentgovernmentData && healthfacilityData) {
+            var mergedData = [];
+
+
+            mergedData.push(...idandcardData);
+            mergedData.push(...studentgovernmentData);
+            mergedData.push(...healthfacilityData);
+
+            var chartDom = document.getElementById('MergedChart');
+            var myChart = echarts.init(chartDom);
+            var option = {
+                title: {
+                    text: 'Merged Chart',
+                    left: 'center',
+                    bottom: '5%'
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {
+                            title: 'Save as Image',
+                        }
+                    },
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '<b>{b}</b>: {c} ({d}%)',
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    scroll: true,
+                },
+                dataset: {
+                    source: mergedData
+                },
+                xAxis: { type: 'value' },
+                yAxis: { type: 'category' },
+                series: [
+                    {
+                        type: 'bar',
+                        encode: {
+                            x: 'value',
+                            y: 'category'
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+    };
+
+
+    fetchDataForAllCharts();
+});
