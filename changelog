@@ -879,3 +879,9 @@
 - Add FIS Page in Admin Side
 - Delete Unused HTML Pages (Both Admin and Student)
 - Add Signup Contact Validations
+
+
+# 0.6.7
+- Bar Race Analytics Data Update
+- Bar Race Analytics UI Update
+- Unnecessary Charts Removed
