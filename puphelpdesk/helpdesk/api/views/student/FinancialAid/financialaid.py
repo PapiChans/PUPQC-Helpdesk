@@ -26,12 +26,12 @@ def studGetScholarships(request):
         return Response({"message": "Get Scholarships Error"})
 
 @api_view(['GET'])
-def studGetGuideInfo(request, guide_Id):
+def studGetGuideInfo(request, guide_Number):
     if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            guide = FinancialAndScholarshipGuide.objects.get(pk=guide_Id)
+            guide = FinancialAndScholarshipGuide.objects.get(guide_Number=guide_Number)
             serializer = FinancialAndScholarshipGuideSerializer(guide)
             return Response(serializer.data)
         return Response({"message": "Get Guide Info Error"})

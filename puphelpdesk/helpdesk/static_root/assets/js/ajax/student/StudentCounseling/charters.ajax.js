@@ -6,7 +6,7 @@ const notyf = new Notyf();
 
 function getCharterInfoAndNavigate(charterId) {
     // Create the URL with the guide_Id parameter
-    const detailsURL = `/student/charters/details?charter_number=${charterId}`;
+    const detailsURL = `/user/charters/details?charter_number=${charterId}`;
     
     // Navigate to the specified URL
     window.location.href = detailsURL;

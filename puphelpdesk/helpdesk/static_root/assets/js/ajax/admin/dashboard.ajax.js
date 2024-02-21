@@ -213,221 +213,34 @@ feedbackChart3 = () => {
     })
 }
 
-financialAidChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/financialaidChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('FinancialAidChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'Financial Aid and Scholarship',
-                subtext: 'Count Chart',
-                left: 'center',
-                bottom: '5%'
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Financial Aid Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
 
-careerChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/careerChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('CareerChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'Career Chart',
-                subtext: 'Job v.s Internship',
-                left: 'center',
-                bottom: '5%'
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Career Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
 
-servicereferralChart = () => {
-    $.ajax({
-        type: 'GET',
-        url: '/api/admin/servicereferralChart',
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            var chartDom = document.getElementById('ServiceReferralChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-            
-            option = {
-            title: {
-                text: 'Service Referral Chart',
-                subtext: 'On-Campus v.s Community',
-                left: 'center',
-                bottom: '5%'
-            },
-            toolbox: {
-                feature: {
-                saveAsImage: {
-                    title: 'Save as Image',
-                }
-                },
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '<b>{b}</b>: {c} ({d}%)',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-                scroll: true,
-            },
-            series: [
-                {
-                type: 'pie',
-                radius: ['60%','30%'],
-                data: result,
-                emphasis: {
-                    itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                    }
-                }
-                }
-            ]
-            };
-            
-            option && myChart.setOption(option);
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Service Referral Chart Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
 
 $(function() {
-    // Function to fetch data for all three charts
     var fetchDataForAllCharts = () => {
-        var idandcardData, studentgovernmentData, healthfacilityData;
+        var FinancialAidData, studentgovernmentData, careerData;
 
-        // AJAX request for ID and Card Chart data
+        // Financial Aid chart dito
         $.ajax({
             type: 'GET',
-            url: '/api/admin/idandcardChart',
+            url: '/api/admin/financialaidChart',
             dataType: 'json',
             cache: false,
             headers: {'X-CSRFToken': csrftoken},
             success: (result) => {
-                idandcardData = result;
-                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
+                FinancialAidData = result;
+                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
             },
             error: () => {
                 notyf.error({
-                    message: 'ID and Card Chart Fetching Error',
+                    message: 'Financial Aid Fetching Error',
                     position: {x:'right',y:'top'},
                     duration: 2500
                 });
             }
         });
 
-        // AJAX request for Student Government Chart data
+        // Student Government dito
         $.ajax({
             type: 'GET',
             url: '/api/admin/studentgovernmentChart',
@@ -436,7 +249,7 @@ $(function() {
             headers: {'X-CSRFToken': csrftoken},
             success: (result) => {
                 studentgovernmentData = result;
-                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
+                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
             },
             error: () => {
                 notyf.error({
@@ -447,20 +260,20 @@ $(function() {
             }
         });
 
-        // AJAX request for Health Facility Chart data
+        // Financial Aid Dito 
         $.ajax({
             type: 'GET',
-            url: '/api/admin/healthfacilityChart',
+            url: '/api/admin/careerChart',
             dataType: 'json',
             cache: false,
             headers: {'X-CSRFToken': csrftoken},
             success: (result) => {
-                healthfacilityData = result;
-                renderMergedChart(idandcardData, studentgovernmentData, healthfacilityData);
+                careerData = result;
+                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
             },
             error: () => {
                 notyf.error({
-                    message: 'Health Facility Chart Fetching Error',
+                    message: 'Career Chart Fetching Error',
                     position: {x:'right',y:'top'},
                     duration: 2500
                 });
@@ -469,22 +282,21 @@ $(function() {
     };
 
 
-    var renderMergedChart = (idandcardData, studentgovernmentData, healthfacilityData) => {
-        if (idandcardData && studentgovernmentData && healthfacilityData) {
+    var renderMergedChart = (FinancialAidData, studentgovernmentData, careerData) => {
+        if (FinancialAidData && studentgovernmentData && careerData) {
             var mergedData = [];
-
-
-            mergedData.push(...idandcardData);
+    
+            mergedData.push(...FinancialAidData);
             mergedData.push(...studentgovernmentData);
-            mergedData.push(...healthfacilityData);
-
+            mergedData.push(...careerData);
+    
             var chartDom = document.getElementById('MergedChart');
             var myChart = echarts.init(chartDom);
             var option = {
                 title: {
                     text: 'Merged Chart',
                     left: 'center',
-                    bottom: '5%'
+                    bottom: '1%'
                 },
                 toolbox: {
                     feature: {
@@ -513,6 +325,12 @@ $(function() {
                         encode: {
                             x: 'value',
                             y: 'category'
+                        },
+                        itemStyle: {
+                            color: function(params) {
+                                var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
+                                return colorList[params.dataIndex % colorList.length];
+                            }
                         }
                     }
                 ]
@@ -520,6 +338,7 @@ $(function() {
             myChart.setOption(option);
         }
     };
+    
 
 
     fetchDataForAllCharts();

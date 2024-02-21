@@ -27,7 +27,7 @@ function formatPostgresTimestamp(postgresTimestamp) {
 
 function getGuideIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('guide_id');
+    return urlParams.get('guide_number');
 }
 
 $(document).ready(function () {
@@ -35,14 +35,14 @@ $(document).ready(function () {
     if (guideId) {
         getGuideInfo(guideId);
     } else {
-        console.error('Guide ID not found in the URL');
+        console.error('Guide Number not found in the URL');
     }
 });
 
-getGuideInfo = (guide_Id) => {
+getGuideInfo = (guide_Number) => {
     $.ajax({
         type: 'GET',
-        url: `/api/student/getGuideInfo/${guide_Id}`,
+        url: `/api/student/getGuideInfo/${guide_Number}`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},

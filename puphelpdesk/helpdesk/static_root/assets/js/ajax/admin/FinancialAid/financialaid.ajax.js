@@ -38,10 +38,10 @@ function formatPostgresTimestamp(postgresTimestamp) {
     return formattedDate;
 }
 
-function getGuideInfoAndNavigate(guideId) {
+function getGuideInfoAndNavigate(guideNumber) {
 
     // Create the URL with the guide_Id parameter
-    const detailsURL = `/admin/financial-aid-and-scholarships/details?guide_id=${guideId}`;
+    const detailsURL = `/admin/financial-aid-and-scholarships/details?guide_number=${guideNumber}`;
     
     // Navigate to the specified URL
     window.location.href = detailsURL;
@@ -95,7 +95,7 @@ getFinancialGuide = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Id}')">Details</button></a>
+                        return `<button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Number}')">Details</button></a>
                                 <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideEditModal" onclick="foreditguide('${data.guide_Id}')">Edit</button>
                                 <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteGuide('${data.guide_Id}')">Delete</button>
                                 `
@@ -156,7 +156,7 @@ getScholarship = () => {
                     class: 'text-center',
                     render: (data) => {
                         return `
-                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Id}')">Details</button></a>
+                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getGuideInfoAndNavigate('${data.guide_Number}')">Details</button></a>
                                 <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#GuideEditModal" onclick="foreditguide('${data.guide_Id}')">Edit</button>
                                 <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteGuide('${data.guide_Id}')">Delete</button>
                                 `

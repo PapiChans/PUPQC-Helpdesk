@@ -54,7 +54,7 @@ urlpatterns = [
     #Financial Aid and Scholarship
     path('student/getFinancialAid', views.studGetFinancialAid),
     path('student/getScholarship', views.studGetScholarships),
-    path('student/getGuideInfo/<uuid:guide_Id>', views.studGetGuideInfo),
+    path('student/getGuideInfo/<guide_Number>', views.studGetGuideInfo),
 
     # Careers and Employment: Career Counseling
     path('student/getCounseling', views.studGetCounseling),
@@ -134,6 +134,7 @@ urlpatterns = [
     path('student/getCharter/<charter_Category>', views.studGetCharterCategory),
     path('student/getCharterInfo/<uuid:charter_Id>', views.studGetCharterInfo),
     path('student/getCharterNumberInfo/<charter_Number>', views.studGetCharterNumberInfo),
+    path('student/searchCharter/<charter_Keyword>', views.studSearchCharter),
 
     # Charter Step
     path('student/getCharterStep/<charter_Id>', views.studGetCharterStep),
@@ -216,7 +217,7 @@ urlpatterns = [
     path('admin/addFinancialGuide', views.adminAddGuidePost),
     path('admin/getFinancialAid', views.adminGetFinancialAid),
     path('admin/getScholarship', views.adminGetScholarships),
-    path('admin/getGuideInfo/<uuid:guide_Id>', views.adminGetGuideInfo),
+    path('admin/getGuideInfo/<guide_Number>', views.adminGetGuideInfo),
     path('admin/editGuide/<uuid:guide_Id>', views.adminEditGuidePost),
     path('admin/deleteGuide/<uuid:guide_Id>', views.adminDeleteGuidePost),
 
@@ -361,6 +362,7 @@ urlpatterns = [
     path('admin/getCharterNumberInfo/<charter_Number>', views.adminGetCharterNumberInfo),
     path('admin/editCharter/<uuid:charter_Id>', views.adminEditCharter),
     path('admin/deleteCharter/<uuid:charter_Id>', views.adminDeleteCharter),
+    path('admin/searchCharter/<charter_Keyword>', views.adminSearchCharter),
 
     # Charter Step
     path('admin/addCharterStep', views.adminAddCharterStep),

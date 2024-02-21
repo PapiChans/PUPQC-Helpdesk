@@ -168,6 +168,7 @@ class SuccessResources(models.Model):
 #Financial Aid And Scholarships
 class FinancialAndScholarshipGuide(models.Model):
     guide_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    guide_Number = models.CharField(max_length=100, null=False)
     guide_Type = models.CharField(max_length=100, null=False)
     guide_Program = models.CharField(max_length=100, null=False)
     guide_Description = models.TextField(null=False)

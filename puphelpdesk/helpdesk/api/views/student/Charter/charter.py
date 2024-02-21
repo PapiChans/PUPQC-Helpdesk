@@ -3,6 +3,9 @@ from rest_framework.decorators import api_view
 from api.serializers import CharterSerializer, CharterStepsSerializer
 from api.models import Charter, CharterSteps
 
+# For Search Query
+from django.db.models import Q
+
 @api_view(['GET'])
 def studGetCharter(request):
     if request.user.is_anonymous or request.user.is_admin:
@@ -70,3 +73,24 @@ def studGetCharterStepInfo(request, step_Id):
             serializer = CharterStepsSerializer(charter)
             return Response(serializer.data)
         return Response({"message": "Get Charter Step Info Error"})
+    
+@api_view(['POST'])
+def studSearchCharter(request, charter_Keyword):
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "POST":
+            charter_Keyword = request.POST.get('charter_Keyword')
+            data = Charter.objects.filter(
+                Q(charter_Avail__icontains=charter_Keyword) |
+                Q(charter_Classification__icontains=charter_Keyword) |
+                Q(charter_Description__icontains=charter_Keyword) |
+                Q(charter_Office__icontains=charter_Keyword) |
+                Q(charter_Requirements__icontains=charter_Keyword) |
+                Q(charter_Secure__icontains=charter_Keyword) |
+                Q(charter_Title__icontains=charter_Keyword) |
+                Q(charter_Transaction__icontains=charter_Keyword)
+            ).order_by('date_Created')
+            serializer = CharterSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Charter Error"})

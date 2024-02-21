@@ -11,6 +11,24 @@ $('input[type="date"]').flatpickr({
     dateFormat: "Y-m-d"
 });
 
+function generateRandomNumber() {
+    // Define the prefix for the ticket number
+    const prefix = "guide-";
+
+    // Define the length of the random part
+    const randomLength = 20;
+
+    // Generate a random string of alphanumeric characters
+    const randomPart = Array.from({ length: randomLength }, () =>
+        Math.random().toString(36).charAt(2)
+    ).join('');
+
+    // Combine the prefix and the random part to create the ticket number
+    const Number = prefix + randomPart;
+
+    return Number;
+}
+
 const notyf = new Notyf();
 
 addGuidePost = () => {
@@ -19,6 +37,7 @@ addGuidePost = () => {
         const form = new FormData($('AddFinancialGuideForm')[0]);
         
         const guide_Type = $('#guide_Type').val();
+        const guide_Number = generateRandomNumber();
         const guide_Program = $('#guide_Program').val();
         const guide_Description = $('#guide_Description').val();
         const guide_Apply = $('#guide_Apply').val();
@@ -45,6 +64,7 @@ addGuidePost = () => {
 
             const data = {
                 guide_Type: guide_Type,
+                guide_Number: guide_Number,
                 guide_Program: guide_Program,
                 guide_Description: guide_Description,
                 guide_Apply: guide_Apply,

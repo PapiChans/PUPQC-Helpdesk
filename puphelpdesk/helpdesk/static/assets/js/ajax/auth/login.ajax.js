@@ -57,7 +57,7 @@ login = () => {
                             window.location.href = "/admin/dashboard";
                         }
                         else if (logindata.admin == false) {
-                            window.location.href = "/student/dashboard";
+                            window.location.href = "/user/dashboard";
                         }
                     }
                 }

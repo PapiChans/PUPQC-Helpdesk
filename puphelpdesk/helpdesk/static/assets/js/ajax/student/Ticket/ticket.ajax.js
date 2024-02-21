@@ -29,15 +29,18 @@ function formatPostgresTimestamp(postgresTimestamp) {
 
 function getTicketInfoAndNavigate(ticketId) {
     // Create the URL with the guide_Id parameter
-    const detailsURL = `/student/ticket/view?ticket_number=${ticketId}`;
+    const detailsURL = `/user/ticket/view?ticket_number=${ticketId}`;
     
     // Navigate to the specified URL
     window.location.href = detailsURL;
 }
 
 function generateTicketNumber() {
+    //Get the Current Date
+    const currentdate = new Date().toJSON().slice(0, 10);
+
     // Define the prefix for the ticket number
-    const prefix = "Ticket-";
+    const prefix = "Ticket-"+currentdate+"-";
 
     // Define the length of the random part
     const randomLength = 20;
@@ -52,8 +55,6 @@ function generateTicketNumber() {
 
     return ticketNumber;
 }
-
-const ticket_Number = generateTicketNumber();
 
 getTicket = () => {
     const dt = $('#ticket-datatable');
@@ -197,7 +198,7 @@ addTicket = () => {
         const full_Name = $('#ticket_full_Name').val();
         const ticket_Title = $('#ticket_Title').val();
         const ticket_Description = $('#ticket_Description').val();
-        const ticket_Number = $('#ticket_Number').val();
+        const ticket_Number = generateTicketNumber();
 
         const data = {
             user_Id: user_Id,
@@ -238,7 +239,7 @@ addTicket = () => {
                                 duration: 2500
                             })
                                 $('form#AddTicketForm')[0].reset();
-                                window.location.href = `/student/ticket`;
+                                window.location.href = `/user/ticket`;
                         }
                     },
                 })

@@ -880,8 +880,20 @@
 - Delete Unused HTML Pages (Both Admin and Student)
 - Add Signup Contact Validations
 
-
 # 0.6.7
 - Bar Race Analytics Data Update
 - Bar Race Analytics UI Update
 - Unnecessary Charts Removed
+
+# 0.6.8
+- Push by Christian (https://github.com/papichans)
+- New Feature: Charter Search Query (Both Admin and Student)
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Models
+- Adjust Financial Guide ID (Pk) to Number (Both Admin and Student)
+- Charter Delete Validation for Error that step exists
+- Rename Main Student Routes 'student' to 'user'
+- Ticket Number Auto Generated was added date
+- Minor HTML Pages Revisions

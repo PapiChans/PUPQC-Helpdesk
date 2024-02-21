@@ -11,6 +11,7 @@ def adminAddGuidePost(request):
         if request.method == "POST":
 
             guide_Type = request.POST.get('guide_Type')
+            guide_Number = request.POST.get('guide_Number')
             guide_Program = request.POST.get('guide_Program')
             guide_Description = request.POST.get('guide_Description')
             guide_Apply = request.POST.get('guide_Apply')
@@ -22,6 +23,7 @@ def adminAddGuidePost(request):
 
             FinancialGuide = {
                     'guide_Type': guide_Type,
+                    'guide_Number': guide_Number,
                     'guide_Program': guide_Program,
                     'guide_Description': guide_Description,
                     'guide_Apply': guide_Apply,
@@ -61,12 +63,12 @@ def adminGetScholarships(request):
         return Response({"message": "Get Scholarships Error"})
 
 @api_view(['GET'])
-def adminGetGuideInfo(request, guide_Id):
+def adminGetGuideInfo(request, guide_Number):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            guide = FinancialAndScholarshipGuide.objects.get(pk=guide_Id)
+            guide = FinancialAndScholarshipGuide.objects.get(guide_Number=guide_Number)
             serializer = FinancialAndScholarshipGuideSerializer(guide)
             return Response(serializer.data)
         return Response({"message": "Get Guide Info Error"})

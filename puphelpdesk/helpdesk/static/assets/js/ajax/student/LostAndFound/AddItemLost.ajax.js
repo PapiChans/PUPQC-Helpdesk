@@ -169,7 +169,7 @@ addLostItem = (ItemImage) => {
                             duration: 2500
                         })
                         $('form#AddItemForm')[0].reset();
-                            window.location.href = `/student/LostAndFound/items`
+                            window.location.href = `/user/LostAndFound/items`
                     }
                 },
             })

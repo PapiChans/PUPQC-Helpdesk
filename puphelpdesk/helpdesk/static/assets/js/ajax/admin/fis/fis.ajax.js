@@ -8,7 +8,9 @@ getFIS = () => {
     const dt = $('#fis-datatable');
 
     $.ajaxSetup({
-        headers: {'X-CSRFToken': csrftoken},
+        headers: {
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnRlZ3JhdGlvbkBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InN0YWZmIiwiZXhwIjoxNzA4NzA1Mjc5fQ.vBx_831N2vKXv913WShd4TmX_olT-XuHm7DNfTov2bI'
+          },      
     });
 
     if (dt.length) {
