@@ -126,7 +126,7 @@ editProfile = (profile_Id) => {
                             duration: 2500
                         })
                             $('form#EditProfileForm')[0].reset();
-                            window.location.href = "/student/dashboard";
+                            window.location.href = "/user/dashboard";
                     }
                 },
             })

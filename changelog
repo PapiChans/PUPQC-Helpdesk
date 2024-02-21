@@ -897,3 +897,8 @@
 - Rename Main Student Routes 'student' to 'user'
 - Ticket Number Auto Generated was added date
 - Minor HTML Pages Revisions
+
+# 0.6.8.1
+- Push by Christian (https://github.com/papichans)
+- Bug FIX: Sign-up Validation
+- Bug FIX: User change profile info URL page route 

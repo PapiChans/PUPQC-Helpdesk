@@ -44,6 +44,12 @@ function isValidNumber(value) {
     return /^[0-9]+$/.test(value);
 }
 
+// Function to check if a value contains both numbers and characters
+function containsNumbersAndChars(value) {
+    // Use a regular expression to check if the value contains both numbers and characters
+    return /[0-9]/.test(value) && /[a-zA-Z]/.test(value);
+}
+
 signup = () => {
     if ($('#signupForm')[0].checkValidity()) {
         const form = new FormData($('#signupForm')[0]);
@@ -78,6 +84,14 @@ signup = () => {
                 duration: 2500
             })
         }
+        else if (containsNumbersAndChars(user_Last_Name) || containsNumbersAndChars(user_First_Name) || containsNumbersAndChars(user_Middle_Name)){
+            $('#signup_submit').prop('disabled', false);
+            notyf.error({
+                message: 'Name field/s should NOT Contains numbers',
+                position: {x:'right',y:'top'},
+                duration: 2500
+            })
+        }
         else if (!isValidNumber(user_Contact)){
             $('#signup_submit').prop('disabled', false);
             notyf.error({
@@ -105,7 +119,7 @@ signup = () => {
                                 duration: 2500
                             })
                         }
-                        if (signupdata.message == "E-Mail Already Exist"){
+                        else if (signupdata.message == "E-Mail Already Exist"){
                             $('#signup_submit').prop('disabled', false);
                             notyf.error({
                                 message: 'E-Mail Already Exist',
@@ -120,7 +134,6 @@ signup = () => {
                                 position: {x:'right',y:'top'},
                                 duration: 2500
                             })
-
                             window.location.href = "/login";
                         }
                     }
