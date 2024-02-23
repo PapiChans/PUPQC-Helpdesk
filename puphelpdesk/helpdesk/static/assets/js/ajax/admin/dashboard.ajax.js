@@ -294,7 +294,7 @@ $(function() {
             var myChart = echarts.init(chartDom);
             var option = {
                 title: {
-                    text: 'Merged Chart',
+                    text: 'Other Services Count',
                     left: 'center',
                     bottom: '1%'
                 },

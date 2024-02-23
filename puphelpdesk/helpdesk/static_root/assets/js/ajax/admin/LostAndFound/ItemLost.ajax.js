@@ -75,9 +75,9 @@ getLostItem = () => {
                                     Mark As
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" onclick="${button}('${itemdata.item_Id}')">
+                                    ${(itemdata.item_Status !== 'Claim Verification') ? `<a class="dropdown-item" onclick="${button}('${itemdata.item_Id}')">
                                     ${buttontext}
-                                    </a>
+                                    </a>` : ``}
                                     <a class="dropdown-item" onclick="ItemMarkAsFound('${itemdata.item_Id}')">
                                     Found
                                     </a>
