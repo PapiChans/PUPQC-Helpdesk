@@ -2,128 +2,69 @@
 {% load static %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 
 {% block maincontent %}
-<h2>Welcome, Student Name</h2>
-<p>This is PUPQC Helpdesk, how can we assist you?</p>
-<h2>Notifications</h2>
+<h2>Welcome, <span id="stud_name"><span></h2>
+<div class="alert alert-success">
+    <strong><span id="current_Date"></strong> - <strong><span id="current_Time"></strong> 
+</div>
+<h4>Notifications</h4>
 <h3 class="text-center" id="no-notif"></h3>
 <div id="notif-event"></div>
 <div id="notif-jobpost"></div>
-
-<h1 class="text-center">Services</h1>
-<p class="text-center">Services Offered in PUPQC Helpdesk.</p>
-<div class="row">
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">General Information and Services</h3>
-                <p class="text-secondary">Provides General Information and Services about PUPQC Campus.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Student Support and Counseling</h3>
-                <p class="text-secondary">Offers counseling services for mental health support, academic advising referrals for course planning, and resources to improve study skills and academic success.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Financial Aid and Scholarships</h3>
-                <p class="text-secondary">Provides guidance for students in navigating the financial aid application process and offers support in applying for scholarships.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Housing and Accommodation</h3>
-                <p class="text-secondary">Offers information on both on-campus and off-campus housing options and provides assistance in finding suitable off-campus housing and related services.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Health and Wellness Support</h3>
-                <p class="text-secondary">Connects students with campus health services and medical clinics while also offering information on health insurance options and coverage.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Career Services and Employment</h3>
-                <p class="text-secondary">Guides students to career counseling and job search resources, as well as provides information on available job and internship opportunities.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Student IDs and Access Cards</h3>
-                <p class="text-secondary">Assists students in obtaining and replacing student identification cards and provides support for access cards used for campus facilities and services.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Student Government and Involvement</h3>
-                <p class="text-secondary">Provides information about student government elections, roles, and participation opportunities and assists students in joining campus clubs and organizations.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Transportation and Parking</h3>
-                <p class="text-secondary">Offers details about public transportation options and schedules, as well as assistance with campus parking permits and regulations.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-6 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Lost and Found Services</h3>
-                <p class="text-secondary">Provides Lost and Found System in PUPQC Campus</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-6 mb-3">
-        <div class="card">
-            <div class="card-status-top bg-info"></div>
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Student Feedback and Suggestions</h3>
-                <p class="text-secondary">Gathers Feedback and Suggestion from the Students to improve technical and non-technical support services and offerings.</p>
-            </div>
-        </div>
+<div id="notif-lostitem"></div>
+<div id="clock"></div>
     </div>
 </div>
-
+<div class="card mt-3">
+    <div class="card-body">
+        <h2>Your Tickets</h2>
+        <p>Status of your Tickets</p>
+        <table id="ticket-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Ticket Number</th>
+                    <th class="dt-head-center">Title</th>
+                    <th class="dt-head-center">Status</th>
+                    <th class="dt-head-center">Date Submitted</th>
+                    <th class="dt-head-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
     </div>
 </div>
-
-
+<div class="card mt-3">
+    <div class="card-body">
+        <h2>Your Feedback and Suggestions</h2>
+        <table id="feedback-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Feedback Type</th>
+                    <th class="dt-head-center">Feedback Date Submitted</th>
+                    <th class="dt-head-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
 
 {% block customjs %}
 <script src="{% static 'assets/js/ajax/student/chatbot/chatbot.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/dashboard.ajax.js' %}"></script>
 {% endblock %}

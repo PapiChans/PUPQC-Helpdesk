@@ -22,6 +22,7 @@ urlpatterns = [
     # Dashboard
     path('student/dashboard-event', views.studfetchEvent),
     path('student/dashboard-jobpost', views.studfetchJobPosting),
+    path('student/dashboard-lostitem', views.studfetchLostItem),
 
     # General Info and Services: Event
     path('student/getEvent', views.studGetEvent),

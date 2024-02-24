@@ -410,7 +410,7 @@ editEvent = (event_Id) => {
         const event_End = $('#edit_event_End').val();
         const event_Venue = $('#edit_event_Venue').val();
 
-        if (event_Date_Start >= event_Date_End) {
+        if (event_Date_Start > event_Date_End) {
             Swal.fire({
                 title: 'Something Went Wrong',
                 text: 'You cannot set the date where the event date end is set before the event start date.',

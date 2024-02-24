@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.serializers import EventsSerializer, JobPostingSerializer
-from api.models import Events, JobPosting
+from api.serializers import EventsSerializer, JobPostingSerializer, LostandFoundSerializer
+from api.models import Events, JobPosting, LostandFound
 
 @api_view(['GET'])
 def studfetchEvent(request):
@@ -32,3 +32,16 @@ def studfetchJobPosting(request):
             else:
                 return Response({"message": "No fetched Job Posts"})
         return Response({"message": "Get Job Post Error"})
+    
+@api_view(['GET'])
+def studfetchLostItem(request):
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = LostandFound.objects.all().filter(user_Id=request.user.user_Id, item_Status='Claim Verification').exists()
+            if data:
+                return Response({"message": "Have Claim Items"})
+            else:
+                return Response({"message": "Claim Items Not Found"})
+        return Response({"message": "Get Lost Item Error"})

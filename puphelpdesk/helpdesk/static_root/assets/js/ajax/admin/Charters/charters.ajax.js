@@ -399,7 +399,6 @@ getCharterCategory = (selected_charter_Category) => {
 searchCharter = () => {
     $('#no_Charter').html("Searching...");
     let charter_display = $('#charter_display')
-    charter_display.html(null)
 
     $('#charter_Search').prop('disabled', true);
     const charter_Keyword = $('#charter_Keyword').val();
@@ -442,6 +441,7 @@ searchCharter = () => {
                         </div>
                             `;
 
+                        charter_display.html(null)
                         charter_display.append(charterformat)
                         $('#no_Charter').html('Search Results for: '+ charter_Keyword);
                         $('#charter_Search').prop('disabled', false);
