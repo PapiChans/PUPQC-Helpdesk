@@ -54,7 +54,16 @@ signup = () => {
     if ($('#signupForm')[0].checkValidity()) {
         const form = new FormData($('#signupForm')[0]);
         $('#signup_submit').prop('disabled', true);
-        
+
+        //Clearing all the feedbacks
+        $('#password_feedback').html(null)
+        $('#lname_feedback').html(null)
+        $('#fname_feedback').html(null)
+        $('#mname_feedback').html(null)
+        $('#username_feedback').html(null)
+        $('#email_feedback').html(null)
+        $('#contact_feedback').html(null)
+    
         const username = $('#username').val();
         const password = $('#password').val();
         const confirm_password = $('#confirm_password').val();
@@ -83,14 +92,24 @@ signup = () => {
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            $('#password_feedback').html('Password does not match')
         }
         else if (containsNumbersAndChars(user_Last_Name) || containsNumbersAndChars(user_First_Name) || containsNumbersAndChars(user_Middle_Name)){
             $('#signup_submit').prop('disabled', false);
             notyf.error({
-                message: 'Name field/s should NOT Contains numbers',
+                message: 'Name field/s should NOT contains numbers/symbols',
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            if (containsNumbersAndChars(user_Last_Name)){
+                $('#lname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(user_First_Name)){
+                $('#fname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(user_Middle_Name)){
+                $('#mname_feedback').html('It should NOT contains numbers/symbols')
+            }
         }
         else if (!isValidNumber(user_Contact)){
             $('#signup_submit').prop('disabled', false);
@@ -99,6 +118,7 @@ signup = () => {
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            $('#contact_feedback').html('It should contains only numbers')
         }
         else {
         
@@ -118,6 +138,7 @@ signup = () => {
                                 position: {x:'right',y:'top'},
                                 duration: 2500
                             })
+                            $('#username_feedback').html('Username already exist')
                         }
                         else if (signupdata.message == "E-Mail Already Exist"){
                             $('#signup_submit').prop('disabled', false);
@@ -126,6 +147,7 @@ signup = () => {
                                 position: {x:'right',y:'top'},
                                 duration: 2500
                             })
+                            $('#email_feedback').html('E-mail already exist')
                         }
                         else{
                             $('#signup_submit').prop('disabled', true);

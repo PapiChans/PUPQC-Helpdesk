@@ -10,6 +10,9 @@ $(function() {
     idandcardChart();
     studentgovernmentChart();
     healthfacilityChart();
+    /* Tickets */
+    getOpenTicket();
+    getClosedTicket();
 })
 
 const notyf = new Notyf();

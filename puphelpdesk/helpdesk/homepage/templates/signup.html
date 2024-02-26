@@ -32,10 +32,12 @@
                   <div class="col-md-6 mb-2">
                     <label class="form-label">Username<span class="text-danger">*</span></label>
                     <input type="text" id="username" class="form-control" placeholder="Username" required/>
+                    <div class="small text-danger" id="username_feedback"></div>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">E-mail Address<span class="text-danger">*</span></label>
                     <input type="email" id="user_Email" class="form-control" placeholder="Email Address" required/>
+                    <div class="small text-danger" id="email_feedback"></div>
                   </div>
                 </div>
               </div>
@@ -44,12 +46,14 @@
                 <div class="input-group input-group-flat">
                   <input type="password" id="password" class="form-control" minlength="8" maxlength="20" placeholder="Password" required/>
                 </div>
+                <div class="small text-info">Minimum of 8 characters long.</div>
               </div>
               <div class="mb-2">
                 <label class="form-label">Confirm Password<span class="text-danger">*</span></label>
                 <div class="input-group input-group-flat">
                   <input type="password" id="confirm_password" class="form-control" minlength="8" maxlength="20" placeholder="Password" required/>
                 </div>
+                <div class="small text-danger" id="password_feedback"></div>
               </div>
               <div class="mb-2">
                 <div class="row">
@@ -58,18 +62,21 @@
                     <div class="input-group input-group-flat">
                       <input type="text" id="user_Last_Name" class="form-control" placeholder="Last Name" required/>
                     </div>
+                    <div class="small text-danger" id="lname_feedback"></div>
                   </div>
                   <div class="col-md-4 mb-2">
                     <label class="form-label">First Name<span class="text-danger">*</span></label>
                     <div class="input-group input-group-flat">
                       <input type="text" id="user_First_Name" class="form-control" placeholder="First Name" required/>
                     </div>
+                    <div class="small text-danger" id="fname_feedback"></div>
                   </div>
                   <div class="col-md-4 mb-2">
                     <label class="form-label">Middle Name</label>
                     <div class="input-group input-group-flat">
                       <input type="text" id="user_Middle_Name" class="form-control" placeholder="Middle Name" />
                     </div>
+                    <div class="small text-danger" id="mname_feedback"></div>
                   </div>
                 </div>
               </div>
@@ -78,8 +85,9 @@
                   <div class="col-md-6">
                     <label class="form-label">Contact Number<span class="text-danger">*</span></label>
                     <div class="input-group input-group-flat">
-                      <input type="tel" id="user_Contact" class="form-control" minlength="11" maxlength="11" placeholder="Contact Number" required/>
+                      <input type="tel" id="user_Contact" class="form-control" minlength="11" maxlength="11" placeholder="Contact Number" required/> 
                     </div>
+                    <div class="small text-danger" id="contact_feedback"></div>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Gender<span class="text-danger">*</span></label>
