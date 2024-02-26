@@ -79,15 +79,18 @@ getTicketInfo = (ticket_Number) => {
             getTicketComment(data.ticket_Id, data.full_Name);
 
             //Display the form response
-            let formshoworhide = $('#formshoworhide')
+            let formshoworhide = $('#formshoworhide');
 
             let openformat = `<div class="text-center">
-            <h2 class="text-center">Wait for Response</h2>
-            <p class="text-center">Wait for the Student response before to reply again.</p>
-            <button type="button" class="btn btn-danger" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
+                <h2 class="text-center">Wait for Response</h2>
+                <p class="text-center">Wait for the Student response before to reply again.</p>
+                <button type="button" class="btn btn-danger" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
             </div>
-            `
+            `;
 
+            
+
+            
             let closedformat = `<h2 class="text-center">Ticket Closed</h2>
             <p class="text-center">This ticket is closed.</p>
             `
@@ -103,8 +106,10 @@ getTicketInfo = (ticket_Number) => {
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
+
             
         },
+        
     })
     .fail(() => {
         notyf.error({

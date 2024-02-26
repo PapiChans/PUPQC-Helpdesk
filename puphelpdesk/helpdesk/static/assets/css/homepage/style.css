@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
-
 body {
   font-size: 0.9rem;
   color: #343a40;
   font-family: "Nunito Sans", sans-serif;
+  
 }
 
 html {
@@ -170,6 +170,137 @@ a {
 }
 
 
+
+
+/* FAQS section */
+.faqs{
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
+.container3 .card{
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: var(--clr);
+  border-radius: 20px;
+  border-top-left-radius: 70px;
+  overflow: hidden;
+}
+
+.container3 .card .box{
+  position: absolute;
+  inset: 10px;
+  background: #edf2f4;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.container3 .card .box .icon{
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: var(--clr);
+  border-bottom-right-radius: 50%;
+  transition: 0.5s;
+}
+
+/*.container3 .card:hover .box .icon {
+  width: 100%;
+} */
+
+.container3 .card .box .icon::before{
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-top-left-radius: 30px;
+  box-shadow: -5px -5px 0 5px var(--clr);
+}
+
+.container3 .card .box .icon::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-top-left-radius: 30px;
+  box-shadow: -5px -5px 0 5px var(--clr);
+}
+
+.container3 .card .box .icon .iconBox{
+  border-radius: 50%;
+  position: absolute;
+  inset: 10px;
+  background: #edf2f4;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.container3 .card .box .icon .iconBox ion-icon{
+  font-size: 4em;
+  --ionicon-stroke-width: 20px;
+}
+
+.container3 .card .box .content{
+  position: absolute;
+  top: 80px;
+  padding: 70px;
+  text-align: center;
+}
+
+.container3 .card .box .content h3{
+  font-size: 1.35em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.container3 .card .box .content p{
+  font-size: 0.95em;
+  opacity: 0.75;
+  margin: 0 0 10px;
+}
+
+.container3 .card .box .content a{
+  background: var(--clr);
+  display: inline-block;
+  padding: 10px 25px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: 0.5s;
+  border: 1px solid;
+}
+
+.container3 .card .box .content a:hover{
+  color: var(--clr);
+  background: #edf2f4;
+}
+
+/* End FAQs */
 
 
 
@@ -392,6 +523,7 @@ footer .social-icons a {
 .section {
   position: relative;
   padding: 100px 0px 100px;
+  
 }
 
 .sectionhome {
@@ -778,11 +910,12 @@ label {
 
 .navbar {
   padding: 20px 0px;
+  width: 100%;
   z-index: 999;
+  overflow-x: hidden;
   margin-bottom: 0px;
   transition: all 0.3s ease-in-out;
 }
-
 .navbar .logo .logo-dark {
   display: none;
 }
@@ -792,6 +925,7 @@ label {
   transition: all 0.3s;
   background-color: transparent !important;
   padding: 6px 10px;
+  margin: 0 7px;
   font-weight: 600;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover, .navbar .navbar-nav .nav-item .nav-link:active, .navbar .navbar-nav .nav-item .nav-link:focus, .navbar .navbar-nav .nav-item .nav-link.active {
@@ -810,7 +944,6 @@ label {
   color: #ffffff;
   border: none;
   padding: 0 !important;
-  margin-right: auto;
 }
 .navbar-toggler:focus {
   outline: 0 !important;
@@ -819,13 +952,17 @@ label {
 
 /*--- navbar sticky ---*/
 .nav-sticky.navbar {
-  max-width: min-content;
+  margin-top: 0px;
   padding: 10px 0px;
   background-color: #ffffff;
   box-shadow: 0px 8px 35px 0px rgba(69, 61, 80, 0.05);
 }
-
-
+.nav-sticky.navbar .logo .logo-dark {
+  display: block;
+}
+.nav-sticky.navbar .logo .logo-light {
+  display: none;
+}
 .nav-sticky.navbar .navbar-nav .nav-item .nav-link {
   color: rgba(52, 58, 64, 0.8);
 }
@@ -851,14 +988,15 @@ label {
 }
 
 @media (max-width: 991px) {
-  
   .navbar {
     margin-top: 0px;
     padding: 10px 0px !important;
     background-color: #ffffff !important;
     box-shadow: 0 10px 33px -14px rgba(0, 0, 0, 0.1);
   }
-
+  .navbar .logo .logo-dark {
+    display: block;
+  }
   .navbar .logo .logo-light {
     display: none;
   }
@@ -878,7 +1016,7 @@ label {
     font-size: 24px;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding: 0px;
+    padding: 0px !important;
     color: rgba(52, 58, 64, 0.9);
   }
 }
