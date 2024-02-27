@@ -11,11 +11,98 @@ $(function() {
     studentgovernmentChart();
     healthfacilityChart();
     /* Tickets */
-    getOpenTicket();
-    getClosedTicket();
+    ticketChart();
 })
 
 const notyf = new Notyf();
+
+ticketChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/ticketChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('ticketChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+            const colors = ['#5470C6', '#91CC75'];
+
+            option = {
+                color: colors,
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                grid: {
+                    right: '20%'
+                },
+                toolbox: {
+                    feature: {
+                        dataView: { show: true, readOnly: false },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                legend: {
+                    data: ['Last year', 'This Year']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        data: result.map(item => item.name)
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: 'Tickets',
+                        position: 'right',
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: colors[0]
+                            }
+                        },
+                        axisLabel: {
+                            formatter: '{value} Tickets'
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Last year',
+                        type: 'bar',
+                        data: result.map(item => item.lastYearTickets)
+                    },
+                    {
+                        name: 'This Year',
+                        type: 'bar',
+                        yAxisIndex: 0,
+                        data: result.map(item => item.thisYearTickets)
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Feedback Chart 1 Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
 
 feedbackChart1 = () => {
     $.ajax({
@@ -218,7 +305,6 @@ feedbackChart3 = () => {
 
 
 
-
 $(function() {
     var fetchDataForAllCharts = () => {
         var FinancialAidData, studentgovernmentData, careerData;
@@ -310,7 +396,6 @@ $(function() {
                 },
                 tooltip: {
                     trigger: 'item',
-                    formatter: '<b>{b}</b>: {c} ({d}%)',
                 },
                 legend: {
                     orient: 'vertical',
