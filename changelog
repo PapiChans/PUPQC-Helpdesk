@@ -936,3 +936,14 @@
 - Ticket Views added
 - Ticket chart URL added
 - ticket chart on Dashboard ,ajax temporarily added
+
+# 0.7.3.1
+- Push by Christian (https://github.com/papichans)
+- Update Models for User Profile Program
+- Add API for only get Info for Financial Aid (Admin)
+- Add Edit Profile validation (Both Admin and Student)
+- Improve Edit Profile Validations
+- Update API URLs
+- Update API Views
+- Add AJAX Flies
+- Update Models

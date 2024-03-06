@@ -11,7 +11,7 @@ def index(request):
         if request.user.is_admin:
             return redirect('admin/dashboard')
         else:
-            return redirect('student/dashboard')
+            return redirect('user/dashboard')
 
     # Authentication
 def login(request):
@@ -21,7 +21,7 @@ def login(request):
         if request.user.is_admin:
             return redirect('admin/dashboard')
         else:
-            return redirect('student/dashboard')
+            return redirect('user/dashboard')
  
     # Error 404
 def error_404(request, exception):
@@ -36,5 +36,5 @@ def signup(request):
         if request.user.is_admin:
             return redirect('admin/dashboard')
         else:
-            return redirect('student/dashboard')
+            return redirect('user/dashboard')
    

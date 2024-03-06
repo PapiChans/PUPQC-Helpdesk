@@ -78,6 +78,12 @@ editProfile = (profile_Id) => {
 
         $('#user_Submit').prop('disabled', true);
 
+        //Clearing all the feedbacks
+        $('#lname_feedback').html(null)
+        $('#fname_feedback').html(null)
+        $('#mname_feedback').html(null)
+        $('#contact_feedback').html(null)
+
         const profile_Id = $('#profile_Id').val();
         const user_Program = $('#user_Program').val();
         const user_Last_Name = $('#user_Last_Name').val();
@@ -101,6 +107,7 @@ editProfile = (profile_Id) => {
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            $('#contact_feedback').html('It should contains only numbers')
         }
         else if (containsNumbersAndChars(user_Last_Name) || containsNumbersAndChars(user_First_Name) || containsNumbersAndChars(user_Middle_Name)){
             $('#user_Submit').prop('disabled', false);
@@ -109,6 +116,15 @@ editProfile = (profile_Id) => {
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            if (containsNumbersAndChars(user_Last_Name)){
+                $('#lname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(user_First_Name)){
+                $('#fname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(user_Middle_Name)){
+                $('#mname_feedback').html('It should NOT contains numbers/symbols')
+            }
         }
         else {
             $.ajax({

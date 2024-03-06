@@ -61,6 +61,17 @@ def adminGetScholarships(request):
             serializer = FinancialAndScholarshipGuideSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Scholarships Error"})
+    
+@api_view(['GET'])
+def adminGetGuideInfoEdit(request, guide_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            guide = FinancialAndScholarshipGuide.objects.get(pk=guide_Id)
+            serializer = FinancialAndScholarshipGuideSerializer(guide)
+            return Response(serializer.data)
+        return Response({"message": "Get Guide Info Error"})    
 
 @api_view(['GET'])
 def adminGetGuideInfo(request, guide_Number):

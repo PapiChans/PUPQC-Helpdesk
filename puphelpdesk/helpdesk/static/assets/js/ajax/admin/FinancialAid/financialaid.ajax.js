@@ -173,7 +173,7 @@ foreditguide = (guide_Id) => getGuideforEdit(guide_Id)
 getGuideforEdit = (guide_Id) => {
     $.ajax({
         type: 'GET',
-        url: `/api/admin/getGuideInfo/${guide_Id}`,
+        url: `/api/admin/getGuideInfoEdit/${guide_Id}`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},

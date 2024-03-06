@@ -18,7 +18,11 @@ def studEditProfile(request, profile_Id):
             user_Gender = request.POST.get('user_Gender')
 
             profile = UserProfile.objects.get(pk=profile_Id)
-            profile.user_Program = user_Program
+            if profile.user_Program == 'External Client':
+                profile.user_Program = 'External Client'
+            else:
+                profile.user_Program = user_Program
+                
             profile.user_Last_Name = user_Last_Name
             profile.user_First_Name = user_First_Name
             profile.user_Middle_Name = user_Middle_Name if user_Middle_Name else None

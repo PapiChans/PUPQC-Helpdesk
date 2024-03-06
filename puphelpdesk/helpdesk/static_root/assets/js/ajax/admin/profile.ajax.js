@@ -72,6 +72,12 @@ editProfile = (profile_Id) => {
 
         $('#admin_Submit').prop('disabled', true);
 
+        //Clearing all the feedbacks
+        $('#lname_feedback').html(null)
+        $('#fname_feedback').html(null)
+        $('#mname_feedback').html(null)
+        $('#contact_feedback').html(null)
+
         const profile_Id = $('#profile_Id').val();
         const admin_Last_Name = $('#admin_Last_Name').val();
         const admin_First_Name = $('#admin_First_Name').val();
@@ -93,14 +99,24 @@ editProfile = (profile_Id) => {
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            $('#contact_feedback').html('It should contains only numbers')
         }
-        else if (containsNumbersAndChars(admin_Last_Name) || containsNumbersAndChars(admin_First_Name) || containsNumbersAndChars(admin_Middle_Name)){
+        if (containsNumbersAndChars(admin_Last_Name) || containsNumbersAndChars(admin_First_Name) || containsNumbersAndChars(admin_Middle_Name)){
             $('#admin_Submit').prop('disabled', false);
             notyf.error({
                 message: 'Name field/s should NOT Contains numbers',
                 position: {x:'right',y:'top'},
                 duration: 2500
             })
+            if (containsNumbersAndChars(admin_Last_Name)){
+                $('#lname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(admin_First_Name)){
+                $('#fname_feedback').html('It should NOT contains numbers/symbols')
+            }
+            if (containsNumbersAndChars(admin_Middle_Name)){
+                $('#mname_feedback').html('It should NOT contains numbers/symbols')
+            }
         }
         else {
             $.ajax({

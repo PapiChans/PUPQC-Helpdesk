@@ -219,6 +219,7 @@ urlpatterns = [
     path('admin/addFinancialGuide', views.adminAddGuidePost),
     path('admin/getFinancialAid', views.adminGetFinancialAid),
     path('admin/getScholarship', views.adminGetScholarships),
+    path('admin/getGuideInfoEdit/<guide_Id>', views.adminGetGuideInfoEdit),
     path('admin/getGuideInfo/<guide_Number>', views.adminGetGuideInfo),
     path('admin/editGuide/<uuid:guide_Id>', views.adminEditGuidePost),
     path('admin/deleteGuide/<uuid:guide_Id>', views.adminDeleteGuidePost),
