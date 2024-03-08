@@ -1,253 +1,219 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>PUPQC Helpdesk</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{% static 'assets/css/homepage/style.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/css/homepage/tiny-slider.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/libs/aos/aos.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/libs/boxicons/boxicons.css' %}" rel="stylesheet">
-        <link rel="shortcut icon" href="{% static 'assets/images/smollogo.png' %}" type="image/icon">
-        <link href="{% static 'assets/libs/fontawesome-6.4.2/css/all.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static 'assets/libs/bootstrap-5.3.2/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    </head>
+<head>
+    <title>PUPQC Helpdesk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'assets/css/homepage/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/homepage/tiny-slider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/libs/boxicons/boxicons.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'assets/images/smollogo.png' %}" type="image/icon">
+    <link href="{% static 'assets/libs/fontawesome-6.4.2/css/all.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/libs/bootstrap-5.3.2/css/bootstrap.min.css' %}" rel="stylesheet">
 
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="58" style="background: #edf2f4;">
-       <!--Navbar Start-->
-<nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
-    <div class="container">
-        <a class="navbar-brand logo" href="#">
-    <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-light" style="max-height: 50px;" />
-    <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-dark" style="max-height: 50px;" />
-    
-</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-navlist">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link" id="scrollElement">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-            </ul>
-                <a href="{% url 'login' %}" class="btn btn-danger btn-sm navbar-btn my-lg-0 my-2">Log In</a>
-        </div>
-    </div>
-</nav>
+</head>
 
-    <!-- home -->
-<section class="sectionhome hero d-flex flex-column align-items-center justify-content-center" id="home">
-    <!-- bg-overlay-img -->
-    <div class="bg-overlay overflow-hidden bg-transparent text-center">
-        <div class="hero-1-bg"></div>
-    </div>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="58">
 
-    <div class="container">    
-    <div class="hero-wrapper text-white-50 text-center">
-        <h1 class="hero-1-title display-3 fw-bold text-white mb-1">
-            <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="img-fluid" style="max-height: 250px;" />
-        </h1>
-    </div>
-</div>
-    <!-- end container -->
-</section>
-<!-- Hero section End -->
-
-<!-- Services -->
-<section class="section2" id="services" data-aos="fade-up" data-aos-duration="3000">
-    <div class="container2" data-aos="fade-up" data-aos-duration="3000">
-        <div class="col-12 d-flex flex-column text-center justify-content-center">
-            <h2>Services</h2>
-            <h5 class=" fw-normal py-2 fst-italic">Services offered by PUPQC helpdesk. <a href="{% url 'login' %}" class="text-danger">Log In</a> to continue</h5>
-          </div>
-          
-        <div class="card" >
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="cash-outline"></ion-icon></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Financial Aid and Scholarships</h2>
-                    <p>This initiative provides guidance for students in navigating the financial aid application process and offers support in applying for scholarships.</p>
-                </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="#">
+                <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-light" style="max-height: 50px;" />
+                <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="logo-dark" style="max-height: 50px;" />
+                
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-navlist">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link" id="scrollElement">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#links" class="nav-link">Links</a>
+                    </li>
+                </ul>
+                    <a href="{% url 'login' %}" class="btn btn-danger btn-sm navbar-btn my-lg-0 my-2">Log In</a>
             </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="chatbubbles-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Student Support and Counseling
-                    </h2>
-                    <p>This program offers counseling services for mental health support, academic advising referrals for course planning, and resources to improve study skills and academic success.</p>
+    <!-- Hero section Start -->
+    <section class="hero-3 position-relative align-items-center justify-content-center d-flex overflow-hidden" style="background-image: url({% static 'assets/css/homepage/StudLounge.jpg' %});" id="home">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row position-relative align-items-center justify-content-center">
+                <div class="col-lg-8 text-center py-5 px-4 mt-4">
+                        <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="logo" class="img-fluid" style="max-height: 250px;" />
                 </div>
             </div>
+            <!-- end row -->
         </div>
+        <!-- end container -->
+    </section>
+    <!-- Hero section End -->
 
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="home-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Housing and Accommodation</h2>
-                    <p>This program offers information on both on-campus and off-campus housing options and provides assistance in finding suitable off-campus housing and related services.</p>
+    <!-- Start About -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h3 class="mb-3">Services offered in PUPQC Student Helpdesk</h3>
+                    </div>
                 </div>
             </div>
-        </div>
+            <!-- end row -->
 
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="medkit-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Health and Wellness Support</h2>
-                    <p>This service connects students with campus health services and medical clinics while also offering information on health insurance options and coverage.</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-circle-exclamation"></i>
+                        </div>
+
+                        <h5>General Info and Services</h5>
+                        <p class="text-muted">Provides General Information about PUP Quezon City campus.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-scroll"></i>
+                        </div>
+
+                        <h5>Financial Aid and Scholarships</h5>
+                        <p class="text-muted">This initiative provides guidance for students in navigating the financial aid application process and offers support in applying for scholarships.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-user-group"></i>
+                        </div>
+
+                        <h5>Student Support and Counseling</h5>
+                        <p class="text-muted">This program offers counseling services for academic advising referrals.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-user-nurse"></i>
+                        </div>
+
+                        <h5>Health and Wellness Support</h5>
+                        <p class="text-muted">This service offers students with campus health services.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-briefcase"></i>
+                        </div>
+
+                        <h5>Career Services and Employment</h5>
+                        <p class="text-muted">This service guides students to career counseling and job search resources, as well as provides information on available job and internship opportunities.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-id-badge"></i>
+                        </div>
+
+                        <h5>Student ID Issuance Guide</h5>
+                        <p class="text-muted">This service assists students in obtaining and replacing student identification cards.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-person-circle-question"></i>
+                        </div>
+
+                        <h5>Lost and Found Services</h5>
+                        <p class="text-muted">Provides a process for reporting and recovering lost items on campus. You can also find your missing items here.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-comment"></i>
+                        </div>
+
+                        <h5>Feedback and Suggestion</h5>
+                        <p class="text-muted">This able to send students feedback or suggestion to improve the services of the campus.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="text-center p-4">
+                        <div class="icons-xl mb-3">
+                            <i class="text-danger fa-solid fa-ticket"></i>
+                        </div>
+
+                        <h5>Ticket</h5>
+                        <p class="text-muted">Address your concern with the Ticketing System.</p>
+                    </div>
                 </div>
             </div>
+            <!-- end row -->
         </div>
+        <!-- end container -->
+    </section>
+    <!-- end About -->
 
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="briefcase-outline"></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Career Services and Employment</h2>
-                    <p>This service guides students to career counseling and job search resources, as well as provides information on available job and internship opportunities.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="id-card-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Student IDs and Access Cards</h2>
-                    <p>This service assists students in obtaining and replacing student identification cards and provides support for access cards used for campus facilities and services.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="school-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Student Government and Involvement</h2>
-                    <p>This service provides information about student government elections, roles, and participation opportunities and assists students in joining campus clubs and organizations.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="car-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Transportation and Parking</h2>
-                    <p>This service offers details about public transportation options and schedules, as well as assistance with campus parking permits and regulations.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="lines"></div>
-            <div class="imgBx"><ion-icon name="search-outline"></ion-icon></div>
-            <div class="content">
-                <div class="details">
-                    <h2>Lost and Found Services</h2>
-                    <p>Lost Item Reporting: Provides a process for reporting and recovering lost items on campus. You can also find your missing items here.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end services -->
-
-
-    <!---About PUPQC--->
-    <section class="container py-5" id="about">
-        <div class="row mt-4 py-3" data-aos="fade-up" data-aos-duration="3000">
-          <div class="col-12 d-flex flex-column text-center">
-            <h2>ABOUT <span style="color: #800000;">PUPQC</span> <span style="color: #D1B000;"> HELPDESK </span></h2>
-            <h5 class=" fw-normal py-2 fst-italic" data-aos="fade-up" data-aos-duration="3000">The past Administrator of this branch are the following:</h5>
-          </div>
-        </div>
-        <div class="row flex-row-reverse flex-md-row mt-5 pt-5" data-aos="fade-up" data-aos-duration="3000">
-          <div class="col-9 col-md-5 text-md-end">
-            <h5>19XX-Present</h5>
-            <h5>Rosey Escobar - Course Adviser</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-          <div class="col-3 col-md-2 img text-center" data-aos="fade-up" data-aos-duration="3000">
-            <img class="rounded-circle border border-5 border-dark-subtle img-fluid" src="{% static 'assets/images/girl.jpg' %}" alt="img">
-          </div>
-        </div>
-        <div class="row justify-content-md-end mt-5 pt-5" data-aos="fade-up" data-aos-duration="3000">
-          <div class="col-3 col-md-2 img text-center" data-aos="fade-up" data-aos-duration="3000">
-            <img class="rounded-circle border border-5 border-dark-subtle img-fluid" src="{% static 'assets/images/boy.jpg' %}" alt="img">
-          </div>
-          <div class="col-9 col-md-5">
-            <h5>19XX-Present</h5>
-            <h5>Christian Balatbat - Project Adviser</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- start footer -->
-    <footer class="footer bg-dark text-white-50">
+    <!-- start footer -->
+    <footer class="footer bg-dark text-white-50" id="links">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <img src="{% static 'assets/images/logo/PUPQC_Helpdesk_Logo.png' %}" alt="" height="50" />
-                    <p>PUPQC Helpdesk</p>
+                    <p>PUPQC Student Helpdesk</p>
                 </div>
 
                 <div class="col-lg-2 col-sm-6">
                     <div class="mt-4 mt-lg-0">
                         <h5 class="mb-4 font-18 text-white">Links</h5>
                         <ul class="list-unstyled footer-list-menu">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="https://www.pup.edu.ph/">Official PUP Website</a></li>
+                            <li><a href="https://www.pup.edu.ph/quezoncity/">Quezon City Branch</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Polytechnic_University_of_the_Philippines_Quezon_City">Wikipedia</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-2 col-sm-6">
                     <div class="mt-4 mt-lg-0">
-                        <h5 class="mb-4 font-18 text-white">Resources</h5>
+                        <h5 class="mb-4 font-18 text-white">Learn more</h5>
                         <ul class="list-unstyled footer-list-menu">
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="https://www.pup.edu.ph/about/contactus">Contact Us</a></li>
+                            <li><a href="https://www.pup.edu.ph/privacy/">Privacy Statement</a></li>
+                            <li><a href="https://www.pup.edu.ph/terms/">Terms of Use</a></li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-2 col-sm-6">
                     <div class="mt-2 mt-lg-0">
                         <h5 class="font-18 text-white">Social</h5>
                         <ul class="list-inline social-icons-list">
                             <li class="list-inline-item">
-                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://web.facebook.com/ThePUPOfficial"><i class="fa-brands fa-facebook"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://twitter.com/thepupofficial"><i class="fa-brands fa-x-twitter"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/school/polytechnic-university-of-the-philippines/"><i class="fa-brands fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -258,9 +224,6 @@
         <!-- end container -->
     </footer>
     <!-- end footer -->
-  
-
-
 
 
     <script src="{% static 'assets/libs/aos/aos.js' %}"></script>
@@ -273,4 +236,5 @@
     <script src="{% static 'assets/js/homepage/app.js' %}"></script>
     <script src="{% static 'assets/js/homepage/tiny-slider.js' %}"></script>
 </body>
+
 </html>
