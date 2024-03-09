@@ -46,11 +46,11 @@ urlpatterns = [
     path('student/getSupportCounselorInfo/<uuid:counselor_Id>', views.studGetSupportCounselorInfo),
 
     # Student Support and Counseling: Academic Advising
-    path('student/getAcademicAdviser', views.studGetAcademicAdviser),
-    path('student/getAcademicAdviserInfo/<uuid:adviser_Id>', views.studGetAcademicAdviserInfo),
+    # (Inactive) path('student/getAcademicAdviser', views.studGetAcademicAdviser),
+    # (Inactive) path('student/getAcademicAdviserInfo/<uuid:adviser_Id>', views.studGetAcademicAdviserInfo),
 
     # Student Support and Counseling: Success Resources
-    path('student/getSuccessResources', views.studGetSuccessResources),
+    # (Inactive) path('student/getSuccessResources', views.studGetSuccessResources),
 
     #Financial Aid and Scholarship
     path('student/getFinancialAid', views.studGetFinancialAid),
@@ -69,39 +69,39 @@ urlpatterns = [
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
 
     # ID and Access Cards
-    path('student/getObtainingStep', views.studGetObtainingStep),
-    path('student/getReplacingStep', views.studGetReplacingStep),
-    path('student/getAccessCardStep', views.studGetAccessCardStep),
+    # (Inactive) path('student/getObtainingStep', views.studGetObtainingStep),
+    # (Inactive) path('student/getReplacingStep', views.studGetReplacingStep),
+    # (Inactive) path('student/getAccessCardStep', views.studGetAccessCardStep),
 
     # Student Government and Involvement
-    path('student/getGovernment', views.studGetGovernment),
-    path('student/getGovernmentInfo/<uuid:government_Id>', views.studGetGovernmentInfo),
+    # (Inactive) path('student/getGovernment', views.studGetGovernment),
+    # (Inactive) path('student/getGovernmentInfo/<uuid:government_Id>', views.studGetGovernmentInfo),
 
     # Health and Wellness Programs: Health Service Referrals
-    path('student/getHealthFacility', views.studGetHealthFacility),
-    path('student/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.studGetHealthFacilityInfo),
+    # (Inactive) path('student/getHealthFacility', views.studGetHealthFacility),
+    # (Inactive) path('student/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.studGetHealthFacilityInfo),
 
     # Health and Wellness Programs: Health Insurance
-    path('student/getHealthInsurance', views.studGetHealthInsurance),
-    path('student/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.studGetHealthInsuranceInfo),
+    # (Inactive) path('student/getHealthInsurance', views.studGetHealthInsurance),
+    # (Inactive) path('student/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.studGetHealthInsuranceInfo),
 
     # Housing and Accomodation: Housing Options Referrals
-    path('student/getHousingReferrals', views.studGetHousingReferrals),
-    path('student/getHousingReferralsInfo/<uuid:housing_Id>', views.studGetHousingReferralsInfo),
+    # (Inactive) path('student/getHousingReferrals', views.studGetHousingReferrals),
+    # (Inactive) path('student/getHousingReferralsInfo/<uuid:housing_Id>', views.studGetHousingReferralsInfo),
 
     # Housing and Accomodation: Off-Campus Living Assistance
-    path('student/getLivingAssistance', views.studGetLivingAssistance),
+    # (Inactive) path('student/getLivingAssistance', views.studGetLivingAssistance),
 
     # Transportation and Parking: Campus Parking Permits
-    path('student/getPermit', views.studGetPermit),
-    path('student/getPermitInfo/<uuid:permit_Id>', views.studGetPermitInfo),
+    # (Inactive) path('student/getPermit', views.studGetPermit),
+    # (Inactive) path('student/getPermitInfo/<uuid:permit_Id>', views.studGetPermitInfo),
 
     # Transportation and Parking: Campus Parking Regulation
-    path('student/getRegulation', views.studGetRegulation),
+    # (Inactive) path('student/getRegulation', views.studGetRegulation),
 
     # Transportation and Parking: Transporation Options
-    path('student/getTransport', views.studGetTransport),
-    path('student/getTransportInfo/<uuid:transport_Id>', views.studGetTransportInfo),
+    # (Inactive) path('student/getTransport', views.studGetTransport),
+    # (Inactive) path('student/getTransportInfo/<uuid:transport_Id>', views.studGetTransportInfo),
 
     # Lost and Found: Lost Item Posting
     path('student/addLostItem', views.studAddLostItem),
@@ -197,23 +197,23 @@ urlpatterns = [
     path('admin/deleteServiceReferral/<uuid:referral_Id>', views.adminDeleteServiceReferral),
 
     # Student Support and Counseling: Support Counseling
-    path('admin/addSupportCounselor', views.adminAddSupportCounselor),
-    path('admin/getSupportCounselor', views.adminGetSupportCounselor),
-    path('admin/getSupportCounselorInfo/<uuid:counselor_Id>', views.adminGetSupportCounselorInfo),
-    path('admin/editSupportCounselor/<uuid:counselor_Id>', views.adminEditSupportCounselor),
-    path('admin/deleteSupportCounselor/<uuid:counselor_Id>', views.adminDeleteSupportCounselor),
+    # (Inactive) path('admin/addSupportCounselor', views.adminAddSupportCounselor),
+    # (Inactive) path('admin/getSupportCounselor', views.adminGetSupportCounselor),
+    # (Inactive) path('admin/getSupportCounselorInfo/<uuid:counselor_Id>', views.adminGetSupportCounselorInfo),
+    # (Inactive) path('admin/editSupportCounselor/<uuid:counselor_Id>', views.adminEditSupportCounselor),
+    # (Inactive) path('admin/deleteSupportCounselor/<uuid:counselor_Id>', views.adminDeleteSupportCounselor),
 
     # Student Support and Counseling: Academic Advising
-    path('admin/addAcademicAdviser', views.adminAddAcademicAdviser),
-    path('admin/getAcademicAdviser', views.adminGetAcademicAdviser),
-    path('admin/getAcademicAdviserInfo/<uuid:adviser_Id>', views.adminGetAcademicAdviserInfo),
-    path('admin/editAcademicAdviser/<uuid:adviser_Id>', views.adminEditAcademicAdviser),
-    path('admin/deleteAcademicAdviser/<uuid:adviser_Id>', views.adminDeleteAcademicAdviser),
+    # (Inactive) path('admin/addAcademicAdviser', views.adminAddAcademicAdviser),
+    # (Inactive) path('admin/getAcademicAdviser', views.adminGetAcademicAdviser),
+    # (Inactive) path('admin/getAcademicAdviserInfo/<uuid:adviser_Id>', views.adminGetAcademicAdviserInfo),
+    # (Inactive) path('admin/editAcademicAdviser/<uuid:adviser_Id>', views.adminEditAcademicAdviser),
+    # (Inactive) path('admin/deleteAcademicAdviser/<uuid:adviser_Id>', views.adminDeleteAcademicAdviser),
 
     # Student Support and Counseling: Success Resources
-    path('admin/addSuccessResources', views.adminAddSuccessResources),
-    path('admin/getSuccessResources', views.adminGetSuccessResources),
-    path('admin/deleteSuccessResources/<uuid:success_resources_Id>', views.adminDeleteSuccessResources),
+    # (Inactive) path('admin/addSuccessResources', views.adminAddSuccessResources),
+    # (Inactive) path('admin/getSuccessResources', views.adminGetSuccessResources),
+    # (Inactive) path('admin/deleteSuccessResources/<uuid:success_resources_Id>', views.adminDeleteSuccessResources),
 
     #Financial Aid and Scholarship
     path('admin/addFinancialGuide', views.adminAddGuidePost),
@@ -247,72 +247,72 @@ urlpatterns = [
     path('admin/deleteJobPosting/<uuid:job_Posting_Id>', views.adminDeleteJobPosting),
 
     # ID and Access Cards
-    path('admin/addObtainingStep', views.adminAddObtainingStep),
-    path('admin/addReplacingStep', views.adminAddReplacingStep),
-    path('admin/addAccessCardStep', views.adminAddAccessCardStep),
-    path('admin/getObtainingStep', views.adminGetObtainingStep),
-    path('admin/getReplacingStep', views.adminGetReplacingStep),
-    path('admin/getAccessCardStep', views.adminGetAccessCardStep),
-    path('admin/getStepInfo/<uuid:guide_Id>', views.adminGetStepInfo),
-    path('admin/editGuideStep/<uuid:guide_Id>', views.adminEditGuide),
-    path('admin/deleteGuideStep/<uuid:guide_Id>', views.adminDeleteGuide),
+    # (Inactive) path('admin/addObtainingStep', views.adminAddObtainingStep),
+    # (Inactive) path('admin/addReplacingStep', views.adminAddReplacingStep),
+    # (Inactive) path('admin/addAccessCardStep', views.adminAddAccessCardStep),
+    # (Inactive) path('admin/getObtainingStep', views.adminGetObtainingStep),
+    # (Inactive) path('admin/getReplacingStep', views.adminGetReplacingStep),
+    # (Inactive) path('admin/getAccessCardStep', views.adminGetAccessCardStep),
+    # (Inactive) path('admin/getStepInfo/<uuid:guide_Id>', views.adminGetStepInfo),
+    # (Inactive) path('admin/editGuideStep/<uuid:guide_Id>', views.adminEditGuide),
+    # (Inactive) path('admin/deleteGuideStep/<uuid:guide_Id>', views.adminDeleteGuide),
 
     # Student Government and Involvement
-    path('admin/addGovernment', views.adminAddGovernment),
-    path('admin/getGovernment', views.adminGetGovernment),
-    path('admin/getGovernmentInfo/<uuid:government_Id>', views.adminGetGovernmentInfo),
-    path('admin/editGovernment/<uuid:government_Id>', views.adminEditGovernment),
-    path('admin/deleteGovernment/<uuid:government_Id>', views.adminDeleteGovernment),
+    # (Inactive) path('admin/addGovernment', views.adminAddGovernment),
+    # (Inactive) path('admin/getGovernment', views.adminGetGovernment),
+    # (Inactive) path('admin/getGovernmentInfo/<uuid:government_Id>', views.adminGetGovernmentInfo),
+    # (Inactive) path('admin/editGovernment/<uuid:government_Id>', views.adminEditGovernment),
+    # (Inactive) path('admin/deleteGovernment/<uuid:government_Id>', views.adminDeleteGovernment),
 
     # Health and Wellness Programs: Health Service Referrals
-    path('admin/addHealthFacility', views.adminAddHealthFacility),
-    path('admin/getHealthFacility', views.adminGetHealthFacility),
-    path('admin/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.adminGetHealthFacilityInfo),
-    path('admin/editHealthFacility/<uuid:health_Facility_Id>', views.adminEditHealthFacility),
-    path('admin/deleteHealthFacility/<uuid:health_Facility_Id>', views.adminDeleteHealthFacility),
+    # (Inactive) path('admin/addHealthFacility', views.adminAddHealthFacility),
+    # (Inactive) path('admin/getHealthFacility', views.adminGetHealthFacility),
+    # (Inactive) path('admin/getHealthFacilityInfo/<uuid:health_Facility_Id>', views.adminGetHealthFacilityInfo),
+    # (Inactive) path('admin/editHealthFacility/<uuid:health_Facility_Id>', views.adminEditHealthFacility),
+    # (Inactive) path('admin/deleteHealthFacility/<uuid:health_Facility_Id>', views.adminDeleteHealthFacility),
 
     # Health and Wellness Programs: Health Insurance
-    path('admin/addHealthInsurance', views.adminAddHealthInsurance),
-    path('admin/getHealthInsurance', views.adminGetHealthInsurance),
-    path('admin/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.adminGetHealthInsuranceInfo),
-    path('admin/editHealthInsurance/<uuid:health_Insurance_Id>', views.adminEditHealthInsurance),
-    path('admin/deleteHealthInsurance/<uuid:health_Insurance_Id>', views.adminDeleteHealthInsurance),
+    # (Inactive) path('admin/addHealthInsurance', views.adminAddHealthInsurance),
+    # (Inactive) path('admin/getHealthInsurance', views.adminGetHealthInsurance),
+    # (Inactive) path('admin/getHealthInsuranceInfo/<uuid:health_Insurance_Id>', views.adminGetHealthInsuranceInfo),
+    # (Inactive) path('admin/editHealthInsurance/<uuid:health_Insurance_Id>', views.adminEditHealthInsurance),
+    # (Inactive) path('admin/deleteHealthInsurance/<uuid:health_Insurance_Id>', views.adminDeleteHealthInsurance),
 
     # Housing and Accomodation: Housing Options Referrals
-    path('admin/addHousingReferrals', views.adminAddHousingReferrals),
-    path('admin/getHousingReferrals', views.adminGetHousingReferrals),
-    path('admin/getHousingReferralsInfo/<uuid:housing_Id>', views.adminGetHousingReferralsInfo),
-    path('admin/editHousingReferrals/<uuid:housing_Id>', views.adminEditHousingReferrals),
-    path('admin/replaceHousingReferralsImage/<uuid:housing_Id>', views.adminReplaceHousingReferralsImage),
-    path('admin/deleteHousingReferrals/<uuid:housing_Id>', views.adminDeleteHousingReferrals),
+    # (Inactive) path('admin/addHousingReferrals', views.adminAddHousingReferrals),
+    # (Inactive) path('admin/getHousingReferrals', views.adminGetHousingReferrals),
+    # (Inactive) path('admin/getHousingReferralsInfo/<uuid:housing_Id>', views.adminGetHousingReferralsInfo),
+    # (Inactive) path('admin/editHousingReferrals/<uuid:housing_Id>', views.adminEditHousingReferrals),
+    # (Inactive) path('admin/replaceHousingReferralsImage/<uuid:housing_Id>', views.adminReplaceHousingReferralsImage),
+    # (Inactive) path('admin/deleteHousingReferrals/<uuid:housing_Id>', views.adminDeleteHousingReferrals),
 
     # Housing and Accomodation: Off-Campus Living Assistance
-    path('admin/addLivingAssistance', views.adminAddLivingAssistance),
-    path('admin/getLivingAssistance', views.adminGetLivingAssistance),
-    path('admin/getLivingAssistanceInfo/<uuid:assistance_Id>', views.adminGetLivingAssistanceInfo),
-    path('admin/editLivingAssistance/<uuid:assistance_Id>', views.adminEditLivingAssistance),
-    path('admin/deleteLivingAssistance/<uuid:assistance_Id>', views.adminDeleteLivingAssistance),
+    # (Inactive) path('admin/addLivingAssistance', views.adminAddLivingAssistance),
+    # (Inactive) path('admin/getLivingAssistance', views.adminGetLivingAssistance),
+    # (Inactive) path('admin/getLivingAssistanceInfo/<uuid:assistance_Id>', views.adminGetLivingAssistanceInfo),
+    # (Inactive) path('admin/editLivingAssistance/<uuid:assistance_Id>', views.adminEditLivingAssistance),
+    # (Inactive) path('admin/deleteLivingAssistance/<uuid:assistance_Id>', views.adminDeleteLivingAssistance),
 
     # Transportation and Parking: Campus Parking Permits
-    path('admin/addPermit', views.adminAddPermit),
-    path('admin/getPermit', views.adminGetPermit),
-    path('admin/getPermitInfo/<uuid:permit_Id>', views.adminGetPermitInfo),
-    path('admin/editPermit/<uuid:permit_Id>', views.adminEditPermit),
-    path('admin/deletePermit/<uuid:permit_Id>', views.adminDeletePermit),
+    # (Inactive) path('admin/addPermit', views.adminAddPermit),
+    # (Inactive) path('admin/getPermit', views.adminGetPermit),
+    # (Inactive) path('admin/getPermitInfo/<uuid:permit_Id>', views.adminGetPermitInfo),
+    # (Inactive) path('admin/editPermit/<uuid:permit_Id>', views.adminEditPermit),
+    # (Inactive) path('admin/deletePermit/<uuid:permit_Id>', views.adminDeletePermit),
 
     # Transportation and Parking: Campus Parking Regulation
-    path('admin/addRegulation', views.adminAddRegulation),
-    path('admin/getRegulation', views.adminGetRegulation),
-    path('admin/getRegulationInfo/<uuid:regulation_Id>', views.adminGetRegulationInfo),
-    path('admin/editRegulation/<uuid:regulation_Id>', views.adminEditRegulation),
-    path('admin/deleteRegulation/<uuid:regulation_Id>', views.adminDeleteRegulation),
+    # (Inactive) path('admin/addRegulation', views.adminAddRegulation),
+    # (Inactive) path('admin/getRegulation', views.adminGetRegulation),
+    # (Inactive) path('admin/getRegulationInfo/<uuid:regulation_Id>', views.adminGetRegulationInfo),
+    # (Inactive) path('admin/editRegulation/<uuid:regulation_Id>', views.adminEditRegulation),
+    # (Inactive) path('admin/deleteRegulation/<uuid:regulation_Id>', views.adminDeleteRegulation),
 
     # Transportation and Parking: Transporation Options
-    path('admin/addTransport', views.adminAddTransport),
-    path('admin/getTransport', views.adminGetTransport),
-    path('admin/getTransportInfo/<uuid:transport_Id>', views.adminGetTransportInfo),
-    path('admin/editTransport/<uuid:transport_Id>', views.adminEditTransport),
-    path('admin/deleteTransport/<uuid:transport_Id>', views.adminDeleteTransport),
+    # (Inactive) path('admin/addTransport', views.adminAddTransport),
+    # (Inactive) path('admin/getTransport', views.adminGetTransport),
+    # (Inactive) path('admin/getTransportInfo/<uuid:transport_Id>', views.adminGetTransportInfo),
+    # (Inactive) path('admin/editTransport/<uuid:transport_Id>', views.adminEditTransport),
+    # (Inactive) path('admin/deleteTransport/<uuid:transport_Id>', views.adminDeleteTransport),
 
     # Feedback and Suggestions: Feedback
     path('admin/getNewFeedback', views.adminGetNewFeedback),

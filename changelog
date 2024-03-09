@@ -951,3 +951,9 @@
 # 0.7.3.2
 - Push by Christian (https://github.com/papichans)
 - Homepage is Completely Fixed Layout, Navbar and Content
+
+# 0.7.3.3
+- Push by Christian (https://github.com/papichans)
+- Blocked ALL the Unused URL's in API, Student and Admin
+- BUG FIX: Missing Modal at ID and Card (Admin)
+- Update Navbar (Both Admin and Student)

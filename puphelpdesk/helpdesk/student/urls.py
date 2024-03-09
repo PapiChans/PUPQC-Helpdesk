@@ -16,22 +16,22 @@ urlpatterns = [
 
     # Student Support and Counseling
     path('student-support/counseling', views.studsupportcounseling, name='student-support/counseling'),
-    path('student-support/advising', views.studsupportadvising, name='student-support/advising'),
-    path('student-support/resources', views.studsupportresources, name='student-support/resources'),
+    # (Inactive) path('student-support/advising', views.studsupportadvising, name='student-support/advising'),
+    # (Inactive) path('student-support/resources', views.studsupportresources, name='student-support/resources'),
 
     # Financial Aid and Scholarships
     path('financial-aid-and-scholarships', views.financialaid, name='financialaid'),
     path('financial-aid-and-scholarships/details', views.studFinancialAidDetails, name='financialaid/details'),
 
     # Housing and Accommodation
-    path('housing', views.housing, name='housing'),
-    path('housing/assistance', views.housingassistance, name="housing/assistance"),
-    path('housing/referrals', views.housingreferrals, name="housing/referrals"),
+    # (Inactive) path('housing', views.housing, name='housing'),
+    # (Inactive) path('housing/assistance', views.housingassistance, name="housing/assistance"),
+    # (Inactive) path('housing/referrals', views.housingreferrals, name="housing/referrals"),
 
     # Health and Wellness Support
     path('healthwellness', views.healthwellness, name='healthwellness'),
-    path('healthwellness/programs', views.healthwellnessprograms, name='healthwellness/programs'),
-    path('healthwellness/insurance', views.healthwellnessinsurance, name='healthwellness/insurance'),
+    # (Inactive) path('healthwellness/programs', views.healthwellnessprograms, name='healthwellness/programs'),
+    # (Inactive) path('healthwellness/insurance', views.healthwellnessinsurance, name='healthwellness/insurance'),
 
     # Career Services and Employment
     path('careers', views.careers, name='careers'),
@@ -41,18 +41,18 @@ urlpatterns = [
 
     # Student IDs and Access Cards
     path('IDandCard', views.idandcard, name='IDandCard'),
-    path('IDandCard/obtaining_ID', views.IdObtaining, name='IDandCard/obtaining_ID'),
-    path('IDandCard/replacing_ID', views.IdReplacing, name='IDandCard/replacing_ID'),
-    path('IDandCard/access_cards', views.AccessCard, name='IDandCard/access_cards'),
+    # (Inactive) path('IDandCard/obtaining_ID', views.IdObtaining, name='IDandCard/obtaining_ID'),
+    # (Inactive) path('IDandCard/replacing_ID', views.IdReplacing, name='IDandCard/replacing_ID'),
+    # (Inactive) path('IDandCard/access_cards', views.AccessCard, name='IDandCard/access_cards'),
 
     # Student Government and Involvement
-    path('StudentGovernment', views.government, name='government'),
+    # (Inactive) path('StudentGovernment', views.government, name='government'),
 
     # Transportation and Parking
-    path('transportation', views.transportation, name="transportation"),
-    path('transportation/routes', views.transportationroutes, name="transportation/routes"),
-    path('transportation/permit', views.transportationpermit, name="transportation/permit"),
-    path('transportation/regulation', views.transportationregulation, name="transportation/regulation"),
+    # (Inactive) path('transportation', views.transportation, name="transportation"),
+    # (Inactive) path('transportation/routes', views.transportationroutes, name="transportation/routes"),
+    # (Inactive) path('transportation/permit', views.transportationpermit, name="transportation/permit"),
+    # (Inactive) path('transportation/regulation', views.transportationregulation, name="transportation/regulation"),
 
     # Lost annd Found Services
     path('LostAndFound', views.lostAndFound, name='LostAndFound'),

@@ -16,8 +16,8 @@ urlpatterns = [
     
     # Student Support and Counseling
     path('student-support/counseling', views.adminSupportCounseling, name='admin/student-support/counseling'),
-    path('student-support/advising', views.adminAcademicAdvising, name='admin/student-support/advising'),
-    path('student-support/resources', views.adminSuccessResources, name='admin/student-support/resources'),
+    # (Inactive)path('student-support/advising', views.adminAcademicAdvising, name='admin/student-support/advising'),
+    # (Inactive)path('student-support/resources', views.adminSuccessResources, name='admin/student-support/resources'),
     
     #Feedbacks and Suggestions
     path('feedback', views.adminfeedbacks, name='admin/feedbacks'),
@@ -25,9 +25,9 @@ urlpatterns = [
     
     #ID and Access Cards
     path('IDandCard', views.adminIdCard, name='admin/student-services/IDRequests'),
-    path('IDandCard/obtaining_ID', views.adminIdObtaining, name='admin/IDandCard/obtaining_ID'),
-    path('IDandCard/replacing_ID', views.adminIdReplacing, name='admin/IDandCard/replacing_ID'),
-    path('IDandCard/access_cards', views.adminAccessCard, name='admin/IDandCard/access_cards'),
+    # (Inactive)path('IDandCard/obtaining_ID', views.adminIdObtaining, name='admin/IDandCard/obtaining_ID'),
+    # (Inactive)path('IDandCard/replacing_ID', views.adminIdReplacing, name='admin/IDandCard/replacing_ID'),
+    # (Inactive)path('IDandCard/access_cards', views.adminAccessCard, name='admin/IDandCard/access_cards'),
     
     #Careers and Employment
     path('careers', views.adminCareers, name='admin/student-careers/Employment'),
@@ -42,23 +42,23 @@ urlpatterns = [
     path('financial-aid-and-scholarships/details', views.adminFinancialAidDetails, name='admin/student-services/FinancialAid/details'),
 
     # Student Government and Involvement
-    path('StudentGovernment', views.adminGovernment, name='admin/studentgovernment'),
+    # (Inactive)path('StudentGovernment', views.adminGovernment, name='admin/studentgovernment'),
 
     # Health and Wellness Support
     path('healthwellness', views.adminhealthwellness, name="admin/healthwellness"),
-    # Inactive path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
-    # Inactive path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
+    # (Inactive) path('healthwellness/programs', views.adminhealthwellnessprograms, name="admin/healthwellness/programs"),
+    # (Inactive) path('healthwellness/insurance', views.adminhealthwellnessinsurance, name="admin/healthwellness/insurance"),
 
     # Housing and Accomodation
-    path('housing', views.adminhousing, name="admin/housing"),
-    path('housing/assistance', views.adminhousingassistance, name="admin/housing/assistance"),
-    path('housing/referrals', views.adminhousingreferrals, name="admin/housing/referrals"),
+    # (Inactive)path('housing', views.adminhousing, name="admin/housing"),
+    # (Inactive)path('housing/assistance', views.adminhousingassistance, name="admin/housing/assistance"),
+    # (Inactive)path('housing/referrals', views.adminhousingreferrals, name="admin/housing/referrals"),
 
     # Transportation and Parking
-    path('transportation', views.admintransportation, name="admin/transportation"),
-    path('transportation/routes', views.admintransportationroutes, name="admin/transportation/routes"),
-    path('transportation/permit', views.admintransportationpermit, name="admin/transportation/permit"),
-    path('transportation/regulation', views.admintransportationregulation, name="admin/transportation/regulation"),
+    # (Inactive)path('transportation', views.admintransportation, name="admin/transportation"),
+    # (Inactive)path('transportation/routes', views.admintransportationroutes, name="admin/transportation/routes"),
+    # (Inactive)path('transportation/permit', views.admintransportationpermit, name="admin/transportation/permit"),
+    # (Inactive)path('transportation/regulation', views.admintransportationregulation, name="admin/transportation/regulation"),
 
     # Lost and Found
     path('LostAndFound', views.adminlostandfound, name="admin/LostAndFound"),
