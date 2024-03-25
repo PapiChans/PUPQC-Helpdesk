@@ -957,3 +957,8 @@
 - Blocked ALL the Unused URL's in API, Student and Admin
 - BUG FIX: Missing Modal at ID and Card (Admin)
 - Update Navbar (Both Admin and Student)
+
+# 0.7.3.4
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Sinukuan yung ticket charts kasi walang mahanap na nagma match na graph sa echarts
+- Chatbot update 
