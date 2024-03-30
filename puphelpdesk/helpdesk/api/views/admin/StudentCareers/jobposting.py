@@ -13,6 +13,7 @@ def adminAddJobPosting(request):
         if request.method == "POST" and 'posting_Logo' in request.FILES:
 
             posting_Logo = request.FILES['posting_Logo']
+            posting_Category = request.POST.get('posting_Category')
             posting_Type = request.POST.get('posting_Type')
             posting_Position = request.POST.get('posting_Position')
             posting_Company = request.POST.get('posting_Company')
@@ -28,6 +29,7 @@ def adminAddJobPosting(request):
             JobPost= {
                 'job_Posting_Type': posting_Type,
                 'job_Logo': posting_Logo,
+                'job_Posting_Category': posting_Category,
                 'job_Posting_Position': posting_Position,
                 'job_Posting_Status': 'Active',
                 'job_Posting_Company': posting_Company,
@@ -47,6 +49,7 @@ def adminAddJobPosting(request):
                 return Response({"message": "Add Job Post Successfully"})
             return Response({"message": "Add Job Post Failed"})
         return Response({"message": "Add Job Post Error"})
+    
 
 @api_view(['GET'])
 def adminGetJobPosting(request):
@@ -54,10 +57,15 @@ def adminGetJobPosting(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = JobPosting.objects.all()
+            category = request.GET.get('category')
+            if category:
+                data = JobPosting.objects.filter(job_Posting_Category=category)
+            else:
+                data = JobPosting.objects.all()
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Job Posts Error"})
+    
 
 @api_view(['GET'])
 def adminGetJobInfo(request, job_Posting_Id):
@@ -78,6 +86,7 @@ def adminEditJobPosting(request, job_Posting_Id):
         if request.method == "PUT":
 
             posting_Type = request.POST.get('posting_Type')
+            posting_Category = request.POST.get('posting_Category')
             posting_Position = request.POST.get('posting_Position')
             posting_Company = request.POST.get('posting_Company')
             posting_Available_Position = request.POST.get('posting_Available_Position')
@@ -92,6 +101,7 @@ def adminEditJobPosting(request, job_Posting_Id):
 
             JobPost = JobPosting.objects.get(pk=job_Posting_Id)
             JobPost.job_Posting_Type = posting_Type
+            JobPost.job_Posting_Category = posting_Category
             JobPost.job_Posting_Position = posting_Position
             JobPost.job_Posting_Status = posting_Status
             JobPost.job_Posting_Company = posting_Company

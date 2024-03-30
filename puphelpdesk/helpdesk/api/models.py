@@ -208,6 +208,7 @@ class JobSearch(models.Model):
 class JobPosting(models.Model):
     job_Posting_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     job_Posting_Type = models.CharField(max_length=100, null=False)
+    job_Posting_Category = models.CharField(max_length=100, null=False)
     job_Logo = models.FileField(upload_to='Company-Logo/', null=True)
     job_Posting_Position = models.CharField(max_length=100, null=False)
     job_Posting_Status = models.CharField(max_length=100, null=False)

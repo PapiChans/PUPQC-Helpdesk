@@ -962,3 +962,11 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Sinukuan yung ticket charts kasi walang mahanap na nagma match na graph sa echarts
 - Chatbot update 
+
+# 0.7.4.0
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Category added in the admin html
+- Category table column added in the models.py
+- Category added in the views.py in admin
+- Category added in the ajax file of admin jobposting and internship
+- Chatbot update 

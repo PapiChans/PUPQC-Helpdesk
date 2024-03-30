@@ -58,6 +58,7 @@ addJobpost = (CompanyLogo) => {
         const form = new FormData($('#AddJobPostingForm')[0])
         
         const posting_Type = $('#posting_Type').val();
+        const posting_Category = $('#posting_Category').val();
         const posting_Position = $('#posting_Position').val();
         const posting_Company = $('#posting_Company').val();
         const posting_Available_Position = $('#posting_Available_Position').val();
@@ -71,6 +72,7 @@ addJobpost = (CompanyLogo) => {
 
         const formVariables = [
             posting_Type,
+            posting_Category,
             posting_Position,
             posting_Company,
             posting_Available_Position,
@@ -130,6 +132,7 @@ addJobpost = (CompanyLogo) => {
             }
             else {
                 form.append('posting_Type', posting_Type);
+                form.append('posting_Category', posting_Category);
                 form.append('posting_Position', posting_Position);
                 form.append('posting_Company', posting_Company);
                 form.append('posting_Available_Position', posting_Available_Position);

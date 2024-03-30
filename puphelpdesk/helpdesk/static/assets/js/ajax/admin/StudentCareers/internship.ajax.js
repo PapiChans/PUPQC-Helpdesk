@@ -64,6 +64,7 @@ getJobPosts = () => {
                         <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
                         <div class="card-body">
                             <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
                             <p class="text-secondary">${jobdata.job_Description}</p>
                         </div>
                         <div class="card-footer">
@@ -142,6 +143,7 @@ getJobInfo = (job_Posting_Id) => {
             }
             $('#job_logo_info').attr('src', `${jobInfodata.job_Logo}`);
             $('#job_type_info').html(jobInfodata.job_Posting_Type);
+            $('#job_category_info').html(jobInfodata.job_Posting_Category);
             $('#job_position_info').html(jobInfodata.job_Posting_Position);
             $('#job_status_info').html(stat);
             $('#job_company_info').html(jobInfodata.job_Posting_Company);
@@ -177,6 +179,7 @@ getJobPostforEdit= (job_Posting_Id) => {
             const jobInfodata = result;
             $('#edit_posting_Id').val(jobInfodata.job_Posting_Id);
             $('#edit_posting_Type').val(jobInfodata.job_Posting_Type);
+            $('#edit_posting_Category').val(jobInfodata.job_Posting_Category);
             $('#edit_posting_Position').val(jobInfodata.job_Posting_Position);
             $('#edit_posting_Company').val(jobInfodata.job_Posting_Company);
             $('#edit_posting_Available_Position').val(jobInfodata.job_Available_Position);
@@ -205,6 +208,7 @@ editJobpost = (job_Posting_Id) => {
         
         const job_Posting_Id = $('#edit_posting_Id').val();
         const posting_Type = $('#edit_posting_Type').val();
+        const posting_Category = $('#edit_posting_Category').val();
         const posting_Position = $('#edit_posting_Position').val();
         const posting_Company = $('#edit_posting_Company').val();
         const posting_Available_Position = $('#edit_posting_Available_Position').val();
@@ -231,6 +235,7 @@ editJobpost = (job_Posting_Id) => {
         }
         else {
             form.append('posting_Type', posting_Type);
+            form.append('posting_Category', posting_Category);
             form.append('posting_Position', posting_Position);
             form.append('posting_Company', posting_Company);
             form.append('posting_Available_Position', posting_Available_Position);

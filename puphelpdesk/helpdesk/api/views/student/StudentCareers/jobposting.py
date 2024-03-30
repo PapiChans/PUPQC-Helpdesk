@@ -15,6 +15,9 @@ def studGetJobPosting(request):
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Job Posts Error"})
+    
+    
+    
 
 @api_view(['GET'])
 def studGetJobInfo(request, job_Posting_Id):

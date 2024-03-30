@@ -13,6 +13,9 @@
                         <p>Job Type: <strong id="job_type_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
+                        <p>Job Category: <strong id="job_category_info"></strong></p>
+                    </div>
+                    <div class="col-md-12 mt-2">
                         <p>Job Position: <strong id="job_position_info"></strong></p>
                     </div>
                     <div class="col-md-12 mt-2">
@@ -64,6 +67,7 @@
                 <form id="EditJobPostForm" class="needs-validation" novalidate>
                     <div class="row">
                         <input type="hidden" class="form-control" id="edit_posting_Id">
+                        
                         <div class="col-md-12 mt-2">
                             <label>Posting Type<span class="text-danger">*</span></label>
                             <select class="form-select" id="edit_posting_Type" required>
@@ -71,6 +75,21 @@
                                 <option value="Internship">Internship</option>
                             </select>
                         </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label>Category<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_posting_Category" required>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Entrepreneurship">Entrepreneurship</option>
+                                <option value="Public Administration">Public Administration</option>
+                                <option value="DOMT">DOMT</option>
+                                <option value="BTLED-ICT">BTLED-ICT</option>
+                                <option value="HRM">Human Resource Management</option>
+                                <option value="BTLED-HE">BTLED-HE</option>
+                            </select>
+                        </div>
+
                         <div class="col-md-12 mt-2">
                             <label for="validationCustom01">Job Position<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="edit_posting_Position" placeholder="Job Position" required/>

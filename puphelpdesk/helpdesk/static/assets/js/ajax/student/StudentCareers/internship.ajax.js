@@ -50,6 +50,7 @@ getJobPosts = () => {
                         <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
                         <div class="card-body">
                             <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
                             <p class="text-secondary">${jobdata.job_Description}</p>
                         </div>
                         <div class="card-footer">
@@ -126,6 +127,7 @@ getJobInfo = (job_Posting_Id) => {
             }
             $('#job_logo_info').attr('src', `${jobInfodata.job_Logo}`);
             $('#job_type_info').html(jobInfodata.job_Posting_Type);
+            $('#job_category_info').html(jobInfodata.job_Posting_Category);
             $('#job_position_info').html(jobInfodata.job_Posting_Position);
             $('#job_status_info').html(stat);
             $('#job_company_info').html(jobInfodata.job_Posting_Company);
