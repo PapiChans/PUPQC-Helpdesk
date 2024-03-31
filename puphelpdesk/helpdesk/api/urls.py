@@ -66,6 +66,7 @@ urlpatterns = [
 
     #Careers and Employment: Job Posting
     path('student/getJobPosting', views.studGetJobPosting),
+    path('student/getJobPosting/<job_Posting_Category>', views.studGetJobCategory),
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
 
     # ID and Access Cards
@@ -241,6 +242,7 @@ urlpatterns = [
     # Careers and Employment: Job Posting
     path('admin/addJobPosting', views.adminAddJobPosting),
     path('admin/getJobPosting', views.adminGetJobPosting),
+    path('admin/getJobPosting/<job_Posting_Category>', views.adminGetJobCategory),
     path('admin/getJobPostingInfo/<uuid:job_Posting_Id>', views.adminGetJobInfo),
     path('admin/editJobPosting/<uuid:job_Posting_Id>', views.adminEditJobPosting),
     path('admin/replaceCompanyLogo/<uuid:job_Posting_Id>', views.adminReplaceCompanyLogo),

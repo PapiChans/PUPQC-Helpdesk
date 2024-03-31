@@ -969,4 +969,8 @@
 - Category table column added in the models.py
 - Category added in the views.py in admin
 - Category added in the ajax file of admin jobposting and internship
-- Chatbot update 
+- Chatbot update
+
+# 0.7.4.1
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Job Filtering in the Student side almost done
