@@ -28,8 +28,8 @@
 </ul>
 <div class="col-md-3 mt-2">
     <label>Category<span class="text-danger">*</span></label>
-    <select class="form-select" id="job_category" required>
-        <option value="All">All</option>
+    <select class="form-select" id="job_category" onchange="getJobCategory(this.value)" required>
+        <option value="getJobPosts()">All</option>
         <option value="Information Technology">Information Technology</option>
         <option value="Marketing">Marketing</option>
         <option value="Entrepreneurship">Entrepreneurship</option>

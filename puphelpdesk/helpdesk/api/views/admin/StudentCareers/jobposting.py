@@ -69,10 +69,14 @@ def adminGetJobCategory(request, job_Posting_Category):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = JobPosting.objects.all().filter(job_Posting_Category=job_Posting_Category).order_by('date_Created')
+            if job_Posting_Category == "":
+                data = JobPosting.objects.all().order_by('date_Created')
+            else:
+                data = JobPosting.objects.filter(job_Posting_Category=job_Posting_Category).order_by('date_Created')
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Jobs Error"})
+
 
 @api_view(['GET'])
 def adminGetJobInfo(request, job_Posting_Id):

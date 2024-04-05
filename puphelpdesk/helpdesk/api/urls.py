@@ -247,6 +247,7 @@ urlpatterns = [
     path('admin/editJobPosting/<uuid:job_Posting_Id>', views.adminEditJobPosting),
     path('admin/replaceCompanyLogo/<uuid:job_Posting_Id>', views.adminReplaceCompanyLogo),
     path('admin/deleteJobPosting/<uuid:job_Posting_Id>', views.adminDeleteJobPosting),
+    path('admin/getJobPosting/<uuid:job_Posting_Category>', views.adminGetJobCategory),
 
     # ID and Access Cards
     # (Inactive) path('admin/addObtainingStep', views.adminAddObtainingStep),
