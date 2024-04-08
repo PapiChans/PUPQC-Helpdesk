@@ -239,7 +239,7 @@ addTicket = () => {
                                 duration: 2500
                             })
                                 $('form#AddTicketForm')[0].reset();
-                                window.location.href = `/user/ticket`;
+                                window.location.href = `/user/ticket/view?ticket_number=${ticket_Number}`;
                         }
                     },
                 })

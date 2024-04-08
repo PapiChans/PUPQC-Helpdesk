@@ -1,21 +1,50 @@
 $(function() {
+    getuserfullname();
     /*Feedback and Suggestions*/
     feedbackChart1();
     feedbackChart2();
     feedbackChart3();
     /*Other Charts*/
-    financialAidChart();
-    careerChart();
-    servicereferralChart();
-    idandcardChart();
-    studentgovernmentChart();
-    healthfacilityChart();
-    /* Tickets */
 })
 
 const notyf = new Notyf();
 
+//Time and Date
+var cdate = new Date();
+$('#current_Date').append(cdate.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'}))
 
+var uctime = new Date();
+    $('#current_Time').append(uctime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }))
+
+function updateCurrentTime() {
+    $('#current_Time').html(null)
+    var uctime = new Date();
+    $('#current_Time').append(uctime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }))
+}
+
+// The will update the time within a second  
+setInterval(updateCurrentTime, 1000);
+
+getuserfullname = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/auth/getadminprofile`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const profiledata = result;
+            $('#admin_name').html(profiledata.admin_First_Name+" "+ profiledata.admin_Last_Name);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Profile Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
 
 
 feedbackChart1 = () => {
@@ -56,25 +85,18 @@ feedbackChart1 = () => {
                     left: 'left',
                     scroll: true,
                 },
-                xAxis: {
-                    type: 'category',
-                    data: result.map(item => item.name)
-                },
-                yAxis: {
-                    type: 'value'
-                },
                 series: [
                     {
-                        type: 'bar',
-                        stack: 'total',
-                        data: result,
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            }
+                    type: 'pie',
+                    radius: ['60%','30%'],
+                    data: result,
+                    emphasis: {
+                        itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
                         }
+                    }
                     }
                 ]
             };

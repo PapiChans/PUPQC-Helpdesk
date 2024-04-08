@@ -1,102 +1,45 @@
 $(function() {
+    getuserfullname();
     /*Feedback and Suggestions*/
     feedbackChart1();
     feedbackChart2();
     feedbackChart3();
     /*Other Charts*/
-    financialAidChart();
-    careerChart();
-    servicereferralChart();
-    idandcardChart();
-    studentgovernmentChart();
-    healthfacilityChart();
-    /* Tickets */
-    ticketChart();
 })
 
 const notyf = new Notyf();
 
-ticketChart = () => {
+//Time and Date
+var cdate = new Date();
+$('#current_Date').append(cdate.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'}))
+
+var uctime = new Date();
+    $('#current_Time').append(uctime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }))
+
+function updateCurrentTime() {
+    $('#current_Time').html(null)
+    var uctime = new Date();
+    $('#current_Time').append(uctime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }))
+}
+
+// The will update the time within a second  
+setInterval(updateCurrentTime, 1000);
+
+getuserfullname = () => {
     $.ajax({
         type: 'GET',
-        url: '/api/admin/ticketChart',
+        url: `/api/auth/getadminprofile`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
-            var chartDom = document.getElementById('ticketChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-
-            const colors = ['#5470C6', '#91CC75'];
-
-            option = {
-                color: colors,
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'cross'
-                    }
-                },
-                grid: {
-                    right: '20%'
-                },
-                toolbox: {
-                    feature: {
-                        dataView: { show: true, readOnly: false },
-                        restore: { show: true },
-                        saveAsImage: { show: true }
-                    }
-                },
-                legend: {
-                    data: ['Last year', 'This Year']
-                },
-                xAxis: [
-                    {
-                        type: 'category',
-                        axisTick: {
-                            alignWithLabel: true
-                        },
-                        data: result.map(item => item.name)
-                    }
-                ],
-                yAxis: [
-                    {
-                        type: 'value',
-                        name: 'Tickets',
-                        position: 'right',
-                        axisLine: {
-                            show: true,
-                            lineStyle: {
-                                color: colors[0]
-                            }
-                        },
-                        axisLabel: {
-                            formatter: '{value} Tickets'
-                        }
-                    }
-                ],
-                series: [
-                    {
-                        name: 'Last year',
-                        type: 'bar',
-                        data: result.map(item => item.lastYearTickets)
-                    },
-                    {
-                        name: 'This Year',
-                        type: 'bar',
-                        yAxisIndex: 0,
-                        data: result.map(item => item.thisYearTickets)
-                    }
-                ]
-            };
-
-            option && myChart.setOption(option);
+            const profiledata = result;
+            $('#admin_name').html(profiledata.admin_First_Name+" "+ profiledata.admin_Last_Name);
         },
     })
     .fail(() => {
         notyf.error({
-            message: 'Feedback Chart 1 Fetching Error',
+            message: 'Fetch Profile Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });
@@ -142,25 +85,18 @@ feedbackChart1 = () => {
                     left: 'left',
                     scroll: true,
                 },
-                xAxis: {
-                    type: 'category',
-                    data: result.map(item => item.name)
-                },
-                yAxis: {
-                    type: 'value'
-                },
                 series: [
                     {
-                        type: 'bar',
-                        stack: 'total',
-                        data: result,
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            }
+                    type: 'pie',
+                    radius: ['60%','30%'],
+                    data: result,
+                    emphasis: {
+                        itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
                         }
+                    }
                     }
                 ]
             };

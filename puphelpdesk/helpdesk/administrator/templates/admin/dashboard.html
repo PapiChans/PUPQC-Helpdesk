@@ -7,46 +7,57 @@
 {% endblock %}
 
 {% block maincontent %}
-<h2 class="header-title">Analytics</h2>
-<p class="card-title-desc">Take a look of analytics of PUPQC Helpdesk.</p>
-
-
-<h2 class="text-center mb-3">Services</h2>
-<div class="container" style="overflow-x: hidden;">
-    <!-- Chart container -->
-    <div class="row d-flex justify-content-md-center">
-    <div id="MergedChart" style="width: 100%; height: 600px;"></div>
+<h2>Welcome Admin, <span id="admin_name"><span></h2>
+<div class="alert alert-success">
+    <strong><span id="current_Date"></strong> - <strong><span id="current_Time"></strong> 
+</div>
+</div>
+</div>
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="text-center mb-3">Feedback and Suggestions</h2>
+            <div class="container">
+                <div class="card bg-primary-lt">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mt-3">  
+                                <h3 class="card-title text-center">Feedback and Suggestion Count</h3>
+                                <p class="text-secondary">The overall count of Feedback and Suggestions submitted by the users of the PUPQC Helpdesk.</p>
+                                <div class="d-flex justify-content-center">  
+                                    <div id="FeedbackVsSuggestion" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h3 class="card-title text-center">Feedback Statuses</h3>
+                                <p class="text-secondary">The overall count of Statuses of all the Feedbacks Submitted.</p>
+                                <div class="d-flex justify-content-center">
+                                    <div id="FeedbackChart" style="width: 350px;height:350px;"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <h3 class="card-title text-center">Suggestion Statuses</h3>
+                                <p class="text-secondary">The overall count of Statuses of all the Suggestions Submitted.</p>
+                                <div class="d-flex justify-content-center">
+                                    <div id="SuggestionChart" style="width: 350px;height:350px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
-
-
-
-<h2 class="text-center mb-3">Feedback and Suggestions</h2>
-
-    <div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-md-4 d-flex justify-content-center">
-            <div id="FeedbackChart" style="width: 350px;height:350px;"></div>
-        </div>
-        
-        <div class="col-md-4 d-flex justify-content-center">
-            <div id="FeedbackVsSuggestion" style="width: 550px;height:350px; overflow-x: hidden;" ></div>
-        </div>
-
-        <div class="col-md-4 d-flex justify-content-center">
-            <div id="SuggestionChart" style="width: 350px;height:350px;"></div>
-        </div>
-        
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="text-center mb-3">Services</h2>
+            <div class="container" style="overflow-x: hidden;">
+                <!-- Chart container -->
+                <div class="row d-flex justify-content-md-center">
+                <div id="MergedChart" style="width: 100%; height: 600px;"></div>
+                </div>
+            </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 {% endblock %}
 
 {% block customjs %}

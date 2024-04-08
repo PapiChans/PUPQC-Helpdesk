@@ -177,8 +177,12 @@ getFeedback = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
+                        let delbutton = ``
+                        if (data.feedback_Status != 'Deleted'){
+                            delbutton = `<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteFeedback('${data.feedback_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>`;
+                        }
                         return `<button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#FeedbackInfoModal" onclick="getFeedbackInfo('${data.feedback_Id}')"><i class="fa-solid fa-exclamation-circle"></i> Info</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteFeedback('${data.feedback_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
+                                ${delbutton}
                                 `
                     },
                 },

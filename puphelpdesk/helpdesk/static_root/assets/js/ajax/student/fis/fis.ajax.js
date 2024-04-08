@@ -8,7 +8,10 @@ getFIS = () => {
     const dt = $('#fis-datatable');
 
     $.ajaxSetup({
-        headers: {'X-CSRFToken': csrftoken},
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnRlZ3JhdGlvbkBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InN0YWZmIiwiZXhwIjoxNzA4NzA1Mjc5fQ.vBx_831N2vKXv913WShd4TmX_olT-XuHm7DNfTov2bI',
+        },
     });
 
     if (dt.length) {
@@ -19,7 +22,10 @@ getFIS = () => {
                 contentType: 'application/x-www-form-urlencoded',
                 dataType: 'json',
                 cache: false,
-                headers: {'X-CSRFToken': csrftoken},
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnRlZ3JhdGlvbkBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InN0YWZmIiwiZXhwIjoxNzA4NzA1Mjc5fQ.vBx_831N2vKXv913WShd4TmX_olT-XuHm7DNfTov2bI',
+                },
                 dataSrc: (result) => {
                     const formattedData = [];
                     if (result && result.Faculties) {

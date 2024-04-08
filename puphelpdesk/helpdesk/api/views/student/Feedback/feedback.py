@@ -58,6 +58,7 @@ def studDeleteFeedback(request, feedback_Id):
     else:
         if request.method == "DELETE":
             feedback = Feedback.objects.get(pk=feedback_Id)
-            feedback.delete()
+            feedback.feedback_Status = 'Deleted'
+            feedback.save()
             return Response({"message": "Delete Feedback Success"})
         return Response({"message": "Delete Feedback Error"})

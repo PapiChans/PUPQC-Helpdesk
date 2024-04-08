@@ -978,3 +978,9 @@
 # 0.7.4.2
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Job Filtering in the Admin side is done
+
+# 0.7.4.3
+- Push by Christian (https://github.com/papichans)
+- Revise Feedback Delete to Mark as Delete (User)
+- Creating Ticket will now directly to the Chat
+- Some Analytics Revision on the feedback and Suggestion in Admin side

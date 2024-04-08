@@ -64,6 +64,7 @@ getJobPosts = () => {
                         <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
                         <div class="card-body">
                             <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
                             <p class="text-secondary">${jobdata.job_Description}</p>
                         </div>
                         <div class="card-footer">
@@ -142,6 +143,7 @@ getJobInfo = (job_Posting_Id) => {
             }
             $('#job_logo_info').attr('src', `${jobInfodata.job_Logo}`);
             $('#job_type_info').html(jobInfodata.job_Posting_Type);
+            $('#job_category_info').html(jobInfodata.job_Posting_Category);
             $('#job_position_info').html(jobInfodata.job_Posting_Position);
             $('#job_status_info').html(stat);
             $('#job_company_info').html(jobInfodata.job_Posting_Company);
@@ -177,6 +179,7 @@ getJobPostforEdit= (job_Posting_Id) => {
             const jobInfodata = result;
             $('#edit_posting_Id').val(jobInfodata.job_Posting_Id);
             $('#edit_posting_Type').val(jobInfodata.job_Posting_Type);
+            $('#edit_posting_Category').val(jobInfodata.job_Posting_Category);
             $('#edit_posting_Position').val(jobInfodata.job_Posting_Position);
             $('#edit_posting_Company').val(jobInfodata.job_Posting_Company);
             $('#edit_posting_Available_Position').val(jobInfodata.job_Available_Position);
@@ -205,6 +208,7 @@ editJobpost = (job_Posting_Id) => {
         
         const job_Posting_Id = $('#edit_posting_Id').val();
         const posting_Type = $('#edit_posting_Type').val();
+        const posting_Category = $('#edit_posting_Category').val();
         const posting_Position = $('#edit_posting_Position').val();
         const posting_Company = $('#edit_posting_Company').val();
         const posting_Available_Position = $('#edit_posting_Available_Position').val();
@@ -231,6 +235,7 @@ editJobpost = (job_Posting_Id) => {
         }
         else {
             form.append('posting_Type', posting_Type);
+            form.append('posting_Category', posting_Category);
             form.append('posting_Position', posting_Position);
             form.append('posting_Company', posting_Company);
             form.append('posting_Available_Position', posting_Available_Position);
@@ -345,6 +350,84 @@ getJobPostforReplaceLogo = (job_Posting_Id) => {
         });
     })
 }
+
+getJobCategory = (selected_posting_Category) => {
+    $('#job_post_display').html("Loading...");
+    let job_display = $('#job_post_display')
+    job_display.html(null)
+    let posting_Category = selected_posting_Category
+    
+
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/getJobPosting/${posting_Category}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            notyf.dismissAll();
+            const data = result;
+            if (data.length > 0) {
+                data.forEach((jobdata) => {
+
+                    const formattedDate = formatDate(jobdata.date_Created);
+                    let cardcolor = null;
+                    if (jobdata.job_Posting_Status == 'Active') {
+                        cardcolor = 'info';
+                    }
+                    if (jobdata.job_Posting_Status == 'Archived') {
+                        cardcolor = 'red';
+                    }
+
+                    let jobformat = `
+                    <div class="col-md-4">
+                    <div class="card">
+                        <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
+                            <p class="text-secondary">${jobdata.job_Description}</p>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="text-secondary">Posted: ${formattedDate}</h4>
+                        </div>
+                    </div>
+                        <div class="mt-2 text-center">
+                            <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoEditModal" onclick="foreditjobpost('${jobdata.job_Posting_Id}')">Edit</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#ReplaceCompanyLogoModal" onclick="forreplacelogo('${jobdata.job_Posting_Id}')">Replace</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light mb-2" onclick="deleteJobPost('${jobdata.job_Posting_Id}')">Delete</button>
+                        </div>
+                    </div>
+            `;
+
+                    job_display.append(jobformat)
+                    $('#no_Job').html(null);
+
+                });
+
+            }
+            else {
+                notyf.success({
+                    message: 'No Job Fetched.',
+                    position: {x:'right',y:'top'},
+                    duration: 2500
+                });
+                $('#no_Job').html("No Jobs Data");
+            }
+        },
+    })
+    
+    .fail(() => {
+        notyf.error({
+            message: 'Charter Fetched Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+
 
 replaceCompanyLogo = (CompanyLogo, job_Posting_Id) => {
     if ($('#ReplaceCompanyLogoForm')[0]) {
