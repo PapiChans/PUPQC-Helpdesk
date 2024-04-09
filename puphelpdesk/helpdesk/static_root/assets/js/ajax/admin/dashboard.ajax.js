@@ -64,7 +64,7 @@ feedbackChart1 = () => {
                     text: 'Overall Counts',
                     subtext: 'Feedback v.s Suggestion',
                     left: 'center',
-                    bottom: '1%'
+                    bottom: '5%'
                 },
                 toolbox: {
                     feature: {
@@ -74,11 +74,8 @@ feedbackChart1 = () => {
                     },
                 },
                 tooltip: {
-                    trigger: 'axis',
-                    formatter: '<b>{b}</b>: {c} ',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
+                    trigger: 'item',
+                    formatter: '<b>{b}</b>: {c} ({d}%)',
                 },
                 legend: {
                     orient: 'vertical',

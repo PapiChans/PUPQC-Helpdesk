@@ -984,3 +984,10 @@
 - Revise Feedback Delete to Mark as Delete (User)
 - Creating Ticket will now directly to the Chat
 - Some Analytics Revision on the feedback and Suggestion in Admin side
+
+# 0.7.4.4
+- Push by Christian (https://github.com/papichans)
+- Revise and Grammar Error on some pages.
+- Wrong Credentials during login will now refresh the page
+- Minor Revision about the Admin Analytics
+- BUG FIX: Facility Description missing at multiple description lines

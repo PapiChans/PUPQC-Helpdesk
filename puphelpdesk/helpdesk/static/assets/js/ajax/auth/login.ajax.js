@@ -42,6 +42,9 @@ login = () => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         })
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
                     }
                     else if (logindata.response == "Incorrect Password") {
                         $('#login_submit').prop('disabled', false);
@@ -50,6 +53,9 @@ login = () => {
                             position: {x:'right',y:'top'},
                             duration: 2500
                         })
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
                     }
                     else {
                         $('#login_submit').prop('disabled', true);
