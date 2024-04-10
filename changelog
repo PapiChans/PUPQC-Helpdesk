@@ -991,3 +991,8 @@
 - Wrong Credentials during login will now refresh the page
 - Minor Revision about the Admin Analytics
 - BUG FIX: Facility Description missing at multiple description lines
+
+# 0.7.4.5
+- Push by Christian (https://github.com/papichans)
+- Revise and Add Admin Analytics
+- Remove Unsued API URL's and View for Admin Analytics

@@ -5,6 +5,7 @@ $(function() {
     feedbackChart2();
     feedbackChart3();
     /*Other Charts*/
+    ticketChart();
 })
 
 const notyf = new Notyf();
@@ -236,7 +237,67 @@ feedbackChart3 = () => {
     })
 }
 
-
+ticketChart = () => {
+    $.ajax({
+        type: 'GET',
+        url: '/api/admin/ticketstatusChart',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            var chartDom = document.getElementById('TicketStatus');
+            var myChart = echarts.init(chartDom);
+            var option;
+            
+            option = {
+            title: {
+                text: 'Ticket Status Count',
+                left: 'center',
+                bottom: '5%'
+            },
+            toolbox: {
+                feature: {
+                saveAsImage: {
+                    title: 'Save as Image',
+                }
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '<b>{b}</b>: {c} ({d}%)',
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                scroll: true,
+            },
+            series: [
+                {
+                type: 'pie',
+                radius: ['60%','30%'],
+                data: result,
+                emphasis: {
+                    itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    }
+                }
+                }
+            ]
+            };
+            
+            option && myChart.setOption(option);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Ticket Chart Fetching Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
 
 $(function() {
     var fetchDataForAllCharts = () => {
@@ -359,8 +420,6 @@ $(function() {
             myChart.setOption(option);
         }
     };
-    
-
 
     fetchDataForAllCharts();
 });

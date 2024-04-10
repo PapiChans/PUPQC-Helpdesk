@@ -8,7 +8,7 @@
 | ------------------- | --------------------|
 | **Description**     | This project is for fullfillment of requirements in subject "Capstone Project 1 and 2". |
 | **Date Started**    | August 20, 2023 |
-| **Current Version** | v0.7.4.4| 
+| **Current Version** | v0.7.4.5| 
 | **Members**         | Backend Developers<ul><li>[Altiche, Christian](https://github.com/papichans)</li></ul>Frontend Developers<ul><li>[Lopez, Loyd Marion](https://github.com/loydmarionlopez)</li></ul>QA Testers<ul><li>[Felipe, Leslie](https://github.com/Hishori)</li></ul>Documentation<ul><li>[Sicangco, Charles Joseph](https://github.com/httpgwapo)</li></ul> _Students from Polytechnic University of the Philippines Quezon City Branch, BSIT 4-2 (Batch 2023-2024)_|
 
 
@@ -21,14 +21,6 @@
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" alt="javascript" width="50" height="50"/> </a>
 <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain.svg" alt="bootstrap" width="50" height="50"/> </a>
 <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="html5" width="50" height="50"/></a>
-
-## Framework
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="html5" width="50" height="50"/>
-        
-## Tools Used for this Application
-
 <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="html5" width="50" height="50"/></a>
-
-## Repository
-
 <a href="https://github.com/PapiChans/PUPQC-Helpdesk" target="_blank" rel="noreferrer"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="html5" width="50" height="50"/></a>

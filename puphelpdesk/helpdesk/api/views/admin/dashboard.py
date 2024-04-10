@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import datetime, timedelta
 from django.db.models.functions import TruncMonth, TruncDate, ExtractMonth
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, ServiceReferrals, IDandCard, StudentGovernment, HealthFacility, Ticket
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, StudentGovernment, Ticket
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -121,51 +121,6 @@ def adminCareerChart(request):
             return Response(response_data)
         return Response({"message": "Get Career Chart Error"})
 
-@api_view(['GET'])
-def adminServiceReferralChart(request):
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "GET":
-            data = (
-                ServiceReferrals.objects
-                .values('referral_Type')
-                .annotate(count=Count('referral_Type'))
-            )
-
-            on_campus_count = sum(item['count'] for item in data if item['referral_Type'] == 'On Campus')
-            community_count = sum(item['count'] for item in data if item['referral_Type'] == 'Community')
-
-            response_data = [
-                {'value': on_campus_count, 'name': 'On Campus'},
-                {'value': community_count, 'name': 'Community'},
-            ]
-            return Response(response_data)
-        return Response({"message": "Get Service Referral Chart Error"})
-
-@api_view(['GET'])
-def adminIDandCardChart(request):
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "GET":
-            data = (
-                IDandCard.objects
-                .values('guide_Type')
-                .annotate(count=Count('guide_Type'))
-            )
-
-            obtaining_count = sum(item['count'] for item in data if item['guide_Type'] == 'Obtaining ID')
-            replacing_count = sum(item['count'] for item in data if item['guide_Type'] == 'Replacing ID')
-            accesscard_count = sum(item['count'] for item in data if item['guide_Type'] == 'Access Card')
-
-            response_data = [
-                {'value': obtaining_count, 'name': 'Obtaining ID'},
-                {'value': replacing_count, 'name': 'Replacing ID'},
-                {'value': accesscard_count, 'name': 'Access Card'},
-            ]
-            return Response(response_data)
-        return Response({"message": "Get Service Referral Chart Error"})
 
 @api_view(['GET'])
 def adminStudentGovernmentChart(request):
@@ -188,30 +143,29 @@ def adminStudentGovernmentChart(request):
             ]
             return Response(response_data)
         return Response({"message": "Get Student Government Chart Error"})
-
+    
 @api_view(['GET'])
-def adminHealthFacilityChart(request):
+def adminTicketStatusChart(request):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
             data = (
-                HealthFacility.objects
-                .values('health_Facility_Type')
-                .annotate(count=Count('health_Facility_Type'))
+                Ticket.objects
+                .values('ticket_Status')
+                .annotate(count=Count('ticket_Status'))
             )
 
-            health_service_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Health Service')
-            medical_clinic_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Medical Clinic')
-            wellness_program_count = sum(item['count'] for item in data if item['health_Facility_Type'] == 'Wellness Program')
+            new_count = sum(item['count'] for item in data if item['ticket_Status'] == 'New')
+            open_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Open')
+            response_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Response')
+            closed_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Closed')
 
             response_data = [
-                {'value': health_service_count, 'name': 'Health Service'},
-                {'value': medical_clinic_count, 'name': 'Medical Clinic'},
-                {'value': wellness_program_count, 'name': 'Wellness Program'},
+                {'value': new_count, 'name': 'New'},
+                {'value': open_count, 'name': 'Open'},
+                {'value': response_count, 'name': 'Response'},
+                {'value': closed_count, 'name': 'Closed'},
             ]
             return Response(response_data)
-        return Response({"message": "Get Health Facility Chart Error"})
-
-
-# Tickets
+        return Response({"message": "Get Ticket Chart Error"})

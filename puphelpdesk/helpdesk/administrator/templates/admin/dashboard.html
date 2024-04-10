@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-4 mt-3">  
                         <h3 class="card-title text-center">Feedback and Suggestion Count</h3>
-                        <p class="text-secondary">The overall count of Feedback and Suggestions submitted by the users of the PUPQC Helpdesk.</p>
+                        <p class="text-secondary">The overall count of Feedback and Suggestions submitted by the users of the PUPQC Student Helpdesk.</p>
                         <div class="d-flex justify-content-center">  
                             <div id="FeedbackVsSuggestion" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
                         </div>
@@ -37,6 +37,35 @@
                         <p class="text-secondary">The overall count of Statuses of all the Suggestions Submitted.</p>
                         <div class="d-flex justify-content-center">
                             <div id="SuggestionChart" style="width: 350px;height:350px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="text-center mb-3">Ticket</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mt-3">  
+                        <h3 class="card-title text-center">Ticket Status</h3>
+                        <p class="text-secondary">The overall count of Tickets submitted by the users and it's status of the PUPQC Helpdesk.</p>
+                        <div class="d-flex justify-content-center">  
+                            <div id="TicketStatus" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mt-3">  
+                        <h3 class="card-title text-center">Ticket Status Information</h3>
+                        <div class="container">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <h3><span class="badge bg-primary text-success-fg">New</span> - The ticket has been newly created but it hasn't providing any message or response yet.</h3>
+                                    <h3 class="mt-3"><span class="badge bg-success text-success-fg">Open</span> - The User message or create a response to the ticket, waiting for the Administrator to reply.</h3>
+                                    <h3 class="mt-3"><span class="badge bg-warning text-success-fg">Response</span> - The Administrator send a response to the ticket, waiting for the User to reply.</h3>
+                                    <h3 class="mt-3"><span class="badge bg-danger text-success-fg">Closed</span> - The ticket has been closed and it can't be sent response anymore.</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
