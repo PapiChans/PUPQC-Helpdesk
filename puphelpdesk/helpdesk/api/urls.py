@@ -352,6 +352,8 @@ urlpatterns = [
 
     # Ticket
     path('admin/getOpenTicket', views.adminGetOpenTicket),
+    path('admin/getResponseTicket', views.adminGetResponseTicket),
+    path('admin/getNewTicket', views.adminGetNewTicket),
     path('admin/getClosedTicket', views.adminGetClosedTicket),
     path('admin/getTicketInfo/<ticket_Number>', views.adminGetTicketInfo),
     path('admin/getTicketComment/<uuid:ticket_Id>', views.adminGetTicketComment),

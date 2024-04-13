@@ -996,3 +996,10 @@
 - Push by Christian (https://github.com/papichans)
 - Revise and Add Admin Analytics
 - Remove Unsued API URL's and View for Admin Analytics
+
+# 0.7.4.6
+- Push by Christian (https://github.com/papichans)
+- Revise the Pages to make specific. from "Helpdesk" to "Student Helpdesk"
+- Admin Ticket Page now can view ALL the tickets ever submitted.
+- Update API URLs
+- Update API Views

@@ -66,6 +66,9 @@ getTicketInfo = (ticket_Number) => {
             else if (data.ticket_Status == 'Response') {
                 status = `<span class="badge bg-warning text-success-fg">Response</span>`
             }
+            else if (data.ticket_Status == 'New') {
+                status = `<span class="badge bg-primary text-success-fg">New</span>`
+            }
             else if (data.ticket_Status == 'Closed') {
                 status = `<span class="badge bg-secondary text-success-fg">Closed</span>`
             }
@@ -84,14 +87,19 @@ getTicketInfo = (ticket_Number) => {
             let openformat = `<div class="text-center">
                 <h2 class="text-center">Wait for Response</h2>
                 <p class="text-center">Wait for the Student response before to reply again.</p>
-                <a href="{% url 'admin/ticket' %}" class="btn btn-secondary" id="goBack">Go Back</a>
                 <button type="button" class="btn btn-danger" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
-            </div>`;
+            </div>
+            `;
+
             
 
             
             let closedformat = `<h2 class="text-center">Ticket Closed</h2>
             <p class="text-center">This ticket is closed.</p>
+            `
+
+            let newformat = `<h2 class="text-center">Ticket Created</h2>
+            <p class="text-center">Wait for the user to send a message.</p>
             `
 
             if (data.ticket_Status == 'Open'){
@@ -100,6 +108,10 @@ getTicketInfo = (ticket_Number) => {
             else if (data.ticket_Status == 'Response'){
                 formshoworhide.html(null)
                 formshoworhide.append(openformat)
+            }
+            else if (data.ticket_Status == 'New'){
+                formshoworhide.html(null)
+                formshoworhide.append(newformat)
             }
             else if (data.ticket_Status == 'Closed'){
                 formshoworhide.html(null)

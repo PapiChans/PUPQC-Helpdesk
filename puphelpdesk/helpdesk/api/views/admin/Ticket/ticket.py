@@ -17,6 +17,28 @@ def adminGetOpenTicket(request):
         return Response({"message": "Get Ticket Error"})
     
 @api_view(['GET'])
+def adminGetResponseTicket(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = Ticket.objects.all().filter(ticket_Status='Response').order_by('date_Created')
+            serializer = TicketSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Ticket Error"})
+    
+@api_view(['GET'])
+def adminGetNewTicket(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = Ticket.objects.all().filter(ticket_Status='New').order_by('date_Created')
+            serializer = TicketSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Ticket Error"})
+    
+@api_view(['GET'])
 def adminGetClosedTicket(request):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
