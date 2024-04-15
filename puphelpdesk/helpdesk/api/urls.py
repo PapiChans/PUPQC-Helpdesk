@@ -335,6 +335,7 @@ urlpatterns = [
     path('admin/ItemMarkAsMissing/<uuid:item_Id>', views.adminItemMarkAsMissing),
     path('admin/ItemMarkAsClaim/<uuid:item_Id>', views.adminItemMarkAsClaim),
     path('admin/ItemMarkAsFound/<uuid:item_Id>', views.adminItemMarkAsFound),
+    path('admin/searchItem/<item_Keyword>', views.adminSearchItem),
 
     # Lost and Found: Retrieval Instruction
     path('admin/addInstruction', views.adminAddInstruction),

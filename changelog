@@ -1003,3 +1003,11 @@
 - Admin Ticket Page now can view ALL the tickets ever submitted.
 - Update API URLs
 - Update API Views
+
+# 0.7.4.7
+- Push by Christian (https://github.com/papichans)
+- Update API URLs
+- Update API Views
+- Update Lost and Found AJAX
+- Admin Lost and Found Page can now search Lost Items
+- Ticket Message can track the gap between time submission and current time (Both User and Admin)

@@ -300,3 +300,135 @@ ItemMarkAsFound = (item_Id) => {
         }
     })
 }
+
+searchItem = () => {
+    $('#no_Item').html("Searching...");
+    let missing_display = $('#missing_display')
+    let claim_display = $('#claim_display')
+
+    $('#missing-listtab').html(null)
+    $('#claim-listtab').html(null)
+
+    var missingcount = 0;
+    var claimcount = 0;
+
+    $('#item_Search').prop('disabled', true);
+    const item_Keyword = $('#item_Keyword').val();
+
+    const data = {
+        item_Keyword: item_Keyword
+    }
+
+    if (!item_Keyword || item_Keyword.trim() === '') {
+        $('#no_Item').html("Keywords is Empty.");
+        $('#item_Search').prop('disabled', false);
+    }
+    else {
+
+        missing_display.empty();
+        claim_display.empty();
+        
+        $.ajax({
+            type: 'POST',
+            url: `/api/admin/searchItem/${item_Keyword}`,
+            data: data,
+            dataType: 'json',
+            cache: false,
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                notyf.dismissAll();
+                const data = result;
+                if (data.length > 0) {
+                    data.forEach((itemdata) => {
+
+                    const formattedDate = formatDate(itemdata.item_Lost_Date)
+                    const formattedTime = convertTo12HourFormat(itemdata.item_Lost_Time)
+
+                    let status, button, buttontext;
+                    if (itemdata.item_Status == 'Missing') {
+                        status = '<span class="badge bg-red text-red-fg">Missing</span>';
+                        button = 'ItemMarkAsClaim';
+                        buttontext = 'Claim Verification';
+                        missingcount++;
+                    }
+                    else if (itemdata.item_Status == 'Claim Verification') {
+                        status = '<span class="badge bg-info text-red-fg">Claim Verification</span>';
+                        button = 'ItemMarkAsMissing';
+                        buttontext = 'Missing';
+                        claimcount++;
+                    }
+
+
+                    let itemformat = `
+                    <div class="col-md-4">
+                    <div class="card">
+                        <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${itemdata.item_Image})"></div>
+                        <div class="card-body">
+                            <h4>${itemdata.item_Name} ${status}</h4>
+                            <p class="text-secondary">Last Seen: ${itemdata.item_Last_Seen}</p>
+                            <p class="text-secondary">Date of Lost: ${formattedDate} - ${formattedTime}</p>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="text-secondary">Owner: ${itemdata.item_Owner}</h4>
+                        </div>
+                    </div>
+                        <div class="mt-2 col text-center">
+                            <div class="dropdown">
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#LostItemInfoModal" onclick="getLostItemInfo('${itemdata.item_Id}')">Information</button>
+                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
+                                    Mark As
+                                </button>
+                                <div class="dropdown-menu">
+                                    ${(itemdata.item_Status !== 'Claim Verification') ? `<a class="dropdown-item" onclick="${button}('${itemdata.item_Id}')">
+                                    ${buttontext}
+                                    </a>` : ``}
+                                    <a class="dropdown-item" onclick="ItemMarkAsFound('${itemdata.item_Id}')">
+                                    Found
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `;
+                        $('#no_Item').html('Search Results for: '+ item_Keyword);
+                        $('#item_Search').prop('disabled', false);
+
+                        if (itemdata.item_Status == 'Missing') {
+                            $('#no-missing').html(null)
+                            missing_display.append(itemformat);
+                            $('#missing-listtab').html(`<span class="badge bg-blue text-blue-fg ms-2">${missingcount}</span>`)
+                        }
+                        else if (itemdata.item_Status == 'Claim Verification') {
+                            $('#no-claim').html(null)
+                            claim_display.append(itemformat);
+                            $('#claim-listtab').html(`<span class="badge bg-blue text-blue-fg ms-2">${claimcount}</span>`)
+                        }
+
+                    });
+                }
+                else {
+                    notyf.success({
+                        message: 'No Item Fetched.',
+                        position: {x:'right',y:'top'},
+                        duration: 2500
+                    });
+                    $('#no_Item').html("Search No Results");
+                    $('#item_Search').prop('disabled', false);
+                    $('#missing_display').html(null);
+                    $('#claim_display').html(null);
+                    $('#no-missing').html("No Missing Items.");
+                    $('#no-claim').html("No Items for Claiming.");
+                }
+            },
+        })
+        .fail(() => {
+            notyf.error({
+                message: 'Item Fetched Error',
+                position: {x:'right',y:'top'},
+                duration: 2500
+            });
+            $('#item_Search').prop('disabled', false);
+            $('#no_Item').html(null);
+        })
+    }
+}

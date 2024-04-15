@@ -8,16 +8,25 @@
 {% include "admin/LostAndFound/modal/ItemLost-modal.html" %} 
 <h2 class="header-title">Missing Items</h2>
 <p class="card-title-desc">Manage Lost items.</p>
-<a href="{% url 'admin/LostAndFound' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
+<div class="row justify-content-md-center mt-3 mb-3">
+    <div class="col-lg-6">
+        <input type="text" class="form-control mb-2" id="item_Keyword" placeholder="Search Item by entering info." required/>
+    </div>
+    <div class="col-md-auto">
+        <button onclick="searchItem()" class="btn btn-primary btn-md mb-2" id="item_Search">Search</button>
+    </div>
+</div>
+<h3 id="search_results" class="text-center"></h3>
+<h3 id="no_Item" class="text-center"></h3>
 <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link active" data-bs-toggle="tab" href="#missing-tab" role="tab" aria-selected="false">
-            Missing
+            Missing <div id="missing-listtab"></div>
         </a>
     </li>
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link" data-bs-toggle="tab" href="#claim-tab" role="tab" aria-selected="false">
-            Claim Verification
+            Claim Verification <div id="claim-listtab"></div>
         </a>
     </li>
 </ul>

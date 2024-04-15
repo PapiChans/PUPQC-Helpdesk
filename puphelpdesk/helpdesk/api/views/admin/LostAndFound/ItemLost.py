@@ -5,6 +5,9 @@ from api.models import LostandFound
 from django.core.files.storage import FileSystemStorage
 import os
 
+# For Searching Query
+from django.db.models import Q
+
 @api_view(['GET'])
 def adminGetLostItem(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -62,3 +65,22 @@ def adminItemMarkAsFound(request, item_Id):
             itemlost.save()
             return Response({"message": "Edit Lost Item Success"})
         return Response({"message": "Edit Lost Item Error"})
+
+@api_view(['POST'])    
+def adminSearchItem(request, item_Keyword):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "POST":
+            item_Keyword = request.POST.get('item_Keyword')
+            data = LostandFound.objects.filter(
+                Q(item_Owner__icontains=item_Keyword) |
+                Q(item_Name__icontains=item_Keyword) |
+                Q(item_Description__icontains=item_Keyword) |
+                Q(item_Last_Seen__icontains=item_Keyword) |
+                Q(item_Lost_Date__icontains=item_Keyword) |
+                Q(item_Lost_Time__icontains=item_Keyword)
+            ).order_by('date_Created')
+            serializer = LostandFoundSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Item Error"})
