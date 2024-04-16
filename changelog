@@ -1011,3 +1011,8 @@
 - Update Lost and Found AJAX
 - Admin Lost and Found Page can now search Lost Items
 - Ticket Message can track the gap between time submission and current time (Both User and Admin)
+
+# 0.7.4.8
+- Push by Christian (https://github.com/papichans)
+- Add Fixtures for Data Backups
+- BUG FIX: Charter Search Query only one display card

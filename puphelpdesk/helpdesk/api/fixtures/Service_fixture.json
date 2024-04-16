@@ -1,0 +1,56 @@
+[
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "c2553375-e5f8-40c5-9134-9cb2b47c98ae",
+        "service_Name": "Administrative Services",
+        "service_Description": "PUP QC has Registrar's office that handles students' registrations",
+        "date_Created": "2024-01-25T07:14:09.201689Z"
+        }
+    },
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "1c459a94-5cee-43b2-9f03-13d23a116b1f",
+        "service_Name": "Academic Services",
+        "service_Description": "PUP QC has libraries to give students access on some books to assist them on their research paper",
+        "date_Created": "2024-01-25T07:16:33.116190Z"
+        }
+    },
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "8dca7ca1-83fe-45ce-a91c-497beacf2725",
+        "service_Name": "Medical Services",
+        "service_Description": "PUP QC has a medic on standby and receives patient or health related concerns.",
+        "date_Created": "2024-01-26T09:34:31.360426Z"
+        }
+    },
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "17fa06e5-138e-43d2-ac58-85781a72b42d",
+        "service_Name": "Student Support",
+        "service_Description": "PUP QC has it's student support with Adviser, and Counselors available for helping students with their concerns.",
+        "date_Created": "2024-01-26T09:36:51.420355Z"
+        }
+    },
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "60cdf0d1-fc91-456e-975f-7f57156a8f0f",
+        "service_Name": "Student Services",
+        "service_Description": "PUP QC has Student Services to provide for students in need of Financial Aid, Scholarship, ID Request/Concerns, and ongoing Elections and Government",
+        "date_Created": "2024-01-26T09:37:58.747790Z"
+        }
+    },
+    {
+        "model": "api.Service",
+        "fields": {
+        "service_Id": "a25aa9ab-744b-406a-a38b-11925a3eadbe",
+        "service_Name": "Other Services",
+        "service_Description": "PUP QC has services such as Medical Support/Insurance, Lost and Found services, Parking routes, permits and guidelines, and Housing accommodation/Living Assistance.",
+        "date_Created": "2024-01-26T09:39:40.520835Z"
+        }
+    }
+]

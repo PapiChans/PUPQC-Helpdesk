@@ -1,0 +1,87 @@
+[
+    {
+        "model": "api.Charter",
+        "fields": {
+        "charter_Id": "3589172d-485b-4b5a-94e7-9e10af8eaa0d",
+        "charter_Number": "Charter-0ela0vpea5mqo48z5eev",
+        "charter_Office": "Office of Student Services",
+        "charter_Category": "Student ID Issuance",
+        "charter_Title": "Application for New Identification Card",
+        "charter_Description": "The service is provided for students who are availing of new identification card because they are transferees or shiftees. Old or resident students may also avail of this service if they wish to update the information in their old ID or if their IDs have been damaged or have  become defective.",
+        "charter_Classification": "Simple",
+        "charter_Transaction": "G2C",
+        "charter_Avail": "Students",
+        "charter_Requirements": "Current Registration Card\nDocument: Form PUP-NRID-5-OFSS-007\nProof of Payment",
+        "charter_Secure": "Admission Office\nhttps://www.pup.edu.ph\nCashiers Office",
+        "date_Created": "2024-04-16T01:09:43.030682Z"
+        }
+    },
+    {
+        "model": "api.Charter",
+        "fields": {
+        "charter_Id": "bf38bad7-9503-4eef-8a30-178ee985b327",
+        "charter_Number": "Charter-h1myg5knfxcg954aw23t",
+        "charter_Office": "Office of Student Services",
+        "charter_Category": "Student ID Issuance",
+        "charter_Title": "Application for Replacement of Lost Identification Card",
+        "charter_Description": "The request of processed by the OSS for students who replacement of their identification cards due to loss/theft.",
+        "charter_Classification": "Simple",
+        "charter_Transaction": "G2C",
+        "charter_Avail": "Students",
+        "charter_Requirements": "- Current Registration Card\n- Document Application for Replacement of Lost Identification Card Form\n- Proof of Payment",
+        "charter_Secure": "Admission Office:\nhttps://www.pup.edu.ph\n\nCashier's Office",
+        "date_Created": "2024-04-16T01:19:11.522342Z"
+        }
+    },
+    {
+        "model": "api.Charter",
+        "fields": {
+        "charter_Id": "ad687385-27aa-401f-ae46-786b78060d7b",
+        "charter_Number": "Charter-6l3hbr8dptf1r2kku20j",
+        "charter_Office": "Office of Student Services",
+        "charter_Category": "Others",
+        "charter_Title": "Request for Replacement of Lost Registration Certificate",
+        "charter_Description": "The request is processed by the OSS for student who need duplicate copy of their registration certificate due to loss / theft.",
+        "charter_Classification": "Simple",
+        "charter_Transaction": "G2C",
+        "charter_Avail": "Students",
+        "charter_Requirements": "- Identification Card of Student\n- Document: PUP-RSID-S-OFSS-008 Proof of Payment",
+        "charter_Secure": "Admission Office\nhttps://www.pup.edu.ph\nCashier's Office",
+        "date_Created": "2024-04-16T01:31:28.475027Z"
+        }
+    },
+    {
+        "model": "api.Charter",
+        "fields": {
+        "charter_Id": "52b7cdf0-61a1-4bde-81d5-fc803cfa7dfd",
+        "charter_Number": "Charter-thjg3n0vx4q8zykgiqxs",
+        "charter_Office": "Branch / Campus Student Affairs and Services Office",
+        "charter_Category": "Student Support",
+        "charter_Title": "Issuance of Student / Alumni Referral and Recommendation",
+        "charter_Description": "Letter that recommends a PUP Student/Alumni to an industry for a full-time, part-time, summer employment or internship opportunities.",
+        "charter_Classification": "Simple",
+        "charter_Transaction": "G2C",
+        "charter_Avail": "Student / Alumni",
+        "charter_Requirements": "1. Duty Accomplished Student / Alumni Request Form\n2. Proof of Identification\n- One (1) Photocopy of the Certificate of Registration for currently enrolled student.\n- One (1) Photocopy of PUP Alumni Identification Card\n\nIf not available, present any of the following:\n- One (1) Photocopy of the Transcript of Records/Certificate of Grades\n- One (1) Photocopy of Diploma or Dummy Diploma\n- One (1) Graduation Photo taken during Graduation in the venue.",
+        "charter_Secure": "OSAS",
+        "date_Created": "2024-04-16T01:48:20.923644Z"
+        }
+    },
+    {
+        "model": "api.Charter",
+        "fields": {
+        "charter_Id": "ea4fee85-2e0a-4c1d-960d-41deb34c28c9",
+        "charter_Number": "Charter-tign842zlq7p5v4crmau",
+        "charter_Office": "Branch / Campus Student Affairs and Services Office",
+        "charter_Category": "Others",
+        "charter_Title": "Request for Certificate of Good Moral Character",
+        "charter_Description": "This request is processed by the OSS for student and alumni who need this document for scholarship / financial assistance, employment, further studies, board examinations, or for whatever legal purpose it may serve.",
+        "charter_Classification": "Simple",
+        "charter_Transaction": "G2C",
+        "charter_Avail": "Students",
+        "charter_Requirements": "1. Registration Card of Identification Card (for currently enrolled student); Alumni ID or TOR with picture (for Graduate)\n2. Document Form PUP-ACGM-5-OFSS0007\n3. Proof of Payment",
+        "charter_Secure": "The form can be secured from the Office of Student Affairs and Services",
+        "date_Created": "2024-04-16T02:02:55.352095Z"
+        }
+    }
+]

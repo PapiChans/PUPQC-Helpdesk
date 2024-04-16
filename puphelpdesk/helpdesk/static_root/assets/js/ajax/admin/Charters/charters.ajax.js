@@ -412,6 +412,9 @@ searchCharter = () => {
         $('#charter_Search').prop('disabled', false);
     }
     else {
+
+        charter_display.html(null)
+
         $.ajax({
             type: 'POST',
             url: `/api/admin/searchCharter/${charter_Keyword}`,
@@ -441,7 +444,6 @@ searchCharter = () => {
                         </div>
                             `;
 
-                        charter_display.html(null)
                         charter_display.append(charterformat)
                         $('#no_Charter').html('Search Results for: '+ charter_Keyword);
                         $('#charter_Search').prop('disabled', false);
