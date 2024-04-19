@@ -1,0 +1,35 @@
+[
+    {
+        "model": "api.ServiceReferrals",
+        "fields": {
+        "referral_Id": "5b3daf43-5e92-459d-a2c8-c3d9afa5baf8",
+        "referral_Type": "Community",
+        "referral_Name": "House/rooms for Rent service",
+        "referral_Description": "House/Rooms for rent services will help students look for a place to stay",
+        "referral_More_Info": "Person to Contact: Christian Altiche\nGmail: chrisaltiche@gmail.com",
+        "date_Created": "2024-01-25T07:22:22.861029Z"
+        }
+    },
+    {
+        "model": "api.ServiceReferrals",
+        "fields": {
+        "referral_Id": "8086e5e7-c418-447d-90a3-ae040ddcffec",
+        "referral_Type": "On Campus",
+        "referral_Name": "Academic Tutoring Center",
+        "referral_Description": "PUP QC offers tutoring on courses",
+        "referral_More_Info": "Person to Contact: Alma Fernandez\nEmail: alamafernandez@gmail.com",
+        "date_Created": "2024-01-25T07:20:22.634752Z"
+        }
+    },
+    {
+        "model": "api.ServiceReferrals",
+        "fields": {
+        "referral_Id": "0da89bf0-29bb-4b46-ba9d-858b51ec82aa",
+        "referral_Type": "On Campus",
+        "referral_Name": "On Job Training Program",
+        "referral_Description": "PUP QC offers company's and organizations partnership that offers internship dedicated to students undergoing OJT.\n\nPUP QC offers company's and organizations partnership that offers internship dedicated to students undergoing OJT.",
+        "referral_More_Info": "For more information, reach out Miss",
+        "date_Created": "2024-01-26T09:41:44.555216Z"
+        }
+    }
+]

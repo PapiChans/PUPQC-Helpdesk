@@ -42,16 +42,6 @@
     {
         "model": "api.FAQ",
         "fields": {
-        "FAQ_Id": "4fd86c5b-d843-4e5d-953e-3b389244dcad",
-        "FAQ_Category": "Housing and Accommodation",
-        "FAQ_Question": "Is the Housing options available for on-campus and off-campus?",
-        "FAQ_Answer": "Yes, Helpdesk can provide available On-campus and Off-campus housing options also offers off-campus living assistance.",
-        "date_Created": "2024-01-24T13:40:11.792818Z"
-        }
-    },
-    {
-        "model": "api.FAQ",
-        "fields": {
         "FAQ_Id": "ee086932-2ce2-4bc8-96ba-32be0ca19e68",
         "FAQ_Category": "Lost and Found Services",
         "FAQ_Question": "How to return an item?",
