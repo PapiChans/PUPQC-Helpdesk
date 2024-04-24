@@ -9,8 +9,8 @@ getFIS = () => {
 
     $.ajaxSetup({
         headers: {
-            'X-CSRFToken': csrftoken,
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnRlZ3JhdGlvbkBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InN0YWZmIiwiZXhwIjoxNzA4NzA1Mjc5fQ.vBx_831N2vKXv913WShd4TmX_olT-XuHm7DNfTov2bI',
+            'Authorization': 'API-Key',
+            'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiJjNmYzMDFjZTg3OWE0M2YwOWMyZWYyZjUzODk1YjY1OSJ9.L0Xs2-s2hAhnOuUEyciVLPHOHDtH3OAeC_UgoMP3X64', // Replace '(TOKEN_VARIABLE)' with the actual token variable from your .env
         },
     });
 
@@ -23,8 +23,8 @@ getFIS = () => {
                 dataType: 'json',
                 cache: false,
                 headers: {
-                    'X-CSRFToken': csrftoken,
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpbnRlZ3JhdGlvbkBnbWFpbC5jb20iLCJ1c2VydHlwZSI6InN0YWZmIiwiZXhwIjoxNzA4NzA1Mjc5fQ.vBx_831N2vKXv913WShd4TmX_olT-XuHm7DNfTov2bI',
+                    'Authorization': 'API-Key',
+                    'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXkiOiJjNmYzMDFjZTg3OWE0M2YwOWMyZWYyZjUzODk1YjY1OSJ9.L0Xs2-s2hAhnOuUEyciVLPHOHDtH3OAeC_UgoMP3X64', // Replace '(TOKEN_VARIABLE)' with the actual token variable from your .env
                 },
                 dataSrc: (result) => {
                     const formattedData = [];
@@ -38,6 +38,8 @@ getFIS = () => {
                                 FacultyType: faculty.FacultyType,
                                 Rank: faculty.Rank,
                                 PreferredSchedule: faculty.PreferredSchedule,
+                                FacultyCode: faculty.FacultyCode,
+                                Email: faculty.Email
                             });
                         });
                     }
@@ -93,6 +95,22 @@ getFIS = () => {
                     class: 'text-center',
                     render: (data) => {
                         return `${data.PreferredSchedule}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.FacultyCode}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.Email}`
                     },
                 },
             ],
