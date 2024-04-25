@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://helpdesk_tws7_user:Ttd77nFiig6a4lTtksMmnJvBdrjqSmSl@dpg-cmnuee6n7f5s73d17cig-a.singapore-postgres.render.com/helpdesk_tws7',
+        default='postgres://student_helpdesk_user:O6twebP7SoU6oOO80GXQzCRYeELDwWr5@dpg-cokv9qud3nmc739maa60-a.singapore-postgres.render.com/student_helpdesk',
         )
 }
 

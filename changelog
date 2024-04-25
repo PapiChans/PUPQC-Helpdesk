@@ -1025,3 +1025,9 @@
 # 0.7.4.10
 - Push by Christian (https://github.com/papichans)
 - Faculty Information System (FIS) Integration is finally fixed
+
+# 0.7.4.11
+- Push by Christian (https://github.com/papichans)
+- New DATABASE URL
+- Add Fixture Loader for easy load sample data
+- Display Actual Rank of Faculties

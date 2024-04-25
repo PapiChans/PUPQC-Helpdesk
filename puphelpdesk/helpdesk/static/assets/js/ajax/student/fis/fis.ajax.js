@@ -76,7 +76,7 @@ getFIS = () => {
                                 type = `<span class="badge bg-info text-success-fg">Full Time</span>`
                             }
                             else {
-                                type = `<span class="badge bg-secondary text-secondary-fg">Unknown</span>`
+                                type = `<span class="badge bg-secondary text-secondary-fg">${data.FacultyType}</span>`
                             }
                         return `${type}`
                     },
