@@ -1031,3 +1031,7 @@
 - New DATABASE URL
 - Add Fixture Loader for easy load sample data
 - Display Actual Rank of Faculties
+
+# 0.7.4.11.1
+- Push by Christian (https://github.com/papichans)
+- Edit requirements.txt for specific version for installing plugin in production
