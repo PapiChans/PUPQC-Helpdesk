@@ -1,0 +1,15 @@
+[
+    {
+        "model": "api.Ticket",
+        "fields": {
+        "ticket_Id": "a231db80-750f-4d10-bd03-36d648bd3ddc",
+        "ticket_Number": "Ticket-2024-04-26-0pscylgamlun1l2n7i2o",
+        "full_Name": "Altiche, Christian",
+        "ticket_Status": "Closed",
+        "ticket_Title": "Inquiry about New Student ID Application Process",
+        "ticket_Description": "Seeking clarification on the procedure for obtaining a new student identification card.",
+        "date_Created": "2024-04-26T02:20:14.631716Z",
+        "user_Id": "79f7c7c6-a0b1-46fe-9ea8-fae9bcdbb184"
+        }
+    }
+]

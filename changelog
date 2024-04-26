@@ -1052,3 +1052,9 @@
 - Push by Christian (https://github.com/papichans)
 - Closed Debug mode
 - Renew Domain
+
+# 0.7.4.12
+- Push by Christian (https://github.com/papichans)
+- Add Ticket and Ticket Comment Fixture for Sample Data
+- Add a limit for characters in creating ticket
+- Update Fixture Loader.txt

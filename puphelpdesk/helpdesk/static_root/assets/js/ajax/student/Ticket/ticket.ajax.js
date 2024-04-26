@@ -9,6 +9,18 @@ $(function () {
 
 })
 
+$('input#ticket_Title').maxlength({
+    alwaysShow: true,
+    warningClass: "badge bg-danger",
+    limitReachedClass: "badge bg-success",
+});
+
+$('input#ticket_Description').maxlength({
+    alwaysShow: true,
+    warningClass: "badge bg-danger",
+    limitReachedClass: "badge bg-success",
+});
+
 const notyf = new Notyf();
 
 function formatPostgresTimestamp(postgresTimestamp) {
