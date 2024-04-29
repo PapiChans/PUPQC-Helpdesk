@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import datetime, timedelta
 from django.db.models.functions import TruncMonth, TruncDate, ExtractMonth
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, StudentGovernment, Ticket
+from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, StudentGovernment, Ticket, TicketComment
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -167,5 +167,38 @@ def adminTicketStatusChart(request):
                 {'value': response_count, 'name': 'Response'},
                 {'value': closed_count, 'name': 'Closed'},
             ]
+            return Response(response_data)
+        return Response({"message": "Get Ticket Chart Error"})
+    
+@api_view(['GET'])
+def adminGetTicketCount(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            ticketdata = (
+                Ticket.objects
+                .values('ticket_Status')
+                .annotate(count=Count('ticket_Status'))
+            )
+
+            totalticketdata = Ticket.objects.all()
+            ticketcommentcountdata = TicketComment.objects.all()
+
+            new_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'New')
+            open_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Open')
+            response_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Response')
+            closed_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Closed')
+            totalticket_data = totalticketdata.count()
+            ticket_comment_count = ticketcommentcountdata.count()
+
+            response_data = {
+                "new": new_count,
+                "open": open_count,
+                "response": response_count,
+                "closed": closed_count,
+                "totalticket": totalticket_data,
+                "totalticketcomment": ticket_comment_count,
+            }
             return Response(response_data)
         return Response({"message": "Get Ticket Chart Error"})

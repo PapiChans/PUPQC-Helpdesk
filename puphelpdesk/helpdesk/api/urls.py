@@ -157,6 +157,7 @@ urlpatterns = [
     path('admin/careerChart', views.adminCareerChart),
     path('admin/studentgovernmentChart', views.adminStudentGovernmentChart),
     path('admin/ticketstatusChart', views.adminTicketStatusChart),
+    path('admin/getTicketCount', views.adminGetTicketCount),
 
     
     # General Info and Services: Resources

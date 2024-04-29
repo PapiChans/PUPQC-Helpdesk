@@ -1058,3 +1058,10 @@
 - Add Ticket and Ticket Comment Fixture for Sample Data
 - Add a limit for characters in creating ticket
 - Update Fixture Loader.txt
+
+# 0.7.5
+- Push by Christian (https://github.com/papichans)
+- Update API URLs
+- Update API Views
+- Add Ticket Counts for Admin Analytics
+- Major Revisions at some pages

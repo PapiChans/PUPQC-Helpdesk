@@ -45,7 +45,6 @@
 </div>
 <div class="card mt-3">
     <div class="card-body">
-        <h2 class="text-center mb-3">Ticket</h2>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 mt-3">  
@@ -56,14 +55,46 @@
                         </div>
                     </div>
                     <div class="col-md-8 mt-3">  
-                        <h3 class="card-title text-center">Ticket Status Information</h3>
+                        <h3 class="card-title text-center">Ticket Counts</h3>
                         <div class="container">
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <h3><span class="badge bg-primary text-success-fg">New</span> - The ticket has been newly created but it hasn't providing any message or response yet.</h3>
-                                    <h3 class="mt-3"><span class="badge bg-success text-success-fg">Open</span> - The User message or create a response to the ticket, waiting for the Administrator to reply.</h3>
-                                    <h3 class="mt-3"><span class="badge bg-warning text-success-fg">Response</span> - The Administrator send a response to the ticket, waiting for the User to reply.</h3>
-                                    <h3 class="mt-3"><span class="badge bg-danger text-success-fg">Closed</span> - The ticket has been closed and it can't be sent response anymore.</h3>
+                            <div class="row">
+                                <div class="card mt-3 col-md-3">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary" id="new_ticket">0</h1>
+                                        <h3 class="text-center">"New" Status Tickets</h3>
+                                    </div>
+                                </div>
+                                <div class="card mt-3 col-md-3">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary" id="response_ticket">0</h1>
+                                        <h3 class="text-center">"Response" Status Tickets</h3>
+                                    </div>
+                                </div>
+                                <div class="card mt-3 col-md-3">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary" id="open_ticket">0</h1>
+                                        <h3 class="text-center">"Open" Status Tickets</h3>
+                                    </div>
+                                </div>
+                                <div class="card mt-3 col-md-3">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary" id="closed_ticket">0</h1>
+                                        <h3 class="text-center">Closed Tickets</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card mt-3 col-md-6">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary"id="total_ticket">0</h1>
+                                        <h3 class="text-center">Total Tickets Count</h3>
+                                    </div>
+                                </div>
+                                <div class="card mt-3 col-md-6">
+                                    <div class="card-body">
+                                        <h1 class="text-center text-primary" id="total_messages">0</h1>
+                                        <h3 class="text-center">Ticket Messages Count</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>

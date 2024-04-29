@@ -76,6 +76,10 @@ addEvent = () => {
         const event_End = $('#event_End').val();
         const event_Venue = $('#event_Venue').val();
 
+        //Get the dates
+        const currentTime = new Date();
+        const eventStartTime = new Date(event_Date_Start + 'T' + event_Start);
+
         if (event_Date_Start > event_Date_End) {
             Swal.fire({
                 title: 'Something Went Wrong',
@@ -87,6 +91,34 @@ addEvent = () => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#event_Submit').prop('disabled', false);
+        }
+        else if (event_Start >= event_End) {
+            // Check if end time is before or same as start time.
+            Swal.fire({
+                title: 'Something Went Wrong',
+                text: 'The end time cannot be before or the same as the start time on the same day.',
+                icon: 'error',
+                allowEnterKey: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#D40429',
+            });
+            $('#event_Submit').prop('disabled', false);
+        }
+        else if (event_Date_Start == event_Date_End && eventStartTime <= currentTime) {
+            // If event start time is before or equal to current time, show error
+            Swal.fire({
+                title: 'Something Went Wrong',
+                text: 'You cannot set events for today after the current time.',
+                icon: 'error',
+                allowEnterKey: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#D40429',
+            });
             $('#event_Submit').prop('disabled', false);
         }
         else {
@@ -229,32 +261,23 @@ getEvent = () => {
                         </div>
                         `;
 
-                        if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
-                            const eventStartDateTime = new Date(`${eventdata.event_Date_Start} ${eventdata.event_Start}`);
-                            const eventEndDateTime = new Date(`${eventdata.event_Date_End} ${eventdata.event_End}`);
-                            const currentDateTime = new Date();
+                        const eventStartDateTime = new Date(`${eventdata.event_Date_Start}T${eventdata.event_Start}`);
+                        const eventEndDateTime = new Date(`${eventdata.event_Date_End}T${eventdata.event_End}`);
+                        const currentDateTime = new Date();
 
-                            if (eventStartDateTime <= currentDateTime && eventEndDateTime >= currentDateTime){
-                                $('#no_ongoing').html(null);
-                                ongoing_display.append(eventformat)
-                            }
-                            else
-                            {
-                                $('#no_ended').html(null);
-                                ended_display.append(eventformat);
-                            } 
-                        }
-                        
-                        if (eventdata.event_Date_Start > formattedCurrentdate) {
+                        if (eventStartDateTime <= currentDateTime && eventEndDateTime >= currentDateTime) {
+                            // Event ongoing
+                            $('#no_ongoing').html(null);
+                            ongoing_display.append(eventformat);
+                        } else if (eventStartDateTime > currentDateTime) {
+                            // Event upcoming
                             $('#no_upcoming').html(null);
                             upcoming_display.append(eventformat);
-                        }
-                        
-                        if (eventdata.event_Date_End < formattedCurrentdate) {
+                        } else {
+                            // Event ended
                             $('#no_ended').html(null);
                             ended_display.append(eventformat);
                         }
-                        
                 });
             }
             else {
@@ -410,6 +433,10 @@ editEvent = (event_Id) => {
         const event_End = $('#edit_event_End').val();
         const event_Venue = $('#edit_event_Venue').val();
 
+        //Get the dates
+        const currentTime = new Date();
+        const eventStartTime = new Date(event_Date_Start + 'T' + event_Start);
+
         if (event_Date_Start > event_Date_End) {
             Swal.fire({
                 title: 'Something Went Wrong',
@@ -421,6 +448,20 @@ editEvent = (event_Id) => {
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#D40429',
             })
+            $('#edit_event_Submit').prop('disabled', false);
+        }
+        else if (event_Start >= event_End) {
+            // Check if end time is before or same as start time.
+            Swal.fire({
+                title: 'Something Went Wrong',
+                text: 'The end time cannot be before or the same as the start time on the same day.',
+                icon: 'error',
+                allowEnterKey: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#D40429',
+            });
             $('#edit_event_Submit').prop('disabled', false);
         }
         else {

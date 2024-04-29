@@ -6,6 +6,7 @@ $(function() {
     feedbackChart3();
     /*Other Charts*/
     ticketChart();
+    ticketCount();
 })
 
 const notyf = new Notyf();
@@ -423,3 +424,29 @@ $(function() {
 
     fetchDataForAllCharts();
 });
+
+ticketCount = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/getTicketCount`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const data = result;
+            $('#new_ticket').html(data.new);
+            $('#response_ticket').html(data.response);
+            $('#open_ticket').html(data.open);
+            $('#closed_ticket').html(data.closed);
+            $('#total_ticket').html(data.totalticket);
+            $('#total_messages').html(data.totalticketcomment);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Ticket Count Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}

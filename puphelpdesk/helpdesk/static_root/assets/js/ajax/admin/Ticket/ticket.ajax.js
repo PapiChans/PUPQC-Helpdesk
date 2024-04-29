@@ -61,15 +61,6 @@ getOpenTicket = () => {
                     class: 'text-center',
                     width: '10%',
                     render: (data) => {
-                        const title = data.ticket_Title
-                        return `${title}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
                         let fullname = data.full_Name
                         return `${fullname}`
                     },
@@ -93,7 +84,7 @@ getOpenTicket = () => {
                     },
                 },
             ],
-            order: [[3, 'desc']],
+            order: [[2, 'desc']],
         })
     }
 }
@@ -128,15 +119,6 @@ getClosedTicket = () => {
                     class: 'text-center',
                     width: '10%',
                     render: (data) => {
-                        const title = data.ticket_Title
-                        return `${title}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
                         let fullname = data.full_Name
                         return `${fullname}`
                     },
@@ -160,7 +142,7 @@ getClosedTicket = () => {
                     },
                 },
             ],
-            order: [[3, 'desc']],
+            order: [[2, 'desc']],
         })
     }
 }
@@ -195,15 +177,6 @@ getResponseTicket = () => {
                     class: 'text-center',
                     width: '10%',
                     render: (data) => {
-                        const title = data.ticket_Title
-                        return `${title}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
                         let fullname = data.full_Name
                         return `${fullname}`
                     },
@@ -227,7 +200,7 @@ getResponseTicket = () => {
                     },
                 },
             ],
-            order: [[3, 'desc']],
+            order: [[2, 'desc']],
         })
     }
 }
@@ -262,15 +235,6 @@ getNewTicket = () => {
                     class: 'text-center',
                     width: '10%',
                     render: (data) => {
-                        const title = data.ticket_Title
-                        return `${title}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
                         let fullname = data.full_Name
                         return `${fullname}`
                     },
@@ -294,7 +258,7 @@ getNewTicket = () => {
                     },
                 },
             ],
-            order: [[3, 'desc']],
+            order: [[2, 'desc']],
         })
     }
 }
