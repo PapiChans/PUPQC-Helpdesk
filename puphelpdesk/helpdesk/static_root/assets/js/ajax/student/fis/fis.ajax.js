@@ -60,25 +60,7 @@ getFIS = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `${data.Degree}`
-                    },
-                },
-                {
-                    data: null,
-                    width: '10%',
-                    class: 'text-center',
-                    render: (data) => {
-                        let type = data.FacultyType
-                            if (data.FacultyType === 'Part Time'){
-                                type = '<span class="badge bg-success text-success-fg">Part Time</span>'
-                            }
-                            else if (data.FacultyType === 'Full Time') {
-                                type = `<span class="badge bg-info text-success-fg">Full Time</span>`
-                            }
-                            else {
-                                type = `<span class="badge bg-secondary text-secondary-fg">${data.FacultyType}</span>`
-                            }
-                        return `${type}`
+                        return `<span class="badge bg-info text-info-fg">${data.FacultyType}</span>`
                     },
                 },
                 {
@@ -103,6 +85,14 @@ getFIS = () => {
                     class: 'text-center',
                     render: (data) => {
                         return `${data.FacultyCode}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.Degree}`
                     },
                 },
                 {

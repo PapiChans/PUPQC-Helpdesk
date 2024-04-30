@@ -378,6 +378,15 @@ def ticket(request):
     else:
         return render(request, 'HTTPResponse/401.html')
     
+def howtouseticket(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Ticket Support"
+        return render(request, 'student/Ticket/howtouse.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
 def viewticket(request):
     if request.user.is_anonymous:
         return redirect('login')

@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.serializers import TicketSerializer, TicketCommentSerializer
-from api.models import Ticket, TicketComment
+from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerializer
+from api.models import Ticket, TicketComment, FAQ
 from django.core.files.storage import FileSystemStorage
 import os
 
@@ -102,3 +102,14 @@ def studGetTicketComment(request, ticket_Id):
             serializer = TicketCommentSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})
+    
+@api_view(['GET'])
+def studGetTicketFAQ(request):
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = FAQ.objects.all().filter(FAQ_Category = 'Ticket System Questions').order_by('FAQ_Category')
+            serializer = FAQSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get FAQ Error"})

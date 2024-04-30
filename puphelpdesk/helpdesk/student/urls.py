@@ -71,6 +71,7 @@ urlpatterns = [
 
     # Ticket
     path('ticket', views.ticket, name='ticket'),
+    path('ticket/How-to-Use', views.howtouseticket, name='ticket/howtouse'),
     path('ticket/view', views.viewticket, name='ticket/view'),
 
     # Charters

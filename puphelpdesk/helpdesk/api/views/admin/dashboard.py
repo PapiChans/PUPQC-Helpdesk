@@ -201,4 +201,41 @@ def adminGetTicketCount(request):
                 "totalticketcomment": ticket_comment_count,
             }
             return Response(response_data)
-        return Response({"message": "Get Ticket Chart Error"})
+        return Response({"message": "Get Ticket Count Error"})
+    
+@api_view(['GET'])
+def adminGetFeedbacksCount(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            feedbackdata = (
+                Feedback.objects
+                .values('feedback_Type', 'feedback_Status')
+                .annotate(count=Count('feedback_Type'))
+            )
+
+            # Counting total number of feedback type 'Feedback'
+            total_feedback_count = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Feedback')
+            total_suggestion_count = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Suggestion')
+
+            new_feedback = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Feedback' and item['feedback_Status'] == 'New')
+            read_feedback = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Feedback' and item['feedback_Status'] == 'Read')
+            deleted_feedback = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Feedback' and item['feedback_Status'] == 'Deleted')
+
+            new_suggestion = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Suggestion' and item['feedback_Status'] == 'New')
+            read_suggestion = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Suggestion' and item['feedback_Status'] == 'Read')
+            deleted_suggestion = sum(item['count'] for item in feedbackdata if item['feedback_Type'] == 'Suggestion' and item['feedback_Status'] == 'Deleted')
+
+            response_data = {
+                "total_feedback": total_feedback_count,
+                "total_suggestion": total_suggestion_count,
+                "new_feedback": new_feedback,
+                "read_feedback": read_feedback,
+                "deleted_feedback": deleted_feedback,
+                "new_suggestion": new_suggestion,
+                "read_suggestion": read_suggestion,
+                "deleted_suggestion": deleted_suggestion,
+            }
+            return Response(response_data)
+        return Response({"message": "Get Feedback Count Error"})

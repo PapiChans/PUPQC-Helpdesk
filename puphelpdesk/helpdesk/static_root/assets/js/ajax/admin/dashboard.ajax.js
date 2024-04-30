@@ -7,6 +7,7 @@ $(function() {
     /*Other Charts*/
     ticketChart();
     ticketCount();
+    FeedbackandSuggestionCount();
 })
 
 const notyf = new Notyf();
@@ -445,6 +446,34 @@ ticketCount = () => {
     .fail(() => {
         notyf.error({
             message: 'Fetch Ticket Count Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+FeedbackandSuggestionCount = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/getFeedbacksCount`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const data = result;
+            $('#NewFeedbackCount').html(data.new_feedback);
+            $('#ReadFeedbackCount').html(data.read_feedback);
+            $('#DeletedFeedbackCount').html(data.deleted_feedback);
+            $('#NewSuggestionsCount').html(data.new_suggestion);
+            $('#ReadSuggestionsCount').html(data.read_suggestion);
+            $('#DeletedSuggestionsCount').html(data.deleted_suggestion);
+            $('#TotalFeedbackCount').html(data.total_feedback);
+            $('#TotalSuggestionCount').html(data.total_suggestion);
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Feedbacks Count Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });

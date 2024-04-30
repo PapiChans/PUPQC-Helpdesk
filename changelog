@@ -1065,3 +1065,11 @@
 - Update API Views
 - Add Ticket Counts for Admin Analytics
 - Major Revisions at some pages
+
+# 0.7.6
+- Push by Christian (https://github.com/papichans)
+- Add Page: How to Use Ticket? (User only)
+- Deleted Unused Assets
+- Add Feedback Count in analytics (Admin)
+- Rearrange FIS Columns
+- Add Images on Assets for How to Use Tickets

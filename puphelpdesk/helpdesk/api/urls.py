@@ -130,6 +130,7 @@ urlpatterns = [
     path('student/getTicketInfo/<ticket_Number>', views.studGetTicketInfo),
     path('student/addTicketComment', views.studAddTicketComment),
     path('student/getTicketComment/<uuid:ticket_Id>', views.studGetTicketComment),
+    path('student/getTicketFAQ', views.studGetTicketFAQ),
 
     # Charters
     path('student/getCharter', views.studGetCharter),
@@ -158,6 +159,7 @@ urlpatterns = [
     path('admin/studentgovernmentChart', views.adminStudentGovernmentChart),
     path('admin/ticketstatusChart', views.adminTicketStatusChart),
     path('admin/getTicketCount', views.adminGetTicketCount),
+    path('admin/getFeedbacksCount', views.adminGetFeedbacksCount),
 
     
     # General Info and Services: Resources
