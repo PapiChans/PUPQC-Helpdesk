@@ -69,7 +69,7 @@ getEvent = () => {
 
                     let eventformat = `
                         <div class="col-xl-4">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <img src="${imgShow}" class="card-img-top img-fluid" id="image_thumbnail">
                                 <div class="card-body">
                                     <h4 class="card-title font-size-16 mt-0 text-center" contenteditable="false" id="title-1">${eventdata.event_Name}</h4>
@@ -83,17 +83,20 @@ getEvent = () => {
                         </div>
                         `;
 
-                        if (eventdata.event_Date_Start <= formattedCurrentdate && eventdata.event_Date_End >= formattedCurrentdate) {
+                        const eventStartDateTime = new Date(`${eventdata.event_Date_Start}T${eventdata.event_Start}`);
+                        const eventEndDateTime = new Date(`${eventdata.event_Date_End}T${eventdata.event_End}`);
+                        const currentDateTime = new Date();
+
+                        if (eventStartDateTime <= currentDateTime && eventEndDateTime >= currentDateTime) {
+                            // Event ongoing
                             $('#no_ongoing').html(null);
-                            ongoing_display.append(eventformat)
-                        }
-                        
-                        if (eventdata.event_Date_Start > formattedCurrentdate) {
+                            ongoing_display.append(eventformat);
+                        } else if (eventStartDateTime > currentDateTime) {
+                            // Event upcoming
                             $('#no_upcoming').html(null);
                             upcoming_display.append(eventformat);
-                        }
-                        
-                        if (eventdata.event_Date_End < formattedCurrentdate) {
+                        } else {
+                            // Event ended
                             $('#no_ended').html(null);
                             ended_display.append(eventformat);
                         }

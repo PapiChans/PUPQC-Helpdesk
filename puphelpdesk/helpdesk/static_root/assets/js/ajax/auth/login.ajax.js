@@ -35,27 +35,56 @@ login = () => {
             success: (result) => {
                 if (result) {
                     const logindata = result;
-                    if (logindata.response == "User does not exist"){
-                        $('#login_submit').prop('disabled', false);
-                        notyf.error({
-                            message: 'User does not exist.',
-                            position: {x:'right',y:'top'},
-                            duration: 2500
+                    if (logindata.code == 404){
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'User does not exist.',
+                            icon: 'error',
+                            allowEnterKey: 'false',
+                            allowOutsideClick: 'false',
+                            allowEscapeKey: 'false',
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
                         })
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
+                        $('#login_submit').prop('disabled', false);
                     }
-                    else if (logindata.response == "Incorrect Password") {
-                        $('#login_submit').prop('disabled', false);
-                        notyf.error({
-                            message: 'Incorrect Password',
-                            position: {x:'right',y:'top'},
-                            duration: 2500
+                    else if (logindata.code == 401) {
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: `Incorrect Password, Try again. Attempts Remaining: ${3-logindata.attempts}`,
+                            icon: 'error',
+                            allowEnterKey: 'false',
+                            allowOutsideClick: 'false',
+                            allowEscapeKey: 'false',
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
                         })
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
+                        $('#login_submit').prop('disabled', false);
+                    }
+                    else if (logindata.code == 403) {
+                        const remainingTimeSeconds = Math.ceil(logindata.time);
+                        const remainingMinutes = Math.floor(remainingTimeSeconds / 60);
+                        const remainingSeconds = remainingTimeSeconds % 60;
+                        let remainingTimeMessage = '';
+                        
+                        if (remainingMinutes > 0) {
+                            remainingTimeMessage += `${remainingMinutes} minute${remainingMinutes !== 1 ? 's' : ''}`;
+                        }
+                        
+                        if (remainingSeconds > 0) {
+                            remainingTimeMessage += ` ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
+                        }
+                        Swal.fire({
+                            title: 'Account Temporarily Locked.',
+                            text: `${logindata.response} Remaining Time: ${remainingTimeMessage}`,
+                            icon: 'error',
+                            allowEnterKey: 'false',
+                            allowOutsideClick: 'false',
+                            allowEscapeKey: 'false',
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
+                        })
+                        $('#login_submit').prop('disabled', false);
                     }
                     else {
                         $('#login_submit').prop('disabled', true);

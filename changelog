@@ -1082,3 +1082,7 @@
 - Adjust General Info Dropdown (Student and Admin)
 - Update API Views
 - Update API Models
+
+# 0.7.7.1
+- Push by Christian (https://github.com/papichans)
+- For to copy the static files on static_root
