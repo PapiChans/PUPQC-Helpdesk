@@ -5,6 +5,7 @@ from .auth.signup import *
 from .auth.login import *
 from .auth.logout import *
 from .auth.getprofile import *
+from .auth.session import *
 
 # ---------------
 # Student Routes

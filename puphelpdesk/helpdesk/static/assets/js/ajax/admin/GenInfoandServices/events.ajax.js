@@ -244,7 +244,7 @@ getEvent = () => {
 
                     let eventformat = `
                         <div class="col-xl-4">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <img src="${imgShow}" class="card-img-top img-fluid" id="image_thumbnail">
                                 <div class="card-body">
                                     <h4 class="card-title font-size-16 mt-0 text-center" contenteditable="false" id="title-1">${eventdata.event_Name}</h4>

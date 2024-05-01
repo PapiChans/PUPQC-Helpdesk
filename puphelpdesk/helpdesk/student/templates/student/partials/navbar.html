@@ -56,20 +56,15 @@
                                 <div class="dropdown-menu">
                                   <div class="dropdown-menu-columns">
                                     <div class="dropend">
-                                        <a class="dropdown-item dropdown-toggle show" href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="true">
-                                          Campus Information
-                                        </a>
-                                        <div class="dropdown-menu show" data-bs-popper="static">
-                                            <a href="{% url 'geninfo/facilities' %}" class="dropdown-item">
-                                                Facilities
-                                            </a>
-                                            <a href="{% url 'geninfo/services' %}" class="dropdown-item">
-                                                Services
-                                            </a>
-                                            <a href="{% url 'geninfo/resources' %}" class="dropdown-item">
-                                                Resources
-                                            </a>
-                                      </div>
+                                      <a href="{% url 'geninfo/facilities' %}" class="dropdown-item">
+                                          Facilities
+                                      </a>
+                                      <a href="{% url 'geninfo/services' %}" class="dropdown-item">
+                                          Services
+                                      </a>
+                                      <a href="{% url 'geninfo/resources' %}" class="dropdown-item">
+                                          Resources
+                                      </a>
                                       <a class="dropdown-item" href="{% url 'geninfo/events' %}">
                                         Event
                                       </a>

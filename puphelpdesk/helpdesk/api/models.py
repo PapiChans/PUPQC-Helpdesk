@@ -28,10 +28,28 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    failed_login_attempts = models.IntegerField(default=0)
+    lockout_timestamp = models.DateTimeField(null=True, blank=True)
 
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'
+
+    def __str__(self):
+        return self.username
+
+    def increment_failed_login_attempts(self):
+        self.failed_login_attempts += 1
+        if self.failed_login_attempts >= 3:
+            # Lock the account for 5 minutes
+            self.lockout_timestamp = timezone.now() + timezone.timedelta(minutes=5)
+        self.save()
+
+    def reset_failed_login_attempts(self):
+        self.failed_login_attempts = 0
+        self.lockout_timestamp = None
+        self.save()
+
     class Meta:
         db_table = 'User'
 

@@ -1073,3 +1073,12 @@
 - Add Feedback Count in analytics (Admin)
 - Rearrange FIS Columns
 - Add Images on Assets for How to Use Tickets
+
+# 0.7.7
+- Push by Christian (https://github.com/papichans)
+- Ticket Modal Form was reduced to 50 Characters
+- NEW Security: Session Timeout
+- NEW Security: Lockout Policy
+- Adjust General Info Dropdown (Student and Admin)
+- Update API Views
+- Update API Models
