@@ -4,6 +4,12 @@ from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerial
 from api.models import Ticket, TicketComment, FAQ
 from django.core.files.storage import FileSystemStorage
 import os
+from django.db import transaction
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
+
+User = get_user_model()
 
 @api_view(['POST'])
 def studAddTicket(request):
@@ -11,24 +17,46 @@ def studAddTicket(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "POST":
+            # Fetching the current date
+            today = timezone.now().date()
+
+            # Get the count of tickets created today
+            ticket_count_today = Ticket.objects.filter(date_Created__date=today).count() + 1
+
+            # Generate the ticket number
+            ticket_Number = f'T{today.strftime("%Y%m%d")}-{str(ticket_count_today).zfill(3)}'
+
             user_Id = request.POST.get('user_Id')
             full_Name = request.POST.get('full_Name')
             ticket_Title = request.POST.get('ticket_Title')
-            ticket_Description = request.POST.get('ticket_Description')
-            ticket_Number = request.POST.get('ticket_Number')
+            comment_Text = request.POST.get('comment_Text')
 
             ticket = {
                 'user_Id': user_Id,
                 'full_Name': full_Name,
                 'ticket_Title': ticket_Title,
                 'ticket_Number': ticket_Number,
-                'ticket_Description': ticket_Description,
-                'ticket_Status': 'New',
+                'ticket_Status': 'Open',
             }
             serializer = TicketSerializer(data=ticket)
             if serializer.is_valid():
-                serializer.save()
-                return Response({"message": "Submit Ticket Successfully"})
+                ticket_instance = serializer.save()
+
+                # Retrieve the ticket using the saved ticket instance
+                ticket_number = ticket_instance.ticket_Number
+
+                comment = {
+                    'user_Id': user_Id,
+                    'full_Name': full_Name,
+                    'ticket_Id': ticket_instance.ticket_Id,
+                    'comment_Text': comment_Text,
+                    'comment_Attachment': None,
+                }
+                comment_serializer = TicketCommentSerializer(data=comment)
+                if comment_serializer.is_valid():
+                    # Save the ticket comment
+                    comment_serializer.save()
+                    return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})        
             return Response({"message": "Submit Ticket Failed"})
         return Response({"message": "Submit Ticket Error"})
     
@@ -113,3 +141,19 @@ def studGetTicketFAQ(request):
             serializer = FAQSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get FAQ Error"})
+    
+@api_view(['GET'])
+def verifyTicketInfo(request, ticket_Number):
+    if request.user.is_anonymous or request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            try:
+                data = Ticket.objects.get(ticket_Number=ticket_Number)
+                if data.user_Id_id == request.user.user_Id:
+                    return Response({"code": 200})
+                else:
+                    return Response({"code": 401})
+            except ObjectDoesNotExist:
+                return Response({"code": 404})
+        return Response({"message": "Get Ticket Error"})

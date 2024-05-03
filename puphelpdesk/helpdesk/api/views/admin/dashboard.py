@@ -156,15 +156,13 @@ def adminTicketStatusChart(request):
                 .annotate(count=Count('ticket_Status'))
             )
 
-            new_count = sum(item['count'] for item in data if item['ticket_Status'] == 'New')
             open_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Open')
-            response_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Response')
+            replied_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Replied')
             closed_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Closed')
 
             response_data = [
-                {'value': new_count, 'name': 'New'},
                 {'value': open_count, 'name': 'Open'},
-                {'value': response_count, 'name': 'Response'},
+                {'value': replied_count, 'name': 'Replied'},
                 {'value': closed_count, 'name': 'Closed'},
             ]
             return Response(response_data)
@@ -185,17 +183,15 @@ def adminGetTicketCount(request):
             totalticketdata = Ticket.objects.all()
             ticketcommentcountdata = TicketComment.objects.all()
 
-            new_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'New')
             open_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Open')
-            response_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Response')
+            replied_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Replied')
             closed_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Closed')
             totalticket_data = totalticketdata.count()
             ticket_comment_count = ticketcommentcountdata.count()
 
             response_data = {
-                "new": new_count,
                 "open": open_count,
-                "response": response_count,
+                "replied": replied_count,
                 "closed": closed_count,
                 "totalticket": totalticket_data,
                 "totalticketcomment": ticket_comment_count,

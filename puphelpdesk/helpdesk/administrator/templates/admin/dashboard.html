@@ -15,155 +15,153 @@
 </div>
 <div class="card mt-3">
     <div class="card-body">
-        <h2 class="text-center mb-3">Feedback and Suggestions</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mt-3">  
-                        <h3 class="card-title text-center">Feedback and Suggestion Count</h3>
-                        <p class="text-secondary">The overall count of Feedback and Suggestions submitted by the users of the PUPQC Student Helpdesk.</p>
-                        <div class="d-flex justify-content-center">  
-                            <div id="FeedbackVsSuggestion" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <h3 class="card-title text-center">Feedback Statuses</h3>
-                        <p class="text-secondary">The overall count of Statuses of all the Feedbacks Submitted.</p>
-                        <div class="d-flex justify-content-center">
-                            <div id="FeedbackChart" style="width: 350px;height:350px;"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <h3 class="card-title text-center">Suggestion Statuses</h3>
-                        <p class="text-secondary">The overall count of Statuses of all the Suggestions Submitted.</p>
-                        <div class="d-flex justify-content-center">
-                            <div id="SuggestionChart" style="width: 350px;height:350px;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="NewFeedbackCount">0</h1>
-                            <h3 class="text-center">New Feedbacks Submitted</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="ReadFeedbackCount">0</h1>
-                            <h3 class="text-center">Readed Feedbacks</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="DeletedFeedbackCount">0</h1>
-                            <h3 class="text-center">Deleted Feedbacks</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="NewSuggestionsCount">0</h1>
-                            <h3 class="text-center">New Suggestions Submitted</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="ReadSuggestionsCount">0</h1>
-                            <h3 class="text-center">Readed Suggestions</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-2">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="DeletedSuggestionsCount">0</h1>
-                            <h3 class="text-center">Deleted Suggestions</h3>
-                        </div>
-                    </div> 
-                </div>
-                <div class="row">
-                    <div class="card mt-3 col-md-6">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="TotalFeedbackCount">0</h1>
-                            <h3 class="text-center">Total Feedback Count</h3>
-                        </div>
-                    </div>
-                    <div class="card mt-3 col-md-6">
-                        <div class="card-body">
-                            <h1 class="text-center text-primary" id="TotalSuggestionCount">0</h1>
-                            <h3 class="text-center">Total Suggestion Count</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
-<div class="card mt-3">
-    <div class="card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 mt-3">  
-                        <h3 class="card-title text-center">Ticket Status</h3>
-                        <p class="text-secondary">The overall count of Tickets submitted by the users and it's status of the PUPQC Helpdesk.</p>
-                        <div class="d-flex justify-content-center">  
-                            <div id="TicketStatus" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 mt-3">  
-                        <h3 class="card-title text-center">Ticket Counts</h3>
-                        <div class="container">
-                            <div class="row">
-                                <div class="card mt-3 col-md-3">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary" id="new_ticket">0</h1>
-                                        <h3 class="text-center">"New" Status Tickets</h3>
-                                    </div>
-                                </div>
-                                <div class="card mt-3 col-md-3">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary" id="response_ticket">0</h1>
-                                        <h3 class="text-center">"Response" Status Tickets</h3>
-                                    </div>
-                                </div>
-                                <div class="card mt-3 col-md-3">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary" id="open_ticket">0</h1>
-                                        <h3 class="text-center">"Open" Status Tickets</h3>
-                                    </div>
-                                </div>
-                                <div class="card mt-3 col-md-3">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary" id="closed_ticket">0</h1>
-                                        <h3 class="text-center">Closed Tickets</h3>
-                                    </div>
-                                </div>
+        <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link active" data-bs-toggle="tab" href="#feedback-justify" role="tab" aria-selected="false">
+                    Feedback Analytics
+                </a>
+            </li>
+            <li class="nav-item waves-effect waves-light">
+                <a class="nav-link" data-bs-toggle="tab" href="#ticket-justify" role="tab" aria-selected="false">
+                    Ticket Analytics
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content p-3">
+            <div class="tab-pane active" id="feedback-justify" role="tabpanel">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mt-3">  
+                            <h3 class="card-title text-center">Feedback and Suggestion Count</h3>
+                            <p class="text-secondary">The overall count of Feedback and Suggestions submitted by the users of the PUPQC Student Helpdesk.</p>
+                            <div class="d-flex justify-content-center">  
+                                <div id="FeedbackVsSuggestion" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
                             </div>
-                            <div class="row">
-                                <div class="card mt-3 col-md-6">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary"id="total_ticket">0</h1>
-                                        <h3 class="text-center">Total Tickets Count</h3>
-                                    </div>
-                                </div>
-                                <div class="card mt-3 col-md-6">
-                                    <div class="card-body">
-                                        <h1 class="text-center text-primary" id="total_messages">0</h1>
-                                        <h3 class="text-center">Ticket Messages Count</h3>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <h3 class="card-title text-center">Feedback Statuses</h3>
+                            <p class="text-secondary">The overall count of Statuses of all the Feedbacks Submitted.</p>
+                            <div class="d-flex justify-content-center">
+                                <div id="FeedbackChart" style="width: 350px;height:350px;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <h3 class="card-title text-center">Suggestion Statuses</h3>
+                            <p class="text-secondary">The overall count of Statuses of all the Suggestions Submitted.</p>
+                            <div class="d-flex justify-content-center">
+                                <div id="SuggestionChart" style="width: 350px;height:350px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card mt-3 col-md-2 bg-primary-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-primary" id="NewFeedbackCount">0</h1>
+                                <h3 class="text-center">New Feedbacks Submitted</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-2 bg-success-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-success" id="ReadFeedbackCount">0</h1>
+                                <h3 class="text-center">Readed Feedbacks</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-2 bg-warning-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-warning" id="DeletedFeedbackCount">0</h1>
+                                <h3 class="text-center">Deleted Feedbacks</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-2 bg-primary-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-primary" id="NewSuggestionsCount">0</h1>
+                                <h3 class="text-center">New Suggestions Submitted</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-2 bg-success-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-success" id="ReadSuggestionsCount">0</h1>
+                                <h3 class="text-center">Readed Suggestions</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-2 bg-warning-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-warning" id="DeletedSuggestionsCount">0</h1>
+                                <h3 class="text-center">Deleted Suggestions</h3>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="card mt-3 col-md-6 bg-primary-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-primary" id="TotalFeedbackCount">0</h1>
+                                <h3 class="text-center">Total Feedback Count</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-6 bg-success-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-success" id="TotalSuggestionCount">0</h1>
+                                <h3 class="text-center">Total Suggestion Count</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-</div>
-<div class="card mt-3">
-    <div class="card-body">
-        <h2 class="text-center mb-3">Services</h2>
-            <div class="container" style="overflow-x: hidden;">
-                <!-- Chart container -->
-                <div class="row d-flex justify-content-md-center">
-                <div id="MergedChart" style="width: 100%; height: 600px;"></div>
+        </div>
+        <div class="tab-content p-3">
+            <div class="tab-pane" id="ticket-justify" role="tabpanel">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">  
+                            <h3 class="card-title text-center">Ticket Status</h3>
+                            <p class="text-secondary">The overall count of Tickets submitted by the users and it's status of the PUPQC Helpdesk.</p>
+                            <div class="d-flex justify-content-center">  
+                                <div id="TicketStatus" style="width: 350px; height:350px; overflow-x: hidden;" ></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mt-3">  
+                            <h3 class="card-title text-center">Ticket Counts</h3>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card mt-3 col-md-4 bg-primary-lt">
+                                        <div class="card-body">
+                                            <h1 class="text-center text-primary" id="open_ticket">0</h1>
+                                            <h3 class="text-center">Open Tickets</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-3 col-md-4 bg-success-lt">
+                                        <div class="card-body">
+                                            <h1 class="text-center text-success" id="response_ticket">0</h1>
+                                            <h3 class="text-center">Replied Tickets</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-3 col-md-4 bg-warning-lt">
+                                        <div class="card-body">
+                                            <h1 class="text-center text-warning" id="closed_ticket">0</h1>
+                                            <h3 class="text-center">Closed Tickets</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card mt-3 col-md-6 bg-success-lt">
+                                        <div class="card-body">
+                                            <h1 class="text-center text-success" id="total_ticket">0</h1>
+                                            <h3 class="text-center">Total Tickets Count</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-3 col-md-6 bg-primary-lt">
+                                        <div class="card-body">
+                                            <h1 class="text-center text-primary" id="total_messages">0</h1>
+                                            <h3 class="text-center">Ticket Messages Count</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 {% endblock %}

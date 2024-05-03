@@ -22,18 +22,7 @@ def adminGetResponseTicket(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = Ticket.objects.all().filter(ticket_Status='Response').order_by('date_Created')
-            serializer = TicketSerializer(data, many=True)
-            return Response(serializer.data)
-        return Response({"message": "Get Ticket Error"})
-    
-@api_view(['GET'])
-def adminGetNewTicket(request):
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "GET":
-            data = Ticket.objects.all().filter(ticket_Status='New').order_by('date_Created')
+            data = Ticket.objects.all().filter(ticket_Status='Replied').order_by('date_Created')
             serializer = TicketSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})
@@ -102,7 +91,7 @@ def adminAddTicketComment(request):
                 serializer.save()
 
                 ticket = Ticket.objects.get(pk=ticket_Id)
-                ticket.ticket_Status = 'Response'
+                ticket.ticket_Status = 'Replied'
                 ticket.save()
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})

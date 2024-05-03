@@ -187,14 +187,11 @@ getTicket = () => {
                         if (data.ticket_Status == 'Open'){
                             status = '<span class="badge bg-success text-success-fg">Open</span>'
                         }
-                        else if (data.ticket_Status == 'Response') {
-                            status = `<span class="badge bg-warning text-warning-fg">Response</span>`
+                        else if (data.ticket_Status == 'Replied') {
+                            status = `<span class="badge bg-warning text-warning-fg">Replied</span>`
                         }
                         else if (data.ticket_Status == 'Closed') {
                             status = `<span class="badge bg-secondary text-secondary-fg">Closed</span>`
-                        }
-                        else if (data.ticket_Status == 'New') {
-                            status = `<span class="badge bg-info text-info-fg">New</span>`
                         }
                         else {
                             status = `<span class="badge bg-danger text-danger-fg">Unknown</span>`

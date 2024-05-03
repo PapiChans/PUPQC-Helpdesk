@@ -3,7 +3,30 @@ $(function () {
         addTicketComment(CommentAttachment)
         e.preventDefault() // prevent page refresh
     })
+    verifyTicketId();
 })
+
+function verifyTicketId() {
+    const ticketId = getTicketIdFromURL();
+    $.ajax({
+        type: 'GET',
+        url: `/api/student/verifyTicketInfo/${ticketId}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            if (result.code == 401){
+                window.location.href = '/Unauthorized'
+            }
+            else if (result.code == 404){
+                window.location.href = '/Not_Found'
+            }
+            else{
+                getTicketInfo(ticketId);
+            }
+        }
+    })
+}
 
 const notyf = new Notyf();
 
@@ -28,15 +51,6 @@ function getTicketIdFromURL() {
     return urlParams.get('ticket_number');
 }
 
-$(document).ready(function () {
-    const ticketId = getTicketIdFromURL();
-    if (ticketId) {
-        getTicketInfo(ticketId);
-    } else {
-        console.error('Ticket ID not found in the URL');
-    }
-});
-
 CommentAttachment = FilePond.create(document.querySelector('#comment_Attachment'), {
     instantUpload: false,
     allowProcess: false,
@@ -56,21 +70,17 @@ getTicketInfo = (ticket_Number) => {
             $('#ticket_Number_info').html(data.ticket_Number);
             $('#ticket_full_Name_info').html(data.full_Name);
             $('#ticket_Title_info').html(data.ticket_Title);
-            $('#ticket_Description_info').html(data.ticket_Description.replace(/\n/g, '</p><p>'));
             $('#ticket_Date_info').html(formatPostgresTimestamp(data.date_Created));
 
             let status = data.ticket_Status
             if (data.ticket_Status == 'Open'){
                 status = '<span class="badge bg-success text-success-fg">Open</span>'
             }
-            else if (data.ticket_Status == 'Response') {
-                status = `<span class="badge bg-warning text-success-fg">Response</span>`
+            else if (data.ticket_Status == 'Replied') {
+                status = `<span class="badge bg-warning text-success-fg">Replied</span>`
             }
             else if (data.ticket_Status == 'Closed') {
                 status = `<span class="badge bg-secondary text-success-fg">Closed</span>`
-            }
-            else if (data.ticket_Status == 'New') {
-                status = `<span class="badge bg-info text-success-fg">New</span>`
             }
             else {
                 status = `<span class="badge bg-secondary text-success-fg">Unknown</span>`

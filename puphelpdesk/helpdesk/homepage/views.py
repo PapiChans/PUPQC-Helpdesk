@@ -22,10 +22,14 @@ def login(request):
             return redirect('admin/dashboard')
         else:
             return redirect('user/dashboard')
+        
+# Error 401
+def error_401(request):
+    return render(request, 'HTTPResponse/401.html')
  
     # Error 404
-def error_404(request, exception):
-    return render(request, 'HTTPResponse/404.html')
+def error_404(request, exception=None):
+    return render(request, 'HTTPResponse/404.html', status=404)
 
 
 # Register

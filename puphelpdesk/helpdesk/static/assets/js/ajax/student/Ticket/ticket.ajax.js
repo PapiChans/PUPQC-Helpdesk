@@ -15,12 +15,6 @@ $('input#ticket_Title').maxlength({
     limitReachedClass: "badge bg-success",
 });
 
-$('input#ticket_Description').maxlength({
-    alwaysShow: true,
-    warningClass: "badge bg-danger",
-    limitReachedClass: "badge bg-success",
-});
-
 const notyf = new Notyf();
 
 function formatPostgresTimestamp(postgresTimestamp) {
@@ -45,27 +39,6 @@ function getTicketInfoAndNavigate(ticketId) {
     
     // Navigate to the specified URL
     window.location.href = detailsURL;
-}
-
-function generateTicketNumber() {
-    //Get the Current Date
-    const currentdate = new Date().toJSON().slice(0, 10);
-
-    // Define the prefix for the ticket number
-    const prefix = "Ticket-"+currentdate+"-";
-
-    // Define the length of the random part
-    const randomLength = 20;
-
-    // Generate a random string of alphanumeric characters
-    const randomPart = Array.from({ length: randomLength }, () =>
-        Math.random().toString(36).charAt(2)
-    ).join('');
-
-    // Combine the prefix and the random part to create the ticket number
-    const ticketNumber = prefix + randomPart;
-
-    return ticketNumber;
 }
 
 getTicket = () => {
@@ -110,14 +83,11 @@ getTicket = () => {
                         if (data.ticket_Status == 'Open'){
                             status = '<span class="badge bg-success text-success-fg">Open</span>'
                         }
-                        else if (data.ticket_Status == 'Response') {
-                            status = `<span class="badge bg-warning text-warning-fg">Response</span>`
+                        else if (data.ticket_Status == 'Replied') {
+                            status = `<span class="badge bg-warning text-warning-fg">Replied</span>`
                         }
                         else if (data.ticket_Status == 'Closed') {
                             status = `<span class="badge bg-secondary text-secondary-fg">Closed</span>`
-                        }
-                        else if (data.ticket_Status == 'New') {
-                            status = `<span class="badge bg-info text-info-fg">New</span>`
                         }
                         else {
                             status = `<span class="badge bg-danger text-danger-fg">Unknown</span>`
@@ -190,7 +160,6 @@ getuserprofileforticket = () => {
             const profiledata = result;
             $('#ticket_full_Name').val(profiledata.user_Last_Name+", "+ profiledata.user_First_Name);
             $('#ticket_user_Id').val(profiledata.user_Id);
-            $('#ticket_Number').val(generateTicketNumber());
         },
     })
     .fail(() => {
@@ -209,15 +178,13 @@ addTicket = () => {
         const user_Id = $('#ticket_user_Id').val();
         const full_Name = $('#ticket_full_Name').val();
         const ticket_Title = $('#ticket_Title').val();
-        const ticket_Description = $('#ticket_Description').val();
-        const ticket_Number = generateTicketNumber();
+        const comment_Text = $('#comment_Text').val();
 
         const data = {
             user_Id: user_Id,
             full_Name: full_Name,
-            ticket_Number: ticket_Number,
             ticket_Title: ticket_Title,
-            ticket_Description: ticket_Description,
+            comment_Text: comment_Text,
         };
 
         Swal.fire({
@@ -251,7 +218,7 @@ addTicket = () => {
                                 duration: 2500
                             })
                                 $('form#AddTicketForm')[0].reset();
-                                window.location.href = `/user/ticket/view?ticket_number=${ticket_Number}`;
+                                window.location.href = `/user/ticket/view?ticket_number=${result.ticket_Number}`;
                         }
                     },
                 })

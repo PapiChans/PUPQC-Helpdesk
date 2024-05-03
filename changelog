@@ -1086,3 +1086,16 @@
 # 0.7.7.1
 - Push by Christian (https://github.com/papichans)
 - For to copy the static files on static_root
+
+# 0.7.8
+- Push by Christian (https://github.com/papichans)
+- Major Revision on Ticketing System
+- Add Colour Cards and Tabs for Analytics
+- Update API Views
+- Update API Models
+- Update Ticket Fixtures
+- Create routes for error 401 and 404
+- Update How to use Tickets
+- Ticket Modal Form was reduced to 30 Characters
+- Creating a ticket is now creating a message as well
+- Add Ticket protection for Student to prevent bypass

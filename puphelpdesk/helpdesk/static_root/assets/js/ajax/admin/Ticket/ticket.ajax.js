@@ -2,7 +2,6 @@ $(function () {
     getOpenTicket();
     getClosedTicket();
     getResponseTicket();
-    getNewTicket();
 })
 
 const notyf = new Notyf();
@@ -159,64 +158,6 @@ getResponseTicket = () => {
             ajax: {
                 type: 'GET',
                 url: '/api/admin/getResponseTicket',
-                ContentType: 'application/x-www-form-urlencoded',
-                dataSrc: ''
-            },
-            columns: [
-                {
-                    data: null,
-                    class: 'text-left',
-                    width: '10%',
-                    render: (data) => {
-                        const ticketnum = data.ticket_Number
-                        return `${ticketnum}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
-                        let fullname = data.full_Name
-                        return `${fullname}`
-                    },
-                },
-                {
-                    data: null,
-                    width: '10%',
-                    class: 'text-center',
-                    render: (data) => {
-                        const date = formatPostgresTimestamp(data.date_Created)
-                        return `${date}`
-                    },
-                },
-                {
-                    data: null,
-                    width: '10%',
-                    class: 'text-center',
-                    render: (data) => {
-                        return `<button type="button" class="btn btn-primary waves-effect waves-light" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">View</button></a>
-                                `
-                    },
-                },
-            ],
-            order: [[2, 'desc']],
-        })
-    }
-}
-
-getNewTicket = () => {
-    const dt = $('#new-datatable');
-
-    $.ajaxSetup({
-		headers: {'X-CSRFToken': csrftoken},
-	})
-
-    if (dt.length) {
-        dt.DataTable({
-            ajax: {
-                type: 'GET',
-                url: '/api/admin/getNewTicket',
                 ContentType: 'application/x-www-form-urlencoded',
                 dataSrc: ''
             },

@@ -56,18 +56,14 @@ getTicketInfo = (ticket_Number) => {
             $('#ticket_Number_info').html(data.ticket_Number);
             $('#ticket_full_Name_info').html(data.full_Name);
             $('#ticket_Title_info').html(data.ticket_Title);
-            $('#ticket_Description_info').html(data.ticket_Description.replace(/\n/g, '</p><p>'));
             $('#ticket_Date_info').html(formatPostgresTimestamp(data.date_Created));
 
             let status = data.ticket_Status
             if (data.ticket_Status == 'Open'){
                 status = '<span class="badge bg-success text-success-fg">Open</span>'
             }
-            else if (data.ticket_Status == 'Response') {
-                status = `<span class="badge bg-warning text-success-fg">Response</span>`
-            }
-            else if (data.ticket_Status == 'New') {
-                status = `<span class="badge bg-primary text-success-fg">New</span>`
+            else if (data.ticket_Status == 'Replied') {
+                status = `<span class="badge bg-warning text-success-fg">Replied</span>`
             }
             else if (data.ticket_Status == 'Closed') {
                 status = `<span class="badge bg-secondary text-success-fg">Closed</span>`
@@ -98,20 +94,12 @@ getTicketInfo = (ticket_Number) => {
             <p class="text-center">This ticket is closed.</p>
             `
 
-            let newformat = `<h2 class="text-center">Ticket Created</h2>
-            <p class="text-center">Wait for the user to send a message.</p>
-            `
-
             if (data.ticket_Status == 'Open'){
                 $('#comment_Submit').prop('disabled', false);
             }
-            else if (data.ticket_Status == 'Response'){
+            else if (data.ticket_Status == 'Replied'){
                 formshoworhide.html(null)
                 formshoworhide.append(openformat)
-            }
-            else if (data.ticket_Status == 'New'){
-                formshoworhide.html(null)
-                formshoworhide.append(newformat)
             }
             else if (data.ticket_Status == 'Closed'){
                 formshoworhide.html(null)

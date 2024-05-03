@@ -403,9 +403,24 @@ class Ticket(models.Model):
     user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
     full_Name = models.CharField(max_length=100, null=False)
     ticket_Status = models.CharField(max_length=100, null=False)
-    ticket_Title = models.CharField(max_length=100, null=False)
-    ticket_Description = models.CharField(max_length=100, null=False)
+    ticket_Title = models.CharField(max_length=30, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    last_ticket_date = models.DateField(null=True)
+    ticket_count = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if not self.ticket_Number:
+            self.ticket_Number = self.generate_ticket_number()
+        super(Ticket, self).save(*args, **kwargs)
+
+    def generate_ticket_number(self):
+        today = timezone.now().date()
+        if self.last_ticket_date != today:
+            self.last_ticket_date = today
+            self.ticket_count = 0
+            self.save()
+        self.ticket_count += 1
+        return f'T{today.strftime("%Y%m%d")}-{str(self.ticket_count).zfill(3)}'
     class Meta:
         db_table = 'Ticket'
 

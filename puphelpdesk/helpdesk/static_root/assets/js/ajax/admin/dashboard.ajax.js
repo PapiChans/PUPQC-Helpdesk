@@ -301,131 +301,6 @@ ticketChart = () => {
     })
 }
 
-$(function() {
-    var fetchDataForAllCharts = () => {
-        var FinancialAidData, studentgovernmentData, careerData;
-
-        // Financial Aid chart dito
-        $.ajax({
-            type: 'GET',
-            url: '/api/admin/financialaidChart',
-            dataType: 'json',
-            cache: false,
-            headers: {'X-CSRFToken': csrftoken},
-            success: (result) => {
-                FinancialAidData = result;
-                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
-            },
-            error: () => {
-                notyf.error({
-                    message: 'Financial Aid Fetching Error',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-            }
-        });
-
-        // Student Government dito
-        $.ajax({
-            type: 'GET',
-            url: '/api/admin/studentgovernmentChart',
-            dataType: 'json',
-            cache: false,
-            headers: {'X-CSRFToken': csrftoken},
-            success: (result) => {
-                studentgovernmentData = result;
-                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
-            },
-            error: () => {
-                notyf.error({
-                    message: 'Student Government Chart Fetching Error',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-            }
-        });
-
-        // Financial Aid Dito 
-        $.ajax({
-            type: 'GET',
-            url: '/api/admin/careerChart',
-            dataType: 'json',
-            cache: false,
-            headers: {'X-CSRFToken': csrftoken},
-            success: (result) => {
-                careerData = result;
-                renderMergedChart(FinancialAidData, studentgovernmentData, careerData);
-            },
-            error: () => {
-                notyf.error({
-                    message: 'Career Chart Fetching Error',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-            }
-        });
-    };
-
-
-    var renderMergedChart = (FinancialAidData, studentgovernmentData, careerData) => {
-        if (FinancialAidData && studentgovernmentData && careerData) {
-            var mergedData = [];
-    
-            mergedData.push(...FinancialAidData);
-            mergedData.push(...studentgovernmentData);
-            mergedData.push(...careerData);
-    
-            var chartDom = document.getElementById('MergedChart');
-            var myChart = echarts.init(chartDom);
-            var option = {
-                title: {
-                    text: 'Other Services Count',
-                    left: 'center',
-                    bottom: '1%'
-                },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {
-                            title: 'Save as Image',
-                        }
-                    },
-                },
-                tooltip: {
-                    trigger: 'item',
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left',
-                    scroll: true,
-                },
-                dataset: {
-                    source: mergedData
-                },
-                xAxis: { type: 'value' },
-                yAxis: { type: 'category' },
-                series: [
-                    {
-                        type: 'bar',
-                        encode: {
-                            x: 'value',
-                            y: 'category'
-                        },
-                        itemStyle: {
-                            color: function(params) {
-                                var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
-                                return colorList[params.dataIndex % colorList.length];
-                            }
-                        }
-                    }
-                ]
-            };
-            myChart.setOption(option);
-        }
-    };
-
-    fetchDataForAllCharts();
-});
-
 ticketCount = () => {
     $.ajax({
         type: 'GET',
@@ -435,8 +310,7 @@ ticketCount = () => {
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
             const data = result;
-            $('#new_ticket').html(data.new);
-            $('#response_ticket').html(data.response);
+            $('#response_ticket').html(data.replied);
             $('#open_ticket').html(data.open);
             $('#closed_ticket').html(data.closed);
             $('#total_ticket').html(data.totalticket);
