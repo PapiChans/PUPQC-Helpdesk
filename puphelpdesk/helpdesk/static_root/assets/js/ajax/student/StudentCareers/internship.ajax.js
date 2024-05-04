@@ -12,8 +12,6 @@ function formatDate(inputDate) {
 
 
 getJobPosts = () => {
-    let job_display = $('#job_post_display')
-    let job_archive_display = $('#job_archive_display')
     let intern_display = $('#intern_display')
     let intern_archive_display = $('#intern_archive_display')
 
@@ -64,22 +62,14 @@ getJobPosts = () => {
             `;
             
 
-                    if (jobdata.job_Posting_Status == 'Active' && jobdata.job_Posting_Type == 'Job'){
-                        $('#no_job').html(null)
-                        job_display.append(jobformat)
-                    }
-                    if (jobdata.job_Posting_Status == 'Archived' && jobdata.job_Posting_Type == 'Job'){
-                        $('#no_job_archive').html('Archived Jobs')
-                        job_archive_display.append(jobformat)
-                    }
-                    if (jobdata.job_Posting_Status == 'Active' && jobdata.job_Posting_Type == 'Internship'){
-                        $('#no_intern').html(null)
-                        intern_display.append(jobformat)
-                    }
-                    if (jobdata.job_Posting_Status == 'Archived' && jobdata.job_Posting_Type == 'Internship'){
-                        $('#no_intern_archive').html('Archived Internships')
-                        intern_archive_display.append(jobformat)
-                    }
+            if (jobdata.job_Posting_Status == 'Active'){
+                $('#no_intern').html(null)
+                intern_display.append(jobformat)
+            }
+            if (jobdata.job_Posting_Status == 'Archived'){
+                $('#no_intern_archive').html('Archived Internships')
+                intern_archive_display.append(jobformat)
+            }
                 });
                 notyf.success({
                     message: 'All Jobs and Internships Fetched.',
@@ -105,89 +95,16 @@ getJobPosts = () => {
     })
 }
 
+
 getJobCategory = (selected_posting_Category) => {
-    $('#job_post_display').html("Loading...");
-    let job_display = $('#job_post_display')
-    job_display.html(null)
-    let posting_Category = selected_posting_Category
-    
-
-    $.ajax({
-        type: 'GET',
-        url: `/api/student/getJobPosting/${posting_Category}`,
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            notyf.dismissAll();
-            const data = result;
-            if (data.length > 0) {
-                data.forEach((jobdata) => {
-
-                    const formattedDate = formatDate(jobdata.date_Created);
-                    let cardcolor = null;
-                    if (jobdata.job_Posting_Status == 'Active') {
-                        cardcolor = 'info';
-                    }
-                    if (jobdata.job_Posting_Status == 'Archived') {
-                        cardcolor = 'red';
-                    }
-
-                    let jobformat = `
-                    <div class="col-md-4">
-                    <div class="card">
-                        <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
-                        <div class="card-body">
-                            <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
-                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
-                            <p class="text-secondary">${jobdata.job_Description}</p>
-                        </div>
-                        <div class="card-footer">
-                            <h4 class="text-secondary">Posted: ${formattedDate}</h4>
-                        </div>
-                    </div>
-                    <div class="mt-2 text-center">
-                        <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
-                    </div>
-                    </div>
-            `;
-
-                    job_display.append(jobformat)
-                    $('#no_Job').html(null);
-
-                });
-
-            }
-            else {
-                notyf.success({
-                    message: 'No Job Fetched.',
-                    position: {x:'right',y:'top'},
-                    duration: 2500
-                });
-                $('#no_Job').html("No Jobs Data");
-            }
-        },
-    })
-    
-    .fail(() => {
-        notyf.error({
-            message: 'Charter Fetched Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
-
-getInternCategory = (selected_posting_Category) => {
     $('#intern_display').html("Loading...");
-    let job_display = $('#intern_display')
-    job_display.html(null)
-    let posting_Category = selected_posting_Category
-    
+    let job_display = $('#intern_display');
+    job_display.html(null);
+    let posting_Category = selected_posting_Category;
 
     $.ajax({
         type: 'GET',
-        url: `/api/student/getJobPosting/${posting_Category}`,
+        url: posting_Category ? `/api/student/getJobPosting/${posting_Category}` : '/api/student/getJobPosting',
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
@@ -196,7 +113,6 @@ getInternCategory = (selected_posting_Category) => {
             const data = result;
             if (data.length > 0) {
                 data.forEach((jobdata) => {
-
                     const formattedDate = formatDate(jobdata.date_Created);
                     let cardcolor = null;
                     if (jobdata.job_Posting_Status == 'Active') {
@@ -205,33 +121,31 @@ getInternCategory = (selected_posting_Category) => {
                     if (jobdata.job_Posting_Status == 'Archived') {
                         cardcolor = 'red';
                     }
-
                     let jobformat = `
                     <div class="col-md-4">
-                    <div class="card">
-                        <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
-                        <div class="card-body">
-                            <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
-                            <p class="text-secondary">${jobdata.job_Posting_Category}</p>
-                            <p class="text-secondary">${jobdata.job_Description}</p>
+                        <div class="card">
+                            <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${jobdata.job_Logo})"></div>
+                            <div class="card-body">
+                                <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
+                                <p class="text-secondary">${jobdata.job_Posting_Category}</p>
+                                <p class="text-secondary">${jobdata.job_Description}</p>
+                            </div>
+                            <div class="card-footer">
+                                <h4 class="text-secondary">Posted: ${formattedDate}</h4>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <h4 class="text-secondary">Posted: ${formattedDate}</h4>
+                        <div class="mt-2 text-center">
+                            <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoEditModal" onclick="foreditjobpost('${jobdata.job_Posting_Id}')">Edit</button>
+                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#ReplaceCompanyLogoModal" onclick="forreplacelogo('${jobdata.job_Posting_Id}')">Replace</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light mb-2" onclick="deleteJobPost('${jobdata.job_Posting_Id}')">Delete</button>
                         </div>
-                    </div>
-                    <div class="mt-2 text-center">
-                        <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
-                    </div>
-                    </div>
-            `;
+                    </div>`;
 
                     job_display.append(jobformat)
                     $('#no_Job').html(null);
-
                 });
-
-            }
-            else {
+            } else {
                 notyf.success({
                     message: 'No Job Fetched.',
                     position: {x:'right',y:'top'},
@@ -241,14 +155,13 @@ getInternCategory = (selected_posting_Category) => {
             }
         },
     })
-    
     .fail(() => {
         notyf.error({
-            message: 'Charter Fetched Error',
+            message: 'Job Fetching Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });
-    })
+    });
 }
 
 
@@ -274,7 +187,7 @@ getJobInfo = (job_Posting_Id) => {
                 stat = `<span class="badge bg-secondary text-secondary-fg">Unknown</span>`
             }
             $('#job_logo_info').attr('src', `${jobInfodata.job_Logo}`);
-            $('#job_type_info').html(jobInfodata.job_Posting_Type);
+            // $('#job_type_info').html(jobInfodata.job_Posting_Type);
             $('#job_category_info').html(jobInfodata.job_Posting_Category);
             $('#job_position_info').html(jobInfodata.job_Posting_Position);
             $('#job_status_info').html(stat);

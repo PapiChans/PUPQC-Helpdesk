@@ -202,7 +202,7 @@ addTicket = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-        
+                $('#ticket_Submit').prop('disabled', true);
                 $.ajax({
                     type: 'POST',
                     url: '/api/student/addTicket',

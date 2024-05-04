@@ -1,13 +1,59 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerializer
-from api.models import Ticket, TicketComment, FAQ
+from api.models import Ticket, TicketComment, FAQ, UserProfile
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
+
+# For Email Sending
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+
+def send_email_to_owner(user_Email, full_Name, ticket_number):
+    subject = 'Your Ticket has been created'
+    html_content = """
+<html>
+<head>
+    <style>
+        .paragraph {{
+            margin-bottom: 20px;
+        }}
+        .working-hours {{
+            font-weight: bold;
+        }}
+        .app-team {{
+            font-weight: bold;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="paragraph">This is an auto-generated E-mail, <strong>DO NOT REPLY.</strong></p>
+                <p class="paragraph">Dear {full_Name},</p>
+                <p class="paragraph">Thank you for creating a ticket. Your request has been received and will be reviewed shortly.</p>
+                <p class="paragraph"><strong>Ticket Number:</strong> <span style="font-size: 20px;">{ticket_number}</span></p>
+                <p class="paragraph">The Administrator will process your ticket during our <strong class="working-hours">working hours</strong>, Monday to Saturday, from 8:00 AM to 5:00 PM.</p>
+                <p class="paragraph">Thank you for your patience and cooperation.</p>
+                <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+""".format(full_Name=full_Name, ticket_number=ticket_number)
+
+    # Create EmailMultiAlternatives object to include both HTML and plain text content
+    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
+    msg.attach_alternative(html_content, "text/html")
+    # Send the email
+    msg.send(fail_silently=True)
 
 User = get_user_model()
 
@@ -30,6 +76,9 @@ def studAddTicket(request):
             full_Name = request.POST.get('full_Name')
             ticket_Title = request.POST.get('ticket_Title')
             comment_Text = request.POST.get('comment_Text')
+
+            #Get User's Email
+            getUser = UserProfile.objects.get(user_Id=user_Id)
 
             ticket = {
                 'user_Id': user_Id,
@@ -56,7 +105,8 @@ def studAddTicket(request):
                 if comment_serializer.is_valid():
                     # Save the ticket comment
                     comment_serializer.save()
-                    return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})        
+                    send_email_to_owner(getUser.user_Email, full_Name, ticket_number)
+                    return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})      
             return Response({"message": "Submit Ticket Failed"})
         return Response({"message": "Submit Ticket Error"})
     
@@ -143,7 +193,7 @@ def studGetTicketFAQ(request):
         return Response({"message": "Get FAQ Error"})
     
 @api_view(['GET'])
-def verifyTicketInfo(request, ticket_Number):
+def studverifyTicketInfo(request, ticket_Number):
     if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:

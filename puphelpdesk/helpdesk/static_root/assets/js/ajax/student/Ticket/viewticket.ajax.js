@@ -171,7 +171,7 @@ addTicketComment = (CommentAttachment) => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-
+                $('#comment_Submit').prop('disabled', true);
                 notyf.open({
                     message: 'Submitting Comment. Please Wait...',
                     position: {x:'right',y:'top'},

@@ -3,7 +3,27 @@ $(function () {
         addTicketComment(CommentAttachment)
         e.preventDefault() // prevent page refresh
     })
+    verifyTicketId();
 })
+
+function verifyTicketId() {
+    const ticketId = getTicketIdFromURL();
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/verifyTicketInfo/${ticketId}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            if (result.code == 404){
+                window.location.href = '/Not_Found'
+            }
+            else{
+                getTicketInfo(ticketId);
+            }
+        }
+    })
+}
 
 const notyf = new Notyf();
 
@@ -27,15 +47,6 @@ function getTicketIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('ticket_number');
 }
-
-$(document).ready(function () {
-    const ticketId = getTicketIdFromURL();
-    if (ticketId) {
-        getTicketInfo(ticketId);
-    } else {
-        console.error('Ticket ID not found in the URL');
-    }
-});
 
 CommentAttachment = FilePond.create(document.querySelector('#comment_Attachment'), {
     instantUpload: false,
@@ -83,7 +94,7 @@ getTicketInfo = (ticket_Number) => {
             let openformat = `<div class="text-center">
                 <h2 class="text-center">Wait for Response</h2>
                 <p class="text-center">Wait for the Student response before to reply again.</p>
-                <button type="button" class="btn btn-danger" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
+                <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
             </div>
             `;
 
@@ -164,6 +175,7 @@ addTicketComment = (CommentAttachment) => {
         })
         .then((result) => {
             if (result.isConfirmed) {
+                $('#comment_Submit').prop('disabled', true);
 
                 notyf.open({
                     message: 'Submitting Comment. Please Wait...',
@@ -395,6 +407,7 @@ MarkAsClosed = (ticket_Id) => {
         confirmButtonColor: '#D40429',
     }).then(function (result) {
         if (result.value) {
+            $('#ticket_closed_btn').prop('disabled', true);
             $.ajax({
                 type: 'DELETE',
                 url: `/api/admin/ticketClosed/${ticket_Id}`,
@@ -423,6 +436,7 @@ MarkAsClosed = (ticket_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#ticket_closed_btn').prop('disabled', false);
             })
         }
     })

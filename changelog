@@ -1105,3 +1105,10 @@
 - Other Job related features removed except from Internship
 - Filtering Category in Admin side is done
 - Filtering Category in User side is still in progress
+
+# 0.7.10
+- Push by Christian (https://github.com/papichans)
+- Update API Views
+- Update API Models
+- NEW FEATURE: Email-sending (For Ticketing System for Now)
+- Import Email sending configuration in Settings.py
