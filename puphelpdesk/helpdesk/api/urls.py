@@ -68,6 +68,7 @@ urlpatterns = [
     path('student/getJobPosting', views.studGetJobPosting),
     path('student/getJobPosting/<job_Posting_Category>', views.studGetJobCategory),
     path('student/getJobPostingInfo/<uuid:job_Posting_Id>', views.studGetJobInfo),
+    path('student/getJobPosting/<uuid:job_Posting_Category>', views.studGetJobCategory),
 
     # ID and Access Cards
     # (Inactive) path('student/getObtainingStep', views.studGetObtainingStep),

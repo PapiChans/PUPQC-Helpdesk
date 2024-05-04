@@ -1099,3 +1099,9 @@
 - Ticket Modal Form was reduced to 30 Characters
 - Creating a ticket is now creating a message as well
 - Add Ticket protection for Student to prevent bypass
+
+# 0.7.9
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Other Job related features removed except from Internship
+- Filtering Category in Admin side is done
+- Filtering Category in User side is still in progress

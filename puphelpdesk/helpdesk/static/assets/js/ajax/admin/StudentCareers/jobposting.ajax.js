@@ -53,11 +53,10 @@ function isValidNumber(value) {
     return /^[0-9]+$/.test(value);
 }
 
-addJobpost = (CompanyLogo) => {
-    if ($('#AddJobPostingForm')[0]) {
-        const form = new FormData($('#AddJobPostingForm')[0])
+function addJobpost() {
+    const form = new FormData($('#AddJobPostingForm')[0]);
         
-        const posting_Type = $('#posting_Type').val();
+        // const posting_Type = $('#posting_Type').val();
         const posting_Category = $('#posting_Category').val();
         const posting_Position = $('#posting_Position').val();
         const posting_Company = $('#posting_Company').val();
@@ -71,7 +70,7 @@ addJobpost = (CompanyLogo) => {
         const posting_Contact = $('#posting_Contact').val();
 
         const formVariables = [
-            posting_Type,
+            // posting_Type,
             posting_Category,
             posting_Position,
             posting_Company,
@@ -131,7 +130,7 @@ addJobpost = (CompanyLogo) => {
                 })
             }
             else {
-                form.append('posting_Type', posting_Type);
+                // form.append('posting_Type', posting_Type);
                 form.append('posting_Category', posting_Category);
                 form.append('posting_Position', posting_Position);
                 form.append('posting_Company', posting_Company);
@@ -154,42 +153,40 @@ addJobpost = (CompanyLogo) => {
                 $.ajax({
                     type: 'POST',
                     url: '/api/admin/addJobPosting',
-                    dataType: 'json',
                     data: form,
                     processData: false,
                     contentType: false,
                     cache: false,
                     headers: {'X-CSRFToken': csrftoken},
-                    success: (result) => {
+                    success: function(result) {
                         if (result) {
                             $('#posting_Submit').prop('disabled', true);
                             notyf.success({
                                 message: 'Job Post Successfully',
                                 position: {x:'right',y:'top'},
                                 duration: 2500
-                            })
+                            });
                             $('form#AddJobPostingForm')[0].reset();
-
+            
                             setTimeout(function () {
-                                window.location.href = `/admin/careers/internship`
+                                window.location.href = `/admin/careers/internship`;
                             }, 2600);
-
                         }
                     },
-                })
-                .fail(() => {
-                    Swal.fire({
-                        title: 'Oops!',
-                        text: 'Something went wrong while posting Job. Please try again.',
-                        icon: 'error',
-                        allowEnterKey: 'false',
-                        allowOutsideClick: 'false',
-                        allowEscapeKey: 'false',
-                        confirmButtonText: 'Okay',
-                        confirmButtonColor: '#D40429',
-                    })
-                })
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Something went wrong while posting Job. Please try again.',
+                            icon: 'error',
+                            allowEnterKey: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
+                        });
+                    }
+                });
             }
         }
     }
-}

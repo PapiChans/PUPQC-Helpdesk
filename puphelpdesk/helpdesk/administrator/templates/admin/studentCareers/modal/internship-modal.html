@@ -9,9 +9,9 @@
                     <div class="col-md-12 mt-2">
                         <img src="" id="job_logo_info" class="img-fluid" alt="Job Image">
                     </div>
-                    <div class="col-md-12 mt-2">
+                    {% comment %} <div class="col-md-12 mt-2">
                         <p>Job Type: <strong id="job_type_info"></strong></p>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="col-md-12 mt-2">
                         <p>Job Category: <strong id="job_category_info"></strong></p>
                     </div>
@@ -68,13 +68,13 @@
                     <div class="row">
                         <input type="hidden" class="form-control" id="edit_posting_Id">
                         
-                        <div class="col-md-12 mt-2">
+                        {% comment %} <div class="col-md-12 mt-2">
                             <label>Posting Type<span class="text-danger">*</span></label>
                             <select class="form-select" id="edit_posting_Type" required>
                                 <option value="Job">Job</option>
                                 <option value="Internship">Internship</option>
                             </select>
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="col-md-12 mt-2">
                             <label>Category<span class="text-danger">*</span></label>

@@ -16,18 +16,23 @@ def studGetJobPosting(request):
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Job Posts Error"})
-    
+
 @api_view(['GET'])
-def studGetJobCategory(request, job_Posting_Category):
-    if request.user.is_anonymous or request.user.is_admin:
+def studGetJobCategory(request, job_Posting_Category=None):
+    if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = JobPosting.objects.all().filter(job_Posting_Category=job_Posting_Category).order_by('date_Created')
+            if job_Posting_Category:
+                data = JobPosting.objects.filter(job_Posting_Category=job_Posting_Category).order_by('date_Created')
+            else:
+                data = JobPosting.objects.all().order_by('date_Created')
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Jobs Error"})
-    
+
+
+
 
 @api_view(['GET'])
 def studGetJobInfo(request, job_Posting_Id):

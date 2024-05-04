@@ -13,14 +13,14 @@
 <a href="{% url 'admin/student-careers/Referrals' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
 <form id="AddJobPostingForm" class="needs-validation" novalidate>
     <div class="row">
-        <div class="col-md-12 mt-2">
+        {% comment %} <div class="col-md-12 mt-2">
             <label>Posting Type<span class="text-danger">*</span></label>
             <select class="form-select" id="posting_Type" required>
                 <option value="">Select Posting Type</option>
                 <option value="Job">Job</option>
                 <option value="Internship">Internship</option>
             </select>
-        </div>
+        </div> {% endcomment %}
 
         <div class="col-md-12 mt-2">
             <label>Category<span class="text-danger">*</span></label>

@@ -34,7 +34,7 @@ urlpatterns = [
     # (Inactive) path('healthwellness/insurance', views.healthwellnessinsurance, name='healthwellness/insurance'),
 
     # Career Services and Employment
-    path('careers', views.careers, name='careers'),
+    # path('careers', views.careers, name='careers'),
     path('careers/counseling', views.counseling, name='careers/counseling'),
     path('careers/jobsearch', views.jobsearch, name='careers/jobsearch'),
     path('careers/internship', views.internship, name='careers/internship'),

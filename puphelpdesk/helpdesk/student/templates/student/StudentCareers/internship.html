@@ -6,13 +6,13 @@
 
 {% block maincontent %}
 {% include "student/StudentCareers/modal/internship-modal.html" %} 
-<h2 class="header-title">Job Posting and Internship Opportunities</h2>
-<p class="card-title-desc">Find any Jobs or Internships that you interested.</p>
-<div class="col">
+<h2 class="header-title">Internship Opportunities</h2>
+<p class="card-title-desc">Find any Internships that you are interested in.</p>
+{% comment %} <div class="col">
     <a href="{% url 'careers' %}"><button type="button" class="btn btn-primary waves-effect waves-light mb-2">Back</button></a>
-</div>
+</div> {% endcomment %}
 
-<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+{% comment %} <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
     <li class="nav-item waves-effect waves-light">
         <a class="nav-link active" data-bs-toggle="tab" href="#jobpost-tab" role="tab" aria-selected="false">
             Job Posts
@@ -23,9 +23,9 @@
             Internship Opportunity
         </a>
     </li>
-</ul>
+</ul> {% endcomment %}
 
-<div class="tab-content p-3">
+{% comment %} <div class="tab-content p-3">
     <div class="tab-pane active" id="jobpost-tab" role="tabpanel">
         <label>Category<span class="text-danger">*</span></label>
     <select class="form-select" id="job_category" onchange="getJobCategory(this.value)" required>
@@ -45,22 +45,25 @@
         <h3 class="header-title" id="no_job_archive"></h3>
         <div class="row" id="job_archive_display">
         </div>
+    </div> {% endcomment %}
+
+    <div class="col-md-3 mt-2">
+        <label>Category<span class="text-danger">*</span></label>
+        <select class="form-select" id="job_category" onchange="getJobCategory(this.value)" required>
+            <option value="">All</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Entrepreneurship">Entrepreneurship</option>
+            <option value="Public Administration">Public Administration</option>
+            <option value="DOMT">DOMT</option>
+            <option value="BTLED-ICT">BTLED-ICT</option>
+            <option value="HRM">Human Resource Management</option>
+            <option value="BTLED-HE">BTLED-HE</option>
+        </select>
     </div>
     
 
-    <div class="tab-pane" id="intern-tab" role="tabpanel">
-        <label>Category<span class="text-danger">*</span></label>
-        <select class="form-select" id="job_category" onchange="getInternCategory(this.value)" required>
-        <option onchange="getJobPosts()">All</option>
-        <option value="Information Technology">Information Technology</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Entrepreneurship">Entrepreneurship</option>
-        <option value="Public Administration">Public Administration</option>
-        <option value="DOMT">DOMT</option>
-        <option value="BTLED-ICT">BTLED-ICT</option>
-        <option value="HRM">Human Resource Management</option>
-        <option value="BTLED-HE">BTLED-HE</option>
-    </select>
+    <div class="tab-pane active" id="intern-tab" role="tabpanel">
         <h2 class="text-center" id="no_intern">There are no Internship Opportunities.</h2>
         <div class="row" id="intern_display">
         </div>
