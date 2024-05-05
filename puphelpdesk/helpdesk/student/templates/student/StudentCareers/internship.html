@@ -8,20 +8,27 @@
 {% include "student/StudentCareers/modal/internship-modal.html" %} 
 <h2 class="header-title">Internship Opportunities</h2>
 <p class="card-title-desc">Find any Internships that you are interested in.</p>
+
 <div class="col-md-3 mt-2">
-    <label>Category<span class="text-danger">*</span></label>
-    <select class="form-select" id="job_category" onchange="getJobCategory(this.value)" required>
-        <option value="">All</option>
-        <option value="Information Technology">Information Technology</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Entrepreneurship">Entrepreneurship</option>
-        <option value="Public Administration">Public Administration</option>
-        <option value="DOMT">DOMT</option>
-        <option value="BTLED-ICT">BTLED-ICT</option>
-        <option value="HRM">Human Resource Management</option>
-        <option value="BTLED-HE">BTLED-HE</option>
-    </select>
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Category
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('')">All</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('Information Technology')">Information Technology</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('Marketing')">Marketing</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('Entrepreneurship')">Entrepreneurship</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('Public Administration')">Public Administration</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('DOMT')">DOMT</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('BTLED-ICT')">BTLED-ICT</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('Human Resource Management')">Human Resource Management</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getJobCategory('BTLED-HE')">BTLED-HE</a></li>
+        </ul>
+    </div>
 </div>
+
+
 <div class="tab-content p-3">
     <div class="tab-pane active" id="intern-tab" role="tabpanel">
         <h2 class="text-center" id="no_intern">There are no Internship Opportunities.</h2>

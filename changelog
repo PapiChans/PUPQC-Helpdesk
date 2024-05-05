@@ -1117,3 +1117,10 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Filtering Category in User side is done
 - Ticket Name set to 50 characters only
+
+# 0.7.11.1
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Dropdown button design has been changed in Admin side
+- Dropdown button design has been changed in User side
+- Settings reverted to default
+- URL changed to default
