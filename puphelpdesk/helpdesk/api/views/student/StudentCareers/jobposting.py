@@ -19,7 +19,7 @@ def studGetJobPosting(request):
 
 @api_view(['GET'])
 def studGetJobCategory(request, job_Posting_Category=None):
-    if request.user.is_anonymous or not request.user.is_admin:
+    if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
@@ -30,8 +30,6 @@ def studGetJobCategory(request, job_Posting_Category=None):
             serializer = JobPostingSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Jobs Error"})
-
-
 
 
 @api_view(['GET'])

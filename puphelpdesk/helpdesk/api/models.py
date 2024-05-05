@@ -401,7 +401,7 @@ class Ticket(models.Model):
     ticket_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
     ticket_Number = models.CharField(max_length=100, null=False, unique=True)
     user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
-    full_Name = models.CharField(max_length=100, null=False)
+    full_Name = models.CharField(max_length=50, null=False)
     ticket_Status = models.CharField(max_length=100, null=False)
     ticket_Title = models.CharField(max_length=30, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
