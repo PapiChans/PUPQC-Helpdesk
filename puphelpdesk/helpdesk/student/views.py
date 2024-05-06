@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from api.models import User, UserProfile, AdminProfile
+from api.serializers import UserProfileSerializer, AdminProfileSerializer
 
 # Create your views here.
 
@@ -362,11 +366,20 @@ def faqs(request):
 def fis(request):
     if request.user.is_anonymous:
         return redirect('login')
-    if not request.user.is_admin:
-        pagename_value = "FIS Faculty Schedule"
-        return render(request, 'student/fis/fis.html',{'pagename': pagename_value})
-    else:
+    
+    user_type = None
+    try:
+        user_profile = UserProfile.objects.get(user_Id=request.user.user_Id)
+        user_type = user_profile.user_Type
+    except UserProfile.DoesNotExist:
+        pass
+
+    if user_type == 'External Client' or request.user.is_admin:
         return render(request, 'HTTPResponse/401.html')
+    else:
+        pagename_value = "FIS Faculty Schedule"
+        return render(request, 'student/fis/fis.html', {'pagename': pagename_value, 'user_type': user_type})
+
 
 #Ticket
 def ticket(request):

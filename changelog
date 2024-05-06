@@ -1143,3 +1143,7 @@
 - Update API Views
 - Adjust FIS Page for additional Security
 - Add Email sending functions for Lost and Found
+
+# 0.7.14.1
+- Push by Christian (https://github.com/papichans)
+- Add Restriction for External Clients for accessing Faculty Information
