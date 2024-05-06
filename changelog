@@ -1137,3 +1137,9 @@
 - Adjust POST Validations
 - Update API Views
 - Update Requirements.txt for Cloudinary
+
+# 0.7.14
+- Push by Christian (https://github.com/papichans)
+- Update API Views
+- Adjust FIS Page for additional Security
+- Add Email sending functions for Lost and Found

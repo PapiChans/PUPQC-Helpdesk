@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import LostandFoundSerializer
-from api.models import LostandFound
+from api.models import LostandFound, UserProfile
 from django.core.files.storage import FileSystemStorage
 import os
 
@@ -9,6 +9,61 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+
+# For Email Sending
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+
+def send_email_to_owner(user_Email, item_Name, item_Owner, item_Description, item_Last_Seen):
+    subject = 'Your Lost Item Report'
+    item_Description_with_breaks = "</p><p>".join(item_Description.split("\n"))
+    html_content = """
+<html>
+<head>
+    <style>
+        .paragraph {{
+            margin-bottom: 20px;
+        }}
+        .working-hours {{
+            font-weight: bold;
+        }}
+        .app-team {{
+            font-weight: bold;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="paragraph">This is an auto-generated E-mail, <strong>DO NOT REPLY.</strong></p>
+                <p class="paragraph">Dear {item_Owner},</p>
+                <p class="paragraph">Your lost item report for <strong>{item_Name}</strong> has been submitted successfully and marked as missing. It will be reviewed by the administrator shortly.</p>
+                <p class="paragraph"><strong>Description:</strong></p>
+                <p>{item_Description_with_breaks}</p>
+                <p class="paragraph"><strong>Last Seen:</strong> {item_Last_Seen}</p>
+                <p class="paragraph">Thank you for your cooperation in reporting the lost item.</p>
+                <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+""".format(item_Name=item_Name, item_Owner=item_Owner, item_Description_with_breaks=item_Description_with_breaks, item_Last_Seen=item_Last_Seen)
+
+    # Create EmailMultiAlternatives object to include both HTML and plain text content
+    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
+    msg.attach_alternative(html_content, "text/html")
+    # Send the email
+    msg.send(fail_silently=True)
+
+
+    # Create EmailMultiAlternatives object to include both HTML and plain text content
+    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
+    msg.attach_alternative(html_content, "text/html")
+    # Send the email
+    msg.send(fail_silently=True)
 
 @api_view(['POST'])
 def studAddLostItem(request):
@@ -38,9 +93,14 @@ def studAddLostItem(request):
                 'item_Status': 'Missing',
             }
 
+            #Get User's Email
+            getUser = UserProfile.objects.get(user_Id=user_Id)
+
             serializer = LostandFoundSerializer(data=itemlost)    
             if serializer.is_valid():
                 serializer.save()
+                # Send email notification to user
+                send_email_to_owner(getUser.user_Email, item_Name, item_Owner, item_Description, item_Last_Seen)
                 return Response({"message": "Add Lost Item Successfully"})
             return Response({"message": "Add Lost Item Failed"})
         return Response({"message": "Add Lost Item Error"})

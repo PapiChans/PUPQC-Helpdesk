@@ -2,6 +2,21 @@ $(function() {
     getFIS();
 })
 
+function censorEmail(email) {
+    // Split the email address into local part and domain part
+    var parts = email.split('@');
+    var localPart = parts[0];
+    var domainPart = parts[1];
+
+    // Censor part of the local part
+    var censoredLocalPart = localPart.substring(0, 1) + '*'.repeat(localPart.length - 2) + localPart.substring(localPart.length - 1);
+
+    // Join the censored local part with the domain part
+    var censoredEmail = censoredLocalPart + '@' + domainPart;
+
+    return censoredEmail;
+}
+
 const notyf = new Notyf();
 getFIS = () => {
     const dt = $('#fis-datatable');
@@ -33,9 +48,13 @@ getFIS = () => {
                                 Degree: faculty.Degree,
                                 FacultyType: faculty.FacultyType,
                                 Rank: faculty.Rank,
+                                Units: faculty.Units,
                                 PreferredSchedule: faculty.PreferredSchedule,
                                 FacultyCode: faculty.FacultyCode,
-                                Email: faculty.Email
+                                Email: faculty.Email,
+                                Specialization: faculty.Specialization,
+                                Honorific: faculty.Honorific,
+                                Status: faculty.Status,
                             });
                         });
                     }
@@ -64,6 +83,14 @@ getFIS = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
+                        return `${data.PreferredSchedule}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
                         return `${data.Rank}`
                     },
                 },
@@ -72,7 +99,28 @@ getFIS = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `${data.PreferredSchedule}`
+                        return `<span class="badge bg-secondary text-info-fg">${data.Units}</span>`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        let FStatus = null
+                        if (data.Status == 'Active'){
+                            FStatus = `<span class="badge bg-success text-info-fg">${data.Status}</span>`
+                        }
+                        else if (data.Status == 'Deactivated'){
+                            FStatus = `<span class="badge bg-danger text-info-fg">${data.Status}</span>`
+                        }
+                        else if (data.Status == 'Disabled'){
+                            FStatus = `<span class="badge bg-secondary text-info-fg">${data.Status}</span>`
+                        }
+                        else if (data.Status == 'Locked'){
+                            FStatus = `<span class="badge bg-warning text-info-fg">${data.Status}</span>`
+                        }
+                        return FStatus;
                     },
                 },
                 {
@@ -88,6 +136,22 @@ getFIS = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
+                        return `${data.Specialization}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        return `${data.Honorific}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
                         return `${data.Degree}`
                     },
                 },
@@ -96,7 +160,7 @@ getFIS = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `${data.Email}`
+                        return `${censorEmail(data.Email)}`
                     },
                 },
             ],

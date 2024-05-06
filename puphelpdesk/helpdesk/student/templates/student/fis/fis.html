@@ -8,16 +8,21 @@
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 {% block maincontent %}
-<h2 class="header-title">Faculty Information and Schedule</h2>
-<p class="card-title-desc">Fetch from Faculty Information System (FIS)</p>
+<h2 class="header-title">Explore Faculty Information and Schedule</h2>
+<p class="card-title-desc">Discover faculty details sourced from the Faculty Information System (FIS)</p>
+
+<p>Explore our comprehensive list of faculty members to find the perfect match for your academic needs. Whether you're seeking guidance, conducting research, etc., our platform allows you to browse through a diverse range of faculty profiles.</p>
+
+<p>Learn about faculty members' areas of expertise, teaching schedules, and academic backgrounds to make informed decisions about who to reach out to for support. With easy access to faculty contact information, connecting with your academic mentors has never been easier.</p>
+
+<p>Start your discovery today and take advantage of the wealth of knowledge and expertise our faculty members have to offer. Explore, connect, and embark on a fulfilling academic experience!</p>
 <table id="fis-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
         <tr>
             <th class="dt-head-center">Faculty Name</th>
             <th class="dt-head-center">Type</th>
-            <th class="dt-head-center">Rank</th>
             <th class="dt-head-center">Schedule</th>
-            <th class="dt-head-center">Faculty Code</th>
+            <th class="dt-head-center">Rank</th>
             <th class="dt-head-center">Degree</th>
             <th class="dt-head-center">Email</th>
         </tr>
@@ -26,10 +31,6 @@
 
     </tbody>
 </table>
-<h3 id="no_Display" class="text-center"></h3>
-<div class="row" id="service_display">
-  
-</div>
 {% endblock %}
 {% block customjs %}
 <script src="{% static 'assets/js/ajax/student/chatbot/chatbot.js' %}"></script>
