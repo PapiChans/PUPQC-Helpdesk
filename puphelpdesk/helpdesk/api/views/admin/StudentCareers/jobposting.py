@@ -6,6 +6,11 @@ from django.core.files.storage import FileSystemStorage
 import os
 from django.db.models import Q
 
+#Cloudinary Storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 @api_view(['POST'])
 def adminAddJobPosting(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -135,37 +140,51 @@ def adminReplaceCompanyLogo(request, job_Posting_Id):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
-        if request.method == "PUT" and 'replace_posting_Logo' in request.FILES:
+        try:
+            if request.method == "PUT" and 'replace_posting_Logo' in request.FILES:
+                newCompany_Logo = request.FILES['replace_posting_Logo']
+                JobPost = JobPosting.objects.get(pk=job_Posting_Id)
 
-            newCompany_Logo = request.FILES['replace_posting_Logo']
-            
-            JobPost = JobPosting.objects.get(pk=job_Posting_Id)
-            file = JobPost.job_Logo.path
-            if JobPost.job_Logo is None:
+                # Delete the existing logo from Cloudinary if it exists
+                if JobPost.job_Logo:
+                    public_ids = [JobPost.job_Logo.name]  # Assuming job_Logo stores the Cloudinary public ID
+                    image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                    print("Cloudinary delete result:", image_delete_result)
+
+                # Set and save the new logo
                 JobPost.job_Logo = newCompany_Logo
                 JobPost.save()
-            if os.path.exists(file):
-                os.remove(file)
-                JobPost.job_Logo = newCompany_Logo
-                JobPost.save()
+
+                return Response({"message": "Replace Company Logo Success"})
             else:
-                JobPost.job_Logo = newCompany_Logo
-                JobPost.save()
-            return Response({"message": "Replace Company Logo Success"})
-        return Response({"message": "Replace Company Logo Error"})
+                return Response({"message": "No logo provided for replacement"})
+        except JobPosting.DoesNotExist:
+            return Response({"message": "Job Posting does not exist"})
+        except Exception as e:
+            return Response({"message": f"An error occurred: {str(e)}"})
 
 @api_view(['DELETE'])
 def adminDeleteJobPosting(request, job_Posting_Id):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
-        if request.method == "DELETE":
-            
-            JobPost = JobPosting.objects.get(pk=job_Posting_Id)
-            file = JobPost.job_Logo.path
-            if os.path.exists(file):
-                os.remove(file)
-            JobPost.delete()
+        try:
+            if request.method == "DELETE":
+                JobPost = JobPosting.objects.get(pk=job_Posting_Id)
 
-            return Response({"message": "Delete Job Post Success"})
-        return Response({"message": "Delete Job Post Error"})
+                # Delete the image from Cloudinary if it exists
+                if JobPost.job_Logo:
+                    public_ids = [JobPost.job_Logo.name]  # Assuming job_Logo stores the Cloudinary public ID
+                    image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                    print("Cloudinary delete result:", image_delete_result)
+
+                # Delete the job post
+                JobPost.delete()
+
+                return Response({"message": "Delete Job Post Success"})
+            else:
+                return Response({"message": "Invalid HTTP method"})
+        except JobPosting.DoesNotExist:
+            return Response({"message": "Job Posting does not exist"})
+        except Exception as e:
+            return Response({"message": f"An error occurred: {str(e)}"})

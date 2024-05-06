@@ -225,6 +225,8 @@ editJobpost = (job_Posting_Id) => {
             })
         }
         else {
+
+            $('#edit_posting_Submit').prop('disabled', true);
             // form.append('posting_Type', posting_Type);
             form.append('posting_Category', posting_Category);
             form.append('posting_Position', posting_Position);
@@ -284,6 +286,7 @@ editJobpost = (job_Posting_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#edit_posting_Submit').prop('disabled', false);
             })
         }
     }
@@ -452,6 +455,8 @@ replaceCompanyLogo = (CompanyLogo, job_Posting_Id) => {
             })
         }
         else {
+
+            $('#replace_Submit').prop('disabled', true);
             notyf.open({
                 message: 'Uploading Image. Please Wait...',
                 position: {x:'right',y:'top'},
@@ -492,6 +497,7 @@ replaceCompanyLogo = (CompanyLogo, job_Posting_Id) => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 })
+                $('#replace_Submit').prop('disabled', false);
             })
         }
     }

@@ -22,7 +22,7 @@ function getFileExtension(filename){
 
 addResources = (ResourcesFile) => {
     if ($('#AddResourcesForm')[0]) {
-        const form = new FormData($('#AddResourcesForm')[0])
+        const form = new FormData($('#AddResourcesForm')[0]);
         
         const resources_Name = $('#resources_Name').val();
         form.append('resources_Name', resources_Name);
@@ -62,6 +62,7 @@ addResources = (ResourcesFile) => {
         }
         else {
             form.append('resources_Name', resources_Name);
+            $('#resources_Submit').prop('disabled', true);
 
             notyf.open({
                 message: 'Uploading File. Please Wait...',
@@ -73,10 +74,9 @@ addResources = (ResourcesFile) => {
             $.ajax({
                 type: 'POST',
                 url: '/api/admin/addCampusResources',
-                dataType: 'json',
                 data: form,
-                processData: false,
-                contentType: false,
+                processData: false, // Important! Don't process the data
+                contentType: false, // Important! Set content type to false
                 cache: false,
                 headers: {'X-CSRFToken': csrftoken},
                 success: (result) => {

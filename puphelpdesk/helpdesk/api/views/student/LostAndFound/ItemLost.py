@@ -5,6 +5,11 @@ from api.models import LostandFound
 from django.core.files.storage import FileSystemStorage
 import os
 
+#Cloudinary Storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 @api_view(['POST'])
 def studAddLostItem(request):
     if request.user.is_anonymous or request.user.is_admin:
@@ -91,37 +96,52 @@ def studReplaceLostItemImage(request, item_Id):
     if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
-        if request.method == "PUT" and 'replace_item_Image' in request.FILES:
+        try:
+            if request.method == "PUT" and 'replace_item_Image' in request.FILES:
+                newItem_Image = request.FILES['replace_item_Image']
+                itemlost = LostandFound.objects.get(pk=item_Id)
 
-            newItem_Image = request.FILES['replace_item_Image']
-            
-            itemlost = LostandFound.objects.get(pk=item_Id)
-            file = itemlost.item_Image.path
-            if itemlost.item_Image is None:
+                # Delete the existing image from Cloudinary if it exists
+                if itemlost.item_Image:
+                    public_ids = [itemlost.item_Image.name]  # Assuming item_Image stores the Cloudinary public ID
+                    image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                    print("Cloudinary delete result:", image_delete_result)
+
+                # Set and save the new image
                 itemlost.item_Image = newItem_Image
                 itemlost.save()
-            if os.path.exists(file):
-                os.remove(file)
-                itemlost.item_Image = newItem_Image
-                itemlost.save()
+
+                return Response({"message": "Replace Lost Item Image Success"})
             else:
-                itemlost.item_Image = newItem_Image
-                itemlost.save()
-            return Response({"message": "Replace Lost Item Image Success"})
-        return Response({"message": "Replace Lost Item Image Error"})
+                return Response({"message": "No image provided for replacement"})
+        except LostandFound.DoesNotExist:
+            return Response({"message": "Lost Item does not exist"})
+        except Exception as e:
+            return Response({"message": f"An error occurred: {str(e)}"})
+
 
 @api_view(['DELETE'])
 def studDeleteLostItem(request, item_Id):
     if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
-        if request.method == "DELETE":
-            
-            itemlost = LostandFound.objects.get(pk=item_Id)
-            file = itemlost.item_Image.path
-            if os.path.exists(file):
-                os.remove(file)
-            itemlost.delete()
+        try:
+            if request.method == "DELETE":
+                itemlost = LostandFound.objects.get(pk=item_Id)
 
-            return Response({"message": "Delete Lost Item Success"})
-        return Response({"message": "Delete Lost Item Error"})
+                # Delete the image from Cloudinary if it exists
+                if itemlost.item_Image:
+                    public_ids = [itemlost.item_Image.name]  # Assuming item_Image stores the Cloudinary public ID
+                    image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                    print("Cloudinary delete result:", image_delete_result)
+
+                # Delete the lost item
+                itemlost.delete()
+
+                return Response({"message": "Delete Lost Item Success"})
+            else:
+                return Response({"message": "Invalid HTTP method"})
+        except LostandFound.DoesNotExist:
+            return Response({"message": "Lost Item does not exist"})
+        except Exception as e:
+            return Response({"message": f"An error occurred: {str(e)}"})

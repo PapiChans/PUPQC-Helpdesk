@@ -173,7 +173,7 @@ getFacility = () => {
                         <div class="text-center mt-2">
                         <h3 class="text-center mt-2">${facilitydata.facility_Name}</h3>
                             <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditFacilitiesModal" onclick="foreditfacility('${facilitydata.facility_Id}')"><i class="fa-solid fa-pencil"></i> Edit</button>
-                            <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#ReplaceFacilityImageModal" onclick="foreditfacilityimage('${facilitydata.facility_Id}')"><i class="fa-solid fa-camera"></i> Replace</button>
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#ReplaceFacilityImageModal" onclick="foreditfacilityimage('${facilitydata.facility_Id}')"><i class="fa-solid fa-camera"></i> Upload</button>
                             <button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteFacility('${facilitydata.facility_Id}')"><i class="fa-solid fa-trash"></i> Delete</button>
                         </div>
                     </div>

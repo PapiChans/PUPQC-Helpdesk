@@ -5,6 +5,11 @@ from api.models import Facilities
 from django.core.files.storage import FileSystemStorage
 import os
 
+#Cloudinary Storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 @api_view(['POST'])
 def adminAddFacility(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -46,15 +51,26 @@ def adminDeleteFacility(request, facility_Id):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "DELETE":
-            
-            facility = Facilities.objects.get(pk=facility_Id)
-            file = facility.facility_Image.path
-            if os.path.exists(file):
-                os.remove(file)
-            facility.delete()
+            try:
+                # Get the facility object
+                facility = Facilities.objects.get(pk=facility_Id)
+                
+                # Delete the image from Cloudinary
+                public_ids = [facility.facility_Image.name]  # Assuming facility_Image stores the Cloudinary public ID
+                image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                print("Cloudinary delete result:", image_delete_result)
 
-            return Response({"message": "Delete Facility Success"})
-        return Response({"message": "Delete Facility Error"})
+                # Delete the facility object
+                facility.delete()
+                
+                return Response({"message": "Delete Facility Success"})
+            except Facilities.DoesNotExist:
+                return Response({"message": "Facility not found"})
+            except Exception as e:
+                print("An error occurred:", str(e))
+                return Response({"message": "Delete Facility Error"})
+        return Response({"message": "Invalid request method"})
+
 
 @api_view(['GET'])
 def adminGetFacilityInfo(request, facility_Id):
@@ -93,17 +109,21 @@ def adminReplaceFacilityImage(request, facility_Id):
 
             newfacility_Image = request.FILES['replace_facility_Image']
             
-            facility = Facilities.objects.get(pk=facility_Id)
-            file = facility.facility_Image.path
-            if facility.facility_Image is None:
-                facility.facility_Image = newfacility_Image
-                facility.save()
-            if os.path.exists(file):
-                os.remove(file)
-                facility.facility_Image = newfacility_Image
-                facility.save()
-            else:
-                facility.facility_Image = newfacility_Image
-                facility.save()
+            try:
+                facility = Facilities.objects.get(pk=facility_Id)
+            except Facilities.DoesNotExist:
+                return Response({"message": "Facility not found"})
+            
+            # Delete the old image from Cloudinary
+            if facility.facility_Image:
+                public_ids = [facility.facility_Image.name]  # Assuming facility_Image stores the Cloudinary public ID
+                image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                print("Cloudinary delete result:", image_delete_result)
+                
+            # Save the new image
+            facility.facility_Image = newfacility_Image
+            facility.save()
+
             return Response({"message": "Replace Facility Image Success"})
+        
         return Response({"message": "Replace Facility Image Error"})

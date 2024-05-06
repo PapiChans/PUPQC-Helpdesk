@@ -5,6 +5,11 @@ from api.models import Events
 from django.core.files.storage import FileSystemStorage
 import os
 
+#Cloudinary Storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 @api_view(['POST'])
 def adminAddEvent(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -64,18 +69,29 @@ def adminGetEventInfo(request, event_Id):
 def adminDeleteEvent(request, event_Id):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "DELETE":
-            try:
-                event = Events.objects.get(pk=event_Id)
-                file = event.event_Image.path
-                event.delete()
-                if os.path.exists(file):
-                    os.remove(file)
-                return Response({"message": "Delete Event Success"})
-            except:
-                event.delete()
-        return Response({"message": "Delete Event Error"})
+    
+    if request.method == "DELETE":
+        try:
+            event = Events.objects.get(pk=event_Id)
+            
+            # Delete the associated image if it exists
+            if event.event_Image:
+                public_ids = [event.event_Image.name]  # Assuming event_Image stores the Cloudinary public ID
+                image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                print("Cloudinary delete result:", image_delete_result)
+                
+            # Delete the event object
+            event.delete()
+
+            return Response({"message": "Delete Event Success"})
+        except Events.DoesNotExist:
+            return Response({"message": "Event not found"})
+        except Exception as e:
+            print("An error occurred:", str(e))
+            return Response({"message": "Delete Event Error"})
+    
+    return Response({"message": "Invalid request method"})
+
 
 @api_view(['PUT'])
 def adminEditEvent(request, event_Id):
@@ -127,11 +143,18 @@ def adminDeleteEventImage(request, event_Id):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "DELETE":
+            try:
+                event = Events.objects.get(pk=event_Id)
+            except Events.DoesNotExist:
+                return Response({"message": "Event not found"})
             
-            event = Events.objects.get(pk=event_Id)
-            file = event.event_Image.path
-            if os.path.exists(file):
-                os.remove(file)
+            # Delete the old image from Cloudinary
+            if event.event_Image:
+                public_ids = [event.event_Image.name]  # Assuming event_Image stores the Cloudinary public ID
+                image_delete_result = cloudinary.api.delete_resources(public_ids, resource_type="image")
+                print("Cloudinary delete result:", image_delete_result)
+                
+            # Save the new image
             event.event_Image = None
             event.save()
 

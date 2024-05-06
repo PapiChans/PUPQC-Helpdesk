@@ -58,9 +58,6 @@ getJobPosts = () => {
                     </div>
                         <div class="mt-2 text-center">
                             <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoEditModal" onclick="foreditjobpost('${jobdata.job_Posting_Id}')">Edit</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#ReplaceCompanyLogoModal" onclick="forreplacelogo('${jobdata.job_Posting_Id}')">Replace</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light mb-2" onclick="deleteJobPost('${jobdata.job_Posting_Id}')">Delete</button>
                         </div>
                     </div>
                         `;
@@ -184,9 +181,6 @@ getJobCategory = (job_Posting_Category) => {
                         </div>
                         <div class="mt-2 text-center">
                             <button type="button" class="btn btn-info waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoModal" onclick="getJobInfo('${jobdata.job_Posting_Id}')">Information</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#JobInfoEditModal" onclick="foreditjobpost('${jobdata.job_Posting_Id}')">Edit</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#ReplaceCompanyLogoModal" onclick="forreplacelogo('${jobdata.job_Posting_Id}')">Replace</button>
-                            <button type="button" class="btn btn-danger waves-effect waves-light mb-2" onclick="deleteJobPost('${jobdata.job_Posting_Id}')">Delete</button>
                         </div>
                     </div>`;
                     job_display.append(jobformat)

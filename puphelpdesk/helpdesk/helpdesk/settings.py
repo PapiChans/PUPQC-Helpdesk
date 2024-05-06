@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os, dj_database_url
+# Cloudinary Storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,6 +53,9 @@ INSTALLED_APPS = [
     'api',
     # Plug-ins
     'rest_framework',
+    # Cloudinary Storage
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 
@@ -186,3 +194,20 @@ EMAIL_HOST_PASSWORD='kbnazylfxxvzqier'
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 DEFAULT_FROM_EMAIL = 'PUPQC Student Helpdesk <no-reply@pupqchelpdesk.edu.ph>'
+
+# Cloudinary Storage
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'drqa68vvu',
+    'API_KEY': '352135633188664',
+    'API_SECRET': 'svWeJv5SUmQIgDkGui2P9JF75DE'
+}
+
+# Set Cloudinary configuration
+cloudinary.config(
+    cloud_name='drqa68vvu',
+    api_key='352135633188664',
+    api_secret='svWeJv5SUmQIgDkGui2P9JF75DE',
+    fetch_format='auto'  # Disable automatic transformations
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

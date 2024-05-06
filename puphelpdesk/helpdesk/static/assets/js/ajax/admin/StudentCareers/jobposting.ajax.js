@@ -130,6 +130,8 @@ function addJobpost() {
                 })
             }
             else {
+
+                $('#posting_Submit').prop('disabled', true);
                 // form.append('posting_Type', posting_Type);
                 form.append('posting_Category', posting_Category);
                 form.append('posting_Position', posting_Position);
@@ -185,6 +187,7 @@ function addJobpost() {
                             confirmButtonText: 'Okay',
                             confirmButtonColor: '#D40429',
                         });
+                        $('#posting_Submit').prop('disabled', false);
                     }
                 });
             }

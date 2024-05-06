@@ -1128,3 +1128,12 @@
 # 0.7.12
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Changes made to the Chatbot
+
+# 0.7.13
+- Push by Christian (https://github.com/papichans)
+- Update API Views
+- Media Storage Initiated on Cloudinary (We can now upload media files on production)
+- Initiating configuration on Settings.py for Cloudinary
+- Adjust POST Validations
+- Update API Views
+- Update Requirements.txt for Cloudinary
