@@ -1157,3 +1157,7 @@
 - Add Lightbox2 Library
 - Truncate long texts
 - Exclude "Deleted" Feedback
+
+# 0.7.15.1
+- Push by Christian (https://github.com/papichans)
+- Forgot to set to False = DEBUG
