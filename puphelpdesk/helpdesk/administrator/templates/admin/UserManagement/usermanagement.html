@@ -8,8 +8,10 @@
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 {% block maincontent %}
+{% include "admin/UserManagement/modal/usermanagement-modal.html" %}
 <h2 class="header-title">List of Students</h2>
 <p class="card-title-desc">This list of students is fetched from the SPS (Student Performance System). As part of our student helpdesk system, we rely on data provided by SPS to ensure accuracy and up-to-date information.</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#RegisterStudentModal"><i class="fa-regular fa-calendar-plus"></i>Register Student</button>
 <table id="sps-user-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
         <tr>

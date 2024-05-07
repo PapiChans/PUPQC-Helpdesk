@@ -1,0 +1,54 @@
+<div class="modal fade" id="RegisterStudentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Register Student</h5>
+            </div>
+            <div class="modal-body">
+                <form id="RegisterStudentForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-9 mt-2">
+                            <label for="validationCustom01">Enter Student Number<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="StudentNumber" placeholder="Student Number" required/>
+                        </div>
+                        <div class="col-md-3 mt-3">
+                            <button type="button" class="btn btn-primary waves-effect waves-light mt-2" id="verify_button" onclick="getStudentData()">Verify</button>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Last Name" disabled/>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="First Name" disabled/>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">Middle Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="MiddleName" placeholder="Middle Name" disabled/>
+                        </div>
+                        <div class="col-md-9 mt-2">
+                            <label for="validationCustom01">Program<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Program" placeholder="Program" disabled/>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <label for="validationCustom01">Gender<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Gender" placeholder="Gender" disabled/>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Contact" placeholder="Contact" disabled/>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="validationCustom01">Email<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Email" placeholder="Email" disabled/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="register_Submit" disabled>Register</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

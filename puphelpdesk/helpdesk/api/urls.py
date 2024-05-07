@@ -165,6 +165,7 @@ urlpatterns = [
 
     # User Management
     path('admin/getUserManagement', views.adminGetUserManagement),
+    path('admin/addStudent', views.adminAddStudent),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),

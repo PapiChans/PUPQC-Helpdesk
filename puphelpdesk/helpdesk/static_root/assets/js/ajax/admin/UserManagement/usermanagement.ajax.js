@@ -1,6 +1,10 @@
 $(function () {
     getUserManagement();
     getSPS();
+    $('#RegisterStudentForm').on('submit', function (e) {
+        addStudent()
+        e.preventDefault() // prevent page refresh
+    })
 })
 
 const notyf = new Notyf();
@@ -48,14 +52,13 @@ getSPS= () => {
         dt.DataTable({
             ajax: {
                 type: 'GET',
-                url: 'https://student-performance-1.onrender.com/api/v1/university-admin/student/?$skip=0&$top=100',
+                url: 'https://student-performance-1.onrender.com/api/v1/university-admin/student/?$skip=0&$top=400',
                 contenttype: 'application/x-www-form-urlencoded',
                 dataType: 'json',
                 cache: false,
                 headers: {'X-API-Key': "1b20e3f9-8d44-45b7-96da-02e8001d73e8"},
                 dataSrc: (result) => {
                     const formattedData = [];
-                    console.log(result)
                     if (result && result.result) {
                         result.result.forEach((student) => {
                             formattedData.push({
@@ -205,6 +208,129 @@ getUserManagement = () => {
                 },
             ],
             order: [[0, 'asc']],
+        })
+    }
+}
+
+
+getStudentData = () => {
+    $('#verify_button').prop('disabled', true);
+    $('#register_Submit').prop('disabled', true);
+    $('#verify_button').html("Verifying...");
+
+    const studentNumber = $('#StudentNumber').val();
+
+    $.ajax({
+        type: 'GET',
+        url: `https://student-performance-1.onrender.com/api/v1/university-admin/student/?$skip=0&$top=400`,
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'json',
+        cache: false,
+        headers: {'X-API-Key': "1b20e3f9-8d44-45b7-96da-02e8001d73e8"},
+        success: (result) => {
+            if (result && result.result && result.result.length > 0) {
+                // Loop through each student's data to find a match
+                result.result.forEach(student => {
+                    if (student.StudentNumber === studentNumber) {
+                        // Student data found for the provided student number
+                        $('#LastName').val(student.LastName);
+                        $('#FirstName').val(student.FirstName);
+                        $('#MiddleName').val(student.MiddleName);
+                        $('#Program').val(student.CourseCode);
+                        $('#Gender').val(student.Gender);
+                        $('#Contact').val(student.MobileNumber);
+                        $('#Email').val(student.Email);
+                        $('#register_Submit').prop('disabled', false);
+                        return; // Exit the loop once a match is found
+                    }
+                });
+            } else {
+                // No data found at all
+                console.log("No student data found");
+            }
+        },
+        error: (xhr, status, error) => {
+            // Handle error
+            console.error("Error occurred while fetching student data:", error);
+        },
+        complete: () => {
+            // Re-enable the button and reset its text
+            $('#verify_button').prop('disabled', false);
+            $('#verify_button').html("Verify");
+            $('#register_Submit').prop('disabled', false);
+        }
+    });
+};
+
+addStudent = () => {
+    if ($('#RegisterStudentForm')[0].checkValidity()) {
+        const form = new FormData($('#RegisterStudentForm')[0]);
+
+        $('#register_Submit').prop('disabled', true);
+        
+        const username = $('#StudentNumber').val();
+        const user_Last_Name = $('#LastName').val();
+        const user_First_Name = $('#FirstName').val();
+        const user_Middle_Name = $('#MiddleName').val();
+        const user_Program = $('#Program').val();
+        const user_Gender = $('#Gender').val();
+        const user_Contact = $('#Contact').val();
+        const user_Email = $('#Email').val();
+
+        const data = {
+            username: username,
+            user_Last_Name: user_Last_Name,
+            user_First_Name: user_First_Name,
+            user_Middle_Name: user_Middle_Name,
+            user_Program: user_Program,
+            user_Gender: user_Gender,
+            user_Contact: user_Contact,
+            user_Email: user_Email,
+            course_code: user_Program,
+        };
+        
+        $.ajax({
+            type: 'POST',
+            url: '/api/admin/addStudent',
+            data: data,
+            dataType: 'json',
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                if (result) {
+                    if (result.code == 200) {
+                        $('#register_Submit').prop('disabled', true);
+                        notyf.success({
+                            message: 'Add Student Successfully',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        })
+                            $('form#RegisterStudentForm')[0].reset();
+                            $('#RegisterStudentModal').modal('hide');
+                                location.reload()
+                    }
+                    if (result.code == 403) {
+                        notyf.success({
+                            message: `${result.message}`,
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        })
+                        $('#register_Submit').prop('disabled', false);
+                    }
+                }
+            },
+        })
+        .fail(() => {
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went wrong while adding Student. Please try again.',
+                icon: 'error',
+                allowEnterKey: 'false',
+                allowOutsideClick: 'false',
+                allowEscapeKey: 'false',
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#D40429',
+            })
+            $('#register_Submit').prop('disabled', false);
         })
     }
 }
