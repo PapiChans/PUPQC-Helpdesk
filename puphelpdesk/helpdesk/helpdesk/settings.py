@@ -220,13 +220,15 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     'https://student-performance-1.onrender.com',
     'http://localhost:8000',
-    'https://pupqc-helpdesk.onrender.com'
+    'https://pupqc-helpdesk.onrender.com',
+    'http://127.0.0.1:8000',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://student-performance-1.onrender.com',
     'http://localhost:8000',
-    'https://pupqc-helpdesk.onrender.com'
+    'https://pupqc-helpdesk.onrender.com',
+    'http://127.0.0.1:8000',
 ]
 
 CORS_ALLOW_HEADERS = [

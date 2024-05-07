@@ -1161,3 +1161,7 @@
 # 0.7.15.1
 - Push by Christian (https://github.com/papichans)
 - Forgot to set to False = DEBUG
+
+# 0.7.15.2
+- Push by Christian (https://github.com/papichans)
+- SPS Data is Finally Fetched
