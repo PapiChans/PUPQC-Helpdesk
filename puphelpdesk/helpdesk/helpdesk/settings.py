@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-9ergqbr6h18fh#%rufi8w=f2pzaw(&!rl36b#b6t*l=l2v*5#b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Development set this DEBUG to True
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'api',
     # Plug-ins
     'rest_framework',
+    'corsheaders',
     # Cloudinary Storage
     'cloudinary_storage',
     'cloudinary',
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -211,3 +213,28 @@ cloudinary.config(
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS Middleware
+CORS_ALLOWED_ORIGINS = [
+    'https://student-performance-1.onrender.com',
+    'http://localhost:8000',
+    'https://pupqc-helpdesk.onrender.com'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://student-performance-1.onrender.com',
+    'http://localhost:8000',
+    'https://pupqc-helpdesk.onrender.com'
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "x-api-key",
+]

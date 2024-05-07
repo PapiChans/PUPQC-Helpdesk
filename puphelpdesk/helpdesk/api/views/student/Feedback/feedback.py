@@ -35,7 +35,7 @@ def studGetFeedback(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = Feedback.objects.all().filter(user_Id=request.user.user_Id)
+            data = Feedback.objects.all().filter(user_Id=request.user.user_Id).exclude(feedback_Status='Deleted')
             serializer = FeedbackSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Feedbacks Error"})

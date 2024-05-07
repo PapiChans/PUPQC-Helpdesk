@@ -25,6 +25,13 @@ function isValidNumber(value) {
     return /^[0-9]+$/.test(value);
 }
 
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
 getJobPosts = () => {
     let intern_display = $('#intern_display')
     let intern_archive_display = $('#intern_archive_display')
@@ -64,7 +71,7 @@ getJobPosts = () => {
                         <div class="card-body">
                             <h3 class="card-title">${jobdata.job_Posting_Position} [${jobdata.job_Available_Position}]</h3>
                             <p class="text-secondary">${jobdata.job_Posting_Category}</p>
-                            <p class="text-secondary">${jobdata.job_Description}</p>
+                            <p class="text-secondary">${truncateText(jobdata.job_Description, 100)}</p>
                         </div>
                         <div class="card-footer">
                             <h4 class="text-secondary">Posted: ${formattedDate}</h4>

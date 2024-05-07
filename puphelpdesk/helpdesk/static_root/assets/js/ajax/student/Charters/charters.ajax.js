@@ -28,6 +28,13 @@ function getCharterInfoAndNavigate(charterId) {
     window.location.href = detailsURL;
 }
 
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
 getCharter = () => {
     let charter_display = $('#charter_display')
     charter_display.html(null)
@@ -50,7 +57,7 @@ getCharter = () => {
                         <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                             <div class="card-body">
-                                <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                 <div class="text-center">
                                 <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                 </div>
@@ -106,7 +113,7 @@ getCharterCategory = (selected_charter_Category) => {
                         <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                             <div class="card-body">
-                                <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                 <div class="text-center">
                                     <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                 </div>
@@ -177,7 +184,7 @@ searchCharter = () => {
                             <div class="card mb-2">
                                 <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                                 <div class="card-body">
-                                    <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                    <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                     </div>

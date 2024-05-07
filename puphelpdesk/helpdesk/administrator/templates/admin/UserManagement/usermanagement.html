@@ -1,0 +1,62 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+<h2 class="header-title">List of Students</h2>
+<p class="card-title-desc">This list of students is fetched from the SPS (Student Performance System). As part of our student helpdesk system, we rely on data provided by SPS to ensure accuracy and up-to-date information.</p>
+<table id="sps-user-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+    <thead>
+        <tr>
+            <th class="dt-head-center">Student ID</th>
+            <th class="dt-head-center">Name</th>
+            <th class="dt-head-center">Gender</th>
+            <th class="dt-head-center">Contact</th>
+            <th class="dt-head-center">Email</th>
+            <th class="dt-head-center">Program</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="header-title">Registered Students</h2>
+        <table id="user-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Student ID</th>
+                    <th class="dt-head-center">Name</th>
+                    <th class="dt-head-center">Gender</th>
+                    <th class="dt-head-center">Contact</th>
+                    <th class="dt-head-center">Email</th>
+                    <th class="dt-head-center">Program</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/UserManagement/usermanagement.ajax.js' %}"></script>
+{% endblock %}

@@ -10,6 +10,13 @@ $(function () {
     })
 })
 
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
 const notyf = new Notyf();
 
 function formatPostgresTimestamp(postgresTimestamp) {
@@ -145,7 +152,7 @@ getCharter = () => {
                         <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                             <div class="card-body">
-                                <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                 <div class="text-center">
                                 <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                     <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditCharterModal" onclick="foreditcharter('${data.charter_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
@@ -361,7 +368,7 @@ getCharterCategory = (selected_charter_Category) => {
                         <div class="card mb-2">
                             <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                             <div class="card-body">
-                                <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                 <div class="text-center">
                                     <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                     <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditCharterModal" onclick="foreditcharter('${data.charter_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>
@@ -433,7 +440,7 @@ searchCharter = () => {
                             <div class="card mb-2">
                                 <h3 class="card-header bg-transparent border-bottom mt-0 text-primary">${data.charter_Title}</h3>
                                 <div class="card-body">
-                                    <p class="card-text font-size-15">${data.charter_Description.replace(/\n/g, '</p><p>')}</p>
+                                    <p class="card-text font-size-15">${truncateText(data.charter_Description.replace(/\n/g, '</p><p>'),200)}</p>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary waves-effect waves-light" onclick="getCharterInfoAndNavigate('${data.charter_Number}')">View</button></a>
                                         <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditCharterModal" onclick="foreditcharter('${data.charter_Id}')"><i class="fa-solid fa-pen"></i> Edit</button>

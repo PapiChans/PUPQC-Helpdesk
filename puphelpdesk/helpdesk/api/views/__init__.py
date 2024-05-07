@@ -82,6 +82,9 @@ from .admin.profile import *
 # Dashboard
 from .admin.dashboard import *
 
+# User Management
+from .admin.UserManagement.usermanagement import *
+
 # General Info and Services
 from .admin.GenInfoandServices.events import *
 from .admin.GenInfoandServices.resources import *

@@ -4,7 +4,21 @@ $(function() {
 
 const notyf = new Notyf();
 
-getFacility = () => {
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'fadeDuration': 300,
+    'imageFadeDuration': 300,
+})
+
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
+  getFacility = () => {
     let display = $('#facility_Display')
 
     $.ajax({
@@ -28,24 +42,21 @@ getFacility = () => {
                     }
                     
                     let facilityformat = ` 
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="gallery-box mt-4">
-                            <a class="gallery-popup glightbox font-weight-bold" href="${displayimage}" data-glightbox="title: <h3>${facilitydata.facility_Name}</h3>; description: <h5>${facilitydata.facility_Description.replace(/\n/g, '</p><p>')}</h5>; descPosition: right;" >
-                                <img class="gallery-demo-img img-fluid mx-auto" src="${displayimage}" alt="image" />
-                            </a>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="img-responsive img-responsive-22x9 card-img-top" style="background-image: url(${displayimage})"></div>
+                            <div class="card-body">
+                                <h3 class="card-title text-center text-primary"><a href="${displayimage}" data-lightbox="facility">${facilitydata.facility_Name}</a></h3>
+                                <p class="text-secondary">${truncateText(facilitydata.facility_Description, 100)}</p>
+                            </div>
                         </div>
-                        <h3 class="text-center mt-2">${facilitydata.facility_Name}</h3>
                     </div>
                         `;
 
                         display.append(facilityformat)
                         
                 });
-                const lightbox = GLightbox({
-                    touchNavigation: true,
-                    openEffect: 'zoom',
-                    closeEffect: 'zoom',
-                });
+
             }
             else {
                 notyf.success({

@@ -1147,3 +1147,13 @@
 # 0.7.14.1
 - Push by Christian (https://github.com/papichans)
 - Add Restriction for External Clients for accessing Faculty Information
+
+# 0.7.15
+- Push by Christian (https://github.com/papichans)
+- Update API Views
+- User Management (Admin)
+- Add Dependencies Cloudinary-storage and Django-CORS
+- Removed Glightbox Library
+- Add Lightbox2 Library
+- Truncate long texts
+- Exclude "Deleted" Feedback

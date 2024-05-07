@@ -11,6 +11,16 @@ def admindashboard(request):
         return render(request, 'admin/dashboard.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+    # User Management
+def adminusermanagement(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "User Management"
+        return render(request, 'admin/UserManagement/usermanagement.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
 
 
 def adminprofile(request):

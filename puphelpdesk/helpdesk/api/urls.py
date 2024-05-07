@@ -163,7 +163,9 @@ urlpatterns = [
     path('admin/getTicketCount', views.adminGetTicketCount),
     path('admin/getFeedbacksCount', views.adminGetFeedbacksCount),
 
-    
+    # User Management
+    path('admin/getUserManagement', views.adminGetUserManagement),
+
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
     path('admin/getCampusResources', views.adminGetCampusResources),
