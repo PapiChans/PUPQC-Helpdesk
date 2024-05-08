@@ -1172,3 +1172,7 @@
 - Update API URLs
 - Update API Views
 - Add User Management Page (Admin)
+
+# 0.7.16.1
+- Push by Christian (https://github.com/papichans)
+- Commented Signup Button on Login
