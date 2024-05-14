@@ -41,4 +41,21 @@ def signup(request):
             return redirect('admin/dashboard')
         else:
             return redirect('user/dashboard')
+
+def ticketing(request):
+    if request.user.is_anonymous:
+        return render(request, 'openTicket.html')
+    else:
+        if request.user.is_admin:
+            return redirect('admin/dashboard')
+        else:
+            return redirect('user/dashboard')
    
+def ticketStatus(request):
+    if request.user.is_anonymous:
+        return render(request, 'ticketStatus.html')
+    else:
+        if request.user.is_admin:
+            return redirect('admin/dashboard')
+        else:
+            return redirect('user/dashboard')

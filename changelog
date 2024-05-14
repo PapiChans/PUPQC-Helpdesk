@@ -1180,3 +1180,13 @@
 # 0.7.16.2
 - Push by Christian (https://github.com/papichans)
 - Undo Commented Signup Button on Login
+
+# 0.7.17
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Submit a Ticket button added on the landing page
+- Submit a ticket form added
+- Send Tickets model added in models.py
+- Send Tickets Serializers added
+- Send Tickets views added in views.py student folder
+- Send Tickets Ajax added in Student folder
+- API not yet made because of unknown error

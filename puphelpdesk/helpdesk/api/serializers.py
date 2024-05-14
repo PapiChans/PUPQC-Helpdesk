@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction, Ticket, TicketComment, Charter, CharterSteps
+from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction, Ticket, TicketComment, Charter, CharterSteps, SendTicket
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -160,4 +160,9 @@ class CharterSerializer(serializers.ModelSerializer):
 class CharterStepsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CharterSteps
+        fields = '__all__'
+
+class SendTicketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SendTicket
         fields = '__all__'

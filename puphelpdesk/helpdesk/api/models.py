@@ -464,3 +464,35 @@ class CharterSteps(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Charter Steps'
+        
+        
+# Send Tickets
+class SendTicket(models.Model):
+    ticket_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ticket_Number = models.CharField(max_length=100, null=False, unique=True)
+    sender_Email = models.CharField(max_length=100, null=False)
+    sender_Name = models.CharField(max_length=100, null=False)
+    sender_Affiliation = models.CharField(max_length=100, null=False)
+    ticket_Type = models.CharField(max_length=100, null=False)
+    ticket_Status = models.CharField(max_length=100, null=False)
+    Description = models.TextField(null=False)
+    date_Submitted = models.DateTimeField(null=False, auto_now_add=True)
+    last_ticket_date = models.DateField(null=True)
+    ticket_count = models.IntegerField(default=0)
+    
+    def save(self, *args, **kwargs):
+        if not self.ticket_Number:
+            self.ticket_Number = self.generate_ticket_number()
+        super(Ticket, self).save(*args, **kwargs)
+
+    def generate_ticket_number(self):
+        today = timezone.now().date()
+        if self.last_ticket_date != today:
+            self.last_ticket_date = today
+            self.ticket_count = 0
+            self.save()
+        self.ticket_count += 1
+        return f'T{today.strftime("%Y%m%d")}-{str(self.ticket_count).zfill(3)}'
+    
+    class Meta:
+        db_table = 'Tickets'
