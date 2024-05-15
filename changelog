@@ -1190,3 +1190,11 @@
 - Send Tickets views added in views.py student folder
 - Send Tickets Ajax added in Student folder
 - API not yet made because of unknown error
+
+# 0.7.18
+- Push by Christian (https://github.com/papichans)
+- New Feature: Knowledgebase
+- Add Page for Knowledgebase (Admin only and Incomplete)
+- Update API Views
+- Update API Models
+- Update Admin Navbar

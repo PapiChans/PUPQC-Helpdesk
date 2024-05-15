@@ -1,0 +1,59 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "admin/Knowledgebase/modal/knowledgebase-modal.html" %}
+<div class="row align-items-center">
+    <div class="col-8">  
+        <h2 class="header-title">Manage Knowledgebase</h2>
+    </div>
+    <div class="col-auto">  
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddCategoryModal">Add Category</button>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFolderModal">Add Folder</button>
+        <a href="{% url 'admin/knowledgebase/create' %}"><button class="btn btn-info" >Add Topic</button></a>
+    </div>
+</div>    
+</div>
+</div>
+<div class="card">
+    <div class="row g-0">
+        <div class="col-12 col-lg-5 col-xl-3 border-end">
+            <div class="card-body p-0 scrollable" style="max-height: 35rem">
+                <div class="nav flex-column nav-pills" role="tablist">
+                    <div class="nav-link text-start mw-100 p-3">
+                        <div class="row align-items-center flex-fill">
+                            <div class="col text-center">
+                                <h3 class="mb-3">Categories</h3>
+                            </div>
+                            <div class="container">
+                                <div class="card mb-2">
+                                    <div class="list-group list-group-flush" id="category_Display">
+
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-7 col-xl-9 d-flex flex-column">
+            <div class="card-body scrollable" style="height: 35rem">
+                <div class="mb-2" id="chosen_Display">
+                </div>
+                <div id="main_Display">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Knowledgebase/knowledgebase.ajax.js' %}"></script>
+{% endblock %}

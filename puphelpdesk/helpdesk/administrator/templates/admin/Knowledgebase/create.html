@@ -1,0 +1,44 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+<h2 class="header-title">Create Topic</h2>
+</div>
+</div>
+<div class="row row-cards">
+    <div class="col-lg-8">
+        <div class="card card-sm">
+            <div class="card-body">
+                <form id="AddTopicForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <h3 class="header-title">Topic Name<span class="text-danger">*</span></h3>
+                            <input type="text" class="form-control" maxlength="100" id="topic_Name" placeholder="Topic Name" required/>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <h3 class="header-title">Topic Content<span class="text-danger">*</span></h3>
+                            <textarea required class="form-control" id="topic_Content" rows="10" placeholder="Topic Contect"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="header-title">Topic Options</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Knowledgebase/create.ajax.js' %}"></script>
+{% endblock %}

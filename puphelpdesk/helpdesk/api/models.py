@@ -496,3 +496,36 @@ class SendTicket(models.Model):
     
     class Meta:
         db_table = 'Tickets'
+
+# KnowledgeBase: Categories
+class KBCategory(models.Model):
+    category_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    category_Number = models.IntegerField(null=False, unique=True)
+    category_Name = models.CharField(max_length=100, null=False)
+    class Meta:
+        db_table = 'KB_Category'
+
+# KnowledgeBase: Folders
+class KBFolder(models.Model):
+    folder_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    category_Id = models.ForeignKey(KBCategory, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='category_Id')
+    folder_Number = models.IntegerField(null=False, unique=True)
+    folder_Name = models.CharField(max_length=100, null=False)
+    class Meta:
+        db_table = 'KB_Folder'
+
+# KnowledgeBase: Topic
+class KBTopic(models.Model):
+    topic_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    folder_Id = models.ForeignKey(KBFolder, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='folder_Id')
+    topic_Number = models.IntegerField(null=False, unique=True)
+    topic_Name = models.CharField(max_length=100, null=False, default='')
+    topic_Content = models.TextField(null=False)
+    likes = models.IntegerField(null=False)
+    dislikes = models.IntegerField(null=False)
+    status = models.CharField(max_length=15, null=False, default='Unpublished')
+    created_by = models.CharField(max_length=100, null=False, unique=True)
+    date_Created = models.DateTimeField(null=False, default=timezone.now)
+    last_modified = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'KB_Topic'

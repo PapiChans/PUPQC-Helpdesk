@@ -435,3 +435,22 @@ def adminFIS(request):
         return render(request, 'admin/fis/fis.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+# Knowledgebase
+def adminKnowledgebase(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Knowledgebase"
+        return render(request, 'admin/Knowledgebase/knowledgebase.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def adminCreateKnowledgebase(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Knowledgebase"
+        return render(request, 'admin/Knowledgebase/create.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

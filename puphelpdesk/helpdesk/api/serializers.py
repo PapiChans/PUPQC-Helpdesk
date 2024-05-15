@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction, Ticket, TicketComment, Charter, CharterSteps, SendTicket
+from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction, Ticket, TicketComment, Charter, CharterSteps, SendTicket, KBCategory, KBFolder, KBTopic
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -165,4 +165,19 @@ class CharterStepsSerializer(serializers.ModelSerializer):
 class SendTicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = SendTicket
+        fields = '__all__'
+
+class KBCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KBCategory
+        fields = '__all__'
+
+class KBFolderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KBFolder
+        fields = '__all__'
+
+class KBTopicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KBTopic
         fields = '__all__'

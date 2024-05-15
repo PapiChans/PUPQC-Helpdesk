@@ -1,0 +1,107 @@
+<div class="modal fade" id="AddCategoryModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Category</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddCategoryForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Category Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="100" id="category_Name" placeholder="Category Name" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="category_Submit">Add Category</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditCategoryModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Category</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditCategoryForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_category_Id">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Category Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="100" id="edit_category_Name" placeholder="Category Name" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_category_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="AddFolderModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add Category Folder</h5>
+            </div>
+            <div class="modal-body">
+                <form id="AddFolderForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Category<span class="text-danger">*</span></label>
+                            <select class="form-select" id="get_category_Id" required/>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Folder Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="100" id="folder_Name" placeholder="Folder Name" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="folder_Submit">Add Folder</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditFolderModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Category Folder</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditFolderForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="get_folder_Id">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Category<span class="text-danger">*</span></label>
+                            <select class="form-select" id="edit_get_category_Id" required/>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Folder Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="100" id="edit_folder_Name" placeholder="Folder Name" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_folder_Submit">Save Changes</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

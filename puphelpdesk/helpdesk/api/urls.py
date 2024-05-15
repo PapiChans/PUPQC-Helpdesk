@@ -385,4 +385,25 @@ urlpatterns = [
     path('admin/getCharterStepInfo/<uuid:step_Id>', views.adminGetCharterStepInfo),
     path('admin/editCharterStep/<uuid:step_Id>', views.adminEditCharterStep),
     path('admin/deleteCharterStep/<uuid:step_Id>', views.adminDeleteCharterStep),
+
+    # Knowledgebase: Category
+    path('admin/addKBCategory', views.adminAddKBCategory),
+    path('admin/getKBCategory', views.adminGetKBCategory),
+    path('admin/getKBCategoryInfo/<uuid:category_Id>', views.adminGetKBCategoryInfo),
+    path('admin/editKBCategory/<uuid:category_Id>', views.adminEditKBCategory),
+    path('admin/deleteKBCategory/<uuid:category_Id>', views.adminDeleteKBCategory),
+
+    # Knowledgebase: Folder
+    path('admin/addKBFolder', views.adminAddKBFolder),
+    path('admin/getKBFolder/<category_Id>', views.adminGetKBFolder),
+    path('admin/getKBFolderInfo/<uuid:folder_Id>', views.adminGetKBFolderInfo),
+    path('admin/editKBFolder/<uuid:folder_Id>', views.adminEditKBFolder),
+    path('admin/deleteKBFolder/<uuid:folder_Id>', views.adminDeleteKBFolder),
+
+    #Knowledgebase: Topic
+    path('admin/addKBTopic', views.adminAddKBTopic),
+    path('admin/getKBTopic/<uuid:folder_Id>', views.adminGetKBTopic),
+    path('admin/getKBTopicInfo/<uuid:topic_Id>', views.adminGetKBTopicInfo),
+    path('admin/editKBTopic/<uuid:topic_Id>', views.adminEditKBTopic),
+    path('admin/deleteKBTopic/<uuid:topic_Id>', views.adminDeleteKBTopic),
 ]

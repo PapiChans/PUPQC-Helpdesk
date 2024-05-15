@@ -140,3 +140,8 @@ from .admin.Ticket.ticket import *
 
 # Charter
 from .admin.Charter.charter import *
+
+# Knowledgebase
+from .admin.Knowledgebase.category import *
+from .admin.Knowledgebase.folder import *
+from .admin.Knowledgebase.topic import *

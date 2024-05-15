@@ -81,4 +81,8 @@ urlpatterns = [
 
     # Faculty Information System
     path('FIS', views.adminFIS, name='admin/FIS'),
+
+    # Knowledgebase
+    path('knowledgebase', views.adminKnowledgebase, name='admin/knowledgebase'),
+    path('knowledgebase/create', views.adminCreateKnowledgebase, name='admin/knowledgebase/create'),
 ]
