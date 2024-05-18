@@ -524,7 +524,7 @@ class KBTopic(models.Model):
     likes = models.IntegerField(null=False)
     dislikes = models.IntegerField(null=False)
     status = models.CharField(max_length=15, null=False, default='Unpublished')
-    created_by = models.CharField(max_length=100, null=False, unique=True)
+    created_by = models.CharField(max_length=100, null=False)
     date_Created = models.DateTimeField(null=False, default=timezone.now)
     last_modified = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:

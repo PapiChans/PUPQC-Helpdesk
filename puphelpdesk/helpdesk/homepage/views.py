@@ -59,3 +59,25 @@ def ticketStatus(request):
             return redirect('admin/dashboard')
         else:
             return redirect('user/dashboard')
+        
+# Knowledgebase
+def mainknowledgebase(request):
+    if request.user.is_anonymous:
+        pagename_value = "Knowledgebase"
+        return render(request, 'Knowledgebase/mainpage.html',{'pagename': pagename_value})
+    if request.user.is_authenticated:
+        return render(request, 'HTTPResponse/401.html')
+    
+def mainknowledgebasebrowse(request):
+    if request.user.is_anonymous:
+        pagename_value = "Knowledgebase"
+        return render(request, 'Knowledgebase/browse.html',{'pagename': pagename_value})
+    if request.user.is_authenticated:
+        return render(request, 'HTTPResponse/401.html')
+    
+def mainknowledgebaseview(request):
+    if request.user.is_anonymous:
+        pagename_value = "Knowledgebase"
+        return render(request, 'Knowledgebase/view.html',{'pagename': pagename_value})
+    if request.user.is_authenticated:
+        return render(request, 'HTTPResponse/401.html')

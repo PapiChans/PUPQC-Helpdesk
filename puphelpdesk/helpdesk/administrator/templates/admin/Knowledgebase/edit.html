@@ -1,0 +1,109 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+<h2 class="header-title">Edit Topic</h2>
+</div>
+</div>
+<div class="row row-cards">
+    <div class="col-lg-8">
+        <div class="card card-sm">
+            <div class="card-body">
+                <form id="EditTopicForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <h3 class="header-title">Topic Name<span class="text-danger">*</span></h3>
+                            <input type="text" class="form-control" maxlength="100" id="edit_topic_Name" placeholder="Topic Name" required/>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <h3 class="header-title">Topic Content<span class="text-danger">*</span></h3>
+                            <textarea required class="form-control" id="edit_topic_Content" rows="25" placeholder="Topic Contect"></textarea>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="header-title">Topic Options</h3>
+                <div class="col-md-12 mb-2">
+                    <label>Created By<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="get_Full_Name" placeholder="Created By" disabled/>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Status<span class="text-danger">*</span></label>
+                    <select class="form-select" id="edit_status" required/>
+                        <option value="Draft">Draft</option>
+                        <option value="Unpublished">Unpublished</option>
+                        <option value="Published">Published</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <h3 class="header-title">Date Created</h3>
+                    <h4 id="get_Date_Created"></h4>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <h3 class="header-title">Last Modified</h3>
+                    <h4 id="get_Last_Modified"></h4>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <div class="row">
+                        <div class="card mt-3 col-md-6 bg-success-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-success" id="LikesCount"></h1>
+                                <h3 class="text-center">Likes</h3>
+                            </div>
+                        </div>
+                        <div class="card mt-3 col-md-6 bg-danger-lt">
+                            <div class="card-body">
+                                <h1 class="text-center text-danger" id="DislikesCount"></h1>
+                                <h3 class="text-center">Dislikes</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12 mb-2">
+                    <h4 class="text-info">If you want to move the topic, Select Category and Folder. Otherwise, keep it blank.</h4>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Category</label>
+                    <select class="form-select" id="edit_get_category">
+                        <option value="">Select Category</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Folder</label>
+                    <select class="form-select" id="edit_get_folder">
+                    <option value="">Select Folder</option>
+                    </select>
+                </div>
+                <div class="col-12 mb-2">
+                    <div class="row justify-content-center">
+                        <div class="col-5 row m-1">
+                            <button class="btn btn-primary btn-block" id="edit_topic_Submit">Save Changes</button>
+                        </div>
+                </form>
+                        <div class="col-5 row m-1">
+                            <button class="btn btn-danger btn-block" onclick="deleteTopic()">Delete</button>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Knowledgebase/edit.ajax.js' %}"></script>
+{% endblock %}

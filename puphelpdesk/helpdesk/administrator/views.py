@@ -454,3 +454,12 @@ def adminCreateKnowledgebase(request):
         return render(request, 'admin/Knowledgebase/create.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+def adminEditKnowledgebase(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Knowledgebase"
+        return render(request, 'admin/Knowledgebase/edit.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

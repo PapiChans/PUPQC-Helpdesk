@@ -145,3 +145,9 @@ from .admin.Charter.charter import *
 from .admin.Knowledgebase.category import *
 from .admin.Knowledgebase.folder import *
 from .admin.Knowledgebase.topic import *
+
+# ---------------
+# Knoweledgebase
+# ---------------
+
+from .knowledgebase.knowledgebase import *

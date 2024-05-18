@@ -79,7 +79,7 @@ def adminDeleteKBFolder(request, folder_Id):
     else:
         if request.method == "DELETE":
             if KBTopic.objects.filter(folder_Id=folder_Id).exists():
-                return Response({"code": "409", "message": "Conflict: Cannot delete category with associated folders."})
+                return Response({"code": "409", "message": "Conflict: Cannot delete folder with associated topics."})
             else:
                 folder = KBFolder.objects.get(pk=folder_Id)
                 folder.delete()

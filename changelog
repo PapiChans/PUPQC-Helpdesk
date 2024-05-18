@@ -1198,3 +1198,12 @@
 - Update API Views
 - Update API Models
 - Update Admin Navbar
+
+# 0.7.19
+- Push by Christian (https://github.com/papichans)
+- New Feature: Knowledgebase
+- Update API Views
+- Update API Models
+- Add Knowledgebase is Open to Everyone
+- New Import Library: Showdown.js - Allows to convert Markdown file into PURE HTML
+- Add AJAX Flies

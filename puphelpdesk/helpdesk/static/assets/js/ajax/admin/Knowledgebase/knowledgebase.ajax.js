@@ -20,6 +20,29 @@ $(function() {
 
 const notyf = new Notyf();
 
+function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
+function formatPostgresTimestamp(postgresTimestamp) {
+    const date = new Date(postgresTimestamp);
+    
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: '2-digit',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    };
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    return formattedDate;
+}
+
 // ----------------
 // Knowledgebase Category
 // ----------------
@@ -149,7 +172,7 @@ chosenCategory = (category_Id) => {
             $('#edit_category_Name').val(data.category_Name)
 
             let format = `
-            <div class="card card-link">
+            <div class="card card-link card-link-pop">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -375,7 +398,7 @@ getFolder = (category_Id) => {
 
                     let format = `
                     <div class="mb-2">
-                        <div class="card card-link mb-2">
+                        <div class="card card-link card-link-pop mb-2">
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-1" onclick="chosenFolder('${data.folder_Id}')">
@@ -571,7 +594,7 @@ chosenFolder = (folder_Id) => {
             // Pass the data in the form
 
             let format = `
-            <div class="card card-link">
+            <div class="card card-link card-link-pop">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
@@ -621,9 +644,21 @@ getTopic = (folder_Id) => {
             if (data.length > 0) {
                 data.forEach((data) => {
 
+                    let badgestatus = null;
+                    if (data.status == 'Draft'){
+                        badgestatus = '<span class="badge bg-warning">Draft</span>'
+                    }
+                    if (data.status == 'Unpublished'){
+                        badgestatus = '<span class="badge bg-danger">Unpublished</span>'
+                    }
+                    if (data.status == 'Published'){
+                        badgestatus = '<span class="badge bg-success">Published</span>'
+                    }
+
+
                     let format = `
                     <div class="mb-2">
-                        <div class="card card-link">
+                        <div class="card card-link card-link-pop" onclick="getTopicInfoAndNavigate('${data.topic_Number}')">
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-md-auto">
@@ -632,16 +667,13 @@ getTopic = (folder_Id) => {
                                     <div class="col-md-auto">
                                         <h2 class="text-primary">${data.topic_Name}</h2>
                                     </div>
-                                </div> 
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <p>The Description....</p>
-                                    </div> 
-                                    <div class="col-auto">
-                                        <button class="btn btn-primary">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </div>
-                                </div> 
+                                </div>
+                                <div class="col-4">
+                                    <p>Created by: <strong>${data.created_by}</strong></p>
+                                </div>
+                                <div class="col-4">
+                                    <p>Status: ${badgestatus}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -661,4 +693,13 @@ getTopic = (folder_Id) => {
             duration: 2500
         });
     })
+}
+
+function getTopicInfoAndNavigate(topic_Number) {
+
+    // Create the URL with the guide_Id parameter
+    const detailsURL = `/admin/knowledgebase/edit?topic_Number=${topic_Number}`;
+    
+    // Navigate to the specified URL
+    window.location.href = detailsURL;
 }

@@ -77,4 +77,9 @@ urlpatterns = [
     # Charters
     path('charters', views.studcharters, name='charters'),
     path('charters/details', views.studchartersdetails, name='charters/details'),
+
+    # Knowledgebase
+    path('knowledgebase', views.userknowledgebase, name="user/knowledgebase"),
+    path('knowledgebase/browse', views.userknowledgebasebrowse, name="user/knowledgebase/browse"),
+    path('knowledgebase/view', views.userknowledgebaseview, name="user/knowledgebase/view"),
 ]

@@ -20,10 +20,9 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h3 class="header-title">Topic Content<span class="text-danger">*</span></h3>
-                            <textarea required class="form-control" id="topic_Content" rows="10" placeholder="Topic Contect"></textarea>
+                            <textarea required class="form-control" id="topic_Content" rows="25" placeholder="Topic Contect"></textarea>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -31,6 +30,35 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="header-title">Topic Options</h3>
+                <div class="col-md-12 mb-2">
+                    <label>Created By<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="get_Full_Name" placeholder="Created By" disabled/>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Category<span class="text-danger">*</span></label>
+                    <select class="form-select" id="get_category" required/>
+                        <option value="">Select Category</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Folder<span class="text-danger">*</span></label>
+                    <select class="form-select" id="get_folder" disabled/>
+                    <option value="">No Folder</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <label>Status<span class="text-danger">*</span></label>
+                    <select class="form-select" id="status" required/>
+                        <option value="">Select Status</option>
+                        <option value="Draft">Draft</option>
+                        <option value="Unpublished">Unpublished</option>
+                        <option value="Published">Published</option>
+                    </select>
+                </div>
+                <div class="row align-items-center mb-2">
+                    <button class="btn btn-primary" id="topic_Submit">Create Topic</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

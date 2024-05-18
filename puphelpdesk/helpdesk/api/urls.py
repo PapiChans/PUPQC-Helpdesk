@@ -403,7 +403,22 @@ urlpatterns = [
     #Knowledgebase: Topic
     path('admin/addKBTopic', views.adminAddKBTopic),
     path('admin/getKBTopic/<uuid:folder_Id>', views.adminGetKBTopic),
-    path('admin/getKBTopicInfo/<uuid:topic_Id>', views.adminGetKBTopicInfo),
-    path('admin/editKBTopic/<uuid:topic_Id>', views.adminEditKBTopic),
-    path('admin/deleteKBTopic/<uuid:topic_Id>', views.adminDeleteKBTopic),
+    path('admin/getKBTopicInfo/<topic_Number>', views.adminGetKBTopicInfo),
+    path('admin/editKBTopic/<topic_Number>', views.adminEditKBTopic),
+    path('admin/deleteKBTopic/<topic_Number>', views.adminDeleteKBTopic),
+
+    #----------------------
+    # GUEST API URLS
+    #----------------------
+
+    # Knowledgebase
+    path('guest/getKBCategory', views.guestGetKBCategory),
+    path('guest/getKBCategoryInfo/<category_Name>', views.guestGetKBCategoryInfo),
+    path('guest/getKBFolder/<uuid:category_Id>', views.guestGetKBFolder),
+    path('guest/getKBFolderInfo/<folder_Id>', views.guestGetKBFolderInfo),
+    path('guest/getKBFolderbyName/<folder_Name>', views.guestGetKBFolderbyName),
+    path('guest/getKBTopic/<uuid:folder_Id>', views.guestGetKBTopic),
+    path('guest/getKBTopicInfo/<topic_Number>', views.guestGetKBTopicInfo),
+    path('guest/putKBTopicLike/<topic_Number>', views.guestPUTKBTopicLike),
+    path('guest/putKBTopicDislike/<topic_Number>', views.guestPUTKBTopicDislike),
 ]

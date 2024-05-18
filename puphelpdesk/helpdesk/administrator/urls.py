@@ -85,4 +85,5 @@ urlpatterns = [
     # Knowledgebase
     path('knowledgebase', views.adminKnowledgebase, name='admin/knowledgebase'),
     path('knowledgebase/create', views.adminCreateKnowledgebase, name='admin/knowledgebase/create'),
+    path('knowledgebase/edit', views.adminEditKnowledgebase, name='admin/knowledgebase/edit'),
 ]
