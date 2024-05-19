@@ -1207,3 +1207,8 @@
 - Add Knowledgebase is Open to Everyone
 - New Import Library: Showdown.js - Allows to convert Markdown file into PURE HTML
 - Add AJAX Flies
+
+# 0.7.20
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- External clients ticketing form added in the landing page
+- POST method for the Ticketing is fixed

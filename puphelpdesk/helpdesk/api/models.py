@@ -483,7 +483,7 @@ class SendTicket(models.Model):
     def save(self, *args, **kwargs):
         if not self.ticket_Number:
             self.ticket_Number = self.generate_ticket_number()
-        super(Ticket, self).save(*args, **kwargs)
+        super(SendTicket, self).save(*args, **kwargs)
 
     def generate_ticket_number(self):
         today = timezone.now().date()
@@ -495,7 +495,7 @@ class SendTicket(models.Model):
         return f'T{today.strftime("%Y%m%d")}-{str(self.ticket_count).zfill(3)}'
     
     class Meta:
-        db_table = 'Tickets'
+        db_table = 'SendTickets'
 
 # KnowledgeBase: Categories
 class KBCategory(models.Model):

@@ -133,6 +133,7 @@ urlpatterns = [
     path('student/getTicketComment/<uuid:ticket_Id>', views.studGetTicketComment),
     path('student/getTicketFAQ', views.studGetTicketFAQ),
     path('student/verifyTicketInfo/<ticket_Number>', views.studverifyTicketInfo),
+    path('student/sendTicket', views.submit_ticket),
 
     # Charters
     path('student/getCharter', views.studGetCharter),
