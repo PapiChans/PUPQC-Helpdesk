@@ -1212,3 +1212,7 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - External clients ticketing form added in the landing page
 - POST method for the Ticketing is fixed
+
+# 0.7.20.1
+- Push by Christian (https://github.com/papichans)
+- Set the Settings.py on Production state
