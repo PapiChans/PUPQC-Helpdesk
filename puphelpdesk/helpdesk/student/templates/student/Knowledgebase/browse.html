@@ -1,13 +1,16 @@
 {% extends "student/partials/main.html" %}
 {% load static %}
 {% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
-<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 {% endblock %}
 {% block maincontent %}
 <div class="row align-items-center">
-    <div class="col-8">  
-        <h2 class="header-title">Browse Knowledgebase</h2>
+    <div class="col-9">  
+        <h2 class="header-title">Manage Knowledge</h2>
     </div>
 </div>    
 </div>
@@ -20,11 +23,11 @@
                     <div class="nav-link text-start mw-100 p-3">
                         <div class="row align-items-center flex-fill">
                             <div class="col text-center">
-                                <h3 class="mb-3">Categories</h3>
+                                <h3 class="mb-3">Folders</h3>
                             </div>
                             <div class="container">
                                 <div class="card mb-2">
-                                    <div class="list-group list-group-flush" id="category_Display">
+                                    <div class="list-group list-group-flush" id="folder_Display">
 
                                       </div>
                                 </div>
@@ -39,8 +42,20 @@
                 <div class="mb-2" id="chosen_Display">
                 </div>
                 <div id="main_Display">
-                    <h2 class="text-dark mt-2 text-center">Start Browsing by Clicking the Categories</h2>
                 </div>
+                <table id="topic-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="dt-head-center">Name</th>
+                            <th class="dt-head-center">Author</th>
+                            <th class="dt-head-center">Status</th>
+                            <th class="dt-head-center">Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -49,5 +64,14 @@
 {% block customjs %}
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jszip.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/vfs_font.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.html5.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/knowledgebase/browse.ajax.js' %}"></script>
 {% endblock %}

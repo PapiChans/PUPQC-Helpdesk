@@ -429,20 +429,11 @@ def studchartersdetails(request):
         return render(request, 'HTTPResponse/401.html')
     
 # Knowledgebase
-def userknowledgebase(request):
-    if request.user.is_anonymous:
-        return redirect('login')
-    if not request.user.is_admin:
-        pagename_value = "Knowledgebase"
-        return render(request, 'student/Knowledgebase/mainpage.html',{'pagename': pagename_value})
-    else:
-        return render(request, 'HTTPResponse/401.html')
-    
 def userknowledgebasebrowse(request):
     if request.user.is_anonymous:
         return redirect('login')
     if not request.user.is_admin:
-        pagename_value = "Knowledgebase"
+        pagename_value = "Knowledge"
         return render(request, 'student/Knowledgebase/browse.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
@@ -451,7 +442,7 @@ def userknowledgebaseview(request):
     if request.user.is_anonymous:
         return redirect('login')
     if not request.user.is_admin:
-        pagename_value = "Knowledgebase"
+        pagename_value = "Knowledge"
         return render(request, 'student/Knowledgebase/view.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')

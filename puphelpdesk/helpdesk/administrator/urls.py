@@ -83,7 +83,7 @@ urlpatterns = [
     path('FIS', views.adminFIS, name='admin/FIS'),
 
     # Knowledgebase
-    path('knowledgebase', views.adminKnowledgebase, name='admin/knowledgebase'),
-    path('knowledgebase/create', views.adminCreateKnowledgebase, name='admin/knowledgebase/create'),
-    path('knowledgebase/edit', views.adminEditKnowledgebase, name='admin/knowledgebase/edit'),
+    path('knowledge', views.adminKnowledgebase, name='admin/knowledgebase'),
+    path('knowledge/create', views.adminCreateKnowledgebase, name='admin/knowledgebase/create'),
+    path('knowledge/edit', views.adminEditKnowledgebase, name='admin/knowledgebase/edit'),
 ]

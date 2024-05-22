@@ -17,7 +17,6 @@ urlpatterns = [
     path('Not_Found', views.error_404, name='error/404'),
 
     # Knowledgebase
-    path('knowledgebase', views.mainknowledgebase, name="main/knowledgebase"),
-    path('knowledgebase/browse', views.mainknowledgebasebrowse, name="main/knowledgebase/browse"),
-    path('knowledgebase/view', views.mainknowledgebaseview, name="main/knowledgebase/view"),
+    path('knowledge/browse', views.mainknowledgebasebrowse, name="main/knowledgebase/browse"),
+    path('knowledge/view', views.mainknowledgebaseview, name="main/knowledgebase/view"),
 ]

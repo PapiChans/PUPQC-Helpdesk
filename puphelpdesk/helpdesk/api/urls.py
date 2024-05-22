@@ -387,16 +387,9 @@ urlpatterns = [
     path('admin/editCharterStep/<uuid:step_Id>', views.adminEditCharterStep),
     path('admin/deleteCharterStep/<uuid:step_Id>', views.adminDeleteCharterStep),
 
-    # Knowledgebase: Category
-    path('admin/addKBCategory', views.adminAddKBCategory),
-    path('admin/getKBCategory', views.adminGetKBCategory),
-    path('admin/getKBCategoryInfo/<uuid:category_Id>', views.adminGetKBCategoryInfo),
-    path('admin/editKBCategory/<uuid:category_Id>', views.adminEditKBCategory),
-    path('admin/deleteKBCategory/<uuid:category_Id>', views.adminDeleteKBCategory),
-
     # Knowledgebase: Folder
     path('admin/addKBFolder', views.adminAddKBFolder),
-    path('admin/getKBFolder/<category_Id>', views.adminGetKBFolder),
+    path('admin/getKBFolder', views.adminGetKBFolder),
     path('admin/getKBFolderInfo/<uuid:folder_Id>', views.adminGetKBFolderInfo),
     path('admin/editKBFolder/<uuid:folder_Id>', views.adminEditKBFolder),
     path('admin/deleteKBFolder/<uuid:folder_Id>', views.adminDeleteKBFolder),
@@ -413,9 +406,7 @@ urlpatterns = [
     #----------------------
 
     # Knowledgebase
-    path('guest/getKBCategory', views.guestGetKBCategory),
-    path('guest/getKBCategoryInfo/<category_Name>', views.guestGetKBCategoryInfo),
-    path('guest/getKBFolder/<uuid:category_Id>', views.guestGetKBFolder),
+    path('guest/getKBFolder', views.guestGetKBFolder),
     path('guest/getKBFolderInfo/<folder_Id>', views.guestGetKBFolderInfo),
     path('guest/getKBFolderbyName/<folder_Name>', views.guestGetKBFolderbyName),
     path('guest/getKBTopic/<uuid:folder_Id>', views.guestGetKBTopic),

@@ -1,35 +1,14 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.serializers import KBTopicSerializer, KBFolderSerializer, KBCategorySerializer
-from api.models import KBCategory, KBFolder, KBTopic
+from api.serializers import KBTopicSerializer, KBFolderSerializer
+from api.models import KBFolder, KBTopic
 
-@api_view(['GET'])
-def guestGetKBCategory(request):
-    if request.user.is_anonymous or (request.user.is_authenticated and not request.user.is_admin):
-        if request.method == "GET":
-            data = KBCategory.objects.all().order_by('category_Number')
-            serializer = KBCategorySerializer(data, many=True)
-            return Response(serializer.data)
-        return Response({"message": "Get Category Error"})
-    else:
-        return Response({"message": "Not Authenticated"})
     
 @api_view(['GET'])
-def guestGetKBCategoryInfo(request, category_Name):
+def guestGetKBFolder(request):
     if request.user.is_anonymous or (request.user.is_authenticated and not request.user.is_admin):
         if request.method == "GET":
-            categ = KBCategory.objects.get(category_Name=category_Name)
-            serializer = KBCategorySerializer(categ)
-            return Response(serializer.data)
-        return Response({"message": "Get Category Info Error"})
-    else:
-        return Response({"message": "Not Authenticated"})
-    
-@api_view(['GET'])
-def guestGetKBFolder(request, category_Id):
-    if request.user.is_anonymous or (request.user.is_authenticated and not request.user.is_admin):
-        if request.method == "GET":
-            data = KBFolder.objects.all().filter(category_Id=category_Id).order_by('folder_Number')
+            data = KBFolder.objects.all().order_by('folder_Name')
             serializer = KBFolderSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Folder Error"})

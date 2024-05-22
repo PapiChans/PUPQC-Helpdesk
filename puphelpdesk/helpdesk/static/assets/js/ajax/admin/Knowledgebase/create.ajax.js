@@ -3,16 +3,8 @@ $(function() {
         addTopic()
         e.preventDefault() // prevent page refresh
     })
-    getCategory();
-    // Add onchange event listener to the select element
-    $('#get_category').on('change', function() {
-        // Remove the "Select Category" option
-        $(this).find('option[value=""]').remove();
-        // Call getFolder function passing the selected category_Id
-        let selectedCategoryId = $(this).val();
-        getFolder(selectedCategoryId);
-    }); 
     getuserName();
+    getFolder();
 });
 
 const notyf = new Notyf();
@@ -61,15 +53,14 @@ getCategory = () => {
     })
 }
 
-getFolder = (category_Id) => {
+getFolder = () => {
 
     let folder_Display = $('#get_folder')
     folder_Display.html(null)
-    $('#get_folder').prop('disabled', true);
 
     $.ajax({
         type: 'GET',
-        url: `/api/admin/getKBFolder/${category_Id}`,
+        url: `/api/admin/getKBFolder`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
@@ -81,8 +72,6 @@ getFolder = (category_Id) => {
                     `<option value="${data.folder_Id}">${data.folder_Name}</option>`
 
                     folder_Display.append(option)
-                    $('#get_folder').prop('disabled', false);
-
                 });
             }
             else {
@@ -145,7 +134,7 @@ addTopic = () => {
                         $('form#AddTopicForm')[0].reset();
                         $('#topic_Submit').prop('disabled', false);
                         setTimeout(function () {
-                            window.location.href = `/admin/knowledgebase`;
+                            window.location.href = `/admin/knowledge`;
                         }, 1000);
                 }
             },

@@ -1,13 +1,13 @@
 $(function() {
-    // Call the function when the page loads to check the URL
-    getCategoryOrFolderFromURL();
-    getCategory();
+    getFolder();
 });
 
 const notyf = new Notyf();
 
+const dt = $('#topic-datatable').DataTable();
+
 function truncateText(text, maxLength) {
-    if (text.length > maxLength) {
+    if (text && text.length > maxLength) { // Added null/undefined check for text
         return text.substring(0, maxLength) + '...';
     }
     return text;
@@ -29,35 +29,19 @@ function formatPostgresTimestamp(postgresTimestamp) {
     return formattedDate;
 }
 
-function getCategoryOrFolderFromURL() {
-    // Get the search portion of the URL
-    const searchParamsString = window.location.search;
+getFolder = () => {
+    let folder_Display = $('#folder_Display');
+    folder_Display.html(null);
 
-    // Create a URLSearchParams object with the search string
-    const searchParams = new URLSearchParams(searchParamsString);
+    let main_Display = $('#main_Display');
+    main_Display.html(null);
 
-    // Check if the URL contains 'category_Name' or 'folder_Name' query parameter
-    if (searchParams.has('category_Name')) {
-        const categoryName = searchParams.get('category_Name');
-        chosenCategory(categoryName); // Trigger function for category
-    } else if (searchParams.has('folder_Name')) {
-        const folderName = searchParams.get('folder_Name');
-        getFolderbyName(folderName); // Trigger function for folder
-    } else {
-        // Neither 'category_Name' nor 'folder_Name' query parameter found in the URL
-    }
-}
-
-getCategory = () => {
-    let category_Display = $('#category_Display')
-    category_Display.html(null)
-
-    let chosen_Display = $('#chosen_Display')
-    chosen_Display.html(null)
+    let chosen_Display = $('#chosen_Display');
+    chosen_Display.html(null);
 
     $.ajax({
         type: 'GET',
-        url: '/api/guest/getKBCategory',
+        url: '/api/guest/getKBFolder',
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
@@ -65,16 +49,19 @@ getCategory = () => {
             const data = result;
             if (data.length > 0) {
                 data.forEach((data) => {
-
-                    let format = `
-                    <a class="list-group-item list-group-item-action" onclick="chosenCategory('${data.category_Name}')">${data.category_Name}</a>
+                    // Fetch topics count for each folder
+                    fetchTopicCount(data.folder_Id, (topicCount) => {
+                        let format = `
+                            <a style="cursor: pointer;" class="list-group-item list-group-item-action" onclick="chosenFolder('${data.folder_Id}')">
+                                ${truncateText(data.folder_Name, 20)} (${topicCount})
+                            </a>
                         `;
-                    category_Display.append(format)
+                        folder_Display.append(format);
+                    });
                 });
-            }
-            else {
+            } else {
                 notyf.success({
-                    message: 'No Category Fetched.',
+                    message: 'No Folder Fetched.',
                     position: {x:'right',y:'top'},
                     duration: 2500
                 });
@@ -83,160 +70,41 @@ getCategory = () => {
     })
     .fail(() => {
         notyf.error({
-            message: 'Category Fetched Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
-
-chosenCategory = (category_Name) => {
-    let chosen_Display = $('#chosen_Display')
-    chosen_Display.html(null)
-    $.ajax({
-        type: 'GET',
-        url: `/api/guest/getKBCategoryInfo/${category_Name}`,
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            const data = result;
-
-            let format = `
-            <div class="card card-link card-link-pop">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M14 4h6v6h-6z" />
-                            <path d="M4 14h6v6h-6z" />
-                            <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                            <path d="M7 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                            </svg>
-                        </div> 
-                        <div class="col-8">
-                            <h3 class="text-primary">Category: ${data.category_Name}</h3>
-                        </div>   
-                    </div> 
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <h2 class="text-dark mt-2">Folders</h2>
-            </div>
-            `;
-            chosen_Display.append(format)
-
-            getFolder(data.category_Id)
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Category Info Fetching Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
-}
-
-getFolder = (category_Id) => {
-    let main_Display = $('#main_Display')
-    main_Display.html(null)
-
-    $.ajax({
-        type: 'GET',
-        url: `/api/guest/getKBFolder/${category_Id}`,
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            const data = result;
-            if (data.length > 0) {
-                data.forEach((data) => {
-
-                    let format = `
-                    <div class="mb-2">
-                        <div class="card card-link card-link-pop mb-2">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-1" onclick="chosenFolder('${data.folder_Id}')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
-                                        </svg>
-                                    </div>
-                                    <div class="col-8" onclick="chosenFolder('${data.folder_Id}')">
-                                        <h3 class="text-primary">${data.folder_Name}</h3>
-                                    </div>   
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                        `;
-                    main_Display.append(format)
-                });
-            }
-            else {
-                main_Display.append('<h2 class="text-dark text-center mt-3 mb-3">Folders is Empty</h2>')
-            }
-        },
-    })
-    .fail(() => {
-        notyf.error({
             message: 'Folder Fetched Error',
             position: {x:'right',y:'top'},
             duration: 2500
         });
-    })
+    });
 }
 
-getFolderbyName = (folder_Name) => {
-    let chosen_Display = $('#chosen_Display')
-    chosen_Display.html(null)
-
+// Function to fetch topic count for a folder
+fetchTopicCount = (folderId, callback) => {
     $.ajax({
         type: 'GET',
-        url: `/api/guest/getKBFolderbyName/${folder_Name}`,
+        url: `/api/guest/getKBTopic/${folderId}`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
-            const data = result;
-
-            let format = `
-            <div class="card card-link card-link-pop">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
-                            </svg>
-                        </div>
-                        <div class="col-auto">
-                            <h3 class="text-primary">Folder: ${data.folder_Name}</h3>
-                        </div>   
-                    </div> 
-                </div>
-            </div>
-            <h2 class="text-dark mt-2">Topics</h2>
-            `;
-            chosen_Display.append(format)
-            getTopic(data.folder_Id)
+            // Assuming result is an array of topics
+            const topicCount = result.length;
+            callback(topicCount);
         },
     })
     .fail(() => {
-        notyf.error({
-            message: 'Folder Fetched Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
+        callback(0); // If fetching topic count fails, set count to 0
+    });
 }
+
+
+// ----------------
+// Knowledgebase Folder
+// ----------------
 
 chosenFolder = (folder_Id) => {
-    let chosen_Display = $('#chosen_Display')
-    chosen_Display.html(null)
+    let chosen_Display = $('#chosen_Display');
+    chosen_Display.html(null);
+
     $.ajax({
         type: 'GET',
         url: `/api/guest/getKBFolderInfo/${folder_Id}`,
@@ -247,28 +115,31 @@ chosenFolder = (folder_Id) => {
             const data = result;
 
             // Pass the data in the form
-
             let format = `
-            <div class="card card-link card-link-pop">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
-                            </svg>
+                <div class="card card-link card-link-pop">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+                                </svg>
+                            </div>
+                            <div class="col-8">
+                                <h3 class="text-primary">${data.folder_Name}</h3>
+                            </div>
+                            <div class="col-12">
+                                <h4>${data.folder_Description}</h4>
+                            </div> 
                         </div>
-                        <div class="col-auto">
-                            <h3 class="text-primary">Folder: ${data.folder_Name}</h3>
-                        </div>   
-                    </div> 
+                    </div>
                 </div>
-            </div>
-            <h2 class="text-dark mt-2">Topics</h2>
+                <h2 class="text-dark mt-2">Topics</h2>
             `;
-            chosen_Display.append(format)
+            chosen_Display.append(format);
 
-            getTopic(data.folder_Id)
+            // Update the DataTable with new data
+            updateTable(data.folder_Id);
         },
     })
     .fail(() => {
@@ -277,65 +148,93 @@ chosenFolder = (folder_Id) => {
             position: {x:'right',y:'top'},
             duration: 2500
         });
-    })
+    });
 }
 
-getTopic = (folder_Id) => {
-    let main_Display = $('#main_Display')
-    main_Display.html(null)
+updateTable = (folder_Id) => {
+    const dt = $('#topic-datatable').DataTable();
+    dt.clear().destroy(); // Destroy the existing DataTable instance
 
-    $.ajax({
-        type: 'GET',
-        url: `/api/guest/getKBTopic/${folder_Id}`,
-        dataType: 'json',
-        cache: false,
-        headers: {'X-CSRFToken': csrftoken},
-        success: (result) => {
-            const data = result;
-            if (data.length > 0) {
-                data.forEach((data) => {
-
-                    let format = `
-                    <div class="mb-2">
-                        <div class="card card-link card-link-pop" onclick="getTopicInfoAndNavigate('${data.topic_Number}')">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-md-auto">
-                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-book"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6l0 13" /><path d="M12 6l0 13" /><path d="M21 6l0 13" /></svg>
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <h2 class="text-primary">${data.topic_Name}</h2>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <p>Last Modified: <strong>${formatPostgresTimestamp(data.last_modified)}</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        `;
-                    main_Display.append(format)
-                });
-            }
-            else {
-                main_Display.append('<h2 class="text-dark text-center mt-3 mb-3">Topics is Empty</h2>')
-            }
-        },
-    })
-    .fail(() => {
-        notyf.error({
-            message: 'Topic Fetched Error',
-            position: {x:'right',y:'top'},
-            duration: 2500
-        });
-    })
+    // Reinitialize the DataTable with new data
+    getTable(folder_Id);
 }
+
+// ----------------
+// Knowledgebase Topic
+// ----------------
 
 function getTopicInfoAndNavigate(topic_Number) {
 
     // Create the URL with the guide_Id parameter
-    const detailsURL = `/knowledgebase/view?topic_Number=${topic_Number}`;
+    const detailsURL = `/knowledge/view?topic_Number=${topic_Number}`;
     
     // Navigate to the specified URL
     window.location.href = detailsURL;
+}
+
+getTable = (folder_Id) => {
+    const dt = $('#topic-datatable');
+
+    $.ajaxSetup({
+		headers: {'X-CSRFToken': csrftoken},
+	})
+
+    if (dt.length) {
+        dt.DataTable({
+            ajax: {
+                type: 'GET',
+                url: `/api/guest/getKBTopic/${folder_Id}`,
+                ContentType: 'application/x-www-form-urlencoded',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: null,
+                    class: 'text-left',
+                    width: '10%',
+                    render: (data) => {
+                        const name = data.topic_Name
+                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTopicInfoAndNavigate('${data.topic_Number}')">${truncateText(name, 50)}</h3>`
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-center',
+                    width: '10%',
+                    render: (data) => {
+                        const author = data.created_by
+                        return `${author}`
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-center',
+                    width: '10%',
+                    render: (data) => {
+                        let badgestatus = data.status;
+                        if (data.status == 'Draft'){
+                            badgestatus = '<span class="badge bg-warning">Draft</span>'
+                        }
+                        if (data.status == 'Unpublished'){
+                            badgestatus = '<span class="badge bg-danger">Unpublished</span>'
+                        }
+                        if (data.status == 'Published'){
+                            badgestatus = '<span class="badge bg-success">Published</span>'
+                        }
+                        return `${badgestatus}`
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-center',
+                    width: '10%',
+                    render: (data) => {
+                        const date = data.date_Created
+                        return `${formatPostgresTimestamp(date)}`
+                    },
+                },
+            ],
+            order: [[0, 'asc']],
+        })
+    }
 }

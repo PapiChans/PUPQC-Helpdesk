@@ -3,15 +3,7 @@ $(function() {
         editTopic()
         e.preventDefault() // prevent page refresh
     })
-    getCategory();
-    // Add onchange event listener to the select element
-    $('#edit_get_category').on('change', function() {
-        // Remove the "Select Category" option
-        $(this).find('option[value=""]').remove();
-        // Call getFolder function passing the selected category_Id
-        let selectedCategoryId = $(this).val();
-        getFolder(selectedCategoryId);
-    });
+    getFolder()
     $(document).ready(function () {
         const topicNum = getTopicIdFromURL();
         if (topicNum) {
@@ -89,15 +81,13 @@ getCategory = () => {
     })
 }
 
-getFolder = (category_Id) => {
+getFolder = () => {
 
     let folder_Display = $('#edit_get_folder')
-    folder_Display.html(null)
-    $('#edit_get_folder').prop('disabled', true);
 
     $.ajax({
         type: 'GET',
-        url: `/api/admin/getKBFolder/${category_Id}`,
+        url: `/api/admin/getKBFolder`,
         dataType: 'json',
         cache: false,
         headers: {'X-CSRFToken': csrftoken},
@@ -109,8 +99,6 @@ getFolder = (category_Id) => {
                     `<option value="${data.folder_Id}">${data.folder_Name}</option>`
 
                     folder_Display.append(option)
-                    $('#edit_get_folder').prop('disabled', false);
-
                 });
             }
             else {
@@ -201,7 +189,7 @@ deleteTopic = (topic_Number) => {
                             duration: 2500
                         });
                             setTimeout(function () {
-                                window.location.href = `/admin/knowledgebase`;
+                                window.location.href = `/admin/knowledge`;
                             }, 1000);
                         }
                     }
@@ -259,7 +247,7 @@ editTopic = (topic_Number) => {
                         duration: 2500
                     })
                         setTimeout(function () {
-                            window.location.href = `/admin/knowledgebase`;
+                            window.location.href = `/admin/knowledge`;
                         }, 1000);
                 }
             },
