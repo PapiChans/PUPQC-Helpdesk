@@ -13,19 +13,20 @@
 {% include "student/Ticket/modal/ticket-modal.html" %}
 <h2 class="header-title">Your Tickets</h2>
 <p class="card-title-desc">Submit a ticket for your support concerns.</p>
-<div class="alert alert-info" role="alert">You can create 1 ticket at the time,
-wait for your previous ticket to be solved / close before you create a new one.</div>
 <div class="col">
-    <div id="create_button"><a href="{% url 'ticket/howtouse' %}"><button type="button" class="btn btn-success waves-effect waves-light mb-2" >How to Use?</button></a> </div>
+    <div id="create_button">
+        <!--<a href="{% url 'ticket/howtouse' %}"><button type="button" class="btn btn-success waves-effect waves-light mb-2" >How to Use?</button></a>-->
+        <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddTicketModal">Create a Ticket</button>
+    </div>
 </div>
 <table id="ticket-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
         <tr>
             <th class="dt-head-center">Ticket Number</th>
             <th class="dt-head-center">Subject</th>
-            <th class="dt-head-center">Type</th>
             <th class="dt-head-center">Status</th>
-            <th class="dt-head-center">Date Submitted</th>
+            <th class="dt-head-center">Date Created</th>
+            <th class="dt-head-center">Resolved Date</th>
         </tr>
     </thead>
     <tbody>

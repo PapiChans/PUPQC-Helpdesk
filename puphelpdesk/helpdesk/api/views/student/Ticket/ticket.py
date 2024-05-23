@@ -61,61 +61,67 @@ User = get_user_model()
 def studAddTicket(request):
     if request.user.is_anonymous or request.user.is_admin:
         return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "POST":
-            # Fetching the current date
-            today = timezone.now().date()
 
-            # Get the count of tickets created today
-            ticket_count_today = Ticket.objects.filter(date_Created__date=today).count() + 1
+    if request.method == "POST":
+        # Fetching the current date
+        today = timezone.now().date()
 
-            # Generate the ticket number
-            ticket_Number = f'T{today.strftime("%Y%m%d")}-{str(ticket_count_today).zfill(3)}'
+        # Get the count of tickets created today
+        ticket_count_today = Ticket.objects.filter(date_Created__date=today).count() + 1
 
-            user_Id = request.POST.get('user_Id')
-            full_Name = request.POST.get('full_Name')
-            sender_Affiliation = request.POST.get('sender_Affiliation')
-            ticket_Type = request.POST.get('ticket_Type')
-            ticket_Title = request.POST.get('ticket_Title')
-            comment_Text = request.POST.get('comment_Text')
+        # Generate the ticket number
+        ticket_Number = f'T{today.strftime("%Y%m%d")}-{str(ticket_count_today).zfill(3)}'
 
-            #Get User's Email
-            getUser = UserProfile.objects.get(user_Id=user_Id)
+        user_Id = request.data.get('user_Id')  # Changed to request.data
+        full_Name = request.data.get('full_Name')  # Changed to request.data
+        sender_Affiliation = request.data.get('sender_Affiliation')  # Changed to request.data
+        ticket_Type = request.data.get('ticket_Type')  # Changed to request.data
+        ticket_Title = request.data.get('ticket_Title')  # Changed to request.data
+        comment_Text = request.data.get('comment_Text')  # Changed to request.data
+        ticket_Office = request.data.get('ticket_Office')  # Get ticket office
+        ticket_Service = request.data.get('ticket_Service')
 
-            ticket = {
+        # Get User's Email
+        getUser = UserProfile.objects.get(user_Id=user_Id)
+
+        ticket_data = {
+            'user_Id': user_Id,
+            'full_Name': full_Name,
+            'sender_Affiliation': sender_Affiliation,
+            'ticket_Type': ticket_Type,
+            'ticket_Number': ticket_Number,
+            'ticket_Status': 'Pending',
+            'ticket_Priority': 'Unassigned',
+            'ticket_Title': ticket_Title,
+            'ticket_Office': ticket_Office,
+            'ticket_Service': ticket_Service,
+        }
+        serializer = TicketSerializer(data=ticket_data)
+        if serializer.is_valid():
+            ticket_instance = serializer.save()
+
+            # Retrieve the ticket using the saved ticket instance
+            ticket_number = ticket_instance.ticket_Number
+
+            comment_data = {
                 'user_Id': user_Id,
                 'full_Name': full_Name,
-                'ticket_Title': ticket_Title,
                 'sender_Affiliation': sender_Affiliation,
+                'ticket_Id': ticket_instance.ticket_Id,
                 'ticket_Type': ticket_Type,
-                'ticket_Number': ticket_Number,
-                'ticket_Status': 'Open',
-                'ticket_Priority': 'Low',
+                'comment_Text': comment_Text,
+                'comment_Attachment': None,
             }
-            serializer = TicketSerializer(data=ticket)
-            if serializer.is_valid():
-                ticket_instance = serializer.save()
+            comment_serializer = TicketCommentSerializer(data=comment_data)
+            if comment_serializer.is_valid():
+                # Save the ticket comment
+                comment_serializer.save()
+                # send_email_to_owner(getUser.user_Email, full_Name, ticket_number)
+                return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})
 
-                # Retrieve the ticket using the saved ticket instance
-                ticket_number = ticket_instance.ticket_Number
+        return Response({"message": "Submit Ticket Failed"})
 
-                comment = {
-                    'user_Id': user_Id,
-                    'full_Name': full_Name,
-                    'sender_Affiliation': sender_Affiliation,
-                    'ticket_Id': ticket_instance.ticket_Id,
-                    'ticket_Type': ticket_Type,
-                    'comment_Text': comment_Text,
-                    'comment_Attachment': None,
-                }
-                comment_serializer = TicketCommentSerializer(data=comment)
-                if comment_serializer.is_valid():
-                    # Save the ticket comment
-                    comment_serializer.save()
-                    send_email_to_owner(getUser.user_Email, full_Name, ticket_number)
-                    return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})      
-            return Response({"message": "Submit Ticket Failed"})
-        return Response({"message": "Submit Ticket Error"})
+    return Response({"message": "Submit Ticket Error"})
     
 @api_view(['GET'])
 def studGetTicketbyUser(request):
@@ -174,8 +180,6 @@ def studAddTicketComment(request):
                 serializer.save()
 
                 ticket = Ticket.objects.get(pk=ticket_Id)
-                ticket.ticket_Status = 'Open'
-                ticket.ticket_Priority = 'None'
                 ticket.save()
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})

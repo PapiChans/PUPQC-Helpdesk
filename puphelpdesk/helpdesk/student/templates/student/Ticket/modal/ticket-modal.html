@@ -15,7 +15,7 @@
                         </div>
 
                         <div class="col-md-12 mt-2">
-                                <label>Affiliation</label>
+                                <label>Affiliation / Client Type</label>
                                 <select class="form-control form-select" id="sender_Affiliation" required>
                                     <option value="">...</option>
                                     <option value="Student">Student</option>
@@ -29,16 +29,97 @@
 
                         <div class="col-md-12 mt-2">
                             <label>Ticket Category</label>
-                        <select class="form-control form-select" data-placeholder="..." id="ticket_Type" required>
-                            <option value="">...</option>
-                            <option value="Inquiry">Inquiry</option>
-                            <option value="Concern">Concern</option>
-                            <option value="Problem">Problem</option>
-                            <option value="Request">Request</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
+                            <select class="form-control form-select" data-placeholder="..." id="ticket_Type" required>
+                                <option value="">...</option>
+                                <option value="Inquiry">Inquiry</option>
+                                <option value="Concern">Concern</option>
+                                <option value="Problem">Problem</option>
+                                <option value="Request">Request</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label for="ticket_Office">Offices</label>
+                            <select class="form-control form-select" data-placeholder="..." id="ticket_Office" required>
+                                <option value="">Select Office</option>
+                                <option value="Director's Office">Director's Office</option>
+                                <option value="PUP Commonwealth">PUP Commonwealth</option>
+                                <option value="Academic Office">Academic Office</option>
+                                <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                                <option value="Registrar's Office">Registrar's Office</option>
+                                <option value="Admission Office (QC)">Admission Office (QC)</option>
+                                <option value="Admission Office (Commonwealth)">Admission Office (Commonwealth)</option>
+                                <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                                <option value="Accounting Office">Accounting Office</option>
+                                <option value="Scholarship Office">Scholarship Office</option>
+                                <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                                <option value="Research Office">Research Office</option>
+                                <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                                <option value="IT Laboratory Office">IT Laboratory Office</option>
+                                <option value="Quality Management System Office">Quality Management System Office</option>
+                                <option value="Medical Clinic">Medical Clinic</option>
+                                <option value="Dental Clinic">Dental Clinic</option>
+                                <option value="Security Office">Security Office</option>
+                            </select>
+                        </div>
                         
+                        <div class="col-md-12 mt-2">
+                            <label>Services</label>
+                            <select class="form-control form-select" data-placeholder="..." id="ticket_Service" required>
+                                <option value="">...</option>
+                                <option value="Application for New Identification Card">Application for New Identification Card</option>
+                                <option value="Application for Overload of Subjects">Application for Overload of Subjects</option>
+                                <option value="Application for Replacement of Lost Identification Card">Application for Replacement of Lost Identification Card</option>
+                                <option value="Application for Replacement of Lost Registration Certificate">Application for Replacement of Lost Registration Certificate</option>
+                                <option value="Application of General Clearance">Application of General Clearance</option>
+                                <option value="Circulation Services">Circulation Services</option>
+                                <option value="Consultation and Treatment Services for Emergency Dental Cases of Faculty and Admin. Employees">Consultation and Treatment Services for Emergency Dental Cases of Faculty and Admin. Employees</option>
+                                <option value="Consultation and Treatment Services for Emergency Dental Cases of Students">Consultation and Treatment Services for Emergency Dental Cases of Students</option>
+                                <option value="Issuance of Annual Medical Clearance">Issuance of Annual Medical Clearance</option>
+                                <option value="Issuance of Dental Clearance">Issuance of Dental Clearance</option>
+                                <option value="Issuance of Follow-up of Students Referred during enrollment.">Issuance of Follow-up of Students Referred during enrollment.</option>
+                                <option value="Issuance of Medical Certificate for Sick Note/Excuse Slip">Issuance of Medical Certificate for Sick Note/Excuse Slip</option>
+                                <option value="Issuance of Medical Clearance for Enrollment">Issuance of Medical Clearance for Enrollment</option>
+                                <option value="Issuance of Medical Clearance for Laboratory Classes for Food-Handlers">Issuance of Medical Clearance for Laboratory Classes for Food-Handlers</option>
+                                <option value="Issuance of Medical Clearance for Off-Campus of Students">Issuance of Medical Clearance for Off-Campus of Students</option>
+                                <option value="Issuance of Medical Clearance for On-the-job-Training of Students">Issuance of Medical Clearance for On-the-job-Training of Students</option>
+                                <option value="Issuance of Recommendation Letter">Issuance of Recommendation Letter</option>
+                                <option value="Issuance of Medical Clearance for On-the-job-Training of Students">Issuance of Medical Clearance for On-the-job-Training of Students</option>
+                                <option value="Issuance of Recommendation Letter">Issuance of Recommendation Letter</option>
+                                <option value="Issuance of Student / Alumni Referral and Recommendation">Issuance of Student / Alumni Referral and Recommendation</option>
+                                <option value="Permission to Conduct an Activity">Permission to Conduct an Activity</option>
+                                <option value="Processing of Application for Change of Enrollment (Adding of Subject)">Processing of Application for Change of Enrollment (Adding of Subject)</option>
+                                <option value="Processing of Application for Change of Enrollment (Change of Schedule/Subject)">Processing of Application for Change of Enrollment (Change of Schedule/Subject)</option>
+                                <option value="Processing of Application for Correction of Grade Entry, Late Reporting of Grades, & Incomplete Mark">Processing of Application for Correction of Grade Entry, Late Reporting of Grades, & Incomplete Mark</option>
+                                <option value="Processing of Application for Cross-Enrollment">Processing of Application for Cross-Enrollment</option>
+                                <option value="Processing of Application for Shifting">Processing of Application for Shifting</option>
+                                <option value="Processing of Course Accreditation Service for Transferees">Processing of Course Accreditation Service for Transferees</option>
+                                <option value="Processing of Freshman Admission">Processing of Freshman Admission</option>
+                                <option value="Processing of Manual Enrollment">Processing of Manual Enrollment</option>
+                                <option value="Processing of Offsetting">Processing of Offsetting</option>
+                                <option value="Processing of Online Petition of Subject">Processing of Online Petition of Subject</option>
+                                <option value="Processing of Online Request for Tutorial of Subject">Processing of Online Request for Tutorial of Subject</option>
+                                <option value="Processing of Refunds">Processing of Refunds</option>
+                                <option value="Processing of Req. for Credentials Service (Cert., Authentication, Verification (CAV/APOSTILLE))">Processing of Req. for Credentials Service (Cert., Authentication, Verification (CAV/APOSTILLE))</option>
+                                <option value="Processing of Request for Academic Verification Service">Processing of Request for Academic Verification Service</option>
+                                <option value="Processing of Request for Application for Graduation Service – SIS and Non-SIS">Processing of Request for Application for Graduation Service – SIS and Non-SIS</option>
+                                <option value="Processing of Request for Certificate of Transfer Credential/Honorable Dismissal">Processing of Request for Certificate of Transfer Credential/Honorable Dismissal</option>
+                                <option value="Processing of Request for Certification (Grades, Bonafide Student, General Weighted Average)">Processing of Request for Certification (Grades, Bonafide Student, General Weighted Average)</option>
+                                <option value="Processing of Request for Course Accreditation Service – Senior High School to Bridge Course">Processing of Request for Course Accreditation Service – Senior High School to Bridge Course</option>
+                                <option value="Processing of Request for Course Accreditation Service for Shiftees and Regular Students">Processing of Request for Course Accreditation Service for Shiftees and Regular Students</option>
+                                <option value="Processing of Request for Credentials Service (Course/Subject Description)">Processing of Request for Credentials Service (Course/Subject Description)</option>
+                                <option value="Processing of Request for Credentials Service (Transcript of Records)">Processing of Request for Credentials Service (Transcript of Records)</option>
+                                <option value="Processing of Request for Informative Copy of Grades">Processing of Request for Informative Copy of Grades</option>
+                                <option value="Processing of Request for Leave of Absence (LOA)">Processing of Request for Leave of Absence (LOA)</option>
+                                <option value="Processing Req. for Corr. of Name in Conformity W/ PSA Cert. of Live Birth &/or Corr. of Name in SRS">Processing Req. for Corr. of Name in Conformity W/ PSA Cert. of Live Birth &/or Corr. of Name in SRS</option>
+                                <option value="Re-Admission (Returning Students)">Re-Admission (Returning Students)</option>
+                                <option value="Request for Certificate of Good Moral Character">Request for Certificate of Good Moral Character</option>
+                                <option value="Request for the Reservation of Campus Facility">Request for the Reservation of Campus Facility</option>                                
+                            </select>
+                        </div>
 
                         <div class="col-md-12 mt-2">
                             <label for="validationCustom01">Subject<span class="text-danger">*</span><span class="text-primary"> (Maximum of 30 Characters)</span></label>

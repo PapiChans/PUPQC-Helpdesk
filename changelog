@@ -1230,3 +1230,6 @@
 - User Side Ticketing modified
 - Added some changes in Ticket table
 
+# 0.7.20.5
+- Push by Christian (https://github.com/papichans)
+- Improving Ticketing system (Incomplete)

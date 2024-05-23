@@ -360,9 +360,10 @@ urlpatterns = [
     path('admin/deleteFAQ/<uuid:FAQ_Id>', views.adminDeleteFAQ),
 
     # Ticket
-    path('admin/getOpenTicket', views.adminGetOpenTicket),
+    path('admin/getPendingTicket', views.adminGetPendingTicket),
     path('admin/getResponseTicket', views.adminGetResponseTicket),
     path('admin/getClosedTicket', views.adminGetClosedTicket),
+    path('admin/getAllTicket', views.adminGetAllTicket),
     path('admin/getTicketInfo/<ticket_Number>', views.adminGetTicketInfo),
     path('admin/getTicketComment/<uuid:ticket_Id>', views.adminGetTicketComment),
     path('admin/addTicketComment', views.adminAddTicketComment),

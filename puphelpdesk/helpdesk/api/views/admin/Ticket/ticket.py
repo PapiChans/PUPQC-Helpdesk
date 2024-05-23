@@ -65,12 +65,12 @@ def send_email_replied(user_Email, full_Name, ticket_number, comment_Text):
     msg.send(fail_silently=True)
 
 @api_view(['GET'])
-def adminGetOpenTicket(request):
+def adminGetPendingTicket(request):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = Ticket.objects.all().filter(ticket_Status='Open').order_by('date_Created')
+            data = Ticket.objects.all().filter(ticket_Status='Pending').order_by('date_Created')
             serializer = TicketSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})
@@ -93,6 +93,17 @@ def adminGetClosedTicket(request):
     else:
         if request.method == "GET":
             data = Ticket.objects.all().filter(ticket_Status='Closed').order_by('date_Created')
+            serializer = TicketSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Get Ticket Error"})
+    
+@api_view(['GET'])
+def adminGetAllTicket(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            data = Ticket.objects.exclude(ticket_Status__in=['Closed', 'Pending']).order_by('date_Created')
             serializer = TicketSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})
@@ -156,9 +167,7 @@ def adminAddTicketComment(request):
                 serializer.save()
 
                 ticket = Ticket.objects.get(pk=ticket_Id)
-                ticket.ticket_Status = 'Replied'
                 ticket.save()
-                send_email_replied(user_profile.user_Email, ticket_info.full_Name, ticket_info.ticket_Number, comment_Text)
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})
 
@@ -175,7 +184,6 @@ def adminCloseTicket(request, ticket_Id):
             user_profile = UserProfile.objects.get(user_Id=ticket.user_Id)
             ticket.ticket_Status = 'Closed'
             ticket.save()
-            send_email_closed(user_profile.user_Email, ticket.full_Name, ticket.ticket_Number)
             return Response({"message": "Close Ticket Successfully"})
         return Response({"message": "Close Ticket Failed"})
     

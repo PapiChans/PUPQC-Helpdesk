@@ -68,21 +68,49 @@ getTicketInfo = (ticket_Number) => {
             $('#ticket_full_Name_info').html(data.full_Name);
             $('#ticket_Title_info').html(data.ticket_Title);
             $('#ticket_Date_info').html(formatPostgresTimestamp(data.date_Created));
+            $('#ticket_Office_info').html(data.ticket_Office);
+            $('#ticket_Service_info').html(data.ticket_Service);
+            $('#ticket_Type_info').html(data.ticket_Type);
+            $('#ticket_Priority_info').html(data.ticket_Priority);
 
-            let status = data.ticket_Status
-            if (data.ticket_Status == 'Open'){
-                status = '<span class="badge bg-success text-success-fg">Open</span>'
+            if (data.resolved_Date === null) {
+                $('#resolved_Date_info').html(null);
+            } else {
+                $('#resolved_Date_info').html(formatPostgresTimestamp(data.resolved_Date));
             }
-            else if (data.ticket_Status == 'Replied') {
-                status = `<span class="badge bg-warning text-success-fg">Replied</span>`
+
+            let status = data.ticket_Status;
+            let badgeClass = '';
+
+            switch(status) {
+                case 'Pending':
+                    badgeClass = 'badge bg-silver text-silver-fg';
+                    break;
+                case 'Open':
+                    badgeClass = 'badge bg-yellow text-yellow-fg';
+                    break;
+                case 'In Progress':
+                    badgeClass = 'badge bg-cyan text-cyan-fg';
+                    break;
+                case 'Approval':
+                    badgeClass = 'badge bg-blue text-blue-fg';
+                    break;
+                case 'On Hold':
+                    badgeClass = 'badge bg-orange text-orange-fg';
+                    break;
+                case 'Resolved':
+                    badgeClass = 'badge bg-green text-green-fg';
+                    break;
+                case 'Closed':
+                    badgeClass = 'badge bg-black text-black-fg';
+                    break;
+                default:
+                    badgeClass = 'badge bg-danger text-danger-fg';
             }
-            else if (data.ticket_Status == 'Closed') {
-                status = `<span class="badge bg-secondary text-success-fg">Closed</span>`
-            }
-            else {
-                status = `<span class="badge bg-secondary text-success-fg">Unknown</span>`
-            }
-            $('#ticket_Status_info').html(status);
+
+            const statusBadge = `<span class="${badgeClass}">${status}</span>`;
+            $('#ticket_Status_info').html(statusBadge);
+            
             $('#ticket_Id').val(data.ticket_Id);
 
             getadmininfoforticket();

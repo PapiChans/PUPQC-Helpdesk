@@ -402,12 +402,15 @@ class Ticket(models.Model):
     ticket_Number = models.CharField(max_length=100, null=False, unique=True)
     user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
     full_Name = models.CharField(max_length=50, null=False)
-    sender_Affiliation = models.CharField(max_length=100, null=False)
+    sender_Affiliation = models.CharField(max_length=100, null=False, default='')
     ticket_Status = models.CharField(max_length=100, null=False)
-    ticket_Priority = models.CharField(max_length=100, null=False)
-    ticket_Type = models.CharField(max_length=100, null=False)
+    ticket_Priority = models.CharField(max_length=100, null=False, default='')
+    ticket_Type = models.CharField(max_length=100, null=False, default='')
     ticket_Title = models.CharField(max_length=30, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    ticket_Office = models.CharField(max_length=100, null=False, default='')
+    ticket_Service = models.CharField(max_length=100, null=False, default='')
+    resolved_Date = models.DateTimeField(null=True)
     last_ticket_date = models.DateField(null=True)
     ticket_count = models.IntegerField(default=0)
 
@@ -467,16 +470,6 @@ class CharterSteps(models.Model):
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Charter Steps'
-        
-
-# KnowledgeBase: Categories
-class KBCategory(models.Model):
-    category_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    category_Number = models.IntegerField(null=False, unique=True)
-    category_Name = models.CharField(max_length=100, null=False)
-    class Meta:
-        db_table = 'KB_Category'
-
 
 # KnowledgeBase: Folders
 class KBFolder(models.Model):

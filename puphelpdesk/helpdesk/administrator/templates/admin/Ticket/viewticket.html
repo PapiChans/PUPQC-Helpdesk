@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block maincontent %}
-<h2 class="header-title">Ticket Conversation</h2>
+<h2 class="header-title">Ticket Info</h2>
 </div>
 </div>
 <div class="card">
@@ -21,14 +21,24 @@
                             <input type="hidden" id="ticket_Id_info">
                             <h3>Ticket Number</h3>
                             <p id="ticket_Number_info"></p>
-                            <h3>Full Name</h3>
+                            <h3>Requester</h3>
                             <p id="ticket_full_Name_info"></p>
                             <h3>Ticket Title</h3>
                             <p id="ticket_Title_info"></p>
                             <h3>Date Created</h3>
                             <p id="ticket_Date_info"></p>
+                            <h3>Priority</h3>
+                            <p id="ticket_Priority_info"></p>
+                            <h3>Office</h3>
+                            <p id="ticket_Office_info"></p>
+                            <h3>Service</h3>
+                            <p id="ticket_Service_info"></p>
+                            <h3>Type</h3>
+                            <p id="ticket_Type_info"></p>
                             <h3>Status</h3>
                             <p id="ticket_Status_info"></p>
+                            <h3>Resolved Date</h3>
+                            <p id="resolved_Date_info"></p>
                           </div>
                         </div>
                     </div>
@@ -62,7 +72,7 @@
             </div>
             <div class="col">
                 <a href="{% url 'admin/ticket' %}" class="btn btn-secondary" id="goBack">Go Back</a>
-                <button type="submit" class="btn btn-primary" id="comment_Submit" disabled/>Submit</button>
+                <button type="submit" class="btn btn-primary" id="comment_Submit">Submit</button>
             </div>
             
         </form>
