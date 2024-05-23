@@ -177,13 +177,18 @@ addTicket = () => {
         
         const user_Id = $('#ticket_user_Id').val();
         const full_Name = $('#ticket_full_Name').val();
+        const sender_Affiliation = $('#sender_Affiliation').val();
+        const ticket_Type = $('#ticket_Type').val();
         const ticket_Title = $('#ticket_Title').val();
         const comment_Text = $('#comment_Text').val();
+        
 
         const data = {
             user_Id: user_Id,
             full_Name: full_Name,
             ticket_Title: ticket_Title,
+            sender_Affiliation: sender_Affiliation,
+            ticket_Type: ticket_Type,
             comment_Text: comment_Text,
         };
 

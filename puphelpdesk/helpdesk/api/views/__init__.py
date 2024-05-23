@@ -68,7 +68,6 @@ from .student.FAQ.faq import *
 
 # Ticket
 from .student.Ticket.ticket import *
-from .student.sendTickets.sendTickets import *
 
 # Charter
 from .student.Charter.charter import *

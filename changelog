@@ -1220,3 +1220,8 @@
 # 0.7.20.2
 - Push by Christian (https://github.com/papichans)
 - Major Revisions on Knowledge System
+
+# 0.7.20.3
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- User Side Ticketing modified
+- Added some changes in Ticket table

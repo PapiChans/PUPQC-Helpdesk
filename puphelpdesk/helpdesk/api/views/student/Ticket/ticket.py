@@ -74,6 +74,8 @@ def studAddTicket(request):
 
             user_Id = request.POST.get('user_Id')
             full_Name = request.POST.get('full_Name')
+            sender_Affiliation = request.POST.get('sender_Affiliation')
+            ticket_Type = request.POST.get('ticket_Type')
             ticket_Title = request.POST.get('ticket_Title')
             comment_Text = request.POST.get('comment_Text')
 
@@ -84,8 +86,11 @@ def studAddTicket(request):
                 'user_Id': user_Id,
                 'full_Name': full_Name,
                 'ticket_Title': ticket_Title,
+                'sender_Affiliation': sender_Affiliation,
+                'ticket_Type': ticket_Type,
                 'ticket_Number': ticket_Number,
                 'ticket_Status': 'Open',
+                'ticket_Priority': 'Low',
             }
             serializer = TicketSerializer(data=ticket)
             if serializer.is_valid():
@@ -97,7 +102,9 @@ def studAddTicket(request):
                 comment = {
                     'user_Id': user_Id,
                     'full_Name': full_Name,
+                    'sender_Affiliation': sender_Affiliation,
                     'ticket_Id': ticket_instance.ticket_Id,
+                    'ticket_Type': ticket_Type,
                     'comment_Text': comment_Text,
                     'comment_Attachment': None,
                 }
@@ -141,6 +148,8 @@ def studAddTicketComment(request):
 
             user_Id = request.POST.get('user_Id')
             full_Name = request.POST.get('full_Name')
+            sender_Affiliation = request.POST.get('sender_Affiliation')
+            ticket_Type = request.POST.get('ticket_Type')
             ticket_Id = request.POST.get('ticket_Id')
             comment_Text = request.POST.get('comment_Text')
 
@@ -153,7 +162,9 @@ def studAddTicketComment(request):
             comment = {
                 'user_Id': user_Id,
                 'full_Name': full_Name,
+                'sender_Affiliation': sender_Affiliation,
                 'ticket_Id': ticket_Id,
+                'ticket_Type': ticket_Type,
                 'comment_Text': comment_Text,
                 'comment_Attachment': comment_Attachment,
             }
@@ -164,6 +175,7 @@ def studAddTicketComment(request):
 
                 ticket = Ticket.objects.get(pk=ticket_Id)
                 ticket.ticket_Status = 'Open'
+                ticket.ticket_Priority = 'None'
                 ticket.save()
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})

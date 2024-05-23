@@ -1,13 +1,15 @@
 $(function () {
     $('#SendTicketForm').on('submit', function (e) {
-        e.preventDefault() // prevent page refresh
-        addTicket()
-    })
+        e.preventDefault(); // prevent page refresh
+        addTicket();
+    });
+});
 
-})
+const notyf = new Notyf();
 
-addTicket = () => {
-    if ($('#SendTicketForm')[0].checkValidity()) {
+function addTicket() {
+    const $form = $('#SendTicketForm');
+    if ($form[0].checkValidity()) {
         const formData = {
             sender_Email: $('#sender_Email').val(),
             sender_Name: $('#sender_Name').val(),
@@ -31,21 +33,22 @@ addTicket = () => {
             confirmButtonColor: '#D40429',
         }).then((result) => {
             if (result.isConfirmed) {
-                $('#submit_ticket').prop('disabled', true);
+                const $submitButton = $('#submit_ticket');
+                $submitButton.prop('disabled', true);
+
                 $.ajax({
                     type: 'POST',
-                    url: '/api/student/sendTicket', 
+                    url: '/api/student/sendTicket',
                     data: formData,
                     headers: {'X-CSRFToken': csrftoken},
                     success: (result) => {
                         if (result) {
-                            $('#submit_ticket').prop('disabled', true);
                             notyf.success({
                                 message: 'Ticket added successfully!',
-                                position: {x: 'right', y: 'top'},
+                                position: { x: 'right', y: 'top' },
                                 duration: 2500
                             });
-                            $('#SendTicketForm')[0].reset();
+                            $form[0].reset();
                             window.location.href = `/user/ticket/view?ticket_number=${result.data.ticket_Number}`;
                         }
                     },
@@ -60,10 +63,15 @@ addTicket = () => {
                             confirmButtonText: 'Okay',
                             confirmButtonColor: '#D40429',
                         });
-                        $('#submit_ticket').prop('disabled', false);
+                    },
+                    complete: () => {
+                        $submitButton.prop('disabled', false);
                     }
                 });
             }
         });
+    } else {
+        // Show validation errors if any
+        $form[0].reportValidity();
     }
-};
+}

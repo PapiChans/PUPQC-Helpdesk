@@ -20,11 +20,11 @@
   
   <body class=" d-flex flex-column">
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
-        <div class="row justify-content-center">
+        <div class="row col-8 justify-content-center">
             <div class="col-md-8">
-                <form class="SendTicketForm" id="SendTicketForm">
+                <form class="SendTicketForm card" id="SendTicketForm">
                     <div class="card-body">
-                        <h3 class="card-title">Submit a Ticket</h3>
+                        <h3 class="card-title" style="font-size: 24px;">Submit a Ticket</h3>
                         <div class="row">
                             <div class="col-sm-6 col-md-6">
                                 <div class="mb-3">
@@ -48,13 +48,13 @@
                                         <option value="Cross-Enrollee">Cross-Enrollee</option>
                                         <option value="Applicant">Applicant</option>
                                         <option value="Faculty">Faculty</option>
-                                        <option value="External Clients">External Clients</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Ticket Type</label>
+                                    <label class="form-label">Ticket Category</label>
                                     <select class="form-control form-select" data-placeholder="..." id="ticket_Type" required>
                                         <option value="">...</option>
                                         <option value="Inquiry">Inquiry</option>
@@ -63,6 +63,12 @@
                                         <option value="Request">Request</option>
                                         <option value="Others">Others</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="ticket_Subject" placeholder="Subject/Concern" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -74,27 +80,29 @@
                         </div>
                         <div class="text-end mt-3">
                             <button type="submit" class="btn btn-primary" id="submit_ticket">Submit</button>
-                            <a href="#" class="btn">Cancel</a>
+                            <a href="{% url 'index' %}" class="btn">Cancel</a>
                         </div>
                     </div>
                 </form>
+                <div>
+                <h3 class="col-md-12 text-center fs-2 pt-4" ><a href="{% url 'login' %}" style="color: #800000; cursor: pointer;">Log In</a> to check your ticket's status</h3>
+                </div>
             </div>
         </div>
     </div>
     <!-- Libs JS -->
     <!-- Tabler Core -->
-        <script src="{% static 'assets/js/dashboard/jquery.min.js' %}"></script>
-        <script src="{% static 'assets/js/dashboard/tabler.min.js' %}"></script>
-        <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
-        <script src="{% static 'assets/js/ajax/ticketing/sendTickets.ajax.js' %}"></script>
-        <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
-        <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
-        <script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
-        <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
-        <script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
-        <script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
-        <script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
-        <script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
-        <script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+    <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard/tabler.min.js' %}"></script>
+    <script src="{% static 'assets/js/django-essentials/csrftoken.init.js' %}"></script>
+    <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+    <script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
     </body>
 </html>
+
