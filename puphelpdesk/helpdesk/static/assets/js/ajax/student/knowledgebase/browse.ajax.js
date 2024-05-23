@@ -194,7 +194,7 @@ getTable = (folder_Id) => {
                     width: '10%',
                     render: (data) => {
                         const name = data.topic_Name
-                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTopicInfoAndNavigate('${data.topic_Number}')">${truncateText(name, 50)}</h3>`
+                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTopicInfoAndNavigate('${data.topic_Number}')">${truncateText(name, 25)}</h3>`
                     },
                 },
                 {
