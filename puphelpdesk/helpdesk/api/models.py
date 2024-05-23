@@ -91,6 +91,8 @@ class AdminProfile(models.Model):
     admin_Contact = models.CharField(max_length=11, null=False)
     admin_Gender = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    admin_Office = models.CharField(max_length=100, null=True)
+    is_master_admin = models.BooleanField(default=False) 
     class Meta:
         db_table = 'Admin Profile'
 

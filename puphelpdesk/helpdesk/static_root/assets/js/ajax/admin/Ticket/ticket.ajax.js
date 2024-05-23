@@ -30,6 +30,51 @@ function getTicketInfoAndNavigate(ticketId) {
     window.location.href = detailsURL;
 }
 
+function updateTicketPriority(ticketNumber, newPriority) {
+    $.ajax({
+        url: `/api/admin/updateTicketPriority`,
+        type: 'POST',
+        data: {
+            ticketNumber: ticketNumber,
+            newPriority: newPriority,
+            csrfmiddlewaretoken: csrftoken // Assuming you have csrftoken available
+        },
+        success: function(response) {
+            notyf.success('Priority updated successfully');
+            // Reload the data table to reflect the changes
+            $('#pending-datatable').DataTable().ajax.reload();
+            $('#all-datatable').DataTable().ajax.reload();
+            $('#closed-datatable').DataTable().ajax.reload();
+        },
+        error: function(error) {
+            notyf.error('Failed to update priority');
+        }
+    });
+}
+
+function updateTicketStatus(ticketNumber, newStatus) {
+    $.ajax({
+        url: `/api/admin/updateTicketStatus`,
+        type: 'POST',
+        data: {
+            ticketNumber: ticketNumber,
+            newStatus: newStatus,
+            csrfmiddlewaretoken: csrftoken // Assuming you have csrftoken available
+        },
+        success: function(response) {
+            notyf.success('Status updated successfully');
+            // Reload the data table to reflect the changes
+            $('#pending-datatable').DataTable().ajax.reload();
+            $('#all-datatable').DataTable().ajax.reload();
+            $('#closed-datatable').DataTable().ajax.reload();
+        },
+        error: function(error) {
+            notyf.error('Failed to update status');
+        }
+    });
+}
+
+
 getPendingTicket = () => {
     const dt = $('#pending-datatable');
 
@@ -78,30 +123,43 @@ getPendingTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                    let ticket_Priority = data.ticket_Priority;
-                    let badgeClass = '';
+                        let ticket_Priority = data.ticket_Priority;
+                        let badgeClass = '';
+                
+                        switch(ticket_Priority) {
+                            case 'Unassigned':
+                                badgeClass = 'badge bg-secondary text-secondary-fg';
+                                break;
+                            case 'Low':
+                                badgeClass = 'badge bg-blue text-blue-fg';
+                                break;
+                            case 'Mid':
+                                badgeClass = 'badge bg-green text-green-fg';
+                                break;
+                            case 'High':
+                                badgeClass = 'badge bg-orange text-orange-fg';
+                                break;
+                            case 'Urgent':
+                                badgeClass = 'badge bg-red text-red-fg';
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg';
+                        }
 
-                    switch(ticket_Priority) {
-                        case 'Unassigned':
-                            badgeClass = 'badge bg-secondary text-secondary-fg';
-                            break;
-                        case 'Low':
-                            badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
-                            break;
-                        case 'Mid':
-                            badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
-                            break;
-                        case 'High':
-                            badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
-                            break;
-                        case 'Urgent':
-                            badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
-                            break;
-                        default:
-                            badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
-                    }
-
-                    return `<span class="${badgeClass}">${ticket_Priority}</span>`;
+                        return `
+                        <div class="dropdown">
+                            <button class="btn ${badgeClass} dropdown-toggle" type="button" id="priorityDropdown-${data.ticket_Priority}" data-bs-toggle="dropdown" aria-expanded="false">
+                                ${ticket_Priority}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="priorityDropdown-${data.ticket_Priority}">
+                                <li><a class="dropdown-item" href="#" onclick="updateTicketPriority('${data.ticket_Priority}', 'Unassigned')">Unassigned</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="updateTicketPriority('${data.ticket_Priority}', 'Low')">Low</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="updateTicketPriority('${data.ticket_Priority}', 'Mid')">Mid</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="updateTicketPriority('${data.ticket_Priority}', 'High')">High</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="updateTicketPriority('${data.ticket_Priority}', 'Urgent')">Urgent</a></li>
+                            </ul>
+                        </div>
+                    `;
                     },
                 },
                 {
@@ -209,6 +267,26 @@ getAllTicket = () => {
                     render: (data) => {
                         const office = data.ticket_Office
                         return `${office}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const status = data.ticket_Status;
+                        return `
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="statusDropdown-${data.ticket_Status}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    ${status}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="statusDropdown-${data.ticket_Status}">
+                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Pending')">Pending</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Replied')">Replied</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Closed')">Closed</a></li>
+                                </ul>
+                            </div>
+                        `;
                     },
                 },
                 {

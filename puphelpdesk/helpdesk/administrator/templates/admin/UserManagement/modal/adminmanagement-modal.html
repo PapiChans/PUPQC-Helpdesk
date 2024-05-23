@@ -1,0 +1,89 @@
+<div class="modal fade" id="RegisterAdminModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Register Admin</h5>
+            </div>
+            <div class="modal-body">
+                <form id="RegisterAdminForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Master Admin?<span class="text-danger">*</span></label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" id="is_master_admin" type="checkbox" checked="">
+                                <span class="form-check-label">Master Admin</span>
+                            </label>
+                        </div>
+                        <div class="col-md-8 mt-3">
+                            <label for="validationCustom01">Enter Faculty Code<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="FacultyCode" placeholder="Faculty Code" required/>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <button type="button" class="btn btn-primary waves-effect waves-light mt-2" id="verify_button" onclick="getFacultyData()">Verify</button>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="validationCustom01">Username<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off" required/>
+                                <span class="input-group-text">
+                                @pup.edu.ph
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Last Name" required/>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required/>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label for="validationCustom01">Middle Name</label>
+                            <input type="text" class="form-control" id="MiddleName" placeholder="Middle Name">
+                        </div>
+                        <div class="col-md-9 mt-2">
+                            <label for="validationCustom01">Office<span class="text-danger">*</span></label>
+                            <select class="form-control form-select" data-placeholder="..." id="admin_Office" required/>
+                                <option value="">Select Office</option>
+                                <option value="Director's Office">Director's Office</option>
+                                <option value="Academic Office">Academic Office</option>
+                                <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                                <option value="Registrar's Office">Registrar's Office</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                                <option value="Accounting Office">Accounting Office</option>
+                                <option value="Scholarship Office">Scholarship Office</option>
+                                <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                                <option value="Research Office">Research Office</option>
+                                <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                                <option value="IT Laboratory Office">IT Laboratory Office</option>
+                                <option value="Quality Management System Office">Quality Assurance Management Office</option>
+                                <option value="Medical Clinic">Medical Clinic</option>
+                                <option value="Security Office">Security Office</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <label for="validationCustom01">Gender<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Gender" placeholder="Gender" required/>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="validationCustom01">Contact<span class="text-danger">*</span></label>
+                            <input type="tel" maxlength="11" minlength="11" class="form-control" id="Contact" placeholder="Contact" required/>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="validationCustom01">Email<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Email" placeholder="Email" required/>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="register_Submit">Register</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

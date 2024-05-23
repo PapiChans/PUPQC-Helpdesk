@@ -162,12 +162,14 @@ urlpatterns = [
     path('admin/ticketstatusChart', views.adminTicketStatusChart),
     path('admin/getTicketCount', views.adminGetTicketCount),
     path('admin/getFeedbacksCount', views.adminGetFeedbacksCount),
-    path('api/admin/updateTicketPriority', views.updateTicketPriority),
-    path('api/admin/updateTicketStatus', views.updateTicketStatus),
+    path('admin/updateTicketPriority', views.updateTicketPriority),
+    path('admin/updateTicketStatus', views.updateTicketStatus),
 
     # User Management
     path('admin/getUserManagement', views.adminGetUserManagement),
+    path('admin/getAdminManagement', views.adminGetAdminManagement),
     path('admin/addStudent', views.adminAddStudent),
+    path('admin/addAdmin', views.adminAddAdmin),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),

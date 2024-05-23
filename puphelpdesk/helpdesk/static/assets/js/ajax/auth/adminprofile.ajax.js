@@ -12,6 +12,7 @@ getuserprofile = () => {
         success: (result) => {
             const profiledata = result;
             $('#full_name').html(profiledata.admin_Last_Name+", "+ profiledata.admin_First_Name);
+            $('#admin_Type').html(profiledata.admin_Office);
             if (profiledata.user_Profile != null){
                 $('#profile_pic').attr('src', `${profiledata.user_Profile}`)
             }

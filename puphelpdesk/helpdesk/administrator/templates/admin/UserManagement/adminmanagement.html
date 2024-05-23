@@ -1,0 +1,69 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
+{% endblock %}
+{% block maincontent %}
+{% include "admin/UserManagement/modal/adminmanagement-modal.html" %}
+<h2 class="header-title">Browse Faculty Information and Schedule</h2>
+<p class="card-title-desc">Explore faculty details fetched from the Faculty Information System (FIS)</p>
+<button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#RegisterAdminModal"><i class="fa-regular fa-calendar-plus"></i>Register Admin</button>
+<table id="fis-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+    <thead>
+        <tr>
+            <th class="dt-head-center">Faculty Name</th>
+            <th class="dt-head-center">Type</th>
+            <th class="dt-head-center">Schedule</th>
+            <th class="dt-head-center">Rank</th>
+            <th class="dt-head-center">Units</th>
+            <th class="dt-head-center">Status</th>
+            <th class="dt-head-center">Faculty Code</th>
+            <th class="dt-head-center">Specialization</th>
+            <th class="dt-head-center">Honorific</th>
+            <th class="dt-head-center">Degree</th>
+            <th class="dt-head-center">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <h2 class="header-title">Registered Admin</h2>
+        <table id="admin-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Username</th>
+                    <th class="dt-head-center">Name</th>
+                    <th class="dt-head-center">Gender</th>
+                    <th class="dt-head-center">Contact</th>
+                    <th class="dt-head-center">Email</th>
+                    <th class="dt-head-center">Office</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/UserManagement/adminmanagement.ajax.js' %}"></script>
+{% endblock %}
