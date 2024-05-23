@@ -1268,3 +1268,7 @@
 # 0.7.20.11
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Services options offered based on the Office that the User selected is Fixed
+
+# 0.7.20.12
+- Push by Christian (https://github.com/papichans)
+- Forgot to Modify Settings.py

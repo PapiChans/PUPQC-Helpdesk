@@ -108,7 +108,38 @@ getTicket = () => {
                         
                         return `<span class="${badgeClass}">${status}</span>`;
                     },
-                },                
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                    let ticket_Priority = data.ticket_Priority;
+                    let badgeClass = '';
+
+                    switch(ticket_Priority) {
+                        case 'Unassigned':
+                            badgeClass = 'badge bg-secondary text-secondary-fg';
+                            break;
+                        case 'Low':
+                            badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
+                            break;
+                        case 'Mid':
+                            badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
+                            break;
+                        case 'High':
+                            badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
+                            break;
+                        case 'Urgent':
+                            badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
+                            break;
+                        default:
+                            badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
+                    }
+
+                    return `<span class="${badgeClass}">${ticket_Priority}</span>`;
+                    },
+                },           
                 {
                     data: null,
                     width: '10%',
