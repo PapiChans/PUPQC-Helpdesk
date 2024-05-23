@@ -76,6 +76,7 @@ def studAddTicket(request):
         full_Name = request.data.get('full_Name')  # Changed to request.data
         sender_Affiliation = request.data.get('sender_Affiliation')  # Changed to request.data
         ticket_Type = request.data.get('ticket_Type')  # Changed to request.data
+        ticket_Priority = request.data.get('ticket_Priority')
         ticket_Title = request.data.get('ticket_Title')  # Changed to request.data
         comment_Text = request.data.get('comment_Text')  # Changed to request.data
         ticket_Office = request.data.get('ticket_Office')  # Get ticket office
@@ -91,7 +92,7 @@ def studAddTicket(request):
             'ticket_Type': ticket_Type,
             'ticket_Number': ticket_Number,
             'ticket_Status': 'Pending',
-            'ticket_Priority': 'Unassigned',
+            'ticket_Priority': ticket_Priority,
             'ticket_Title': ticket_Title,
             'ticket_Office': ticket_Office,
             'ticket_Service': ticket_Service,

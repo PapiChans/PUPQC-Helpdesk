@@ -168,6 +168,7 @@ addTicket = () => {
         const full_Name = $('#ticket_full_Name').val();
         const sender_Affiliation = $('#sender_Affiliation').val();
         const ticket_Type = $('#ticket_Type').val();
+        const ticket_Priority = $('#ticket_Priority').val();
         const ticket_Office = $('#ticket_Office').val(); // Added to get selected office
         const ticket_Title = $('#ticket_Title').val();
         const ticket_Service = $('#ticket_Service').val();
@@ -178,6 +179,7 @@ addTicket = () => {
             full_Name: full_Name,
             sender_Affiliation: sender_Affiliation,
             ticket_Type: ticket_Type,
+            ticket_Priority: ticket_Priority,
             ticket_Office: ticket_Office, // Pass selected office to data
             ticket_Title: ticket_Title,
             comment_Text: comment_Text,
