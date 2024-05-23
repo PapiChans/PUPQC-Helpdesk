@@ -5,7 +5,6 @@ $(function () {
         e.preventDefault() // prevent page refresh
         addTicket()
     })
-
 })
 
 $('input#ticket_Title').maxlength({
@@ -124,12 +123,18 @@ getTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
+                        let content = '';
                         if (data === null || data.resolved_Date === null) {
-                            return ''; // Return empty string if data or resolved_Date is null
+                            content = ''; // Return empty string if data or resolved_Date is null
                         } else {
                             const date = formatPostgresTimestamp(data.resolved_Date);
-                            return `${date}`;
+                            content = `${date}`;
                         }
+                        // Add feedback button if status is 'Closed' and closed by Admin
+                        if (data.ticket_Status === 'Closed' && data.closed_By === 'Admin') {
+                            content += `<br><a href="{% url 'feedback' %}?ticket_number=${data.ticket_Number}" class="btn btn-sm btn-primary mt-2">Provide Feedback</a>`;
+                        }
+                        return content;
                     }
                 }                
             ],
@@ -137,8 +142,6 @@ getTicket = () => {
         })
     }
 }
-
-
 
 getuserprofileforticket = () => {
     $.ajax({

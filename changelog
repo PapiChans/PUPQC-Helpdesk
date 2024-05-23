@@ -1252,3 +1252,7 @@
 - Chatbot Removed in the User side
 - Ticket Priority in student side added
 - Removed all unused contents
+
+# 0.7.20.8
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Add Feedback button on Resolved tickets
