@@ -176,6 +176,7 @@ addTicket = () => {
         const ticket_Title = $('#ticket_Title').val();
         const ticket_Service = $('#ticket_Service').val();
         const comment_Text = $('#comment_Text').val();
+        const comment_Attachment = $('#comment_Attachment').val();
 
         const data = {
             user_Id: user_Id,
@@ -186,6 +187,7 @@ addTicket = () => {
             ticket_Office: ticket_Office, // Pass selected office to data
             ticket_Title: ticket_Title,
             comment_Text: comment_Text,
+            comment_Attachment: comment_Attachment,
             ticket_Service: ticket_Service,
         };
 

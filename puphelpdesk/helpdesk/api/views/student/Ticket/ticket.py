@@ -79,6 +79,7 @@ def studAddTicket(request):
         ticket_Priority = request.data.get('ticket_Priority')
         ticket_Title = request.data.get('ticket_Title')  # Changed to request.data
         comment_Text = request.data.get('comment_Text')  # Changed to request.data
+        comment_Attachment = request.data.get('comment_Attachment')
         ticket_Office = request.data.get('ticket_Office')  # Get ticket office
         ticket_Service = request.data.get('ticket_Service')
 
@@ -111,7 +112,7 @@ def studAddTicket(request):
                 'ticket_Id': ticket_instance.ticket_Id,
                 'ticket_Type': ticket_Type,
                 'comment_Text': comment_Text,
-                'comment_Attachment': None,
+                'comment_Attachment': comment_Attachment,
             }
             comment_serializer = TicketCommentSerializer(data=comment_data)
             if comment_serializer.is_valid():
