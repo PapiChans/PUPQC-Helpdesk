@@ -270,3 +270,32 @@ addTicket = (CommentAttachment) => {
     }
 };
 
+$(document).ready(function() {
+    const officeToServices = {
+        "Director's Office": ["Permission to Conduct an Activity"],
+        "Academic Office": ["Request for Certificate of Good Moral Character", "Processing of Online Request for Tutorial of Subject", "Application for Replacement of Lost Registration Certificate"],
+        "Student Affairs and Service Office": ["Application for New Identification Card", "Application for Replacement of Lost Identification Card"],
+        "Registrar's Office": ["Application for Overload of Subjects", "Processing of Req. for Credentials Service (Cert., Authentication, Verification (CAV/APOSTILLE))", "Processing of Request for Academic Verification Service"],
+        "Admission Office": ["Re-Admission (Returning Students)", "Issuance of Follow-up of Students Referred during enrollment.", "Processing of Application for Correction of Grade Entry, Late Reporting of Grades, & Incomplete Mark", "Processing of Application for Change of Enrollment (Change of Schedule/Subject)", "Processing of Application for Change of Enrollment (Adding of Subject)", "Processing of Application for Cross-Enrollment", "Processing of Application for Shifting", "Processing of Course Accreditation Service for Transferees", "Processing of Freshman Admission", "Processing of Manual Enrollment", ],
+        "Cash and Disbursing Office": ["Processing of Refunds"],
+        "Accounting Office": ["Processing of Payment for Completion of Incomplete Grades"],
+        "Quality Assurance Center and OJT Office": ["Request for Memorandum of Agreement for Internship"],
+        "IT Laboratory Office": ["Request for the Reservation of Campus Facility", "Service 28"],
+        "Medical Clinic": ["Issuance of Dental Clearance", "Issuance of Annual Medical Clearance", "Consultation and Treatment Services for Emergency Dental Cases of Students", "Consultation and Treatment Services for Emergency Dental Cases of Faculty and Admin. Employees", "Issuance of Medical Certificate for Sick Note/Excuse Slip", "Issuance of Medical Clearance for Enrollment", "Issuance of Medical Clearance for Laboratory Classes for Food-Handlers", "Issuance of Medical Clearance for Off-Campus of Students", "Issuance of Medical Clearance for On-the-job-Training of Students"],
+    };
+
+    $('#ticket_Office').change(function() {
+        const selectedOffice = $(this).val();
+        const services = officeToServices[selectedOffice] || [];
+        
+        const serviceDropdown = $('#ticket_Service');
+        serviceDropdown.empty();
+        serviceDropdown.append(new Option('...', ''));
+        
+        services.forEach(service => {
+            serviceDropdown.append(new Option(service, service));
+        });
+    });
+
+    $('#ticket_Office').trigger('change');
+});
