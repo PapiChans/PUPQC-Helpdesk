@@ -162,6 +162,8 @@ urlpatterns = [
     path('admin/ticketstatusChart', views.adminTicketStatusChart),
     path('admin/getTicketCount', views.adminGetTicketCount),
     path('admin/getFeedbacksCount', views.adminGetFeedbacksCount),
+    path('api/admin/updateTicketPriority', views.updateTicketPriority),
+    path('api/admin/updateTicketStatus', views.updateTicketStatus),
 
     # User Management
     path('admin/getUserManagement', views.adminGetUserManagement),

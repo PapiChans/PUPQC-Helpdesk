@@ -1237,3 +1237,8 @@
 # 0.7.20.5.1
 - Push by Christian (https://github.com/papichans)
 - Forgot to reset Settings.py
+
+# 0.7.20.5.2
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Admin Side ticketing Priority views added
+- Admin side Ticket priority Ajax added

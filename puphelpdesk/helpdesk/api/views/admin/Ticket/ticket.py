@@ -242,3 +242,35 @@ def send_email_closed(user_Email, full_Name, ticket_number):
     msg.attach_alternative(html_content, "text/html")
     # Send the email
     msg.send(fail_silently=True)
+    
+@api_view(['POST'])
+def updateTicketPriority(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    
+    ticket_number = request.POST.get('ticketNumber')
+    new_priority = request.POST.get('newPriority')
+    
+    try:
+        ticket = Ticket.objects.get(ticket_Number=ticket_number)
+        ticket.ticket_Priority = new_priority
+        ticket.save()
+        return Response({"message": "Priority updated successfully"})
+    except Ticket.DoesNotExist:
+        return Response({"message": "Ticket not found"}, status=404)
+
+@api_view(['POST'])
+def updateTicketStatus(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    
+    ticket_number = request.POST.get('ticketNumber')
+    new_status = request.POST.get('newStatus')
+    
+    try:
+        ticket = Ticket.objects.get(ticket_Number=ticket_number)
+        ticket.ticket_Status = new_status
+        ticket.save()
+        return Response({"message": "Status updated successfully"})
+    except Ticket.DoesNotExist:
+        return Response({"message": "Ticket not found"}, status=404)
