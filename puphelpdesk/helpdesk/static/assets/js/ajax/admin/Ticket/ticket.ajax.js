@@ -1,7 +1,5 @@
 $(function () {
-    getPendingTicket();
     getAllTicket();
-    getClosedTicket();
 })
 
 const notyf = new Notyf();

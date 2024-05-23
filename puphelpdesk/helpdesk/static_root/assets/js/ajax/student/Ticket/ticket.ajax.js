@@ -3,9 +3,8 @@ $(function () {
     getuserprofileforticket()
     $('#AddTicketForm').on('submit', function (e) {
         e.preventDefault() // prevent page refresh
-        addTicket()
+        addTicket(CommentAttachment)
     })
-
 })
 
 $('input#ticket_Title').maxlength({
@@ -124,12 +123,18 @@ getTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
+                        let content = '';
                         if (data === null || data.resolved_Date === null) {
-                            return ''; // Return empty string if data or resolved_Date is null
+                            content = ''; // Return empty string if data or resolved_Date is null
                         } else {
                             const date = formatPostgresTimestamp(data.resolved_Date);
-                            return `${date}`;
+                            content = `${date}`;
                         }
+                        // Add feedback button if status is 'Closed' and closed by Admin
+                        if (data.ticket_Status === 'Closed' && data.closed_By === 'Admin') {
+                            content += `<br><a href="{% url 'feedback' %}?ticket_number=${data.ticket_Number}" class="btn btn-sm btn-primary mt-2">Provide Feedback</a>`;
+                        }
+                        return content;
                     }
                 }                
             ],
@@ -137,8 +142,6 @@ getTicket = () => {
         })
     }
 }
-
-
 
 getuserprofileforticket = () => {
     $.ajax({
@@ -162,27 +165,40 @@ getuserprofileforticket = () => {
     })
 }
 
-addTicket = () => {
+CommentAttachment = FilePond.create(document.querySelector('#comment_Attachment'), {
+    instantUpload: false,
+    allowProcess: false,
+})
+
+addTicket = (CommentAttachment) => {
     if ($('#AddTicketForm')[0].checkValidity()) {
+
+        const form = new FormData($('#AddTicketForm')[0]);
+
         const user_Id = $('#ticket_user_Id').val();
         const full_Name = $('#ticket_full_Name').val();
         const sender_Affiliation = $('#sender_Affiliation').val();
         const ticket_Type = $('#ticket_Type').val();
+        const ticket_Priority = $('#ticket_Priority').val();
         const ticket_Office = $('#ticket_Office').val(); // Added to get selected office
         const ticket_Title = $('#ticket_Title').val();
         const ticket_Service = $('#ticket_Service').val();
         const comment_Text = $('#comment_Text').val();
+        
+        if (
+            form.get('filepond') == '' ||
+            Object.prototype.toString.call(form.get('filepond')) === '[object File]'
+        ) {
+            form.delete('filepond');
+        }
 
-        const data = {
-            user_Id: user_Id,
-            full_Name: full_Name,
-            sender_Affiliation: sender_Affiliation,
-            ticket_Type: ticket_Type,
-            ticket_Office: ticket_Office, // Pass selected office to data
-            ticket_Title: ticket_Title,
-            comment_Text: comment_Text,
-            ticket_Service: ticket_Service,
-        };
+        pondFiles = CommentAttachment.getFiles();
+        for (var i = 0; i < pondFiles.length; i++) {
+            // append the blob file
+            if (pondFiles[i].file != null) {
+                form.append('comment_Attachment', pondFiles[i].file);
+            }
+        }
 
         Swal.fire({
             title: 'Warning',
@@ -196,11 +212,24 @@ addTicket = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 $('#ticket_Submit').prop('disabled', true);
+
+                form.append('user_Id', user_Id);
+                form.append('full_Name', full_Name);
+                form.append('sender_Affiliation', sender_Affiliation);
+                form.append('ticket_Type', ticket_Type);
+                form.append('ticket_Priority', ticket_Priority);
+                form.append('ticket_Office', ticket_Office);
+                form.append('ticket_Title', ticket_Title);
+                form.append('comment_Text', comment_Text);
+                form.append('ticket_Service', ticket_Service);
+
                 $.ajax({
                     type: 'POST',
                     url: '/api/student/addTicket',
-                    data: data,
+                    data: form, // Pass FormData object directly
                     dataType: 'json',
+                    contentType: false, // Ensure jQuery doesn't process the data
+                    processData: false, // Prevent jQuery from automatically processing the data
                     headers: {'X-CSRFToken': csrftoken},
                     success: (response) => {
                         if (response.message === "Submit Ticket and Comment Successfully") { // Check the success message
@@ -240,3 +269,4 @@ addTicket = () => {
         });
     }
 };
+

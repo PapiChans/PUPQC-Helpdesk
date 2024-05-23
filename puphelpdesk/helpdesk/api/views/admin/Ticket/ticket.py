@@ -103,7 +103,7 @@ def adminGetAllTicket(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = Ticket.objects.exclude(ticket_Status__in=['Closed', 'Pending']).order_by('date_Created')
+            data = Ticket.objects.exclude(ticket_Status__in=['Pending']).order_by('date_Created')
             serializer = TicketSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})

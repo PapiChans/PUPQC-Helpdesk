@@ -86,6 +86,11 @@ def studAddTicket(request):
         # Get User's Email
         getUser = UserProfile.objects.get(user_Id=user_Id)
 
+        if 'comment_Attachment' in request.FILES:
+            comment_Attachment = request.FILES['comment_Attachment']
+        else:
+            comment_Attachment = None
+
         ticket_data = {
             'user_Id': user_Id,
             'full_Name': full_Name,
