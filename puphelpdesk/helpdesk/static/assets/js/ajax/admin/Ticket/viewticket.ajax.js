@@ -4,6 +4,11 @@ $(function () {
         e.preventDefault() // prevent page refresh
     })
     verifyTicketId();
+    $('#EditTicketForm').on('submit', function (e) {
+        const ticket_Id = $('#ticket_Id_info').val();
+        editTicket(ticket_Id)
+        e.preventDefault() // prevent page refresh
+    })
 })
 
 function verifyTicketId() {
@@ -63,15 +68,13 @@ getTicketInfo = (ticket_Number) => {
         success: (result) => {
             const data = result;
 
-            $('#ticket_Id_info').html(data.ticket_Id);
+            $('#ticket_Id_info').val(data.ticket_Id);
             $('#ticket_Number_info').html(data.ticket_Number);
             $('#ticket_full_Name_info').html(data.full_Name);
             $('#ticket_Title_info').html(data.ticket_Title);
             $('#ticket_Date_info').html(formatPostgresTimestamp(data.date_Created));
-            $('#ticket_Office_info').html(data.ticket_Office);
             $('#ticket_Service_info').html(data.ticket_Service);
             $('#ticket_Type_info').html(data.ticket_Type);
-            $('#ticket_Priority_info').html(data.ticket_Priority);
 
             if (data.resolved_Date === null) {
                 $('#resolved_Date_info').html(null);
@@ -79,37 +82,35 @@ getTicketInfo = (ticket_Number) => {
                 $('#resolved_Date_info').html(formatPostgresTimestamp(data.resolved_Date));
             }
 
-            let status = data.ticket_Status;
+            // For editing forms
+            $('#edit_ticket_Status').val(data.ticket_Status)
+            $('#edit_ticket_Office').val(data.ticket_Office)
+
+            let ticket_Priority = data.ticket_Priority;
             let badgeClass = '';
 
-            switch(status) {
-                case 'Pending':
-                    badgeClass = 'badge bg-silver text-silver-fg';
+            switch(ticket_Priority) {
+                case 'Unassigned':
+                    badgeClass = 'badge bg-secondary text-secondary-fg';
                     break;
-                case 'Open':
-                    badgeClass = 'badge bg-yellow text-yellow-fg';
+                case 'Low':
+                    badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
                     break;
-                case 'In Progress':
-                    badgeClass = 'badge bg-cyan text-cyan-fg';
+                case 'Medium':
+                    badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
                     break;
-                case 'Approval':
-                    badgeClass = 'badge bg-blue text-blue-fg';
+                case 'High':
+                    badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
                     break;
-                case 'On Hold':
-                    badgeClass = 'badge bg-orange text-orange-fg';
-                    break;
-                case 'Resolved':
-                    badgeClass = 'badge bg-green text-green-fg';
-                    break;
-                case 'Closed':
-                    badgeClass = 'badge bg-black text-black-fg';
+                case 'Urgent':
+                    badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
                     break;
                 default:
-                    badgeClass = 'badge bg-danger text-danger-fg';
+                    badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
             }
 
-            const statusBadge = `<span class="${badgeClass}">${status}</span>`;
-            $('#ticket_Status_info').html(statusBadge);
+            const priorityBadge = `<span class="${badgeClass}">${ticket_Priority}</span>`;
+            $('#ticket_Priority_info').html(priorityBadge);
             
             $('#ticket_Id').val(data.ticket_Id);
 
@@ -125,9 +126,6 @@ getTicketInfo = (ticket_Number) => {
                 <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
             </div>
             `;
-
-            
-
             
             let closedformat = `<h2 class="text-center">Ticket Closed</h2>
             <p class="text-center">This ticket is closed.</p>
@@ -257,6 +255,55 @@ addTicketComment = (CommentAttachment) => {
     }
 }
 
+editTicket = (ticket_Id) => {
+
+    if ($('#EditTicketForm')[0].checkValidity()) {
+        const form = new FormData($('#EditTicketForm')[0]);
+
+        $('#edit_Submit').prop('disabled', true);
+        
+        const ticket_Office = $('#edit_ticket_Office').val();
+        const ticket_Status = $('#edit_ticket_Status').val();
+        const ticket_Id = $('#ticket_Id_info').val();
+
+        const data = {
+            ticket_Office: ticket_Office,
+            ticket_Status: ticket_Status,
+        };
+        
+        $.ajax({
+            type: 'PUT',
+            url: `/api/admin/editTicket/${ticket_Id}`,
+            data: data,
+            dataType: 'json',
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                if (result) {
+                    $('#edit_Submit').prop('disabled', false);
+                    notyf.success({
+                        message: 'Edit Ticket Successfully',
+                        position: {x:'right',y:'top'},
+                        duration: 2500
+                    })
+                }
+            },
+        })
+        .fail(() => {
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went wrong while saving Ticket. Please try again.',
+                icon: 'error',
+                allowEnterKey: 'false',
+                allowOutsideClick: 'false',
+                allowEscapeKey: 'false',
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#D40429',
+            })
+            $('#edit_Submit').prop('disabled', false);
+        })
+    }
+}
+
 function getFileNameFromPath(filePath) {
 
     if (filePath == null) {
@@ -300,8 +347,6 @@ function formatTimeAgo(timestamp) {
 
     return result;
 }
-
-
 
 getTicketComment = (ticket_Id, full_Name) => {
 

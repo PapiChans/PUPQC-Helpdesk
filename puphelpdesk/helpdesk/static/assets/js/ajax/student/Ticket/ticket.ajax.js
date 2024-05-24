@@ -269,6 +269,7 @@ addTicket = (CommentAttachment) => {
                                 position: {x: 'right', y: 'top'},
                                 duration: 2500
                             });
+                            $('#ticket_Submit').prop('disabled', false);
                             $('#AddTicketModal').modal('hide'); // Close modal
                             $('#AddTicketForm')[0].reset(); // Clear form
                             const dt = $('#ticket-datatable').DataTable();

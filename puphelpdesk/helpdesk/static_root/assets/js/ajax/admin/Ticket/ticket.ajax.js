@@ -28,50 +28,6 @@ function getTicketInfoAndNavigate(ticketId) {
     window.location.href = detailsURL;
 }
 
-function updateTicketPriority(ticketNumber, newPriority) {
-    $.ajax({
-        url: `/api/admin/updateTicketPriority`,
-        type: 'POST',
-        data: {
-            ticketNumber: ticketNumber,
-            newPriority: newPriority,
-            csrfmiddlewaretoken: csrftoken // Assuming you have csrftoken available
-        },
-        success: function(response) {
-            notyf.success('Priority updated successfully');
-            // Reload the data table to reflect the changes
-            $('#pending-datatable').DataTable().ajax.reload();
-            $('#all-datatable').DataTable().ajax.reload();
-            $('#closed-datatable').DataTable().ajax.reload();
-        },
-        error: function(error) {
-            notyf.error('Failed to update priority');
-        }
-    });
-}
-
-function updateTicketStatus(ticketNumber, newStatus) {
-    $.ajax({
-        url: `/api/admin/updateTicketStatus`,
-        type: 'POST',
-        data: {
-            ticketNumber: ticketNumber,
-            newStatus: newStatus,
-            csrfmiddlewaretoken: csrftoken // Assuming you have csrftoken available
-        },
-        success: function(response) {
-            notyf.success('Status updated successfully');
-            // Reload the data table to reflect the changes
-            $('#pending-datatable').DataTable().ajax.reload();
-            $('#all-datatable').DataTable().ajax.reload();
-            $('#closed-datatable').DataTable().ajax.reload();
-        },
-        error: function(error) {
-            notyf.error('Failed to update status');
-        }
-    });
-}
-
 getAllTicket = () => {
     const dt = $('#all-datatable');
 
@@ -130,7 +86,7 @@ getAllTicket = () => {
                         case 'Low':
                             badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
                             break;
-                        case 'Mid':
+                        case 'Medium':
                             badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
                             break;
                         case 'High':
@@ -160,19 +116,36 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const status = data.ticket_Status;
-                        return `
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" id="statusDropdown-${data.ticket_Status}" data-bs-toggle="dropdown" aria-expanded="false">
-                                    ${status}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="statusDropdown-${data.ticket_Status}">
-                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Pending')">Pending</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Replied')">Replied</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="updateTicketStatus('${data.ticket_Status}', 'Closed')">Closed</a></li>
-                                </ul>
-                            </div>
-                        `;
+                        let status = data.ticket_Status;
+                        let badgeClass = '';
+                        
+                        switch(status) {
+                            case 'Pending':
+                                badgeClass = 'badge bg-silver text-silver-fg';
+                                break;
+                            case 'Open':
+                                badgeClass = 'badge bg-yellow text-yellow-fg';
+                                break;
+                            case 'In Progress':
+                                badgeClass = 'badge bg-cyan text-cyan-fg';
+                                break;
+                            case 'Approval':
+                                badgeClass = 'badge bg-blue text-blue-fg';
+                                break;
+                            case 'On Hold':
+                                badgeClass = 'badge bg-orange text-orange-fg';
+                                break;
+                            case 'Resolved':
+                                badgeClass = 'badge bg-green text-green-fg';
+                                break;
+                            case 'Closed':
+                                badgeClass = 'badge bg-black text-black-fg';
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg';
+                        }
+                        
+                        return `<span class="${badgeClass}">${status}</span>`;
                     },
                 },
                 {

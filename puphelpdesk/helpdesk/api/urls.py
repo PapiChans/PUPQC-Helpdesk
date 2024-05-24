@@ -373,6 +373,8 @@ urlpatterns = [
     path('admin/addTicketComment', views.adminAddTicketComment),
     path('admin/ticketClosed/<uuid:ticket_Id>', views.adminCloseTicket),
     path('admin/verifyTicketInfo/<ticket_Number>', views.adminverifyTicketInfo),
+    path('admin/editTicket/<uuid:ticket_Id>', views.adminEditTicket),
+    
 
     # Charters
     path('admin/addCharter', views.adminAddCharter),

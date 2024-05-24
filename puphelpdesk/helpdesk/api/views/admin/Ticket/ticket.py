@@ -1,13 +1,14 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import TicketSerializer, TicketCommentSerializer
-from api.models import Ticket, TicketComment, UserProfile, User
+from api.models import Ticket, TicketComment, UserProfile, User, AdminProfile
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime
 
 # For Email Sending
 from django.core.mail import send_mail
@@ -101,12 +102,22 @@ def adminGetClosedTicket(request):
 def adminGetAllTicket(request):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
+    
+    try:
+        admin_profile = AdminProfile.objects.get(user_Id=request.user)
+    except AdminProfile.DoesNotExist:
+        return Response({"message": "Admin profile not found"})
+    
+    if request.method == "GET":
+        if admin_profile.is_master_admin:
+            tickets = Ticket.objects.exclude(ticket_Status='Closed').order_by('date_Created')
+        else:
+            tickets = Ticket.objects.exclude(ticket_Status='Closed').filter(ticket_Office=admin_profile.admin_Office).order_by('date_Created')
+
+        serializer = TicketSerializer(tickets, many=True)
+        return Response(serializer.data)
     else:
-        if request.method == "GET":
-            data = Ticket.objects.exclude(ticket_Status__in=['Closed']).order_by('date_Created')
-            serializer = TicketSerializer(data, many=True)
-            return Response(serializer.data)
-        return Response({"message": "Get Ticket Error"})
+        return Response({"message": "Invalid request method"})
     
 @api_view(['GET'])
 def adminGetTicketInfo(request, ticket_Number):
@@ -274,3 +285,32 @@ def updateTicketStatus(request):
         return Response({"message": "Status updated successfully"})
     except Ticket.DoesNotExist:
         return Response({"message": "Ticket not found"}, status=404)
+    
+@api_view(['PUT'])
+def adminEditTicket(request, ticket_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    
+    try:
+        admin_profile = AdminProfile.objects.get(user_Id=request.user)
+    except AdminProfile.DoesNotExist:
+        return Response({"message": "Admin profile not found"})
+    
+    if request.method == "PUT":
+        ticket = Ticket.objects.get(pk=ticket_Id)
+        
+        if admin_profile.is_master_admin:
+            ticket_Office = request.POST.get('ticket_Office')
+            ticket.ticket_Office = ticket_Office
+        
+        ticket_Status = request.POST.get('ticket_Status')
+        ticket.ticket_Status = ticket_Status
+
+        if ticket_Status == "Resolved":
+            ticket.resolved_Date = datetime.now()
+
+        ticket.save()
+        
+        return Response({"message": "Edit Ticket Successfully"})
+    else:
+        return Response({"message": "Invalid request method"})
