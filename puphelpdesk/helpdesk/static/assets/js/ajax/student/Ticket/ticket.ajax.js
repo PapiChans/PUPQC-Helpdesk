@@ -314,6 +314,25 @@ $(document).ready(function() {
         "Quality Assurance Center and OJT Office": ["Request for Memorandum of Agreement for Internship"],
         "IT Laboratory Office": ["Request for the Reservation of Campus Facility", "Service 28"],
         "Medical Clinic": ["Issuance of Dental Clearance", "Issuance of Annual Medical Clearance", "Consultation and Treatment Services for Emergency Dental Cases of Students", "Consultation and Treatment Services for Emergency Dental Cases of Faculty and Admin. Employees", "Issuance of Medical Certificate for Sick Note/Excuse Slip", "Issuance of Medical Clearance for Enrollment", "Issuance of Medical Clearance for Laboratory Classes for Food-Handlers", "Issuance of Medical Clearance for Off-Campus of Students", "Issuance of Medical Clearance for On-the-job-Training of Students"],
+        // "All": ["Application for New Identification Card", "Application for Overload of Subjects", "Application for Replacement of Lost Identification Card",
+        // "Application for Replacement of Lost Registration Certificate", "Application of General Clearance", "Circulation Services", "Consultation and Treatment Services for Emergency Dental Cases of Faculty and Admin. Employees",
+        // "Consultation and Treatment Services for Emergency Dental Cases of Students", "Issuance of Annual Medical Clearance", "Issuance of Dental Clearance",
+        // "Issuance of Follow-up of Students Referred during enrollment.", "Issuance of Medical Certificate for Sick Note/Excuse Slip", "Issuance of Medical Clearance for Enrollment",
+        // "Issuance of Medical Clearance for Laboratory Classes for Food-Handlers", "Issuance of Medical Clearance for Off-Campus of Students", "Issuance of Medical Clearance for On-the-job-Training of Students",
+        // "Issuance of Recommendation Letter", "Issuance of Medical Clearance for On-the-job-Training of Students", "Issuance of Student / Alumni Referral and Recommendation",
+        // "Permission to Conduct an Activity", "Processing of Application for Change of Enrollment (Adding of Subject)", "Processing of Application for Change of Enrollment (Change of Schedule/Subject)",
+        // "Processing of Application for Correction of Grade Entry, Late Reporting of Grades, & Incomplete Mark", "Processing of Application for Cross-Enrollment",
+        // "Processing of Application for Shifting", "Processing of Course Accreditation Service for Transferees", "Processing of Freshman Admission", "Processing of Manual Enrollment", 
+        // "Processing of Offsetting", "Processing of Online Petition of Subject", "Processing of Online Request for Tutorial of Subject", "Processing of Refunds",
+        // "Processing of Req. for Credentials Service (Cert., Authentication, Verification (CAV/APOSTILLE))", "Processing of Request for Academic Verification Service",
+        // "Processing of Request for Application for Graduation Service – SIS and Non-SIS", "Processing of Request for Certificate of Transfer Credential/Honorable Dismissal",
+        // "Processing of Request for Certification (Grades, Bonafide Student, General Weighted Average)", "Processing of Request for Course Accreditation Service for Shiftees and Regular Students",
+        // "Processing of Request for Credentials Service (Course/Subject Description)", "Processing of Request for Credentials Service (Transcript of Records)",
+        // "Processing of Request for Informative Copy of Grades", "Processing of Request for Leave of Absence (LOA)", "Processing Req. for Corr. of Name in Conformity W/ PSA Cert. of Live Birth &/or Corr. of Name in SRS",
+        // "Re-Admission (Returning Students)", "Request for Certificate of Good Moral Character", "Request for the Reservation of Campus Facility", "Request for Memorandum of Agreement for Internship",
+        // "Processing of Payment for Completion of Incomplete Grades", "Others"
+        // ],
+        "Unassigned": ["Others"],
     };
 
     $('#ticket_Office').change(function() {
