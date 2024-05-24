@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from api.models import User, AdminProfile
 
 # Create your views here.
 
@@ -17,8 +18,21 @@ def adminusermanagement(request):
     if request.user.is_anonymous:
         return redirect('login')
     if request.user.is_admin:
-        pagename_value = "User Management"
-        return render(request, 'admin/UserManagement/usermanagement.html',{'pagename': pagename_value})
+        # Fetch the user credentials
+        user = request.user
+        
+        # Fetch the associated admin profile
+        try:
+            admin_profile = AdminProfile.objects.get(user_Id=user)
+        except AdminProfile.DoesNotExist:
+            return render(request, 'HTTPResponse/401.html')  # If admin profile doesn't exist, return 401
+        
+        # Check if user is master admin
+        if admin_profile.is_master_admin:
+            pagename_value = "User Management"
+            return render(request, 'admin/UserManagement/usermanagement.html', {'pagename': pagename_value})
+        else:
+            return render(request, 'HTTPResponse/401.html')  # If not master admin, return 401
     else:
         return render(request, 'HTTPResponse/401.html')
     
@@ -26,8 +40,21 @@ def adminadminmanagement(request):
     if request.user.is_anonymous:
         return redirect('login')
     if request.user.is_admin:
-        pagename_value = "Admin Management"
-        return render(request, 'admin/UserManagement/adminmanagement.html',{'pagename': pagename_value})
+        # Fetch the user credentials
+        user = request.user
+        
+        # Fetch the associated admin profile
+        try:
+            admin_profile = AdminProfile.objects.get(user_Id=user)
+        except AdminProfile.DoesNotExist:
+            return render(request, 'HTTPResponse/401.html')  # If admin profile doesn't exist, return 401
+        
+        # Check if user is master admin
+        if admin_profile.is_master_admin:
+            pagename_value = "Admin Management"
+            return render(request, 'admin/UserManagement/adminmanagement.html', {'pagename': pagename_value})
+        else:
+            return render(request, 'HTTPResponse/401.html')  # If not master admin, return 401
     else:
         return render(request, 'HTTPResponse/401.html')
 
