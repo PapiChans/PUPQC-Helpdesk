@@ -15,10 +15,8 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 
-def send_email_replied(user_Email, full_Name, ticket_number, comment_Text):
+def send_email_replied(user_Email, full_Name, ticket_number):
     subject = 'Your Ticket has been replied'
-    # Replace line breaks in the comment text with </p><p>
-    comment_Text_with_breaks = "</p><p>".join(comment_Text.split("\n"))
     html_content = """
 <html>
 <head>
@@ -46,18 +44,14 @@ def send_email_replied(user_Email, full_Name, ticket_number, comment_Text):
                 <p class="paragraph">This is an auto-generated E-mail, <strong>DO NOT REPLY.</strong></p>
                 <p class="paragraph">Dear {full_Name},</p>
                 <p class="paragraph">Thank you for reaching out to us. Your ticket number <strong>{ticket_number}</strong>, has been replied by the administrator.</p>
-                <p class="paragraph"><strong>Administrator's Reply:</strong></p>
-                <div class="admin-reply">
-                    <p>{comment_Text_with_breaks}</p>
-                </div>
-                <p class="paragraph">Please log in to the system to view the administrator's reply and continue the conversation.</p>
+                <p class="paragraph">Please log in to the system to view the administrator's reply and continue the conversation. <a href="https://pupqc-helpdesk.onrender.com/login">Click here</a> to login</p>
                 <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
             </div>
         </div>
     </div>
 </body>
 </html>
-""".format(full_Name=full_Name, ticket_number=ticket_number, comment_Text_with_breaks=comment_Text_with_breaks)
+""".format(full_Name=full_Name, ticket_number=ticket_number)
 
     # Create EmailMultiAlternatives object to include both HTML and plain text content
     msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
@@ -77,14 +71,17 @@ def adminGetPendingTicket(request):
         return Response({"message": "Get Ticket Error"})
     
 @api_view(['GET'])
-def adminGetResponseTicket(request):
+def adminGetTicketbyStatus(request, status):  # Accept 'status' as a parameter
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = Ticket.objects.all().filter(ticket_Status='Replied').order_by('date_Created')
-            serializer = TicketSerializer(data, many=True)
-            return Response(serializer.data)
+            if status is not None:  # Use the 'status' parameter passed from the URL
+                data = Ticket.objects.filter(ticket_Status=status)
+                serializer = TicketSerializer(data, many=True)
+                return Response(serializer.data)
+            else:
+                return Response({"message": "Status parameter is missing"})
         return Response({"message": "Get Ticket Error"})
     
 @api_view(['GET'])
@@ -110,9 +107,9 @@ def adminGetAllTicket(request):
     
     if request.method == "GET":
         if admin_profile.is_master_admin:
-            tickets = Ticket.objects.exclude(ticket_Status='Closed').order_by('date_Created')
+            tickets = Ticket.objects.all().order_by('date_Created')
         else:
-            tickets = Ticket.objects.exclude(ticket_Status='Closed').filter(ticket_Office=admin_profile.admin_Office).order_by('date_Created')
+            tickets = Ticket.objects.all().filter(ticket_Office=admin_profile.admin_Office).order_by('date_Created')
 
         serializer = TicketSerializer(tickets, many=True)
         return Response(serializer.data)
@@ -176,7 +173,7 @@ def adminAddTicketComment(request):
             serializer = TicketCommentSerializer(data=comment)
             if serializer.is_valid():
                 serializer.save()
-
+                send_email_replied(user_profile.user_Email, full_Name, ticket_info.ticket_Number)
                 ticket = Ticket.objects.get(pk=ticket_Id)
                 ticket.save()
                 return Response({"message": "Add Comment Successfully"})

@@ -365,7 +365,7 @@ urlpatterns = [
 
     # Ticket
     path('admin/getPendingTicket', views.adminGetPendingTicket),
-    path('admin/getResponseTicket', views.adminGetResponseTicket),
+    path('admin/getTicketbyStatus/<status>', views.adminGetTicketbyStatus),
     path('admin/getClosedTicket', views.adminGetClosedTicket),
     path('admin/getAllTicket', views.adminGetAllTicket),
     path('admin/getTicketInfo/<ticket_Number>', views.adminGetTicketInfo),

@@ -1288,3 +1288,8 @@
 # 0.7.22.2
 - Push by Christian (https://github.com/papichans)
 - Restrict Account Management to non master admin
+
+# 0.7.22.3
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Ticket Printing added
+- Ticket filter added

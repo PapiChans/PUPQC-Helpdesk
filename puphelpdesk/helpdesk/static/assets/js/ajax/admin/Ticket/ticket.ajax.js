@@ -28,29 +28,37 @@ function getTicketInfoAndNavigate(ticketId) {
     window.location.href = detailsURL;
 }
 
+
 getAllTicket = () => {
     const dt = $('#all-datatable');
 
     $.ajaxSetup({
-		headers: {'X-CSRFToken': csrftoken},
-	})
+        headers: {'X-CSRFToken': csrftoken},
+    });
 
     if (dt.length) {
         dt.DataTable({
             ajax: {
                 type: 'GET',
                 url: '/api/admin/getAllTicket',
-                ContentType: 'application/x-www-form-urlencoded',
+                contentType: 'application/x-www-form-urlencoded',
                 dataSrc: ''
             },
+            buttons: [
+                {
+                    extend: 'collection',
+                    text: 'Export',
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                }
+            ],
             columns: [
                 {
                     data: null,
                     class: 'text-left',
                     width: '10%',
                     render: (data) => {
-                        const ticketnum = data.ticket_Number
-                        return `${ticketnum}`
+                        const ticketnum = data.ticket_Number;
+                        return `${ticketnum}`;
                     },
                 },
                 {
@@ -58,8 +66,8 @@ getAllTicket = () => {
                     class: 'text-left',
                     width: '10%',
                     render: (data) => {
-                        let title = data.ticket_Title
-                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">${title}</h3>`
+                        let title = data.ticket_Title;
+                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">${title}</h3>`;
                     },
                 },
                 {
@@ -67,8 +75,8 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const name = data.full_Name
-                        return `${name}`
+                        const name = data.full_Name;
+                        return `${name}`;
                     },
                 },
                 {
@@ -76,30 +84,30 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                    let ticket_Priority = data.ticket_Priority;
-                    let badgeClass = '';
+                        let ticket_Priority = data.ticket_Priority;
+                        let badgeClass = '';
 
-                    switch(ticket_Priority) {
-                        case 'Unassigned':
-                            badgeClass = 'badge bg-secondary text-secondary-fg';
-                            break;
-                        case 'Low':
-                            badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
-                            break;
-                        case 'Medium':
-                            badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
-                            break;
-                        case 'High':
-                            badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
-                            break;
-                        case 'Urgent':
-                            badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
-                            break;
-                        default:
-                            badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
-                    }
+                        switch(ticket_Priority) {
+                            case 'Unassigned':
+                                badgeClass = 'badge bg-secondary text-secondary-fg';
+                                break;
+                            case 'Low':
+                                badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
+                                break;
+                            case 'Medium':
+                                badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
+                                break;
+                            case 'High':
+                                badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
+                                break;
+                            case 'Urgent':
+                                badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
+                        }
 
-                    return `<span class="${badgeClass}">${ticket_Priority}</span>`;
+                        return `<span class="${badgeClass}">${ticket_Priority}</span>`;
                     },
                 },
                 {
@@ -107,8 +115,8 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const office = data.ticket_Office
-                        return `${office}`
+                        const office = data.ticket_Office;
+                        return `${office}`;
                     },
                 },
                 {
@@ -153,12 +161,158 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const date = data.date_Created
-                        return `${formatPostgresTimestamp(date)}`
+                        const date = data.date_Created;
+                        return `${formatPostgresTimestamp(date)}`;
                     },
                 },
             ],
             order: [[0, 'asc']],
-        })
+            dom: '<"top"B>rt<"bottom"lip>'
+        });
     }
-}
+};
+
+getStatus = (status) => {
+    const dt = $('#all-datatable').DataTable();
+
+    $.ajaxSetup({
+        headers: {'X-CSRFToken': csrftoken},
+    });
+
+    if (dt) {
+        dt.destroy(); // Destroy existing instance
+
+        $('#all-datatable').DataTable({
+            ajax: {
+                type: 'GET',
+                url: status ? `/api/admin/getTicketbyStatus/${status}` : '/api/admin/getAllTicket' ,
+                contentType: 'application/x-www-form-urlencoded',
+                dataSrc: ''
+            },
+            buttons: [
+                {
+                    extend: 'collection',
+                    text: 'Export',
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                }
+            ],
+            columns: [
+                {
+                    data: null,
+                    class: 'text-left',
+                    width: '10%',
+                    render: (data) => {
+                        const ticketnum = data.ticket_Number;
+                        return `${ticketnum}`;
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-left',
+                    width: '10%',
+                    render: (data) => {
+                        let title = data.ticket_Title;
+                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">${title}</h3>`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const name = data.full_Name;
+                        return `${name}`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        let ticket_Priority = data.ticket_Priority;
+                        let badgeClass = '';
+
+                        switch(ticket_Priority) {
+                            case 'Unassigned':
+                                badgeClass = 'badge bg-secondary text-secondary-fg';
+                                break;
+                            case 'Low':
+                                badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
+                                break;
+                            case 'Medium':
+                                badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
+                                break;
+                            case 'High':
+                                badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
+                                break;
+                            case 'Urgent':
+                                badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
+                        }
+
+                        return `<span class="${badgeClass}">${ticket_Priority}</span>`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const office = data.ticket_Office;
+                        return `${office}`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        let status = data.ticket_Status;
+                        let badgeClass = '';
+                        
+                        switch(status) {
+                            case 'Pending':
+                                badgeClass = 'badge bg-silver text-silver-fg';
+                                break;
+                            case 'Open':
+                                badgeClass = 'badge bg-yellow text-yellow-fg';
+                                break;
+                            case 'In Progress':
+                                badgeClass = 'badge bg-cyan text-cyan-fg';
+                                break;
+                            case 'Approval':
+                                badgeClass = 'badge bg-blue text-blue-fg';
+                                break;
+                            case 'On Hold':
+                                badgeClass = 'badge bg-orange text-orange-fg';
+                                break;
+                            case 'Resolved':
+                                badgeClass = 'badge bg-green text-green-fg';
+                                break;
+                            case 'Closed':
+                                badgeClass = 'badge bg-black text-black-fg';
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg';
+                        }
+                        
+                        return `<span class="${badgeClass}">${status}</span>`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const date = data.date_Created;
+                        return `${formatPostgresTimestamp(date)}`;
+                    },
+                },
+            ],
+            order: [[0, 'asc']],
+            dom: '<"top"B>rt<"bottom"lip>'
+        });
+    }
+};
