@@ -87,4 +87,7 @@ urlpatterns = [
     path('knowledge', views.adminKnowledgebase, name='admin/knowledgebase'),
     path('knowledge/create', views.adminCreateKnowledgebase, name='admin/knowledgebase/create'),
     path('knowledge/edit', views.adminEditKnowledgebase, name='admin/knowledgebase/edit'),
+
+    # Ticket Rating
+    path('ticket/rating', views.adminTicketRating, name='admin/ticketrating'),
 ]

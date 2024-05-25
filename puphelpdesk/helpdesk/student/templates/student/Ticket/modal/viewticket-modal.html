@@ -1,0 +1,44 @@
+<div class="modal fade" id="RateTicketModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">How was our response? Rate us.</h5>
+            </div>
+            <div class="modal-body">
+                <form id="RateTicketForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Ticket Number<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="rate_ticket_Number" placeholder="Ticket Number" disabled/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Ticket Office<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="rate_ticket_Office" placeholder="Ticket Office" disabled/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Rating<span class="text-danger">*</span></label>
+                            <select class="star-rating" id="ticket_Rating" required>
+                                <option value="">Select a rating</option>
+                                <option value="5">Very Satisfied</option>
+                                <option value="4">Satisfied</option>
+                                <option value="3">Neutral</option>
+                                <option value="2">Dissatisfied</option>
+                                <option value="1">Very Dissatisfied</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Remarks<span class="text-primary"> (Optional)</span></label>
+                            <textarea class="form-control" id="ticket_Remarks" rows="5" placeholder="Remarks"></textarea>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="rating_Submit" disabled/>Submit Rating</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+

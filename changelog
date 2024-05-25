@@ -1293,3 +1293,11 @@
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Ticket Printing added
 - Ticket filter added
+
+# 0.7.23
+- Push by Christian (https://github.com/papichans)
+- Ticket Filtering on admin FIXED
+- Add Ticket Ratings
+- Update API Views
+- Update API Models
+- New Library: Star-rating for ticket ratings

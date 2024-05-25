@@ -12,14 +12,6 @@
 
 {% block maincontent %}
 {% include "student/Ticket/modal/ticket-modal.html" %}
-{% comment %} <select class="star-rating">
-    <option value="">Select a rating</option>
-    <option value="5">Excellent</option>
-    <option value="4">Very Good</option>
-    <option value="3">Average</option>
-    <option value="2">Poor</option>
-    <option value="1">Terrible</option>
-</select> {% endcomment %}
 <h2 class="header-title">Your Tickets</h2>
 <p class="card-title-desc">Submit a ticket for your support concerns.</p>
 <div class="col">
@@ -58,8 +50,4 @@
 <script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/student/Ticket/ticket.ajax.js' %}"></script>
-<script>var stars = new StarRating('.star-rating');
-
-</script>
-
 {% endblock %} 

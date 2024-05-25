@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, UserProfile, AdminProfile, Resources, Events, Facilities, SuccessResources, Feedback, LostandFound, Service, JobPosting, FinancialAndScholarshipGuide, ServiceReferrals, IDandCard, StudentGovernment, JobSearch, CareerCounseling, SupportCounseling, AcademicAdvising, HealthFacility, HealthInsurance, HousingOptions, LivingAssistance, FAQ, TransportInfo, ParkingPermit, ParkingRegulation, RetrievalInstruction, Ticket, TicketComment, Charter, CharterSteps, KBFolder, KBTopic
+from .models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -173,4 +173,9 @@ class KBFolderSerializer(serializers.ModelSerializer):
 class KBTopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = KBTopic
+        fields = '__all__'
+
+class TicketRatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TicketRating
         fields = '__all__'

@@ -165,6 +165,15 @@ getAllTicket = () => {
                         return `${formatPostgresTimestamp(date)}`;
                     },
                 },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const date = data.resolved_Date;
+                        return `${formatPostgresTimestamp(date)}`;
+                    },
+                },
             ],
             order: [[0, 'asc']],
             dom: '<"top"B>rt<"bottom"lip>'
@@ -307,6 +316,15 @@ getStatus = (status) => {
                     class: 'text-center',
                     render: (data) => {
                         const date = data.date_Created;
+                        return `${formatPostgresTimestamp(date)}`;
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        const date = data.resolved_Date;
                         return `${formatPostgresTimestamp(date)}`;
                     },
                 },

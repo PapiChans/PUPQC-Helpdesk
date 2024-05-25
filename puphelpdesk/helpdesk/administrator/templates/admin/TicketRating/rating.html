@@ -10,33 +10,17 @@
 {% endblock %}
 
 {% block maincontent %}
-<h2 class="header-title">List of Tickets</h2>
+<h2 class="header-title">List of Rating</h2>
 
-<div class="col-md-3 mt-2 mb-2">
-    <div class="dropdown">
-        <button class="btn btn-info dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Select Status
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-            <li><a class="dropdown-item" href="#" onclick="getStatus('')">All</a></li>
-            <li><a class="dropdown-item" href="#" onclick="getStatus('In Progress')">In Progress</a></li>
-            <li><a class="dropdown-item" href="#" onclick="getStatus('Resolved')">Resolved</a></li>
-            <li><a class="dropdown-item" href="#" onclick="getStatus('Closed')">Closed</a></li>
-        </ul>
-    </div>
-</div>
-
-<table id="all-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+<table id="rating-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
         <tr>
             <th class="dt-head-center">Ticket Number</th>
-            <th class="dt-head-center">Subject</th>
-            <th class="dt-head-center">Requester</th>
-            <th class="dt-head-center">Priority</th>
             <th class="dt-head-center">Office</th>
-            <th class="dt-head-center">Status</th>
-            <th class="dt-head-center">Date Created</th>
-            <th class="dt-head-center">Resolve Date</th>
+            <th class="dt-head-center">Rating</th>
+            <th class="dt-head-center">Date Created (Ticket)</th>
+            <th class="dt-head-center">Resolve Date / Rate Submitted Date</th>
+            <th class="dt-head-center">Remarks</th>
         </tr>
     </thead>
     <tbody>
@@ -56,5 +40,5 @@
 <script src="{% static 'assets/libs/dataTables/js/jszip.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/pdfmake.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/vfs_font.js' %}"></script>
-<script src="{% static 'assets/js/ajax/admin/Ticket/ticket.ajax.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/TicketRating/rating.ajax.js' %}"></script>
 {% endblock %} 

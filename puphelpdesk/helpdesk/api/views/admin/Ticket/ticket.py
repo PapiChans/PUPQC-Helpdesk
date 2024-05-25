@@ -74,14 +74,23 @@ def adminGetPendingTicket(request):
 def adminGetTicketbyStatus(request, status):  # Accept 'status' as a parameter
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
+    
+    try:
+        admin_profile = AdminProfile.objects.get(user_Id=request.user)
+    except AdminProfile.DoesNotExist:
+        return Response({"message": "Admin profile not found"})
+    
+    if request.method == "GET":
+        if admin_profile.is_master_admin:
+            # If master admin, fetch all tickets regardless of office
+            data = Ticket.objects.filter(ticket_Status=status)
+        else:
+            # If not master admin, filter tickets based on their admin office
+            data = Ticket.objects.filter(ticket_Status=status, ticket_Office=admin_profile.admin_Office)
+        
+        serializer = TicketSerializer(data, many=True)
+        return Response(serializer.data)
     else:
-        if request.method == "GET":
-            if status is not None:  # Use the 'status' parameter passed from the URL
-                data = Ticket.objects.filter(ticket_Status=status)
-                serializer = TicketSerializer(data, many=True)
-                return Response(serializer.data)
-            else:
-                return Response({"message": "Status parameter is missing"})
         return Response({"message": "Get Ticket Error"})
     
 @api_view(['GET'])

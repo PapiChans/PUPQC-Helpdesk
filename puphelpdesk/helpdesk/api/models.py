@@ -496,3 +496,14 @@ class KBTopic(models.Model):
     last_modified = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'KB_Topic'
+
+class TicketRating(models.Model):
+    rating_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ticket_Number = models.CharField(max_length=15, null=False)
+    ticket_Office = models.CharField(max_length=100, null=False, default='')
+    ticket_Rating = models.CharField(max_length=20, null=False)
+    ticket_Remarks = models.CharField(max_length=100, null=True)
+    date_Created = models.DateTimeField(null=False)
+    resolved_Date = models.DateTimeField(null=False)
+    class Meta:
+        db_table = 'Ticket Rating'

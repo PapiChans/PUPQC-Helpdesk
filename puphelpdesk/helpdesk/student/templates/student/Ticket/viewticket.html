@@ -4,9 +4,11 @@
 <link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/star-rating/dist/star-rating.min.css' %}"/>
 {% endblock %}
 
 {% block maincontent %}
+{% include "student/Ticket/modal/viewticket-modal.html" %}
 <h2 class="header-title">Ticket Info</h2>
 </div>
 </div>
@@ -68,19 +70,22 @@
                 <label for="validationCustom01">Attachment <span class="text-info">(Optional)</span></label>
                 <input type="file" class="filepond" id="comment_Attachment" data-max-files="1">
             </div>
-            <div class="col-md-2 mt-2">
-                <button type="submit" class="btn btn-primary col-xl-12" id="comment_Submit"/>Submit</button>
-            </div>
-            <div class="col-md-2 mt-2">
-                <button class="btn btn-primary col-xl-12" value="Resolved">Resolved</button>
-            </div>
+            <div class="row">
+                <div class="col-md-2 mt-2">
+                    <button type="submit" class="btn btn-primary col-xl-12" id="comment_Submit">Submit</button>
+                </div>
         </form>
-    </div>
+                <div class="col-md-2 mt-2">
+                    <button type="button" class="btn btn-success col-xl-12" data-bs-toggle="modal" data-bs-target="#RateTicketModal">Resolved</button>
+                </div>
+            </div>
+    </div>      
 </div>
 {% endblock %}
 
 {% block customjs %}
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/star-rating/dist/star-rating.min.js' %}"></script>
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>

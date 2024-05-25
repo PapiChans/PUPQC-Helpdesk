@@ -499,3 +499,12 @@ def adminEditKnowledgebase(request):
         return render(request, 'admin/Knowledgebase/edit.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+def adminTicketRating(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Ticket Ratings"
+        return render(request, 'admin/TicketRating/rating.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

@@ -69,6 +69,9 @@ from .student.FAQ.faq import *
 # Ticket
 from .student.Ticket.ticket import *
 
+# Ticket Rating
+from .student.TicketRating.rating import *
+
 # Charter
 from .student.Charter.charter import *
 
@@ -138,6 +141,9 @@ from .admin.FAQ.faq import *
 
 # Ticket
 from .admin.Ticket.ticket import *
+
+# Ticket Rating
+from .admin.TicketRating.rating import *
 
 # Charter
 from .admin.Charter.charter import *
