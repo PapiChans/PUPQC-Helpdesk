@@ -1301,3 +1301,7 @@
 - Update API Views
 - Update API Models
 - New Library: Star-rating for ticket ratings
+
+# 0.7.23.1
+- Push by Christian (https://github.com/papichans)
+- Forgot to Collect static and modify settings.py

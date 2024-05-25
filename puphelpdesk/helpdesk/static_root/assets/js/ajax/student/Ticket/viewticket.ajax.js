@@ -4,6 +4,10 @@ $(function () {
         e.preventDefault() // prevent page refresh
     })
     verifyTicketId();
+    $('#RateTicketForm').on('submit', function (e) {
+        submitRating()
+        e.preventDefault() // prevent page refresh
+    })
 })
 
 function verifyTicketId() {
@@ -75,6 +79,10 @@ getTicketInfo = (ticket_Number) => {
             $('#ticket_Service_info').html(data.ticket_Service);
             $('#ticket_Type_info').html(data.ticket_Type);
 
+            //Rating
+            $('#rate_ticket_Number').val(data.ticket_Number);
+            $('#rate_ticket_Office').val(data.ticket_Office);
+
             if (data.resolved_Date === null) {
                 $('#resolved_Date_info').html(null);
             } else {
@@ -125,11 +133,16 @@ getTicketInfo = (ticket_Number) => {
             let openformat = `<h2 class="text-center">Wait for Response</h2>
             <p class="text-center">Wait for the Administrator response before to reply again.</p>`
 
-            let closedformat = `<h2 class="text-center">Ticket Closed</h2>
+            let closedformat = `<h2 class="text-center">Ticket Resolved</h2>
             <p class="text-center">You may create a new ticket for your concern.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-2 text-center">
+                    <button class="btn btn-primary col-xl-12 mb-2" id="reopen_btn" onclick="TicketReOpen()">Re-Open</button>
+                </div>
+            </div>
             `
 
-            if (data.ticket_Status == 'Closed'){
+            if (data.ticket_Status == 'Resolved'){
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
@@ -175,9 +188,9 @@ addTicketComment = (CommentAttachment) => {
 		}
 
         Swal.fire({
-            title: 'Warning',
+            title: 'Submit',
             text: 'Once you submit your comment, you cannot edit this anymore.',
-            icon: 'warning',
+            icon: 'question',
             allowEnterKey: 'false',
             allowOutsideClick: 'false',
             allowEscapeKey: 'false',
@@ -287,8 +300,6 @@ function formatTimeAgo(timestamp) {
 }
 
 
-
-
 getTicketComment = (ticket_Id, full_Name) => {
 
     let chat_display = $('#chat_display')
@@ -384,5 +395,139 @@ getTicketComment = (ticket_Id, full_Name) => {
             position: {x:'right',y:'top'},
             duration: 2500
         });
+    })
+}
+
+submitRating = () => {
+    $('#rating_Submit').prop('disabled', true);
+    if ($('#RateTicketForm')[0].checkValidity()) {
+
+        const ticket_Number = $('#rate_ticket_Number').val();
+        const ticket_Office = $('#rate_ticket_Office').val();
+        const ticket_Rating = $('#ticket_Rating').val();
+        const ticket_Remarks = $('#ticket_Remarks').val();
+
+        const data = {
+            ticket_Number: ticket_Number,
+            ticket_Office: ticket_Office,
+            ticket_Rating: ticket_Rating,
+            ticket_Remarks: ticket_Remarks
+        };
+
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to rate this ticket?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#D40429',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/student/submitTicketRating',
+                    data: data,
+                    dataType: 'json',
+                    headers: {'X-CSRFToken': csrftoken},
+                    success: (result) => {
+                        if (result) {
+                            $('#rating_Submit').prop('disabled', true);
+                            notyf.success({
+                                message: 'Submit Feedback Successfully',
+                                position: {x:'right',y:'top'},
+                                duration: 2500
+                            })
+                            $('form#RateTicketForm')[0].reset();
+                            $('#RateTicketModal').modal('hide');
+                            location.reload();
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Something went wrong while submitting your Ratings. Please try again.',
+                            icon: 'error',
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
+                        });
+                    },
+                });
+            }
+        });
+        $('#rating_Submit').prop('disabled', false);
+    }
+}
+
+// Initialize star rating plugin
+var stars = new StarRating('.star-rating');
+
+// Get the select element
+var selectElement = document.querySelector('.star-rating');
+
+// Listen for change event on select element
+selectElement.addEventListener('change', function() {
+    var selectedValue = this.value;
+    if (selectedValue !== "") {
+        console.log("Selected rating:", selectedValue);
+        $('#rating_Submit').prop('disabled', false);
+        // Here you can add any further validation or processing logic you need
+    } else {
+        console.log("Please select a rating");
+        $('#rating_Submit').prop('disabled', true);
+        // Here you can handle the case where no rating is selected
+    }
+});
+
+TicketReOpen = () => {
+
+    const ticket_Number = $('#rate_ticket_Number').val();
+
+    Swal.fire({
+        title: 'Re-Open the ticket',
+        html: 'Are you sure do you want to Re-Open the ticket?',
+        icon: 'warning',
+        allowEnterKey: 'false',
+        allowOutsideClick: 'false',
+        allowEscapeKey: 'false',
+        confirmButtonText: 'Yes, Re-open it',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        cancelButtonClass: 'btn btn-danger w-xs mb-1',
+        confirmButtonColor: '#D40429',
+    }).then(function (result) {
+        if (result.value) {
+            $('#reopen_btn').prop('disabled', true);
+            $.ajax({
+                type: 'PUT',
+                url: `/api/student/ticketReOpen/${ticket_Number}`,
+                dataType: 'json',
+                cache: false,
+                headers: {'X-CSRFToken': csrftoken},
+                success: (result) => {
+                    if (result) {
+                        notyf.success({
+                            message: 'Ticket Re-Open Successfully',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        });
+                            location.reload()
+                    }
+                },
+            })
+            .fail(() => {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Something went wrong while re-opening ticket. Please try again.',
+                    icon: 'error',
+                    allowEnterKey: 'false',
+                    allowOutsideClick: 'false',
+                    allowEscapeKey: 'false',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#D40429',
+                })
+                $('#reopen_btn').prop('disabled', false);
+            })
+        }
     })
 }
