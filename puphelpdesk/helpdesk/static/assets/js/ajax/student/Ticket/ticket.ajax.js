@@ -232,9 +232,9 @@ addTicket = (CommentAttachment) => {
         }
 
         Swal.fire({
-            title: 'Warning',
-            text: 'Once you submit your ticket, you cannot edit this anymore.',
-            icon: 'question',
+            title: 'Attention',
+            text: 'Once you submit your ticket, you cannot edit this anymore. Please review the following details carefully before submitting your message.',
+            icon: 'warning',
             confirmButtonText: 'Submit',
             cancelButtonText: 'Cancel',
             showCancelButton: true,
@@ -332,7 +332,10 @@ $(document).ready(function() {
         // "Re-Admission (Returning Students)", "Request for Certificate of Good Moral Character", "Request for the Reservation of Campus Facility", "Request for Memorandum of Agreement for Internship",
         // "Processing of Payment for Completion of Incomplete Grades", "Others"
         // ],
-        "Unassigned": ["Others"],
+        "Administrative Office": ["Others"],
+        "Property Office": ["Others"],
+        "Records' Office": ["Others"],
+        "Cultural Office": ["Others"],
     };
 
     $('#ticket_Office').change(function() {
