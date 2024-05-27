@@ -188,7 +188,7 @@ addTicketComment = (CommentAttachment) => {
 
         Swal.fire({
             title: 'Warning',
-            text: 'Once you submit your comment, you cannot edit this anymore.',
+            text: 'Once you submit your comment, you cannot edit this anymore. Please review the following details carefully before submitting your message.',
             icon: 'warning',
             allowEnterKey: 'false',
             allowOutsideClick: 'false',

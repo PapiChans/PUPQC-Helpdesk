@@ -1,6 +1,14 @@
 $(function () {
     getAllTicket();
+    superadminblocker();
 })
+
+$('input[type="date"]').flatpickr({
+    mode: 'single',
+    maxDate: "today",
+    allowInput: true,
+    dateFormat: "Y-m-d"
+});
 
 const notyf = new Notyf();
 
@@ -181,7 +189,7 @@ getAllTicket = () => {
     }
 };
 
-getStatus = (status) => {
+getSorted = () => {
     const dt = $('#all-datatable').DataTable();
 
     $.ajaxSetup({
@@ -194,9 +202,17 @@ getStatus = (status) => {
         $('#all-datatable').DataTable({
             ajax: {
                 type: 'GET',
-                url: status ? `/api/admin/getTicketbyStatus/${status}` : '/api/admin/getAllTicket' ,
+                url: '/api/admin/sortTickets', // URL for sorting tickets
                 contentType: 'application/x-www-form-urlencoded',
-                dataSrc: ''
+                dataSrc: '',
+                data: {
+                    ticket_status: $('#ticket_status').val(),
+                    ticket_priority: $('#ticket_priority').val(),
+                    ticket_type: $('#ticket_type').val(),
+                    ticket_office: $('#ticket_office').val(),
+                    start_date: $('#start_date').val(),
+                    end_date: $('#end_date').val()
+                }
             },
             buttons: [
                 {
@@ -334,3 +350,27 @@ getStatus = (status) => {
         });
     }
 };
+
+superadminblocker = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/auth/getadminprofile`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const profiledata = result;
+            if (profiledata.is_master_admin == false){
+                $('#ticket_office').val(profiledata.admin_Office);
+                $('#ticket_office').prop('disabled', true);
+            }
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Profile Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}

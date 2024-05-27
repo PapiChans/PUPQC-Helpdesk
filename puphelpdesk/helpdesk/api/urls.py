@@ -367,7 +367,6 @@ urlpatterns = [
 
     # Ticket
     path('admin/getPendingTicket', views.adminGetPendingTicket),
-    path('admin/getTicketbyStatus/<status>', views.adminGetTicketbyStatus),
     path('admin/getClosedTicket', views.adminGetClosedTicket),
     path('admin/getAllTicket', views.adminGetAllTicket),
     path('admin/getTicketInfo/<ticket_Number>', views.adminGetTicketInfo),
@@ -376,9 +375,11 @@ urlpatterns = [
     path('admin/ticketClosed/<uuid:ticket_Id>', views.adminCloseTicket),
     path('admin/verifyTicketInfo/<ticket_Number>', views.adminverifyTicketInfo),
     path('admin/editTicket/<uuid:ticket_Id>', views.adminEditTicket),
+    path('admin/sortTickets', views.adminSortTickets),
 
     # Ticket Rating
     path('admin/getAllTicketRating', views.adminGetAllTicketRating),
+    path('admin/sortTicketRatings', views.adminSortTicketRatings),
 
     # Charters
     path('admin/addCharter', views.adminAddCharter),

@@ -3,6 +3,7 @@
 {% block customcss %}
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/dataTables.dataTables.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
@@ -11,6 +12,60 @@
 
 {% block maincontent %}
 <h2 class="header-title">List of Rating</h2>
+<div class="card mb-2">
+    <div class="container">
+        <form id="TicketRatingForm" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="ticket_office" class="form-label">Ticket Office</label>
+                    <select class="form-select" id="ticket_office">
+                        <option value="">All</option>
+                        <option value="Director's Office">Director's Office</option>
+                        <option value="Academic Office">Academic Office</option>
+                        <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                        <option value="Registrar's Office">Registrar's Office</option>
+                        <option value="Admission Office">Admission Office</option>
+                        <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                        <option value="Accounting Office">Accounting Office</option>
+                        <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                        <option value="IT Laboratory Office">IT Laboratory Office</option>
+                        <option value="Medical Clinic">Medical Clinic</option>
+                        <option value="Administrative Office">Administrative Office</option>
+                        <option value="Property Office">Property Office</option>
+                        <option value="Records' Office">Records' Office</option>
+                        <option value="Cultural Office">Cultural Office</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="ticket_rating" class="form-label">Ticket Rating</label>
+                    <select class="form-select" id="ticket_rating">
+                        <option value="">All</option>
+                        <option value="Very Satisfied">Very Satisfied</option>
+                        <option value="Satisfied">Satisfied</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Dissatisfied">Dissatisfied</option>
+                        <option value="Very Dissatisfied">Very Dissatisfied</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="start_date" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="start_date">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="end_date" class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="end_date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-primary" onclick="getSortedTicketRatings()" type="button">Apply Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <table id="rating-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
     <thead>
@@ -18,8 +73,8 @@
             <th class="dt-head-center">Ticket Number</th>
             <th class="dt-head-center">Office</th>
             <th class="dt-head-center">Rating</th>
-            <th class="dt-head-center">Date Created (Ticket)</th>
-            <th class="dt-head-center">Resolve Date / Rate Submitted Date</th>
+            <th class="dt-head-center">Ticket Created</th>
+            <th class="dt-head-center">Resolve / Rating Date</th>
             <th class="dt-head-center">Remarks</th>
         </tr>
     </thead>
@@ -32,6 +87,7 @@
 {% block customjs %}
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
 <script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>

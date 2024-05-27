@@ -8,7 +8,7 @@ from django.db import transaction
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # For Email Sending
 from django.core.mail import send_mail
@@ -68,29 +68,6 @@ def adminGetPendingTicket(request):
             data = Ticket.objects.all().filter(ticket_Status='Pending').order_by('date_Created')
             serializer = TicketSerializer(data, many=True)
             return Response(serializer.data)
-        return Response({"message": "Get Ticket Error"})
-    
-@api_view(['GET'])
-def adminGetTicketbyStatus(request, status):  # Accept 'status' as a parameter
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    
-    try:
-        admin_profile = AdminProfile.objects.get(user_Id=request.user)
-    except AdminProfile.DoesNotExist:
-        return Response({"message": "Admin profile not found"})
-    
-    if request.method == "GET":
-        if admin_profile.is_master_admin:
-            # If master admin, fetch all tickets regardless of office
-            data = Ticket.objects.filter(ticket_Status=status)
-        else:
-            # If not master admin, filter tickets based on their admin office
-            data = Ticket.objects.filter(ticket_Status=status, ticket_Office=admin_profile.admin_Office)
-        
-        serializer = TicketSerializer(data, many=True)
-        return Response(serializer.data)
-    else:
         return Response({"message": "Get Ticket Error"})
     
 @api_view(['GET'])
@@ -320,3 +297,61 @@ def adminEditTicket(request, ticket_Id):
         return Response({"message": "Edit Ticket Successfully"})
     else:
         return Response({"message": "Invalid request method"})
+    
+@api_view(['GET'])
+def adminSortTickets(request):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+
+    try:
+        admin_profile = AdminProfile.objects.get(user_Id=request.user)
+    except AdminProfile.DoesNotExist:
+        return Response({"message": "Admin profile not found"})
+
+    if request.method == "GET":
+        # Initialize ticket queryset
+        tickets = Ticket.objects.all()
+
+        # If the user is not authenticated or not an admin, return unauthorized response
+        if not request.user.is_authenticated or not request.user.is_admin:
+            return Response({"message": "Not Authenticated"})
+
+        # Filter tickets based on admin privileges
+        if admin_profile.is_master_admin:
+            # If master admin, fetch all tickets regardless of office
+            tickets = tickets.order_by('date_Created')
+        else:
+            # If not master admin, filter tickets based on their admin office
+            tickets = tickets.filter(ticket_Office=admin_profile.admin_Office).order_by('date_Created')
+
+        # Get form field values from the request
+        ticket_status = request.GET.get('ticket_status')
+        ticket_priority = request.GET.get('ticket_priority')
+        ticket_type = request.GET.get('ticket_type')
+        ticket_office = request.GET.get('ticket_office')
+        start_date = request.GET.get('start_date')
+        end_date = request.GET.get('end_date')
+
+        # Additional filters based on form fields
+        if ticket_status:
+            tickets = tickets.filter(ticket_Status=ticket_status)
+        if ticket_priority:
+            tickets = tickets.filter(ticket_Priority=ticket_priority)
+        if ticket_type:
+            tickets = tickets.filter(ticket_Type=ticket_type)
+        if ticket_office and ticket_office != 'All':
+            tickets = tickets.filter(ticket_Office=ticket_office)
+        if start_date and end_date:
+            # Convert start_date and end_date to datetime objects
+            start_date_obj = datetime.strptime(start_date, '%Y-%m-%d').date()
+            end_date_obj = datetime.strptime(end_date, '%Y-%m-%d').date() + timedelta(days=1)  # Adjust end date to include all of that day
+            # Filter tickets within the date range
+            tickets = tickets.filter(date_Created__range=[start_date_obj, end_date_obj])
+
+        # Serialize the filtered tickets
+        serializer = TicketSerializer(tickets, many=True)
+
+        # Return JSON response with serialized data
+        return Response(serializer.data)
+    else:
+        return Response({"message": "Get Ticket Error"})

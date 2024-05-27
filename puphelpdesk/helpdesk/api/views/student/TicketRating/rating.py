@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from datetime import datetime
+from django.utils import timezone
 from api.serializers import TicketRatingSerializer
 from api.models import TicketRating, Ticket
 
@@ -34,7 +34,7 @@ def studSubmitTicketRating(request):
                     'ticket_Office': ticket_office,
                     'ticket_Rating': rating_map.get(ticket_rating),  # Get description from rating_map
                     'date_Created': ticket.date_Created,  # Using date_Created from associated Ticket
-                    'resolved_Date': datetime.now().isoformat(),  # Using current date and time in ISO format
+                    'resolved_Date': timezone.now().isoformat(),  # Using current date and time in ISO format
                     'ticket_Remarks': ticket_remarks if ticket_remarks else None,  # Set ticket_remarks to None if empty
                 }
 
@@ -44,7 +44,7 @@ def studSubmitTicketRating(request):
 
                     # Update ticket status to 'Resolved'
                     ticket.ticket_Status = 'Resolved'
-                    ticket.resolved_Date = datetime.now().isoformat()
+                    ticket.resolved_Date = timezone.now().isoformat()
                     ticket.save()
 
                     return Response({"message": "Ticket rating submitted successfully"})
