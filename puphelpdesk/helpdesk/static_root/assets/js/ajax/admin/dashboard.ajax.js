@@ -310,11 +310,10 @@ ticketCount = () => {
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
             const data = result;
-            $('#response_ticket').html(data.replied);
+            $('#pending_ticket').html(data.pending);
             $('#open_ticket').html(data.open);
-            $('#closed_ticket').html(data.closed);
+            $('#resolved_ticket').html(data.resolved);
             $('#total_ticket').html(data.totalticket);
-            $('#total_messages').html(data.totalticketcomment);
         },
     })
     .fail(() => {

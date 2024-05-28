@@ -178,8 +178,18 @@ getAllTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const date = data.resolved_Date;
-                        return `${formatPostgresTimestamp(date)}`;
+                        let content = '';
+                        if (data === null || data.resolved_Date === null) {
+                            content = ''; // Return empty string if data or resolved_Date is null
+                        } else {
+                            const date = formatPostgresTimestamp(data.resolved_Date);
+                            content = `${date}`;
+                        }
+                        // Add feedback button if status is 'Closed' and closed by Admin
+                        if (data.ticket_Status === 'Closed' && data.closed_By === 'Admin') {
+                            content += `<br><a href="{% url 'feedback' %}?ticket_number=${data.ticket_Number}" class="btn btn-sm btn-primary mt-2">Provide Feedback</a>`;
+                        }
+                        return content;
                     },
                 },
             ],
@@ -340,8 +350,18 @@ getSorted = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        const date = data.resolved_Date;
-                        return `${formatPostgresTimestamp(date)}`;
+                        let content = '';
+                        if (data === null || data.resolved_Date === null) {
+                            content = ''; // Return empty string if data or resolved_Date is null
+                        } else {
+                            const date = formatPostgresTimestamp(data.resolved_Date);
+                            content = `${date}`;
+                        }
+                        // Add feedback button if status is 'Closed' and closed by Admin
+                        if (data.ticket_Status === 'Closed' && data.closed_By === 'Admin') {
+                            content += `<br><a href="{% url 'feedback' %}?ticket_number=${data.ticket_Number}" class="btn btn-sm btn-primary mt-2">Provide Feedback</a>`;
+                        }
+                        return content;
                     },
                 },
             ],

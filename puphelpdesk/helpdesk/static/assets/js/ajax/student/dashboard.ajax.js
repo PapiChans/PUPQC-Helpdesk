@@ -172,10 +172,10 @@ getTicket = () => {
                 },
                 {
                     data: null,
-                    class: 'text-center',
+                    class: 'text-left',
                     render: (data) => {
                         const title = data.ticket_Title
-                        return `${title}`
+                        return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">${title}</h3>`
                     },
                 },
                 {
@@ -183,22 +183,69 @@ getTicket = () => {
                     class: 'text-center',
                     width: '10%',
                     render: (data) => {
-                        let status = data.ticket_Status
-                        if (data.ticket_Status == 'Open'){
-                            status = '<span class="badge bg-success text-success-fg">Open</span>'
+                        let status = data.ticket_Status;
+                        let badgeClass = '';
+                        
+                        switch(status) {
+                            case 'Pending':
+                                badgeClass = 'badge bg-silver text-silver-fg';
+                                break;
+                            case 'Open':
+                                badgeClass = 'badge bg-yellow text-yellow-fg';
+                                break;
+                            case 'In Progress':
+                                badgeClass = 'badge bg-cyan text-cyan-fg';
+                                break;
+                            case 'Approval':
+                                badgeClass = 'badge bg-blue text-blue-fg';
+                                break;
+                            case 'On Hold':
+                                badgeClass = 'badge bg-orange text-orange-fg';
+                                break;
+                            case 'Resolved':
+                                badgeClass = 'badge bg-green text-green-fg';
+                                break;
+                            case 'Closed':
+                                badgeClass = 'badge bg-black text-black-fg';
+                                break;
+                            default:
+                                badgeClass = 'badge bg-danger text-danger-fg';
                         }
-                        else if (data.ticket_Status == 'Replied') {
-                            status = `<span class="badge bg-warning text-warning-fg">Replied</span>`
-                        }
-                        else if (data.ticket_Status == 'Closed') {
-                            status = `<span class="badge bg-secondary text-secondary-fg">Closed</span>`
-                        }
-                        else {
-                            status = `<span class="badge bg-danger text-danger-fg">Unknown</span>`
-                        }
-                        return `${status}`
+                        
+                        return `<span class="${badgeClass}">${status}</span>`;
                     },
                 },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                    let ticket_Priority = data.ticket_Priority;
+                    let badgeClass = '';
+
+                    switch(ticket_Priority) {
+                        case 'Unassigned':
+                            badgeClass = 'badge bg-secondary text-secondary-fg';
+                            break;
+                        case 'Low':
+                            badgeClass = 'badge bg-blue text-blue-fg'; // You can choose your preferred color
+                            break;
+                        case 'Mid':
+                            badgeClass = 'badge bg-green text-green-fg'; // You can choose your preferred color
+                            break;
+                        case 'High':
+                            badgeClass = 'badge bg-orange text-orange-fg'; // You can choose your preferred color
+                            break;
+                        case 'Urgent':
+                            badgeClass = 'badge bg-red text-red-fg'; // You can choose your preferred color
+                            break;
+                        default:
+                            badgeClass = 'badge bg-danger text-danger-fg'; // Default color if priority is unknown
+                    }
+
+                    return `<span class="${badgeClass}">${ticket_Priority}</span>`;
+                    },
+                },           
                 {
                     data: null,
                     width: '10%',
@@ -213,12 +260,22 @@ getTicket = () => {
                     width: '10%',
                     class: 'text-center',
                     render: (data) => {
-                        return `<button type="button" class="btn btn-primary waves-effect waves-light" onclick="getTicketInfoAndNavigate('${data.ticket_Number}')">View</button></a>
-                                `
-                    },
-                },
+                        let content = '';
+                        if (data === null || data.resolved_Date === null) {
+                            content = ''; // Return empty string if data or resolved_Date is null
+                        } else {
+                            const date = formatPostgresTimestamp(data.resolved_Date);
+                            content = `${date}`;
+                        }
+                        // Add feedback button if status is 'Closed' and closed by Admin
+                        if (data.ticket_Status === 'Closed' && data.closed_By === 'Admin') {
+                            content += `<br><a href="{% url 'feedback' %}?ticket_number=${data.ticket_Number}" class="btn btn-sm btn-primary mt-2">Provide Feedback</a>`;
+                        }
+                        return content;
+                    }
+                }                
             ],
-            order: [[3, 'desc']],
+            order: [[4, 'desc']],
         })
     }
 }

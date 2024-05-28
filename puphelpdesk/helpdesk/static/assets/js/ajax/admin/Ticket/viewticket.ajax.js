@@ -72,6 +72,7 @@ getTicketInfo = (ticket_Number) => {
             $('#ticket_Number_info').html(data.ticket_Number);
             $('#ticket_full_Name_info').html(data.full_Name);
             $('#ticket_Title_info').html(data.ticket_Title);
+            $('#ticket_Status_info').html(`<span class="badge bg-secondary">${data.ticket_Status}</span>`);
             $('#ticket_Date_info').html(formatPostgresTimestamp(data.date_Created));
             $('#ticket_Service_info').html(data.ticket_Service);
             $('#ticket_Type_info').html(data.ticket_Type);
@@ -127,8 +128,8 @@ getTicketInfo = (ticket_Number) => {
             </div>
             `;
             
-            let closedformat = `<h2 class="text-center">Ticket Closed</h2>
-            <p class="text-center">This ticket is closed.</p>
+            let closedformat = `<h2 class="text-center">Ticket Resolved</h2>
+            <p class="text-center">This ticket is resolved.</p>
             `
 
             if (data.ticket_Status == 'Open'){
@@ -138,7 +139,7 @@ getTicketInfo = (ticket_Number) => {
                 formshoworhide.html(null)
                 formshoworhide.append(openformat)
             }
-            else if (data.ticket_Status == 'Closed'){
+            else if (data.ticket_Status == 'Resolved'){
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
@@ -263,12 +264,10 @@ editTicket = (ticket_Id) => {
         $('#edit_Submit').prop('disabled', true);
         
         const ticket_Office = $('#edit_ticket_Office').val();
-        const ticket_Status = $('#edit_ticket_Status').val();
         const ticket_Id = $('#ticket_Id_info').val();
 
         const data = {
             ticket_Office: ticket_Office,
-            ticket_Status: ticket_Status,
         };
         
         $.ajax({

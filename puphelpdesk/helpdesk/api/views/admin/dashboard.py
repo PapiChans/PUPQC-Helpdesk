@@ -156,14 +156,14 @@ def adminTicketStatusChart(request):
                 .annotate(count=Count('ticket_Status'))
             )
 
+            pending_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Pending')
             open_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Open')
-            replied_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Replied')
-            closed_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Closed')
+            resolved_count = sum(item['count'] for item in data if item['ticket_Status'] == 'Resolved')
 
             response_data = [
+                {'value': pending_count, 'name': 'Pending'},
                 {'value': open_count, 'name': 'Open'},
-                {'value': replied_count, 'name': 'Replied'},
-                {'value': closed_count, 'name': 'Closed'},
+                {'value': resolved_count, 'name': 'Resolved'},
             ]
             return Response(response_data)
         return Response({"message": "Get Ticket Chart Error"})
@@ -180,21 +180,18 @@ def adminGetTicketCount(request):
                 .annotate(count=Count('ticket_Status'))
             )
 
-            totalticketdata = Ticket.objects.all()
-            ticketcommentcountdata = TicketComment.objects.all()
+            alldata = Ticket.objects.all()
 
+            pending_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Pending')
             open_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Open')
-            replied_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Replied')
-            closed_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Closed')
-            totalticket_data = totalticketdata.count()
-            ticket_comment_count = ticketcommentcountdata.count()
+            resolved_count = sum(item['count'] for item in ticketdata if item['ticket_Status'] == 'Resolved')
+            totalticket_data = alldata.count()
 
             response_data = {
+                "pending": pending_count,
                 "open": open_count,
-                "replied": replied_count,
-                "closed": closed_count,
+                "resolved": resolved_count,
                 "totalticket": totalticket_data,
-                "totalticketcomment": ticket_comment_count,
             }
             return Response(response_data)
         return Response({"message": "Get Ticket Count Error"})

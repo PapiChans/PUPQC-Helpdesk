@@ -161,6 +161,7 @@ def adminAddTicketComment(request):
                 serializer.save()
                 send_email_replied(user_profile.user_Email, full_Name, ticket_info.ticket_Number)
                 ticket = Ticket.objects.get(pk=ticket_Id)
+                ticket.ticket_Status = 'Open'
                 ticket.save()
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})
@@ -285,13 +286,7 @@ def adminEditTicket(request, ticket_Id):
         if admin_profile.is_master_admin:
             ticket_Office = request.POST.get('ticket_Office')
             ticket.ticket_Office = ticket_Office
-        
-        ticket_Status = request.POST.get('ticket_Status')
-        ticket.ticket_Status = ticket_Status
-
-        if ticket_Status == "Resolved":
-            ticket.resolved_Date = datetime.now()
-
+            
         ticket.save()
         
         return Response({"message": "Edit Ticket Successfully"})

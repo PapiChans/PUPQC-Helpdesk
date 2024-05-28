@@ -1333,3 +1333,8 @@
 - Add and Advanced Ticket and Ratings Sorting (Admin)
 - Minor HTML Fixes and Revisions
 - Update API Views
+
+# 0.7.25
+- Push by Christian (https://github.com/papichans)
+- Update the Dashboard for Ticket Analytics
+- Revise the Possible Bug and Minor Adjustments on Ticket
