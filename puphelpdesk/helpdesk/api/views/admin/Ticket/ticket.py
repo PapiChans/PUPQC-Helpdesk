@@ -59,6 +59,46 @@ def send_email_replied(user_Email, full_Name, ticket_number):
     # Send the email
     msg.send(fail_silently=True)
 
+def send_assigned_ticket_notification(admin_Emails, admin_Office, ticket_number):
+    subject = 'New Ticket Re-Assigned'
+    html_content = """
+<html>
+<head>
+    <style>
+        .paragraph {{
+            margin-bottom: 20px;
+        }}
+        .working-hours {{
+            font-weight: bold;
+        }}
+        .app-team {{
+            font-weight: bold;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="paragraph">This is an auto-generated email, <strong>DO NOT REPLY.</strong></p>
+                <p class="paragraph">Dear {admin_Office} - Administrator,</p>
+                <p class="paragraph">A new ticket has been moved and re-assigned to your office.</p>
+                <p class="paragraph"><strong>Ticket Number:</strong> <span style="font-size: 20px;">{ticket_number}</span></p>
+                <p class="paragraph">Please review the ticket and take appropriate action.</p>
+                <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Help Desk Administrator</strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+""".format(admin_Office=admin_Office, ticket_number=ticket_number)
+
+    # Create EmailMultiAlternatives object to include both HTML and plain text content
+    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, admin_Emails)
+    msg.attach_alternative(html_content, "text/html")
+    # Send the email
+    msg.send(fail_silently=True)
+
 @api_view(['GET'])
 def adminGetPendingTicket(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -159,7 +199,7 @@ def adminAddTicketComment(request):
             serializer = TicketCommentSerializer(data=comment)
             if serializer.is_valid():
                 serializer.save()
-                send_email_replied(user_profile.user_Email, full_Name, ticket_info.ticket_Number)
+                send_email_replied(user_profile.user_Email, ticket_info.full_Name, ticket_info.ticket_Number)
                 ticket = Ticket.objects.get(pk=ticket_Id)
                 ticket.ticket_Status = 'Open'
                 ticket.save()
@@ -282,10 +322,18 @@ def adminEditTicket(request, ticket_Id):
     
     if request.method == "PUT":
         ticket = Ticket.objects.get(pk=ticket_Id)
+
+        # Get Admins Email
+        getAdmins = AdminProfile.objects.filter(admin_Office=ticket.ticket_Office).values_list('admin_Email', flat=True)
+        print("Admin Emails:", getAdmins)  # Print admin emails for debugging
         
         if admin_profile.is_master_admin:
             ticket_Office = request.POST.get('ticket_Office')
             ticket.ticket_Office = ticket_Office
+            # If no admins are fetched, don't trigger the email notification
+            if getAdmins:
+                # Send notification to all admins
+                send_assigned_ticket_notification(getAdmins, ticket.ticket_Office, ticket.ticket_Number)
             
         ticket.save()
         

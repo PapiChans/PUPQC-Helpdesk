@@ -486,7 +486,7 @@ TicketReOpen = () => {
     Swal.fire({
         title: 'Re-Open the ticket',
         html: 'Are you sure do you want to Re-Open the ticket?',
-        icon: 'warning',
+        icon: 'question',
         allowEnterKey: 'false',
         allowOutsideClick: 'false',
         allowEscapeKey: 'false',

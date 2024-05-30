@@ -56,8 +56,8 @@ getTopicInfo = (topic_Number) => {
                 htmlContent = converter.makeHtml(data.topic_Content);
             $('#topic_Content').html(htmlContent);
             
-            $('#get_Date_Created').html(formatPostgresTimestamp(data.date_Created))
-            $('#get_Last_Modified').html(formatPostgresTimestamp(data.last_modified))
+            $('#get_Date_Created').html(formatPostgresTimestamp(data.date_Created) + ` (${formatTimeAgo(data.date_Created)})`)
+            $('#get_Last_Modified').html(formatPostgresTimestamp(data.last_modified) + ` (${formatTimeAgo(data.date_Created)})`)
 
             
         },
@@ -175,3 +175,36 @@ function handleNoClick() {
 }
 
 
+// Time difference Function
+function formatTimeAgo(timestamp) {
+    var currentTime = new Date();
+    var jsDate = new Date(timestamp);
+    var timeDifference = currentTime.getTime() - jsDate.getTime();
+
+    var secondsDifference = Math.floor(timeDifference / 1000);
+    var minutesDifference = Math.floor(secondsDifference / 60);
+    var hoursDifference = Math.floor(minutesDifference / 60);
+    var daysDifference = Math.floor(hoursDifference / 24);
+    var weeksDifference = Math.floor(daysDifference / 7);
+    var monthsDifference = Math.floor(daysDifference / 30);
+    var yearsDifference = Math.floor(daysDifference / 365);
+
+    var result;
+    if (yearsDifference > 0) {
+        result = yearsDifference + (yearsDifference === 1 ? " year ago" : " years ago");
+    } else if (monthsDifference > 0) {
+        result = monthsDifference + (monthsDifference === 1 ? " month ago" : " months ago");
+    } else if (weeksDifference > 0) {
+        result = weeksDifference + (weeksDifference === 1 ? " week ago" : " weeks ago");
+    } else if (daysDifference > 0) {
+        result = daysDifference + (daysDifference === 1 ? " day ago" : " days ago");
+    } else if (hoursDifference > 0) {
+        result = hoursDifference + (hoursDifference === 1 ? " hour ago" : " hours ago");
+    } else if (minutesDifference > 0) {
+        result = minutesDifference + (minutesDifference === 1 ? " minute ago" : " minutes ago");
+    } else {
+        result = "Just now";
+    }
+
+    return result;
+}

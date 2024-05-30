@@ -1338,3 +1338,10 @@
 - Push by Christian (https://github.com/papichans)
 - Update the Dashboard for Ticket Analytics
 - Revise the Possible Bug and Minor Adjustments on Ticket
+
+# 0.7.26
+- Push by Christian (https://github.com/papichans)
+- Add Emails Sending for Assigning and Re-assigning Tickets
+- Adjust ticket pages for full functionality
+- Minor Changes on Ticket Pages
+- Add Time-ago in Knowledgebase

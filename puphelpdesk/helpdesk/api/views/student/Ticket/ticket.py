@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerializer
-from api.models import Ticket, TicketComment, FAQ, UserProfile
+from api.models import Ticket, TicketComment, FAQ, AdminProfile
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
@@ -14,8 +14,9 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 
-def send_email_to_owner(user_Email, full_Name, ticket_number):
-    subject = 'Your Ticket has been created'
+
+def send_assigned_ticket_notification(admin_Emails, admin_Office, ticket_number):
+    subject = 'New Ticket Assigned'
     html_content = """
 <html>
 <head>
@@ -35,22 +36,21 @@ def send_email_to_owner(user_Email, full_Name, ticket_number):
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="paragraph">This is an auto-generated E-mail, <strong>DO NOT REPLY.</strong></p>
-                <p class="paragraph">Dear {full_Name},</p>
-                <p class="paragraph">Thank you for creating a ticket. Your request has been received and will be reviewed shortly.</p>
+                <p class="paragraph">This is an auto-generated email, <strong>DO NOT REPLY.</strong></p>
+                <p class="paragraph">Dear {admin_Office} - Administrator,</p>
+                <p class="paragraph">A new ticket has been assigned to your office.</p>
                 <p class="paragraph"><strong>Ticket Number:</strong> <span style="font-size: 20px;">{ticket_number}</span></p>
-                <p class="paragraph">The Administrator will process your ticket during our <strong class="working-hours">working hours</strong>, Monday to Saturday, from 8:00 AM to 5:00 PM.</p>
-                <p class="paragraph">Thank you for your patience and cooperation.</p>
-                <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
+                <p class="paragraph">Please review the ticket and take appropriate action.</p>
+                <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Help Desk Administrator</strong></p>
             </div>
         </div>
     </div>
 </body>
 </html>
-""".format(full_Name=full_Name, ticket_number=ticket_number)
+""".format(admin_Office=admin_Office, ticket_number=ticket_number)
 
     # Create EmailMultiAlternatives object to include both HTML and plain text content
-    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
+    msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, admin_Emails)
     msg.attach_alternative(html_content, "text/html")
     # Send the email
     msg.send(fail_silently=True)
@@ -63,72 +63,90 @@ def studAddTicket(request):
         return Response({"message": "Not Authenticated"})
 
     if request.method == "POST":
-        # Fetching the current date
-        today = timezone.now().date()
+        try:
+            # Fetching the current date
+            today = timezone.now().date()
 
-        # Get the count of tickets created today
-        ticket_count_today = Ticket.objects.filter(date_Created__date=today).count() + 1
+            # Get the count of tickets created today
+            ticket_count_today = Ticket.objects.filter(date_Created__date=today).count() + 1
 
-        # Generate the ticket number
-        ticket_Number = f'T{today.strftime("%Y%m%d")}-{str(ticket_count_today).zfill(3)}'
+            # Generate the ticket number
+            ticket_Number = f'T{today.strftime("%Y%m%d")}-{str(ticket_count_today).zfill(3)}'
 
-        user_Id = request.data.get('user_Id')  # Changed to request.data
-        full_Name = request.data.get('full_Name')  # Changed to request.data
-        sender_Affiliation = request.data.get('sender_Affiliation')  # Changed to request.data
-        ticket_Type = request.data.get('ticket_Type')  # Changed to request.data
-        ticket_Priority = request.data.get('ticket_Priority')
-        ticket_Title = request.data.get('ticket_Title')  # Changed to request.data
-        comment_Text = request.data.get('comment_Text')  # Changed to request.data
-        comment_Attachment = request.data.get('comment_Attachment')
-        ticket_Office = request.data.get('ticket_Office')  # Get ticket office
-        ticket_Service = request.data.get('ticket_Service')
+            user_Id = request.data.get('user_Id')
+            full_Name = request.data.get('full_Name')
+            sender_Affiliation = request.data.get('sender_Affiliation')
+            ticket_Type = request.data.get('ticket_Type')
+            ticket_Priority = request.data.get('ticket_Priority')
+            ticket_Title = request.data.get('ticket_Title')
+            comment_Text = request.data.get('comment_Text')
+            comment_Attachment = request.data.get('comment_Attachment')
+            ticket_Office = request.data.get('ticket_Office')
+            ticket_Service = request.data.get('ticket_Service')
 
-        # Get User's Email
-        getUser = UserProfile.objects.get(user_Id=user_Id)
+            if 'comment_Attachment' in request.FILES:
+                comment_Attachment = request.FILES['comment_Attachment']
+            else:
+                comment_Attachment = None
 
-        if 'comment_Attachment' in request.FILES:
-            comment_Attachment = request.FILES['comment_Attachment']
-        else:
-            comment_Attachment = None
-
-        ticket_data = {
-            'user_Id': user_Id,
-            'full_Name': full_Name,
-            'sender_Affiliation': sender_Affiliation,
-            'ticket_Type': ticket_Type,
-            'ticket_Number': ticket_Number,
-            'ticket_Status': 'Pending',
-            'ticket_Priority': ticket_Priority,
-            'ticket_Title': ticket_Title,
-            'ticket_Office': ticket_Office,
-            'ticket_Service': ticket_Service,
-        }
-        serializer = TicketSerializer(data=ticket_data)
-        if serializer.is_valid():
-            ticket_instance = serializer.save()
-
-            # Retrieve the ticket using the saved ticket instance
-            ticket_number = ticket_instance.ticket_Number
-
-            comment_data = {
+            ticket_data = {
                 'user_Id': user_Id,
                 'full_Name': full_Name,
                 'sender_Affiliation': sender_Affiliation,
-                'ticket_Id': ticket_instance.ticket_Id,
                 'ticket_Type': ticket_Type,
-                'comment_Text': comment_Text,
-                'comment_Attachment': comment_Attachment,
+                'ticket_Number': ticket_Number,
+                'ticket_Status': 'Pending',
+                'ticket_Priority': ticket_Priority,
+                'ticket_Title': ticket_Title,
+                'ticket_Office': ticket_Office,
+                'ticket_Service': ticket_Service,
             }
-            comment_serializer = TicketCommentSerializer(data=comment_data)
-            if comment_serializer.is_valid():
-                # Save the ticket comment
-                comment_serializer.save()
-                # send_email_to_owner(getUser.user_Email, full_Name, ticket_number)
-                return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})
+            serializer = TicketSerializer(data=ticket_data)
+            if serializer.is_valid():
+                ticket_instance = serializer.save()
 
-        return Response({"message": "Submit Ticket Failed"})
+                # Retrieve the ticket using the saved ticket instance
+                ticket_number = ticket_instance.ticket_Number
+
+                comment_data = {
+                    'user_Id': user_Id,
+                    'full_Name': full_Name,
+                    'sender_Affiliation': sender_Affiliation,
+                    'ticket_Id': ticket_instance.ticket_Id,
+                    'ticket_Type': ticket_Type,
+                    'comment_Text': comment_Text,
+                    'comment_Attachment': comment_Attachment,
+                }
+                comment_serializer = TicketCommentSerializer(data=comment_data)
+                if comment_serializer.is_valid():
+                    # Save the ticket comment
+                    comment_serializer.save()
+
+                    # Get Admins Email
+                    getAdmins = AdminProfile.objects.filter(admin_Office=ticket_Office).values_list('admin_Email', flat=True)
+                    print("Admin Emails:", getAdmins)  # Print admin emails for debugging
+
+                    # If no admins are fetched, don't trigger the email notification
+                    if getAdmins:
+                        # Send notification to all admins
+                        send_assigned_ticket_notification(getAdmins, ticket_Office, ticket_number)
+                    
+                    return Response({"message": "Submit Ticket and Comment Successfully", "ticket_Number": ticket_number})
+                else:
+                    print("Comment serializer errors:", comment_serializer.errors)
+                    return Response({"message": "Submit Ticket Failed"})
+
+            else:
+                print("Ticket serializer errors:", serializer.errors)
+                return Response({"message": "Submit Ticket Failed"})
+
+        except Exception as e:
+            print("Error:", e)  # Print error for debugging
+            return Response({"message": "Submit Ticket Error"})
 
     return Response({"message": "Submit Ticket Error"})
+
+
     
 @api_view(['GET'])
 def studGetTicketbyUser(request):

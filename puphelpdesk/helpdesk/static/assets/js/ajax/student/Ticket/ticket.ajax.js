@@ -234,7 +234,7 @@ addTicket = (CommentAttachment) => {
         Swal.fire({
             title: 'Attention',
             text: 'Once you submit your ticket, you cannot edit this anymore. Please review the following details carefully before submitting your message.',
-            icon: 'warning',
+            icon: 'question',
             confirmButtonText: 'Submit',
             cancelButtonText: 'Cancel',
             showCancelButton: true,
@@ -272,9 +272,10 @@ addTicket = (CommentAttachment) => {
                             $('#ticket_Submit').prop('disabled', false);
                             $('#AddTicketModal').modal('hide'); // Close modal
                             $('#AddTicketForm')[0].reset(); // Clear form
-                            const dt = $('#ticket-datatable').DataTable();
-                            dt.clear().destroy(); // Destroy the existing DataTable instance
-                            getTicket(); // Reload data table
+                            // const dt = $('#ticket-datatable').DataTable();
+                            // dt.clear().destroy(); // Destroy the existing DataTable instance
+                            // getTicket(); // Reload data table
+                            location.reload();
                         } else {
                             Swal.fire({
                                 title: 'Oops!',
