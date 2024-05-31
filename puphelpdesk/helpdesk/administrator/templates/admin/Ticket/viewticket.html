@@ -7,7 +7,16 @@
 {% endblock %}
 
 {% block maincontent %}
-<h2 class="header-title">Ticket Info</h2>
+<div class="row">
+    <div class="col-10">
+        <h2 class="header-title">Ticket Info</h2>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            Search
+        </button>
+    </div>
+</div>
 </div>
 </div>
 <div class="card">
@@ -98,6 +107,26 @@
         </form>
     </div>
 </div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Search</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="row mt-3 mb-3">
+            <div class="col-lg-8">
+                <input type="text" class="form-control mb-2" id="knowledge_Keyword" placeholder="Search" required/>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="searchKnowledge()" class="btn btn-primary btn-md mb-2" id="knowledge_Search">Search</button>
+            </div>
+        </div>
+        <h4 class="text-center" id="no_Knowledge"></h4>
+        <div id="knowledge_display" class="accordion">
+  
+        </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block customjs %}
@@ -105,5 +134,6 @@
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/showdownjs/showdown.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/Ticket/viewticket.ajax.js' %}"></script>
 {% endblock %} 

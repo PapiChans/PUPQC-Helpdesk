@@ -532,3 +532,75 @@ TicketReOpen = () => {
         }
     })
 }
+
+searchKnowledge = () => {
+    $('#no_Knowledge').html("Searching...");
+    let knowledge_display = $('#knowledge_display')
+
+    $('#knowledge_Search').prop('disabled', true);
+    const knowledge_Keyword = $('#knowledge_Keyword').val();
+
+    const data = {
+        knowledge_Keyword: knowledge_Keyword
+    }
+
+    if (!knowledge_Keyword || knowledge_Keyword.trim() === '') {
+        $('#no_Knowledge').html("Keywords is Empty.");
+        $('#knowledge_Search').prop('disabled', false);
+    }
+    else {
+
+        knowledge_display.html(null)
+
+        $.ajax({
+            type: 'POST',
+            url: `/api/guest/searchKnowledge/${knowledge_Keyword}`,
+            data: data,
+            dataType: 'json',
+            cache: false,
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                notyf.dismissAll();
+                const data = result;
+                if (data.length > 0) {
+                    data.forEach((data) => {
+
+                        // Convert Markdown content to HTML using ShowdownJS
+                        var converter = new showdown.Converter(),
+                        htmlContent = converter.makeHtml(data.topic_Content);
+
+                        let knowledgeformat = `
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${data.topic_Number}" aria-expanded="true"><h4>${data.topic_Name}</h4></button>
+                            </div>
+                            <div id="${data.topic_Number}" class="accordion-collapse collapse" data-bs-parent="#faq">
+                                <div class="accordion-body pt-0">
+                                ${htmlContent}
+                                </div>
+                            </div>
+                        </div>
+                            `;
+
+                        knowledge_display.append(knowledgeformat)
+                        $('#no_Knowledge').html('Search Results for: '+ knowledge_Keyword);
+                        $('#knowledge_Search').prop('disabled', false);
+
+                    });
+                }
+                else {
+                    $('#no_Knowledge').html("Search No Results");
+                    $('#knowledge_Search').prop('disabled', false);
+                }
+            },
+        })
+        .fail(() => {
+            notyf.error({
+                message: 'Knowledge Fetched Error',
+                position: {x:'right',y:'top'},
+                duration: 2500
+            });
+            $('#knowledge_Search').prop('disabled', false);
+        })
+    }
+}

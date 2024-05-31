@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view
 from api.serializers import KBTopicSerializer, KBFolderSerializer
 from api.models import KBFolder, KBTopic
 
+# For Searching Query
+from django.db.models import Q
     
 @api_view(['GET'])
 def guestGetKBFolder(request):
@@ -82,3 +84,17 @@ def guestPUTKBTopicDislike(request, topic_Number):
         return Response({"message": "Dislike Topic Error"})
     else:
         return Response({"message": "Not Authenticated"})
+    
+@api_view(['POST'])
+def guestSearchKnowledge(request, knowledge_Keyword):
+        if request.method == "POST":
+            knowledge_Keyword = request.data.get('knowledge_Keyword')
+            if not knowledge_Keyword:
+                return Response({"message": "Keyword is empty"})
+            data = KBTopic.objects.filter(
+                Q(topic_Name__icontains=knowledge_Keyword) |
+                Q(topic_Content__icontains=knowledge_Keyword)
+            ).order_by('date_Created')
+            serializer = KBTopicSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Invalid HTTP method"})

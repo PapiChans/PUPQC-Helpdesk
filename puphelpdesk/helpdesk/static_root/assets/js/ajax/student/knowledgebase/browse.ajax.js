@@ -238,3 +238,81 @@ getTable = (folder_Id) => {
         })
     }
 }
+
+searchKnowledge = () => {
+    const dt = $('#topic-datatable');
+    const knowledgeKeyword = $('#knowledge_Keyword').val().trim();
+
+    if (!knowledgeKeyword) {
+        $('#no_Knowledge').html("Keywords is Empty.");
+        $('#knowledge_Search').prop('disabled', false);
+        return;
+    }
+
+    $('#no_Knowledge').html("Searching...");
+    $('#knowledge_Search').prop('disabled', true);
+
+    $.ajaxSetup({
+        headers: {'X-CSRFToken': csrftoken}
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: `/api/guest/searchKnowledge/${knowledgeKeyword}`,
+        data: JSON.stringify({knowledge_Keyword: knowledgeKeyword}), // Convert data to JSON string
+        contentType: 'application/json', // Specify content type
+        dataType: 'json', // Specify data type
+        success: function(response) {
+            $('#no_Knowledge').html(""); // Clear previous search message
+            if (response.length === 0) {
+                $('#no_Knowledge').html("No knowledge found.");
+            } else {
+                // Clear existing DataTable
+                dt.DataTable().clear().destroy();
+                // Reinitialize DataTable with new data and columns
+                dt.DataTable({
+                    data: response,
+                    columns: [
+                        { 
+                            data: 'topic_Name', 
+                            class: 'text-left', 
+                            width: '10%',
+                            render: function(data, type, row) {
+                                const topicNumber = row.topic_Number;
+                                return `<h3 style="cursor: pointer;" class="text-primary" onclick="getTopicInfoAndNavigate('${topicNumber}')">${truncateText(data, 25)}</h3>`;
+                            }
+                        },
+                        { data: 'created_by', class: 'text-center', width: '10%' },
+                        { 
+                            data: 'status', 
+                            class: 'text-center', 
+                            width: '10%',
+                            render: function(data) {
+                                let badgestatus = '';
+                                if (data == 'Draft'){
+                                    badgestatus = '<span class="badge bg-warning">Draft</span>';
+                                } else if (data == 'Unpublished'){
+                                    badgestatus = '<span class="badge bg-danger">Unpublished</span>';
+                                } else if (data == 'Published'){
+                                    badgestatus = '<span class="badge bg-success">Published</span>';
+                                }
+                                return badgestatus;
+                            }
+                        },
+                        { data: 'date_Created', class: 'text-center', width: '10%',
+                          render: (data) => formatPostgresTimestamp(data)
+                        }
+                    ],
+                    order: [[0, 'asc']]
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+            $('#no_Knowledge').html("Error occurred while searching.");
+        },
+        complete: function() {
+            $('#knowledge_Search').prop('disabled', false); // Enable search button after request completion
+        }
+    });
+}

@@ -411,6 +411,7 @@ urlpatterns = [
     path('admin/getKBTopicInfo/<topic_Number>', views.adminGetKBTopicInfo),
     path('admin/editKBTopic/<topic_Number>', views.adminEditKBTopic),
     path('admin/deleteKBTopic/<topic_Number>', views.adminDeleteKBTopic),
+    path('admin/searchKnowledge/<knowledge_Keyword>', views.adminSearchKnowledge),
 
     #----------------------
     # GUEST API URLS
@@ -424,4 +425,5 @@ urlpatterns = [
     path('guest/getKBTopicInfo/<topic_Number>', views.guestGetKBTopicInfo),
     path('guest/putKBTopicLike/<topic_Number>', views.guestPUTKBTopicLike),
     path('guest/putKBTopicDislike/<topic_Number>', views.guestPUTKBTopicDislike),
+    path('guest/searchKnowledge/<knowledge_Keyword>', views.guestSearchKnowledge),
 ]

@@ -17,6 +17,15 @@
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFolderModal">Add Folder</button>
         <a href="{% url 'admin/knowledgebase/create' %}"><button class="btn btn-info" >Add Topic</button></a>
     </div>
+</div>
+<div class="row justify-content-center mt-3">
+    <div class="col-lg-8">
+        <input type="text" class="form-control mb-2" id="knowledge_Keyword" placeholder="Search" required/>
+    </div>
+    <div class="col-md-auto">
+        <button onclick="searchKnowledge()" class="btn btn-primary btn-md mb-2" id="knowledge_Search">Search</button>
+    </div>
+    <h4 class="text-center" id="no_Knowledge"></h4>
 </div>    
 </div>
 </div>

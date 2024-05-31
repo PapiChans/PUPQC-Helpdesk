@@ -6,6 +6,9 @@ import random
 import string
 from django.utils import timezone
 
+# For Searching Query
+from django.db.models import Q
+
 @api_view(['POST'])
 def adminAddKBTopic(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -113,3 +116,20 @@ def adminDeleteKBTopic(request, topic_Number):
             topic.delete()
             return Response({"code": "200", "message": "Delete Topic Success"})
         return Response({"message": "Delete Topic Error"})
+
+@api_view(['POST'])
+def adminSearchKnowledge(request, knowledge_Keyword):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "POST":
+            knowledge_Keyword = request.data.get('knowledge_Keyword')
+            if not knowledge_Keyword:
+                return Response({"message": "Keyword is empty"})
+            data = KBTopic.objects.filter(
+                Q(topic_Name__icontains=knowledge_Keyword) |
+                Q(topic_Content__icontains=knowledge_Keyword)
+            ).order_by('date_Created')
+            serializer = KBTopicSerializer(data, many=True)
+            return Response(serializer.data)
+        return Response({"message": "Invalid HTTP method"})
