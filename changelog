@@ -1345,3 +1345,8 @@
 - Adjust ticket pages for full functionality
 - Minor Changes on Ticket Pages
 - Add Time-ago in Knowledgebase
+
+# 0.7.27
+- Push by Christian (https://github.com/papichans)
+- Add Email sending on Ticket Rating
+- Enhanced Office Filter

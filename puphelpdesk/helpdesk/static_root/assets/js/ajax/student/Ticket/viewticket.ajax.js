@@ -424,6 +424,7 @@ submitRating = () => {
             confirmButtonColor: '#D40429',
         }).then((result) => {
             if (result.isConfirmed) {
+                $('#rating_Submit').prop('disabled', true);
                 $.ajax({
                     type: 'POST',
                     url: '/api/student/submitTicketRating',

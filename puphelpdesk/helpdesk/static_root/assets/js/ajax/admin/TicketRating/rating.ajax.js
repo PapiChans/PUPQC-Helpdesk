@@ -36,6 +36,8 @@ superadminblocker = () => {
         success: (result) => {
             const profiledata = result;
             if (profiledata.is_master_admin == false){
+                $('#ticket_office').html(null);
+                $('#ticket_office').html(`<option value="${profiledata.admin_Office}">${profiledata.admin_Office}</option>`);
                 $('#ticket_office').val(profiledata.admin_Office);
                 $('#ticket_office').prop('disabled', true);
             }
