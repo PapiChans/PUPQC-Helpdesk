@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.utils import timezone
-from api.serializers import TicketRatingSerializer
-from api.models import TicketRating, Ticket, AdminProfile
+from api.serializers import TicketRatingSerializer, AuditTrailSerializer
+from api.models import TicketRating, Ticket, AdminProfile, AuditTrail
 
 # For Email Sending
 from django.core.mail import send_mail
@@ -61,11 +61,11 @@ def studSubmitTicketRating(request):
 
             # Mapping ratings to descriptions
             rating_map = {
-                '1': 'Very Dissatisfied',
-                '2': 'Dissatisfied',
-                '3': 'Neutral',
-                '4': 'Satisfied',
-                '5': 'Very Satisfied'
+                '1': 'Poor',
+                '2': 'Fair',
+                '3': 'Average',
+                '4': 'Good',
+                '5': 'Excellent'
             }
 
             # Get the associated Ticket object
@@ -91,14 +91,19 @@ def studSubmitTicketRating(request):
                     ticket.resolved_Date = timezone.now().isoformat()
                     ticket.save()
 
+                    studRateTicketaudit(ticket.ticket_Number, ticket.full_Name)
+
                     # Get Admins Email
                     getAdmins = AdminProfile.objects.filter(admin_Office=ticket.ticket_Office).values_list('admin_Email', flat=True)
+                    getSuperAdmins = AdminProfile.objects.filter(is_master_admin=True).values_list('admin_Email', flat=True)
                     print("Admin Emails:", getAdmins)  # Print admin emails for debugging
 
                     # If no admins are fetched, don't trigger the email notification
                     if getAdmins:
                         # Send notification to all admins
                         send_ticket_rating_notification(getAdmins, ticket.ticket_Office, ticket_number, ticket_rating, rating_map.get(ticket_rating))
+                        send_ticket_rating_notification(getSuperAdmins, ticket.ticket_Office, ticket_number, ticket_rating, rating_map.get(ticket_rating))
+
 
                     return Response({"message": "Ticket rating submitted successfully"})
                 return Response(serializer.errors)
@@ -106,6 +111,19 @@ def studSubmitTicketRating(request):
                 return Response({"message": "Ticket does not exist"})
 
         return Response({"message": "Invalid request method"})
+    
+def studRateTicketaudit(ticket_Number, full_Name):
+
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Rated",
+        'audit_Description': f"Ticket {ticket_Number} has been rated."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
 
 @api_view(['PUT'])
 def studTicketReOpen(request, ticket_Number):

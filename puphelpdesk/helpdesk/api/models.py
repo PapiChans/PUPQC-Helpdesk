@@ -92,7 +92,8 @@ class AdminProfile(models.Model):
     admin_Gender = models.CharField(max_length=50, null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     admin_Office = models.CharField(max_length=100, null=True)
-    is_master_admin = models.BooleanField(default=False) 
+    is_master_admin = models.BooleanField(default=False)
+    is_technician = models.BooleanField(default=False) 
     class Meta:
         db_table = 'Admin Profile'
 
@@ -507,3 +508,13 @@ class TicketRating(models.Model):
     resolved_Date = models.DateTimeField(null=False)
     class Meta:
         db_table = 'Ticket Rating'
+
+class AuditTrail(models.Model):
+    audit_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    ticket_Number = models.CharField(max_length=15, null=False, default='')
+    audit_User = models.CharField(max_length=100, null=True)
+    audit_Action = models.CharField(max_length=30, null=False)
+    audit_Description = models.TextField(null=False)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Audit Trail'

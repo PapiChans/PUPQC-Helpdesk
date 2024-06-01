@@ -172,6 +172,8 @@ urlpatterns = [
     path('admin/getAdminManagement', views.adminGetAdminManagement),
     path('admin/addStudent', views.adminAddStudent),
     path('admin/addAdmin', views.adminAddAdmin),
+    path('admin/getOneAdminProfile/<uuid:profile_Id>', views.adminGetAdminProfile),
+    path('admin/editAdminProfile/<uuid:profile_Id>', views.adminEditAdminProfile),
 
     # General Info and Services: Resources
     path('admin/addCampusResources', views.adminAddCampusResources),
@@ -426,4 +428,14 @@ urlpatterns = [
     path('guest/putKBTopicLike/<topic_Number>', views.guestPUTKBTopicLike),
     path('guest/putKBTopicDislike/<topic_Number>', views.guestPUTKBTopicDislike),
     path('guest/searchKnowledge/<knowledge_Keyword>', views.guestSearchKnowledge),
+
+    # Audit Trail
+    path('admin/getAuditTrail/<ticket_Number>', views.adminGetAuditTrail),
+
+
+    #----------------------
+    # REPORTS API URLS
+    #----------------------
+
+    path('report/samplereport', views.GeneratePDF, name='report/samplereport')
 ]

@@ -179,3 +179,8 @@ class TicketRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = TicketRating
         fields = '__all__'
+
+class AuditTrailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AuditTrail
+        fields = '__all__'

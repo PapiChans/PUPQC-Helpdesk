@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.serializers import TicketSerializer, TicketCommentSerializer
-from api.models import Ticket, TicketComment, UserProfile, User, AdminProfile
+from api.serializers import TicketSerializer, TicketCommentSerializer, AuditTrailSerializer
+from api.models import Ticket, TicketComment, UserProfile, User, AdminProfile, AuditTrail
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
@@ -203,10 +203,24 @@ def adminAddTicketComment(request):
                 ticket = Ticket.objects.get(pk=ticket_Id)
                 ticket.ticket_Status = 'Open'
                 ticket.save()
+                adminRepliedTicketaudit(ticket_info.ticket_Number, full_Name)
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})
 
         return Response({"message": "Add Comment Error"})
+    
+def adminRepliedTicketaudit(ticket_Number, full_Name):
+
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Replied",
+        'audit_Description': f"Ticket {ticket_Number} has been replied by the admin."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
     
 @api_view(['DELETE'])
 def adminCloseTicket(request, ticket_Id):
@@ -216,11 +230,25 @@ def adminCloseTicket(request, ticket_Id):
         if request.method == "DELETE":
             ticket = Ticket.objects.get(pk=ticket_Id)
             # Retrieve the associated UserProfile object directly using the user_Id (which is a UUID)
-            user_profile = UserProfile.objects.get(user_Id=ticket.user_Id)
+            admin = AdminProfile.objects.get(user_Id=request.user.user_Id)
             ticket.ticket_Status = 'Closed'
             ticket.save()
+            adminCloseTicketaudit(ticket.ticket_Number, admin.admin_Last_Name +', '+ admin.admin_First_Name)
             return Response({"message": "Close Ticket Successfully"})
         return Response({"message": "Close Ticket Failed"})
+    
+def adminCloseTicketaudit(ticket_Number, full_Name):
+
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Closed",
+        'audit_Description': f"The Ticket {ticket_Number} has been Closed by the admin."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
     
 @api_view(['GET'])
 def adminverifyTicketInfo(request, ticket_Number):
@@ -317,11 +345,13 @@ def adminEditTicket(request, ticket_Id):
     
     try:
         admin_profile = AdminProfile.objects.get(user_Id=request.user)
+        full_Name = admin_profile.admin_Last_Name+',' + admin_profile.admin_First_Name
     except AdminProfile.DoesNotExist:
         return Response({"message": "Admin profile not found"})
     
     if request.method == "PUT":
         ticket = Ticket.objects.get(pk=ticket_Id)
+        old_office = ticket.ticket_Office
 
         # Get Admins Email
         getAdmins = AdminProfile.objects.filter(admin_Office=ticket.ticket_Office).values_list('admin_Email', flat=True)
@@ -330,6 +360,7 @@ def adminEditTicket(request, ticket_Id):
         if admin_profile.is_master_admin:
             ticket_Office = request.POST.get('ticket_Office')
             ticket.ticket_Office = ticket_Office
+            adminReAssignedTicketaudit(ticket.ticket_Number, full_Name, old_office, ticket_Office)
             # If no admins are fetched, don't trigger the email notification
             if getAdmins:
                 # Send notification to all admins
@@ -340,6 +371,19 @@ def adminEditTicket(request, ticket_Id):
         return Response({"message": "Edit Ticket Successfully"})
     else:
         return Response({"message": "Invalid request method"})
+    
+def adminReAssignedTicketaudit(ticket_Number, full_Name, old_office, ticket_Office):
+
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Re-Assigned",
+        'audit_Description': f"The Ticket {ticket_Number} has been Re-Assigned by the admin. from {old_office} to {ticket_Office}"
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
     
 @api_view(['GET'])
 def adminSortTickets(request):

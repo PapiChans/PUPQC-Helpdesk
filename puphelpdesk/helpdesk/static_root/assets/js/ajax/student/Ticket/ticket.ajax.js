@@ -233,8 +233,8 @@ addTicket = (CommentAttachment) => {
 
         Swal.fire({
             title: 'Attention',
-            text: 'Once you submit your ticket, you cannot edit this anymore. Please review the following details carefully before submitting your message.',
-            icon: 'question',
+            text: 'Please review the following details carefully before submitting your message.',
+            icon: 'info',
             confirmButtonText: 'Submit',
             cancelButtonText: 'Cancel',
             showCancelButton: true,

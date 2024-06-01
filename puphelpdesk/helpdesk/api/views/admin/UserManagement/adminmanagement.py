@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import UserSerializer, AdminProfileSerializer
 from api.models import User, AdminProfile
+from distutils.util import strtobool
 
 @api_view(['GET'])
 def adminGetAdminManagement(request):
@@ -46,6 +47,7 @@ def adminAddAdmin(request):
             admin_Email = request.POST['admin_Email']
             admin_Gender = request.POST['admin_Gender']
             isMasterAdmin = request.POST['isMasterAdmin']
+            isTechnician = request.POST['isTechnician']
 
             compare = User.objects.filter(username=username).exists()
             compareemail = AdminProfile.objects.filter(admin_Email=admin_Email).exists()
@@ -71,6 +73,7 @@ def adminAddAdmin(request):
                     'admin_Contact': admin_Contact,
                     'admin_Gender': admin_Gender,
                     'is_master_admin': isMasterAdmin,
+                    'is_technician': isTechnician
                 }
 
                 serializer = AdminProfileSerializer(data=userprofile_data)
@@ -81,3 +84,46 @@ def adminAddAdmin(request):
                     print(serializer.errors)
                     return Response({"message": "Register User Failed"})
         return Response({"message": "Register User Error"})
+    
+@api_view(['GET'])
+def adminGetAdminProfile(request, profile_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "GET":
+            try:
+                adminprofile = AdminProfile.objects.get(profile_Id=profile_Id)
+                admin_profile_data = AdminProfileSerializer(adminprofile).data
+
+                # Include the username from the related User model
+                admin_profile_data['username'] = adminprofile.user_Id.username
+
+                return Response(admin_profile_data)
+            except AdminProfile.DoesNotExist:
+                return Response({"message": "Admin Profile not found"})
+        return Response({"message": "Get Profile Error"})
+
+@api_view(['PUT'])
+def adminEditAdminProfile(request, profile_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        try:
+            profile = AdminProfile.objects.get(pk=profile_Id)
+        except AdminProfile.DoesNotExist:
+            return Response({"message": "Profile not found"})
+
+        if request.method == "PUT":
+            is_technician = request.POST.get('is_technician')
+
+            # Convert string values to boolean
+            is_technician = bool(strtobool(is_technician))
+
+            admin_Office = request.POST.get('admin_Office')
+
+            profile.is_technician = is_technician
+            profile.admin_Office = admin_Office
+            profile.save()
+
+            return Response({"message": "Edit Profile Success"})
+        return Response({"message": "Edit Profile Error"})

@@ -5,7 +5,99 @@ $(function() {
         addAdmin()
         e.preventDefault() // prevent page refresh
     })
+    $('#EditAdminForm').on('submit', function (e) {
+        const profile_Id = $('#edit_profile_Id').val();
+        editProfile(profile_Id)
+        e.preventDefault() // prevent page refresh
+    })
 })
+
+// For Registering Validations
+document.addEventListener('DOMContentLoaded', function () {
+    const masterAdminCheckbox = document.getElementById('is_master_admin');
+    const technicianCheckbox = document.getElementById('is_technician');
+    const officeField = document.getElementById('admin_Office');
+    const facultyCodeField = document.getElementById('FacultyCode');
+    const verifyButton = document.getElementById('verify_button');
+
+    function updateFields() {
+        if (masterAdminCheckbox.checked) {
+            technicianCheckbox.disabled = true;
+            technicianCheckbox.checked = false;
+            officeField.innerHTML = '<option value="Master Admin">Master Admin</option>';
+            officeField.disabled = true;
+            facultyCodeField.disabled = true;
+            verifyButton.disabled = true;
+        } else {
+            masterAdminCheckbox.disabled = false;
+            technicianCheckbox.disabled = false;
+            officeField.disabled = false;
+            facultyCodeField.disabled = false;
+            verifyButton.disabled = false;
+
+            if (technicianCheckbox.checked) {
+                masterAdminCheckbox.disabled = true;
+                officeField.innerHTML = `
+                    <option value="">Select Office</option>
+                    <option value="Director's Office">Director's Office</option>
+                    <option value="Academic Office">Academic Office</option>
+                    <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                    <option value="Registrar's Office">Registrar's Office</option>
+                    <option value="Admission Office">Admission Office</option>
+                    <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                    <option value="Accounting Office">Accounting Office</option>
+                    <option value="Scholarship Office">Scholarship Office</option>
+                    <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                    <option value="Administrative Office">Administrative Office</option>
+                    <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                    <option value="Research Office">Research Office</option>
+                    <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                    <option value="IT Laboratory Office">IT Laboratory Office</option>
+                    <option value="Quality Management System Office">Quality Assurance Management Office</option>
+                    <option value="Medical Clinic">Medical Clinic</option>
+                    <option value="Security Office">Security Office</option>
+                    <option value="Administrative Office">Administrative Office</option>
+                    <option value="Property Office">Property Office</option>
+                    <option value="Records' Office">Records' Office</option>
+                    <option value="Cultural Office">Cultural Office</option>`;
+                officeField.disabled = false;
+                facultyCodeField.disabled = true;
+                verifyButton.disabled = true;
+            } else {
+                officeField.innerHTML = `
+                    <option value="">Select Office</option>
+                    <option value="Director's Office">Director's Office</option>
+                    <option value="Academic Office">Academic Office</option>
+                    <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                    <option value="Registrar's Office">Registrar's Office</option>
+                    <option value="Admission Office">Admission Office</option>
+                    <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                    <option value="Accounting Office">Accounting Office</option>
+                    <option value="Scholarship Office">Scholarship Office</option>
+                    <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                    <option value="Administrative Office">Administrative Office</option>
+                    <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                    <option value="Research Office">Research Office</option>
+                    <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                    <option value="IT Laboratory Office">IT Laboratory Office</option>
+                    <option value="Quality Management System Office">Quality Assurance Management Office</option>
+                    <option value="Medical Clinic">Medical Clinic</option>
+                    <option value="Security Office">Security Office</option>
+                    <option value="Administrative Office">Administrative Office</option>
+                    <option value="Property Office">Property Office</option>
+                    <option value="Records' Office">Records' Office</option>
+                    <option value="Cultural Office">Cultural Office</option>`;
+                facultyCodeField.disabled = false;
+                verifyButton.disabled = false;
+            }
+        }
+    }
+
+    masterAdminCheckbox.addEventListener('change', updateFields);
+    technicianCheckbox.addEventListener('change', updateFields);
+
+    updateFields(); // Initialize field states on page load
+});
 
 function censorEmail(email) {
     // Split the email address into local part and domain part
@@ -268,7 +360,7 @@ getAdminManagement = () => {
             columns: [
                 {
                     data: null,
-                    class: 'text-center',
+                    class: 'text-left',
                     width: '10%',
                     render: (data) => {
                         const username = data.username
@@ -277,7 +369,7 @@ getAdminManagement = () => {
                 },
                 {
                     data: null,
-                    class: 'text-center',
+                    class: 'text-left',
                     width: '10%',
                     render: (data) => {
                         const name = data.admin_Last_Name + ", "+ data.admin_First_Name
@@ -295,29 +387,56 @@ getAdminManagement = () => {
                 },
                 {
                     data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
-                        const contact = data.admin_Contact
-                        return `${censorContact(contact)}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
-                    width: '10%',
-                    render: (data) => {
-                        const email = data.admin_Email
-                        return `${censorEmail(email)}`
-                    },
-                },
-                {
-                    data: null,
-                    class: 'text-center',
+                    class: 'text-left',
                     width: '10%',
                     render: (data) => {
                         const program = data.admin_Office
                         return `${program}`
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-center',
+                    width: '10%',
+                    render: (data) => {
+                        let program = data.is_master_admin
+                        if (data.is_master_admin == true){
+                            program = `<span class="badge bg-success text-info-fg">Yes</span>`
+                        }
+                        else{
+                            program = `<span class="badge bg-danger text-info-fg">No</span>`
+                        }
+                        return `${program}`
+                    },
+                },
+                {
+                    data: null,
+                    class: 'text-center',
+                    width: '10%',
+                    render: (data) => {
+                        let program = data.is_technician
+                        if (data.is_technician == true){
+                            program = `<span class="badge bg-success text-info-fg">Yes</span>`
+                        }
+                        else{
+                            program = `<span class="badge bg-danger text-info-fg">No</span>`
+                        }
+                        return `${program}`
+                    },
+                },
+                {
+                    data: null,
+                    width: '10%',
+                    class: 'text-center',
+                    render: (data) => {
+                        let button = data.is_master_admin;
+                        if (data.is_master_admin) {
+                            button = '' 
+                        }
+                        else{
+                            button = `<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#EditAdminModal" onclick="getAdminInfo('${data.profile_Id}')"><i class="fa-solid fa-exclamation-circle"></i> Edit</button>`
+                        }
+                        return button;
                     },
                 },
             ],
@@ -342,7 +461,8 @@ addAdmin = () => {
         const admin_Email = $('#Email').val();
         const masterAdminCheckbox = document.getElementById('is_master_admin');
         const isMasterAdmin = masterAdminCheckbox.checked;
-        console.log("Is Master Admin:", isMasterAdmin);
+        const technicianCheckbox = document.getElementById('is_technician');
+        const isTechnician = technicianCheckbox.checked;
 
         const data = {
             username: username,
@@ -354,6 +474,7 @@ addAdmin = () => {
             admin_Contact: admin_Contact,
             admin_Email: admin_Email,
             isMasterAdmin: isMasterAdmin,
+            isTechnician: isTechnician, 
         };
         
         $.ajax({
@@ -399,5 +520,138 @@ addAdmin = () => {
             })
             $('#register_Submit').prop('disabled', false);
         })
+    }
+}
+
+getAdminInfo = (profile_Id) => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/getOneAdminProfile/${profile_Id}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (data) => {
+            // Populate the form fields with the retrieved data
+            $('#edit_Username').text(data.username); // Assuming username is retrieved from data
+            $('#edit_profile_Id').val(data.profile_Id);
+
+            // Populate the checkboxes based on the retrieved data
+            $('#edit_is_master_admin').prop('checked', data.is_master_admin);
+            $('#edit_is_technician').prop('checked', data.is_technician);
+
+            // Handling office options and enabling/disabling checkboxes based on the conditions
+            const officeOptions = `
+                <option value="">Select Office</option>
+                <option value="Director's Office">Director's Office</option>
+                <option value="Academic Office">Academic Office</option>
+                <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                <option value="Registrar's Office">Registrar's Office</option>
+                <option value="Admission Office">Admission Office</option>
+                <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                <option value="Accounting Office">Accounting Office</option>
+                <option value="Scholarship Office">Scholarship Office</option>
+                <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                <option value="Administrative Office">Administrative Office</option>
+                <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                <option value="Research Office">Research Office</option>
+                <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                <option value="IT Laboratory Office">IT Laboratory Office</option>
+                <option value="Quality Management System Office">Quality Management System Office</option>
+                <option value="Medical Clinic">Medical Clinic</option>
+                <option value="Security Office">Security Office</option>
+                <option value="Property Office">Property Office</option>
+                <option value="Records' Office">Records' Office</option>
+                <option value="Cultural Office">Cultural Office</option>
+            `;
+
+            if (data.is_master_admin) {
+                $('#edit_is_technician').prop('disabled', true);
+                $('#edit_admin_Office').html(`<option value="${data.admin_Office}">${data.admin_Office}</option>`).val(data.admin_Office).prop('disabled', true);
+            } else if (data.is_technician) {
+                $('#edit_is_master_admin').prop('disabled', true);
+                $('#edit_admin_Office').html(officeOptions).val(data.admin_Office).prop('disabled', false);
+            } else {
+                $('#edit_is_master_admin').prop('disabled', false);
+                $('#edit_is_technician').prop('disabled', false);
+                $('#edit_admin_Office').html(officeOptions).val(data.admin_Office).prop('disabled', false);
+            }
+
+            // Handling checkbox changes to enable/disable the other checkbox accordingly
+            $('#edit_is_master_admin').change(function() {
+                if (this.checked) {
+                    $('#edit_is_technician').prop('checked', false).prop('disabled', true);
+                    $('#edit_admin_Office').html(`<option value="${data.admin_Office}">${data.admin_Office}</option>`).prop('disabled', true);
+                } else {
+                    $('#edit_is_technician').prop('disabled', false);
+                    $('#edit_admin_Office').html(officeOptions).val(data.admin_Office).prop('disabled', false);
+                }
+            });
+
+            $('#edit_is_technician').change(function() {
+                if (this.checked) {
+                    $('#edit_is_master_admin').prop('checked', false).prop('disabled', true);
+                    $('#edit_admin_Office').html(officeOptions).val(data.admin_Office).prop('disabled', false);
+                } else {
+                    $('#edit_is_master_admin').prop('disabled', false);
+                    $('#edit_admin_Office').html(officeOptions).val(data.admin_Office).prop('disabled', false);
+                }
+            });
+
+        },
+        error: () => {
+            notyf.error({
+                message: 'Fetch Profile Error',
+                position: { x: 'right', y: 'top' },
+                duration: 2500
+            });
+        }
+    });
+}
+
+editProfile = () => {
+    if ($('#EditAdminForm')[0].checkValidity()) {
+        const profile_Id = $('#edit_profile_Id').val();
+        const technicianCheckbox = document.getElementById('edit_is_technician');
+        const isTechnician = technicianCheckbox.checked;
+        const admin_Office = $('#edit_admin_Office').val();
+
+        const data = {
+            is_technician: isTechnician,
+            admin_Office: admin_Office,
+        };
+
+        $('#edit_Submit').prop('disabled', true);
+
+        $.ajax({
+            type: 'PUT',
+            url: `/api/admin/editAdminProfile/${profile_Id}`,
+            data: data,
+            dataType: 'json',
+            headers: {'X-CSRFToken': csrftoken},
+            success: (result) => {
+                if (result) {
+                    notyf.success({
+                        message: 'Edit Profile Successfully',
+                        position: { x: 'right', y: 'top' },
+                        duration: 2500
+                    });
+                    $('#EditAdminForm')[0].reset();
+                    location.reload();
+                }
+            },
+            error: () => {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Something went wrong while editing the admin profile. Please try again.',
+                    icon: 'error',
+                    allowEnterKey: false,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#D40429',
+                });
+                $('#edit_Submit').prop('disabled', false);
+            }
+        });
     }
 }

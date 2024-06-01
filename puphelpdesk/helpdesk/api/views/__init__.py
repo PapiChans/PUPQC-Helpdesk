@@ -152,8 +152,17 @@ from .admin.Charter.charter import *
 from .admin.Knowledgebase.folder import *
 from .admin.Knowledgebase.topic import *
 
+# Audit Trail
+from .admin.AuditTrail.audittrail import *
+
 # ---------------
 # Knoweledgebase
 # ---------------
 
 from .knowledgebase.knowledgebase import *
+
+# ---------------
+# Reports
+# ---------------
+
+from .admin.reports.samplereport import *

@@ -117,29 +117,34 @@ getTicketInfo = (ticket_Number) => {
 
             getadmininfoforticket();
             getTicketComment(data.ticket_Id, data.full_Name);
+            getAuditTrail(data.ticket_Number)
 
             //Display the form response
             let formshoworhide = $('#formshoworhide');
 
-            let openformat = `<div class="text-center">
-                <h2 class="text-center">Wait for Response</h2>
-                <p class="text-center">Wait for the Student response before to reply again.</p>
-                <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
+            let closedformat = `<div class="text-center">
+                <h2 class="text-center">Ticket Closed</h2>
+                <p class="text-center">This ticket is resolved.</p>
             </div>
             `;
             
-            let closedformat = `<h2 class="text-center">Ticket Resolved</h2>
+            let resolvedformat = `<h2 class="text-center">Ticket Resolved</h2>
             <p class="text-center">This ticket is resolved.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-2 text-center">
+                    <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
+                </div>
+            </div>
             `
 
             if (data.ticket_Status == 'Open'){
                 $('#comment_Submit').prop('disabled', false);
             }
-            else if (data.ticket_Status == 'Replied'){
-                formshoworhide.html(null)
-                formshoworhide.append(openformat)
-            }
             else if (data.ticket_Status == 'Resolved'){
+                formshoworhide.html(null)
+                formshoworhide.append(resolvedformat)
+            }
+            else if (data.ticket_Status == 'Closed'){
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
@@ -468,7 +473,7 @@ MarkAsClosed = (ticket_Id) => {
     Swal.fire({
         title: 'Close the ticket',
         html: 'Are you sure do you want to close the ticket?',
-        icon: 'warning',
+        icon: 'question',
         allowEnterKey: 'false',
         allowOutsideClick: 'false',
         allowEscapeKey: 'false',
@@ -584,4 +589,44 @@ searchKnowledge = () => {
             $('#knowledge_Search').prop('disabled', false);
         })
     }
+}
+
+getAuditTrail = (ticket_Number) => {
+    let trailDisplay = $('#trailDisplay');
+    trailDisplay.html(null);
+
+    $.ajax({
+        type: 'GET',
+        url: `/api/admin/getAuditTrail/${ticket_Number}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const data = result;
+            if (data.length > 0) {
+                data.forEach((data) => {
+                    let format = `
+                            <a style="cursor: pointer;" class="list-group-item list-group-item-action">
+                            <h4>[${data.audit_Action}] ${data.audit_Description}</h4>
+                            <p>User: ${data.audit_User}, <span class="text-primary">Date: ${formatPostgresTimestamp(data.date_Created)}</span></p>
+                            </a>
+                        `;
+                    trailDisplay.append(format)
+                });
+            } else {
+                notyf.success({
+                    message: 'No Trail Fetched.',
+                    position: {x:'right',y:'top'},
+                    duration: 2500
+                });
+            }
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Trail Fetched Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    });
 }

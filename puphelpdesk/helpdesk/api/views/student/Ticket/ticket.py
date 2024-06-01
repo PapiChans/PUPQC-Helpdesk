@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerializer
-from api.models import Ticket, TicketComment, FAQ, AdminProfile
+from api.serializers import TicketSerializer, TicketCommentSerializer, FAQSerializer, AuditTrailSerializer
+from api.models import Ticket, TicketComment, FAQ, AdminProfile, AuditTrail, UserProfile
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
@@ -122,6 +122,9 @@ def studAddTicket(request):
                     # Save the ticket comment
                     comment_serializer.save()
 
+                    # Create Audit Trail
+                    addCreateTicketaudit(ticket_Number, full_Name)
+
                     # Get Admins Email
                     getAdmins = AdminProfile.objects.filter(admin_Office=ticket_Office).values_list('admin_Email', flat=True)
                     print("Admin Emails:", getAdmins)  # Print admin emails for debugging
@@ -146,8 +149,21 @@ def studAddTicket(request):
 
     return Response({"message": "Submit Ticket Error"})
 
+def addCreateTicketaudit(ticket_Number, full_Name):
 
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Created",
+        'audit_Description': f"Ticket {ticket_Number} has been created."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
     
+    return Response({"message": "Invalid data for audit trail"})
+       
 @api_view(['GET'])
 def studGetTicketbyUser(request):
     if request.user.is_anonymous or request.user.is_admin:
@@ -206,10 +222,24 @@ def studAddTicketComment(request):
 
                 ticket = Ticket.objects.get(pk=ticket_Id)
                 ticket.save()
+                studRepliedTicketaudit(ticket.ticket_Number, full_Name)
                 return Response({"message": "Add Comment Successfully"})
             return Response({"message": "Add Comment Failed"})
 
         return Response({"message": "Add Comment Error"})
+    
+def studRepliedTicketaudit(ticket_Number, full_Name):
+
+    audit_data = {
+        'ticket_Number': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Replied",
+        'audit_Description': f"Ticket {ticket_Number} has been replied by the user."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
     
 @api_view(['GET'])
 def studGetTicketComment(request, ticket_Id):

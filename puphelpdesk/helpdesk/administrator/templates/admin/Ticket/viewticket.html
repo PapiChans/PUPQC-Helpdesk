@@ -8,12 +8,17 @@
 
 {% block maincontent %}
 <div class="row">
-    <div class="col-10">
+    <div class="col-9">
         <h2 class="header-title">Ticket Info</h2>
     </div>
-    <div class="col-2">
+    <div class="col-1">
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             Search
+        </button>
+    </div>
+    <div class="col-1">
+        <button class="btn btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTrail" aria-controls="offcanvasExample">
+            View Trail
         </button>
     </div>
 </div>
@@ -124,6 +129,18 @@
         <h4 class="text-center" id="no_Knowledge"></h4>
         <div id="knowledge_display" class="accordion">
   
+        </div>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTrail" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Audit Trails</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="card">
+            <div class="list-group list-group-flush" id="trailDisplay">
+            </div>
         </div>
     </div>
   </div>

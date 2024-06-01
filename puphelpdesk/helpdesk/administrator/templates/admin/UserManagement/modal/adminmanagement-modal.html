@@ -8,19 +8,26 @@
                 <form id="RegisterAdminForm" class="needs-validation" novalidate>
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="validationCustom01">Master Admin?<span class="text-danger">*</span></label>
+                            <label for="validationCustom01">Higher Positions</label>
                             <label class="form-check form-switch">
                                 <input class="form-check-input" id="is_master_admin" type="checkbox">
                                 <span class="form-check-label">Register as Master Admin</span>
                             </label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" id="is_technician" type="checkbox">
+                                <span class="form-check-label">Register as Technician</span>
+                            </label>
                         </div>
-                        <div class="col-md-8 mt-3">
+                        <div class="row mt-3">
                             <label for="validationCustom01">Enter Faculty Code</label>
-                            <input type="text" class="form-control" id="FacultyCode" placeholder="Faculty Code">
+                            <div class="col-md-9"> <!-- Increased column width -->
+                                <input type="text" class="form-control" id="FacultyCode" placeholder="Faculty Code">
+                            </div>
+                            <div class="col-md-3"> <!-- Decreased column width -->
+                                <button type="button" class="btn btn-primary waves-effect waves-light" id="verify_button" onclick="getFacultyData()">Verify</button>
+                            </div>
                         </div>
-                        <div class="col-md-4 mt-3">
-                            <button type="button" class="btn btn-primary waves-effect waves-light mt-2" id="verify_button" onclick="getFacultyData()">Verify</button>
-                        </div>
+                        
                         <div class="col-md-12 mt-3">
                             <label for="validationCustom01">Username<span class="text-danger">*</span></label>
                             <div class="input-group">
@@ -89,6 +96,64 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="register_Submit">Register</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="EditAdminModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Edit Admin</h5>
+            </div>
+            <div class="modal-body">
+                <form id="EditAdminForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="edit_profile_Id">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Higher Positions</label>
+                            <label class="form-check form-switch">
+                                <input class="form-check-input" id="edit_is_technician" type="checkbox">
+                                <span class="form-check-label">Register as Technician</span>
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <h3>Username: <span id="edit_Username"></span></h3>
+                        </div>  
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Office<span class="text-danger">*</span></label>
+                            <select class="form-control form-select" data-placeholder="..." id="edit_admin_Office" required/>
+                                <option value="">Select Office</option>
+                                <option value="Director's Office">Director's Office</option>
+                                <option value="Academic Office">Academic Office</option>
+                                <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                                <option value="Registrar's Office">Registrar's Office</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                                <option value="Accounting Office">Accounting Office</option>
+                                <option value="Scholarship Office">Scholarship Office</option>
+                                <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                                <option value="Research Office">Research Office</option>
+                                <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                                <option value="IT Laboratory Office">IT Laboratory Office</option>
+                                <option value="Quality Management System Office">Quality Assurance Management Office</option>
+                                <option value="Medical Clinic">Medical Clinic</option>
+                                <option value="Security Office">Security Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Property Office">Property Office</option>
+                                <option value="Records' Office">Records' Office</option>
+                                <option value="Cultural Office">Cultural Office</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit_Submit">Save Changes</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

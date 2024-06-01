@@ -50,6 +50,8 @@ getTopicInfo = (topic_Number) => {
         success: (result) => {
             const data = result;
             $('#topic_Name').html(data.topic_Name)
+            $('#LikesCount').html(data.likes)
+            $('#DislikesCount').html(data.dislikes)
             
             // Convert Markdown content to HTML using ShowdownJS
             var converter = new showdown.Converter(),

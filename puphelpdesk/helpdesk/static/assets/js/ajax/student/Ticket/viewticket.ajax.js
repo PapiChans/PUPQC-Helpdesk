@@ -130,11 +130,11 @@ getTicketInfo = (ticket_Number) => {
             //Display the form response
             let formshoworhide = $('#formshoworhide')
 
-            let openformat = `<h2 class="text-center">Wait for Response</h2>
-            <p class="text-center">Wait for the Administrator response before to reply again.</p>`
+            let closedformat = `<h2 class="text-center">Ticket Closed</h2>
+            <p class="text-center">You may create a new ticket for your another concern.</p>`
 
-            let closedformat = `<h2 class="text-center">Ticket Resolved</h2>
-            <p class="text-center">You may create a new ticket for your concern.</p>
+            let resolvedformat = `<h2 class="text-center">Ticket Resolved</h2>
+            <p class="text-center">You may create a new ticket for your another concern.</p>
             <div class="row justify-content-center">
                 <div class="col-md-2 text-center">
                     <button class="btn btn-primary col-xl-12 mb-2" id="reopen_btn" onclick="TicketReOpen()">Re-Open</button>
@@ -143,6 +143,10 @@ getTicketInfo = (ticket_Number) => {
             `
 
             if (data.ticket_Status == 'Resolved'){
+                formshoworhide.html(null)
+                formshoworhide.append(resolvedformat)
+            }
+            if (data.ticket_Status == 'Closed'){
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
@@ -188,8 +192,8 @@ addTicketComment = (CommentAttachment) => {
 		}
 
         Swal.fire({
-            title: 'Submit',
-            text: 'Once you submit your comment, you cannot edit this anymore.',
+            title: 'Submit Message?',
+            text: 'Please review for message before to submit.',
             icon: 'question',
             allowEnterKey: 'false',
             allowOutsideClick: 'false',

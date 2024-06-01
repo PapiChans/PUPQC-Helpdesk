@@ -1355,3 +1355,14 @@
 - Push by Christian (https://github.com/papichans)
 - Search Topic in Knowledgebase is Available
 - Ticket Search Topics is available
+
+# 0.7.29
+- Push by Christian (https://github.com/papichans)
+- New Feature: Audit Trail
+- New Feature: Generative Reports (In Progress)
+- Like and Dislikes in Knowledge can now be shown
+- Admin Access Restriction for not Master Admin nor Technician
+- Add Dependencies: xhtml2pdf
+- Ticket Can be closed to Admin
+- Maximize Email Sending Feature
+- Revise Rating Names

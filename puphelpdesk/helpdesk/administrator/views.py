@@ -28,7 +28,7 @@ def adminusermanagement(request):
             return render(request, 'HTTPResponse/401.html')  # If admin profile doesn't exist, return 401
         
         # Check if user is master admin
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             pagename_value = "User Management"
             return render(request, 'admin/UserManagement/usermanagement.html', {'pagename': pagename_value})
         else:
@@ -50,7 +50,7 @@ def adminadminmanagement(request):
             return render(request, 'HTTPResponse/401.html')  # If admin profile doesn't exist, return 401
         
         # Check if user is master admin
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             pagename_value = "Admin Management"
             return render(request, 'admin/UserManagement/adminmanagement.html', {'pagename': pagename_value})
         else:
