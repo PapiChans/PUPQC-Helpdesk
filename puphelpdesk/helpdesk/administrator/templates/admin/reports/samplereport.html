@@ -65,7 +65,7 @@
                         <h5>Instrument Completion Report</h5>
                         <h6>Title</h6>
                         <p style="font-style: italic;">
-                            SubTitle {{records}}
+                            SubTitle {{record}}
                         </p>
                     </div>
                 </div>
@@ -76,57 +76,23 @@
                     <table id="" class="display no-wrap table table-vcenter">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Label</th>
-                                <th>Instrument</th>
-                                <th>Members</th>
-                                <th>Ratings</th>
-                                <th>Description</th>
-                                <th>Completeness Percentage</th>
-                                {% comment %} <th>Interpretation</th> {% endcomment %}
-
+                                <th>Ticket Office</th>
+                                <th>Overall Rating</th>
                             </tr>
                         </thead>
-                        <tbody class="table-tbody">
-               
-                            <tr class="small">
+                        <tbody>
+                            {% for office in office_ratings %}
+                            <tr>
+                                <td>{{ office.ticket_Office }}</td>
                                 <td>
-           
+                                    {% if office.overall_rating %}
+                                        {{ office.overall_rating|floatformat:"2"|default_if_none:"N/A" }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
                                 </td>
-
-
-                                <td>
-                      
-                                </td>
-
-                                <td>
-              
-                                </td>
-
-
-                                <td>
-                                   
-                                        
-                                </td>
-
-
-                                <td class="text-right"> 
-
-                                </td>
-
-
-                                <td>   
-
-                                </td>
-
-
-                                <td class="text-right">
-                                   
-                                </td>
-
                             </tr>
-
-        
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

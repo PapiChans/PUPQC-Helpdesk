@@ -437,5 +437,5 @@ urlpatterns = [
     # REPORTS API URLS
     #----------------------
 
-    path('report/samplereport', views.GeneratePDF, name='report/samplereport')
+    path('reports/samplereport', views.GeneratePDF, name='reports/samplereport')
 ]
