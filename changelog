@@ -1373,3 +1373,7 @@
 - Ratings shouldn't be seen by the admin, but only through student's email (including the closing of their ticket with client satisfactory clickable link)
 - Client Satisfaction Form Done
 - Addidtional Offices and Services for ticketing
+
+# 0.7.30.1
+- Push by Loyd The Great (https://github.com/loydmarionlopez)
+- Settings.py reverted
