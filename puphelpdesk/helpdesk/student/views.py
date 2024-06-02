@@ -446,3 +446,13 @@ def userknowledgebaseview(request):
         return render(request, 'student/Knowledgebase/view.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+
+# Satisfaction Form
+def satisfactionFormview(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if not request.user.is_admin:
+        pagename_value = "Satisfaction Form"
+        return render(request, 'student/SatisfactionForm/satisfactionForm.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

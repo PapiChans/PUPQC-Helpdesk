@@ -81,4 +81,7 @@ urlpatterns = [
     # Knowledgebase
     path('knowledge/browse', views.userknowledgebasebrowse, name="user/knowledgebase/browse"),
     path('knowledge/view', views.userknowledgebaseview, name="user/knowledgebase/view"),
+    
+    # Satisfaction Form
+    path('satisfactionForm', views.satisfactionFormview, name="satisfactionForm"),
 ]

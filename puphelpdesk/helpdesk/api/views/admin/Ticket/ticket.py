@@ -267,7 +267,7 @@ def adminverifyTicketInfo(request, ticket_Number):
         return Response({"message": "Get Ticket Error"})
     
 def send_email_closed(user_Email, full_Name, ticket_number):
-    subject = 'Your Ticket has been closed'
+    subject = 'Feedback: How did we do? {ticket_Title}: '
     html_content = """
 <html>
 <head>
@@ -293,6 +293,7 @@ def send_email_closed(user_Email, full_Name, ticket_number):
                 <p class="paragraph">If you have any further questions or issues, please feel free to create a new ticket.</p>
                 <p class="paragraph">Thank you for your cooperation.</p>
                 <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
+                <a href="">Your opinion is valuable. Please share your feedback: 'replace this URL' (www.form.com) </a>
             </div>
         </div>
     </div>

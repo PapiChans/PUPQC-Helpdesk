@@ -2,7 +2,15 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import UserSerializer, AdminProfileSerializer
 from api.models import User, AdminProfile
-from distutils.util import strtobool
+
+def strtobool(val):
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return True
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return False
+    else:
+        raise ValueError(f"invalid truth value {val}")
 
 @api_view(['GET'])
 def adminGetAdminManagement(request):
@@ -10,28 +18,15 @@ def adminGetAdminManagement(request):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            # Fetch AdminProfile objects
             admin_profiles = AdminProfile.objects.all()
-
-            # Create a list to store combined user data
             user_profiles = []
-
-            # Iterate through AdminProfile objects
             for admin_profile in admin_profiles:
-                # Serialize AdminProfile data
                 admin_profile_data = AdminProfileSerializer(admin_profile).data
-
-                # Add the username from AdminProfile model
                 admin_profile_data['username'] = admin_profile.user_Id.username
-
-                # Append the combined data to the list
                 user_profiles.append(admin_profile_data)
-
-            # Return the list of combined user data as a JSON response
             return Response(user_profiles)
-
         return Response({"message": "Get User Profiles Info Error"})
-    
+
 @api_view(['POST'])
 def adminAddAdmin(request):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -56,7 +51,6 @@ def adminAddAdmin(request):
             if compareemail:
                 return Response({"code": 403, "message": "E-Mail Already Exist"})
             else:
-                # Create the user instance
                 user = User.objects.create(username=username+'@pup.edu.ph')
                 user.set_password('Admin@123')
                 user.is_admin = True
@@ -84,7 +78,7 @@ def adminAddAdmin(request):
                     print(serializer.errors)
                     return Response({"message": "Register User Failed"})
         return Response({"message": "Register User Error"})
-    
+
 @api_view(['GET'])
 def adminGetAdminProfile(request, profile_Id):
     if request.user.is_anonymous or not request.user.is_admin:
@@ -94,10 +88,7 @@ def adminGetAdminProfile(request, profile_Id):
             try:
                 adminprofile = AdminProfile.objects.get(profile_Id=profile_Id)
                 admin_profile_data = AdminProfileSerializer(adminprofile).data
-
-                # Include the username from the related User model
                 admin_profile_data['username'] = adminprofile.user_Id.username
-
                 return Response(admin_profile_data)
             except AdminProfile.DoesNotExist:
                 return Response({"message": "Admin Profile not found"})
@@ -112,18 +103,12 @@ def adminEditAdminProfile(request, profile_Id):
             profile = AdminProfile.objects.get(pk=profile_Id)
         except AdminProfile.DoesNotExist:
             return Response({"message": "Profile not found"})
-
         if request.method == "PUT":
             is_technician = request.POST.get('is_technician')
-
-            # Convert string values to boolean
             is_technician = bool(strtobool(is_technician))
-
             admin_Office = request.POST.get('admin_Office')
-
             profile.is_technician = is_technician
             profile.admin_Office = admin_Office
             profile.save()
-
             return Response({"message": "Edit Profile Success"})
         return Response({"message": "Edit Profile Error"})

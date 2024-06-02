@@ -30,11 +30,11 @@ SECRET_KEY = 'django-insecure-9ergqbr6h18fh#%rufi8w=f2pzaw(&!rl36b#b6t*l=l2v*5#b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # For Development set this DEBUG to True
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
+#ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
 
-# ALLOWED_HOSTS = [] # For Development
+ALLOWED_HOSTS = [] # For Development
 
 # Application definition
 
@@ -96,22 +96,22 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-      'default': dj_database_url.config(
-          default='postgres://student_helpdesk_user:O6twebP7SoU6oOO80GXQzCRYeELDwWr5@dpg-cokv9qud3nmc739maa60-a.singapore-postgres.render.com/student_helpdesk',
-          )
-}
-
-# DATABASES = { # PostgreSQL Database
-# 'default': {
-#      'ENGINE': 'django.db.backends.postgresql',
-#      'NAME': 'Helpdesk',
-#      'USER': 'postgres',
-#      'PASSWORD': 'admin',
-#      'HOST': 'localhost',
-#      'PORT': '5432',
-#  }
+# DATABASES = {
+#       'default': dj_database_url.config(
+#           default='postgres://student_helpdesk_user:O6twebP7SoU6oOO80GXQzCRYeELDwWr5@dpg-cokv9qud3nmc739maa60-a.singapore-postgres.render.com/student_helpdesk',
+#           )
 # }
+
+DATABASES = { # PostgreSQL Database
+'default': {
+     'ENGINE': 'django.db.backends.postgresql',
+     'NAME': 'Helpdesk',
+     'USER': 'postgres',
+     'PASSWORD': 'admin',
+     'HOST': 'localhost',
+     'PORT': '5432',
+ }
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [

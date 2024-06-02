@@ -125,6 +125,7 @@ getAllTicket = () => {
                     render: (data) => {
                         const office = data.ticket_Office;
                         return `${office}`;
+                        
                     },
                 },
                 {
