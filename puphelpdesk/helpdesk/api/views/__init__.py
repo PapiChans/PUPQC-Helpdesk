@@ -155,6 +155,9 @@ from .admin.Knowledgebase.topic import *
 # Audit Trail
 from .admin.AuditTrail.audittrail import *
 
+# Request
+from .admin.TicketRequest.ticketrequest import *
+
 # ---------------
 # Knoweledgebase
 # ---------------
@@ -165,4 +168,4 @@ from .knowledgebase.knowledgebase import *
 # Reports
 # ---------------
 
-from .admin.reports.samplereport import *
+from .admin.reports.reports import *

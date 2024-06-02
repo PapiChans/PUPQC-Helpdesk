@@ -415,6 +415,15 @@ urlpatterns = [
     path('admin/deleteKBTopic/<topic_Number>', views.adminDeleteKBTopic),
     path('admin/searchKnowledge/<knowledge_Keyword>', views.adminSearchKnowledge),
 
+    # Request
+    path('admin/addTicketRequest', views.adminAddTicketRequest),
+    path('admin/getMNRequest', views.adminGetMNRequest),
+    path('admin/getMYRequest', views.adminGetMYRequest),
+    path('admin/sortRequests', views.adminSortRequest),
+    path('admin/getRequestInfo/<request_Number>', views.adminGetRequestInfo),
+    path('admin/getRequestComment/<uuid:request_Id>', views.adminGetRequestComment),
+    path('admin/addRequestComment', views.adminAddRequestComment),
+
     #----------------------
     # GUEST API URLS
     #----------------------
@@ -432,10 +441,12 @@ urlpatterns = [
     # Audit Trail
     path('admin/getAuditTrail/<ticket_Number>', views.adminGetAuditTrail),
 
-
     #----------------------
     # REPORTS API URLS
     #----------------------
 
-    path('report/samplereport', views.GeneratePDF, name='report/samplereport')
+    path('report/adminmonthlyticketreport', views.adminMonthlyOfficeTicketReport, name='report/adminmonthlyticketreport')
+
+    # Evaluation
+
 ]

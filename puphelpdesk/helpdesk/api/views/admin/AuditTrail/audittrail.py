@@ -9,7 +9,7 @@ def adminGetAuditTrail(request, ticket_Number):
         return Response({"message": "Not Authenticated"})
     else:
         if request.method == "GET":
-            data = AuditTrail.objects.filter(ticket_Number=ticket_Number).order_by('-date_Created')
+            data = AuditTrail.objects.filter(audit_Reference=ticket_Number).order_by('-date_Created')
             serializer = AuditTrailSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Get Ticket Error"})

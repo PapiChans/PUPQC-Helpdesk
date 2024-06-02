@@ -6,12 +6,12 @@ from api.models import AdminProfile
 from django.db.models import Q
 
 
-def GeneratePDF(request):
-    template = get_template('admin/reports/samplereport.html')
+def adminMonthlyOfficeTicketReport(request):
+    template = get_template('admin/reports/adminmonthlyticketreport.html')
 
     context = {
         "records": "ADASDasjkdhkajsdjkashj",
     }
     html = template.render(context)
-    pdf = render_to_pdf('admin/reports/samplereport.html', context)
+    pdf = render_to_pdf('admin/reports/adminmonthlyticketreport.html', context)
     return HttpResponse(pdf, content_type="application/pdf")

@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.serializers import TicketSerializer, TicketCommentSerializer, AuditTrailSerializer
-from api.models import Ticket, TicketComment, UserProfile, User, AdminProfile, AuditTrail
+from api.models import Ticket, TicketComment, UserProfile, User, AdminProfile, AuditTrail, Evaluation
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db import transaction
@@ -233,6 +233,27 @@ def adminCloseTicket(request, ticket_Id):
             admin = AdminProfile.objects.get(user_Id=request.user.user_Id)
             ticket.ticket_Status = 'Closed'
             ticket.save()
+
+            # Create an Evaluation entry
+            eval_reference = ticket.ticket_Number  # Assuming ticket_Number is the eval_Reference
+            evaluation_data = {
+                'eval_Reference': eval_reference,
+                'eval_Status': 'New',
+                'eval_Client': None,
+                'QA': None,
+                'QB': None,
+                'QC': None,
+                'QD': None,
+                'QE': None,
+                'QF': None,
+                'QG': None,
+                'QH': None,
+                'rating': None,
+                'remarks': None,
+                'date_filled': None,  # Current timestamp
+            }
+            evaluation = Evaluation.objects.create(**evaluation_data)
+
             adminCloseTicketaudit(ticket.ticket_Number, admin.admin_Last_Name +', '+ admin.admin_First_Name)
             return Response({"message": "Close Ticket Successfully"})
         return Response({"message": "Close Ticket Failed"})

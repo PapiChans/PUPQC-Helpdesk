@@ -1,12 +1,8 @@
 {% extends "student/partials/main2.html" %}
 {% load static %}
 {% block customcss %}
-<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
-<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
 <link rel="stylesheet" href="{% static 'assets/libs/star-rating/dists/star-rating.min.css' %}"/>
 {% endblock %}
 
@@ -14,286 +10,300 @@
 {% include "student/Ticket/modal/ticket-modal.html" %}
 <div class="container">
 <h2 class="header-title pt-3">Satisfaction Form</h2>
-<form>
-<div class="card-title-desc ">
-
-    <div class="col-form-label">Type of Client <span style="color: red;">*</span>
-        <div class="col-9 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Current Student" value="Current Student">
-        <label class="form-check-label" for="Current Student">Current Student</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Alumni" value="Alumni">
-        <label class="form-check-label" for="Alumni">Alumni</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="" value="Cross-Enrollee" >
-        <label class="form-check-label" for="Cross-Enrollee">Cross-Enrollee</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Transferee"  value="Transferee" >
-        <label class="form-check-label" for="Transferee">Transferee</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Student Applicant"  value="Student Applicant" >
-        <label class="form-check-label" for="Student Applicant">Student Applicant</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Faculty/Administrative Employee"  value="Faculty/Administrative Employee" >
-        <label class="form-check-label" for="Faculty/Administrative Employee">Faculty/Administrative Employee</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Guest/General Public"  value="Guest/General Public" >
-        <label class="form-check-label" for="Guest/General Public">Guest/General Public</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="Client" id="Parent of Student"  value="Parent of Student" >
-        <label class="form-check-label" for="Parent of Student">Parent of Student</label>
-      </div>
-    </div>
-    </div>
-    
-    <div class="col-form-label">Sex <span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="Gender" type="radio" value="Male">
-        <label class="form-check-label" for="Male">Male</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="Gender" type="radio" value="Female">
-        <label class="form-check-label" for="Female">Female</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="Gender" type="radio" value="Prefer not to say" >
-        <label class="form-check-label" for="Prefer not to say">Prefer not to say</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">A. Responsiveness: The willingness to help, assist, and provide prompt service to citizens/clients<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good">
-        <label class="form-check-label" for="4 - Good">4 - Good </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">B. Reliability(Quality): Provision of what was promised with zero to a minimal error<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good ">
-        <label class="form-check-label" for="4 - Good ">4 - Good </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">C. Access & Facilities: The convenience of location, ample amenities for comfortable transactions<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good ">
-        <label class="form-check-label" for="4 - Good ">4 - Good </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">D. Communication: The act of keeping clients informed in a language they can easily understand<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good ">
-        <label class="form-check-label" for="4 - Good ">4 - Good </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">E. Costs: The satisfaction with timeliness of the billing, billing process/es<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good ">
-        <label class="form-check-label" for="4 - Good">4 - Good </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">F. Integrity: Assurance that there is honesty, justice, fairness, and trust in service<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good">
-        <label class="form-check-label" for="4 - Good">4 - Good</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">G. Assurance: The capability of frontline staff to perform their duties<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good">
-        <label class="form-check-label" for="4 - Good">4 - Good</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="col-form-label">H. Outcome: Extent of achieving outcomes or realizing the intended benefits of government services<span style="color: red;">*</span>
-        <div class="col-12 pt-3">
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="5 - Excellent">
-        <label class="form-check-label" for="5 - Excellent">5 - Excellent</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="4 - Good">
-        <label class="form-check-label" for="4 - Good">4 - Good</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="3 - Average" >
-        <label class="form-check-label" for="3 - Average">3 - Average</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="2 - Fair" >
-        <label class="form-check-label" for="2 - Fair">2 - Fair</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" name="satisfaction" type="radio" value="1 - Poor" >
-        <label class="form-check-label" for="1 - Poor">1 - Poor</label>
-      </div>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 mt-2">
-            <label for="validationCustom01">Rating<span class="text-danger">*</span></label>
-            <select class="star-rating" id="ticket_Rating" required>
-                <option value="">Select a rating</option>
-                <option value="5">Excellent</option>
-                <option value="4">Good</option>
-                <option value="3">Average</option>
-                <option value="2">Fair</option>
-                <option value="1">Poor</option>
-            </select>
-        </div>
-        <div class="col-md-12 mt-2">
-            <label for="validationCustom01">Remarks<span class="text-primary"> (Optional)</span></label>
-            <textarea class="form-control" maxlength="99" id="ticket_Remarks" rows="5" placeholder="Remarks"></textarea>
+<form id="EvaluationForm" class="needs-validation" novalidate>
+  <div>
+    <label for="Q1" class="col-form-label col-3">Type of Client <span style="color: red;">*</span></label>
+    <div class="col-9 pt-3">
+        <div id="client_Type" class="d-flex flex-wrap">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="CurrentStudent" value="Current Student">
+                <label class="form-check-label" for="CurrentStudent">Current Student</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="Alumni" value="Alumni">
+                <label class="form-check-label" for="Alumni">Alumni</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="CrossEnrollee" value="Cross-Enrollee" >
+                <label class="form-check-label" for="CrossEnrollee">Cross-Enrollee</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="Transferee" value="Transferee" >
+                <label class="form-check-label" for="Transferee">Transferee</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="StudentApplicant"  value="Student Applicant" >
+                <label class="form-check-label" for="StudentApplicant">Student Applicant</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="FacultyAdministrativeEmployee"  value="Faculty/Administrative Employee" >
+                <label class="form-check-label" for="FacultyAdministrativeEmployee">Faculty/Administrative Employee</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="GuestGeneralPublic"  value="Guest/General Public" >
+                <label class="form-check-label" for="GuestGeneralPublic">Guest/General Public</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Client" id="ParentOfStudent"  value="Parent of Student" >
+                <label class="form-check-label" for="ParentOfStudent">Parent of Student</label>
+            </div>
         </div>
     </div>
-    
-    <div class="modal-footer gap-3 pt-3">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"/>Submit Rating</button>
+      
+    <div class="form-group row">
+      <label for="gender" class="col-form-label col-12">Sex <span style="color: red;">*</span></label>
+      <div id="gender" class="col-12 pt-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Gender" type="radio" id="Male" value="Male">
+                <label class="form-check-label" for="Male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Gender" type="radio" id="Female" value="Female">
+                <label class="form-check-label" for="Female">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Gender" type="radio" id="PreferNotToSay" value="Prefer not to say" >
+                <label class="form-check-label" for="PreferNotToSay">Prefer not to say</label>
+            </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="QA" class="col-form-label col-12">A. Responsiveness: The willingness to help, assist, and provide prompt service to citizens/clients<span style="color: red;">*</span></label>
+      <div id="QA" class="col-12 pt-3">
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_A" type="radio" id="5ExcellentA" value="5">
+              <label class="form-check-label" for="5ExcellentA">5 - Excellent</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_A" type="radio" id="4GoodA" value="4">
+              <label class="form-check-label" for="4GoodA">4 - Good </label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_A" type="radio" id="3AverageA" value="3">
+              <label class="form-check-label" for="3AverageA">3 - Average</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_A" type="radio" id="2FairA" value="2">
+              <label class="form-check-label" for="2FairA">2 - Fair</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_A" type="radio" id="1PoorA" value="1">
+              <label class="form-check-label" for="1PoorA">1 - Poor</label>
+          </div>
+      </div>
+  </div>
+  
+  <div class="form-group row">
+      <label for="QB" class="col-form-label col-12">B. Reliability(Quality): Provision of what was promised with zero to a minimal error<span style="color: red;">*</span></label>
+      <div id="QB" class="col-12 pt-3">
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_B" type="radio" id="5ExcellentB" value="5">
+              <label class="form-check-label" for="5ExcellentB">5 - Excellent</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_B" type="radio" id="4GoodB" value="4">
+              <label class="form-check-label" for="4GoodB">4 - Good </label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_B" type="radio" id="3AverageB" value="3">
+              <label class="form-check-label" for="3AverageB">3 - Average</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_B" type="radio" id="2FairB" value="2">
+              <label class="form-check-label" for="2FairB">2 - Fair</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" name="satisfaction_B" type="radio" id="1PoorB" value="1">
+              <label class="form-check-label" for="1PoorB">1 - Poor</label>
+          </div>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="QC" class="col-form-label col-12">C. Access & Facilities: The convenience of location, ample amenities for comfortable transactions<span style="color: red;">*</span></label>
+    <div id="QC" class="col-12 pt-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name="satisfaction_C" type="radio" id="5ExcellentC" value="5">
+            <label class="form-check-label" for="5ExcellentC">5 - Excellent</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name="satisfaction_C" type="radio" id="4GoodC" value="4">
+            <label class="form-check-label" for="4GoodC">4 - Good </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name="satisfaction_C" type="radio" id="3AverageC" value="3">
+            <label class="form-check-label" for="3AverageC">3 - Average</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name="satisfaction_C" type="radio" id="2FairC" value="2">
+            <label class="form-check-label" for="2FairC">2 - Fair</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" name="satisfaction_C" type="radio" id="1PoorC" value="1">
+            <label class="form-check-label" for="1PoorC">1 - Poor</label>
+        </div>
     </div>
 </div>
+
+<!-- Question D -->
+<div class="form-group row">
+  <label for="QD" class="col-form-label col-12">D. Communication: The act of keeping clients informed in a language they can easily understand<span style="color: red;">*</span></label>
+  <div id="QD" class="col-12 pt-3">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_D" type="radio" id="5ExcellentD" value="5">
+          <label class="form-check-label" for="5ExcellentD">5 - Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_D" type="radio" id="4GoodD" value="4">
+          <label class="form-check-label" for="4GoodD">4 - Good </label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_D" type="radio" id="3AverageD" value="3">
+          <label class="form-check-label" for="3AverageD">3 - Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_D" type="radio" id="2FairD" value="2">
+          <label class="form-check-label" for="2FairD">2 - Fair</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_D" type="radio" id="1PoorD" value="1">
+          <label class="form-check-label" for="1PoorD">1 - Poor</label>
+      </div>
+  </div>
+</div>
+
+<!-- Question E -->
+<div class="form-group row">
+  <label for="QE" class="col-form-label col-12">E. Costs: The satisfaction with timeliness of the billing, billing process/es<span style="color: red;">*</span></label>
+  <div id="QE" class="col-12 pt-3">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_E" type="radio" id="5ExcellentE" value="5">
+          <label class="form-check-label" for="5ExcellentE">5 - Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_E" type="radio" id="4GoodE" value="4">
+          <label class="form-check-label" for="4GoodE">4 - Good </label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_E" type="radio" id="3AverageE" value="3">
+          <label class="form-check-label" for="3AverageE">3 - Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_E" type="radio" id="2FairE" value="2">
+          <label class="form-check-label" for="2FairE">2 - Fair</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_E" type="radio" id="1PoorE" value="1">
+          <label class="form-check-label" for="1PoorE">1 - Poor</label>
+      </div>
+  </div>
+</div>
+
+<!-- Question F -->
+<div class="form-group row">
+  <label for="QF" class="col-form-label col-12">F. Integrity: Assurance that there is honesty, justice, fairness, and trust in service<span style="color: red;">*</span></label>
+  <div id="QF" class="col-12 pt-3">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_F" type="radio" id="5ExcellentF" value="5">
+          <label class="form-check-label" for="5ExcellentF">5 - Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_F" type="radio" id="4GoodF" value="4">
+          <label class="form-check-label" for="4GoodF">4 - Good</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_F" type="radio" id="3AverageF" value="3">
+          <label class="form-check-label" for="3AverageF">3 - Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_F" type="radio" id="2FairF" value="2">
+          <label class="form-check-label" for="2FairF">2 - Fair</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_F" type="radio" id="1PoorF" value="1">
+          <label class="form-check-label" for="1PoorF">1 - Poor</label>
+      </div>
+  </div>
+</div>
+
+<!-- Question G -->
+<div class="form-group row">
+  <label for="QG" class="col-form-label col-12">G. Assurance: The capability of frontline staff to perform their duties<span style="color: red;">*</span></label>
+  <div id="QG" class="col-12 pt-3">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_G" type="radio" id="5ExcellentG" value="5">
+          <label class="form-check-label" for="5ExcellentG">5 - Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_G" type="radio" id="4GoodG" value="4">
+          <label class="form-check-label" for="4GoodG">4 - Good</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_G" type="radio" id="3AverageG" value="3">
+          <label class="form-check-label" for="3AverageG">3 - Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_G" type="radio" id="2FairG" value="2">
+          <label class="form-check-label" for="2FairG">2 - Fair</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_G" type="radio" id="1PoorG" value="1">
+          <label class="form-check-label" for="1PoorG">1 - Poor</label>
+      </div>
+  </div>
+</div>
+
+<!-- Question H -->
+<div class="form-group row">
+  <label for="QH" class="col-form-label col-12">H. Outcome: Extent of achieving outcomes or realizing the intended benefits of government services<span style="color: red;">*</span></label>
+  <div id="QH" class="col-12 pt-3">
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_H" type="radio" id="5ExcellentH" value="5">
+          <label class="form-check-label" for="5ExcellentH">5 - Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_H" type="radio" id="4GoodH" value="4">
+          <label class="form-check-label" for="4GoodH">4 - Good</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_H" type="radio" id="3AverageH" value="3">
+          <label class="form-check-label" for="3AverageH">3 - Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_H" type="radio" id="2FairH" value="2">
+          <label class="form-check-label" for="2FairH">2 - Fair</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input class="form-check-input" name="satisfaction_H" type="radio" id="1PoorH" value="1">
+          <label class="form-check-label" for="1PoorH">1 - Poor</label>
+      </div>
+  </div>
+</div>
+
+
+      <div class="row">
+          <div class="col-md-12 mt-2">
+              <label for="validationCustom01">Rating<span class="text-danger">*</span></label>
+              <select class="star-rating" id="rating" required>
+                  <option value="">Select a rating</option>
+                  <option value="5">Excellent</option>
+                  <option value="4">Good</option>
+                  <option value="3">Average</option>
+                  <option value="2">Fair</option>
+                  <option value="1">Poor</option>
+              </select>
+          </div>
+          <div class="col-md-12 mt-2">
+              <label for="validationCustom01">Remarks<span class="text-primary"> (Optional)</span></label>
+              <textarea class="form-control" maxlength="99" id="remarks" rows="5" placeholder="Remarks"></textarea>
+          </div>
+      </div>
+      
+      <div class="modal-footer gap-3 pt-3">
+          <button type="submit" class="btn btn-primary" id="eval_Submit">Submit Rating</button>
+      </div>
+  </div>
 </form>
 </div>
 
@@ -303,11 +313,7 @@
 <script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/star-rating/dists/star-rating.min.js' %}"></script>
-<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
-<script src="{% static 'assets/js/pages/bootstrap-maxlength.js' %}"></script>
-<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
-<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
-<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
-<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/js/ajax/student/satisfactoryform/form.ajax.js' %}"></script>
+
 {% endblock %} 

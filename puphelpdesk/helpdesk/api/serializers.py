@@ -184,3 +184,18 @@ class AuditTrailSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuditTrail
         fields = '__all__'
+
+class RequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Request
+        fields = '__all__'
+
+class RequestCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequestComment
+        fields = '__all__'
+
+class EvaluationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evaluation
+        fields = '__all__'

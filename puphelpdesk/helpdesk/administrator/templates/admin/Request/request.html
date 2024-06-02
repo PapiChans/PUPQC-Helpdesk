@@ -1,0 +1,158 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/dataTables.dataTables.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/dataTables/css/buttons.dataTables.min.css' %}">
+{% endblock %}
+
+{% block maincontent %}
+{% include "admin/Request/modal/request-modal.html" %}
+<h2 class="header-title">Request Management</h2>
+<ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link active" data-bs-toggle="tab" href="#mn-request-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-check"></i>Manage Requests
+        </a>
+    </li>
+    <li class="nav-item waves-effect waves-light">
+        <a class="nav-link" data-bs-toggle="tab" href="#my-request-justify" role="tab" aria-selected="false">
+            <i class="fa-solid fa-calendar-week"></i>Your Requests
+        </a>
+    </li>
+</ul>
+<div class="tab-content p-3">
+    <div class="tab-pane active" id="mn-request-justify" role="tabpanel">
+        <div class="card mb-2">
+            <div class="container">
+                <form id="RequestSortForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="request_status" class="form-label">Request Status</label>
+                            <select class="form-select" id="request_status">
+                                <option value="">All</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Open">Open</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="request_type" class="form-label">Request Type</label>
+                            <select class="form-select" id="request_type">
+                                <option value="">All</option>
+                                <option value="Commodation">Commodation</option>
+                                <option value="Concern">Concern</option>
+                                <option value="Complaint">Complaint</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="request_office" class="form-label">Request Office</label>
+                            <select class="form-select" id="request_office">
+                                <option value="">All</option>
+                                <option value="Director's Office">Director's Office</option>
+                                <option value="Academic Office">Academic Office</option>
+                                <option value="Student Affairs and Service Office">Student Affairs and Service Office</option>
+                                <option value="Registrar's Office">Registrar's Office</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="Cash and Disbursing Office">Cash and Disbursing Office</option>
+                                <option value="Accounting Office">Accounting Office</option>
+                                <option value="Scholarship Office">Scholarship Office</option>
+                                <option value="Guidance and Placement Office">Guidance and Placement Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Quality Assurance Center and OJT Office">Quality Assurance Center and OJT Office</option>
+                                <option value="Research Office">Research Office</option>
+                                <option value="Library (Resource Learning Center)">Library (Resource Learning Center)</option>
+                                <option value="IT Laboratory Office">IT Laboratory Office</option>
+                                <option value="Quality Management System Office">Quality Assurance Management Office</option>
+                                <option value="Medical Clinic">Medical Clinic</option>
+                                <option value="Security Office">Security Office</option>
+                                <option value="Administrative Office">Administrative Office</option>
+                                <option value="Property Office">Property Office</option>
+                                <option value="Records' Office">Records' Office</option>
+                                <option value="Cultural Office">Cultural Office</option>
+                                <option value="Scholarship Office">Scholarship Office</option>
+                                <option value="Library Office">Library Office</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="start_date">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="end_date">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <button class="btn btn-primary" id="apply_Sort" onclick="getSorted()" type="button">Apply Sorting</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <table id="mn-request-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Request Number</th>
+                    <th class="dt-head-center">Subject</th>
+                    <th class="dt-head-center">Requester</th>
+                    <th class="dt-head-center">Status</th>
+                    <th class="dt-head-center">Date Created</th>
+                    <th class="dt-head-center">Resolve Date</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="tab-content p-3">
+    <div class="tab-pane" id="my-request-justify" role="tabpanel">
+        <button type="button" class="btn btn-primary waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#AddRequestModal">Create Request</button>
+        <table id="my-request-datatable" class="table row-border table-bordered hover responsive nowrap" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">Request Number</th>
+                    <th class="dt-head-center">Subject</th>
+                    <th class="dt-head-center">Requester</th>
+                    <th class="dt-head-center">Office</th>
+                    <th class="dt-head-center">Status</th>
+                    <th class="dt-head-center">Date Created</th>
+                    <th class="dt-head-center">Resolve Date</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/jszip.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'assets/libs/dataTables/js/vfs_font.js' %}"></script>
+<script src="{% static 'assets/js/ajax/admin/Request/request.ajax.js' %}"></script>
+{% endblock %} 

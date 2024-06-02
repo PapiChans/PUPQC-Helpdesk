@@ -59,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="Administrative Office">Administrative Office</option>
                     <option value="Property Office">Property Office</option>
                     <option value="Records' Office">Records' Office</option>
-                    <option value="Cultural Office">Cultural Office</option>`;
+                    <option value="Cultural Office">Cultural Office</option>
+                    <option value="Scholarship Office">Scholarship Office</option>
+                    <option value="Library Office">Library Office</option>`;
                 officeField.disabled = false;
                 facultyCodeField.disabled = true;
                 verifyButton.disabled = true;
@@ -86,7 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="Administrative Office">Administrative Office</option>
                     <option value="Property Office">Property Office</option>
                     <option value="Records' Office">Records' Office</option>
-                    <option value="Cultural Office">Cultural Office</option>`;
+                    <option value="Cultural Office">Cultural Office</option>
+                    <option value="Scholarship Office">Scholarship Office</option>
+                    <option value="Library Office">Library Office</option>`;
                 facultyCodeField.disabled = false;
                 verifyButton.disabled = false;
             }
@@ -562,6 +566,8 @@ getAdminInfo = (profile_Id) => {
                 <option value="Property Office">Property Office</option>
                 <option value="Records' Office">Records' Office</option>
                 <option value="Cultural Office">Cultural Office</option>
+                <option value="Scholarship Office">Scholarship Office</option>
+                <option value="Library Office">Library Office</option>
             `;
 
             if (data.is_master_admin) {

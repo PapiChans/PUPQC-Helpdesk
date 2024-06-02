@@ -511,10 +511,72 @@ class TicketRating(models.Model):
 
 class AuditTrail(models.Model):
     audit_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    ticket_Number = models.CharField(max_length=15, null=False, default='')
+    audit_Reference = models.CharField(max_length=15, null=False, default='')
     audit_User = models.CharField(max_length=100, null=True)
     audit_Action = models.CharField(max_length=30, null=False)
     audit_Description = models.TextField(null=False)
     date_Created = models.DateTimeField(null=False, auto_now_add=True)
     class Meta:
         db_table = 'Audit Trail'
+
+class Request(models.Model):
+    request_Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    request_Number = models.CharField(max_length=100, null=False, unique=True)
+    user_Id = models.ForeignKey(User, on_delete=models.RESTRICT, db_column='user_Id')
+    full_Name = models.CharField(max_length=50, null=False)
+    request_Status = models.CharField(max_length=100, null=False)
+    request_Type = models.CharField(max_length=100, default='')
+    request_Title = models.CharField(max_length=30, null=False)
+    date_Created = models.DateTimeField(auto_now_add=True)
+    request_Office = models.CharField(max_length=100, default='')
+    request_Service = models.CharField(max_length=100, default='')
+    resolved_Date = models.DateTimeField(null=True)
+    last_request_date = models.DateField(null=True)
+    request_count = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if not self.request_Number:
+            self.request_Number = self.generate_request_number()
+        super().save(*args, **kwargs)
+
+    def generate_request_number(self):
+        today = timezone.now().date()
+        if self.last_request_date != today:
+            self.last_request_date = today
+            self.request_count = 0
+            self.save()
+        self.request_count += 1
+        return f'R{today.strftime("%Y%m%d")}-{self.request_count:03}'
+
+    class Meta:
+        db_table = 'Request'
+
+class RequestComment(models.Model):
+    comment_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    user_Id = models.ForeignKey(User, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='user_Id')
+    full_Name = models.CharField(max_length=100, null=False)
+    request_Id = models.ForeignKey(Request, null=False, default=uuid.uuid4, on_delete=models.RESTRICT, db_column='request_Id')
+    comment_Text = models.TextField(null=False)
+    comment_Attachment = models.FileField(upload_to='Request-Attachment/', null=True)
+    date_Created = models.DateTimeField(null=False, auto_now_add=True)
+    class Meta:
+        db_table = 'Request Comment'
+
+class Evaluation(models.Model):
+    eval_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
+    eval_Reference = models.CharField(max_length=30, null=False, unique=True)
+    eval_Status = models.CharField(max_length=30, null=False, default='New')
+    eval_Client = models.CharField(max_length=30, null=True)
+    QA = models.IntegerField(null=True)
+    QB = models.IntegerField(null=True)
+    QC = models.IntegerField(null=True)
+    QD = models.IntegerField(null=True)
+    QE = models.IntegerField(null=True)
+    QF = models.IntegerField(null=True)
+    QG = models.IntegerField(null=True)
+    QH = models.IntegerField(null=True)
+    rating = models.IntegerField(null=True)
+    remarks = models.IntegerField(null=True)
+    date_filled = models.DateTimeField(null=True)
+    class Meta:
+        db_table = 'Evaluation'

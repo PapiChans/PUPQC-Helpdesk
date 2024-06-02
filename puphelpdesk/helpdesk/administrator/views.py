@@ -508,3 +508,22 @@ def adminTicketRating(request):
         return render(request, 'admin/TicketRating/rating.html',{'pagename': pagename_value})
     else:
         return render(request, 'HTTPResponse/401.html')
+    
+# Request
+def adminrequest(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Request"
+        return render(request, 'admin/Request/request.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')
+    
+def adminviewrequest(request):
+    if request.user.is_anonymous:
+        return redirect('login')
+    if request.user.is_admin:
+        pagename_value = "Request Details"
+        return render(request, 'admin/Request/viewrequest.html',{'pagename': pagename_value})
+    else:
+        return render(request, 'HTTPResponse/401.html')

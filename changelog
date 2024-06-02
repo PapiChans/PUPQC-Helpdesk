@@ -1377,3 +1377,9 @@
 # 0.7.30.1
 - Push by Loyd The Great (https://github.com/loydmarionlopez)
 - Settings.py reverted
+
+# 0.7.31
+- Push by Christian (https://github.com/papichans)
+- New Feature: Admin Request (Not Fully Functional)
+- New Feature: Student Evaluation (Not Fully Functional)
+- MAJOR Adjustment on AJAX, Models, URL's and VIEWS

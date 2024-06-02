@@ -90,4 +90,8 @@ urlpatterns = [
 
     # Ticket Rating
     path('ticket/rating', views.adminTicketRating, name='admin/ticketrating'),
+
+    # Request
+    path('request', views.adminrequest, name='admin/request'),
+    path('request/view', views.adminviewrequest, name='admin/request/view'),
 ]
