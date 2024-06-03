@@ -3,7 +3,10 @@ $(function() {
         submitRating()
         e.preventDefault() // prevent page refresh
     })
+    verifyReferenceId()
 })
+
+const notyf = new Notyf();
 
 // Initialize star rating plugin
 var stars = new StarRating('.star-rating');
@@ -25,48 +28,67 @@ selectElement.addEventListener('change', function() {
     }
 });
 
+function verifyReferenceId() {
+    const refId = getRefIdFromURL();
+    $.ajax({
+        type: 'GET',
+        url: `/api/verifyEvaluationID/${refId}`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            console.log(result)
+            if (result.code == 401){
+                window.location.href = '/Unauthorized'
+            }
+            else if (result.code == 404){
+                window.location.href = '/Not_Found'
+            }
+            else{
+                
+            }
+        }
+    })
+}
+
+function getRefIdFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('eval_Reference');
+}
+
 submitRating = () => {
-    if ($('#EvaluationForm')[0].checkValidity()) {
+
+    
+    // Check if all radio button groups are filled out
+    const radioGroups = ['Client', 'Gender', 'satisfaction_A', 'satisfaction_B', 'satisfaction_C', 'satisfaction_D', 'satisfaction_E', 'satisfaction_F', 'satisfaction_G', 'satisfaction_H'];
+    const isRadioFilled = radioGroups.every(groupName => $('input[name="' + groupName + '"]:checked').length > 0);
+
+    // Check form validity and radio button groups
+    if ($('#EvaluationForm')[0].checkValidity() && isRadioFilled) {
         const form = new FormData($('#EvaluationForm')[0]);
 
         $('#eval_Submit').prop('disabled', true);
         
-        const clientType = form.get('Client');
-        const gender = form.get('Gender');
-        const responsiveness = form.get('satisfaction_A');
-        const reliability = form.get('satisfaction_B');
-        const accessFacilities = form.get('satisfaction_C');
-        const communication = form.get('satisfaction_D');
-        const costs = form.get('satisfaction_E');
-        const integrity = form.get('satisfaction_F');
-        const assurance = form.get('satisfaction_G');
-        const outcome = form.get('satisfaction_H');
-        const rating = $('#rating').val(); // Get selected rating value
-        const remarks = $('#remarks').val(); // Get remarks value
+        // Prepare data for submission
+        const data = {};
+        form.forEach((value, key) => {
+            data[key] = value;
+        });
 
+        const rating = $('#rating').val();
+        const remarks = $('#remarks').val();
+        data['rating'] = rating;
+        data['remarks'] = remarks;
 
-        const data = {
-            clientType: clientType,
-            gender: gender,
-            responsiveness: responsiveness,
-            reliability: reliability,
-            accessFacilities: accessFacilities,
-            communication: communication,
-            costs: costs,
-            integrity: integrity,
-            assurance: assurance,
-            outcome: outcome,
-            rating: rating,
-            remarks: remarks
-        };
+        console.log(data);
 
-        console.log(data)
-        
+        // Perform AJAX request
         $.ajax({
-            type: 'POST',
-            url: '/api/submitEvaluation',
+            type: 'PUT',
+            url: `/api/submitEvaluation/${getRefIdFromURL()}`,
             data: data,
             dataType: 'json',
+            headers: {'X-CSRFToken': csrftoken},
             success: (result) => {
                 if (result) {
                     $('#submitRating').prop('disabled', true);
@@ -76,7 +98,7 @@ submitRating = () => {
                         duration: 2500
                     });
                     $('form#EvaluationForm')[0].reset();
-                    location.reload();
+                    window.location.href = '/'
                 }
             },
             error: () => {
@@ -84,15 +106,26 @@ submitRating = () => {
                     title: 'Oops!',
                     text: 'Something went wrong while submitting rating. Please try again.',
                     icon: 'error',
-                    allowEnterKey: 'false',
-                    allowOutsideClick: 'false',
-                    allowEscapeKey: 'false',
+                    allowEnterKey: false,
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 });
                 $('#eval_Submit').prop('disabled', false);
             }
         });
+    } else {
+        // Show an error message indicating that all radio button groups must be filled out
+        Swal.fire({
+            title: 'Oops!',
+            text: 'Please fill out all radio button groups before submitting.',
+            icon: 'error',
+            allowEnterKey: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonText: 'Okay',
+            confirmButtonColor: '#D40429',
+        });
     }
 };
-

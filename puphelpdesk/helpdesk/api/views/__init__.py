@@ -75,6 +75,9 @@ from .student.TicketRating.rating import *
 # Charter
 from .student.Charter.charter import *
 
+# Evaluation
+from .student.Evaluation.evaluation import *
+
 # ---------------
 # Admin Routes
 # ---------------

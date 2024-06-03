@@ -210,9 +210,8 @@ def adminAddTicketComment(request):
         return Response({"message": "Add Comment Error"})
     
 def adminRepliedTicketaudit(ticket_Number, full_Name):
-
     audit_data = {
-        'ticket_Number': ticket_Number,
+        'audit_Reference': ticket_Number,
         'audit_User': full_Name,
         'audit_Action': "Replied",
         'audit_Description': f"Ticket {ticket_Number} has been replied by the admin."
@@ -240,6 +239,7 @@ def adminCloseTicket(request, ticket_Id):
                 'eval_Reference': eval_reference,
                 'eval_Status': 'New',
                 'eval_Client': None,
+                'eval_Gender': None,
                 'QA': None,
                 'QB': None,
                 'QC': None,
@@ -254,14 +254,23 @@ def adminCloseTicket(request, ticket_Id):
             }
             evaluation = Evaluation.objects.create(**evaluation_data)
 
+            #Get Ticket Number
+            ticket_info = Ticket.objects.get(ticket_Id=ticket_Id)
+            
+            # Retrieve the associated UserProfile object directly using the user_Id (which is a UUID)
+            user_profile = UserProfile.objects.get(user_Id=ticket_info.user_Id)
+
+            eval = Evaluation.objects.get(eval_Reference=ticket_info.ticket_Number)
+
             adminCloseTicketaudit(ticket.ticket_Number, admin.admin_Last_Name +', '+ admin.admin_First_Name)
+            send_email_closed(user_profile.user_Email, ticket_info.full_Name, ticket_info.ticket_Number, eval.eval_Id)
             return Response({"message": "Close Ticket Successfully"})
         return Response({"message": "Close Ticket Failed"})
     
 def adminCloseTicketaudit(ticket_Number, full_Name):
 
     audit_data = {
-        'ticket_Number': ticket_Number,
+        'audit_Reference': ticket_Number,
         'audit_User': full_Name,
         'audit_Action': "Closed",
         'audit_Description': f"The Ticket {ticket_Number} has been Closed by the admin."
@@ -287,8 +296,8 @@ def adminverifyTicketInfo(request, ticket_Number):
                 return Response({"code": 404})
         return Response({"message": "Get Ticket Error"})
     
-def send_email_closed(user_Email, full_Name, ticket_number):
-    subject = 'Feedback: How did we do? {ticket_Title}: '
+def send_email_closed(user_Email, full_Name, ticket_number, eval_Id):
+    subject = 'Feedback: How did we do?'
     html_content = """
 <html>
 <head>
@@ -314,13 +323,13 @@ def send_email_closed(user_Email, full_Name, ticket_number):
                 <p class="paragraph">If you have any further questions or issues, please feel free to create a new ticket.</p>
                 <p class="paragraph">Thank you for your cooperation.</p>
                 <p class="paragraph"><strong class="app-team">Best regards,<br>PUPQC Student Helpdesk Administrator</strong></p>
-                <a href="">Your opinion is valuable. Please share your feedback: 'replace this URL' (www.form.com) </a>
+                <p class="paragraph">Your opinion is valuable. Feel free to answer our Evaluation <a href="http://pupqc-helpdesk.onrender.com/user/satisfactionForm?eval_Reference={eval_Id}">Click here</a></p>
             </div>
         </div>
     </div>
 </body>
 </html>
-""".format(full_Name=full_Name, ticket_number=ticket_number)
+""".format(full_Name=full_Name, ticket_number=ticket_number, eval_Id=eval_Id,)
 
     # Create EmailMultiAlternatives object to include both HTML and plain text content
     msg = EmailMultiAlternatives(subject, '', settings.DEFAULT_FROM_EMAIL, [user_Email])
@@ -397,7 +406,7 @@ def adminEditTicket(request, ticket_Id):
 def adminReAssignedTicketaudit(ticket_Number, full_Name, old_office, ticket_Office):
 
     audit_data = {
-        'ticket_Number': ticket_Number,
+        'audit_Reference': ticket_Number,
         'audit_User': full_Name,
         'audit_Action': "Re-Assigned",
         'audit_Description': f"The Ticket {ticket_Number} has been Re-Assigned by the admin. from {old_office} to {ticket_Office}"

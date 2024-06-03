@@ -564,9 +564,10 @@ class RequestComment(models.Model):
 
 class Evaluation(models.Model):
     eval_Id = models.UUIDField(primary_key=True, null=False, default=uuid.uuid4, editable=False)
-    eval_Reference = models.CharField(max_length=30, null=False, unique=True)
+    eval_Reference = models.CharField(max_length=50, null=False, unique=True)
     eval_Status = models.CharField(max_length=30, null=False, default='New')
     eval_Client = models.CharField(max_length=30, null=True)
+    eval_Gender = models.CharField(max_length=30, null=True)
     QA = models.IntegerField(null=True)
     QB = models.IntegerField(null=True)
     QC = models.IntegerField(null=True)
@@ -576,7 +577,7 @@ class Evaluation(models.Model):
     QG = models.IntegerField(null=True)
     QH = models.IntegerField(null=True)
     rating = models.IntegerField(null=True)
-    remarks = models.IntegerField(null=True)
+    remarks = models.CharField(max_length=100, null=True)
     date_filled = models.DateTimeField(null=True)
     class Meta:
         db_table = 'Evaluation'

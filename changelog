@@ -1383,3 +1383,7 @@
 - New Feature: Admin Request (Not Fully Functional)
 - New Feature: Student Evaluation (Not Fully Functional)
 - MAJOR Adjustment on AJAX, Models, URL's and VIEWS
+
+# 0.7.32
+- Push by Christian (https://github.com/papichans)
+- Student Evaluation is Now Fully Functional

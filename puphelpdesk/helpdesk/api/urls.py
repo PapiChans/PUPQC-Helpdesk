@@ -445,8 +445,9 @@ urlpatterns = [
     # REPORTS API URLS
     #----------------------
 
-    path('report/adminmonthlyticketreport', views.adminMonthlyOfficeTicketReport, name='report/adminmonthlyticketreport')
+    path('report/adminmonthlyticketreport', views.adminMonthlyOfficeTicketReport, name='report/adminmonthlyticketreport'),
 
     # Evaluation
-
+    path('verifyEvaluationID/<uuid:eval_Id>', views.evalVerifyID),
+    path('submitEvaluation/<uuid:eval_Id>', views.evalSubmit),
 ]

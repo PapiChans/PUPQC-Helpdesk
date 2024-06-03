@@ -115,7 +115,7 @@ def studSubmitTicketRating(request):
 def studRateTicketaudit(ticket_Number, full_Name):
 
     audit_data = {
-        'ticket_Number': ticket_Number,
+        'audit_Reference': ticket_Number,
         'audit_User': full_Name,
         'audit_Action': "Rated",
         'audit_Description': f"Ticket {ticket_Number} has been rated."
