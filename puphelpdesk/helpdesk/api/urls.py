@@ -423,6 +423,8 @@ urlpatterns = [
     path('admin/getRequestInfo/<request_Number>', views.adminGetRequestInfo),
     path('admin/getRequestComment/<uuid:request_Id>', views.adminGetRequestComment),
     path('admin/addRequestComment', views.adminAddRequestComment),
+    path('admin/submitRequestRating/<request_Number>', views.adminSubmitRequestRating),
+    path('admin/requestClosed/<uuid:request_Id>', views.adminCloseRequest),
 
     #----------------------
     # GUEST API URLS

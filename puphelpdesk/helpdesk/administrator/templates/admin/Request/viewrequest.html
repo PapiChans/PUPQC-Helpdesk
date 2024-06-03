@@ -4,9 +4,11 @@
 <link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
 <link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
 <link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/libs/star-rating/dists/star-rating.min.css' %}"/>
 {% endblock %}
 
 {% block maincontent %}
+{% include "admin/Request/modal/viewrequest-modal.html" %}
 <div class="row">
     <div class="col-10">
         <h2 class="header-title">Request Info</h2>
@@ -68,21 +70,25 @@
                 <input type="hidden" id="request_user_Id">
                 <input type="hidden" id="request_Id">
                 <input type="hidden" id="request_full_Name">
-            <div class="col-md-12 mt-2">
-                <label for="validationCustom01">Your Response<span class="text-danger">*</span></label>
-                <textarea required class="form-control" id="comment_Text" rows="5" placeholder="Enter your response here."></textarea>
+                <div class="col-md-12 mt-2">
+                    <label for="validationCustom01">Your Response<span class="text-danger">*</span></label>
+                    <textarea required class="form-control" id="comment_Text" rows="5" placeholder="Enter your response here."></textarea>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="validationCustom01">Attachment <span class="text-info">(Optional)</span></label>
+                    <input type="file" class="filepond" id="comment_Attachment" data-max-files="1">
+                </div>
+                <div class="col-10">
+                    <a href="{% url 'admin/request' %}" class="btn btn-secondary" id="goBack">Go Back</a>
+                    <button type="submit" class="btn btn-primary" id="comment_Submit">Submit</button>
+                </div>
+                <div class="col-2 row" id="showResolved">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#RateRequestModal">Resolved</button>
+                </div>
             </div>
-            <div class="col-md-12 mt-2">
-                <label for="validationCustom01">Attachment <span class="text-info">(Optional)</span></label>
-                <input type="file" class="filepond" id="comment_Attachment" data-max-files="1">
-            </div>
-            <div class="col">
-                <a href="{% url 'admin/request' %}" class="btn btn-secondary" id="goBack">Go Back</a>
-                <button type="submit" class="btn btn-primary" id="comment_Submit">Submit</button>
-            </div>
-            
         </form>
     </div>
+    
 </div>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTrail" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
@@ -103,5 +109,6 @@
 <script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
 <script src="{% static 'assets/libs/filepond/filepond.js' %}"></script>
 <script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script src="{% static 'assets/libs/star-rating/dists/star-rating.min.js' %}"></script>
 <script src="{% static 'assets/js/ajax/admin/Request/viewrequest.ajax.js' %}"></script>
 {% endblock %} 

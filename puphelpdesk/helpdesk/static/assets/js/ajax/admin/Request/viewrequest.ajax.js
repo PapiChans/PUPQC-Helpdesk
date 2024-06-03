@@ -4,11 +4,13 @@ $(function () {
         e.preventDefault() // prevent page refresh
     })
     getRequestInfo(getRequestIdFromURL())
-
+    hideResolveButton()
+    $('#RateRequestForm').on('submit', function (e) {
+        e.preventDefault() // prevent page refresh
+        submitRating()
+    })
 })
 
-let fullName = $('#request_full_Name').val();
-console.log(fullName)
 
 const notyf = new Notyf();
 
@@ -64,10 +66,13 @@ getRequestInfo = (request_Number) => {
             }
 
             
+            //For rating
+            $('#rate_request_Number').val(data.request_Number);
+            $('#rate_request_Office').val(data.request_Office);
             $('#request_Id').val(data.request_Id);
 
             getadmininfoforticket();
-            getTicketComment(data.request_Id, data.full_Name);
+            getTicketComment(data.request_Id);
             getAuditTrail(data.request_Number)
 
             //Display the form response
@@ -75,7 +80,7 @@ getRequestInfo = (request_Number) => {
 
             let closedformat = `<div class="text-center">
                 <h2 class="text-center">Request Closed</h2>
-                <p class="text-center">This request is resolved.</p>
+                <p class="text-center">This request is closed.</p>
             </div>
             `;
             
@@ -83,19 +88,19 @@ getRequestInfo = (request_Number) => {
             <p class="text-center">This request is resolved.</p>
             <div class="row justify-content-center">
                 <div class="col-md-2 text-center">
-                    <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.ticket_Id}')">Close Ticket</button>
+                    <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.request_Id}')">Close Request</button>
                 </div>
             </div>
             `
 
-            if (data.ticket_Status == 'Open'){
+            if (data.request_Status == 'Open'){
                 $('#comment_Submit').prop('disabled', false);
             }
-            else if (data.ticket_Status == 'Resolved'){
+            else if (data.request_Status == 'Resolved'){
                 formshoworhide.html(null)
                 formshoworhide.append(resolvedformat)
             }
-            else if (data.ticket_Status == 'Closed'){
+            else if (data.request_Status == 'Closed'){
                 formshoworhide.html(null)
                 formshoworhide.append(closedformat)
             }
@@ -168,6 +173,7 @@ getadmininfoforticket = () => {
             const profiledata = result;
             $('#request_user_Id').val(profiledata.user_Id);
             $('#request_full_Name').val(profiledata.admin_Last_Name+", "+ profiledata.admin_First_Name);
+            hideResolveButton(profiledata.admin_Last_Name+", "+ profiledata.admin_First_Name);
         },
     })
     .fail(() => {
@@ -179,11 +185,9 @@ getadmininfoforticket = () => {
     })
 }
 
-getTicketComment = (request_Id, full_Name) => {
+getTicketComment = (request_Id) => {
 
     let chat_display = $('#chat_display')
-    let get_full_Name = full_Name;
-    console.log(get_full_Name)
 
     $.ajax({
         type: 'GET',
@@ -195,8 +199,8 @@ getTicketComment = (request_Id, full_Name) => {
             const data = result;
             if (data.length > 0) {
                 data.forEach((data) => {
-                    console.log(data.full_Name)
-
+                    let get_full_Name = $('#request_full_Name').val();
+                    
                     let text = (data.comment_Text)?.replace(/\n/g, '</p><p>');
                     const fileName = getFileNameFromPath(data.comment_Attachment);
                     let download = null;
@@ -411,4 +415,145 @@ addRequestComment = (CommentAttachment) => {
             }
         })
     }
+}
+
+// Initialize star rating plugin
+var stars = new StarRating('.star-rating');
+
+// Get the select element
+var selectElement = document.querySelector('.star-rating');
+
+// Listen for change event on select element
+selectElement.addEventListener('change', function() {
+    var selectedValue = this.value;
+    if (selectedValue !== "") {
+        console.log("Selected rating:", selectedValue);
+        $('#rating_Submit').prop('disabled', false);
+        // Here you can add any further validation or processing logic you need
+    } else {
+        console.log("Please select a rating");
+        $('#rating_Submit').prop('disabled', true);
+        // Here you can handle the case where no rating is selected
+    }
+});
+
+
+hideResolveButton = (get_full_Name, request_full_Name) => {
+    // Select the button to be hidden or shown
+    let rateButton = $('#showResolved');
+
+    // Compare the user's full name with the request's full name
+    if (get_full_Name == request_full_Name) {
+        rateButton.hide();
+    } else {
+        rateButton.show();
+    }
+}
+
+submitRating = () => {
+    $('#rating_Submit').prop('disabled', true);
+    if ($('#RateRequestForm')[0].checkValidity()) {
+
+        const request_Number = $('#rate_request_Number').val();
+        const request_Rating = $('#request_Rating').val();
+
+        const data = {
+            request_Rating: request_Rating,
+        };
+
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to rate this request?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#D40429',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#rating_Submit').prop('disabled', true);
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/admin/submitRequestRating/${request_Number}`,
+                    data: data,
+                    dataType: 'json',
+                    headers: {'X-CSRFToken': csrftoken},
+                    success: (result) => {
+                        if (result) {
+                            $('#rating_Submit').prop('disabled', true);
+                            notyf.success({
+                                message: 'Submit Request Successfully',
+                                position: {x:'right',y:'top'},
+                                duration: 2500
+                            })
+                            $('form#RateRequestForm')[0].reset();
+                            $('#RateRequestModal').modal('hide');
+                            location.reload();
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Something went wrong while submitting your Ratings. Please try again.',
+                            icon: 'error',
+                            confirmButtonText: 'Okay',
+                            confirmButtonColor: '#D40429',
+                        });
+                    },
+                });
+            }
+        });
+        $('#rating_Submit').prop('disabled', false);
+    }
+}
+
+MarkAsClosed = (ticket_Id) => {
+
+    Swal.fire({
+        title: 'Close the request',
+        html: 'Are you sure do you want to close the request?',
+        icon: 'question',
+        allowEnterKey: 'false',
+        allowOutsideClick: 'false',
+        allowEscapeKey: 'false',
+        confirmButtonText: 'Yes, close it',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        cancelButtonClass: 'btn btn-danger w-xs mb-1',
+        confirmButtonColor: '#D40429',
+    }).then(function (result) {
+        if (result.value) {
+            $('#ticket_closed_btn').prop('disabled', true);
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/admin/requestClosed/${ticket_Id}`,
+                dataType: 'json',
+                cache: false,
+                headers: {'X-CSRFToken': csrftoken},
+                success: (result) => {
+                    if (result) {
+                        notyf.success({
+                            message: 'Request Close Successfully',
+                            position: {x:'right',y:'top'},
+                            duration: 2500
+                        });
+                            location.reload()
+                    }
+                },
+            })
+            .fail(() => {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Something went wrong while closing request. Please try again.',
+                    icon: 'error',
+                    allowEnterKey: 'false',
+                    allowOutsideClick: 'false',
+                    allowEscapeKey: 'false',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#D40429',
+                })
+                $('#ticket_closed_btn').prop('disabled', false);
+            })
+        }
+    })
 }

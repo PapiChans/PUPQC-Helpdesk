@@ -449,7 +449,6 @@ getMYRequest = () => {
                 },
             ],
             order: [[5, 'desc']],
-            dom: '<"top"B>rt<"bottom"lip>'
         });
     }
 };

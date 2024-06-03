@@ -296,8 +296,11 @@ def adminAddRequestComment(request):
             if serializer.is_valid():
                 serializer.save()
 
-                request_info.request_Status = 'Open'
-                request_info.save()
+                print (request_full_Name)
+                print (request_info.full_Name)
+                if request_info.full_Name != request_full_Name:
+                    request_info.request_Status = 'Open'
+                    request_info.save()
                 addRepliedRequestaudit(request_info.request_Number, request_full_Name)
                 # Here you can perform additional actions if needed
                 return Response({"message": "Add Comment Successfully"})
@@ -312,6 +315,64 @@ def addRepliedRequestaudit(request_Number, full_Name):
         'audit_User': full_Name,
         'audit_Action': "Replied",
         'audit_Description': f"Request {request_Number} has been replied."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
+    
+@api_view(['PUT'])
+def adminSubmitRequestRating(request, request_Number):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "PUT":
+            request_Rating = request.POST.get('request_Rating')
+
+            data = Request.objects.get(request_Number=request_Number)
+            data.request_Rating = request_Rating
+            data.resolved_Date = timezone.now().isoformat()
+            data.request_Status = 'Resolved'
+            data.save()
+            addResolvedRequestaudit(data.request_Number, data.full_Name)
+        return Response({"message": "Get Ticket Error"})
+    
+def addResolvedRequestaudit(request_Number, full_Name):
+
+    audit_data = {
+        'audit_Reference': request_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Resolved and Rated",
+        'audit_Description': f"Request {request_Number} has been resolved and rated."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
+    
+@api_view(['DELETE'])
+def adminCloseRequest(request, request_Id):
+    if request.user.is_anonymous or not request.user.is_admin:
+        return Response({"message": "Not Authenticated"})
+    else:
+        if request.method == "DELETE":
+            request_obj = Request.objects.get(pk=request_Id)
+            # Retrieve the associated UserProfile object directly using the user_Id (which is a UUID)
+            admin = AdminProfile.objects.get(user_Id=request.user.user_Id)
+            request_obj.request_Status = 'Closed'
+            request_obj.save()
+
+            adminCloseRequestaudit(request_obj.request_Number, admin.admin_Last_Name +', '+ admin.admin_First_Name)
+            return Response({"message": "Close Request Successfully"})
+        return Response({"message": "Close Request Failed"})
+    
+def adminCloseRequestaudit(request_Number, full_Name):
+
+    audit_data = {
+        'audit_Reference': request_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Closed",
+        'audit_Description': f"Request {request_Number} has been closed."
     }
     serializer = AuditTrailSerializer(data=audit_data)
     if serializer.is_valid():

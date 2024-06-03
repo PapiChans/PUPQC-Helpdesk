@@ -1,0 +1,40 @@
+<div class="modal fade" id="RateRequestModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">How was our response? Rate us.</h5>
+            </div>
+            <div class="modal-body">
+                <form id="RateRequestForm" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="validationCustom01">Request Number<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="rate_request_Number" placeholder="Request Number" disabled/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Request Office<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="rate_request_Office" placeholder="Request Office" disabled/>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="validationCustom01">Rating<span class="text-danger">*</span></label>
+                            <select class="star-rating" id="request_Rating" required>
+                                <option value="">Select a rating</option>
+                                <option value="5">Excellent</option>
+                                <option value="4">Good</option>
+                                <option value="3">Average</option>
+                                <option value="2">Fair</option>
+                                <option value="1">Poor</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="rating_Submit" disabled/>Submit Rating</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+

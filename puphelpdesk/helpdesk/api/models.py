@@ -532,6 +532,7 @@ class Request(models.Model):
     request_Service = models.CharField(max_length=100, default='')
     resolved_Date = models.DateTimeField(null=True)
     last_request_date = models.DateField(null=True)
+    request_Rating = models.IntegerField(null=True)
     request_count = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
