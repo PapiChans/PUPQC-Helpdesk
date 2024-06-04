@@ -4,7 +4,6 @@ $(function () {
         e.preventDefault() // prevent page refresh
     })
     getRequestInfo(getRequestIdFromURL())
-    hideResolveButton()
     $('#RateRequestForm').on('submit', function (e) {
         e.preventDefault() // prevent page refresh
         submitRating()
@@ -65,6 +64,38 @@ getRequestInfo = (request_Number) => {
                 $('#resolved_Date_info').html(formatPostgresTimestamp(data.resolved_Date));
             }
 
+            //Rating badge
+            let rating = data.request_Rating;
+            let badgeText = "";
+            let badgeColor = "";
+
+            switch (rating) {
+            case 1:
+                badgeText = "Poor";
+                badgeColor = "badge bg-danger";
+                break;
+            case 2:
+                badgeText = "Fair";
+                badgeColor = "badge bg-warning";
+                break;
+            case 3:
+                badgeText = "Average";
+                badgeColor = "badge bg-secondary";
+                break;
+            case 4:
+                badgeText = "Good";
+                badgeColor = "badge bg-primary";
+                break;
+            case 5:
+                badgeText = "Excellent";
+                badgeColor = "badge bg-success";
+                break;
+            default:
+                badgeText = "Not Yet Rated";
+                badgeColor = "badge bg-secondary";
+            }
+            $('#request_Rating_info').html(`<span class="${badgeColor}">${badgeText}</span>`);
+
             
             //For rating
             $('#rate_request_Number').val(data.request_Number);
@@ -72,7 +103,6 @@ getRequestInfo = (request_Number) => {
             $('#request_Id').val(data.request_Id);
 
             getadmininfoforticket();
-            getTicketComment(data.request_Id);
             getAuditTrail(data.request_Number)
 
             //Display the form response
@@ -86,11 +116,6 @@ getRequestInfo = (request_Number) => {
             
             let resolvedformat = `<h2 class="text-center">Request Resolved</h2>
             <p class="text-center">This request is resolved.</p>
-            <div class="row justify-content-center">
-                <div class="col-md-2 text-center">
-                    <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed('${data.request_Id}')">Close Request</button>
-                </div>
-            </div>
             `
 
             if (data.request_Status == 'Open'){
@@ -105,7 +130,13 @@ getRequestInfo = (request_Number) => {
                 formshoworhide.append(closedformat)
             }
 
-            
+            $('#ticket_closed_btn').click(() => {
+                MarkAsClosed(data.request_Id);
+            });
+
+            // Get Messages
+            getTicketComment(data.request_Id, data.user_Id);
+            hideClosed(data.request_Status, data.user_Id)
         },
         
     })
@@ -173,7 +204,6 @@ getadmininfoforticket = () => {
             const profiledata = result;
             $('#request_user_Id').val(profiledata.user_Id);
             $('#request_full_Name').val(profiledata.admin_Last_Name+", "+ profiledata.admin_First_Name);
-            hideResolveButton(profiledata.admin_Last_Name+", "+ profiledata.admin_First_Name);
         },
     })
     .fail(() => {
@@ -185,7 +215,30 @@ getadmininfoforticket = () => {
     })
 }
 
-getTicketComment = (request_Id) => {
+hideClosed = (request_Status, user_Id) => {
+    $.ajax({
+        type: 'GET',
+        url: `/api/auth/getadminprofile`,
+        dataType: 'json',
+        cache: false,
+        headers: {'X-CSRFToken': csrftoken},
+        success: (result) => {
+            const data = result;
+            if (user_Id == data.user_Id && request_Status == 'Resolved'){
+                $('#ticket_closed_btn').show();
+            }
+        },
+    })
+    .fail(() => {
+        notyf.error({
+            message: 'Fetch Profile Error',
+            position: {x:'right',y:'top'},
+            duration: 2500
+        });
+    })
+}
+
+getTicketComment = (request_Id, user_Id) => {
 
     let chat_display = $('#chat_display')
 
@@ -197,9 +250,18 @@ getTicketComment = (request_Id) => {
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
             const data = result;
+            let get_user_Id = $('#request_user_Id').val();
+            let request_user_Id = user_Id;
+            if (get_user_Id != request_user_Id){
+                hideResolveButton();
+            }
+            else{
+                $('#resolved_Button').prop('disabled', false);
+            }
+
             if (data.length > 0) {
                 data.forEach((data) => {
-                    let get_full_Name = $('#request_full_Name').val();
+                    let get_user_Id = $('#request_user_Id').val();
                     
                     let text = (data.comment_Text)?.replace(/\n/g, '</p><p>');
                     const fileName = getFileNameFromPath(data.comment_Attachment);
@@ -259,7 +321,7 @@ getTicketComment = (request_Id) => {
                     </div>
                     `
 
-                    if (data.full_Name == get_full_Name){
+                    if (data.user_Id == get_user_Id){
                         chat_display.append(studentchat)
                     }
                     else {
@@ -438,16 +500,10 @@ selectElement.addEventListener('change', function() {
 });
 
 
-hideResolveButton = (get_full_Name, request_full_Name) => {
+hideResolveButton = () => {
     // Select the button to be hidden or shown
     let rateButton = $('#showResolved');
-
-    // Compare the user's full name with the request's full name
-    if (get_full_Name == request_full_Name) {
-        rateButton.hide();
-    } else {
-        rateButton.show();
-    }
+    rateButton.html(null)
 }
 
 submitRating = () => {

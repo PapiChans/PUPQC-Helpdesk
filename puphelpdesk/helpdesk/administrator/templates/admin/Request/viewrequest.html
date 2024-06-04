@@ -10,15 +10,20 @@
 {% block maincontent %}
 {% include "admin/Request/modal/viewrequest-modal.html" %}
 <div class="row">
-    <div class="col-10">
+    <div class="col-9">
         <h2 class="header-title">Request Info</h2>
     </div>
-    <div class="col-1">
-        <button class="btn btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTrail" aria-controls="offcanvasExample">
+    <div class="col-3 d-flex justify-content-end">
+        <div id="closeButton">
+            <button type="button" class="btn btn-danger" id="ticket_closed_btn" onclick="MarkAsClosed()" style="display: none;">Close Request</button>
+        </div>
+        <button class="btn btn-info ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTrail" aria-controls="offcanvasExample">
             View Trail
         </button>
     </div>
 </div>
+
+
 </div>
 </div>
 <div class="card">
@@ -47,6 +52,8 @@
                             <p id="request_Type_info"></p>
                             <h3>Resolved Date</h3>
                             <p id="resolved_Date_info"></p>
+                            <h3>Ratings</h3>
+                            <p id="request_Rating_info"></p>
                           </div>
                         </div>
                     </div>
@@ -83,7 +90,7 @@
                     <button type="submit" class="btn btn-primary" id="comment_Submit">Submit</button>
                 </div>
                 <div class="col-2 row" id="showResolved">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#RateRequestModal">Resolved</button>
+                    <button id="resolved_Button" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#RateRequestModal" disabled>Resolved</button>
                 </div>
             </div>
         </form>
