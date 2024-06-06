@@ -101,7 +101,7 @@ def studSubmitTicketRating(request):
                     # If no admins are fetched, don't trigger the email notification
                     if getAdmins:
                         # Send notification to all admins
-                        send_ticket_rating_notification(getAdmins, ticket.ticket_Office, ticket_number, ticket_rating, rating_map.get(ticket_rating))
+                        # send_ticket_rating_notification(getAdmins, ticket.ticket_Office, ticket_number, ticket_rating, rating_map.get(ticket_rating))
                         send_ticket_rating_notification(getSuperAdmins, ticket.ticket_Office, ticket_number, ticket_rating, rating_map.get(ticket_rating))
 
 
