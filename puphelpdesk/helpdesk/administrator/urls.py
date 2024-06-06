@@ -94,4 +94,7 @@ urlpatterns = [
     # Request
     path('request', views.adminrequest, name='admin/request'),
     path('request/view', views.adminviewrequest, name='admin/request/view'),
+
+    # Reports
+    path('reports', views.adminreports, name='admin/reports'),
 ]

@@ -248,7 +248,6 @@ def adminCloseTicket(request, ticket_Id):
                 'QF': None,
                 'QG': None,
                 'QH': None,
-                'rating': None,
                 'remarks': None,
                 'date_filled': None,  # Current timestamp
             }

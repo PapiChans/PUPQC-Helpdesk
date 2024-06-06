@@ -32,7 +32,6 @@ def evalSubmit(request, eval_Id):
         QF = request.POST.get('satisfaction_F')
         QG = request.POST.get('satisfaction_G')
         QH = request.POST.get('satisfaction_H')
-        rating = request.POST.get('rating')
         remarks = request.POST.get('remarks')
 
         # print("Evaluation ID:", eval_Id)
@@ -63,7 +62,6 @@ def evalSubmit(request, eval_Id):
         eval_obj.QF = QF
         eval_obj.QG = QG
         eval_obj.QH = QH
-        eval_obj.rating = rating
         eval_obj.remarks = remarks
         eval_obj.date_filled = timezone.now()  # Set date filled to current datetime
         eval_obj.eval_Status = 'Done'  # Set evaluation status to 'Done'

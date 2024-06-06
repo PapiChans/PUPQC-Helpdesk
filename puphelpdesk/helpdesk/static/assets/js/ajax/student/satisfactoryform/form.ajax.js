@@ -8,25 +8,6 @@ $(function() {
 
 const notyf = new Notyf();
 
-// Initialize star rating plugin
-var stars = new StarRating('.star-rating');
-
-// Get the select element
-var selectElement = document.querySelector('.star-rating');
-
-// Listen for change event on select element
-selectElement.addEventListener('change', function() {
-    var selectedValue = this.value;
-    if (selectedValue !== "") {
-        console.log("Selected rating:", selectedValue);
-        $('#rating_Submit').prop('disabled', false);
-        // Here you can add any further validation or processing logic you need
-    } else {
-        console.log("Please select a rating");
-        $('#rating_Submit').prop('disabled', true);
-        // Here you can handle the case where no rating is selected
-    }
-});
 
 function verifyReferenceId() {
     const refId = getRefIdFromURL();
@@ -58,7 +39,8 @@ function getRefIdFromURL() {
 
 submitRating = () => {
 
-    
+    $('#rating_Submit').prop('disabled', true);
+
     // Check if all radio button groups are filled out
     const radioGroups = ['Client', 'Gender', 'satisfaction_A', 'satisfaction_B', 'satisfaction_C', 'satisfaction_D', 'satisfaction_E', 'satisfaction_F', 'satisfaction_G', 'satisfaction_H'];
     const isRadioFilled = radioGroups.every(groupName => $('input[name="' + groupName + '"]:checked').length > 0);
@@ -67,7 +49,7 @@ submitRating = () => {
     if ($('#EvaluationForm')[0].checkValidity() && isRadioFilled) {
         const form = new FormData($('#EvaluationForm')[0]);
 
-        $('#eval_Submit').prop('disabled', true);
+        $('#rating_Submit').prop('disabled', true);
         
         // Prepare data for submission
         const data = {};
@@ -75,9 +57,7 @@ submitRating = () => {
             data[key] = value;
         });
 
-        const rating = $('#rating').val();
         const remarks = $('#remarks').val();
-        data['rating'] = rating;
         data['remarks'] = remarks;
 
         console.log(data);
@@ -112,7 +92,7 @@ submitRating = () => {
                     confirmButtonText: 'Okay',
                     confirmButtonColor: '#D40429',
                 });
-                $('#eval_Submit').prop('disabled', false);
+                $('#rating_Submit').prop('disabled', false);
             }
         });
     } else {
@@ -127,5 +107,6 @@ submitRating = () => {
             confirmButtonText: 'Okay',
             confirmButtonColor: '#D40429',
         });
+        $('#rating_Submit').prop('disabled', false);
     }
 };

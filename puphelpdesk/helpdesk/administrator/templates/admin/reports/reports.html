@@ -1,0 +1,133 @@
+{% extends "admin/partials/main.html" %}
+{% load static %}
+{% block customcss %}
+<link href="{% static 'assets/libs/sweetalert/sweetalert2.min.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'assets/libs/notyf/notyf.min.css' %}">
+<link href="{% static 'assets/libs/filepond/filepond.css' %}" rel="stylesheet"/>
+<link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block maincontent %}
+<h2 class="header-title">Reports</h2>
+<div class="card mb-2">
+    <div class="container">
+        <form id="DateForm" class="needs-validation" novalidate>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-3">
+                    <label for="start_date" class="form-label">Select Month</label>
+                    <input type="date" class="form-control" id="date_month" name="date_month">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% if request.user.is_authenticated %}
+    {% if request.user.is_admin %}
+        {% with request.user.adminprofile_set.first as admin_profile %}
+            {% if admin_profile %}
+                {% if admin_profile.is_master_admin%}
+                    <div class="card mb-2">
+                        <div class="card-status-start bg-primary"></div>
+                        <div class="card-body">
+                            <div class="row align-content-center">
+                                <div class="col-10">
+                                    <h3 class="card-title">All Ticket Counts</h3>
+                                    <p class="text-secondary">Fetch all Ticket counts and sorted by offices.</p>
+                                </div>
+                                <div class="col-auto align-content-center">
+                                    <a href="{% url 'report/masteradminmonthlyticketreport' %}" data-report-id="1" target="_blank"><button type="button" class="btn btn-primary generate-report">Get Report</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-status-start bg-primary"></div>
+                        <div class="card-body">
+                            <div class="row align-content-center">
+                                <div class="col-10">
+                                    <h3 class="card-title">All Ticket Ratings</h3>
+                                    <p class="text-secondary">Fetch all Ticket Ratings and sorted by offices.</p>
+                                </div>
+                                <div class="col-auto align-content-center">
+                                    <a href="{% url 'report/masteradminmonthlyticketratings' %}" data-report-id="2" target="_blank"><button type="button" class="btn btn-primary generate-report">Get Report</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-status-start bg-primary"></div>
+                        <div class="card-body">
+                            <div class="row align-content-center">
+                                <div class="col-10">
+                                    <h3 class="card-title">All Request Reports</h3>
+                                    <p class="text-secondary">Fetch all Reports and Rating sorted by offices.</p>
+                                </div>
+                                <div class="col-auto align-content-center">
+                                    <a href="{% url 'report/masteradminmonthlyrequestreport' %}" data-report-id="3" target="_blank"><button type="button" class="btn btn-primary generate-report">Get Report</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-status-start bg-primary"></div>
+                        <div class="card-body">
+                            <div class="row align-content-center">
+                                <div class="col-10">
+                                    <h3 class="card-title">Monthly Evaluation Reports</h3>
+                                    <p class="text-secondary">Fetch all Evaluation Reports by this month.</p>
+                                </div>
+                                <div class="col-auto align-content-center">
+                                    <a href="{% url 'report/masteradminevaluationreport' %}" data-report-id="4" target="_blank"><button type="button" class="btn btn-primary generate-report">Get Report</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="card mb-2">
+                        <div class="card-status-start bg-primary"></div>
+                        <div class="card-body">
+                            <div class="row align-content-center">
+                                <div class="col-10">
+                                    <h3 class="card-title">Monthly Office Reports</h3>
+                                    <p class="text-secondary">Fetch all the performance on your office by this month.</p>
+                                </div>
+                                <div class="col-auto align-content-center">
+                                    <a href="{% url 'report/adminmonthlyreport' %}" data-report-id="5" target="_blank"><button type="button" class="btn btn-primary generate-report">Get Report</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endif %}
+{% endblock %}
+{% block customjs %}
+<script src="{% static 'assets/libs/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.js' %}"></script>
+<script src="{% static 'assets/libs/notyf/notyf.min.js' %}"></script>
+<script>
+    // For the month input
+$('#date_month').flatpickr({
+    mode: 'single',
+    maxDate: "today",
+    allowInput: true,
+    dateFormat: "M Y"
+});
+
+$(document).ready(function() {
+    $('.generate-report').click(function(event) {
+        event.preventDefault(); // Prevent default behavior of the link
+
+        var selectedMonth = $('#date_month').val();
+        var reportId = $(this).closest('a').data('report-id'); // Retrieve the report ID from the data attribute
+        var url = $(this).closest('a').attr('href') + "?date_month=" + selectedMonth
+        
+        // Redirect to the generated URL
+        window.open(url, '_blank');
+    });
+});
+</script>
+{% endblock %} 

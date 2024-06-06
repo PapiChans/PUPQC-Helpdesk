@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <style>
+            img{
+                width: 60px !important;
+                height: auto !important;
+                text-align: center !important;
+            }
+            th{
+                border: .1rem solid !important;
+                border-color: lightgrey !important;
+                padding: 5px !important;
+
+            }
+
+            td {
+                border: .1rem solid !important;
+                border-color: lightgrey !important;
+                padding: 3px !important;
+            }
+
+            th {
+                background-color: #830000 !important;
+                color: white !important;
+            }
+
+                        /* In your CSS file */
+            .container-fluid {
+            text-align: center; /* Centers content within a fluid container */
+            }
+
+            .text-right {
+                text-align: right; /* Centers content within a fluid container */
+                }
+
+            .content { 
+            display: inline-block; /* Allows the image to be centered within its container */
+            }
+            
+            .container {
+                background-color: white;
+                padding: 10px;
+                display: flex;
+                flex-direction: column; /* Align items vertically */
+                font-size: 15px;
+            }
+            
+            .label {
+                margin-bottom: 5px; /* Add some spacing between lines */
+            }
+            
+            .bold {
+                font-weight: bold;
+                margin-right: 5px; /* Add some spacing between bold text and values */
+            }
+            
+                        
+
+        </style>
+        <section class="m-4 p-4">
+            <div class="container-fluid">
+                <div class="content text-center">
+                    <img src="https://www.pngkey.com/png/detail/52-528919_the-pup-logo-polytechnic-university-of-the-philippines.png" alt="The Pup Logo - Polytechnic University Of The Philippines Logo@pngkey.com">
+                </div>
+                <div class="text-center">
+                    <p style="margin: 0 !important;">Republic of the Philippines</p>
+                </div>
+                <div class="text-center">
+                    </h6>Polytechnic University of the Philippines
+                        <br>
+                        Quezon City Campus
+                    </h5>
+                </div>
+            
+                <div class="mt-4 pt-3 text-center">
+                    <h1>Monthly Request Report</h1>
+                    <h2>As of: {{ month_year_str }}</h2>
+                </div>
+            </div>
+
+            <div id="table-default" class="table-responsive">
+                <table id="" class="display no-wrap table table-vcenter">
+                    <thead>
+                        <tr>
+                            <th>Office</th>
+                            <th>Pending</th>
+                            <th>Open</th>
+                            <th>Resolved</th>
+                            <th>Closed</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-tbody">
+                        {% for office in office_data %}
+                        <tr>
+                            <td>{{ office.office_name }}</td>
+                            <td>{{ office.pending }}</td>
+                            <td>{{ office.open }}</td>
+                            <td>{{ office.resolved }}</td>
+                            <td>{{ office.closed }}</td>
+                            <td>{{ office.total_requests }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="container-fluid">
+                <div class="mt-4 pt-3 text-center">
+                    <h1>Monthly Request Ratings</h1>
+                    <h2>As of: {{ month_year_str }}</h2>
+                </div>
+            </div>
+                         
+            <div id="table-default" class="table-responsive">
+                <table id="" class="display no-wrap table table-vcenter">
+                    <thead>
+                        <tr>
+                            <th>Office</th>
+                            <th>Excellent</th>
+                            <th>Good</th>
+                            <th>Average</th>
+                            <th>Fair</th>
+                            <th>Poor</th>
+                            <th>Average Rating</th>
+                            <th>Overall Ratings</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-tbody">
+                        {% for rating in ratings_data %}
+                        <tr>
+                            <td>{{ rating.office_name }}</td>
+                            <td>{{ rating.excellent }}</td>
+                            <td>{{ rating.good }}</td>
+                            <td>{{ rating.average }}</td>
+                            <td>{{ rating.fair }}</td>
+                            <td>{{ rating.poor }}</td>
+                            <td>{{ rating.average_rating }}</td>
+                            <td>{{ rating.remarks }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+    </body>
+</html>

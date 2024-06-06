@@ -577,7 +577,6 @@ class Evaluation(models.Model):
     QF = models.IntegerField(null=True)
     QG = models.IntegerField(null=True)
     QH = models.IntegerField(null=True)
-    rating = models.IntegerField(null=True)
     remarks = models.CharField(max_length=100, null=True)
     date_filled = models.DateTimeField(null=True)
     class Meta:
