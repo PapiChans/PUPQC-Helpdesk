@@ -134,11 +134,27 @@ def studTicketReOpen(request, ticket_Number):
             try:
                 ticket = Ticket.objects.get(ticket_Number=ticket_Number)
                 if ticket.ticket_Status != 'Re-Open':
-                    ticket.ticket_Status = 'Re-Open'
+                    ticket.ticket_Status = 'Open'
                     ticket.save()
+                    ReOpenTicketaudit(ticket.ticket_Number, ticket.full_Name)
                     return Response({"message": "Ticket Re-Open Success"})
                 else:
                     return Response({"message": "Ticket is already Re-Opened"})
             except Ticket.DoesNotExist:
                 return Response({"message": "Ticket does not exist"})
         return Response({"message": "Ticket Re-Open Error"})
+    
+def ReOpenTicketaudit(ticket_Number, full_Name):
+
+    audit_data = {
+        'audit_Reference': ticket_Number,
+        'audit_User': full_Name,
+        'audit_Action': "Re-Opened",
+        'audit_Description': f"Ticket {ticket_Number} has been re-opened."
+    }
+    serializer = AuditTrailSerializer(data=audit_data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Add Trail Successfully"})
+    
+    return Response({"message": "Invalid data for audit trail"})
