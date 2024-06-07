@@ -1408,3 +1408,7 @@
 # 0.7.33.2
 - Push by Christian (https://github.com/papichans)
 - Ticket rating adjust to send in Super Admin
+
+# 0.7.33.3
+- Push by Christian (https://github.com/papichans)
+- Fixed Guest and Student Draft Knowledge Bypass

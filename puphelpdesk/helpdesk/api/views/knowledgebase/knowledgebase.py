@@ -94,7 +94,7 @@ def guestSearchKnowledge(request, knowledge_Keyword):
             data = KBTopic.objects.filter(
                 Q(topic_Name__icontains=knowledge_Keyword) |
                 Q(topic_Content__icontains=knowledge_Keyword)
-            ).order_by('date_Created')
+            ,status='Published').order_by('date_Created')
             serializer = KBTopicSerializer(data, many=True)
             return Response(serializer.data)
         return Response({"message": "Invalid HTTP method"})
