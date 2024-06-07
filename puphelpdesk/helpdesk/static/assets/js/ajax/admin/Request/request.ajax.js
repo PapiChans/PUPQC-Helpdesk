@@ -593,7 +593,7 @@ superadminblocker = () => {
         headers: {'X-CSRFToken': csrftoken},
         success: (result) => {
             const profiledata = result;
-            if (profiledata.is_master_admin == false){
+            if (profiledata.is_master_admin == false && profiledata.is_technician == false){
                 $('#request_office').html(null);
                 $('#request_office').html(`<option value="${profiledata.admin_Office}">${profiledata.admin_Office}</option>`);
                 $('#request_office').val(profiledata.admin_Office);

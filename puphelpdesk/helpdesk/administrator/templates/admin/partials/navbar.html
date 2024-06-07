@@ -96,6 +96,11 @@
                                   </span>
                               </a>
                             </li>
+{% if request.user.is_authenticated %}
+    {% if request.user.is_admin %}
+        {% with request.user.adminprofile_set.first as admin_profile %}
+            {% if admin_profile %}
+                {% if not admin_profile.is_technician %}
                             <li class="nav-item">
                               <a class="nav-link" href="{% url 'admin/reports' %}" >
                                   <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -114,6 +119,11 @@
                                   </span>
                               </a>
                             </li>
+                  {% endif %}
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endif %}
                             {% comment %} <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->

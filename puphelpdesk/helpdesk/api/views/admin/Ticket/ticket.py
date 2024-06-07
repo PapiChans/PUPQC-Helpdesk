@@ -132,7 +132,7 @@ def adminGetAllTicket(request):
         return Response({"message": "Admin profile not found"})
     
     if request.method == "GET":
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             tickets = Ticket.objects.all().order_by('date_Created')
         else:
             tickets = Ticket.objects.all().filter(ticket_Office=admin_profile.admin_Office).order_by('date_Created')
@@ -387,7 +387,7 @@ def adminEditTicket(request, ticket_Id):
         getAdmins = AdminProfile.objects.filter(admin_Office=ticket.ticket_Office).values_list('admin_Email', flat=True)
         print("Admin Emails:", getAdmins)  # Print admin emails for debugging
         
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             ticket_Office = request.POST.get('ticket_Office')
             ticket.ticket_Office = ticket_Office
             adminReAssignedTicketaudit(ticket.ticket_Number, full_Name, old_office, ticket_Office)
@@ -434,7 +434,7 @@ def adminSortTickets(request):
             return Response({"message": "Not Authenticated"})
 
         # Filter tickets based on admin privileges
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             # If master admin, fetch all tickets regardless of office
             tickets = tickets.order_by('date_Created')
         else:

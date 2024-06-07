@@ -1412,3 +1412,8 @@
 # 0.7.33.3
 - Push by Christian (https://github.com/papichans)
 - Fixed Guest and Student Draft Knowledge Bypass
+
+# 0.7.33.4
+- Push by Christian (https://github.com/papichans)
+- Technician can now Assigned Ticket and Request Offices as well
+- Technician no longer have access in reports

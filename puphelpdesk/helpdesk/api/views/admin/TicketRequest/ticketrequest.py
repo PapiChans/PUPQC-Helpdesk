@@ -141,7 +141,7 @@ def adminGetMNRequest(request):
         return Response({"message": "Admin profile not found"})
     
     if request.method == "GET":
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             requests = Request.objects.all().order_by('date_Created').exclude(user_Id=admin_profile.user_Id)
         else:
             requests = Request.objects.all().filter(request_Office=admin_profile.admin_Office).exclude(user_Id=admin_profile.user_Id).order_by('date_Created')
@@ -202,7 +202,7 @@ def adminSortRequest(request):
             return Response({"message": "Not Authenticated"})
 
         # Filter requests based on admin privileges
-        if admin_profile.is_master_admin:
+        if admin_profile.is_master_admin or admin_profile.is_technician:
             # If master admin, fetch all requests regardless of office
             requests = requests.order_by('date_Created')
         else:
