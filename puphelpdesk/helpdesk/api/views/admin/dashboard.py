@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import datetime, timedelta
 from django.db.models.functions import TruncMonth, TruncDate, ExtractMonth
-from api.models import Feedback, FinancialAndScholarshipGuide, JobPosting, StudentGovernment, Ticket, TicketComment
+from api.models import Feedback, JobPosting, Ticket, TicketComment
 from django.db.models import Count
 
 @api_view(['GET'])
@@ -78,28 +78,6 @@ def adminSuggestionChart(request):
         return Response({"message": "Get Feedback Error"})
 
 @api_view(['GET'])
-def adminFinancialAidChart(request):
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "GET":
-            data = (
-                FinancialAndScholarshipGuide.objects
-                .values('guide_Type')
-                .annotate(count=Count('guide_Type'))
-            )
-
-            financialaid_count = sum(item['count'] for item in data if item['guide_Type'] == 'Financial Aid')
-            scholarship_count = sum(item['count'] for item in data if item['guide_Type'] == 'Scholarship')
-
-            response_data = [
-                {'value': financialaid_count, 'name': 'Financial Aid'},
-                {'value': scholarship_count, 'name': 'Scholarship'},
-            ]
-            return Response(response_data)
-        return Response({"message": "Get Financial Aid Chart Error"})
-
-@api_view(['GET'])
 def adminCareerChart(request):
     if request.user.is_anonymous or not request.user.is_admin:
         return Response({"message": "Not Authenticated"})
@@ -120,29 +98,6 @@ def adminCareerChart(request):
             ]
             return Response(response_data)
         return Response({"message": "Get Career Chart Error"})
-
-
-@api_view(['GET'])
-def adminStudentGovernmentChart(request):
-    if request.user.is_anonymous or not request.user.is_admin:
-        return Response({"message": "Not Authenticated"})
-    else:
-        if request.method == "GET":
-            data = (
-                StudentGovernment.objects
-                .values('government_Type')
-                .annotate(count=Count('government_Type'))
-            )
-
-            election_count = sum(item['count'] for item in data if item['government_Type'] == 'Election')
-            membership_count = sum(item['count'] for item in data if item['government_Type'] == 'Membership')
-
-            response_data = [
-                {'value': election_count, 'name': 'Election'},
-                {'value': membership_count, 'name': 'Membership'},
-            ]
-            return Response(response_data)
-        return Response({"message": "Get Student Government Chart Error"})
     
 @api_view(['GET'])
 def adminTicketStatusChart(request):

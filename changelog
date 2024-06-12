@@ -1417,3 +1417,7 @@
 - Push by Christian (https://github.com/papichans)
 - Technician can now Assigned Ticket and Request Offices as well
 - Technician no longer have access in reports
+
+# 0.8.0
+- Push by Christian (https://github.com/papichans)
+- Remove UNUSED Views,Models,URLs in this project

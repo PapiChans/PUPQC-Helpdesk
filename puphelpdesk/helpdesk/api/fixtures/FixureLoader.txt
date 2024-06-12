@@ -1,4 +1,4 @@
 Command to Load the Fixture Data in the database at once,
 Just copy and paste the command in the VS Code Terminal
 
-python manage.py loaddata User_fixture.json, UserProfile_fixture.json, AdminProfile_fixture.json, Charter_fixture.json, CharterStep_fixture.json, FAQ_fixture.json, Feedback_fixture.json, FinancialAid_fixture.json, Service_fixture.json, ServiceReferral_fixture.json, Ticket_fixture.json, TicketComment_fixture.json
+python manage.py loaddata User_fixture.json, UserProfile_fixture.json, AdminProfile_fixture.json
