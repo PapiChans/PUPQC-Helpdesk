@@ -7,8 +7,8 @@
 |                     |                     |
 | ------------------- | --------------------|
 | **Description**     | This project is for fullfillment of requirements in subject "Capstone Project 1 and 2". |
-| **Date Started**    | August 20, 2023 - June 12, 2024 (Philippine Independence Day)|
-| **Current Version** | v0.8.0| 
+| **Project Duration**    | August 20, 2023 - June 12, 2024 (Philippine Independence Day)|
+| **Current Version** | v0.8.1| 
 | **Members**         | Full-Stack Developer / Project Manager / Scrum Master<ul><li>[Altiche, Christian](https://github.com/papichans)</li></ul>Front-End Developer / Penetration Tester<ul><li>[Lopez, Loyd Marion](https://github.com/loydmarionlopez)</li></ul>Quality Assurance Tester<ul><li>[Felipe, Leslie](https://github.com/Hishori)</li></ul>Documentation and Technical<ul><li>[Sicangco, Charles Joseph](https://github.com/httpgwapo)</li></ul> _Students from Polytechnic University of the Philippines Quezon City Branch, BSIT 4-2 (Batch 2023-2024)_|
 
 
