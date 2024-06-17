@@ -1425,3 +1425,8 @@
 # 0.8.1
 - Push by Christian (https://github.com/papichans)
 - Minor Revise README.md
+
+# 1.0.0
+- Push by Christian (https://github.com/papichans)
+- Created a Copy of Settings.py for Deployment Continues
+- Christian Declared that the Capstone Project is finished so the version is set to v1.0.0

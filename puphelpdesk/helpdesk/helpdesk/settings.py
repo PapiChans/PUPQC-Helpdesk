@@ -32,9 +32,9 @@ SECRET_KEY = 'django-insecure-9ergqbr6h18fh#%rufi8w=f2pzaw(&!rl36b#b6t*l=l2v*5#b
 # For Development set this DEBUG to True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
+# ALLOWED_HOSTS = ['*','pupqc-helpdesk.onrender.com'] # For Deployment
 
-# ALLOWED_HOSTS = [] # For Development
+ALLOWED_HOSTS = [] # For Development
 
 # Application definition
 
@@ -96,22 +96,24 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-      'default': dj_database_url.config(
-          default='postgres://student_helpdesk_user:O6twebP7SoU6oOO80GXQzCRYeELDwWr5@dpg-cokv9qud3nmc739maa60-a.singapore-postgres.render.com/student_helpdesk',
-          )
-}
 
-# DATABASES = { # PostgreSQL Database
-# 'default': {
-#      'ENGINE': 'django.db.backends.postgresql',
-#      'NAME': 'Helpdesk',
-#      'USER': 'postgres',
-#      'PASSWORD': 'admin',
-#      'HOST': 'localhost',
-#      'PORT': '5432',
-#  }
+# Database Configuration for Deployment Phase
+# DATABASES = {
+#       'default': dj_database_url.config(
+#           default='postgres://student_helpdesk_user:O6twebP7SoU6oOO80GXQzCRYeELDwWr5@dpg-cokv9qud3nmc739maa60-a.singapore-postgres.render.com/student_helpdesk',
+#           )
 # }
+
+DATABASES = { # PostgreSQL Database Localhost
+'default': {
+     'ENGINE': 'django.db.backends.postgresql',
+     'NAME': '', # Provide Database Name
+     'USER': '', # Provide Database User
+     'PASSWORD': '', # Provide Database Password
+     'HOST': 'localhost',
+     'PORT': '5432',
+ }
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -187,28 +189,28 @@ LOGOUT_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = "api.User"
 
-#Email Sending Configuration
+#Email Sending Configuration Using Gmail
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER='procommandocfph@gmail.com'
-EMAIL_HOST_PASSWORD='kbnazylfxxvzqier'
+EMAIL_HOST_USER='' # Provide Email User
+EMAIL_HOST_PASSWORD='' # Provide Email Password
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
-DEFAULT_FROM_EMAIL = 'PUPQC Student Helpdesk <no-reply@pupqchelpdesk.edu.ph>'
+DEFAULT_FROM_EMAIL = '' # Provide Email Custom Address
 
 # Cloudinary Storage
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'drqa68vvu',
-    'API_KEY': '352135633188664',
-    'API_SECRET': 'svWeJv5SUmQIgDkGui2P9JF75DE'
+    'CLOUD_NAME': '', # Provide Cloudinary Cloud Name
+    'API_KEY': '', # Provide Cloudinary Cloud API Key
+    'API_SECRET': '' # Provide Cloudinary Cloud Secret
 }
 
 # Set Cloudinary configuration
 cloudinary.config(
-    cloud_name='drqa68vvu',
-    api_key='352135633188664',
-    api_secret='svWeJv5SUmQIgDkGui2P9JF75DE',
+    cloud_name='', # Provide Cloudinary Cloud Name
+    api_key='', # Provide Cloudinary Cloud API Key
+    api_secret='', # Provide Cloudinary Cloud Secret
     fetch_format='auto'  # Disable automatic transformations
 )
 
